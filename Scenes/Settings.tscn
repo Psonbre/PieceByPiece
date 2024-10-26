@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbl6sigulrew8"]
+
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_7isfi"]
+[ext_resource type="Script" path="res://Scripts/level_name.gd" id="2_pbxpv"]
+[ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="3_uwmcr"]
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="4_fs3n1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_56lap"]
+font = ExtResource("1_7isfi")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_dvsln"]
+font = ExtResource("1_7isfi")
+font_size = 32
+
+[node name="Settings" type="Node2D"]
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Settings"]
+layout_mode = 2
+offset_left = 309.0
+offset_top = 25.0
+offset_right = 830.0
+offset_bottom = 113.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_56lap")
+horizontal_alignment = 1
+script = ExtResource("2_pbxpv")
+
+[node name="Back" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 41.0
+offset_right = 159.0
+offset_bottom = 99.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("1_7isfi")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+script = ExtResource("3_uwmcr")
+
+[node name="SettingsPanel" type="VBoxContainer" parent="Settings"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 186.0
+offset_top = 123.0
+offset_right = 690.0
+offset_bottom = 602.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_constants/separation = 20
+script = ExtResource("4_fs3n1")
+
+[node name="SubTitle" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 2
+text = "Display"
+label_settings = SubResource("LabelSettings_dvsln")
+horizontal_alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="Settings/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Resolution" type="CenterContainer" parent="Settings/SettingsPanel/Names"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Names/Resolution"]
+layout_mode = 2
+
+[node name="Resolution" type="Label" parent="Settings/SettingsPanel/Names/Resolution/HSplitContainer"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionSlider" type="OptionButton" parent="Settings/SettingsPanel/Names/Resolution/HSplitContainer"]
+layout_mode = 2
+focus_mode = 0
+
+[node name="DisplayMode" type="CenterContainer" parent="Settings/SettingsPanel/Names"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Names/DisplayMode"]
+layout_mode = 2
+
+[node name="Resolution" type="Label" parent="Settings/SettingsPanel/Names/DisplayMode/HSplitContainer"]
+layout_mode = 2
+text = "Display"
+
+[node name="DisplaySlider" type="OptionButton" parent="Settings/SettingsPanel/Names/DisplayMode/HSplitContainer"]
+layout_mode = 2
+focus_mode = 0
+
+[node name="V-Sync" type="CenterContainer" parent="Settings/SettingsPanel/Names"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Names/V-Sync"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/SettingsPanel/Names/V-Sync/HSplitContainer"]
+layout_mode = 2
+text = "V-Sync"
+
+[node name="VsyncSlider" type="OptionButton" parent="Settings/SettingsPanel/Names/V-Sync/HSplitContainer"]
+layout_mode = 2
+focus_mode = 0
+
+[connection signal="pressed" from="Settings/Back" to="Settings/Back" method="_on_pressed"]
+[connection signal="item_selected" from="Settings/SettingsPanel/Names/DisplayMode/HSplitContainer/DisplaySlider" to="Settings/SettingsPanel" method="_on_display_slider_item_selected"]
+[connection signal="item_selected" from="Settings/SettingsPanel/Names/V-Sync/HSplitContainer/VsyncSlider" to="Settings/SettingsPanel" method="_on_vsync_slider_item_selected"]

@@ -6,6 +6,7 @@ static var level_manager: LevelManager = null
 static var music_manager: MusicManager = null
 static var sound_manager: SoundManager = null
 static var collectible_manager: CollectibleManager = null
+static var settings_manager: SettingsManager = null
 
 
 # Initialize the singleton instance
@@ -47,3 +48,9 @@ static func get_collectible_manager() -> CollectibleManager:
 	if collectible_manager == null:
 		collectible_manager = CollectibleManager.new()
 	return collectible_manager
+	
+# Get the SettingsManager instance
+static func get_settings_manager() -> SettingsManager:
+	if settings_manager == null:
+		settings_manager = SettingsManager.new()
+	return settings_manager
