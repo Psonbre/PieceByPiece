@@ -1,9 +1,11 @@
 extends Control
 
-@onready var vsyncSlider = $"Names/V-Sync/HSplitContainer/VsyncSlider"
-@onready var resolutionSlider = $Names/Resolution/HSplitContainer/ResolutionSlider
-@onready var displaySlider = $Names/DisplayMode/HSplitContainer/DisplaySlider
-
+@onready var vsyncSlider = $"Display/V-Sync/HSplitContainer/VsyncSlider"
+@onready var resolutionSlider = $Display/Resolution/HSplitContainer/ResolutionSlider
+@onready var displaySlider = $Display/DisplayMode/HSplitContainer/DisplaySlider
+@onready var masterSlider = $Sounds/Master/HSplitContainer/MasterSlider
+@onready var musicSlider = $Sounds/HBoxContainer2/HSplitContainer/MusicSlider
+@onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
 
 var resolutionsPossible: Dictionary = {}
 var displayModePossible: Dictionary = {
@@ -20,6 +22,7 @@ var vsyncModePossible: Dictionary = {
 func _ready() -> void:
 	addDisplays()
 	addVsyncs()
+	update_volume_sliders()
 
 func addDisplays():
 	for displayPossible in displayModePossible:
@@ -34,6 +37,11 @@ func addVsyncs():
 		
 		var index = vsyncSlider.get_item_count() - 1
 		vsyncSlider.set_item_tooltip(index,hint)
+		
+func update_volume_sliders():
+	masterSlider.value = SubsystemManager.get_settings_manager().masterVolume
+	musicSlider.value = SubsystemManager.get_settings_manager().musicVolume
+	sfxSlider.value = SubsystemManager.get_settings_manager().sfxVolume
 
 
 func _on_display_slider_item_selected(index: int) -> void:
@@ -45,4 +53,15 @@ func _on_display_slider_item_selected(index: int) -> void:
 func _on_vsync_slider_item_selected(index: int) -> void:
 	var itemText = vsyncSlider.get_item_text(index)
 	var vsyncmode = vsyncModePossible[itemText]
-	SubsystemManager.get_settings_manager()._update_Vsync_mode(vsyncmode[0])
+	SubsystemManager.get_settings_manager()._update_Vsync_mode(vsyncmode[0])	
+
+func _on_master_slider_value_changed(value: float) -> void:
+	SubsystemManager.get_settings_manager()._update_master_volume(value)
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	SubsystemManager.get_settings_manager()._update_music_volume(value)
+
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	SubsystemManager.get_settings_manager()._update_sfx_volume(value)

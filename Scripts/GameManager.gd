@@ -3,6 +3,7 @@ extends Node2D
 var old_screen : Node2D
 var current_screen : Node2D
 var credits_screen
+var settings_scene
 @onready var camera: Camera2D = $Camera2D
 
 func _ready():
@@ -10,6 +11,9 @@ func _ready():
 	credits_screen = load("res://Scenes/Credits.tscn").instantiate()
 	credits_screen.global_position.x = -get_viewport_rect().size.x
 	add_child(credits_screen)
+	settings_scene = load("res://Scenes/Settings.tscn").instantiate()
+	settings_scene.global_position.x = -get_viewport_rect().size.x
+	add_child(settings_scene)
 
 func load_level(level_name):
 	if old_screen != null : return
@@ -52,6 +56,17 @@ func load_credits():
 	camera.target_position = Vector2.ZERO
 	camera.target_zoom = Vector2.ONE
 	
+func load_settings():
+	if old_screen != null : return
+	
+	for piece in get_tree().get_nodes_in_group("PuzzlePieces"):
+		piece.stop_dragging()
+		
+	old_screen = current_screen
+	current_screen = settings_scene
+	camera.target_position = Vector2.ZERO
+	camera.target_zoom = Vector2.ONE
+	
 func _process(delta):
 	if Input.is_action_just_pressed("Pause") :
 		load_main_menu()
@@ -65,6 +80,6 @@ func _process(delta):
 	if (old_screen) : 
 		old_screen.global_position.x = move_toward(old_screen.global_position.x, -get_viewport_rect().size.x, 2500 * delta)
 		if old_screen.global_position.x == -get_viewport_rect().size.x :
-			if old_screen != get_node("MainMenu") && old_screen != credits_screen :
+			if old_screen != get_node("MainMenu") && old_screen != credits_screen && old_screen != settings_scene :
 				old_screen.queue_free()
 			old_screen = null
