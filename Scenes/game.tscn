@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccajj1ji7b6fw"]
 
-[ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/player.tscn" id="2_senh7"]
+[ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/Players/player.tscn" id="2_senh7"]
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="3_gvsjr"]
 [ext_resource type="PackedScene" uid="uid://brf4pao2jx6lr" path="res://Scenes/PauseMenu.tscn" id="3_vsyuy"]
 

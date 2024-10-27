@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2es7clomws0e"]
+[gd_scene load_steps=10 format=3 uid="uid://b2es7clomws0e"]
 
-[ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/player.tscn" id="1_f72ip"]
+[ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/Players/player.tscn" id="1_f72ip"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_jadwf"]
 [ext_resource type="Script" path="res://Scripts/level_name.gd" id="2_1vdrr"]
 [ext_resource type="PackedScene" uid="uid://ic8c2xg6eu1s" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece12.tscn" id="4_sa8mp"]
 [ext_resource type="PackedScene" uid="uid://bqlnawjb534yd" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece13.tscn" id="5_27qmb"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="5_tthgo"]
 [ext_resource type="PackedScene" uid="uid://dqiqn2byfrunh" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece14.tscn" id="6_a52br"]
 [ext_resource type="PackedScene" uid="uid://bq0lbsqg5c5bs" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece15.tscn" id="7_rek7h"]
 [ext_resource type="PackedScene" uid="uid://c002vaw66hpb7" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece16.tscn" id="8_8qixp"]
@@ -32,15 +33,20 @@ script = ExtResource("2_1vdrr")
 
 [node name="PuzzlePiece" parent="." instance=ExtResource("4_sa8mp")]
 position = Vector2(1087, 316)
+script = ExtResource("5_tthgo")
 
 [node name="PuzzlePiece2" parent="." instance=ExtResource("5_27qmb")]
 position = Vector2(272, 297)
+script = ExtResource("5_tthgo")
 
 [node name="PuzzlePiece3" parent="." instance=ExtResource("6_a52br")]
 position = Vector2(485, 565)
+script = ExtResource("5_tthgo")
 
 [node name="PuzzlePiece4" parent="." instance=ExtResource("7_rek7h")]
 position = Vector2(685, 271)
+script = ExtResource("5_tthgo")
 
 [node name="PuzzlePiece5" parent="." instance=ExtResource("8_8qixp")]
 position = Vector2(878, 555)
+script = ExtResource("5_tthgo")

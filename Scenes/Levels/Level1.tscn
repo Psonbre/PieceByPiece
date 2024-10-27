@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyx41npt4n1kn"]
+[gd_scene load_steps=8 format=3 uid="uid://cyx41npt4n1kn"]
 
-[ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/player.tscn" id="1_q7mb7"]
+[ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/Players/player.tscn" id="1_q7mb7"]
 [ext_resource type="PackedScene" uid="uid://kjgao5p8jhrp" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece1.tscn" id="2_o2emm"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="3_05bh1"]
 [ext_resource type="PackedScene" uid="uid://bvlsm2vinukis" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece2.tscn" id="3_pbm8q"]
 [ext_resource type="PackedScene" uid="uid://dspxq5urbfr3x" path="res://Scenes/PuzzlePieces/Pirates/puzzle_piece3.tscn" id="4_g6q54"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="7_8iyfl"]
@@ -19,12 +20,15 @@ position = Vector2(145, 336)
 
 [node name="PuzzlePiece" parent="." instance=ExtResource("2_o2emm")]
 position = Vector2(157, 354)
+script = ExtResource("3_05bh1")
 
 [node name="PuzzlePiece2" parent="." instance=ExtResource("3_pbm8q")]
 position = Vector2(483, 324)
+script = ExtResource("3_05bh1")
 
 [node name="PuzzlePiece3" parent="." instance=ExtResource("4_g6q54")]
 position = Vector2(832, 330)
+script = ExtResource("3_05bh1")
 
 [node name="LevelName" type="Label" parent="."]
 z_index = 30

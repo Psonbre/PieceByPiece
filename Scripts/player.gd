@@ -43,15 +43,15 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if overlapping_pieces.size() > 0 :
-		var closest_piece = null
+		var closest_piece : PuzzlePiece = null
 		var min_distance = INF
 		for piece in overlapping_pieces:
 			var distance = global_position.distance_to(piece.global_position)
 			if distance < min_distance:
 				min_distance = distance
 				closest_piece = piece
-		if closest_piece != null && (find_parent("Content") == null || closest_piece != get_parent().get_node("../..")):
-			reparent(closest_piece.get_node("PuzzlePiece/Content"))
+		if closest_piece != null && (find_parent("Shape") == null || closest_piece.get_node("Shape") != get_parent()):
+			reparent(closest_piece.get_node("Shape"))
 			reset_proportions()
 
 func add_overlapping_piece(piece : PuzzlePiece):

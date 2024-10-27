@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyb7amkjr04ii"]
+
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_4diw4"]
+[ext_resource type="Texture2D" uid="uid://c2fwqp0pb2lk7" path="res://Assets/pieces_sprites/piece (4).png" id="2_v45u1"]
+
+[node name="PuzzlePiece" instance=ExtResource("1_4diw4")]
+left_connection_slot = -2
+right_connection_slot = 1
+top_connection_slot = -2
+bottom_connection_slot = -2
+
+[node name="Sprite" parent="." index="5"]
+texture = ExtResource("2_v45u1")
+
+[node name="SpriteMovingOutline" parent="Sprite" index="2"]
+texture = ExtResource("2_v45u1")

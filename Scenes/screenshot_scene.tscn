@@ -1,19 +1,16 @@
-[gd_scene load_steps=138 format=4 uid="uid://crcj83r4blwky"]
+[gd_scene load_steps=135 format=4 uid="uid://crcj83r4blwky"]
 
-[ext_resource type="Shader" path="res://Scenes/vortex.gdshader" id="1_qkvpe"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="1_qkvpe"]
 [ext_resource type="Texture2D" uid="uid://cph5l5ltrh8xo" path="res://icon.svg" id="2_ofyc2"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_rm6tu"]
 [ext_resource type="Texture2D" uid="uid://ctsxccqvy6yp4" path="res://Assets/pieces_sprites/piece (32).png" id="4_npdlu"]
-[ext_resource type="Shader" path="res://Scenes/PuzzlePieces/PuzzleOutline.gdshader" id="5_71k32"]
-[ext_resource type="Shader" path="res://Scenes/PuzzlePieces/PuzzleMovingOutline.gdshader" id="6_mps7c"]
 [ext_resource type="Texture2D" uid="uid://10p6j3qrbahm" path="res://Assets/Sprites/Pirate/8-Tile-Sets/Tile-Sets (64-64).png" id="7_wj70s"]
-[ext_resource type="Texture2D" uid="uid://cstyrvqibocr" path="res://Assets/Sprites/Medievale/14-TileSets/Terrain (64x64).png" id="8_wjm6o"]
-[ext_resource type="Texture2D" uid="uid://o1odiq448bc7" path="res://Assets/Sprites/Medievale/14-TileSets/Decorations (64x64).png" id="9_bwt6e"]
+[ext_resource type="Texture2D" uid="uid://cstyrvqibocr" path="res://Assets/Sprites/Medieval/TileSets/Terrain (64x64).png" id="8_wjm6o"]
 [ext_resource type="Texture2D" uid="uid://btpc4xex0poeb" path="res://Assets/Sprites/Oubliette/oubliette_tileset.png" id="10_1jfnt"]
 [ext_resource type="Texture2D" uid="uid://c4byi4qgpbicc" path="res://Assets/Sprites/Sci-fi/Tileset/level_tileset.png" id="11_3aj5m"]
-[ext_resource type="Texture2D" uid="uid://cto1fm8vnf3i2" path="res://Assets/Sprites/Medievale/01-King Human/Idle (78x58).png" id="12_561qw"]
-[ext_resource type="Texture2D" uid="uid://ckon6rlbdo14f" path="res://Assets/Sprites/Medievale/01-King Human/Jump (78x58).png" id="13_36ge8"]
-[ext_resource type="Texture2D" uid="uid://rfmn8lfp0hqm" path="res://Assets/Sprites/Medievale/01-King Human/Run (78x58).png" id="14_d0vpm"]
+[ext_resource type="Texture2D" uid="uid://cto1fm8vnf3i2" path="res://Assets/Sprites/Medieval/Player/Idle (78x58).png" id="12_561qw"]
+[ext_resource type="Texture2D" uid="uid://ckon6rlbdo14f" path="res://Assets/Sprites/Medieval/Player/Jump (78x58).png" id="13_36ge8"]
+[ext_resource type="Texture2D" uid="uid://rfmn8lfp0hqm" path="res://Assets/Sprites/Medieval/Player/Run (78x58).png" id="14_d0vpm"]
 [ext_resource type="Texture2D" uid="uid://lboogfl1cm51" path="res://Assets/pieces_sprites/piece (12).png" id="15_ro0p1"]
 [ext_resource type="Texture2D" uid="uid://brhlf4shnbk68" path="res://Assets/pieces_sprites/piece (19).png" id="16_gmdjb"]
 [ext_resource type="Texture2D" uid="uid://cxn8uflv5qok3" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/1-Idle/1.png" id="17_3n7se"]
@@ -117,19 +114,8 @@ size = Vector2(10, 4.15)
 size = Vector2(149, 164)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20ux4"]
-shader = ExtResource("5_71k32")
-shader_parameter/max_line_width = 21.985
-shader_parameter/min_line_width = 1.0
-shader_parameter/freq = 3.0
-shader_parameter/block_size = 20.0
-shader_parameter/outline_colour = Vector4(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hs13t"]
-shader = ExtResource("6_mps7c")
-shader_parameter/line_color = Vector4(1, 1, 1, 1)
-shader_parameter/line_thickness = 8.0
-shader_parameter/frequency = 10.0
-shader_parameter/phase_speed = 10.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6rph2"]
 texture = ExtResource("7_wj70s")
@@ -328,7 +314,6 @@ texture_region_size = Vector2i(64, 64)
 17:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hlk27"]
-texture = ExtResource("9_bwt6e")
 texture_region_size = Vector2i(64, 64)
 1:1/0 = 0
 2:1/0 = 0

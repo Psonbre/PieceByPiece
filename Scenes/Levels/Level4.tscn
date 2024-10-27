@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://co427wjwfxwd6"]
+[gd_scene load_steps=10 format=3 uid="uid://co427wjwfxwd6"]
 
-[ext_resource type="PackedScene" uid="uid://fjqeivlxjcr1" path="res://Scenes/player3.tscn" id="1_ihxvi"]
+[ext_resource type="PackedScene" uid="uid://fjqeivlxjcr1" path="res://Scenes/Players/player3.tscn" id="1_ihxvi"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_e36te"]
 [ext_resource type="Script" path="res://Scripts/level_name.gd" id="3_2uhmy"]
 [ext_resource type="PackedScene" uid="uid://c7v5c0tw1qr64" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece8.tscn" id="4_ojbxw"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="5_1ln6d"]
 [ext_resource type="PackedScene" uid="uid://beir3yqwaro6u" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece9.tscn" id="5_6w84v"]
 [ext_resource type="PackedScene" uid="uid://bcn86dwwe348s" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece10.tscn" id="6_jsg5k"]
 [ext_resource type="PackedScene" uid="uid://bajyjd7f2b74e" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece11.tscn" id="7_d7yi8"]
@@ -31,15 +32,20 @@ script = ExtResource("3_2uhmy")
 
 [node name="PuzzlePiece" parent="." instance=ExtResource("4_ojbxw")]
 position = Vector2(662, 256)
+script = ExtResource("5_1ln6d")
 
 [node name="PuzzlePiece2" parent="." instance=ExtResource("5_6w84v")]
 position = Vector2(258, 543)
+script = ExtResource("5_1ln6d")
 
 [node name="PuzzlePiece3" parent="." instance=ExtResource("6_jsg5k")]
 position = Vector2(250, 223)
+script = ExtResource("5_1ln6d")
 
 [node name="PuzzlePiece4" parent="." instance=ExtResource("7_d7yi8")]
 position = Vector2(666, 570)
+script = ExtResource("5_1ln6d")
 
 [node name="PuzzlePiece5" parent="." instance=ExtResource("8_fg2mo")]
 position = Vector2(1108, 367)
+script = ExtResource("5_1ln6d")

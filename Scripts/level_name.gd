@@ -1,4 +1,4 @@
-class_name level_name
+class_name LevelName
 extends Control
 
 @export var vertical_speed = 0.5

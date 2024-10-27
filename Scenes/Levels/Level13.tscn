@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_ga6ug"]
 [ext_resource type="Script" path="res://Scripts/level_name.gd" id="2_aw2ml"]
-[ext_resource type="Texture2D" uid="uid://ddocl4q1oyf3s" path="res://Assets/thumbsUpGoofyAhh.png" id="3_fl6yg"]
-[ext_resource type="Script" path="res://Scripts/finalPieces.gd" id="4_a3cfk"]
+[ext_resource type="Texture2D" uid="uid://ddocl4q1oyf3s" path="res://Assets/Sprites/BonusLevel/thumbsUpGoofyAhh.png" id="3_fl6yg"]
+[ext_resource type="Script" path="res://Scripts/final_pieces.gd" id="4_a3cfk"]
 [ext_resource type="PackedScene" uid="uid://ds65x1m8r3247" path="res://Scenes/PuzzlePieces/BonusLevel/FinalPiece1.tscn" id="5_0r4j8"]
 [ext_resource type="PackedScene" uid="uid://dhgwavch8qsfc" path="res://Scenes/PuzzlePieces/BonusLevel/FinalPiece2.tscn" id="6_6sr11"]
 [ext_resource type="PackedScene" uid="uid://dtx3vnl2fn5fh" path="res://Scenes/PuzzlePieces/BonusLevel/FinalPiece3.tscn" id="7_5h28n"]

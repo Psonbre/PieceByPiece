@@ -4,16 +4,15 @@
 [ext_resource type="Script" path="res://Scripts/Buttons/PlayButton.gd" id="1_t1cdp"]
 [ext_resource type="Script" path="res://Scripts/Buttons/ExitButton.gd" id="2_dbrev"]
 [ext_resource type="Script" path="res://Scripts/Buttons/credits_button.gd" id="2_x311k"]
-[ext_resource type="Shader" path="res://Scenes/vortex.gdshader" id="3_n6hm2"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="3_n6hm2"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="3_wtgqd"]
 [ext_resource type="Texture2D" uid="uid://cph5l5ltrh8xo" path="res://icon.svg" id="4_8b41y"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="5_jyjwq"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="5_yowjd"]
 [ext_resource type="Script" path="res://Scripts/level_name.gd" id="7_1fm4w"]
-[ext_resource type="Shader" path="res://Scenes/PuzzlePieces/PuzzleOutline.gdshader" id="8_xdrwo"]
-[ext_resource type="Texture2D" uid="uid://c0ienm8yq51eu" path="res://Assets/piece (1)-1.png (1).png" id="9_kxnfd"]
-[ext_resource type="Texture2D" uid="uid://ct5cs5f5n1clb" path="res://Assets/Wooden Pixel Art GUI 32x32.png" id="10_4suia"]
-[ext_resource type="Texture2D" uid="uid://dgj4alkt3dygf" path="res://Assets/piece (1)-1.png-1.png.png" id="10_w8o0h"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="8_xdrwo"]
+[ext_resource type="Texture2D" uid="uid://c0ienm8yq51eu" path="res://Assets/Sprites/MainMenu/piece (1)-1.png (1).png" id="9_kxnfd"]
+[ext_resource type="Texture2D" uid="uid://dgj4alkt3dygf" path="res://Assets/Sprites/MainMenu/piece (1)-1.png-1.png.png" id="10_w8o0h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d3ioe"]
 shader = ExtResource("3_n6hm2")
@@ -25,8 +24,11 @@ shader_parameter/total_phases = 40
 shader_parameter/color_speed = 0.01
 shader_parameter/color_value = 0.537
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ws5y"]
+load_path = "res://.godot/imported/Wooden Pixel Art GUI 32x32.png-31e06601b06955676a4e4d406f2b30a5.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebmju"]
-texture = ExtResource("10_4suia")
+texture = SubResource("CompressedTexture2D_5ws5y")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -2933,27 +2935,15 @@ outline_size = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t0ail"]
 shader = ExtResource("8_xdrwo")
-shader_parameter/max_line_width = 10.0
-shader_parameter/min_line_width = 5.0
-shader_parameter/freq = 2.5
-shader_parameter/block_size = 15.0
-shader_parameter/outline_colour = Vector4(0, 0, 0, 1)
+shader_parameter/speed = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fiia2"]
 shader = ExtResource("8_xdrwo")
-shader_parameter/max_line_width = 10.0
-shader_parameter/min_line_width = 5.0
-shader_parameter/freq = 2.5
-shader_parameter/block_size = 15.0
-shader_parameter/outline_colour = Vector4(0, 0, 0, 1)
+shader_parameter/speed = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84kbr"]
 shader = ExtResource("8_xdrwo")
-shader_parameter/max_line_width = 10.0
-shader_parameter/min_line_width = 5.0
-shader_parameter/freq = 2.5
-shader_parameter/block_size = 15.0
-shader_parameter/outline_colour = Vector4(0, 0, 0, 1)
+shader_parameter/speed = 5.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_37ua5")

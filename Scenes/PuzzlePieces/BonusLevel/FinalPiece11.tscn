@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/bonus_puzzle_piece.gd" id="1_kln0x"]
 [ext_resource type="Texture2D" uid="uid://cp1jwkshqvg4t" path="res://Assets/pieces_sprites/piece.png" id="2_rd10v"]
-[ext_resource type="Shader" path="res://Scenes/PuzzlePieces/PuzzleOutline.gdshader" id="3_ttvux"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_ttvux"]
 [ext_resource type="Texture2D" uid="uid://bocnsydk1cek4" path="res://Assets/pieces_sprites/piece (25).png" id="4_7a5rl"]
-[ext_resource type="Shader" path="res://Scenes/PuzzlePieces/PuzzleMovingOutline.gdshader" id="5_a6abc"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleMovingOutline.gdshader" id="5_a6abc"]
 [ext_resource type="Texture2D" uid="uid://10p6j3qrbahm" path="res://Assets/Sprites/Pirate/8-Tile-Sets/Tile-Sets (64-64).png" id="6_rhaij"]
-[ext_resource type="Texture2D" uid="uid://cstyrvqibocr" path="res://Assets/Sprites/Medievale/14-TileSets/Terrain (64x64).png" id="7_c7t8l"]
-[ext_resource type="Texture2D" uid="uid://o1odiq448bc7" path="res://Assets/Sprites/Medievale/14-TileSets/Decorations (64x64).png" id="8_ced7j"]
+[ext_resource type="Texture2D" uid="uid://cstyrvqibocr" path="res://Assets/Sprites/Medieval/TileSets/Terrain (64x64).png" id="7_c7t8l"]
+[ext_resource type="Texture2D" uid="uid://o1odiq448bc7" path="res://Assets/Sprites/Medieval/TileSets/Decorations (64x64).png" id="8_ced7j"]
 [ext_resource type="Texture2D" uid="uid://btpc4xex0poeb" path="res://Assets/Sprites/Oubliette/oubliette_tileset.png" id="9_w2kwp"]
 [ext_resource type="Texture2D" uid="uid://c4byi4qgpbicc" path="res://Assets/Sprites/Sci-fi/Tileset/level_tileset.png" id="10_bdxlw"]
 
