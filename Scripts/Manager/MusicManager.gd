@@ -16,6 +16,6 @@ func stop_music() -> void:
 	stop()
 
 func set_Music_volume_db() -> void:
-	self.volume_db = 20 * log(SubsystemManager.get_settings_manager().masterVolume * SubsystemManager.get_settings_manager().musicVolume)
+	self.volume_db = 20 * (log(SubsystemManager.get_settings_manager().masterVolume * SubsystemManager.get_settings_manager().musicVolume) / log(10))
 	
 	
