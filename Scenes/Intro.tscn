@@ -18,6 +18,7 @@ offset_right = 1278.0
 offset_bottom = 717.0
 stream = ExtResource("1_rvbq6")
 autoplay = true
+bus = &"Music"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 923.0
