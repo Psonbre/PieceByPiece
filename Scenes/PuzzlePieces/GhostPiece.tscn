@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="7_gooue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
-size = Vector2(256, 256)
+size = Vector2(250, 250)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
@@ -25,17 +25,16 @@ size = Vector2(35, 70)
 radius = 35.0
 
 [node name="GhostPiece" type="Area2D" groups=["CollisionAreas"]]
-visible = false
 modulate = Color(1, 1, 1, 0.498039)
 z_index = -1
 collision_layer = 2
 script = ExtResource("1_ns84n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_812v4")
 
 [node name="Shape" type="Polygon2D" parent="."]
+visible = false
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 color = Color(1, 1, 1, 0.0705882)
@@ -88,7 +87,62 @@ side = -1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")
 
+[node name="VisualShape" type="Polygon2D" parent="."]
+visible = false
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+color = Color(1, 1, 1, 0.0705882)
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+script = ExtResource("2_20p4n")
+
+[node name="Connectors" type="Node2D" parent="VisualShape"]
+z_index = 1
+
+[node name="RightConnector" type="Area2D" parent="VisualShape/Connectors" groups=["CollisionAreas"]]
+position = Vector2(130, 0)
+collision_layer = 2
+script = ExtResource("4_hctjr")
+type = 1
+side = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/RightConnector"]
+shape = SubResource("CircleShape2D_fb703")
+
+[node name="LeftConnector" type="Area2D" parent="VisualShape/Connectors" groups=["CollisionAreas"]]
+position = Vector2(-130, 0)
+rotation = 3.14159
+collision_layer = 2
+script = ExtResource("4_hctjr")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/LeftConnector"]
+shape = SubResource("CircleShape2D_m2yvs")
+
+[node name="TopConnector" type="Area2D" parent="VisualShape/Connectors" groups=["CollisionAreas"]]
+position = Vector2(0, -130)
+rotation = -1.57079
+collision_layer = 2
+script = ExtResource("4_hctjr")
+type = -1
+side = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/TopConnector"]
+position = Vector2(-17.5, 0)
+shape = SubResource("RectangleShape2D_yl5am")
+
+[node name="BottomConnector" type="Area2D" parent="VisualShape/Connectors" groups=["CollisionAreas"]]
+position = Vector2(0, 130)
+rotation = 1.57079
+collision_layer = 2
+script = ExtResource("4_hctjr")
+type = 1
+side = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/BottomConnector"]
+shape = SubResource("CircleShape2D_5ty2t")
+
 [node name="Outline" type="Line2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.498039)
 z_index = -1
 texture_repeat = 2

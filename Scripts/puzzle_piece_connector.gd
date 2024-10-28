@@ -44,6 +44,7 @@ func can_be_dropped():
 			if area == puzzle_piece :
 				continue
 			if area not in compatible_overlapping_pieces :
+				get_all_pieces_with_compatible_overlapping_connectors()
 				return false
 	return true
 
@@ -62,12 +63,12 @@ func is_connector_compatible(other_connector : PuzzlePieceConnector):
 		return false
 	if type + other_connector.type != 0 : #incompatible connectors
 		return false
-	if other_connector.connected_to != self and other_connector.connected_to != null:
+	if other_connector.connected_to != self and other_connector.connected_to != null and puzzle_piece is not GhostPiece:
 		return false
 	return true
 
-func get_adjacent_piece_position():
-	return puzzle_piece.global_position + position.normalized() * 256.0
+func get_adjacent_piece_position():	
+	return puzzle_piece.global_position + (global_position - puzzle_piece.global_position) * 2
 
 func update_shape(hole_radius : float):
 	if type == ConnectorType.FLAT :
@@ -92,3 +93,6 @@ func update_shape(hole_radius : float):
 
 func connect_with_closest():
 	connected_to = get_compatible_overlapping_connector()
+	
+func has_connection() :
+	return connected_to != null || type == ConnectorType.FLAT

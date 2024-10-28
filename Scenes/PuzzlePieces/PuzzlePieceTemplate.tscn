@@ -56,7 +56,7 @@ tile_set = ExtResource("4_b24ea")
 z_index = 1
 
 [node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
-position = Vector2(130, 0)
+position = Vector2(128, 0)
 collision_mask = 5
 script = ExtResource("4_rsc72")
 type = 1
@@ -67,7 +67,7 @@ side_collider = NodePath("../../../Colliders/RightCollider")
 shape = SubResource("CircleShape2D_fb703")
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
-position = Vector2(-130, 0)
+position = Vector2(-128, 0)
 rotation = 3.14159
 collision_mask = 5
 script = ExtResource("4_rsc72")
@@ -78,7 +78,7 @@ side_collider = NodePath("../../../Colliders/LeftCollider")
 shape = SubResource("CircleShape2D_m2yvs")
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
-position = Vector2(0, -130)
+position = Vector2(0, -128)
 rotation = -1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
@@ -91,7 +91,7 @@ position = Vector2(-17.5, 0)
 shape = SubResource("RectangleShape2D_yl5am")
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
-position = Vector2(0, 130)
+position = Vector2(0, 128)
 rotation = 1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
