@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbl6sigulrew8"]
+[gd_scene load_steps=9 format=3 uid="uid://dbl6sigulrew8"]
 
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_7isfi"]
 [ext_resource type="Script" path="res://Scripts/level_name.gd" id="2_pbxpv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="4_fs3n1"]
 [ext_resource type="LabelSettings" uid="uid://m61ok162yvmy" path="res://Assets/Fonts/pixelFont.tres" id="5_e5vn6"]
 [ext_resource type="LabelSettings" uid="uid://bg3bjthyi6ao5" path="res://Assets/Fonts/settingsFont.tres" id="6_fiaql"]
+[ext_resource type="Script" path="res://Scripts/level_name_container.gd" id="6_yel2d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_56lap"]
 font = ExtResource("1_7isfi")
@@ -69,6 +70,7 @@ layout_mode = 2
 text = "Display"
 label_settings = ExtResource("5_e5vn6")
 horizontal_alignment = 1
+script = ExtResource("2_pbxpv")
 
 [node name="Display" type="VBoxContainer" parent="Settings/SettingsPanel"]
 layout_mode = 2
@@ -119,6 +121,7 @@ layout_mode = 2
 text = "Sound"
 label_settings = ExtResource("5_e5vn6")
 horizontal_alignment = 1
+script = ExtResource("6_yel2d")
 
 [node name="Sounds" type="VBoxContainer" parent="Settings/SettingsPanel"]
 layout_mode = 2
@@ -192,4 +195,5 @@ step = 0.01
 [connection signal="item_selected" from="Settings/SettingsPanel/Display/V-Sync/HSplitContainer/VsyncSlider" to="Settings/SettingsPanel" method="_on_vsync_slider_item_selected"]
 [connection signal="value_changed" from="Settings/SettingsPanel/Sounds/Master/HSplitContainer/MasterSlider" to="Settings/SettingsPanel" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Settings/SettingsPanel/Sounds/HBoxContainer2/HSplitContainer/MusicSlider" to="Settings/SettingsPanel" method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="Settings/SettingsPanel/Sounds/HBoxContainer3/HSplitContainer/SFXSlider" to="Settings/SettingsPanel" method="_on_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="Settings/SettingsPanel/Sounds/HBoxContainer3/HSplitContainer/SFXSlider" to="Settings/SettingsPanel" method="_on_sfx_slider_value_changed"]

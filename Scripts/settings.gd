@@ -1,7 +1,6 @@
 extends Control
 
 @onready var vsyncSlider = $"Display/V-Sync/HSplitContainer/VsyncSlider"
-@onready var resolutionSlider = $Display/Resolution/HSplitContainer/ResolutionSlider
 @onready var displaySlider = $Display/DisplayMode/HSplitContainer/DisplaySlider
 @onready var masterSlider = $Sounds/Master/HSplitContainer/MasterSlider
 @onready var musicSlider = $Sounds/HBoxContainer2/HSplitContainer/MusicSlider
@@ -65,3 +64,7 @@ func _on_music_slider_value_changed(value: float) -> void:
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	SubsystemManager.get_settings_manager()._update_sfx_volume(value)
+
+
+func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
+	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
