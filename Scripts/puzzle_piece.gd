@@ -12,6 +12,7 @@ static var global_dragging := false
 @onready var left_connector : PuzzlePieceConnector = $Shape/Connectors/LeftConnector
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
+@onready var player_sprite = $Shape/PlayerSprite
 
 var has_attempted_connection_this_tick := false
 
@@ -20,7 +21,6 @@ var is_hovering := false
 var velocity := Vector2.ZERO
 var default_scale := Vector2(1.0, 1.0)
 
-var valid_drop := false
 var start_drag_position := Vector2.ZERO
 
 func _ready():
@@ -48,9 +48,14 @@ func _process(delta):
 			
 		var closest_compatible_connector = get_first_compatible_overlapping_connector();
 		if closest_compatible_connector :
-			ghost_piece.display(self, closest_compatible_connector.get_adjacent_piece_position(), closest_compatible_connector.puzzle_piece.global_rotation)
+			ghost_piece.display(self, closest_compatible_connector.get_adjacent_piece_position(false), closest_compatible_connector.get_adjacent_piece_position(true), closest_compatible_connector.puzzle_piece.global_rotation)
 		else :
 			ghost_piece.hide_display()
+		
+		if can_be_dropped() :
+			outline.material.set_shader_parameter('color', Vector4(1,1,1,1))
+		else :
+			outline.material.set_shader_parameter('color', Vector4(1,0,0,0.5))
 			
 	else:
 		scale = scale.move_toward(default_scale, 2 * delta)
@@ -66,6 +71,8 @@ func has_all_sides_connected():
 
 func start_dragging():
 	if Player.winning : return
+	if !shape.has_node("Player") : player_sprite.visible = false
+	clamp_player()
 	set_colliders_in_drag_mode(true)
 	outline.outline_type = PuzzlePieceOutline.OutlineType.MOVING
 	z_index = 3
@@ -76,7 +83,10 @@ func start_dragging():
 	attempt_connection_on_all_other_pieces()
 		
 func stop_dragging():
-	if !ghost_piece.valid_placement : return
+	if !can_be_dropped() : 
+		cancel_drag()
+		return
+	player_sprite.visible = true
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
 	is_dragging = false
@@ -106,17 +116,31 @@ func is_overlapping_other_piece():
 			return true
 	return false
 
+func clamp_player():
+	var player = shape.get_node("Player")
+	if player != null :
+		var player_radius = player.collision_shape.shape.radius
+		print(player.position)
+		player.position = Vector2(clampf(player.position.x, left_connector.position.x + 20, right_connector.position.x - 20), clampf(player.position.y, top_connector.position.y + 20, bottom_connector.position.y - 20))
+		print(player.position)
+
 func cancel_drag():
 	position = start_drag_position
 	rotation = 0
+	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
+	z_index = 0
+	is_dragging = false
+	global_dragging = false
+	scale = default_scale
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
+	set_colliders_in_drag_mode(false)
 	
 func snap_to_connector(connector : PuzzlePieceConnector):
 	connector.puzzle_piece.rotation = 0
-	global_position = connector.get_adjacent_piece_position()
+	global_position = connector.get_adjacent_piece_position(false)
 	rotation = 0
 
 func connect_all_sides():
@@ -171,6 +195,12 @@ func _set_colliders_recursive(node: Node, drag_mode: bool):
 	for child in node.get_children():
 		_set_colliders_recursive(child, drag_mode)
 
+func can_be_dropped():
+	if ghost_piece.displayed :
+		return ghost_piece.valid_placement
+	else :
+		return all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped()
+
 func _on_mouse_entered():
 	is_hovering = true
 	if !global_dragging:
@@ -182,7 +212,7 @@ func _on_mouse_exited():
 		outline.z_index = -1
 
 func _on_body_entered(player):
-	if(player is Player && player.get_parent() != self):
+	if player is Player && player.get_parent() != shape && !is_dragging:
 		player.add_overlapping_piece(self)
 
 func _on_body_exited(player):

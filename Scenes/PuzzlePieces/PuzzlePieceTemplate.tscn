@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=17 format=4 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
@@ -6,26 +6,28 @@
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="4_1hnxu"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="4_b24ea"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
+[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/Players/player1_frames.tres" id="4_qj61i"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
+[ext_resource type="Script" path="res://Scripts/player_sprite.gd" id="48_5qcv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fb703"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x4gdv"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m2yvs"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vegnn"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yl5am"]
-size = Vector2(35, 70)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5ty2t"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7h47u"]
 radius = 35.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_35obi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_brkxj"]
+radius = 35.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
 a = Vector2(0, -128)
 b = Vector2(0, 128)
 
@@ -44,13 +46,24 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 script = ExtResource("3_45og6")
 
 [node name="Background" type="TileMapLayer" parent="Shape"]
-tile_map_data = PackedByteArray("AAD+/wAAAAAEAAEAAAD+////AAAEAAEAAAABAP//AAAEAAEAAAAAAP//AAAEAAEAAAD/////AAAEAAEAAAD//wAAAAAEAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAEAAAABAAEAAAAEAAEAAAAAAAEAAAAEAAEAAAD//wEAAAAEAAEAAAD+/wEAAAAEAAEAAAD+/wIAAAAEAAEAAAD//wIAAAAEAAEAAAAAAAIAAAAEAAEAAAABAAIAAAAEAAEAAAACAAIAAAAEAAEAAAACAAEAAAAEAAEAAAACAAAAAAAEAAEAAAACAP//AAAEAAEAAAACAP7/AAAEAAEAAAACAP3/AAAEAAEAAAABAP3/AAAEAAEAAAAAAP3/AAAEAAEAAAD///3/AAAEAAEAAAD+//3/AAAEAAEAAAD9//3/AAAEAAEAAAD9//7/AAAEAAEAAAD9////AAAEAAEAAAD9/wAAAAAEAAEAAAD9/wEAAAAEAAEAAAD9/wIAAAAEAAEAAAD+//7/AAAEAAEAAAD///7/AAAEAAEAAAAAAP7/AAAEAAEAAAABAP7/AAAEAAEAAAA=")
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+/wIAAAAEAAEAAAD//wIAAAAEAAEAAAAAAAIAAAAEAAEAAAABAAIAAAAEAAEAAAACAAIAAAAEAAEAAAD+/wEAAAAEAAEAAAD//wEAAAAEAAEAAAAAAAEAAAAEAAEAAAABAAEAAAAEAAEAAAACAAEAAAAEAAEAAAACAAAAAAAEAAEAAAABAAAAAAAEAAEAAAAAAAAAAAAEAAEAAAD//wAAAAAEAAEAAAD+/wAAAAAEAAEAAAD+////AAAEAAEAAAD/////AAAEAAEAAAAAAP//AAAEAAEAAAABAP//AAAEAAEAAAACAP//AAAEAAEAAAACAP7/AAAEAAEAAAABAP7/AAAEAAEAAAAAAP7/AAAEAAEAAAD///7/AAAEAAEAAAD+//7/AAAEAAEAAAD9/wEAAAAEAAEAAAD9/wAAAAAEAAEAAAD///3/AAAEAAEAAAAAAP3/AAAEAAEAAAABAP3/AAAEAAEAAAADAP//AAAEAAEAAAADAAAAAAAEAAEAAAADAAEAAAAEAAEAAAAAAAMAAAAEAAEAAAABAAMAAAAEAAEAAAD//wMAAAAEAAEAAAD9////AAAEAAEAAAA=")
 tile_set = ExtResource("4_b24ea")
 collision_enabled = false
 
 [node name="Foreground" type="TileMapLayer" parent="Shape"]
-tile_map_data = PackedByteArray("AAD+//7/AAABAAAAAAD+/wEAAAABAAAAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAD//wIAAAABAAEAAAAAAAIAAAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAA=")
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+/wIAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAD+//7/AAABAAIAAAD///7/AAABAAIAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAAAAAMAAAABAAEAAAD//wMAAAABAAEAAAABAAMAAAABAAEAAAA=")
 tile_set = ExtResource("4_b24ea")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Shape" groups=["PlayerSprites"]]
+position = Vector2(-3, -1.90735e-06)
+scale = Vector2(0.8, 0.8)
+sprite_frames = ExtResource("4_qj61i")
+animation = &"Idle"
+script = ExtResource("48_5qcv0")
 
 [node name="Connectors" type="Node2D" parent="Shape"]
 z_index = 1
@@ -64,7 +77,7 @@ side = 2
 side_collider = NodePath("../../../Colliders/RightCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_fb703")
+shape = SubResource("CircleShape2D_x4gdv")
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(-128, 0)
@@ -75,7 +88,7 @@ type = 1
 side_collider = NodePath("../../../Colliders/LeftCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_m2yvs")
+shape = SubResource("CircleShape2D_vegnn")
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, -128)
@@ -87,8 +100,7 @@ side = 1
 side_collider = NodePath("../../../Colliders/TopCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
-position = Vector2(-17.5, 0)
-shape = SubResource("RectangleShape2D_yl5am")
+shape = SubResource("CircleShape2D_7h47u")
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, 128)
@@ -100,7 +112,7 @@ side = -1
 side_collider = NodePath("../../../Colliders/BottomCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
-shape = SubResource("CircleShape2D_5ty2t")
+shape = SubResource("CircleShape2D_brkxj")
 
 [node name="Outline" type="Line2D" parent="."]
 z_index = -1
@@ -119,30 +131,30 @@ moving_width = 6.0
 [node name="Colliders" type="Node2D" parent="."]
 
 [node name="LeftCollider" type="StaticBody2D" parent="Colliders"]
-position = Vector2(-130, 0)
+position = Vector2(-128, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/LeftCollider"]
-shape = SubResource("SegmentShape2D_35obi")
+shape = SubResource("SegmentShape2D_i6rnc")
 
 [node name="RightCollider" type="StaticBody2D" parent="Colliders"]
-position = Vector2(130, 0)
+position = Vector2(128, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightCollider"]
-shape = SubResource("SegmentShape2D_35obi")
+shape = SubResource("SegmentShape2D_i6rnc")
 
 [node name="TopCollider" type="StaticBody2D" parent="Colliders"]
-position = Vector2(0, -130)
+position = Vector2(0, -128)
 rotation = 1.57079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/TopCollider"]
-shape = SubResource("SegmentShape2D_35obi")
+shape = SubResource("SegmentShape2D_i6rnc")
 
 [node name="BottomCollider" type="StaticBody2D" parent="Colliders"]
-position = Vector2(0, 130)
+position = Vector2(0, 128)
 rotation = 1.57079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/BottomCollider"]
-shape = SubResource("SegmentShape2D_35obi")
+shape = SubResource("SegmentShape2D_i6rnc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

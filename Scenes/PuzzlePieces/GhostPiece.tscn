@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="7_gooue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
-size = Vector2(250, 250)
+size = Vector2(255, 255)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 

@@ -26,7 +26,7 @@ func get_compatible_overlapping_connector(include_dragging_piece : bool = false)
 	if !include_dragging_piece && puzzle_piece.is_dragging : return
 	for connector in get_overlapping_areas():
 		if connector is PuzzlePieceConnector :
-			if connector.puzzle_piece == puzzle_piece :
+			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging):
 				continue
 			if is_connector_compatible(connector) :
 				return connector
@@ -50,6 +50,7 @@ func can_be_dropped():
 
 func get_all_pieces_with_compatible_overlapping_connectors() :
 	var pieces_with_valid_overlapping_connectors = []
+	
 	for connector in get_overlapping_areas():
 		if connector is PuzzlePieceConnector :
 			if connector.puzzle_piece == puzzle_piece :
@@ -67,8 +68,11 @@ func is_connector_compatible(other_connector : PuzzlePieceConnector):
 		return false
 	return true
 
-func get_adjacent_piece_position():	
-	return puzzle_piece.global_position + (global_position - puzzle_piece.global_position) * 2
+func get_adjacent_piece_position(account_for_rotation : bool):	
+	if account_for_rotation :
+		return puzzle_piece.global_position + (global_position - puzzle_piece.global_position) * 2
+	else :
+		return puzzle_piece.global_position + position * 2
 
 func update_shape(hole_radius : float):
 	if type == ConnectorType.FLAT :
