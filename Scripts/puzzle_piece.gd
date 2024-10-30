@@ -26,6 +26,7 @@ var start_drag_position := Vector2.ZERO
 func _ready():
 	start_drag_position = position
 	default_scale = scale
+	player_sprite.visible = true
 
 func _process(delta):
 	if Input.is_action_just_pressed("Click") and is_hovering and !global_dragging:

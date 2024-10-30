@@ -11,6 +11,10 @@ var displayed := false
 @onready var visual_top_connector = $VisualShape/Connectors/TopConnector
 @onready var visual_bottom_connector = $VisualShape/Connectors/BottomConnector
 
+func _ready():
+	start_drag_position = position
+	default_scale = scale
+	
 func display(piece : PuzzlePiece, actual_global_position : Vector2, visual_global_position : Vector2, visual_global_rotation : float):
 	if last_displayed_position == actual_global_position : return
 	

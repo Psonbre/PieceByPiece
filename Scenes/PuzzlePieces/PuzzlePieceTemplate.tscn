@@ -59,6 +59,7 @@ tile_map_data = PackedByteArray("AAD+/wIAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAA
 tile_set = ExtResource("4_b24ea")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Shape" groups=["PlayerSprites"]]
+visible = false
 position = Vector2(-3, -1.90735e-06)
 scale = Vector2(0.8, 0.8)
 sprite_frames = ExtResource("4_qj61i")

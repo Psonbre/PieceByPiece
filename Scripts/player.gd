@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @onready var collision_shape = $CollisionShape2D
+@onready var editor_sprite = $EditorSprite
 
 const SPEED := 300.0
 const JUMP_VELOCITY := -400.0
@@ -14,6 +15,7 @@ static var has_collectible = false
 
 func _ready():
 	default_scale = global_scale
+	editor_sprite.visible = false
 	play_animation("Idle");
 
 func reset_proportions():
