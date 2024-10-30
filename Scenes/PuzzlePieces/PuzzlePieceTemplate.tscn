@@ -15,16 +15,16 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x4gdv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dagri"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vegnn"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_oo8ep"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7h47u"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jalg"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_brkxj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wa87w"]
 radius = 35.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
@@ -67,6 +67,7 @@ animation = &"Idle"
 script = ExtResource("48_5qcv0")
 
 [node name="Connectors" type="Node2D" parent="Shape"]
+visible = false
 z_index = 1
 
 [node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
@@ -78,7 +79,7 @@ side = 2
 side_collider = NodePath("../../../Colliders/RightCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_x4gdv")
+shape = SubResource("CircleShape2D_dagri")
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(-128, 0)
@@ -89,7 +90,7 @@ type = 1
 side_collider = NodePath("../../../Colliders/LeftCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_vegnn")
+shape = SubResource("CircleShape2D_oo8ep")
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, -128)
@@ -101,7 +102,7 @@ side = 1
 side_collider = NodePath("../../../Colliders/TopCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
-shape = SubResource("CircleShape2D_7h47u")
+shape = SubResource("CircleShape2D_5jalg")
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, 128)
@@ -113,7 +114,7 @@ side = -1
 side_collider = NodePath("../../../Colliders/BottomCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
-shape = SubResource("CircleShape2D_brkxj")
+shape = SubResource("CircleShape2D_wa87w")
 
 [node name="Outline" type="Line2D" parent="."]
 z_index = -1
@@ -130,6 +131,7 @@ moving_outline_texture = ExtResource("4_1hnxu")
 moving_width = 6.0
 
 [node name="Colliders" type="Node2D" parent="."]
+visible = false
 
 [node name="LeftCollider" type="StaticBody2D" parent="Colliders"]
 position = Vector2(-128, 0)

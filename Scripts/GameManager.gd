@@ -2,7 +2,8 @@ extends Node2D
 
 var old_screen : Node2D
 var current_screen : Node2D
-var hidden_x = -1152
+var hidden_x = -1920
+var shown_x = 1920
 var credits_screen
 
 func _ready():
@@ -18,7 +19,7 @@ func load_level(level_name):
 	%Camera2D.target_position = new_cam.global_position
 	%Camera2D.target_zoom = new_cam.zoom
 	level.remove_child(new_cam)
-	level.global_position.x = 1152
+	level.global_position.x = shown_x
 	old_screen = current_screen
 	current_screen = level
 	
@@ -49,7 +50,7 @@ func _process(delta):
 		load_level("Level" + str(Player.current_level))
 		Player.has_collectible = false
 	
-	if (current_screen) : current_screen.global_position.x = move_toward(current_screen.global_position.x, 0, 2500 * delta)
+	if (current_screen) : current_screen.global_position.x = move_toward(current_screen.global_position.x, shown_x / 2.0, 2500 * delta)
 	if (old_screen) : 
 		old_screen.global_position.x = move_toward(old_screen.global_position.x, hidden_x, 2500 * delta)
 		if old_screen.global_position.x == hidden_x:

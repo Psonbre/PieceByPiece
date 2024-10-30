@@ -130,6 +130,7 @@ func cancel_drag():
 	rotation = 0
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
+	player_sprite.visible = true
 	is_dragging = false
 	global_dragging = false
 	scale = default_scale

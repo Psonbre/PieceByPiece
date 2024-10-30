@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bqa3yvfo25w85"]
+[gd_scene load_steps=22 format=4 uid="uid://bqa3yvfo25w85"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_0wh20"]
 [ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/Players/player.tscn" id="2_vr6nc"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b47cgkimuryss" path="res://Scenes/PuzzlePieces/GhostPiece.tscn" id="4_m6jbl"]
 [ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/Players/player2_frames.tres" id="5_3vi3k"]
 [ext_resource type="SpriteFrames" uid="uid://orhbrvew8ol3" path="res://Scenes/Players/player3_frames.tres" id="6_0g38i"]
+[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Door.tscn" id="6_y2vml"]
+[ext_resource type="PackedScene" uid="uid://dvws0si7ljhkm" path="res://Scenes/Background.tscn" id="7_2ebj0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jrbu"]
 resource_local_to_scene = true
@@ -127,7 +129,7 @@ shape = SubResource("SegmentShape2D_1umpq")
 shape = SubResource("SegmentShape2D_1umpq")
 
 [node name="PuzzlePiece3" parent="." instance=ExtResource("1_0wh20")]
-position = Vector2(528, 846)
+position = Vector2(878, 841)
 
 [node name="Shape" parent="PuzzlePiece3" index="1"]
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
@@ -138,7 +140,10 @@ tile_map_data = PackedByteArray("AAD+/wIABwABAAYAAAD//wIABwABAAYAAAAAAAIABwABAAY
 [node name="Foreground" parent="PuzzlePiece3/Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+/wIABwAGAAAAAAD//wIABwAGAAAAAAAAAAIABwAGAAAAAAABAAIABwAGAAAAAAACAAIABwAGAAAAAAD+//7/BwAGAAIAAAD///7/BwAGAAIAAAAAAP7/BwAGAAIAAAABAP7/BwAGAAIAAAACAP7/BwAGAAIAAAAAAAMABwABAAYAAAD//wMABwABAAYAAAABAAMABwABAAYAAAA=")
 
-[node name="PlayerSprite" parent="PuzzlePiece3/Shape" index="2"]
+[node name="Door" parent="PuzzlePiece3/Shape" index="2" instance=ExtResource("6_y2vml")]
+position = Vector2(4, 23)
+
+[node name="PlayerSprite" parent="PuzzlePiece3/Shape" index="3"]
 position = Vector2(-2, -8)
 sprite_frames = ExtResource("6_0g38i")
 
@@ -160,6 +165,9 @@ shape = SubResource("CircleShape2D_bul64")
 [node name="Outline" parent="PuzzlePiece3" index="2"]
 material = SubResource("ShaderMaterial_drta7")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" parent="." instance=ExtResource("7_2ebj0")]
+position = Vector2(979, 534)
 
 [editable path="GhostPiece"]
 [editable path="PuzzlePiece"]

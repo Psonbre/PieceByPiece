@@ -35,6 +35,10 @@ Doors=""
 PlayerSprites=""
 Player=""
 
+[gui]
+
+common/snap_controls_to_pixels=false
+
 [importer_defaults]
 
 image={}
