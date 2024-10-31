@@ -22,8 +22,8 @@ tile_map_data = PackedByteArray("AAD+//7/CAABAAAAAAD///7/CAABAAAAAAAAAP7/CAABAAA
 position = Vector2(-53.7008, 52.484)
 
 [node name="Sprite" parent="Shape/PlayerSprite" index="0"]
-position = Vector2(-0.373996, -0.605002)
-scale = Vector2(1.74188, 1.74188)
+position = Vector2(-0.373996, 2.516)
+scale = Vector2(2.31784, 2.31784)
 sprite_frames = ExtResource("2_fprg4")
 
 [node name="Outline" parent="." index="2"]

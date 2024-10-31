@@ -17,7 +17,7 @@ size = Vector2(256, 256)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_38pod"]
-radius = 16.0
+radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y7vks"]
 radius = 35.0
@@ -60,23 +60,21 @@ position = Vector2(-25.6, -25.6)
 scale = Vector2(0.8, 0.8)
 tile_set = ExtResource("4_b24ea")
 
+[node name="Door" parent="Shape" instance=ExtResource("6_patsr")]
+scale = Vector2(0.519999, 0.519999)
+
 [node name="PlayerSprite" type="Node2D" parent="Shape"]
-scale = Vector2(0.8, 0.8)
 script = ExtResource("48_5qcv0")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite" groups=["PlayerSprites"]]
 position = Vector2(0, 2.27374e-13)
-scale = Vector2(0.549435, 0.549435)
+scale = Vector2(0.824, 0.824)
 sprite_frames = ExtResource("4_qj61i")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/PlayerSprite"]
 shape = SubResource("CircleShape2D_38pod")
 disabled = true
-
-[node name="Door" parent="Shape" instance=ExtResource("6_patsr")]
-visible = false
-scale = Vector2(0.519999, 0.519999)
 
 [node name="Connectors" type="Node2D" parent="Shape"]
 visible = false

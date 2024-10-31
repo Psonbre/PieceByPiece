@@ -23,19 +23,19 @@ tile_map_data = PackedByteArray("AAD+//7/BwABAAYAAAD+////BwABAAYAAAD+/wAABwABAAY
 [node name="Foreground" parent="Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/BwAGAAIAAAD///7/BwAGAAIAAAAAAP7/BwAGAAIAAAABAP7/BwAGAAIAAAACAP7/BwAGAAIAAAD+/wIABwAGAAAAAAD//wIABwAGAAAAAAAAAAIABwAGAAAAAAABAAIABwAGAAAAAAACAAIABwAGAAAAAAD//wEABwABAAYAAAA=")
 
-[node name="PlayerSprite" parent="Shape" index="2"]
-position = Vector2(-51, 64)
-
-[node name="Sprite" parent="Shape/PlayerSprite" index="0"]
-position = Vector2(1.25, -1.25)
-sprite_frames = ExtResource("2_5r10h")
-
-[node name="Door" parent="Shape" index="3"]
+[node name="Door" parent="Shape" index="2"]
 position = Vector2(0, 52)
 
 [node name="Sprite2D" parent="Shape/Door" index="1"]
 scale = Vector2(1.59601, 1.59601)
 texture = SubResource("AtlasTexture_ibg11")
+
+[node name="PlayerSprite" parent="Shape" index="3"]
+position = Vector2(-51, 61)
+
+[node name="Sprite" parent="Shape/PlayerSprite" index="0"]
+position = Vector2(1.25, -2)
+sprite_frames = ExtResource("2_5r10h")
 
 [node name="Outline" parent="." index="2"]
 material = SubResource("ShaderMaterial_n3bvn")

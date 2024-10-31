@@ -17,10 +17,10 @@ tile_map_data = PackedByteArray("AAD+//7/AAAEAAEAAAD+////AAAEAAEAAAD+/wAAAAAEAAE
 [node name="Foreground" parent="Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/AAABAAIAAAD///7/AAABAAIAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAD+/wIAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAD//wEAAAAFAAQAAAA=")
 
-[node name="PlayerSprite" parent="Shape" index="2"]
+[node name="PlayerSprite" parent="Shape" index="3"]
 position = Vector2(-58.7058, 54.7924)
-scale = Vector2(0.728065, 0.728065)
-offset = Vector2(-0.560547, 2.06186)
 
 [node name="Outline" parent="." index="2"]
 material = SubResource("ShaderMaterial_n3bvn")
+
+[editable path="Shape/Door"]

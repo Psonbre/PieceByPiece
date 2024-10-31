@@ -11,7 +11,7 @@ static var global_dragging := false
 @onready var left_connector : PuzzlePieceConnector = $Shape/Connectors/LeftConnector
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
-@onready var player_sprite = $Shape/PlayerSprite
+@onready var player_sprite : AnimatedSprite2D = $Shape/PlayerSprite/Sprite
 @onready var door = $Shape/Door
 
 var has_attempted_connection_this_tick := false
@@ -73,7 +73,13 @@ func has_all_sides_connected():
 
 func start_dragging():
 	if Player.winning : return
-	if !shape.has_node("Player") : player_sprite.visible = false
+	
+	if shape.has_node("Player") :
+		set_player_sprites_visible(false)
+		player_sprite.visible = true 
+	else : 
+		player_sprite.visible = false
+		
 	clamp_player()
 	set_colliders_in_drag_mode(true)
 	outline.outline_type = PuzzlePieceOutline.OutlineType.MOVING
@@ -88,7 +94,7 @@ func stop_dragging():
 	if !can_be_dropped() : 
 		cancel_drag()
 		return
-	player_sprite.visible = true
+	set_player_sprites_visible(true)
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
 	is_dragging = false
@@ -203,6 +209,10 @@ func can_be_dropped():
 		return ghost_piece.valid_placement
 	else :
 		return all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped()
+
+func set_player_sprites_visible(visible : bool) :
+	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
+		sprite.visible = visible
 
 func _on_mouse_entered():
 	is_hovering = true

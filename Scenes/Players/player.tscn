@@ -4,17 +4,16 @@
 [ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/Players/player1_frames.tres" id="2_p15im"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m0ql6"]
-radius = 16.0
+radius = 24.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
-scale = Vector2(0.8, 0.8)
 script = ExtResource("1_1gs7j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m0ql6")
 
 [node name="EditorSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.553306, 0.553306)
+scale = Vector2(0.828875, 0.828875)
 sprite_frames = ExtResource("2_p15im")
 animation = &"Idle"
