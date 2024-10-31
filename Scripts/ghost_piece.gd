@@ -49,10 +49,12 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, visual_globa
 		outline.material.set_shader_parameter('color', Vector4(1,0,0,0.5))
 		valid_placement = false
 		all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped()
-		
-	visual_shape.visible = true
-	outline.visible = true
-	displayed = true
+	
+	if !all_valid_connectors_are_flat() :
+		all_valid_connectors_are_flat()
+		visual_shape.visible = true
+		outline.visible = true
+		displayed = true
 
 func hide_display():
 	displayed = false
@@ -61,7 +63,7 @@ func hide_display():
 	valid_placement = true
 	visual_shape.visible = false
 	outline.visible = false
-
+	
 func _process(_delta):
 	pass
 	

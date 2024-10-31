@@ -3,7 +3,7 @@ extends Area2D
 class_name PuzzlePieceConnector
 
 enum Side {TOP = 1, LEFT = -2, RIGHT = 2, BOTTOM = -1}
-enum ConnectorType {FLAT = -99, BUMP = 1, HOLE = -1}
+enum ConnectorType {FLAT = 0, BUMP = 1, HOLE = -1}
 
 @onready var puzzle_piece : PuzzlePiece = $"../../.."
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D

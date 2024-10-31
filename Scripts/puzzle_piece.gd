@@ -46,7 +46,7 @@ func _process(delta):
 			var tilt_angle = velocity.x
 			var max_tilt = deg_to_rad(15)
 			tilt_angle = clamp(tilt_angle, -max_tilt, max_tilt)
-			rotation = move_toward(rotation, tilt_angle, deg_to_rad(50) * velocity.length() * delta)
+			rotation = move_toward(rotation, tilt_angle, deg_to_rad(5) * velocity.length() / 260)
 			
 		var closest_compatible_connector = get_first_compatible_overlapping_connector()
 		if closest_compatible_connector:
@@ -131,6 +131,7 @@ func is_overlapping_other_piece():
 	return false
 
 func clamp_player():
+	if !shape.has_node("Player") : return
 	var player = shape.get_node("Player")
 	if player != null :
 		var player_radius = player.collision_shape.shape.radius
@@ -209,14 +210,34 @@ func _set_colliders_recursive(node: Node, drag_mode: bool):
 		_set_colliders_recursive(child, drag_mode)
 
 func can_be_dropped():
-	if ghost_piece.displayed :
+	if ghost_piece.displayed:
 		return ghost_piece.valid_placement
 	else :
-		return all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped()
+		if !all_overlapping_pieces_have_compatible_overlapping_connectors() :
+			return false
+		if !all_connectors_can_be_dropped() :
+			return false
+		if all_valid_connectors_are_flat() :
+			return false
+		return true
+		#return all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped() && !all_valid_connectors_are_flat()
 
 func set_player_sprites_visible(visible : bool) :
 	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
 		sprite.visible = visible
+		
+func all_valid_connectors_are_flat():
+	var valid_connectors = []
+	if (left_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(left_connector)
+	if (right_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(right_connector)
+	if (top_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(top_connector)
+	if (bottom_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(bottom_connector)
+	
+	if valid_connectors.size() <= 0 : return false
+	for connector : PuzzlePieceConnector in valid_connectors :
+		if connector.type != PuzzlePieceConnector.ConnectorType.FLAT :
+			return false
+	return true
 
 func _on_mouse_entered():
 	is_hovering = true

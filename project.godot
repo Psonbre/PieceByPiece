@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="WonderJam2024"
+config/name="Piece By Piece"
 run/main_scene="res://Scenes/Intro.tscn"
 run/main_loop_type="SubsystemManager"
 config/features=PackedStringArray("4.3", "Forward Plus")
