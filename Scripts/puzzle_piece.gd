@@ -44,26 +44,32 @@ func _process(delta):
 		
 		if velocity.length() > 0:
 			var tilt_angle = velocity.x
-			var max_tilt = deg_to_rad(10)
+			var max_tilt = deg_to_rad(15)
 			tilt_angle = clamp(tilt_angle, -max_tilt, max_tilt)
-			rotation = move_toward(rotation, tilt_angle, deg_to_rad(5) * delta * velocity.length())
+			rotation = move_toward(rotation, tilt_angle, deg_to_rad(50) * velocity.length() * delta)
 			
-		var closest_compatible_connector = get_first_compatible_overlapping_connector();
-		if closest_compatible_connector :
-			ghost_piece.display(self, closest_compatible_connector.get_adjacent_piece_position(false), closest_compatible_connector.get_adjacent_piece_position(true), closest_compatible_connector.puzzle_piece.global_rotation)
-		else :
+		var closest_compatible_connector = get_first_compatible_overlapping_connector()
+		if closest_compatible_connector:
+			ghost_piece.display(
+				self, 
+				closest_compatible_connector.get_adjacent_piece_position(false), 
+				closest_compatible_connector.get_adjacent_piece_position(true), 
+				closest_compatible_connector.puzzle_piece.global_rotation
+			)
+		else:
 			ghost_piece.hide_display()
 		
-		if can_be_dropped() :
-			outline.material.set_shader_parameter('color', Vector4(1,1,1,1))
-		else :
-			outline.material.set_shader_parameter('color', Vector4(1,0,0,0.5))
+		if can_be_dropped():
+			outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
+		else:
+			outline.material.set_shader_parameter('color', Vector4(1, 0, 0, 0.5))
 			
 	else:
 		scale = scale.move_toward(default_scale, 2 * delta)
-		outline.material.set_shader_parameter('color', Vector4(1,1,1,1))
+		outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
 	
 	has_attempted_connection_this_tick = false
+
 	
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false
@@ -128,9 +134,7 @@ func clamp_player():
 	var player = shape.get_node("Player")
 	if player != null :
 		var player_radius = player.collision_shape.shape.radius
-		print(player.position)
 		player.position = Vector2(clampf(player.position.x, left_connector.position.x + 20, right_connector.position.x - 20), clampf(player.position.y, top_connector.position.y + 20, bottom_connector.position.y - 20))
-		print(player.position)
 
 func cancel_drag():
 	position = start_drag_position
