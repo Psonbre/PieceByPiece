@@ -146,6 +146,7 @@ func cancel_drag():
 	is_dragging = false
 	global_dragging = false
 	scale = default_scale
+	set_player_sprites_visible(true)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	attempt_connection()
