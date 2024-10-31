@@ -1,0 +1,138 @@
+[gd_scene load_steps=15 format=4 uid="uid://b0c43sr0v666w"]
+
+[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
+[ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="3_45og6"]
+[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="4_1hnxu"]
+[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="4_b24ea"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
+size = Vector2(256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fb703"]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2yvs"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yl5am"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ty2t"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym7pf"]
+size = Vector2(4, 256)
+
+[node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
+script = ExtResource("1_kspp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_812v4")
+
+[node name="Shape" type="Polygon2D" parent="."]
+clip_children = 2
+z_index = 10
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+script = ExtResource("3_45og6")
+
+[node name="Background" type="TileMapLayer" parent="Shape"]
+tile_map_data = PackedByteArray("AAD+/wAAAAAEAAEAAAD+////AAAEAAEAAAABAP//AAAEAAEAAAAAAP//AAAEAAEAAAD/////AAAEAAEAAAD//wAAAAAEAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAEAAAABAAEAAAAEAAEAAAAAAAEAAAAEAAEAAAD//wEAAAAEAAEAAAD+/wEAAAAEAAEAAAD+/wIAAAAEAAEAAAD//wIAAAAEAAEAAAAAAAIAAAAEAAEAAAABAAIAAAAEAAEAAAACAAIAAAAEAAEAAAACAAEAAAAEAAEAAAACAAAAAAAEAAEAAAACAP//AAAEAAEAAAACAP7/AAAEAAEAAAACAP3/AAAEAAEAAAABAP3/AAAEAAEAAAAAAP3/AAAEAAEAAAD///3/AAAEAAEAAAD+//3/AAAEAAEAAAD9//3/AAAEAAEAAAD9//7/AAAEAAEAAAD9////AAAEAAEAAAD9/wAAAAAEAAEAAAD9/wEAAAAEAAEAAAD9/wIAAAAEAAEAAAD+//7/AAAEAAEAAAD///7/AAAEAAEAAAAAAP7/AAAEAAEAAAABAP7/AAAEAAEAAAA=")
+tile_set = ExtResource("4_b24ea")
+
+[node name="Foreground" type="TileMapLayer" parent="Shape"]
+tile_map_data = PackedByteArray("AAD+//7/AAABAAAAAAD+/wEAAAABAAAAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAD//wIAAAABAAEAAAAAAAIAAAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAA=")
+tile_set = ExtResource("4_b24ea")
+
+[node name="Connectors" type="Node2D" parent="Shape"]
+
+[node name="RightConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(130, 0)
+script = ExtResource("4_rsc72")
+type = 1
+side = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
+shape = SubResource("CircleShape2D_fb703")
+
+[node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(-130, 0)
+rotation = 3.14159
+script = ExtResource("4_rsc72")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
+shape = SubResource("CircleShape2D_m2yvs")
+
+[node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(0, -130)
+rotation = -1.57079
+script = ExtResource("4_rsc72")
+type = -1
+side = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
+position = Vector2(-17.5, 0)
+shape = SubResource("RectangleShape2D_yl5am")
+
+[node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(0, 130)
+rotation = 1.57079
+script = ExtResource("4_rsc72")
+type = 1
+side = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
+shape = SubResource("CircleShape2D_5ty2t")
+
+[node name="Outline" type="Line2D" parent="."]
+texture_repeat = 2
+material = ExtResource("2_34fut")
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("4_jtsul")
+moving_outline_texture = ExtResource("4_1hnxu")
+default_width = 8
+moving_width = 15
+
+[node name="Colliders" type="Node2D" parent="."]
+
+[node name="LeftCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(-130, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/LeftCollider"]
+shape = SubResource("RectangleShape2D_ym7pf")
+
+[node name="RightCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(130, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightCollider"]
+shape = SubResource("RectangleShape2D_ym7pf")
+
+[node name="TopCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(0, -130)
+rotation = 1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/TopCollider"]
+shape = SubResource("RectangleShape2D_ym7pf")
+
+[node name="BottomCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(0, 130)
+rotation = 1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/BottomCollider"]
+shape = SubResource("RectangleShape2D_ym7pf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://rk3bmkdmdl3x"]
+
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_dxn1p"]
+[ext_resource type="Script" path="res://Scripts/level_name.gd" id="2_lva3h"]
+[ext_resource type="PackedScene" uid="uid://b8uudp0y53o6e" path="res://Scenes/PuzzlePieces/Sci-Fi/puzzle_piece2.tscn" id="3_qnulb"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="4_pjyjf"]
+[ext_resource type="PackedScene" uid="uid://5l14n3s0fo0j" path="res://Scenes/Players/player4.tscn" id="4_saeym"]
+[ext_resource type="PackedScene" uid="uid://0o0061rgcbn7" path="res://Scenes/PuzzlePieces/Sci-Fi/puzzle_piece3.tscn" id="5_wugpa"]
+[ext_resource type="PackedScene" uid="uid://uhlyaqx8tlpj" path="res://Scenes/PuzzlePieces/Sci-Fi/puzzle_piece4.tscn" id="6_75w13"]
+[ext_resource type="PackedScene" uid="uid://dfc80a8wqhc7n" path="res://Scenes/PuzzlePieces/Sci-Fi/puzzle_piece5.tscn" id="7_pun4m"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.85, 0.85)
+
+[node name="LevelName" type="Label" parent="."]
+z_index = 115
+offset_left = 535.0
+offset_top = 42.0
+offset_right = 647.0
+offset_bottom = 65.0
+scale = Vector2(2.71, 2.71)
+theme_override_fonts/font = ExtResource("1_dxn1p")
+text = "Level 7"
+script = ExtResource("2_lva3h")
+
+[node name="PuzzlePiece" parent="." instance=ExtResource("3_qnulb")]
+position = Vector2(712, 629)
+script = ExtResource("4_pjyjf")
+
+[node name="Player" parent="." instance=ExtResource("4_saeym")]
+position = Vector2(706, 630)
+
+[node name="PuzzlePiece2" parent="." instance=ExtResource("5_wugpa")]
+position = Vector2(297, 525)
+script = ExtResource("4_pjyjf")
+
+[node name="PuzzlePiece3" parent="." instance=ExtResource("6_75w13")]
+position = Vector2(541, 292)
+script = ExtResource("4_pjyjf")
+
+[node name="PuzzlePiece4" parent="." instance=ExtResource("7_pun4m")]
+position = Vector2(937, 315)
+script = ExtResource("4_pjyjf")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnsy3dnrd5om4"]
+
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_ucv7y"]
+[ext_resource type="Script" path="res://Scripts/level_name.gd" id="2_1virm"]
+[ext_resource type="PackedScene" uid="uid://booy3r3x6lp27" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece1.tscn" id="3_bw7pb"]
+[ext_resource type="PackedScene" uid="uid://fjqeivlxjcr1" path="res://Scenes/Players/player3.tscn" id="4_lmxjg"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="4_vst81"]
+[ext_resource type="PackedScene" uid="uid://ddfxxvwr082se" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece4.tscn" id="5_bspqj"]
+[ext_resource type="PackedScene" uid="uid://b3gtrbtf3ui6a" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece5.tscn" id="6_ccopg"]
+[ext_resource type="PackedScene" uid="uid://4oa8rl02i0i1" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece6.tscn" id="7_5tbkk"]
+[ext_resource type="PackedScene" uid="uid://ddo3r2n3xekvo" path="res://Scenes/PuzzlePieces/Oubliettes/puzzle_piece7.tscn" id="8_463p5"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.74, 0.74)
+
+[node name="LevelName" type="Label" parent="."]
+z_index = 115
+offset_left = 632.0
+offset_top = 31.0
+offset_right = 760.0
+offset_bottom = 54.0
+scale = Vector2(2.71, 2.71)
+theme_override_fonts/font = ExtResource("1_ucv7y")
+text = "Level 11"
+script = ExtResource("2_1virm")
+
+[node name="PuzzlePiece" parent="." instance=ExtResource("3_bw7pb")]
+position = Vector2(220, 342)
+script = ExtResource("4_vst81")
+
+[node name="Player" parent="." instance=ExtResource("4_lmxjg")]
+position = Vector2(201, 365)
+
+[node name="PuzzlePiece2" parent="." instance=ExtResource("5_bspqj")]
+position = Vector2(517, 341)
+script = ExtResource("4_vst81")
+
+[node name="PuzzlePiece3" parent="." instance=ExtResource("6_ccopg")]
+position = Vector2(851, 355)
+script = ExtResource("4_vst81")
+
+[node name="PuzzlePiece4" parent="." instance=ExtResource("7_5tbkk")]
+position = Vector2(1246, 405)
+script = ExtResource("4_vst81")
+
+[node name="PuzzlePiece5" parent="." instance=ExtResource("8_463p5")]
+position = Vector2(943, 688)
+script = ExtResource("4_vst81")
