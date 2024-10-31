@@ -1,4 +1,5 @@
-extends AnimatedSprite2D
+extends Node2D
+class_name PlayerSprite
 
 func _process(delta):
-	global_position = get_tree().get_first_node_in_group("Player").global_position
+	global_transform = get_tree().get_first_node_in_group("Player").global_transform

@@ -71,7 +71,7 @@ horizontal_speed = 0.5
 [node name="piece" type="Sprite2D" parent="MainMenu/By"]
 modulate = Color(1.49205e-06, 0.473994, 0.53103, 1)
 z_index = -2
-position = Vector2(444, 41)
+position = Vector2(444.311, 40.7185)
 scale = Vector2(0.605, 0.605)
 texture = ExtResource("6_0ud8q")
 

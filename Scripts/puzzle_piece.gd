@@ -2,7 +2,6 @@ extends Area2D
 class_name PuzzlePiece
 
 @export var drag_speed := 10.0
-
 static var global_dragging := false
 
 @onready var ghost_piece : GhostPiece = $"../GhostPiece"
@@ -13,6 +12,7 @@ static var global_dragging := false
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite = $Shape/PlayerSprite
+@onready var door = $Shape/Door
 
 var has_attempted_connection_this_tick := false
 
@@ -24,6 +24,7 @@ var default_scale := Vector2(1.0, 1.0)
 var start_drag_position := Vector2.ZERO
 
 func _ready():
+	door.get_node("CollisionShape2D").disabled = !door.visible 
 	start_drag_position = position
 	default_scale = scale
 	player_sprite.visible = true

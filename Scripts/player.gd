@@ -88,10 +88,10 @@ func _process(delta):
 			winning = false
 			current_level += 1
 			has_collectible = false
-			print("Level" + str(current_level))
 			get_tree().root.get_node("Game").load_level("Level" + str(current_level))
 			
 func play_animation(animation):
+	var a = get_tree().get_nodes_in_group("PlayerSprites")
 	for player_sprite : AnimatedSprite2D in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.play(animation)
 

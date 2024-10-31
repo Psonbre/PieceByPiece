@@ -32,8 +32,8 @@ project/assembly_name="WonderJam2024"
 PuzzlePieces=""
 PuzzlePieceContent=""
 Doors=""
-PlayerSprites=""
 Player=""
+PlayerSprites=""
 
 [gui]
 

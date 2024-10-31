@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=19 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
 [ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/Players/player1_frames.tres" id="4_qj61i"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
+[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Door.tscn" id="6_patsr"]
 [ext_resource type="Script" path="res://Scripts/player_sprite.gd" id="48_5qcv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
@@ -15,16 +16,19 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dagri"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_38pod"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7vks"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oo8ep"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vq8qw"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5jalg"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hjibe"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wa87w"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pgxv"]
 radius = 35.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
@@ -42,29 +46,37 @@ shape = SubResource("RectangleShape2D_812v4")
 [node name="Shape" type="Polygon2D" parent="."]
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
-polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
 script = ExtResource("3_45og6")
 
 [node name="Background" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
 scale = Vector2(0.8, 0.8)
-tile_map_data = PackedByteArray("AAD+/wIAAAAEAAEAAAD//wIAAAAEAAEAAAAAAAIAAAAEAAEAAAABAAIAAAAEAAEAAAACAAIAAAAEAAEAAAD+/wEAAAAEAAEAAAD//wEAAAAEAAEAAAAAAAEAAAAEAAEAAAABAAEAAAAEAAEAAAACAAEAAAAEAAEAAAACAAAAAAAEAAEAAAABAAAAAAAEAAEAAAAAAAAAAAAEAAEAAAD//wAAAAAEAAEAAAD+/wAAAAAEAAEAAAD+////AAAEAAEAAAD/////AAAEAAEAAAAAAP//AAAEAAEAAAABAP//AAAEAAEAAAACAP//AAAEAAEAAAACAP7/AAAEAAEAAAABAP7/AAAEAAEAAAAAAP7/AAAEAAEAAAD///7/AAAEAAEAAAD+//7/AAAEAAEAAAD9/wEAAAAEAAEAAAD9/wAAAAAEAAEAAAD///3/AAAEAAEAAAAAAP3/AAAEAAEAAAABAP3/AAAEAAEAAAADAP//AAAEAAEAAAADAAAAAAAEAAEAAAADAAEAAAAEAAEAAAAAAAMAAAAEAAEAAAABAAMAAAAEAAEAAAD//wMAAAAEAAEAAAD9////AAAEAAEAAAA=")
 tile_set = ExtResource("4_b24ea")
 collision_enabled = false
 
 [node name="Foreground" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
 scale = Vector2(0.8, 0.8)
-tile_map_data = PackedByteArray("AAD+/wIAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAD+//7/AAABAAIAAAD///7/AAABAAIAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAAAAAMAAAABAAEAAAD//wMAAAABAAEAAAABAAMAAAABAAEAAAA=")
 tile_set = ExtResource("4_b24ea")
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="Shape" groups=["PlayerSprites"]]
-visible = false
-position = Vector2(-3, -1.90735e-06)
+[node name="PlayerSprite" type="Node2D" parent="Shape"]
 scale = Vector2(0.8, 0.8)
+script = ExtResource("48_5qcv0")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite" groups=["PlayerSprites"]]
+position = Vector2(0, 2.27374e-13)
+scale = Vector2(0.549435, 0.549435)
 sprite_frames = ExtResource("4_qj61i")
 animation = &"Idle"
-script = ExtResource("48_5qcv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/PlayerSprite"]
+shape = SubResource("CircleShape2D_38pod")
+disabled = true
+
+[node name="Door" parent="Shape" instance=ExtResource("6_patsr")]
+visible = false
+scale = Vector2(0.519999, 0.519999)
 
 [node name="Connectors" type="Node2D" parent="Shape"]
 visible = false
@@ -74,53 +86,49 @@ z_index = 1
 position = Vector2(128, 0)
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = 1
 side = 2
 side_collider = NodePath("../../../Colliders/RightCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_dagri")
+shape = SubResource("CircleShape2D_y7vks")
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(-128, 0)
 rotation = 3.14159
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = 1
 side_collider = NodePath("../../../Colliders/LeftCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_oo8ep")
+shape = SubResource("CircleShape2D_vq8qw")
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, -128)
 rotation = -1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = -1
 side = 1
 side_collider = NodePath("../../../Colliders/TopCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
-shape = SubResource("CircleShape2D_5jalg")
+shape = SubResource("CircleShape2D_hjibe")
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, 128)
 rotation = 1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = 1
 side = -1
 side_collider = NodePath("../../../Colliders/BottomCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
-shape = SubResource("CircleShape2D_wa87w")
+shape = SubResource("CircleShape2D_6pgxv")
 
 [node name="Outline" type="Line2D" parent="."]
 z_index = -1
 texture_repeat = 2
 material = ExtResource("2_34fut")
-points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
 width = 5.0
 texture_mode = 1
 joint_mode = 2
@@ -163,3 +171,5 @@ shape = SubResource("SegmentShape2D_i6rnc")
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+
+[editable path="Shape/Door"]

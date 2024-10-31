@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvws0si7ljhkm"]
+[gd_scene load_steps=5 format=3 uid="uid://dvws0si7ljhkm"]
 
 [ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="1_vdrf4"]
-[ext_resource type="Texture2D" uid="uid://cph5l5ltrh8xo" path="res://icon.svg" id="2_m0m2h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d3ioe"]
 shader = ExtResource("1_vdrf4")
@@ -9,13 +8,19 @@ shader_parameter/bottom_color = Color(0, 0, 0, 1)
 shader_parameter/wave_amp = 0.011
 shader_parameter/wave_size = 1.0
 shader_parameter/wave_time_mul = 0.271
-shader_parameter/total_phases = 40
+shader_parameter/total_phases = 20
 shader_parameter/color_speed = 0.01
 shader_parameter/color_value = 0.537
+
+[sub_resource type="Gradient" id="Gradient_byocy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jctcc"]
+gradient = SubResource("Gradient_byocy")
+width = 1920
+height = 1080
 
 [node name="Background" type="Sprite2D"]
 z_index = -70
 material = SubResource("ShaderMaterial_d3ioe")
-position = Vector2(868, 516)
-scale = Vector2(22.9844, 12.9844)
-texture = ExtResource("2_m0m2h")
+position = Vector2(960, 540)
+texture = SubResource("GradientTexture2D_jctcc")

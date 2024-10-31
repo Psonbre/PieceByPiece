@@ -6,4 +6,4 @@
 resource_local_to_scene = true
 shader = ExtResource("1_pfbrb")
 shader_parameter/speed = 1.405
-shader_parameter/color = Vector4(1, 1, 1, 0.5)
+shader_parameter/color = Vector4(1, 1, 1, 1)
