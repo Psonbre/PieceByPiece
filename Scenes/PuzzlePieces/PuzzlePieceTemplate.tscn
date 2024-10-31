@@ -19,17 +19,17 @@ size = Vector2(256, 256)
 [sub_resource type="CircleShape2D" id="CircleShape2D_38pod"]
 radius = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y7vks"]
-radius = 35.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_movio"]
+size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vq8qw"]
-radius = 35.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlo50"]
+size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hjibe"]
-radius = 35.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y081g"]
+size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6pgxv"]
-radius = 35.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xp6w"]
+size = Vector2(35, 70)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
 a = Vector2(0, -128)
@@ -77,54 +77,53 @@ shape = SubResource("CircleShape2D_38pod")
 disabled = true
 
 [node name="Connectors" type="Node2D" parent="Shape"]
-visible = false
 z_index = 1
 
 [node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(128, 0)
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = -99
 side = 2
 side_collider = NodePath("../../../Colliders/RightCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_y7vks")
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_movio")
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(-128, 0)
 rotation = 3.14159
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = -99
 side_collider = NodePath("../../../Colliders/LeftCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_vq8qw")
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_xlo50")
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, -128)
 rotation = -1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = -99
 side = 1
 side_collider = NodePath("../../../Colliders/TopCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
-shape = SubResource("CircleShape2D_hjibe")
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_y081g")
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, 128)
 rotation = 1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
-type = -99
 side = -1
 side_collider = NodePath("../../../Colliders/BottomCollider")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
-shape = SubResource("CircleShape2D_6pgxv")
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_7xp6w")
 
 [node name="Outline" type="Line2D" parent="."]
 z_index = -1

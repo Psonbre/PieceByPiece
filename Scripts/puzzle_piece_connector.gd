@@ -76,24 +76,20 @@ func get_adjacent_piece_position(account_for_rotation : bool):
 
 func update_shape(hole_radius : float):
 	if type == ConnectorType.FLAT :
-		var circle_shape = CircleShape2D.new()
-		circle_shape.radius = hole_radius * 1.0
-		collision_shape.shape = circle_shape
-		collision_shape.position = Vector2.ZERO
+		var rectangle_shape = RectangleShape2D.new()
+		rectangle_shape.size = Vector2(hole_radius, hole_radius * 2)
+		collision_shape.shape = rectangle_shape
+		collision_shape.position = Vector2(-hole_radius / 2 + 1,0)
 	elif type == ConnectorType.BUMP :
 		var circle_shape = CircleShape2D.new()
 		circle_shape.radius = hole_radius * 1.0
 		collision_shape.shape = circle_shape
 		collision_shape.position = Vector2.ZERO
 	elif type == ConnectorType.HOLE :
-		var circle_shape = CircleShape2D.new()
-		circle_shape.radius = hole_radius * 1.0
-		collision_shape.shape = circle_shape
-		collision_shape.position = Vector2.ZERO
-		#var rectangle_shape = RectangleShape2D.new()
-		#rectangle_shape.size = Vector2(hole_radius, hole_radius*2)
-		#collision_shape.shape = rectangle_shape
-		#collision_shape.position = Vector2(-hole_radius/2,0)
+		var rectangle_shape = RectangleShape2D.new()
+		rectangle_shape.size = Vector2(hole_radius, hole_radius * 2)
+		collision_shape.shape = rectangle_shape
+		collision_shape.position = Vector2(-hole_radius / 2 + 1,0)
 
 func connect_with_closest():
 	connected_to = get_compatible_overlapping_connector()

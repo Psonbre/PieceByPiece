@@ -23,7 +23,12 @@ var shape_size := 256
 	set(value):
 		hole_segments = value
 		update_shape()
-		
+
+@export var regenerate := false : #This variable is meant for editor use only
+	set(value):
+		if value :
+			update_shape()
+
 # Helper function to create an arc of points
 func create_arc(center: Vector2, start_angle: float, end_angle: float) -> Array:
 	var arc_points = []
