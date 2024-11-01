@@ -14,6 +14,8 @@ font_size = 32
 
 [node name="Credits" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Credits" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -23,13 +25,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.895, 1.895)
 
 [node name="Title" type="Label" parent="Credits"]
 layout_mode = 2
-offset_left = 309.0
-offset_top = 25.0
-offset_right = 830.0
-offset_bottom = 113.0
+offset_left = -245.0
+offset_top = -305.0
+offset_right = 276.0
+offset_bottom = -217.0
 text = "Credits"
 label_settings = SubResource("LabelSettings_56lap")
 horizontal_alignment = 1
@@ -37,10 +40,10 @@ script = ExtResource("3_xtxaf")
 
 [node name="Back" type="Button" parent="Credits"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 41.0
-offset_right = 159.0
-offset_bottom = 99.0
+offset_left = -636.412
+offset_top = -350.396
+offset_right = -519.412
+offset_bottom = -292.396
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 24
@@ -49,10 +52,10 @@ script = ExtResource("1_fll2r")
 
 [node name="Gamejam" type="VBoxContainer" parent="Credits"]
 layout_mode = 2
-offset_left = 116.0
-offset_top = 570.0
-offset_right = 1076.0
-offset_bottom = 615.0
+offset_left = -438.0
+offset_top = 240.0
+offset_right = 522.0
+offset_bottom = 285.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
@@ -69,18 +72,13 @@ text = "Made during the Wonderjam 2024
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Credits"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Music" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 32.0
-offset_top = 370.0
-offset_right = 662.0
-offset_bottom = 849.0
+offset_left = -522.0
+offset_top = 40.0
+offset_right = 108.0
+offset_bottom = 519.0
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
@@ -146,10 +144,10 @@ uri = "https://freesound.org/people/checholio/sounds/443537/"
 [node name="Music2" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 543.0
-offset_top = 152.0
-offset_right = 1173.0
-offset_bottom = 272.0
+offset_left = -10.9999
+offset_top = -178.0
+offset_right = 619.0
+offset_bottom = -58.0
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
@@ -181,10 +179,10 @@ uri = "https://onemansymphony.bandcamp.com/album/downtempo-lofi-progressive-musi
 [node name="Game" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 93.0
-offset_top = 151.0
-offset_right = 579.0
-offset_bottom = 301.0
+offset_left = -461.0
+offset_top = -179.0
+offset_right = 25.0001
+offset_bottom = -29.0
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
@@ -239,10 +237,10 @@ uri = "https://backderiz.itch.io/"
 [node name="Assets" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 599.0
-offset_top = 326.0
-offset_right = 1103.0
-offset_bottom = 805.0
+offset_left = 45.0001
+offset_top = -3.99997
+offset_right = 549.0
+offset_bottom = 475.0
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")

@@ -12,7 +12,8 @@ func load_level(level_name: String) -> void:
 
 	if packed_scene != null:
 		new_packed_scene = packed_scene
-		sceneTransition.fade_in()
+		_on_scene_transition_transitioned()
+		#sceneTransition.fade_in()
 
 func _on_scene_transition_transitioned() -> void:
 	
