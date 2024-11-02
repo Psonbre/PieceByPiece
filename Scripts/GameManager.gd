@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameManager
 
 var old_screen : Node2D
 var current_screen : Node2D

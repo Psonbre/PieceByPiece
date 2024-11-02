@@ -23,3 +23,7 @@ enum OutlineType {HIDDEN, NORMAL, MOVING}
 
 func regenerate(polygon):
 	points = polygon
+	
+func _ready():
+	if not Engine.is_editor_hint():
+		material = material.duplicate()

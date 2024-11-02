@@ -37,24 +37,25 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, visual_globa
 	outline.position = visual_shape.position
 	outline.rotation = visual_shape.rotation
 	
-	#idk why I need to do this but removing them breaks the code so... 🤷‍♂️
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
-	
-	if all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped() :
+	if all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped() && !all_valid_connectors_of_any_overlapping_piece_are_flat():
 		outline.material.set_shader_parameter('color', Vector4(1,1,1,0.5))
 		valid_placement = true
 	else :
 		outline.material.set_shader_parameter('color', Vector4(1,0,0,0.5))
 		valid_placement = false
-		all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped()
 	
 	if !all_valid_connectors_are_flat() :
-		all_valid_connectors_are_flat()
 		visual_shape.visible = true
 		outline.visible = true
 		displayed = true
+
+func all_valid_connectors_of_any_overlapping_piece_are_flat():
+	for piece : PuzzlePiece in get_all_pieces_with_compatible_overlapping_connectors():
+		if piece.all_valid_connectors_are_flat() : return true
+	return false
 
 func hide_display():
 	displayed = false

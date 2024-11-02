@@ -13,6 +13,6 @@ func _ready():
 	start_position = position
 	rand = randf() * 150
 
-func _process(delta):
+func _process(_delta):
 	position = start_position + Vector2(cos(Time.get_unix_time_from_system() * horizontal_speed + rand) * horizontal_intensity, sin(Time.get_unix_time_from_system() + rand * vertical_speed) * vertical_intensity)
 	pass

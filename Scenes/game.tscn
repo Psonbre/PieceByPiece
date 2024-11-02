@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="4_wm5fj"]
 [ext_resource type="PackedScene" uid="uid://iiopsl2jnac1" path="res://Scenes/MainMenu.tscn" id="5_lco33"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["GameManager"]]
 script = ExtResource("1_kmwid")
 
 [node name="Background" parent="." instance=ExtResource("2_rr10a")]

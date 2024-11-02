@@ -36,7 +36,6 @@ b = Vector2(0, 128)
 [node name="GhostPiece" type="Area2D" groups=["CollisionAreas"]]
 modulate = Color(1, 1, 1, 0.498039)
 z_index = -1
-collision_layer = 2
 script = ExtResource("1_ns84n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -55,7 +54,6 @@ z_index = 1
 
 [node name="RightConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(130, 0)
-collision_layer = 2
 script = ExtResource("4_hctjr")
 type = 1
 side = 2
@@ -66,7 +64,6 @@ shape = SubResource("CircleShape2D_fb703")
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(-130, 0)
 rotation = 3.14159
-collision_layer = 2
 script = ExtResource("4_hctjr")
 type = 1
 
@@ -76,7 +73,6 @@ shape = SubResource("CircleShape2D_m2yvs")
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(0, -130)
 rotation = -1.57079
-collision_layer = 2
 script = ExtResource("4_hctjr")
 type = -1
 side = 1
@@ -88,7 +84,6 @@ shape = SubResource("RectangleShape2D_yl5am")
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(0, 130)
 rotation = 1.57079
-collision_layer = 2
 script = ExtResource("4_hctjr")
 type = 1
 side = -1

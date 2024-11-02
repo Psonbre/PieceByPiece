@@ -28,6 +28,11 @@ func _ready():
 	start_drag_position = position
 	default_scale = scale
 	player_sprite.visible = true
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	
+	attempt_connection()
 
 func _process(delta):
 	if Input.is_action_just_pressed("Click") and is_hovering and !global_dragging:
@@ -62,7 +67,7 @@ func _process(delta):
 		if can_be_dropped():
 			outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
 		else:
-			outline.material.set_shader_parameter('color', Vector4(1, 0, 0, 0.5))
+			outline.material.set_shader_parameter('color', Vector4(1, 0, 0, 1))
 			
 	else:
 		scale = scale.move_toward(default_scale, 2 * delta)
@@ -100,6 +105,8 @@ func stop_dragging():
 	if !can_be_dropped() : 
 		cancel_drag()
 		return
+	ghost_piece.hide_display()
+	
 	set_player_sprites_visible(true)
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
@@ -112,11 +119,11 @@ func stop_dragging():
 	
 func attempt_connection():
 	if has_attempted_connection_this_tick: return
+	if all_valid_connectors_are_flat() : return
 	has_attempted_connection_this_tick = true
-	ghost_piece.hide_display()
 	
 	var compatible_connector = get_first_compatible_overlapping_connector()
-	if compatible_connector != null :
+	if compatible_connector != null  && !compatible_connector.puzzle_piece is GhostPiece:
 		snap_to_connector(compatible_connector)
 	connect_all_sides()
 	
@@ -138,6 +145,7 @@ func clamp_player():
 		player.position = Vector2(clampf(player.position.x, left_connector.position.x + 20, right_connector.position.x - 20), clampf(player.position.y, top_connector.position.y + 20, bottom_connector.position.y - 20))
 
 func cancel_drag():
+	ghost_piece.hide_display()
 	position = start_drag_position
 	rotation = 0
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
@@ -221,11 +229,10 @@ func can_be_dropped():
 		if all_valid_connectors_are_flat() :
 			return false
 		return true
-		#return all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped() && !all_valid_connectors_are_flat()
 
-func set_player_sprites_visible(visible : bool) :
+func set_player_sprites_visible(shown : bool) :
 	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
-		sprite.visible = visible
+		sprite.visible = shown
 		
 func all_valid_connectors_are_flat():
 	var valid_connectors = []

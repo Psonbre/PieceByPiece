@@ -36,6 +36,7 @@ PuzzlePieceContent=""
 Doors=""
 Player=""
 PlayerSprites=""
+GameManager=""
 
 [gui]
 
