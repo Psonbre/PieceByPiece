@@ -25,7 +25,7 @@ var connected_to : PuzzlePieceConnector = null :
 func get_compatible_overlapping_connector(include_dragging_piece : bool = false):
 	if !include_dragging_piece && puzzle_piece.is_dragging : return
 	for connector in get_overlapping_areas():
-		if connector is PuzzlePieceConnector :
+		if connector is PuzzlePieceConnector and connector.puzzle_piece is not GhostPiece:
 			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging):
 				continue
 			if is_connector_compatible(connector) :
@@ -36,12 +36,12 @@ func can_be_dropped():
 	var compatible_overlapping_pieces = get_all_pieces_with_compatible_overlapping_connectors()
 	for area in get_overlapping_areas():
 		if area is PuzzlePieceConnector :
-			if area.puzzle_piece == puzzle_piece :
+			if area.puzzle_piece == puzzle_piece || (puzzle_piece.is_dragging && area.puzzle_piece is GhostPiece):
 				continue
 			if !is_connector_compatible(area) :
 				return false
 		if area is PuzzlePiece :
-			if area == puzzle_piece :
+			if area == puzzle_piece || (puzzle_piece.is_dragging && area is GhostPiece):
 				continue
 			if area not in compatible_overlapping_pieces :
 				return false
@@ -52,7 +52,7 @@ func get_all_pieces_with_compatible_overlapping_connectors() :
 	
 	for connector in get_overlapping_areas():
 		if connector is PuzzlePieceConnector :
-			if connector.puzzle_piece == puzzle_piece :
+			if connector.puzzle_piece == puzzle_piece || connector.puzzle_piece is GhostPiece:
 				continue
 			if is_connector_compatible(connector) :
 				pieces_with_valid_overlapping_connectors.append(connector.puzzle_piece)

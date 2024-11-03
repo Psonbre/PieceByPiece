@@ -114,6 +114,10 @@ func stop_dragging():
 	global_dragging = false
 	scale = default_scale
 	attempt_connection()
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	
 	attempt_connection_on_all_other_pieces()
 	set_colliders_in_drag_mode(false)
 	
@@ -125,6 +129,10 @@ func attempt_connection():
 	var compatible_connector = get_first_compatible_overlapping_connector()
 	if compatible_connector != null  && !compatible_connector.puzzle_piece is GhostPiece:
 		snap_to_connector(compatible_connector)
+		
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	
 	connect_all_sides()
 	
 func attempt_connection_on_all_other_pieces():
@@ -155,8 +163,10 @@ func cancel_drag():
 	global_dragging = false
 	scale = default_scale
 	set_player_sprites_visible(true)
+	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
+	
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
 	set_colliders_in_drag_mode(false)
@@ -193,7 +203,7 @@ func all_overlapping_pieces_have_compatible_overlapping_connectors():
 	var valid_pieces_to_overlap = get_all_pieces_with_compatible_overlapping_connectors()
 	for piece in get_overlapping_areas():
 		if piece is PuzzlePiece :
-			if piece not in valid_pieces_to_overlap :
+			if piece not in valid_pieces_to_overlap and not (is_dragging and piece is GhostPiece):
 				return false
 	return true
 
