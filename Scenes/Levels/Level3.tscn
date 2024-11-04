@@ -67,7 +67,7 @@ size = Vector2(35, 70)
 zoom = Vector2(1.705, 1.705)
 
 [node name="Player" parent="." instance=ExtResource("1_j1wow")]
-position = Vector2(-321, 33)
+position = Vector2(-273, 149)
 scale = Vector2(1.00305, 1)
 
 [node name="GhostPiece" parent="." instance=ExtResource("2_771qa")]
@@ -78,6 +78,7 @@ collision_layer = 3
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(1.25, 1.25)
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelName" type="Label" parent="Control"]
 z_index = 30
@@ -92,7 +93,7 @@ text = "Level 3"
 script = ExtResource("4_18d0k")
 
 [node name="PuzzlePiece" parent="." instance=ExtResource("5_xs8ad")]
-position = Vector2(-261, -3)
+position = Vector2(-261, 126)
 
 [node name="Shape" parent="PuzzlePiece" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
@@ -127,13 +128,13 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 
 visible = false
 
 [node name="PuzzlePiece2" parent="." instance=ExtResource("5_xs8ad")]
-position = Vector2(-1, 0)
+position = Vector2(-1, 129)
 
 [node name="Shape" parent="PuzzlePiece2" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 
 [node name="Foreground" parent="PuzzlePiece2/Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+//7/AwAIAAEAAAD///7/AwACAAIAAAAAAP7/AwAHAAEAAAABAP7/AwADAAMAAAD+/wIAAwAIAAIAAAD//wIAAwACAAIAAAAAAAIAAwAHAAIAAAABAAIAAwADAAEAAAAAAAEAAwADAAIAAAAAAAAAAwADAAIAAAAAAP//AwADAAIAAAD+/wEAAwABAAIAAAD+/wAAAwABAAIAAAD+////AwABAAIAAAD//wEAAwACAAIAAAD//wAAAwACAAIAAAD/////AwACAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AwAIAAEAAAD///7/AwACAAIAAAAAAP7/AwAHAAEAAAABAP7/AwADAAMAAAD+/wIAAwAIAAIAAAD//wIAAwACAAIAAAAAAAIAAwAHAAIAAAABAAIAAwADAAEAAAD//wEAAwACAAIAAAAAAAEAAwADAAIAAAAAAAAAAwADAAIAAAAAAP//AwADAAIAAAD+/wEAAwABAAIAAAD+/wAAAwABAAIAAAD+////AwABAAIAAAD//wAAAwACAAIAAAD/////AwACAAIAAAA=")
 
 [node name="Door" parent="PuzzlePiece2/Shape" index="2"]
 visible = false
@@ -172,7 +173,7 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 
 visible = false
 
 [node name="PuzzlePiece4" parent="." instance=ExtResource("5_xs8ad")]
-position = Vector2(558, -240)
+position = Vector2(-4, -154)
 
 [node name="Shape" parent="PuzzlePiece4" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
@@ -216,7 +217,7 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 
 visible = false
 
 [node name="PuzzlePiece3" parent="." instance=ExtResource("5_xs8ad")]
-position = Vector2(260, -1)
+position = Vector2(260, 128)
 
 [node name="Shape" parent="PuzzlePiece3" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
