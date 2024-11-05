@@ -5,6 +5,7 @@ static var instance: SubsystemManager = null
 static var level_manager: LevelManager = null
 static var music_manager: MusicManager = null
 static var sound_manager: SoundManager = null
+static var save_manager: SaveManager = null
 static var collectible_manager: CollectibleManager = null
 
 
@@ -41,6 +42,13 @@ static func get_sound_manager() -> SoundManager:
 		sound_manager = sound_manager_scene.instantiate()
 		get_SubsystemManager().root.add_child(sound_manager)
 	return sound_manager
+	
+static func get_save_manager() -> SaveManager:
+	if save_manager == null:
+		var save_manager_scene = load("res://Scenes/Manager/SaveManager.tscn")
+		save_manager = save_manager_scene.instantiate()
+		get_SubsystemManager().root.add_child(save_manager)
+	return save_manager
 	
 # Get the CollectibleManager instance
 static func get_collectible_manager() -> CollectibleManager:
