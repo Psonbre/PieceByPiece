@@ -104,9 +104,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwAKAAIAAAAAAP7/AwACAAM
 visible = false
 scale = Vector2(0.519999, 0.519999)
 
-[node name="Connectors" parent="PuzzlePiece/Shape" index="4"]
-visible = false
-
 [node name="RightConnector" parent="PuzzlePiece/Shape/Connectors" index="0"]
 type = -1
 
@@ -148,9 +145,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwAKAAI
 [node name="Door" parent="PuzzlePiece2/Shape" index="2"]
 visible = false
 scale = Vector2(0.519999, 0.519999)
-
-[node name="Connectors" parent="PuzzlePiece2/Shape" index="4"]
-visible = false
 
 [node name="RightConnector" parent="PuzzlePiece2/Shape/Connectors" index="0"]
 type = 1
@@ -199,9 +193,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwADAAIAAAAAAP7/AwAFAAMAAAABAP7/AAAEAAQ
 visible = false
 scale = Vector2(0.519999, 0.519999)
 
-[node name="Connectors" parent="PuzzlePiece4/Shape" index="4"]
-visible = false
-
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_4qpqj")
 
@@ -240,9 +231,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 
 [node name="Door" parent="PuzzlePiece3/Shape" index="2"]
 position = Vector2(0, 47)
-
-[node name="Connectors" parent="PuzzlePiece3/Shape" index="4"]
-visible = false
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_q86rx")

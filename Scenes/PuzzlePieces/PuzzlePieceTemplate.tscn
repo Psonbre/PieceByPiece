@@ -43,6 +43,7 @@ script = ExtResource("1_kspp0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
 
 [node name="Shape" type="Polygon2D" parent="."]
 clip_children = 2
@@ -62,6 +63,7 @@ scale = Vector2(0.8, 0.8)
 tile_set = ExtResource("4_b24ea")
 
 [node name="Door" parent="Shape" instance=ExtResource("6_patsr")]
+visible = false
 scale = Vector2(0.642018, 0.642018)
 
 [node name="PlayerSprite" type="Node2D" parent="Shape"]
@@ -80,6 +82,7 @@ disabled = true
 
 [node name="Connectors" type="Node2D" parent="Shape"]
 z_index = 1
+metadata/_edit_lock_ = true
 
 [node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(128, 0)
@@ -87,10 +90,12 @@ collision_mask = 5
 script = ExtResource("4_rsc72")
 side = 2
 side_collider = NodePath("../../../Colliders/RightCollider")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
 shape = SubResource("RectangleShape2D_movio")
+metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(-128, 0)
@@ -98,10 +103,12 @@ rotation = 3.14159
 collision_mask = 5
 script = ExtResource("4_rsc72")
 side_collider = NodePath("../../../Colliders/LeftCollider")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
 shape = SubResource("RectangleShape2D_xlo50")
+metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, -128)
@@ -110,10 +117,12 @@ collision_mask = 5
 script = ExtResource("4_rsc72")
 side = 1
 side_collider = NodePath("../../../Colliders/TopCollider")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
 shape = SubResource("RectangleShape2D_y081g")
+metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
 position = Vector2(0, 128)
@@ -122,10 +131,12 @@ collision_mask = 5
 script = ExtResource("4_rsc72")
 side = -1
 side_collider = NodePath("../../../Colliders/BottomCollider")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
 shape = SubResource("RectangleShape2D_7xp6w")
+metadata/_edit_lock_ = true
 
 [node name="Collectible" parent="Shape" instance=ExtResource("8_dvmwe")]
 visible = false
@@ -145,8 +156,11 @@ end_cap_mode = 2
 script = ExtResource("4_jtsul")
 moving_outline_texture = ExtResource("4_1hnxu")
 moving_width = 6.0
+metadata/_edit_lock_ = true
 
 [node name="Colliders" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="LeftCollider" type="StaticBody2D" parent="Colliders"]
 position = Vector2(-128, 0)

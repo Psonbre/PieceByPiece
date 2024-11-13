@@ -1,8 +1,20 @@
-[gd_scene load_steps=5 format=4 uid="uid://ctpilqtu4ujva"]
+[gd_scene load_steps=9 format=4 uid="uid://ctpilqtu4ujva"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_kckti"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_cbxkv"]
 [ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/Players/player2_frames.tres" id="2_evcum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwxro"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0grw"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkfnv"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lya54"]
+size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
 resource_local_to_scene = true
@@ -24,6 +36,18 @@ position = Vector2(-59, 53)
 [node name="Sprite" parent="Shape/PlayerSprite" index="0"]
 scale = Vector2(1.69443, 1.69443)
 sprite_frames = ExtResource("2_evcum")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("RectangleShape2D_dwxro")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_v0grw")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_vkfnv")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_lya54")
 
 [node name="Outline" parent="." index="2"]
 material = SubResource("ShaderMaterial_n3bvn")
