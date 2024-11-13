@@ -22,11 +22,11 @@ var connected_to : PuzzlePieceConnector = null :
 		side_collider.get_node("CollisionShape2D").disabled = value != null
 		connected_to = value
 			
-func get_compatible_overlapping_connector(include_dragging_piece : bool = false):
+func get_first_compatible_overlapping_connector(include_dragging_piece : bool = false) -> PuzzlePieceConnector:
 	if !include_dragging_piece && puzzle_piece.is_dragging : return
 	for connector in get_overlapping_areas():
 		if connector is PuzzlePieceConnector and connector.puzzle_piece is not GhostPiece:
-			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging):
+			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging) || connector.type == ConnectorType.FLAT:
 				continue
 			if is_connector_compatible(connector) :
 				return connector
@@ -61,6 +61,8 @@ func get_all_pieces_with_compatible_overlapping_connectors() :
 func is_connector_compatible(other_connector : PuzzlePieceConnector):
 	if side + other_connector.side != 0 : #incompatible sides
 		return false
+	if type == ConnectorType.FLAT and other_connector.type == ConnectorType.FLAT && !puzzle_piece.connection_group.equals(other_connector.puzzle_piece.connection_group):
+		return false
 	if type + other_connector.type != 0 : #incompatible connectors
 		return false
 	if other_connector.connected_to != self and other_connector.connected_to != null and puzzle_piece is not GhostPiece:
@@ -91,7 +93,7 @@ func update_shape(hole_radius : float):
 		collision_shape.position = Vector2(-hole_radius / 2 + 1,0)
 
 func connect_with_closest():
-	var other_connector = get_compatible_overlapping_connector()
+	var other_connector = get_first_compatible_overlapping_connector()
 	if other_connector and other_connector.puzzle_piece is GhostPiece : other_connector = null
 	connected_to = other_connector
 	

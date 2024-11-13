@@ -89,7 +89,6 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275,
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAA=")
 
 [node name="Door" parent="PuzzlePiece/Shape" index="2"]
-visible = false
 scale = Vector2(0.519999, 0.519999)
 
 [node name="RightConnector" parent="PuzzlePiece/Shape/Connectors" index="0"]
@@ -125,7 +124,6 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275,
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwAKAAIAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwALAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAAAAAEAAwAFAAIAAAAAAAAAAwAFAAIAAAAAAP//AwAFAAIAAAA=")
 
 [node name="Door" parent="PuzzlePiece2/Shape" index="2"]
-visible = false
 scale = Vector2(0.519999, 0.519999)
 
 [node name="RightConnector" parent="PuzzlePiece2/Shape/Connectors" index="0"]

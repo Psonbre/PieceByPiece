@@ -20,6 +20,7 @@ var is_dragging := false
 var is_hovering := false
 var velocity := Vector2.ZERO
 var default_scale := Vector2(1.0, 1.0)
+var connection_group := ConnectionGroup.new(self)
 
 var start_drag_position := Vector2.ZERO
 
@@ -100,7 +101,7 @@ func start_dragging():
 	global_dragging = true
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
-		
+	
 func stop_dragging():
 	if !can_be_dropped() : 
 		cancel_drag()
@@ -123,17 +124,21 @@ func stop_dragging():
 	
 func attempt_connection():
 	if has_attempted_connection_this_tick: return
-	if all_valid_connectors_are_flat() : return
 	has_attempted_connection_this_tick = true
 	
 	var compatible_connector = get_first_compatible_overlapping_connector()
-	if compatible_connector != null  && !compatible_connector.puzzle_piece is GhostPiece:
+	if compatible_connector != null :
 		snap_to_connector(compatible_connector)
 		
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
 	connect_all_sides()
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	
+	update_connection_group()
 	
 func attempt_connection_on_all_other_pieces():
 	for piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces"):
@@ -183,13 +188,13 @@ func connect_all_sides():
 	bottom_connector.connect_with_closest()
 
 func get_first_compatible_overlapping_connector() -> PuzzlePieceConnector:
-	var connection_result = left_connector.get_compatible_overlapping_connector(is_dragging)
+	var connection_result = left_connector.get_first_compatible_overlapping_connector(is_dragging)
 	if connection_result == null :
-		connection_result = right_connector.get_compatible_overlapping_connector(is_dragging)
+		connection_result = right_connector.get_first_compatible_overlapping_connector(is_dragging)
 	if connection_result == null :
-		connection_result = top_connector.get_compatible_overlapping_connector(is_dragging)
+		connection_result = top_connector.get_first_compatible_overlapping_connector(is_dragging)
 	if connection_result == null :
-		connection_result = bottom_connector.get_compatible_overlapping_connector(is_dragging)
+		connection_result = bottom_connector.get_first_compatible_overlapping_connector(is_dragging)
 	return connection_result
 	
 func all_connectors_can_be_dropped():
@@ -236,26 +241,36 @@ func can_be_dropped():
 			return false
 		if !all_connectors_can_be_dropped() :
 			return false
-		if all_valid_connectors_are_flat() :
-			return false
 		return true
 
 func set_player_sprites_visible(shown : bool) :
 	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
 		sprite.visible = shown
 		
-func all_valid_connectors_are_flat():
-	var valid_connectors = []
-	if (left_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(left_connector)
-	if (right_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(right_connector)
-	if (top_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(top_connector)
-	if (bottom_connector.get_compatible_overlapping_connector(true) != null) : valid_connectors.append(bottom_connector)
-	
-	if valid_connectors.size() <= 0 : return false
-	for connector : PuzzlePieceConnector in valid_connectors :
-		if connector.type != PuzzlePieceConnector.ConnectorType.FLAT :
-			return false
-	return true
+
+func update_all_connection_groups():
+	for piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces") :
+		piece.update_connection_group()
+
+func update_connection_group():
+	var tested_pieces : Array[PuzzlePiece] = [self]
+	connection_group = ConnectionGroup.new(self)
+	add_piece_connections_to_connection_group(connection_group, self)
+	while tested_pieces != connection_group.members :
+		for piece in connection_group.members :
+			if piece not in tested_pieces :
+				add_piece_connections_to_connection_group(connection_group, piece)
+				tested_pieces.append(piece)
+
+func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: PuzzlePiece):
+	if piece.left_connector.connected_to:
+		cg.add_member(piece.left_connector.connected_to.puzzle_piece)
+	if piece.right_connector.connected_to:
+		cg.add_member(piece.right_connector.connected_to.puzzle_piece)
+	if piece.top_connector.connected_to:
+		cg.add_member(piece.top_connector.connected_to.puzzle_piece)
+	if piece.bottom_connector.connected_to:
+		cg.add_member(piece.bottom_connector.connected_to.puzzle_piece)
 
 func _on_mouse_entered():
 	is_hovering = true
