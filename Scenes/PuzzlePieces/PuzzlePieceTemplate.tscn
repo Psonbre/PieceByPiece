@@ -88,7 +88,6 @@ metadata/_edit_lock_ = true
 position = Vector2(128, 0)
 collision_mask = 5
 script = ExtResource("4_rsc72")
-side = 2
 side_collider = NodePath("../../../Colliders/RightCollider")
 metadata/_edit_group_ = true
 
@@ -115,7 +114,6 @@ position = Vector2(0, -128)
 rotation = -1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
-side = 1
 side_collider = NodePath("../../../Colliders/TopCollider")
 metadata/_edit_group_ = true
 
@@ -129,7 +127,6 @@ position = Vector2(0, 128)
 rotation = 1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
-side = -1
 side_collider = NodePath("../../../Colliders/BottomCollider")
 metadata/_edit_group_ = true
 

@@ -37,73 +37,51 @@ func create_arc(center: Vector2, start_angle: float, end_angle: float, segments 
 		arc_points.append(center + Vector2(cos(angle), sin(angle)) * connector_radius)
 	return arc_points
 
+func add_connector_points(connector, base_point, start_angle, end_angle):
+	if connector.shape == PuzzlePieceConnector.ConnectorShape.FLAT : return []
+	var segments = 16 
+	if connector.shape == PuzzlePieceConnector.ConnectorShape.TRIANGLE :
+		segments = 2
+	if connector.shape == PuzzlePieceConnector.ConnectorShape.SQUARE :
+		segments = 3
+	if connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
+		return create_arc(base_point, start_angle, end_angle, segments)
+	elif connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
+		return create_arc(base_point, start_angle, start_angle - (end_angle - start_angle), segments)
+	return []
+
 func update_shape():
 	var half_size = shape_size / 2.0
 	var points = []
 	points.append(Vector2(-half_size, -half_size))
-	
+
 	# Top Connector
-	if top_connector.shape == PuzzlePieceConnector.ConnectorShape.SEMI_CIRCLE:
-		if top_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(0, -half_size), PI, 2 * PI)
-		elif top_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(0, -half_size), PI, 0)
-	elif top_connector.shape == PuzzlePieceConnector.ConnectorShape.TRIANGLE:
-		if top_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(0, -half_size), PI, 2 * PI, 2)
-		elif top_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(0, -half_size), PI, 0, 2)
+	points += add_connector_points(top_connector, Vector2(0, -half_size), PI, 2 * PI)
 	points.append(Vector2(half_size, -half_size))
 
 	# Right Connector
-	if right_connector.shape == PuzzlePieceConnector.ConnectorShape.SEMI_CIRCLE:
-		if right_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(half_size, 0), -PI / 2, PI / 2)
-		elif right_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(half_size, 0), -PI / 2, -3 * PI / 2)
-	elif right_connector.shape == PuzzlePieceConnector.ConnectorShape.TRIANGLE:
-		if right_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(half_size, 0), -PI / 2, PI / 2, 2)
-		elif right_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(half_size, 0), -PI / 2, -3 * PI / 2, 2)
+	points += add_connector_points(right_connector, Vector2(half_size, 0), -PI / 2, PI / 2)
 	points.append(Vector2(half_size, half_size))
 
 	# Bottom Connector
-	if bottom_connector.shape == PuzzlePieceConnector.ConnectorShape.SEMI_CIRCLE:
-		if bottom_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(0, half_size), 0, PI)
-		elif bottom_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(0, half_size), 0, -PI)
-	elif bottom_connector.shape == PuzzlePieceConnector.ConnectorShape.TRIANGLE:
-		if bottom_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(0, half_size), 0, PI, 2)
-		elif bottom_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(0, half_size), 0, -PI, 2)
+	points += add_connector_points(bottom_connector, Vector2(0, half_size), 0, PI)
 	points.append(Vector2(-half_size, half_size))
 
 	# Left Connector
-	if left_connector.shape == PuzzlePieceConnector.ConnectorShape.SEMI_CIRCLE:
-		if left_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(-half_size, 0), PI / 2, 3 * PI / 2)
-		elif left_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(-half_size, 0), PI / 2, -PI / 2)
-	elif left_connector.shape == PuzzlePieceConnector.ConnectorShape.TRIANGLE:
-		if left_connector.type == PuzzlePieceConnector.ConnectorType.BUMP:
-			points += create_arc(Vector2(-half_size, 0), PI / 2, 3 * PI / 2, 2)
-		elif left_connector.type == PuzzlePieceConnector.ConnectorType.HOLE:
-			points += create_arc(Vector2(-half_size, 0), PI / 2, -PI / 2, 2)
+	points += add_connector_points(left_connector, Vector2(-half_size, 0), PI / 2, 3 * PI / 2)
 	points.append(Vector2(-half_size, -half_size))
 
-	
+	# Generate the polygon and update connectors
 	polygon = points
-	
 	right_connector.update_shape(connector_radius)
 	left_connector.update_shape(connector_radius)
 	top_connector.update_shape(connector_radius)
 	bottom_connector.update_shape(connector_radius)
-	
+
+	# Update the collider shape
 	var collider_shape = SegmentShape2D.new()
 	collider_shape.a = Vector2(0, -half_size)
 	collider_shape.b = Vector2(0, half_size)
-	
+
+	# Update the outline
 	$"../Outline".regenerate(polygon)

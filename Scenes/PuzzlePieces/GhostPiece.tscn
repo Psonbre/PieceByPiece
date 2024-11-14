@@ -42,6 +42,7 @@ script = ExtResource("1_ns84n")
 shape = SubResource("RectangleShape2D_812v4")
 
 [node name="Shape" type="Polygon2D" parent="."]
+visible = false
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 color = Color(1, 1, 1, 0.0705882)
