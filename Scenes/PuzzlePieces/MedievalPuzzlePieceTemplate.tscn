@@ -30,7 +30,11 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 [node name="Foreground" parent="Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
 
-[node name="PlayerSprite" parent="Shape" index="3"]
+[node name="Arrows" parent="Shape" index="2"]
+modulate = Color(1, 1, 1, 0.168627)
+scale = Vector2(0.137801, 0.13741)
+
+[node name="PlayerSprite" parent="Shape" index="4"]
 position = Vector2(-59, 53)
 
 [node name="Sprite" parent="Shape/PlayerSprite" index="0"]

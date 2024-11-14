@@ -92,11 +92,21 @@ position = Vector2(-301, 23)
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 
 [node name="Foreground" parent="PuzzlePiece/Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwAIAAIAAAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwAIAAEAAAACAAEAAwABAAIAAAACAAAAAwABAAIAAAACAP//AwABAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwAIAAEAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwAIAAIAAAACAAEAAwABAAIAAAACAAAAAwABAAIAAAACAP//AwABAAIAAAA=")
 
-[node name="Door" parent="PuzzlePiece/Shape" index="2"]
+[node name="Arrows" parent="PuzzlePiece/Shape" index="2"]
+modulate = Color(1, 1, 1, 0.168627)
+scale = Vector2(0.137801, 0.13741)
+default_color = Color(0, 0, 0, 1)
+selected_color = Color(0, 0, 0, 1)
+default_scale = Vector2(0, 0)
+selected_scale = Vector2(0, 0)
+
+[node name="Door" parent="PuzzlePiece/Shape" index="3"]
 visible = true
+modulate = Color(1, 1, 1, 1)
 position = Vector2(0, 46)
+scale = Vector2(0.642018, 0.642018)
 
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_rt0wc")
@@ -117,7 +127,7 @@ shape = SubResource("RectangleShape2D_p6fev")
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/BottomConnector" index="0"]
 shape = SubResource("RectangleShape2D_cr351")
 
-[node name="Collectible" parent="PuzzlePiece/Shape" index="5"]
+[node name="Collectible" parent="PuzzlePiece/Shape" index="6"]
 position = Vector2(-94, -95)
 
 [node name="Outline" parent="PuzzlePiece" index="2"]
@@ -131,7 +141,19 @@ position = Vector2(-2, 21)
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
 
 [node name="Foreground" parent="PuzzlePiece2/Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+/wIAAwAHAAIAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD+/wEAAwADAAIAAAD+/wAAAwADAAIAAAD+////AwADAAIAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+//7/AwAHAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AwAHAAEAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwAHAAIAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD+/wEAAwADAAIAAAD+/wAAAwADAAIAAAD+////AwADAAIAAAA=")
+
+[node name="Arrows" parent="PuzzlePiece2/Shape" index="2"]
+modulate = Color(1, 1, 1, 0.168627)
+scale = Vector2(0.137801, 0.13741)
+default_color = Color(0, 0, 0, 1)
+selected_color = Color(0, 0, 0, 1)
+default_scale = Vector2(0, 0)
+selected_scale = Vector2(0, 0)
+
+[node name="Door" parent="PuzzlePiece2/Shape" index="3"]
+modulate = Color(1, 1, 1, 1)
+scale = Vector2(0.642018, 0.642018)
 
 [node name="RightConnector" parent="PuzzlePiece2/Shape/Connectors" index="0"]
 shape = 1
@@ -169,6 +191,16 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 [node name="Foreground" parent="PuzzlePiece3/Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAA=")
 
+[node name="Arrows" parent="PuzzlePiece3/Shape" index="2"]
+visible = true
+modulate = Color(0, 0, 0, 0.168627)
+rotation = -0.00424429
+scale = Vector2(0.137801, 0.13741)
+
+[node name="Door" parent="PuzzlePiece3/Shape" index="3"]
+modulate = Color(1, 1, 1, 1)
+scale = Vector2(0.642018, 0.642018)
+
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_gnpkh")
 
@@ -185,7 +217,7 @@ shape = SubResource("RectangleShape2D_04j08")
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/BottomConnector" index="0"]
 shape = SubResource("RectangleShape2D_e7med")
 
-[node name="Collectible" parent="PuzzlePiece3/Shape" index="5"]
+[node name="Collectible" parent="PuzzlePiece3/Shape" index="6"]
 visible = true
 position = Vector2(0, -87)
 
