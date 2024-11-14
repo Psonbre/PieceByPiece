@@ -19,18 +19,26 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_globa
 	if last_displayed_position == actual_global_position : return
 	
 	last_displayed_position = actual_global_position
-	shape.hole_radius = piece.shape.hole_radius
-	shape.hole_segments = piece.shape.hole_segments
+	shape.connector_radius = piece.shape.connector_radius
+	shape.connector_segments = piece.shape.connector_segments
 	right_connector.type = piece.right_connector.type
 	left_connector.type = piece.left_connector.type
 	top_connector.type = piece.top_connector.type
 	bottom_connector.type = piece.bottom_connector.type
-	visual_shape.hole_radius = piece.shape.hole_radius
-	visual_shape.hole_segments = piece.shape.hole_segments
+	right_connector.shape = piece.right_connector.shape
+	left_connector.shape = piece.left_connector.shape
+	top_connector.shape = piece.top_connector.shape
+	bottom_connector.shape = piece.bottom_connector.shape
+	visual_shape.connector_radius = piece.shape.connector_radius
+	visual_shape.connector_segments = piece.shape.connector_segments
 	visual_right_connector.type = piece.right_connector.type
 	visual_left_connector.type = piece.left_connector.type
 	visual_top_connector.type = piece.top_connector.type
 	visual_bottom_connector.type = piece.bottom_connector.type
+	visual_right_connector.shape = piece.right_connector.shape
+	visual_left_connector.shape = piece.left_connector.shape
+	visual_top_connector.shape = piece.top_connector.shape
+	visual_bottom_connector.shape = piece.bottom_connector.shape
 	global_position = actual_global_position
 	global_rotation = actual_global_rotation
 	visual_shape.global_position = visual_global_position

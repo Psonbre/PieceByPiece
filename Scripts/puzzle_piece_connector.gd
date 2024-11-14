@@ -2,16 +2,24 @@
 extends Area2D
 class_name PuzzlePieceConnector
 
-enum ConnectorType {FLAT = 0, BUMP = 1, HOLE = -1}
+
+enum ConnectorShape {FLAT = 0, SEMI_CIRCLE = 1, TRIANGLE = 2}
+enum ConnectorType {BUMP = 1, HOLE = -1}
 
 @onready var puzzle_piece : PuzzlePiece = $"../../.."
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
-@onready var shape : PuzzlePieceShape = $"../.."
+@onready var puzzle_piece_shape = $"../.."
 
-@export var type := ConnectorType.FLAT : 
+
+@export var shape := ConnectorShape.FLAT :
+	set(value) :
+		shape = value
+		if (puzzle_piece_shape) : puzzle_piece_shape.update_shape()
+
+@export var type := ConnectorType.BUMP : 
 	set(value) :
 		type = value
-		if (shape) : shape.update_shape()
+		if (puzzle_piece_shape) : puzzle_piece_shape.update_shape()
 
 @export var side_collider : StaticBody2D
 
@@ -24,7 +32,7 @@ func get_first_compatible_overlapping_connector(include_dragging_piece := false,
 	if !include_dragging_piece && puzzle_piece.is_dragging : return
 	for connector in get_overlapping_areas():
 		if connector is PuzzlePieceConnector and connector.puzzle_piece is not GhostPiece:
-			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging) || (connector.type == ConnectorType.FLAT && !allow_flat_sides):
+			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging) || (connector.shape == ConnectorShape.FLAT && !allow_flat_sides):
 				continue
 			if is_connector_compatible(connector, false) :
 				return connector
@@ -77,11 +85,11 @@ func is_connector_compatible(other_connector: PuzzlePieceConnector, require_same
 	if angle_diff != 180:
 		return false
 
-	if require_same_connection_group and type == ConnectorType.FLAT and other_connector.type == ConnectorType.FLAT and !puzzle_piece.connection_group.equals(other_connector.puzzle_piece.connection_group):
+	if require_same_connection_group and shape == ConnectorShape.FLAT and other_connector.shape == ConnectorShape.FLAT and !puzzle_piece.connection_group.equals(other_connector.puzzle_piece.connection_group):
 		return false
 
 	# Check if connector types are compatible (should sum to 0 if opposite)
-	if type + other_connector.type != 0:
+	if type * shape + other_connector.type * other_connector.shape != 0:
 		return false
 
 	# Check if connectors are already connected or if this piece is a ghost
@@ -99,21 +107,22 @@ func get_adjacent_piece_position(account_for_tilt : bool):
 		return puzzle_piece.global_position + rotated_connector_position * 2
 
 func update_shape(hole_radius : float):
-	if type == ConnectorType.FLAT :
+	if shape == ConnectorShape.FLAT :
 		var rectangle_shape = RectangleShape2D.new()
 		rectangle_shape.size = Vector2(hole_radius, hole_radius * 2)
 		collision_shape.shape = rectangle_shape
 		collision_shape.position = Vector2(-hole_radius / 2 + 1,0)
-	elif type == ConnectorType.BUMP :
-		var circle_shape = CircleShape2D.new()
-		circle_shape.radius = hole_radius * 1.0
-		collision_shape.shape = circle_shape
-		collision_shape.position = Vector2.ZERO
-	elif type == ConnectorType.HOLE :
-		var rectangle_shape = RectangleShape2D.new()
-		rectangle_shape.size = Vector2(hole_radius, hole_radius * 2)
-		collision_shape.shape = rectangle_shape
-		collision_shape.position = Vector2(-hole_radius / 2 + 1,0)
+	else :
+		if type == ConnectorType.BUMP :
+			var circle_shape = CircleShape2D.new()
+			circle_shape.radius = hole_radius * 1.0
+			collision_shape.shape = circle_shape
+			collision_shape.position = Vector2.ZERO
+		elif type == ConnectorType.HOLE :
+			var rectangle_shape = RectangleShape2D.new()
+			rectangle_shape.size = Vector2(hole_radius, hole_radius * 2)
+			collision_shape.shape = rectangle_shape
+			collision_shape.position = Vector2(-hole_radius / 2 + 1,0)
 
 func connect_with_closest():
 	var other_connector = get_first_compatible_overlapping_connector(false, true)
@@ -121,4 +130,4 @@ func connect_with_closest():
 	connected_to = other_connector
 	
 func has_connection() :
-	return connected_to != null || type == ConnectorType.FLAT
+	return connected_to != null || type == ConnectorShape.FLAT

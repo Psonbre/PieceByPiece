@@ -54,7 +54,6 @@ z_index = 1
 [node name="RightConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(130, 0)
 script = ExtResource("4_hctjr")
-type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 shape = SubResource("CircleShape2D_fb703")
@@ -63,7 +62,6 @@ shape = SubResource("CircleShape2D_fb703")
 position = Vector2(-130, 0)
 rotation = 3.14159
 script = ExtResource("4_hctjr")
-type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 shape = SubResource("CircleShape2D_m2yvs")
@@ -82,7 +80,6 @@ shape = SubResource("RectangleShape2D_yl5am")
 position = Vector2(0, 130)
 rotation = 1.57079
 script = ExtResource("4_hctjr")
-type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")
@@ -120,7 +117,6 @@ z_index = 1
 position = Vector2(130, 0)
 collision_layer = 2
 script = ExtResource("4_hctjr")
-type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/RightConnector"]
 shape = SubResource("CircleShape2D_fb703")
@@ -130,7 +126,6 @@ position = Vector2(-130, 0)
 rotation = 3.14159
 collision_layer = 2
 script = ExtResource("4_hctjr")
-type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/LeftConnector"]
 shape = SubResource("CircleShape2D_m2yvs")
@@ -151,7 +146,6 @@ position = Vector2(0, 130)
 rotation = 1.57079
 collision_layer = 2
 script = ExtResource("4_hctjr")
-type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")
