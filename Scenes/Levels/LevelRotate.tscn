@@ -43,16 +43,16 @@ shader = ExtResource("6_uk3dv")
 shader_parameter/speed = 1.405
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsndp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu6eo"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_55043"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cimgi"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xnj6s"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nm38"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_py4cr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx2ek"]
 size = Vector2(35, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uob3j"]
@@ -99,7 +99,6 @@ script = ExtResource("4_w4whw")
 
 [node name="PuzzlePiece" parent="." instance=ExtResource("5_hdhrh")]
 position = Vector2(-157, -199)
-is_rotating_piece = true
 
 [node name="Shape" parent="PuzzlePiece" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 2.14306e-15, 93, -35, 128, -128, 128, -128, 35, -163, 4.28612e-15, -128, -35, -128, -128)
@@ -149,7 +148,6 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 
 
 [node name="PuzzlePiece2" parent="." instance=ExtResource("5_hdhrh")]
 position = Vector2(-153, 141)
-is_rotating_piece = true
 
 [node name="Shape" parent="PuzzlePiece2" index="1"]
 polygon = PackedVector2Array(-128, -128, -35, -128, 2.14306e-15, -93, 35, -128, 128, -128, 128, -35, 97.6891, -17.5, 97.6891, 17.5, 128, 35, 128, 128, 35, 128, 2.14306e-15, 93, -35, 128, -128, 128, -128, 35, -97.6891, 17.5, -97.6891, -17.5, -128, -35, -128, -128)
@@ -194,7 +192,7 @@ position = Vector2(158, -186)
 is_rotating_piece = true
 
 [node name="Shape" parent="PuzzlePiece3" index="1"]
-polygon = PackedVector2Array(-128, -128, -35, -128, -17.5, -158.311, 17.5, -158.311, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 2.14306e-15, 93, -35, 128, -128, 128, -128, 35, -158.311, 17.5, -158.311, -17.5, -128, -35, -128, -128)
+polygon = PackedVector2Array(-128, -128, -35, -128, -17.5, -158.311, 17.5, -158.311, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -163, 4.28612e-15, -128, -35, -128, -128)
 
 [node name="Background" parent="PuzzlePiece3/Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+//7/AwACAAIAAAD+////AwACAAIAAAD+/wAAAwACAAIAAAD+/wEAAwACAAIAAAD+/wIAAwACAAIAAAD//wIAAwACAAIAAAD//wEAAwACAAIAAAD//wAAAwACAAIAAAD/////AwACAAIAAAD///7/AwACAAIAAAAAAP7/AwACAAIAAAAAAP//AwACAAIAAAAAAAAAAwACAAIAAAAAAAEAAwACAAIAAAAAAAIAAwACAAIAAAABAAIAAwACAAIAAAABAAEAAwACAAIAAAABAAAAAwACAAIAAAABAP7/AwACAAIAAAABAP//AwACAAIAAAACAAIAAwACAAIAAAACAAEAAwACAAIAAAACAAAAAwACAAIAAAACAP//AwACAAIAAAACAP7/AwACAAIAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAMAAAAAAAMAAwACAAMAAAABAAMAAwACAAMAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
@@ -207,32 +205,31 @@ shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_rsndp")
+shape = SubResource("RectangleShape2D_vu6eo")
 
 [node name="LeftConnector" parent="PuzzlePiece3/Shape/Connectors" index="1"]
-shape = 3
+shape = 2
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_55043")
+shape = SubResource("CircleShape2D_cimgi")
 
 [node name="TopConnector" parent="PuzzlePiece3/Shape/Connectors" index="2"]
 shape = 3
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/TopConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_xnj6s")
+shape = SubResource("CircleShape2D_5nm38")
 
 [node name="BottomConnector" parent="PuzzlePiece3/Shape/Connectors" index="3"]
-shape = 2
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_py4cr")
+shape = SubResource("RectangleShape2D_xx2ek")
 
 [node name="Outline" parent="PuzzlePiece3" index="2"]
 material = SubResource("ShaderMaterial_idbiu")
-points = PackedVector2Array(-128, -128, -35, -128, -17.5, -158.311, 17.5, -158.311, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 2.14306e-15, 93, -35, 128, -128, 128, -128, 35, -158.311, 17.5, -158.311, -17.5, -128, -35, -128, -128)
+points = PackedVector2Array(-128, -128, -35, -128, -17.5, -158.311, 17.5, -158.311, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -163, 4.28612e-15, -128, -35, -128, -128)
 
 [node name="PuzzlePiece4" parent="." instance=ExtResource("5_hdhrh")]
 position = Vector2(154, 144)

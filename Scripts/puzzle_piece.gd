@@ -94,13 +94,19 @@ func _process(delta):
 			ghost_piece.hide_display()
 		
 		if can_be_dropped():
-			outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
+			if is_rotating_piece :
+				outline.material.set_shader_parameter('color', Vector4(0, 1, 0, 1))
+			else :
+				outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
 		else:
 			outline.material.set_shader_parameter('color', Vector4(1, 0, 0, 1))
 			
 	else:
 		scale = scale.move_toward(default_scale, 2 * delta)
-		outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
+		if is_rotating_piece :
+			outline.material.set_shader_parameter('color', Vector4(0, 1, 0, 1))
+		else :
+			outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
 	
 	has_attempted_connection_this_tick = false
 

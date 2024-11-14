@@ -7,16 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="5_jny6k"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="6_r7mbc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ls427"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwo7p"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvlpj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68skk"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_335cj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnd8h"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8acu5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skh1a"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jp1g"]
@@ -25,40 +25,40 @@ shader = ExtResource("6_r7mbc")
 shader_parameter/speed = 1.405
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2mixw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_py4ts"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cmwjk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_52b8d"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ru54"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_echqx"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hydc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlkkp"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qpqj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_few28"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqwqd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31dy5"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_duwmj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_27pl2"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u881p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbeea"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q86rx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l4cd"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ysei"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd5m6"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_18ucu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l3h2"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpfci"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxgye"]
 size = Vector2(35, 70)
 
 [node name="Level" type="Node2D"]
@@ -101,29 +101,27 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275,
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwAKAAIAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwABAAEAAAD//wIAAwALAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAwAFAAIAAAD//wAAAwAFAAIAAAD/////AwAFAAIAAAA=")
 
 [node name="Door" parent="PuzzlePiece/Shape" index="2"]
-visible = false
 scale = Vector2(0.519999, 0.519999)
 
-[node name="Connectors" parent="PuzzlePiece/Shape" index="4"]
-visible = false
-
 [node name="RightConnector" parent="PuzzlePiece/Shape/Connectors" index="0"]
+shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_ls427")
+shape = SubResource("RectangleShape2D_iwo7p")
 
 [node name="LeftConnector" parent="PuzzlePiece/Shape/Connectors" index="1"]
+shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_mvlpj")
+shape = SubResource("RectangleShape2D_68skk")
 
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_335cj")
+shape = SubResource("RectangleShape2D_qnd8h")
 
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_8acu5")
+shape = SubResource("RectangleShape2D_skh1a")
 
 [node name="Collectible" parent="PuzzlePiece/Shape" index="5"]
 visible = true
@@ -132,9 +130,6 @@ position = Vector2(-99, 52)
 [node name="Outline" parent="PuzzlePiece" index="2"]
 material = SubResource("ShaderMaterial_5jp1g")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
-
-[node name="Colliders" parent="PuzzlePiece" index="3"]
-visible = false
 
 [node name="PuzzlePiece2" parent="." instance=ExtResource("5_jny6k")]
 position = Vector2(-483, 35)
@@ -146,34 +141,31 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275,
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwAKAAIAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwADAAEAAAAAAAIAAwAFAAIAAAABAAIAAAAEAAQAAAACAAIAAwABAAEAAAAAAP//AwAFAAIAAAAAAAAAAwAFAAIAAAAAAAEAAwAFAAIAAAABAAEAAAAEAAQAAAA=")
 
 [node name="Door" parent="PuzzlePiece2/Shape" index="2"]
-visible = false
 scale = Vector2(0.519999, 0.519999)
 
-[node name="Connectors" parent="PuzzlePiece2/Shape" index="4"]
-visible = false
-
 [node name="RightConnector" parent="PuzzlePiece2/Shape/Connectors" index="0"]
-type = 1
+shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_2mixw")
+shape = SubResource("CircleShape2D_py4ts")
 
 [node name="LeftConnector" parent="PuzzlePiece2/Shape/Connectors" index="1"]
-type = 1
+shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_cmwjk")
+shape = SubResource("CircleShape2D_52b8d")
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_2ru54")
+shape = SubResource("RectangleShape2D_echqx")
 
 [node name="BottomConnector" parent="PuzzlePiece2/Shape/Connectors" index="3"]
+shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_5hydc")
+shape = SubResource("RectangleShape2D_hlkkp")
 
 [node name="Collectible" parent="PuzzlePiece2/Shape" index="5"]
 position = Vector2(60, 1)
@@ -182,9 +174,6 @@ scale = Vector2(0.402039, 0.402039)
 [node name="Outline" parent="PuzzlePiece2" index="2"]
 material = SubResource("ShaderMaterial_5jp1g")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 121.172, 32.3358, 114.606, 29.1014, 108.555, 24.7487, 103.251, 19.445, 98.8986, 13.3939, 95.6642, 6.82816, 93.6725, 2.14306e-15, 93, -6.82816, 93.6725, -13.3939, 95.6642, -19.445, 98.8986, -24.7487, 103.251, -29.1014, 108.555, -32.3358, 114.606, -34.3275, 121.172, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
-
-[node name="Colliders" parent="PuzzlePiece2" index="3"]
-visible = false
 
 [node name="PuzzlePiece4" parent="." instance=ExtResource("5_jny6k")]
 position = Vector2(540, 24)
@@ -196,27 +185,23 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -134.828, -32.3358
 tile_map_data = PackedByteArray("AAD+//7/AwADAAIAAAAAAP7/AwAFAAMAAAABAP7/AAAEAAQAAAACAP7/AwABAAIAAAD+/wIAAwAHAAIAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwAIAAIAAAD+////AwADAAIAAAD+/wAAAwADAAIAAAD+/wEAAwADAAIAAAACAAEAAwABAAIAAAACAP//AwABAAIAAAABAAEAAAAEAAMAAAABAAAAAAAEAAMAAAABAP//AAAEAAMAAAAAAP3/AwAFAAIAAAACAAAAAwABAAIAAAA=")
 
 [node name="Door" parent="PuzzlePiece4/Shape" index="2"]
-visible = false
 scale = Vector2(0.519999, 0.519999)
 
-[node name="Connectors" parent="PuzzlePiece4/Shape" index="4"]
-visible = false
-
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_4qpqj")
+shape = SubResource("RectangleShape2D_few28")
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_gqwqd")
+shape = SubResource("RectangleShape2D_31dy5")
 
 [node name="TopConnector" parent="PuzzlePiece4/Shape/Connectors" index="2"]
-type = 1
+shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/TopConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_duwmj")
+shape = SubResource("CircleShape2D_27pl2")
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_u881p")
+shape = SubResource("RectangleShape2D_nbeea")
 
 [node name="Collectible" parent="PuzzlePiece4/Shape" index="5"]
 position = Vector2(52, -18)
@@ -225,9 +210,6 @@ scale = Vector2(0.402039, 0.402039)
 [node name="Outline" parent="PuzzlePiece4" index="2"]
 material = SubResource("ShaderMaterial_5jp1g")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -134.828, -32.3358, -141.394, -29.1014, -147.445, -24.7487, -152.749, -19.445, -157.101, -13.3939, -160.336, -6.82816, -162.327, -6.42918e-15, -163, 6.82816, -162.327, 13.3939, -160.336, 19.445, -157.101, 24.7487, -152.749, 29.1014, -147.445, 32.3358, -141.394, 34.3275, -134.828, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
-
-[node name="Colliders" parent="PuzzlePiece4" index="3"]
-visible = false
 
 [node name="PuzzlePiece3" parent="." instance=ExtResource("5_jny6k")]
 position = Vector2(227, 32)
@@ -239,32 +221,28 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 3
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwAIAAEAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwAIAAIAAAACAAEAAwABAAIAAAACAAAAAwABAAIAAAACAP//AwABAAIAAAA=")
 
 [node name="Door" parent="PuzzlePiece3/Shape" index="2"]
+visible = true
 position = Vector2(0, 47)
 
-[node name="Connectors" parent="PuzzlePiece3/Shape" index="4"]
-visible = false
-
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_q86rx")
+shape = SubResource("RectangleShape2D_8l4cd")
 
 [node name="LeftConnector" parent="PuzzlePiece3/Shape/Connectors" index="1"]
+shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_4ysei")
+shape = SubResource("RectangleShape2D_dd5m6")
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_18ucu")
+shape = SubResource("RectangleShape2D_8l3h2")
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_gpfci")
+shape = SubResource("RectangleShape2D_sxgye")
 
 [node name="Outline" parent="PuzzlePiece3" index="2"]
 material = SubResource("ShaderMaterial_5jp1g")
 points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
-
-[node name="Colliders" parent="PuzzlePiece3" index="3"]
-visible = false
 
 [editable path="PuzzlePiece"]
 [editable path="PuzzlePiece/Shape/Door"]
