@@ -2,7 +2,6 @@
 extends Area2D
 class_name PuzzlePieceConnector
 
-enum Side {TOP = 1, LEFT = -2, RIGHT = 2, BOTTOM = -1}
 enum ConnectorType {FLAT = 0, BUMP = 1, HOLE = -1}
 
 @onready var puzzle_piece : PuzzlePiece = $"../../.."
@@ -14,7 +13,6 @@ enum ConnectorType {FLAT = 0, BUMP = 1, HOLE = -1}
 		type = value
 		if (shape) : shape.update_shape()
 
-@export var side := Side.LEFT
 @export var side_collider : StaticBody2D
 
 var connected_to : PuzzlePieceConnector = null :
@@ -58,16 +56,43 @@ func get_all_pieces_with_compatible_overlapping_connectors() :
 				pieces_with_valid_overlapping_connectors.append(connector.puzzle_piece)
 	return pieces_with_valid_overlapping_connectors
 
-func is_connector_compatible(other_connector : PuzzlePieceConnector, require_same_connection_group := true):
-	if side + other_connector.side != 0 : #incompatible sides
+func is_connector_compatible(other_connector: PuzzlePieceConnector, require_same_connection_group := true) -> bool:
+	var normalized_self_rotation = global_rotation_degrees
+	if normalized_self_rotation < 0:
+		normalized_self_rotation += 360 * ceil(abs(normalized_self_rotation) / 360.0)
+	elif normalized_self_rotation >= 360:
+		normalized_self_rotation -= 360 * floor(normalized_self_rotation / 360.0)
+
+	var normalized_other_rotation = other_connector.global_rotation_degrees
+	if normalized_other_rotation < 0:
+		normalized_other_rotation += 360 * ceil(abs(normalized_other_rotation) / 360.0)
+	elif normalized_other_rotation >= 360:
+		normalized_other_rotation -= 360 * floor(normalized_other_rotation / 360.0)
+
+	var rounded_self_rotation = round(normalized_self_rotation / 90.0) * 90
+	var rounded_other_rotation = round(normalized_other_rotation / 90.0) * 90
+
+	var angle_diff = abs(rounded_self_rotation - rounded_other_rotation)
+
+	if angle_diff != 180:
 		return false
-	if require_same_connection_group && type == ConnectorType.FLAT and other_connector.type == ConnectorType.FLAT && !puzzle_piece.connection_group.equals(other_connector.puzzle_piece.connection_group):
+
+	if require_same_connection_group and type == ConnectorType.FLAT and other_connector.type == ConnectorType.FLAT and !puzzle_piece.connection_group.equals(other_connector.puzzle_piece.connection_group):
 		return false
-	if type + other_connector.type != 0 : #incompatible connectors
+
+	# Check if connector types are compatible (should sum to 0 if opposite)
+	if type + other_connector.type != 0:
 		return false
+
+	# Check if connectors are already connected or if this piece is a ghost
 	if other_connector.connected_to != self and other_connector.connected_to != null and puzzle_piece is not GhostPiece:
 		return false
+
 	return true
+
+
+
+
 
 func get_adjacent_piece_position(account_for_rotation : bool):	
 	if account_for_rotation :

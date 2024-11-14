@@ -1,7 +1,8 @@
 extends Area2D
 class_name PuzzlePiece
 
-@export var drag_speed := 10.0
+@export var is_rotating_piece := false
+
 static var global_dragging := false
 
 @onready var ghost_piece : GhostPiece = $"../GhostPiece"
@@ -16,6 +17,10 @@ static var global_dragging := false
 
 var has_attempted_connection_this_tick := false
 
+var rotated_angle := 0.0
+var target_rotated_angle := 0
+var tilt_angle := 0.0
+var drag_speed := 10.0
 var is_dragging := false
 var is_hovering := false
 var velocity := Vector2.ZERO
@@ -23,10 +28,16 @@ var default_scale := Vector2(1.0, 1.0)
 var connection_group := ConnectionGroup.new(self)
 
 var start_drag_position := Vector2.ZERO
+var start_drag_target_rotated_angle := 0.0
+var start_drag_rotation := 0.0
+var start_drag_tilt := 0.0
 
 func _ready():
 	door.get_node("CollisionShape2D").disabled = !door.visible 
-	start_drag_position = position
+	start_drag_position = global_position
+	start_drag_target_rotated_angle = target_rotated_angle
+	start_drag_rotation = global_rotation
+	start_drag_tilt = tilt_angle
 	default_scale = scale
 	player_sprite.visible = true
 	
@@ -34,6 +45,15 @@ func _ready():
 	await get_tree().physics_frame
 	
 	attempt_connection()
+
+func _input(event):
+	if is_dragging && is_rotating_piece :
+		if event.is_action_pressed("Rotate Right"):
+			target_rotated_angle = (target_rotated_angle + 90) % 360
+			tilt_angle = 0
+		if event.is_action_pressed("Rotate Left"):
+			target_rotated_angle = (target_rotated_angle - 90) % 360
+			tilt_angle = 0
 
 func _process(delta):
 	if Input.is_action_just_pressed("Click") and is_hovering and !global_dragging:
@@ -49,11 +69,15 @@ func _process(delta):
 		scale = scale.move_toward(default_scale * 1.1, 0.6 * delta)
 		
 		if velocity.length() > 0:
-			var tilt_angle = velocity.x
+			var tilt_by = deg_to_rad(velocity.x) / 30.0
 			var max_tilt = deg_to_rad(15)
+			tilt_angle += tilt_by
 			tilt_angle = clamp(tilt_angle, -max_tilt, max_tilt)
-			rotation = move_toward(rotation, tilt_angle, deg_to_rad(5) * velocity.length() / 260)
-			
+		
+		rotated_angle = move_toward(rotated_angle, deg_to_rad(target_rotated_angle), abs(deg_to_rad(target_rotated_angle) - rotated_angle) * delta * 10.0)
+		
+		rotation = rotated_angle + tilt_angle
+		
 		var closest_compatible_connector = get_first_compatible_overlapping_connector()
 		if closest_compatible_connector:
 			ghost_piece.display(
@@ -96,7 +120,10 @@ func start_dragging():
 	set_colliders_in_drag_mode(true)
 	outline.outline_type = PuzzlePieceOutline.OutlineType.MOVING
 	z_index = 3
-	start_drag_position = position
+	start_drag_position = global_position
+	start_drag_target_rotated_angle = target_rotated_angle
+	start_drag_rotation = global_rotation
+	start_drag_tilt = tilt_angle
 	is_dragging = true
 	global_dragging = true
 	attempt_connection()
@@ -159,8 +186,11 @@ func clamp_player():
 
 func cancel_drag():
 	ghost_piece.hide_display()
-	position = start_drag_position
-	rotation = 0
+	global_position = start_drag_position
+	target_rotated_angle = start_drag_target_rotated_angle
+	rotated_angle = deg_to_rad(start_drag_target_rotated_angle)
+	tilt_angle = start_drag_tilt
+	global_rotation = start_drag_rotation
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
 	player_sprite.visible = true
