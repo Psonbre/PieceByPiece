@@ -15,7 +15,7 @@ func _ready():
 	start_drag_position = position
 	default_scale = scale
 	
-func display(piece : PuzzlePiece, actual_global_position : Vector2, visual_global_position : Vector2, visual_global_rotation : float):
+func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_global_rotation : float, visual_global_position : Vector2, visual_global_rotation : float):
 	if last_displayed_position == actual_global_position : return
 	
 	last_displayed_position = actual_global_position
@@ -32,6 +32,7 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, visual_globa
 	visual_top_connector.type = piece.top_connector.type
 	visual_bottom_connector.type = piece.bottom_connector.type
 	global_position = actual_global_position
+	global_rotation = actual_global_rotation
 	visual_shape.global_position = visual_global_position
 	visual_shape.global_rotation = visual_global_rotation
 	outline.position = visual_shape.position

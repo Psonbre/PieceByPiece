@@ -42,7 +42,6 @@ script = ExtResource("1_ns84n")
 shape = SubResource("RectangleShape2D_812v4")
 
 [node name="Shape" type="Polygon2D" parent="."]
-visible = false
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 color = Color(1, 1, 1, 0.0705882)
@@ -56,7 +55,6 @@ z_index = 1
 position = Vector2(130, 0)
 script = ExtResource("4_hctjr")
 type = 1
-side = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 shape = SubResource("CircleShape2D_fb703")
@@ -75,7 +73,6 @@ position = Vector2(0, -130)
 rotation = -1.57079
 script = ExtResource("4_hctjr")
 type = -1
-side = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-17.5, 0)
@@ -86,7 +83,6 @@ position = Vector2(0, 130)
 rotation = 1.57079
 script = ExtResource("4_hctjr")
 type = 1
-side = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")
@@ -125,7 +121,6 @@ position = Vector2(130, 0)
 collision_layer = 2
 script = ExtResource("4_hctjr")
 type = 1
-side = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/RightConnector"]
 shape = SubResource("CircleShape2D_fb703")
@@ -146,7 +141,6 @@ rotation = -1.57079
 collision_layer = 2
 script = ExtResource("4_hctjr")
 type = -1
-side = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/TopConnector"]
 position = Vector2(-17.5, 0)
@@ -158,7 +152,6 @@ rotation = 1.57079
 collision_layer = 2
 script = ExtResource("4_hctjr")
 type = 1
-side = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")

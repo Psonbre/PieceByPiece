@@ -90,15 +90,13 @@ func is_connector_compatible(other_connector: PuzzlePieceConnector, require_same
 
 	return true
 
-
-
-
-
-func get_adjacent_piece_position(account_for_rotation : bool):	
-	if account_for_rotation :
+func get_adjacent_piece_position(account_for_tilt : bool):	
+	if account_for_tilt :
 		return puzzle_piece.global_position + (global_position - puzzle_piece.global_position) * 2
 	else :
-		return puzzle_piece.global_position + position * 2
+		var final_piece_rotation = deg_to_rad(round(puzzle_piece.target_rotated_angle / 90.0) * 90)
+		var rotated_connector_position = position.rotated(deg_to_rad(round(puzzle_piece.target_rotated_angle / 90.0) * 90))
+		return puzzle_piece.global_position + rotated_connector_position * 2
 
 func update_shape(hole_radius : float):
 	if type == ConnectorType.FLAT :

@@ -49,10 +49,10 @@ func _ready():
 func _input(event):
 	if is_dragging && is_rotating_piece :
 		if event.is_action_pressed("Rotate Right"):
-			target_rotated_angle = (target_rotated_angle + 90) % 360
+			target_rotated_angle = target_rotated_angle + 90
 			tilt_angle = 0
 		if event.is_action_pressed("Rotate Left"):
-			target_rotated_angle = (target_rotated_angle - 90) % 360
+			target_rotated_angle = target_rotated_angle - 90
 			tilt_angle = 0
 
 func _process(delta):
@@ -60,7 +60,10 @@ func _process(delta):
 		start_dragging()
 	elif Input.is_action_just_released("Click") and is_dragging:
 		stop_dragging()
-
+		
+	if shape.has_node("Player"):
+		shape.get_node("Player").global_rotation = 0 + tilt_angle
+		
 	if is_dragging:
 		var target_position = get_global_mouse_position()
 		var distance = target_position - global_position
@@ -83,8 +86,9 @@ func _process(delta):
 			ghost_piece.display(
 				self, 
 				closest_compatible_connector.get_adjacent_piece_position(false), 
+				deg_to_rad(round(target_rotated_angle / 90.0) * 90),
 				closest_compatible_connector.get_adjacent_piece_position(true), 
-				closest_compatible_connector.puzzle_piece.global_rotation
+				closest_compatible_connector.puzzle_piece.tilt_angle + deg_to_rad(round(target_rotated_angle / 90.0) * 90)
 			)
 		else:
 			ghost_piece.hide_display()
@@ -121,7 +125,7 @@ func start_dragging():
 	outline.outline_type = PuzzlePieceOutline.OutlineType.MOVING
 	z_index = 3
 	start_drag_position = global_position
-	start_drag_target_rotated_angle = target_rotated_angle
+	start_drag_target_rotated_angle = target_rotated_angle % 360
 	start_drag_rotation = global_rotation
 	start_drag_tilt = tilt_angle
 	is_dragging = true
@@ -130,6 +134,7 @@ func start_dragging():
 	attempt_connection_on_all_other_pieces()
 	
 func stop_dragging():
+	if abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 : return #safeguard to prevent pieces being dropped at wierd angles
 	if !can_be_dropped() : 
 		cancel_drag()
 		return
@@ -207,9 +212,10 @@ func cancel_drag():
 	set_colliders_in_drag_mode(false)
 	
 func snap_to_connector(connector : PuzzlePieceConnector):
-	connector.puzzle_piece.rotation = 0
+	connector.puzzle_piece.global_rotation = deg_to_rad(round(connector.puzzle_piece.target_rotated_angle / 90.0) * 90)
 	global_position = connector.get_adjacent_piece_position(false)
-	rotation = 0
+	global_rotation = deg_to_rad(round(target_rotated_angle / 90.0) * 90)
+	tilt_angle = 0
 
 func connect_all_sides():
 	left_connector.connect_with_closest()
