@@ -61,7 +61,7 @@ func _process(delta):
 	elif Input.is_action_just_released("Click") and is_dragging:
 		stop_dragging()
 		
-	if shape.has_node("Player"):
+	if shape.has_node("Player") && !Player.winning:
 		shape.get_node("Player").global_rotation = 0 + tilt_angle
 		
 	if is_dragging:
