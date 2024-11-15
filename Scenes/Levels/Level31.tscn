@@ -94,19 +94,15 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 3
 [node name="Foreground" parent="PuzzlePiece/Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwAIAAEAAAD+/wIAAwABAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwAIAAIAAAACAAEAAwABAAIAAAACAAAAAwABAAIAAAACAP//AwABAAIAAAA=")
 
-[node name="Arrows" parent="PuzzlePiece/Shape" index="2"]
-modulate = Color(1, 1, 1, 0.168627)
-scale = Vector2(0.137801, 0.13741)
+[node name="Door" parent="PuzzlePiece/Shape" index="2"]
+visible = true
+position = Vector2(0, 46)
+
+[node name="Arrows" parent="PuzzlePiece/Shape" index="3"]
 default_color = Color(0, 0, 0, 1)
 selected_color = Color(0, 0, 0, 1)
 default_scale = Vector2(0, 0)
 selected_scale = Vector2(0, 0)
-
-[node name="Door" parent="PuzzlePiece/Shape" index="3"]
-visible = true
-modulate = Color(1, 1, 1, 1)
-position = Vector2(0, 46)
-scale = Vector2(0.642018, 0.642018)
 
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_rt0wc")
@@ -143,17 +139,14 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275,
 [node name="Foreground" parent="PuzzlePiece2/Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/AwAHAAEAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwADAAMAAAD+/wIAAwAHAAIAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD+/wEAAwADAAIAAAD+/wAAAwADAAIAAAD+////AwADAAIAAAA=")
 
-[node name="Arrows" parent="PuzzlePiece2/Shape" index="2"]
-modulate = Color(1, 1, 1, 0.168627)
-scale = Vector2(0.137801, 0.13741)
+[node name="Arrows" parent="PuzzlePiece2/Shape" index="3"]
 default_color = Color(0, 0, 0, 1)
 selected_color = Color(0, 0, 0, 1)
 default_scale = Vector2(0, 0)
 selected_scale = Vector2(0, 0)
 
-[node name="Door" parent="PuzzlePiece2/Shape" index="3"]
-modulate = Color(1, 1, 1, 1)
-scale = Vector2(0.642018, 0.642018)
+[node name="PlayerSprite" parent="PuzzlePiece2/Shape" index="4"]
+position = Vector2(-46, 46)
 
 [node name="RightConnector" parent="PuzzlePiece2/Shape/Connectors" index="0"]
 shape = 1
@@ -191,15 +184,10 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 [node name="Foreground" parent="PuzzlePiece3/Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAA=")
 
-[node name="Arrows" parent="PuzzlePiece3/Shape" index="2"]
+[node name="Arrows" parent="PuzzlePiece3/Shape" index="3"]
 visible = true
 modulate = Color(0, 0, 0, 0.168627)
 rotation = -0.00424429
-scale = Vector2(0.137801, 0.13741)
-
-[node name="Door" parent="PuzzlePiece3/Shape" index="3"]
-modulate = Color(1, 1, 1, 1)
-scale = Vector2(0.642018, 0.642018)
 
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_gnpkh")
