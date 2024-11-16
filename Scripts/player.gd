@@ -8,8 +8,11 @@ const SPEED := 300.0
 const JUMP_VELOCITY := -400.0
 var overlapping_pieces = []
 var default_scale
-static var current_level := 31
+static var current_level := 99
 static var winning := false
+static var entering_portal := false
+static var exiting_portal := false
+static var target_portal : Portal
 var winning_door
 static var has_collectible = false
 
@@ -79,6 +82,13 @@ func win(door):
 		Player.winning = true
 		set_physics_process(false)
 
+func teleport(portal : Portal):
+	set_physics_process(false)
+	portal.entered = true
+	portal.cooldown.start()
+	entering_portal = true
+	target_portal = portal
+
 func _process(delta):
 	if (winning) :
 		global_position = global_position.move_toward(winning_door.global_position, 10 * delta)
@@ -89,6 +99,28 @@ func _process(delta):
 			current_level += 1
 			has_collectible = false
 			get_tree().root.get_node("Game").load_level("Level" + str(current_level))
+			
+	elif entering_portal :
+		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
+		rotate(12 * delta)
+		global_scale = global_scale.move_toward(Vector2.ZERO, 5 * delta)
+		if global_scale.x <= 0.1 :
+			global_position = target_portal.connected_portal.global_position
+			target_portal = target_portal.connected_portal
+			entering_portal = false
+			exiting_portal = true
+			
+	elif exiting_portal :
+		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
+		rotate(12 * delta)
+		global_scale = global_scale.move_toward(default_scale, 5 * delta)
+		if global_scale.x >= default_scale.x :
+			target_portal.entered = true
+			target_portal.cooldown.start()
+			set_physics_process(true)
+			velocity = Vector2.ZERO
+			rotation = 0
+			exiting_portal = false
 			
 func play_animation(animation):
 	for player_sprite : AnimatedSprite2D in get_tree().get_nodes_in_group("PlayerSprites"):

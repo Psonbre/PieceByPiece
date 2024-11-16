@@ -14,6 +14,7 @@ static var global_dragging := false
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite : AnimatedSprite2D = $Shape/PlayerSprite/Sprite
 @onready var door = $Shape/Door
+var portal : Portal
 
 var has_attempted_connection_this_tick := false
 
@@ -34,6 +35,8 @@ var start_drag_tilt := 0.0
 
 func _ready():
 	door.get_node("CollisionShape2D").disabled = !door.visible 
+	portal = shape.get_node("Portal") if shape.has_node("Portal") else null
+	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
 	start_drag_target_rotated_angle = target_rotated_angle
 	start_drag_rotation = global_rotation
@@ -61,7 +64,7 @@ func _process(delta):
 	elif Input.is_action_just_released("Click") and is_dragging:
 		stop_dragging()
 		
-	if shape.has_node("Player") && !Player.winning:
+	if shape.has_node("Player") && !Player.winning && !Player.entering_portal && !Player.exiting_portal:
 		shape.get_node("Player").global_rotation = 0 + tilt_angle
 		
 	if is_dragging:
@@ -94,13 +97,12 @@ func _process(delta):
 			ghost_piece.hide_display()
 		
 		if can_be_dropped():
-			outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
+			outline.set_type(PuzzlePieceOutline.OutlineType.DRAGGING)
 		else:
-			outline.material.set_shader_parameter('color', Vector4(1, 0, 0, 1))
+			outline.set_type(PuzzlePieceOutline.OutlineType.ERROR)
 			
 	else:
 		scale = scale.move_toward(default_scale, 2 * delta)
-		outline.material.set_shader_parameter('color', Vector4(1, 1, 1, 1))
 	
 	has_attempted_connection_this_tick = false
 
@@ -112,7 +114,7 @@ func has_all_sides_connected():
 	if !bottom_connector.has_connection : return false
 
 func start_dragging():
-	if Player.winning : return
+	if Player.winning || Player.entering_portal || Player.exiting_portal : return
 	
 	if shape.has_node("Player") :
 		set_player_sprites_visible(false)
@@ -122,7 +124,7 @@ func start_dragging():
 		
 	clamp_player()
 	set_colliders_in_drag_mode(true)
-	outline.outline_type = PuzzlePieceOutline.OutlineType.MOVING
+	outline.outline_type = PuzzlePieceOutline.OutlineType.DRAGGING
 	z_index = 3
 	start_drag_position = global_position
 	start_drag_target_rotated_angle = target_rotated_angle % 360
@@ -134,8 +136,7 @@ func start_dragging():
 	attempt_connection_on_all_other_pieces()
 	
 func stop_dragging():
-	if abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 : return #safeguard to prevent pieces being dropped at wierd angles
-	if !can_be_dropped() : 
+	if !can_be_dropped() || abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 || Player.winning || Player.entering_portal || Player.exiting_portal: 
 		cancel_drag()
 		return
 	ghost_piece.hide_display()
@@ -266,6 +267,10 @@ func _set_colliders_recursive(node: Node, drag_mode: bool):
 	if node.has_method("set_collision_layer_value"):
 		node.set_collision_layer_value(3, drag_mode)
 		node.set_collision_layer_value(1, !drag_mode)
+		if !node.find_parent("Colliders") && !node.find_parent("Connectors") :
+			node.set_collision_mask_value(3, drag_mode)
+			node.set_collision_mask_value(1, !drag_mode)
+			
 	for child in node.get_children():
 		_set_colliders_recursive(child, drag_mode)
 
@@ -297,7 +302,26 @@ func update_connection_group():
 			if piece not in tested_pieces :
 				add_piece_connections_to_connection_group(connection_group, piece)
 				tested_pieces.append(piece)
-
+	connect_portals()
+	
+func connect_portals():
+	var portals = connection_group.members.filter(
+		func(member): return member.portal != null
+	).map(
+		func(member): return member.portal
+	)
+	
+	if portals.size() == 2 :
+		portals[0].activate()
+		portals[0].connected_portal = portals[1]
+		portals[1].activate()
+		portals[1].connected_portal = portals[0]
+		outline.set_type(PuzzlePieceOutline.OutlineType.PORTAL)
+	else :
+		for portal in portals :
+			portal.deactivate()
+		outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
+	
 func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: PuzzlePiece):
 	if piece.left_connector.connected_to:
 		cg.add_member(piece.left_connector.connected_to.puzzle_piece)

@@ -114,7 +114,7 @@ shape = SubResource("RectangleShape2D_o3tx4")
 [node name="CollisionShape2D" parent="PuzzlePiece/Shape/Connectors/BottomConnector" index="0"]
 shape = SubResource("RectangleShape2D_1lpw1")
 
-[node name="Collectible" parent="PuzzlePiece/Shape" index="5"]
+[node name="Collectible" parent="PuzzlePiece/Shape" index="6"]
 visible = true
 position = Vector2(-94, -95)
 
