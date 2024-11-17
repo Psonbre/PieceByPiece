@@ -191,7 +191,8 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 
 [node name="Door" parent="PuzzlePiece3/Shape" index="2"]
 visible = true
-position = Vector2(0, 47)
+position = Vector2(-3, 53)
+scale = Vector2(0.5, 0.5)
 
 [node name="RightConnector" parent="PuzzlePiece3/Shape/Connectors" index="0"]
 shape = 1
@@ -213,7 +214,7 @@ shape = SubResource("RectangleShape2D_61sqo")
 [node name="CollisionShape2D" parent="PuzzlePiece3/Shape/Connectors/BottomConnector" index="0"]
 shape = SubResource("RectangleShape2D_wftw5")
 
-[node name="Collectible" parent="PuzzlePiece3/Shape" index="5"]
+[node name="Collectible" parent="PuzzlePiece3/Shape" index="6"]
 visible = true
 position = Vector2(102, 0)
 

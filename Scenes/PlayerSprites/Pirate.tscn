@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://csigeyux5ckx1"]
+
+[ext_resource type="PackedScene" uid="uid://8vkpgii0j3ff" path="res://Scenes/PlayerSprites/PlayerSprite.tscn" id="1_ambhl"]
+[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="2_v4gwv"]
+
+[node name="PlayerSprite" instance=ExtResource("1_ambhl")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(-1.69407e-21, -5.72205e-06)
+scale = Vector2(0.827586, 0.827586)
+sprite_frames = ExtResource("2_v4gwv")
+animation = &"Idle"
+offset = Vector2(-1.44045e-07, -29)

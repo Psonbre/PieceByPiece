@@ -8,13 +8,15 @@ const SPEED := 300.0
 const JUMP_VELOCITY := -400.0
 var overlapping_pieces = []
 var default_scale
-static var current_level := 99
+var was_on_floor := false
+var last_vertical_speed :=  0
+static var current_level := 1
 static var winning := false
 static var entering_portal := false
 static var exiting_portal := false
 static var target_portal : Portal
-var winning_door
 static var has_collectible = false
+var winning_door
 
 func _ready():
 	default_scale = global_scale
@@ -26,8 +28,11 @@ func reset_proportions():
 	rotation = 0
 	
 func _physics_process(delta):
+	if velocity.y != 0 : last_vertical_speed = velocity.y
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		play_animation("Jump");
 
 	var direction = Input.get_axis("Left", "Right")
 	if direction:
@@ -35,16 +40,15 @@ func _physics_process(delta):
 		if (velocity.x  > 0) : set_flip(false)
 		elif (velocity.x < 0) : set_flip(true)
 		play_animation("Moving");
-		SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/walk.ogg", -3)
+		if is_on_floor() : SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/walk.ogg", -3)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor() : play_animation("Idle");
 
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		play_animation("Jump");
+	if is_on_floor() and Input.is_action_just_pressed("Jump") :
 		SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/jump.ogg", -7)
 		velocity.y = JUMP_VELOCITY
-
+			
 	move_and_slide()
 	
 	if overlapping_pieces.size() > 0 :
@@ -90,10 +94,13 @@ func teleport(portal : Portal):
 	target_portal = portal
 
 func _process(delta):
+	if !was_on_floor and is_on_floor() and abs(last_vertical_speed) > 10:
+		land(last_vertical_speed)
+	
 	if (winning) :
 		global_position = global_position.move_toward(winning_door.global_position, 10 * delta)
 		rotate(12 * delta)
-		global_scale = global_scale.move_toward(Vector2.ZERO, 1 * delta)
+		global_scale = global_scale.move_toward(Vector2.ZERO, 1.0 * delta)
 		if global_scale.x <= 0.1 :
 			winning = false
 			current_level += 1
@@ -103,12 +110,19 @@ func _process(delta):
 	elif entering_portal :
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
 		rotate(12 * delta)
-		global_scale = global_scale.move_toward(Vector2.ZERO, 5 * delta)
+		global_scale = global_scale.move_toward(Vector2.ZERO, 5.0 * delta)
 		if global_scale.x <= 0.1 :
-			global_position = target_portal.connected_portal.global_position
-			target_portal = target_portal.connected_portal
-			entering_portal = false
-			exiting_portal = true
+			if target_portal.connected_portal :
+				global_position = target_portal.connected_portal.global_position
+				target_portal = target_portal.connected_portal
+				entering_portal = false
+				exiting_portal = true
+			else :
+				entering_portal = false
+				global_scale = default_scale
+				rotation = 0
+				velocity = Vector2.ZERO
+				set_physics_process(true)
 			
 	elif exiting_portal :
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
@@ -122,10 +136,18 @@ func _process(delta):
 			rotation = 0
 			exiting_portal = false
 			
-func play_animation(animation):
-	for player_sprite : AnimatedSprite2D in get_tree().get_nodes_in_group("PlayerSprites"):
+	was_on_floor = is_on_floor()
+	
+func play_animation(animation : String):
+	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.play(animation)
 
 func set_flip(flipped):
-	for player_sprite : AnimatedSprite2D in get_tree().get_nodes_in_group("PlayerSprites"):
-		player_sprite.flip_h = flipped
+	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
+		player_sprite.flip(flipped)
+
+func land(speed):
+	print("landing speed : " + str(speed))
+	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
+		player_sprite.squash(speed / 100.0)
+	last_vertical_speed = 0

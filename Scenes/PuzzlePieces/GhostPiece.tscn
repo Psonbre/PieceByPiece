@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://b47cgkimuryss"]
+[gd_scene load_steps=16 format=3 uid="uid://b47cgkimuryss"]
 
 [ext_resource type="Script" path="res://Scripts/ghost_piece.gd" id="1_ns84n"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_20p4n"]
 [ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Door.tscn" id="4_7anr5"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_hctjr"]
-[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/Players/player1_frames.tres" id="5_3vnnm"]
+[ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="5_iepm8"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="5_kivp6"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="6_ylgl7"]
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="7_gooue"]
@@ -25,9 +25,6 @@ size = Vector2(35, 70)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ty2t"]
 radius = 35.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_o6kjw"]
-radius = 24.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0ot43"]
 a = Vector2(0, -128)
@@ -90,18 +87,7 @@ visible = false
 scale = Vector2(0.519999, 0.519999)
 script = null
 
-[node name="PlayerSprite" type="Node2D" parent="Shape"]
-visible = false
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite"]
-position = Vector2(0, 2.27374e-13)
-scale = Vector2(0.824, 0.824)
-sprite_frames = ExtResource("5_3vnnm")
-animation = &"Idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/PlayerSprite"]
-shape = SubResource("CircleShape2D_o6kjw")
-disabled = true
+[node name="PlayerSprite" parent="Shape" instance=ExtResource("5_iepm8")]
 
 [node name="VisualShape" type="Polygon2D" parent="."]
 visible = false

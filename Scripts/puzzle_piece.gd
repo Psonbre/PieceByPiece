@@ -12,7 +12,7 @@ static var global_dragging := false
 @onready var left_connector : PuzzlePieceConnector = $Shape/Connectors/LeftConnector
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
-@onready var player_sprite : AnimatedSprite2D = $Shape/PlayerSprite/Sprite
+@onready var player_sprite : PlayerSprite = $Shape/PlayerSprite
 @onready var door = $Shape/Door
 var portal : Portal
 
@@ -42,7 +42,7 @@ func _ready():
 	start_drag_rotation = global_rotation
 	start_drag_tilt = tilt_angle
 	default_scale = scale
-	player_sprite.visible = true
+	player_sprite.sprite.visible = true
 	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -118,9 +118,9 @@ func start_dragging():
 	
 	if shape.has_node("Player") :
 		set_player_sprites_visible(false)
-		player_sprite.visible = true 
+		player_sprite.sprite.visible = true 
 	else : 
-		player_sprite.visible = false
+		player_sprite.sprite.visible = false
 		
 	clamp_player()
 	set_colliders_in_drag_mode(true)
@@ -187,7 +187,6 @@ func clamp_player():
 	if !shape.has_node("Player") : return
 	var player = shape.get_node("Player")
 	if player != null :
-		var player_radius = player.collision_shape.shape.radius
 		player.position = Vector2(clampf(player.position.x, left_connector.position.x + 20, right_connector.position.x - 20), clampf(player.position.y, top_connector.position.y + 20, bottom_connector.position.y - 20))
 
 func cancel_drag():
@@ -199,7 +198,7 @@ func cancel_drag():
 	global_rotation = start_drag_rotation
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
-	player_sprite.visible = true
+	player_sprite.sprite.visible = true
 	is_dragging = false
 	global_dragging = false
 	scale = default_scale
@@ -285,8 +284,8 @@ func can_be_dropped():
 		return true
 
 func set_player_sprites_visible(shown : bool) :
-	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
-		sprite.visible = shown
+	for player_sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
+		player_sprite.sprite.visible = shown
 		
 
 func update_all_connection_groups():

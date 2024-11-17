@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://bagvy8vbt68i"]
+[gd_scene load_steps=5 format=4 uid="uid://bagvy8vbt68i"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_nqvcu"]
+[ext_resource type="PackedScene" uid="uid://csigeyux5ckx1" path="res://Scenes/PlayerSprites/Pirate.tscn" id="2_s5f21"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_44psn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
@@ -17,8 +18,7 @@ tile_map_data = PackedByteArray("AAD+//7/AAAEAAEAAAD+////AAAEAAEAAAD+/wAAAAAEAAE
 [node name="Foreground" parent="Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/AAABAAIAAAD///7/AAABAAIAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAD+/wIAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAD//wEAAAAFAAQAAAA=")
 
-[node name="PlayerSprite" parent="Shape" index="3"]
-position = Vector2(-58.7058, 54.7924)
+[node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_s5f21")]
 
 [node name="Outline" parent="." index="2"]
 material = SubResource("ShaderMaterial_n3bvn")

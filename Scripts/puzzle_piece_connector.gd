@@ -102,7 +102,6 @@ func get_adjacent_piece_position(account_for_tilt : bool):
 	if account_for_tilt :
 		return puzzle_piece.global_position + (global_position - puzzle_piece.global_position) * 2
 	else :
-		var final_piece_rotation = deg_to_rad(round(puzzle_piece.target_rotated_angle / 90.0) * 90)
 		var rotated_connector_position = position.rotated(deg_to_rad(round(puzzle_piece.target_rotated_angle / 90.0) * 90))
 		return puzzle_piece.global_position + rotated_connector_position * 2
 

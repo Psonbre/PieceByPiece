@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://ctpilqtu4ujva"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_kckti"]
+[ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="2_6unmi"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_cbxkv"]
-[ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/Players/player2_frames.tres" id="2_evcum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwxro"]
 size = Vector2(35, 70)
@@ -30,16 +30,10 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 [node name="Foreground" parent="Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
 
-[node name="Arrows" parent="Shape" index="2"]
+[node name="Arrows" parent="Shape" index="3"]
 modulate = Color(1, 1, 1, 0.168627)
-scale = Vector2(0.137801, 0.13741)
 
-[node name="PlayerSprite" parent="Shape" index="4"]
-position = Vector2(-59, 53)
-
-[node name="Sprite" parent="Shape/PlayerSprite" index="0"]
-scale = Vector2(1.69443, 1.69443)
-sprite_frames = ExtResource("2_evcum")
+[node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_6unmi")]
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_dwxro")

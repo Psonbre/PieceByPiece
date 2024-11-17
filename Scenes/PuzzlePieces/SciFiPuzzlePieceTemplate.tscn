@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://dt1hdr68qpd77"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_cnftw"]
-[ext_resource type="SpriteFrames" uid="uid://byvdlkywtissw" path="res://Scenes/Players/player4_frames.tres" id="2_fprg4"]
+[ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="2_6u701"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_lhbi1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
@@ -18,13 +18,7 @@ tile_map_data = PackedByteArray("AAD+//7/CAABAAIAAAD+////CAABAAEAAAD+/wAACAABAAI
 [node name="Foreground" parent="Shape" index="1"]
 tile_map_data = PackedByteArray("AAD+//7/CAABAAAAAAD///7/CAABAAAAAAAAAP7/CAABAAAAAAABAP7/CAABAAAAAAACAP7/CAABAAAAAAD+/wIACAABAAAAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAABAAAAAAD//wEAAAAFAAQAAAA=")
 
-[node name="PlayerSprite" parent="Shape" index="4"]
-position = Vector2(-53.7008, 52.484)
-
-[node name="Sprite" parent="Shape/PlayerSprite" index="0"]
-position = Vector2(-0.373996, 2.516)
-scale = Vector2(2.31784, 2.31784)
-sprite_frames = ExtResource("2_fprg4")
+[node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_6u701")]
 
 [node name="Outline" parent="." index="2"]
 material = SubResource("ShaderMaterial_n3bvn")

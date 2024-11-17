@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=19 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
@@ -7,20 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_5o85m"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="4_b24ea"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
-[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/Players/player1_frames.tres" id="4_qj61i"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
 [ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_fwkty"]
 [ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Door.tscn" id="6_patsr"]
 [ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="8_dvmwe"]
-[ext_resource type="Script" path="res://Scripts/player_sprite.gd" id="48_5qcv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_38pod"]
-radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_movio"]
 size = Vector2(35, 70)
@@ -79,20 +74,6 @@ selected_color = Color(1, 1, 1, 0.747)
 default_scale = Vector2(0.138, 0.138)
 selected_scale = Vector2(0.207, 0.207)
 metadata/_edit_pinned_properties_ = [&"default_scale", &"selected_scale", &"default_color", &"selected_color"]
-
-[node name="PlayerSprite" type="Node2D" parent="Shape"]
-script = ExtResource("48_5qcv0")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite" groups=["PlayerSprites"]]
-visible = false
-position = Vector2(0, 2.27374e-13)
-scale = Vector2(0.824, 0.824)
-sprite_frames = ExtResource("4_qj61i")
-animation = &"Idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/PlayerSprite"]
-shape = SubResource("CircleShape2D_38pod")
-disabled = true
 
 [node name="Connectors" type="Node2D" parent="Shape"]
 z_index = 1

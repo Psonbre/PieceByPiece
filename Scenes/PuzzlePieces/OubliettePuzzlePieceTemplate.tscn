@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=4 uid="uid://xkriu00mrjwb"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_b01ds"]
-[ext_resource type="SpriteFrames" uid="uid://orhbrvew8ol3" path="res://Scenes/Players/player3_frames.tres" id="2_5r10h"]
 [ext_resource type="Texture2D" uid="uid://btpc4xex0poeb" path="res://Assets/Sprites/Oubliette/oubliette_tileset.png" id="3_7c16x"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_pjnf7"]
+[ext_resource type="PackedScene" uid="uid://ci3ywdqt5k8t3" path="res://Scenes/PlayerSprites/Slime.tscn" id="3_yydhb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibg11"]
 atlas = ExtResource("3_7c16x")
@@ -30,12 +30,7 @@ position = Vector2(0, 52)
 scale = Vector2(1.59601, 1.59601)
 texture = SubResource("AtlasTexture_ibg11")
 
-[node name="PlayerSprite" parent="Shape" index="3"]
-position = Vector2(-51, 61)
-
-[node name="Sprite" parent="Shape/PlayerSprite" index="0"]
-position = Vector2(1.25, -2)
-sprite_frames = ExtResource("2_5r10h")
+[node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("3_yydhb")]
 
 [node name="Outline" parent="." index="2"]
 material = SubResource("ShaderMaterial_n3bvn")

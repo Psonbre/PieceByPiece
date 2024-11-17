@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://rbm85fotfflp"]
+[gd_scene load_steps=21 format=4 uid="uid://rbm85fotfflp"]
 
 [ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/Players/player.tscn" id="1_gn2x5"]
 [ext_resource type="PackedScene" uid="uid://b47cgkimuryss" path="res://Scenes/PuzzlePieces/GhostPiece.tscn" id="2_m2qde"]
@@ -48,18 +48,6 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p361w"]
-size = Vector2(35, 70)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_quqrv"]
-radius = 35.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gv4s"]
-size = Vector2(35, 70)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbra2"]
-size = Vector2(35, 70)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7rij"]
 size = Vector2(35, 70)
 
 [node name="Level" type="Node2D"]
@@ -256,20 +244,20 @@ shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece7/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_quqrv")
+shape = SubResource("CircleShape2D_562lf")
 
 [node name="LeftConnector" parent="PuzzlePiece7/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece7/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_8gv4s")
+shape = SubResource("RectangleShape2D_mqsuy")
 
 [node name="CollisionShape2D" parent="PuzzlePiece7/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_xbra2")
+shape = SubResource("RectangleShape2D_osjie")
 
 [node name="CollisionShape2D" parent="PuzzlePiece7/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_m7rij")
+shape = SubResource("RectangleShape2D_cau3k")
 
 [node name="Outline" parent="PuzzlePiece7" index="2"]
 material = SubResource("ShaderMaterial_xj1th")
