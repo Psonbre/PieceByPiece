@@ -124,9 +124,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 [node name="Door" parent="PuzzlePiece/Shape" index="2"]
 scale = Vector2(0.519999, 0.519999)
 
-[node name="PlayerSprite" parent="PuzzlePiece/Shape" index="4"]
-visible = true
-
 [node name="RightConnector" parent="PuzzlePiece/Shape/Connectors" index="0"]
 shape = 1
 
@@ -158,9 +155,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 
 [node name="Door" parent="PuzzlePiece2/Shape" index="2"]
 scale = Vector2(0.519999, 0.519999)
-
-[node name="PlayerSprite" parent="PuzzlePiece2/Shape" index="4"]
-visible = true
 
 [node name="RightConnector" parent="PuzzlePiece2/Shape/Connectors" index="0"]
 shape = 1
@@ -199,9 +193,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 visible = true
 position = Vector2(-3, 53)
 scale = Vector2(0.5, 0.5)
-
-[node name="PlayerSprite" parent="PuzzlePiece3/Shape" index="4"]
-visible = true
 
 [node name="RightConnector" parent="PuzzlePiece3/Shape/Connectors" index="0"]
 shape = 1

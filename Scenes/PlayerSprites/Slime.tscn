@@ -6,11 +6,12 @@
 [node name="PlayerSprite" instance=ExtResource("1_85ydg")]
 
 [node name="Sprite" parent="." index="0"]
+visible = true
 position = Vector2(0, 24)
-scale = Vector2(1.03125, 1.03125)
 sprite_frames = ExtResource("2_28f1n")
 animation = &"Idle"
 offset = Vector2(0.969697, -31.9091)
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = true
 position = Vector2(0, 0)

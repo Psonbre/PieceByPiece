@@ -30,9 +30,10 @@ func reset_proportions():
 func _physics_process(delta):
 	if velocity.y != 0 : last_vertical_speed = velocity.y
 	
-	if not is_on_floor():
+	if not is_on_floor() :
 		velocity += get_gravity() * delta
-		play_animation("Jump");
+		if abs(velocity.y) > 20.0 :
+			play_animation("Jump");
 
 	var direction = Input.get_axis("Left", "Right")
 	if direction:
@@ -94,6 +95,9 @@ func teleport(portal : Portal):
 	target_portal = portal
 
 func _process(delta):
+	if !is_physics_processing() and editor_sprite.is_playing() :
+		pause_animation()
+	
 	if !was_on_floor and is_on_floor() and abs(last_vertical_speed) > 10:
 		land(last_vertical_speed)
 	
@@ -139,12 +143,19 @@ func _process(delta):
 	was_on_floor = is_on_floor()
 	
 func play_animation(animation : String):
+	editor_sprite.play(animation)
 	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.play(animation)
 
 func set_flip(flipped):
+	editor_sprite.flip_h = flipped
 	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.flip(flipped)
+
+func pause_animation():
+	editor_sprite.pause()
+	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
+		player_sprite.pause()
 
 func land(speed):
 	print("landing speed : " + str(speed))
