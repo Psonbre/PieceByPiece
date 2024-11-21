@@ -1,18 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://iiopsl2jnac1"]
+[gd_scene load_steps=9 format=3 uid="uid://iiopsl2jnac1"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_my7jt"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_vjami"]
-[ext_resource type="Script" path="res://Scripts/level_name.gd" id="3_gcr7d"]
-[ext_resource type="Texture2D" uid="uid://dgj4alkt3dygf" path="res://Assets/Sprites/MainMenu/piece (1)-1.png-1.png.png" id="5_vkvan"]
-[ext_resource type="Texture2D" uid="uid://c0ienm8yq51eu" path="res://Assets/Sprites/MainMenu/piece (1)-1.png (1).png" id="6_0ud8q"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_gcr7d"]
 [ext_resource type="Script" path="res://Scripts/Buttons/PlayButton.gd" id="7_23w57"]
+[ext_resource type="Texture2D" uid="uid://bnjlvngyx4wqx" path="res://Assets/Sprites/MainMenu/Piece.svg" id="7_vrgld"]
+[ext_resource type="Texture2D" uid="uid://chvbdbjo8xytd" path="res://Assets/Sprites/MainMenu/By.svg" id="8_htf3o"]
 [ext_resource type="Script" path="res://Scripts/Buttons/credits_button.gd" id="8_lk7t2"]
 [ext_resource type="Script" path="res://Scripts/Buttons/ExitButton.gd" id="9_lbjnf"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_b18gn"]
-font = ExtResource("2_vjami")
-font_size = 64
-outline_size = 10
 
 [node name="MainMenu" type="Node2D"]
 
@@ -27,77 +22,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_my7jt")
 metadata/_edit_horizontal_guides_ = [695.0]
-
-[node name="Piece" type="Label" parent="MainMenu"]
-layout_mode = 2
-offset_left = -707.0
-offset_top = -258.0
-offset_right = 189.0
-offset_bottom = -170.0
-scale = Vector2(0.835, 0.835)
-text = "Piece"
-label_settings = SubResource("LabelSettings_b18gn")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-script = ExtResource("3_gcr7d")
-vertical_speed = 0.25
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-
-[node name="piece" type="Sprite2D" parent="MainMenu/Piece"]
-modulate = Color(1.49205e-06, 0.473994, 0.53103, 1)
-position = Vector2(450.299, 34.7305)
-scale = Vector2(0.605, 0.605)
-texture = ExtResource("5_vkvan")
-
-[node name="By" type="Label" parent="MainMenu"]
-layout_mode = 2
-offset_left = -372.0
-offset_top = -259.0
-offset_right = 524.0
-offset_bottom = -171.0
-scale = Vector2(0.835, 0.835)
-text = "by"
-label_settings = SubResource("LabelSettings_b18gn")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-script = ExtResource("3_gcr7d")
-vertical_speed = 0.25
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-
-[node name="piece" type="Sprite2D" parent="MainMenu/By"]
-modulate = Color(1.49205e-06, 0.473994, 0.53103, 1)
-z_index = -2
-position = Vector2(444.311, 40.7185)
-scale = Vector2(0.605, 0.605)
-texture = ExtResource("6_0ud8q")
-
-[node name="Piece1" type="Label" parent="MainMenu"]
-layout_mode = 2
-offset_left = -41.9999
-offset_top = -258.0
-offset_right = 854.0
-offset_bottom = -170.0
-scale = Vector2(0.835, 0.835)
-text = "Piece"
-label_settings = SubResource("LabelSettings_b18gn")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-script = ExtResource("3_gcr7d")
-vertical_speed = 0.25
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-
-[node name="piece" type="Sprite2D" parent="MainMenu/Piece1"]
-modulate = Color(1.49205e-06, 0.473994, 0.53103, 1)
-z_index = -2
-position = Vector2(442, 39)
-scale = Vector2(0.605, 0.605)
-texture = ExtResource("5_vkvan")
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
 layout_mode = 2
@@ -156,6 +80,69 @@ theme_override_font_sizes/font_size = 24
 disabled = true
 text = "Exit"
 script = ExtResource("9_lbjnf")
+
+[node name="Piece" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -274.0
+offset_top = -236.0
+offset_right = -234.0
+offset_bottom = -196.0
+scale = Vector2(0.75, 0.75)
+script = ExtResource("3_gcr7d")
+vertical_intensity = 14.0
+horizontal_intensity = 10
+
+[node name="Piece" type="Sprite2D" parent="Piece"]
+texture = ExtResource("7_vrgld")
+
+[node name="Piece2" type="Sprite2D" parent="Piece/Piece"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(10, 10)
+texture = ExtResource("7_vrgld")
+
+[node name="By" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = -237.0
+offset_right = 41.0
+offset_bottom = -197.0
+scale = Vector2(0.75, 0.75)
+script = ExtResource("3_gcr7d")
+vertical_intensity = 14.0
+horizontal_intensity = 10
+
+[node name="Piece" type="Sprite2D" parent="By"]
+texture = ExtResource("8_htf3o")
+
+[node name="Piece2" type="Sprite2D" parent="By/Piece"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(10, 10)
+texture = ExtResource("8_htf3o")
+
+[node name="Piece2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 273.0
+offset_top = -236.0
+offset_right = 313.0
+offset_bottom = -196.0
+scale = Vector2(0.75, 0.75)
+script = ExtResource("3_gcr7d")
+vertical_intensity = 14.0
+horizontal_intensity = 10
+
+[node name="Piece" type="Sprite2D" parent="Piece2"]
+texture = ExtResource("7_vrgld")
+
+[node name="Piece3" type="Sprite2D" parent="Piece2/Piece"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(10, 10)
+texture = ExtResource("7_vrgld")
 
 [connection signal="mouse_entered" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_exited"]

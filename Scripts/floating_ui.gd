@@ -1,4 +1,4 @@
-class_name LevelName
+class_name FloatingUI
 extends Control
 
 @export var vertical_speed = 0.5

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="1_fll2r"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_yqpi3"]
-[ext_resource type="Script" path="res://Scripts/level_name.gd" id="3_xtxaf"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_xtxaf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_56lap"]
 font = ExtResource("2_yqpi3")
