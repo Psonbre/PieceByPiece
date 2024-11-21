@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_kmwid"]
 [ext_resource type="PackedScene" uid="uid://dvws0si7ljhkm" path="res://Scenes/Background.tscn" id="2_rr10a"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="4_wm5fj"]
-[ext_resource type="PackedScene" uid="uid://iiopsl2jnac1" path="res://Scenes/MainMenu.tscn" id="5_lco33"]
+[ext_resource type="PackedScene" uid="uid://iiopsl2jnac1" path="res://Scenes/Menus/MainMenu.tscn" id="5_lco33"]
 
 [node name="Game" type="Node2D" groups=["GameManager"]]
 script = ExtResource("1_kmwid")

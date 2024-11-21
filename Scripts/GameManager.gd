@@ -9,7 +9,7 @@ var default_resolution = Vector2(2560, 1440)
 
 func _ready():
 	current_screen = get_node("MainMenu")
-	credits_screen = load("res://Scenes/Credits.tscn").instantiate()
+	credits_screen = load("res://Scenes/Menus/Credits.tscn").instantiate()
 	credits_screen.global_position.x = -camera.target_zoom.x * default_resolution.x
 	add_child(credits_screen)
 

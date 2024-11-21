@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
 [ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_fwkty"]
-[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Door.tscn" id="6_patsr"]
+[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="6_patsr"]
 [ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="8_dvmwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]

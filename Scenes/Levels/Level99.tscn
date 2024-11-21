@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_x2rv1"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="4_m30vs"]
 [ext_resource type="PackedScene" uid="uid://dt1hdr68qpd77" path="res://Scenes/PuzzlePieces/SciFiPuzzlePieceTemplate.tscn" id="5_h46ey"]
-[ext_resource type="PackedScene" uid="uid://cqfgi7k08veo6" path="res://Scenes/portal.tscn" id="6_7smwp"]
+[ext_resource type="PackedScene" uid="uid://cqfgi7k08veo6" path="res://Scenes/Interactables/portal.tscn" id="6_7smwp"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="7_ebu1t"]
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="8_qqctv"]
 

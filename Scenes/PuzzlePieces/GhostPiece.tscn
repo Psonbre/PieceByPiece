@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/ghost_piece.gd" id="1_ns84n"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_20p4n"]
-[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Door.tscn" id="4_7anr5"]
+[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="4_7anr5"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_hctjr"]
 [ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="5_iepm8"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="5_kivp6"]
