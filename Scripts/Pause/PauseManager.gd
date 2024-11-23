@@ -8,22 +8,22 @@ func _process(_delta: float) -> void:
 		toggle_pause()
 
 func _on_pause_button_pressed() -> void:
-	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
+	SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
 	toggle_pause()
 	
 func _on_resume_button_pressed() -> void:
-	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
+	SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
 	toggle_pause()
 
 func _on_restart_button_pressed() -> void:
-	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
+	SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
 	toggle_pause()
-	SubsystemManager.get_level_manager().reload_level()
+	SubSystemManager.get_game_manager().reset_level()
 	
 func _on_quit_button_pressed() -> void:
-	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
+	SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
 	toggle_pause()
-	SubsystemManager.get_level_manager().load_level("res://Scenes/MainMenu.tscn")
+	SubSystemManager.get_game_manager().load_scene("res://Scenes/MainMenu.tscn", Vector2(0, -1))
 
 func toggle_pause() -> void:
 	if !is_paused:

@@ -30,11 +30,8 @@ func load_scene(scene_path, new_direction := Vector2(1, 0)):
 	add_child(scene)
 
 func _process(delta):
-	if Input.is_action_just_pressed("Reset") and !Player.winning and old_screen == null:
-		if Player.has_collectible:
-			SubSystemManager.get_collectible_manager().remove_piece()
-		load_scene("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(0,-1))
-		Player.has_collectible = false
+	if Input.is_action_just_pressed("Reset") :
+		reset_level()
 	
 	if current_screen:
 		# Target position for the new screen
@@ -51,3 +48,10 @@ func _process(delta):
 		if (old_screen.global_position - target_position).length() < 100:
 			old_screen.queue_free()
 			old_screen = null
+
+func reset_level() :
+	if !Player.winning and old_screen == null:
+		if Player.has_collectible:
+			SubSystemManager.get_collectible_manager().remove_piece()
+		load_scene("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(0,-1))
+		Player.has_collectible = false
