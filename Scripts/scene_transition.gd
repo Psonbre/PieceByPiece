@@ -1,4 +1,4 @@
-extends CanvasLayer
+xtends CanvasLayer
 
 @onready var animationPlayer = $AnimationPlayer
 @onready var colorRect = $ColorRect
