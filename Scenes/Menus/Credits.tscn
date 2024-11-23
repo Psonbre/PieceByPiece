@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5ui348xrja2j"]
+[gd_scene load_steps=7 format=3 uid="uid://b5ui348xrja2j"]
 
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="1_fll2r"]
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_jgnww"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_yqpi3"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_xtxaf"]
 
@@ -13,6 +14,7 @@ font = ExtResource("2_yqpi3")
 font_size = 32
 
 [node name="Credits" type="Node2D"]
+script = ExtResource("1_jgnww")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -49,36 +51,84 @@ theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 script = ExtResource("1_fll2r")
+scroll_direction = Vector2(-1, 0)
 
-[node name="Gamejam" type="VBoxContainer" parent="Credits"]
+[node name="Sounds" type="VBoxContainer" parent="Credits"]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = -438.0
-offset_top = 240.0
-offset_right = 522.0
-offset_bottom = 285.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = -531.926
+offset_top = 86.0158
+offset_right = 98.0739
+offset_bottom = 565.016
+scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
-alignment = 1
 script = ExtResource("3_xtxaf")
 vertical_speed = 0.25
 vertical_intensity = 10.0
 horizontal_speed = 0.5
 
-[node name="SubTitle" type="Label" parent="Credits/Gamejam"]
+[node name="SubTitle" type="Label" parent="Credits/Sounds"]
 layout_mode = 2
-text = "Made during the Wonderjam 2024
+text = "Sounds
 "
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
 
+[node name="Names" type="VBoxContainer" parent="Credits/Sounds"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CenterContainer5" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Interface sounds - Kenney"
+underline = 1
+uri = "https://kenney.nl/assets/interface-sounds"
+
+[node name="CenterContainer6" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Impact sounds - Kenney"
+underline = 1
+uri = "https://kenney.nl/assets/impact-sounds"
+
+[node name="CenterContainer7" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Rubbing Wooden sticks - NoisyRedFox"
+underline = 1
+uri = "https://freesound.org/people/NoisyRedFox/sounds/734227/"
+
+[node name="CenterContainer8" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer8"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "2 Tallando madera - Checholio"
+underline = 1
+uri = "https://freesound.org/people/checholio/sounds/443537/"
+
 [node name="Music" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = -522.0
-offset_top = 40.0
-offset_right = 108.0
-offset_bottom = 519.0
+offset_left = 58.0475
+offset_top = -161.478
+offset_right = 688.047
+offset_bottom = -41.4778
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
@@ -88,8 +138,7 @@ horizontal_speed = 0.5
 
 [node name="SubTitle" type="Label" parent="Credits/Music"]
 layout_mode = 2
-text = "Sounds
-"
+text = "Music"
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
 
@@ -97,78 +146,10 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CenterContainer5" type="CenterContainer" parent="Credits/Music/Names"]
+[node name="CenterContainer4" type="CenterContainer" parent="Credits/Music/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Music/Names/CenterContainer5"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_yqpi3")
-theme_override_font_sizes/font_size = 18
-text = "Interface sounds - Kenney"
-underline = 1
-uri = "https://kenney.nl/assets/interface-sounds"
-
-[node name="CenterContainer6" type="CenterContainer" parent="Credits/Music/Names"]
-layout_mode = 2
-
-[node name="LinkButton" type="LinkButton" parent="Credits/Music/Names/CenterContainer6"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_yqpi3")
-theme_override_font_sizes/font_size = 18
-text = "Impact sounds - Kenney"
-underline = 1
-uri = "https://kenney.nl/assets/impact-sounds"
-
-[node name="CenterContainer7" type="CenterContainer" parent="Credits/Music/Names"]
-layout_mode = 2
-
-[node name="LinkButton" type="LinkButton" parent="Credits/Music/Names/CenterContainer7"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_yqpi3")
-theme_override_font_sizes/font_size = 18
-text = "Rubbing Wooden sticks - NoisyRedFox"
-underline = 1
-uri = "https://freesound.org/people/NoisyRedFox/sounds/734227/"
-
-[node name="CenterContainer8" type="CenterContainer" parent="Credits/Music/Names"]
-layout_mode = 2
-
-[node name="LinkButton" type="LinkButton" parent="Credits/Music/Names/CenterContainer8"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_yqpi3")
-theme_override_font_sizes/font_size = 18
-text = "2 Tallando madera - Checholio"
-underline = 1
-uri = "https://freesound.org/people/checholio/sounds/443537/"
-
-[node name="Music2" type="VBoxContainer" parent="Credits"]
-custom_minimum_size = Vector2(256, 0)
-layout_mode = 2
-offset_left = -10.9999
-offset_top = -178.0
-offset_right = 619.0
-offset_bottom = -58.0
-scale = Vector2(0.8, 0.8)
-theme_override_constants/separation = 20
-script = ExtResource("3_xtxaf")
-vertical_speed = 0.25
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-
-[node name="SubTitle" type="Label" parent="Credits/Music2"]
-layout_mode = 2
-text = "Music"
-label_settings = SubResource("LabelSettings_dvsln")
-horizontal_alignment = 1
-
-[node name="Names" type="VBoxContainer" parent="Credits/Music2"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="CenterContainer4" type="CenterContainer" parent="Credits/Music2/Names"]
-layout_mode = 2
-
-[node name="LinkButton" type="LinkButton" parent="Credits/Music2/Names/CenterContainer4"]
+[node name="LinkButton" type="LinkButton" parent="Credits/Music/Names/CenterContainer4"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
@@ -179,32 +160,31 @@ uri = "https://onemansymphony.bandcamp.com/album/downtempo-lofi-progressive-musi
 [node name="Game" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = -461.0
-offset_top = -179.0
-offset_right = 25.0001
-offset_bottom = -29.0
+offset_left = -541.953
+offset_top = -157.256
+offset_right = 88.0474
+offset_bottom = -21.2559
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
 vertical_speed = 0.25
 vertical_intensity = 10.0
 horizontal_speed = 0.5
-metadata/_edit_use_anchors_ = true
 
-[node name="SubTitle" type="Label" parent="Credits/Game"]
+[node name="SubTitle2" type="Label" parent="Credits/Game"]
 layout_mode = 2
 text = "Game by"
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
 
-[node name="Names" type="VBoxContainer" parent="Credits/Game"]
+[node name="Names2" type="VBoxContainer" parent="Credits/Game"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CenterContainer" type="CenterContainer" parent="Credits/Game/Names"]
+[node name="CenterContainer" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names/CenterContainer"]
+[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
@@ -212,10 +192,10 @@ text = "Adam Maps"
 underline = 1
 uri = "https://psonbre.itch.io/"
 
-[node name="CenterContainer2" type="CenterContainer" parent="Credits/Game/Names"]
+[node name="CenterContainer2" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names/CenterContainer2"]
+[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
@@ -223,10 +203,10 @@ text = "Philippe St-Laurent-Recoura"
 underline = 1
 uri = "https://philou213.itch.io/"
 
-[node name="CenterContainer3" type="CenterContainer" parent="Credits/Game/Names"]
+[node name="CenterContainer3" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names/CenterContainer3"]
+[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
@@ -237,10 +217,10 @@ uri = "https://backderiz.itch.io/"
 [node name="Assets" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 45.0001
-offset_top = -3.99997
-offset_right = 549.0
-offset_bottom = 475.0
+offset_left = 130.343
+offset_top = 57.5198
+offset_right = 634.343
+offset_bottom = 536.52
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")

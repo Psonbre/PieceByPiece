@@ -11,6 +11,8 @@
 
 [node name="MainMenu" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -18,8 +20,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = 124.0
+offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.75428, 1.75428)
 script = ExtResource("1_g36qv")
 metadata/_edit_horizontal_guides_ = [695.0]
 
@@ -39,7 +44,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
-text = "Start"
+text = "Play"
 script = ExtResource("4_q0me5")
 
 [node name="CenterContainer2" type="CenterContainer" parent="MainMenu"]
@@ -77,11 +82,10 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
-disabled = true
 text = "Exit"
 script = ExtResource("6_xfefy")
 
-[node name="Piece" type="Control" parent="."]
+[node name="Piece" type="Control" parent="MainMenu"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -274.0
@@ -93,16 +97,16 @@ script = ExtResource("2_y3dni")
 vertical_intensity = 14.0
 horizontal_intensity = 10
 
-[node name="Piece" type="Sprite2D" parent="Piece"]
+[node name="Piece" type="Sprite2D" parent="MainMenu/Piece"]
 texture = ExtResource("7_8dkh6")
 
-[node name="Piece2" type="Sprite2D" parent="Piece/Piece"]
+[node name="Piece2" type="Sprite2D" parent="MainMenu/Piece/Piece"]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 position = Vector2(10, 10)
 texture = ExtResource("7_8dkh6")
 
-[node name="By" type="Control" parent="."]
+[node name="By" type="Control" parent="MainMenu"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1.0
@@ -114,16 +118,16 @@ script = ExtResource("2_y3dni")
 vertical_intensity = 14.0
 horizontal_intensity = 10
 
-[node name="Piece" type="Sprite2D" parent="By"]
+[node name="Piece" type="Sprite2D" parent="MainMenu/By"]
 texture = ExtResource("8_gt78w")
 
-[node name="Piece2" type="Sprite2D" parent="By/Piece"]
+[node name="Piece2" type="Sprite2D" parent="MainMenu/By/Piece"]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 position = Vector2(10, 10)
 texture = ExtResource("8_gt78w")
 
-[node name="Piece2" type="Control" parent="."]
+[node name="Piece2" type="Control" parent="MainMenu"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 273.0
@@ -135,10 +139,10 @@ script = ExtResource("2_y3dni")
 vertical_intensity = 14.0
 horizontal_intensity = 10
 
-[node name="Piece" type="Sprite2D" parent="Piece2"]
+[node name="Piece" type="Sprite2D" parent="MainMenu/Piece2"]
 texture = ExtResource("7_8dkh6")
 
-[node name="Piece3" type="Sprite2D" parent="Piece2/Piece"]
+[node name="Piece3" type="Sprite2D" parent="MainMenu/Piece2/Piece"]
 modulate = Color(0, 0, 0, 1)
 z_index = -1
 position = Vector2(10, 10)

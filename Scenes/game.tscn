@@ -16,5 +16,3 @@ unique_name_in_owner = true
 script = ExtResource("4_wm5fj")
 
 [node name="MainMenu" parent="." instance=ExtResource("5_lco33")]
-position = Vector2(0, 116)
-scale = Vector2(1.675, 1.675)

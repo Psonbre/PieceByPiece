@@ -109,7 +109,7 @@ func _process(delta):
 			winning = false
 			current_level += 1
 			has_collectible = false
-			get_tree().root.get_node("Game").load_level("Level" + str(current_level))
+			get_tree().root.get_node("Game").load_scene("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(1,0))
 			
 	elif entering_portal :
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)

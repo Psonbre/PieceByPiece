@@ -1,0 +1,1259 @@
+[gd_scene load_steps=25 format=4 uid="uid://ipbkkv76xi8l"]
+
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_3g2j1"]
+[ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_ilqow"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_nohmi"]
+[ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="4_1qq0d"]
+[ext_resource type="PackedScene" uid="uid://bugeuopf4jxs7" path="res://Scenes/Menus/Worlds/basic_world.tscn" id="4_wjvt0"]
+[ext_resource type="PackedScene" uid="uid://e7wskfnclaq6" path="res://Scenes/Menus/Worlds/advanced_world.tscn" id="5_80pre"]
+[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="5_vqp6a"]
+[ext_resource type="Texture2D" uid="uid://bqolhag0ce77y" path="res://Assets/Sprites/Pirate/7-Objects/2-Door/1-Closed/1.png" id="6_kbd3h"]
+[ext_resource type="PackedScene" uid="uid://dbkth5a8frbf4" path="res://Scenes/Menus/Worlds/portal_world.tscn" id="6_plgfp"]
+[ext_resource type="PackedScene" uid="uid://cr6tqpwvtumc5" path="res://Scenes/Menus/Worlds/dirt_portal_world.tscn" id="7_2tw7h"]
+[ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/player2_frames.tres" id="8_1ha3l"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="10_7p74m"]
+[ext_resource type="Script" path="res://Scripts/world_select_arrow.gd" id="10_t704p"]
+[ext_resource type="PackedScene" uid="uid://da810mvip5tid" path="res://Scenes/Menus/Worlds/dirt_world.tscn" id="12_ega6f"]
+
+[sub_resource type="GDScript" id="GDScript_32lsb"]
+script/source = "extends Control
+
+var target_position = Vector2.ZERO
+@onready var target_world := $\"Basic/Basic World\"
+
+func _ready():
+	target_position = position
+	for arrow in get_tree().get_nodes_in_group(\"Arrow\"):
+		arrow.update_enabled()
+		
+func _process(delta):
+	var distance = target_position - position
+	position += delta * distance * 8.0
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_56lap"]
+font = ExtResource("1_3g2j1")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_i1qni"]
+resource_name = "Preview_Advanced"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Idle", &"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.420448, 1),
+"update": 0,
+"values": [Vector2(-28, 22), Vector2(51, -15)]
+}
+
+[sub_resource type="Animation" id="Animation_vdn52"]
+resource_name = "Preview_Basic"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Idle", &"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.420448, 1),
+"update": 0,
+"values": [Vector2(-28, 22), Vector2(51, -15)]
+}
+
+[sub_resource type="Animation" id="Animation_bxx22"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28, 22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite/Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ss2u4"]
+_data = {
+"Preview_Advanced": SubResource("Animation_i1qni"),
+"Preview_Basic": SubResource("Animation_vdn52"),
+"RESET": SubResource("Animation_bxx22")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
+size = Vector2(256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8iru"]
+size = Vector2(12, 58)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
+resource_local_to_scene = true
+shader = ExtResource("10_7p74m")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[node name="WorldSelect" type="Node2D"]
+script = ExtResource("1_ilqow")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.015, 1.015)
+
+[node name="Tree" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1280.0
+offset_bottom = 1280.0
+scale = Vector2(1.70503, 1.70503)
+script = SubResource("GDScript_32lsb")
+
+[node name="Title" type="Control" parent="Tree"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -1125.43
+offset_bottom = -1125.43
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Tree/Title"]
+visible = false
+layout_mode = 2
+offset_left = -510.0
+offset_right = 514.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 1
+text = "Worlds Selection"
+label_settings = SubResource("LabelSettings_56lap")
+horizontal_alignment = 1
+script = ExtResource("2_nohmi")
+
+[node name="Basic" type="Control" parent="Tree"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -750.0
+offset_bottom = -750.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic World" parent="Tree/Basic" instance=ExtResource("4_wjvt0")]
+scale = Vector2(1.25, 1.25)
+nb_of_completed_levels = 0
+
+[node name="Advanced" type="Control" parent="Tree"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Advanced World" parent="Tree/Advanced" instance=ExtResource("5_80pre")]
+scale = Vector2(1.25, 1.25)
+nb_of_completed_levels = 0
+
+[node name="MiddleGroup" type="Control" parent="Tree"]
+anchors_preset = 0
+offset_top = 750.0
+offset_bottom = 750.0
+
+[node name="Portals" type="Control" parent="Tree/MiddleGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -400.0
+offset_right = -400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Portal World" parent="Tree/MiddleGroup/Portals" instance=ExtResource("6_plgfp")]
+
+[node name="Combined" type="Control" parent="Tree/MiddleGroup"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" instance=ExtResource("7_2tw7h")]
+
+[node name="Dirt" type="Control" parent="Tree/MiddleGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_right = 400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Portal World" parent="Tree/MiddleGroup/Dirt" instance=ExtResource("12_ega6f")]
+
+[node name="LeftGroup" type="Control" parent="Tree"]
+anchors_preset = 0
+offset_left = -1500.0
+offset_top = 750.0
+offset_right = -1500.0
+offset_bottom = 750.0
+
+[node name="Gravity" type="Control" parent="Tree/LeftGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -400.0
+offset_right = -400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic" type="Area2D" parent="Tree/LeftGroup/Gravity" groups=["PuzzlePieces"]]
+position = Vector2(1, 0)
+collision_mask = 5
+script = ExtResource("4_1qq0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tree/LeftGroup/Gravity/Basic"]
+root_node = NodePath("../Shape")
+libraries = {
+"": SubResource("AnimationLibrary_ss2u4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/LeftGroup/Gravity/Basic"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Tree/LeftGroup/Gravity/Basic"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+
+[node name="Background" type="TileMapLayer" parent="Tree/LeftGroup/Gravity/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("5_vqp6a")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Tree/LeftGroup/Gravity/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("5_vqp6a")
+
+[node name="Door" type="Area2D" parent="Tree/LeftGroup/Gravity/Basic/Shape" groups=["Doors"]]
+visible = false
+scale = Vector2(0.642018, 0.642018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/LeftGroup/Gravity/Basic/Shape/Door"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w8iru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree/LeftGroup/Gravity/Basic/Shape/Door"]
+texture = ExtResource("6_kbd3h")
+
+[node name="PlayerSprite" type="Node2D" parent="Tree/LeftGroup/Gravity/Basic/Shape" groups=["PlayerSprites"]]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tree/LeftGroup/Gravity/Basic/Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("8_1ha3l")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Overlay" type="Polygon2D" parent="Tree/LeftGroup/Gravity/Basic"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+
+[node name="Outline" type="Line2D" parent="Tree/LeftGroup/Gravity/Basic"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tree/LeftGroup/Gravity/Basic"]
+
+[node name="Combined" type="Control" parent="Tree/LeftGroup"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic" type="Area2D" parent="Tree/LeftGroup/Combined" groups=["PuzzlePieces"]]
+position = Vector2(1, 0)
+collision_mask = 5
+script = ExtResource("4_1qq0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tree/LeftGroup/Combined/Basic"]
+root_node = NodePath("../Shape")
+libraries = {
+"": SubResource("AnimationLibrary_ss2u4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/LeftGroup/Combined/Basic"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Tree/LeftGroup/Combined/Basic"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" type="TileMapLayer" parent="Tree/LeftGroup/Combined/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("5_vqp6a")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Tree/LeftGroup/Combined/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("5_vqp6a")
+
+[node name="Door" type="Area2D" parent="Tree/LeftGroup/Combined/Basic/Shape" groups=["Doors"]]
+visible = false
+scale = Vector2(0.642018, 0.642018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/LeftGroup/Combined/Basic/Shape/Door"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w8iru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree/LeftGroup/Combined/Basic/Shape/Door"]
+texture = ExtResource("6_kbd3h")
+
+[node name="PlayerSprite" type="Node2D" parent="Tree/LeftGroup/Combined/Basic/Shape" groups=["PlayerSprites"]]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tree/LeftGroup/Combined/Basic/Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("8_1ha3l")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Overlay" type="Polygon2D" parent="Tree/LeftGroup/Combined/Basic"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" type="Line2D" parent="Tree/LeftGroup/Combined/Basic"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tree/LeftGroup/Combined/Basic"]
+
+[node name="Key" type="Control" parent="Tree/LeftGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_right = 400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic" type="Area2D" parent="Tree/LeftGroup/Key" groups=["PuzzlePieces"]]
+position = Vector2(1, 0)
+collision_mask = 5
+script = ExtResource("4_1qq0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tree/LeftGroup/Key/Basic"]
+root_node = NodePath("../Shape")
+libraries = {
+"": SubResource("AnimationLibrary_ss2u4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/LeftGroup/Key/Basic"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Tree/LeftGroup/Key/Basic"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" type="TileMapLayer" parent="Tree/LeftGroup/Key/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("5_vqp6a")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Tree/LeftGroup/Key/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("5_vqp6a")
+
+[node name="Door" type="Area2D" parent="Tree/LeftGroup/Key/Basic/Shape" groups=["Doors"]]
+visible = false
+scale = Vector2(0.642018, 0.642018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/LeftGroup/Key/Basic/Shape/Door"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w8iru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree/LeftGroup/Key/Basic/Shape/Door"]
+texture = ExtResource("6_kbd3h")
+
+[node name="PlayerSprite" type="Node2D" parent="Tree/LeftGroup/Key/Basic/Shape" groups=["PlayerSprites"]]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tree/LeftGroup/Key/Basic/Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("8_1ha3l")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Overlay" type="Polygon2D" parent="Tree/LeftGroup/Key/Basic"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" type="Line2D" parent="Tree/LeftGroup/Key/Basic"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tree/LeftGroup/Key/Basic"]
+
+[node name="RightGroup" type="Control" parent="Tree"]
+anchors_preset = 0
+offset_left = 1500.0
+offset_top = 750.0
+offset_right = 1500.0
+offset_bottom = 750.0
+
+[node name="Platform" type="Control" parent="Tree/RightGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -400.0
+offset_right = -400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic" type="Area2D" parent="Tree/RightGroup/Platform" groups=["PuzzlePieces"]]
+position = Vector2(1, 0)
+collision_mask = 5
+script = ExtResource("4_1qq0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tree/RightGroup/Platform/Basic"]
+root_node = NodePath("../Shape")
+libraries = {
+"": SubResource("AnimationLibrary_ss2u4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/RightGroup/Platform/Basic"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Tree/RightGroup/Platform/Basic"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+
+[node name="Background" type="TileMapLayer" parent="Tree/RightGroup/Platform/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("5_vqp6a")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Tree/RightGroup/Platform/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("5_vqp6a")
+
+[node name="Door" type="Area2D" parent="Tree/RightGroup/Platform/Basic/Shape" groups=["Doors"]]
+visible = false
+scale = Vector2(0.642018, 0.642018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/RightGroup/Platform/Basic/Shape/Door"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w8iru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree/RightGroup/Platform/Basic/Shape/Door"]
+texture = ExtResource("6_kbd3h")
+
+[node name="PlayerSprite" type="Node2D" parent="Tree/RightGroup/Platform/Basic/Shape" groups=["PlayerSprites"]]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tree/RightGroup/Platform/Basic/Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("8_1ha3l")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Overlay" type="Polygon2D" parent="Tree/RightGroup/Platform/Basic"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+
+[node name="Outline" type="Line2D" parent="Tree/RightGroup/Platform/Basic"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tree/RightGroup/Platform/Basic"]
+
+[node name="Combined" type="Control" parent="Tree/RightGroup"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic" type="Area2D" parent="Tree/RightGroup/Combined" groups=["PuzzlePieces"]]
+position = Vector2(1, 0)
+collision_mask = 5
+script = ExtResource("4_1qq0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tree/RightGroup/Combined/Basic"]
+root_node = NodePath("../Shape")
+libraries = {
+"": SubResource("AnimationLibrary_ss2u4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/RightGroup/Combined/Basic"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Tree/RightGroup/Combined/Basic"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" type="TileMapLayer" parent="Tree/RightGroup/Combined/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("5_vqp6a")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Tree/RightGroup/Combined/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("5_vqp6a")
+
+[node name="Door" type="Area2D" parent="Tree/RightGroup/Combined/Basic/Shape" groups=["Doors"]]
+visible = false
+scale = Vector2(0.642018, 0.642018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/RightGroup/Combined/Basic/Shape/Door"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w8iru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree/RightGroup/Combined/Basic/Shape/Door"]
+texture = ExtResource("6_kbd3h")
+
+[node name="PlayerSprite" type="Node2D" parent="Tree/RightGroup/Combined/Basic/Shape" groups=["PlayerSprites"]]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tree/RightGroup/Combined/Basic/Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("8_1ha3l")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Overlay" type="Polygon2D" parent="Tree/RightGroup/Combined/Basic"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" type="Line2D" parent="Tree/RightGroup/Combined/Basic"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tree/RightGroup/Combined/Basic"]
+
+[node name="RotatingPiece" type="Control" parent="Tree/RightGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_right = 400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic" type="Area2D" parent="Tree/RightGroup/RotatingPiece" groups=["PuzzlePieces"]]
+position = Vector2(1, 0)
+collision_mask = 5
+script = ExtResource("4_1qq0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tree/RightGroup/RotatingPiece/Basic"]
+root_node = NodePath("../Shape")
+libraries = {
+"": SubResource("AnimationLibrary_ss2u4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/RightGroup/RotatingPiece/Basic"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Tree/RightGroup/RotatingPiece/Basic"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" type="TileMapLayer" parent="Tree/RightGroup/RotatingPiece/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("5_vqp6a")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Tree/RightGroup/RotatingPiece/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("5_vqp6a")
+
+[node name="Door" type="Area2D" parent="Tree/RightGroup/RotatingPiece/Basic/Shape" groups=["Doors"]]
+visible = false
+scale = Vector2(0.642018, 0.642018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/RightGroup/RotatingPiece/Basic/Shape/Door"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w8iru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree/RightGroup/RotatingPiece/Basic/Shape/Door"]
+texture = ExtResource("6_kbd3h")
+
+[node name="PlayerSprite" type="Node2D" parent="Tree/RightGroup/RotatingPiece/Basic/Shape" groups=["PlayerSprites"]]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tree/RightGroup/RotatingPiece/Basic/Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("8_1ha3l")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Overlay" type="Polygon2D" parent="Tree/RightGroup/RotatingPiece/Basic"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" type="Line2D" parent="Tree/RightGroup/RotatingPiece/Basic"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tree/RightGroup/RotatingPiece/Basic"]
+
+[node name="Final" type="Control" parent="Tree"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1500.0
+offset_bottom = 1500.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("2_nohmi")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic" type="Area2D" parent="Tree/Final" groups=["PuzzlePieces"]]
+position = Vector2(1, 0)
+collision_mask = 5
+script = ExtResource("4_1qq0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tree/Final/Basic"]
+root_node = NodePath("../Shape")
+libraries = {
+"": SubResource("AnimationLibrary_ss2u4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/Final/Basic"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Tree/Final/Basic"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+
+[node name="Background" type="TileMapLayer" parent="Tree/Final/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("5_vqp6a")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Tree/Final/Basic/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("5_vqp6a")
+
+[node name="Door" type="Area2D" parent="Tree/Final/Basic/Shape" groups=["Doors"]]
+visible = false
+scale = Vector2(0.642018, 0.642018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/Final/Basic/Shape/Door"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_w8iru")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree/Final/Basic/Shape/Door"]
+texture = ExtResource("6_kbd3h")
+
+[node name="PlayerSprite" type="Node2D" parent="Tree/Final/Basic/Shape" groups=["PlayerSprites"]]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tree/Final/Basic/Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("8_1ha3l")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Overlay" type="Polygon2D" parent="Tree/Final/Basic"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+
+[node name="Outline" type="Line2D" parent="Tree/Final/Basic"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Tree/Final/Basic"]
+
+[node name="BottomArrow" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -500.0
+offset_right = 50.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(0, -1280)
+target_world = NodePath("../Advanced/Advanced World")
+required_targeted_world = NodePath("../Basic/Basic World")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow2" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -411.137
+offset_right = 50.0
+offset_bottom = -211.137
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71238
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(0, 1280)
+target_world = NodePath("../Basic/Basic World")
+required_targeted_world = NodePath("../Advanced/Advanced World")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow2"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow3" type="Control" parent="Tree" node_paths=PackedStringArray("required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 251.022
+offset_right = 50.0
+offset_bottom = 451.022
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(0, -1280)
+required_targeted_world = NodePath("../Advanced/Advanced World")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow3"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow5" type="Control" parent="Tree" node_paths=PackedStringArray("target_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 968.898
+offset_right = 50.0
+offset_bottom = 1168.9
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(0, -1280)
+target_world = NodePath("../Final/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow5"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow11" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1548.95
+offset_top = 968.898
+offset_right = -1448.95
+offset_bottom = 1168.9
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(-2550, -1280)
+target_world = NodePath("../Final/Basic")
+required_targeted_world = NodePath("../LeftGroup/Combined/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow11"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow12" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1452.76
+offset_top = 968.898
+offset_right = 1552.76
+offset_bottom = 1168.9
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(2550, -1280)
+target_world = NodePath("../Final/Basic")
+required_targeted_world = NodePath("../RightGroup/Combined/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow12"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow4" type="Control" parent="Tree" node_paths=PackedStringArray("target_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 356.006
+offset_right = 50.0
+offset_bottom = 556.006
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71238
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(0, 1280)
+target_world = NodePath("../Advanced/Advanced World")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow4"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow7" type="Control" parent="Tree" node_paths=PackedStringArray("target_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 600.0
+offset_top = 650.0
+offset_right = 700.0
+offset_bottom = 850.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(-2550, 0)
+target_world = NodePath("../RightGroup/Combined/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow7"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow10" type="Control" parent="Tree" node_paths=PackedStringArray("required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -886.788
+offset_top = 650.0
+offset_right = -786.788
+offset_bottom = 850.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(-2550, 0)
+required_targeted_world = NodePath("../LeftGroup/Combined/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow10"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow9" type="Control" parent="Tree" node_paths=PackedStringArray("required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 813.475
+offset_top = 650.0
+offset_right = 913.475
+offset_bottom = 850.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(2550, 0)
+required_targeted_world = NodePath("../RightGroup/Combined/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow9"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow8" type="Control" parent="Tree" node_paths=PackedStringArray("target_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = 650.0
+offset_right = -600.0
+offset_bottom = 850.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(2550, 0)
+target_world = NodePath("../LeftGroup/Combined/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow8"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="BottomArrow6" type="Control" parent="Tree" node_paths=PackedStringArray("required_targeted_world") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 1110.83
+offset_right = 50.0
+offset_bottom = 1310.83
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71238
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_t704p")
+direction = Vector2(0, 1280)
+required_targeted_world = NodePath("../Final/Basic")
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow6"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[connection signal="body_entered" from="Tree/LeftGroup/Gravity/Basic" to="Tree/LeftGroup/Gravity/Basic" method="_on_body_entered"]
+[connection signal="body_exited" from="Tree/LeftGroup/Gravity/Basic" to="Tree/LeftGroup/Gravity/Basic" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Tree/LeftGroup/Gravity/Basic" to="Tree/LeftGroup/Gravity/Basic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/LeftGroup/Gravity/Basic" to="Tree/LeftGroup/Gravity/Basic" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Tree/LeftGroup/Gravity/Basic/Shape/Door" to="Tree/LeftGroup/Gravity/Basic/Shape/Door" method="_on_body_entered"]
+[connection signal="body_entered" from="Tree/LeftGroup/Combined/Basic" to="Tree/LeftGroup/Combined/Basic" method="_on_body_entered"]
+[connection signal="body_exited" from="Tree/LeftGroup/Combined/Basic" to="Tree/LeftGroup/Combined/Basic" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Tree/LeftGroup/Combined/Basic" to="Tree/LeftGroup/Combined/Basic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/LeftGroup/Combined/Basic" to="Tree/LeftGroup/Combined/Basic" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Tree/LeftGroup/Combined/Basic/Shape/Door" to="Tree/LeftGroup/Combined/Basic/Shape/Door" method="_on_body_entered"]
+[connection signal="body_entered" from="Tree/LeftGroup/Key/Basic" to="Tree/LeftGroup/Key/Basic" method="_on_body_entered"]
+[connection signal="body_exited" from="Tree/LeftGroup/Key/Basic" to="Tree/LeftGroup/Key/Basic" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Tree/LeftGroup/Key/Basic" to="Tree/LeftGroup/Key/Basic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/LeftGroup/Key/Basic" to="Tree/LeftGroup/Key/Basic" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Tree/LeftGroup/Key/Basic/Shape/Door" to="Tree/LeftGroup/Key/Basic/Shape/Door" method="_on_body_entered"]
+[connection signal="body_entered" from="Tree/RightGroup/Platform/Basic" to="Tree/RightGroup/Platform/Basic" method="_on_body_entered"]
+[connection signal="body_exited" from="Tree/RightGroup/Platform/Basic" to="Tree/RightGroup/Platform/Basic" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Tree/RightGroup/Platform/Basic" to="Tree/RightGroup/Platform/Basic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/RightGroup/Platform/Basic" to="Tree/RightGroup/Platform/Basic" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Tree/RightGroup/Platform/Basic/Shape/Door" to="Tree/RightGroup/Platform/Basic/Shape/Door" method="_on_body_entered"]
+[connection signal="body_entered" from="Tree/RightGroup/Combined/Basic" to="Tree/RightGroup/Combined/Basic" method="_on_body_entered"]
+[connection signal="body_exited" from="Tree/RightGroup/Combined/Basic" to="Tree/RightGroup/Combined/Basic" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Tree/RightGroup/Combined/Basic" to="Tree/RightGroup/Combined/Basic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/RightGroup/Combined/Basic" to="Tree/RightGroup/Combined/Basic" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Tree/RightGroup/Combined/Basic/Shape/Door" to="Tree/RightGroup/Combined/Basic/Shape/Door" method="_on_body_entered"]
+[connection signal="body_entered" from="Tree/RightGroup/RotatingPiece/Basic" to="Tree/RightGroup/RotatingPiece/Basic" method="_on_body_entered"]
+[connection signal="body_exited" from="Tree/RightGroup/RotatingPiece/Basic" to="Tree/RightGroup/RotatingPiece/Basic" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Tree/RightGroup/RotatingPiece/Basic" to="Tree/RightGroup/RotatingPiece/Basic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/RightGroup/RotatingPiece/Basic" to="Tree/RightGroup/RotatingPiece/Basic" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Tree/RightGroup/RotatingPiece/Basic/Shape/Door" to="Tree/RightGroup/RotatingPiece/Basic/Shape/Door" method="_on_body_entered"]
+[connection signal="body_entered" from="Tree/Final/Basic" to="Tree/Final/Basic" method="_on_body_entered"]
+[connection signal="body_exited" from="Tree/Final/Basic" to="Tree/Final/Basic" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Tree/Final/Basic" to="Tree/Final/Basic" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/Final/Basic" to="Tree/Final/Basic" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Tree/Final/Basic/Shape/Door" to="Tree/Final/Basic/Shape/Door" method="_on_body_entered"]
+[connection signal="mouse_entered" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow3" to="Tree/BottomArrow3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow3" to="Tree/BottomArrow3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow5" to="Tree/BottomArrow5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow5" to="Tree/BottomArrow5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow11" to="Tree/BottomArrow11" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow11" to="Tree/BottomArrow11" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow12" to="Tree/BottomArrow12" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow12" to="Tree/BottomArrow12" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow4" to="Tree/BottomArrow4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow4" to="Tree/BottomArrow4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow7" to="Tree/BottomArrow7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow7" to="Tree/BottomArrow7" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow10" to="Tree/BottomArrow10" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow10" to="Tree/BottomArrow10" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow9" to="Tree/BottomArrow9" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow9" to="Tree/BottomArrow9" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow8" to="Tree/BottomArrow8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow8" to="Tree/BottomArrow8" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow6" to="Tree/BottomArrow6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow6" to="Tree/BottomArrow6" method="_on_mouse_exited"]
