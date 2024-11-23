@@ -1,8 +1,12 @@
 extends Node2D
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("skip_intro"):
-		SubsystemManager.get_level_manager().load_level("res://Scenes/Game.tscn")
+		var game = load("res://Scenes/Game.tscn").instantiate()
+		get_tree().root.add_child(game)
+		queue_free()
 
 func _on_video_stream_player_finished():
-	SubsystemManager.get_level_manager().load_level("res://Scenes/Game.tscn")
+		var game = load("res://Scenes/Game.tscn").instantiate()
+		get_tree().root.add_child(game)
+		queue_free()

@@ -15,5 +15,3 @@ func stop_music() -> void:
 
 func set_Music_volume_db(volume: float) -> void:
 	self.volume_db = volume
-	
-	

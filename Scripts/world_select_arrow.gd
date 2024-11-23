@@ -45,10 +45,7 @@ func _on_mouse_exited():
 func _input(event):
 	if !enabled : return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and mouse_hover:
-		print(self)
-		print(tree.target_position)
 		tree.target_position += direction
-		print(tree.target_position)
 		tree.target_world = target_world
 		for arrow in get_tree().get_nodes_in_group("Arrow"):
 			arrow.update_enabled()

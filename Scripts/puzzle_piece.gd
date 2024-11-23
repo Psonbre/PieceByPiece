@@ -312,13 +312,13 @@ func connect_portals():
 	
 	if portals.size() == 2 :
 		portals[0].activate()
-		portals[0].connected_portal = portals[1]
+		portals[0].connected_portal = portals[1] 
 		portals[1].activate()
 		portals[1].connected_portal = portals[0]
 		outline.set_type(PuzzlePieceOutline.OutlineType.PORTAL)
 	else :
-		for portal in portals :
-			portal.deactivate()
+		for portal_in_group in portals :
+			portal_in_group.deactivate()
 		outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 	
 func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: PuzzlePiece):

@@ -9,6 +9,7 @@ var direction = Vector2(-1, 0)  # Store the direction globally for use in _proce
 
 func _ready():
 	current_screen = get_node("MainMenu")
+	print(get_tree().get_music_manager())
 
 func load_scene(scene_path, new_direction := Vector2(1, 0)):
 	if old_screen != null: return
@@ -26,12 +27,12 @@ func load_scene(scene_path, new_direction := Vector2(1, 0)):
 	
 	direction = new_direction  # Update the global direction
 	
-	get_tree().root.get_node("Game").add_child(scene)
+	add_child(scene)
 
 func _process(delta):
 	if Input.is_action_just_pressed("Reset") and !Player.winning and old_screen == null:
 		if Player.has_collectible:
-			SubsystemManager.get_collectible_manager().remove_piece()
+			SubSystemManager.get_collectible_manager().remove_piece()
 		load_scene("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(0,-1))
 		Player.has_collectible = false
 	

@@ -3,8 +3,6 @@ extends CanvasLayer
 @onready var animationPlayer = $AnimationPlayer
 @onready var colorRect = $ColorRect
 
-signal transitioned
-
 func fade_in():
 	colorRect.visible = true
 	animationPlayer.play("fade_in")

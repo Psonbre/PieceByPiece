@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 class_name WorldSelectButton
 
@@ -36,7 +35,6 @@ func _ready():
 	update_labels()
 	
 func _process(delta):
-	if Engine.is_editor_hint() : return
 	scale = scale.move_toward(target_scale, abs((target_scale - scale).length()) * delta * 6.0)
 	if play_icon :
 		if mouse_hover :

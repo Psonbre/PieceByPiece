@@ -1,4 +1,3 @@
-extends Node
 class_name CollectibleManager
 
 var nbOfPiecesCaught : int = 0

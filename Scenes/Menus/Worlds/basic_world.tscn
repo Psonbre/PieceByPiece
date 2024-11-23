@@ -72,7 +72,9 @@ _data = {
 
 [node name="Basic World" instance=ExtResource("1_vnc16")]
 position = Vector2(0, 0)
-nb_of_collectibles = 0
+
+[node name="Collectibles" parent="Overlay" index="2"]
+text = "0/10"
 
 [node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_ib866")

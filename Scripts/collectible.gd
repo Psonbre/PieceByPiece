@@ -19,8 +19,8 @@ func _process(_delta):
 	position = start_position + Vector2(cos(Time.get_unix_time_from_system() * horizontal_speed + rand) * horizontal_intensity, sin(Time.get_unix_time_from_system() + rand * vertical_speed) * vertical_intensity)
 
 func _on_body_entered(body):
-	if body is Player and body.is_physics_processing() && !get_parent().get_parent().is_dragging && !Player.has_collectible && get_tree().get_first_node_in_group("GameManager").old_screen == null:
+	if body is Player and body.is_physics_processing() && !get_parent().get_parent().is_dragging && !Player.has_collectible && SubSystemManager.get_game_manager().old_screen == null:
 		Player.has_collectible = true
-		SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/winJingle.ogg", -5)
-		SubsystemManager.get_collectible_manager().add_piece()
+		SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/winJingle.ogg", -5)
+		SubSystemManager.get_collectible_manager().add_piece()
 		visible = false

@@ -9,7 +9,7 @@ const JUMP_VELOCITY := -400.0
 var overlapping_pieces = []
 var default_scale
 var was_on_floor := false
-var last_vertical_speed :=  0
+var last_vertical_speed :=  0.0
 static var current_level := 1
 static var winning := false
 static var entering_portal := false
@@ -41,13 +41,13 @@ func _physics_process(delta):
 		if (velocity.x  > 0) : set_flip(false)
 		elif (velocity.x < 0) : set_flip(true)
 		play_animation("Moving");
-		if is_on_floor() : SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/walk.ogg", -3)
+		if is_on_floor() : SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/walk.ogg", -3)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor() : play_animation("Idle");
 
 	if is_on_floor() and Input.is_action_just_pressed("Jump") :
-		SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/jump.ogg", -7)
+		SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/jump.ogg", -7)
 		velocity.y = JUMP_VELOCITY
 			
 	move_and_slide()

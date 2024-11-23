@@ -1,48 +1,35 @@
 extends SceneTree
-class_name SubsystemManager
+class_name SubSystemManager
 
-static var instance: SubsystemManager = null
-static var level_manager: LevelManager = null
-static var music_manager: MusicManager = null
-static var sound_manager: SoundManager = null
-static var collectible_manager: CollectibleManager = null
+static var instance : SubSystemManager : 
+	get() : return Engine.get_main_loop()			
+static var game_manager : GameManager
+static var music_manager: MusicManager
+static var sound_manager: SoundManager
+static var collectible_manager: CollectibleManager
 
+static func get_game_manager() -> GameManager:
+	if game_manager == null:
+		game_manager = instance.get_first_node_in_group("GameManager")
+		if game_manager == null :
+			var game_manager = load("res://Scenes/Manager/MusicManager.tscn").instantiate()
+			instance.root.add_child(game_manager)
+	return game_manager
 
-# Initialize the singleton instance
-func _initialize() -> void:
-	instance = Engine.get_main_loop() as SubsystemManager
-
-# Get the SubsystemManager singleton instance
-static func get_SubsystemManager() -> SubsystemManager:
-	if instance == null:
-		instance = Engine.get_main_loop() as SubsystemManager
-	return instance
-
-# Get the LevelManager instance
-static func get_level_manager() -> LevelManager:
-	if level_manager == null:
-		var level_manager_scene = load("res://Scenes/Manager/SceneManager.tscn")
-		level_manager = level_manager_scene.instantiate()
-		get_SubsystemManager().root.add_child(level_manager)
-	return level_manager
-	
-# Get the MusicManager instance
 static func get_music_manager() -> MusicManager:
 	if music_manager == null:
 		var music_manager_scene = load("res://Scenes/Manager/MusicManager.tscn")
 		music_manager = music_manager_scene.instantiate()
-		get_SubsystemManager().root.add_child(music_manager)
+		instance.root.add_child(music_manager)
 	return music_manager
 
-# Get the MusicManager instance
 static func get_sound_manager() -> SoundManager:
 	if sound_manager == null:
 		var sound_manager_scene = load("res://Scenes/Manager/SoundManager.tscn")
 		sound_manager = sound_manager_scene.instantiate()
-		get_SubsystemManager().root.add_child(sound_manager)
+		instance.root.add_child(sound_manager)
 	return sound_manager
 	
-# Get the CollectibleManager instance
 static func get_collectible_manager() -> CollectibleManager:
 	if collectible_manager == null:
 		collectible_manager = CollectibleManager.new()
