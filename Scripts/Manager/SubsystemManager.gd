@@ -12,7 +12,7 @@ static func get_game_manager() -> GameManager:
 	if game_manager == null:
 		game_manager = instance.get_first_node_in_group("GameManager")
 		if game_manager == null :
-			var game_manager = load("res://Scenes/Manager/MusicManager.tscn").instantiate()
+			game_manager = load("res://Scenes/Manager/MusicManager.tscn").instantiate()
 			instance.root.add_child(game_manager)
 	return game_manager
 

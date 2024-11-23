@@ -29,7 +29,7 @@ var default_scale := Vector2(1.0, 1.0)
 var connection_group := ConnectionGroup.new(self)
 
 var start_drag_position := Vector2.ZERO
-var start_drag_target_rotated_angle := 0.0
+var start_drag_target_rotated_angle := 0
 var start_drag_rotation := 0.0
 var start_drag_tilt := 0.0
 
@@ -284,8 +284,8 @@ func can_be_dropped():
 		return true
 
 func set_player_sprites_visible(shown : bool) :
-	for player_sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
-		player_sprite.sprite.visible = shown
+	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
+		sprite.sprite.visible = shown
 		
 
 func update_all_connection_groups():
