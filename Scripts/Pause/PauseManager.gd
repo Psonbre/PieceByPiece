@@ -23,7 +23,7 @@ func _on_restart_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
 	toggle_pause()
-	SubSystemManager.get_game_manager().load_scene("res://Scenes/MainMenu.tscn", Vector2(0, -1))
+	SubSystemManager.get_game_manager().load_scene(preload("res://Scenes/Menus/MainMenu.tscn"), Vector2(0, -1))
 
 func toggle_pause() -> void:
 	if !is_paused:

@@ -1,19 +1,32 @@
 extends Node2D
-class_name GameManager
+class_name SceneManager
+
+@onready var camera = %Camera2D
 
 var old_screen : Node2D
 var current_screen : Node2D
 var default_resolution = Vector2(2560, 1440)
-@onready var camera = %Camera2D
-var direction = Vector2(-1, 0)  # Store the direction globally for use in _process
+var direction = Vector2(-1, 0)
 
-func _ready():
-	current_screen = get_node("MainMenu")
-	print(get_tree().get_music_manager())
+const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
+const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
+const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
 
-func load_scene(scene_path, new_direction := Vector2(1, 0)):
+func load_main_menu(new_direction := Vector2(1, 0)):
+	load_scene(MAIN_MENU, new_direction)
+
+func load_world_select_menu(new_direction := Vector2(1, 0)):
+	load_scene(WORLD_SELECT, new_direction)
+
+func load_credits_menu(new_direction := Vector2(1, 0)):
+	load_scene(CREDITS, new_direction)
+
+func load_scene_from_path(scene_path : String, new_direction := Vector2(1, 0)):
+	return load_scene(load(scene_path), new_direction)
+
+func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0)):
 	if old_screen != null: return
-	var scene: Node2D = load(scene_path).instantiate()
+	var scene = scene_resource.instantiate()
 	var new_cam: Camera2D = scene.get_node("Camera2D")
 	camera.target_position = new_cam.global_position
 	camera.target_zoom = new_cam.zoom
@@ -28,6 +41,7 @@ func load_scene(scene_path, new_direction := Vector2(1, 0)):
 	direction = new_direction  # Update the global direction
 	
 	add_child(scene)
+	return scene
 
 func _process(delta):
 	if Input.is_action_just_pressed("Reset") :
@@ -53,5 +67,5 @@ func reset_level() :
 	if !Player.winning and old_screen == null:
 		if Player.has_collectible:
 			SubSystemManager.get_collectible_manager().remove_piece()
-		load_scene("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(0,-1))
+		load_scene_from_path("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(0,-1))
 		Player.has_collectible = false

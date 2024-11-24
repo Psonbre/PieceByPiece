@@ -41,13 +41,13 @@ func _physics_process(delta):
 		if (velocity.x  > 0) : set_flip(false)
 		elif (velocity.x < 0) : set_flip(true)
 		play_animation("Moving");
-		if is_on_floor() : SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/walk.ogg", -3)
+		if is_on_floor() : SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor() : play_animation("Idle");
 
 	if is_on_floor() and Input.is_action_just_pressed("Jump") :
-		SubSystemManager.get_sound_manager().play_sound("res://Assets/Sounds/jump.ogg", -7)
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.ogg"), -7)
 		velocity.y = JUMP_VELOCITY
 			
 	move_and_slide()
@@ -109,7 +109,7 @@ func _process(delta):
 			winning = false
 			current_level += 1
 			has_collectible = false
-			get_tree().root.get_node("Game").load_scene("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(1,0))
+			SubSystemManager.get_scene_manager().load_scene_from_path("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(1,0))
 			
 	elif entering_portal :
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)

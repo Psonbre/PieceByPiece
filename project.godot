@@ -42,6 +42,7 @@ Doors=""
 Player=""
 PlayerSprites=""
 GameManager=""
+Level=""
 
 [gui]
 

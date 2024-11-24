@@ -143,7 +143,7 @@ shape = SubResource("RectangleShape2D_h5fte")
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/BottomConnector" index="0"]
 shape = SubResource("RectangleShape2D_2i7m4")
 
-[node name="Collectible" parent="PuzzlePiece2/Shape" index="5"]
+[node name="Collectible" parent="PuzzlePiece2/Shape" index="6"]
 visible = true
 position = Vector2(52, -18)
 scale = Vector2(0.402039, 0.402039)
