@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://ipbkkv76xi8l"]
+[gd_scene load_steps=18 format=3 uid="uid://ipbkkv76xi8l"]
 
-[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_3g2j1"]
 [ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_ilqow"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_nohmi"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_op76w"]
 [ext_resource type="PackedScene" uid="uid://bugeuopf4jxs7" path="res://Scenes/Menus/Worlds/basic_world.tscn" id="4_wjvt0"]
 [ext_resource type="PackedScene" uid="uid://e7wskfnclaq6" path="res://Scenes/Menus/Worlds/advanced_world.tscn" id="5_80pre"]
 [ext_resource type="PackedScene" uid="uid://dbkth5a8frbf4" path="res://Scenes/Menus/Worlds/portal_world.tscn" id="6_plgfp"]
@@ -33,10 +33,6 @@ func _process(delta):
 	position += delta * distance * 8.0
 "
 
-[sub_resource type="LabelSettings" id="LabelSettings_56lap"]
-font = ExtResource("1_3g2j1")
-font_size = 64
-
 [node name="WorldSelect" type="Node2D"]
 script = ExtResource("1_ilqow")
 
@@ -66,12 +62,14 @@ grow_vertical = 2
 
 [node name="Title" type="Label" parent="Tree/Title"]
 layout_mode = 2
-offset_left = -510.0
-offset_right = 514.0
-offset_bottom = 64.0
+offset_left = -206.448
+offset_top = 25.7426
+offset_right = 993.552
+offset_bottom = 225.743
+scale = Vector2(0.346379, 0.346379)
 theme_override_font_sizes/font_size = 1
 text = "Worlds"
-label_settings = SubResource("LabelSettings_56lap")
+label_settings = ExtResource("2_op76w")
 horizontal_alignment = 1
 script = ExtResource("2_nohmi")
 
