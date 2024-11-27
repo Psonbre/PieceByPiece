@@ -1,7 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bugeuopf4jxs7"]
+[gd_scene load_steps=11 format=3 uid="uid://bugeuopf4jxs7"]
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_vnc16"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_qptbq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5rap"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrwj0"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omm6s"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhr3s"]
+radius = 35.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ib866"]
 resource_local_to_scene = true
@@ -73,8 +85,36 @@ _data = {
 [node name="Basic World" instance=ExtResource("1_vnc16")]
 position = Vector2(0, 0)
 
+[node name="Shape" parent="." index="1"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
+
+[node name="RightConnector" parent="Shape/Connectors" index="0"]
+shape = 0
+
+[node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_d5rap")
+
+[node name="LeftConnector" parent="Shape/Connectors" index="1"]
+shape = 0
+
+[node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_qrwj0")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_omm6s")
+
+[node name="BottomConnector" parent="Shape/Connectors" index="3"]
+shape = 1
+
+[node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_yhr3s")
+
 [node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_ib866")
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {

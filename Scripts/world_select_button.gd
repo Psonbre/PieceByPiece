@@ -32,6 +32,7 @@ var world_completed : bool :
 func _ready():
 	default_scale = scale
 	target_scale = default_scale
+	overlay.polygon = $Shape.polygon
 	update_labels()
 	
 func _process(delta):

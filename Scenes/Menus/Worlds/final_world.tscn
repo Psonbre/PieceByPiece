@@ -1,8 +1,20 @@
-[gd_scene load_steps=8 format=4 uid="uid://bndsfuv4ll7tr"]
+[gd_scene load_steps=12 format=4 uid="uid://bndsfuv4ll7tr"]
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_pd1kv"]
 [ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="2_uevmo"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_p30nk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7y4e"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1upc"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd88v"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5tu7"]
+size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ib866"]
 resource_local_to_scene = true
@@ -92,6 +104,30 @@ visible = false
 position = Vector2(0, 0)
 scale = Vector2(1, 1)
 sprite_frames = ExtResource("2_uevmo")
+
+[node name="RightConnector" parent="Shape/Connectors" index="0"]
+shape = 0
+
+[node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_n7y4e")
+
+[node name="LeftConnector" parent="Shape/Connectors" index="1"]
+shape = 0
+
+[node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_w1upc")
+
+[node name="TopConnector" parent="Shape/Connectors" index="2"]
+shape = 1
+type = -1
+
+[node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_qd88v")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_t5tu7")
 
 [node name="Overlay" parent="." index="2"]
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)

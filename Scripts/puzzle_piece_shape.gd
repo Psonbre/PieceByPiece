@@ -2,15 +2,10 @@
 extends Polygon2D
 class_name PuzzlePieceShape
 
-@onready var right_connector : PuzzlePieceConnector = $Connectors/RightConnector	
-@onready var left_connector : PuzzlePieceConnector = $Connectors/LeftConnector
-@onready var top_connector : PuzzlePieceConnector = $Connectors/TopConnector
-@onready var bottom_connector : PuzzlePieceConnector = $Connectors/BottomConnector
-@onready var left_collider = $"../Colliders/LeftCollider"
-@onready var right_collider = $"../Colliders/RightCollider"
-@onready var top_collider = $"../Colliders/TopCollider"
-@onready var bottom_collider = $"../Colliders/BottomCollider"
-
+@onready var right_connector : PuzzlePieceVisualConnector = $Connectors/RightConnector	
+@onready var left_connector : PuzzlePieceVisualConnector = $Connectors/LeftConnector
+@onready var top_connector : PuzzlePieceVisualConnector = $Connectors/TopConnector
+@onready var bottom_connector : PuzzlePieceVisualConnector = $Connectors/BottomConnector
 	
 var shape_size := 256
 

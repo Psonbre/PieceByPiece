@@ -1,8 +1,20 @@
-[gd_scene load_steps=8 format=4 uid="uid://d0vob1weoau0o"]
+[gd_scene load_steps=12 format=4 uid="uid://d0vob1weoau0o"]
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_2tfxr"]
 [ext_resource type="SpriteFrames" uid="uid://byvdlkywtissw" path="res://Scenes/PlayerSprites/player4_frames.tres" id="2_g66jg"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_qwqjc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojm7f"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5k06"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwas8"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2v7mi"]
+radius = 35.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ib866"]
 resource_local_to_scene = true
@@ -143,6 +155,30 @@ sprite_frames = ExtResource("2_g66jg")
 animation = &"Jump"
 offset = Vector2(-0.410496, -1.33236)
 flip_h = true
+
+[node name="RightConnector" parent="Shape/Connectors" index="0"]
+type = -1
+
+[node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_ojm7f")
+
+[node name="LeftConnector" parent="Shape/Connectors" index="1"]
+type = -1
+
+[node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_m5k06")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_kwas8")
+
+[node name="BottomConnector" parent="Shape/Connectors" index="3"]
+shape = 1
+
+[node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_2v7mi")
 
 [node name="Overlay" parent="." index="2"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
