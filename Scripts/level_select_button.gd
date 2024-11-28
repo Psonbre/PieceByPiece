@@ -1,39 +1,43 @@
 extends Node2D
 class_name LevelSelectButton
 
+@onready var collectible_shape: PuzzlePieceShape = $Collectible/Shape
+@onready var collectible_outline: PuzzlePieceOutline = $Collectible/Outline
 @onready var overlay = $Overlay
 @export var level : PackedScene
 @export var completed := false
-@export var collected_collectible := false
+@export var collected_collectible := false :
+	set(value) :
+		collected_collectible = value
+		if not collectible_shape : return
+		if collected_collectible :
+			collectible_shape.color = Color.WHITE
+			collectible_outline.default_color = Color.BLACK
 @export var requires : LevelSelectButton
 
 var default_scale : Vector2
 var mouse_hover := false
 var target_scale : Vector2
-			
+
+
 func _ready():
 	default_scale = scale
 	target_scale = default_scale
 	overlay.polygon = $Shape.polygon
 	if requires and !requires.completed :
 		visible = false
-	if completed :
-		overlay.self_modulate = Color(1,1,1,0)
-	else :
-		overlay.self_modulate = Color(0,0,0,0.7)
+	overlay.self_modulate = Color(1,1,1,0)
+	if collected_collectible :
+		collectible_shape.color = Color.WHITE
+		collectible_outline.default_color = Color.BLACK
+		collectible_outline.texture = null
 	
 func _process(delta):
 	scale = scale.move_toward(target_scale, abs((target_scale - scale).length()) * delta * 6.0)
-	if completed : 
-		if mouse_hover :
-			overlay.self_modulate = Color(1,1,1, move_toward(overlay.self_modulate.a, 0.1, delta / 2.0))
-		else :
-			overlay.self_modulate = Color(1,1,1,move_toward(overlay.self_modulate.a, 0, delta / 2.0))
+	if mouse_hover :
+		overlay.self_modulate = Color(1,1,1, move_toward(overlay.self_modulate.a, 0.1, delta / 2.0))
 	else :
-		if mouse_hover :
-			overlay.self_modulate = Color(0,0,0, move_toward(overlay.self_modulate.a, 0.6, delta / 2.0))
-		else :
-			overlay.self_modulate = Color(0,0,0,move_toward(overlay.self_modulate.a, 0.7, delta / 2.0))
+		overlay.self_modulate = Color(1,1,1,move_toward(overlay.self_modulate.a, 0, delta / 2.0))
 		
 
 func _on_mouse_entered():

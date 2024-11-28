@@ -1,15 +1,15 @@
 [gd_scene load_steps=52 format=4 uid="uid://dd7kj180ttcj3"]
 
-[ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_55png"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="1_bevsx"]
-[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_vyd8v"]
-[ext_resource type="PackedScene" uid="uid://g04py0wl4i5h" path="res://Scenes/Menus/Levels/level_button_template.tscn" id="3_gv1li"]
-[ext_resource type="PackedScene" uid="uid://h8ecs5ipml41" path="res://Scenes/Levels/Level1.tscn" id="4_5rhyj"]
-[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="4_jiid4"]
-[ext_resource type="PackedScene" uid="uid://ctik1f10q8inj" path="res://Scenes/Levels/Level2.tscn" id="6_bed0i"]
-[ext_resource type="PackedScene" uid="uid://cahank0m6nfen" path="res://Scenes/Levels/Level3.tscn" id="7_fadjl"]
-[ext_resource type="PackedScene" uid="uid://ctl2lnwlg5677" path="res://Scenes/Levels/Level4.tscn" id="8_3skak"]
-[ext_resource type="PackedScene" uid="uid://6ol74pgrytr8" path="res://Scenes/Levels/Level5.tscn" id="9_mtoc7"]
+[ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_tnu6l"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_rnpin"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_ls3di"]
+[ext_resource type="PackedScene" uid="uid://g04py0wl4i5h" path="res://Scenes/Menus/Levels/level_button_template.tscn" id="4_tk56w"]
+[ext_resource type="PackedScene" uid="uid://h8ecs5ipml41" path="res://Scenes/Levels/Level1.tscn" id="5_brms2"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="6_gqrs8"]
+[ext_resource type="PackedScene" uid="uid://r2uxc4jshqed" path="res://Scenes/Levels/Level2.tscn" id="7_50pxw"]
+[ext_resource type="PackedScene" uid="uid://cahank0m6nfen" path="res://Scenes/Levels/Level3.tscn" id="8_3mc1q"]
+[ext_resource type="PackedScene" uid="uid://ctl2lnwlg5677" path="res://Scenes/Levels/Level4.tscn" id="9_yadwo"]
+[ext_resource type="PackedScene" uid="uid://6ol74pgrytr8" path="res://Scenes/Levels/Level5.tscn" id="10_8blkj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p057t"]
 radius = 35.0
@@ -25,7 +25,7 @@ radius = 35.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ksqc6"]
 resource_local_to_scene = true
-shader = ExtResource("4_jiid4")
+shader = ExtResource("6_gqrs8")
 shader_parameter/speed = 1.405
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
@@ -137,8 +137,8 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ng88y"]
 size = Vector2(35, 70)
 
-[node name="LevelSelectBase" type="Node2D"]
-script = ExtResource("1_55png")
+[node name="LevelSelectTemplate" type="Node2D"]
+script = ExtResource("1_tnu6l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.015, 1.015)
@@ -166,11 +166,11 @@ offset_bottom = 225.743
 scale = Vector2(0.346379, 0.346379)
 theme_override_font_sizes/font_size = 1
 text = "King's Quest"
-label_settings = ExtResource("1_bevsx")
+label_settings = ExtResource("2_rnpin")
 horizontal_alignment = 1
-script = ExtResource("2_vyd8v")
+script = ExtResource("3_ls3di")
 
-[node name="Level 1" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 1" parent="." instance=ExtResource("4_tk56w")]
 offset_left = -700.0
 offset_top = -150.0
 offset_right = -700.0
@@ -179,7 +179,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 1" index="0"]
-level = ExtResource("4_5rhyj")
+level = ExtResource("5_brms2")
 completed = true
 
 [node name="Shape" parent="Level 1/Level Button" index="1"]
@@ -211,7 +211,7 @@ shape = SubResource("CircleShape2D_456lc")
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
 
-[node name="Level 2" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 2" parent="." instance=ExtResource("4_tk56w")]
 offset_left = -350.0
 offset_top = -150.0
 offset_right = -350.0
@@ -220,7 +220,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 2" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("6_bed0i")
+level = ExtResource("7_50pxw")
 requires = NodePath("../../Level 1/Level Button")
 
 [node name="Shape" parent="Level 2/Level Button" index="1"]
@@ -256,14 +256,14 @@ text = "2"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 3" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 3" parent="." instance=ExtResource("4_tk56w")]
 offset_top = -150.0
 offset_bottom = -150.0
 vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 3" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("7_fadjl")
+level = ExtResource("8_3mc1q")
 requires = NodePath("../../Level 2/Level Button")
 
 [node name="Shape" parent="Level 3/Level Button" index="1"]
@@ -299,7 +299,7 @@ text = "3"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 4" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 4" parent="." instance=ExtResource("4_tk56w")]
 offset_left = 350.0
 offset_top = -150.0
 offset_right = 350.0
@@ -308,7 +308,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 4" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("8_3skak")
+level = ExtResource("9_yadwo")
 requires = NodePath("../../Level 3/Level Button")
 
 [node name="Shape" parent="Level 4/Level Button" index="1"]
@@ -344,7 +344,7 @@ text = "4"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 5" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 5" parent="." instance=ExtResource("4_tk56w")]
 offset_left = 700.0
 offset_top = -150.0
 offset_right = 700.0
@@ -353,7 +353,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 5" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("9_mtoc7")
+level = ExtResource("10_8blkj")
 requires = NodePath("../../Level 4/Level Button")
 
 [node name="Shape" parent="Level 5/Level Button" index="1"]
@@ -393,7 +393,7 @@ text = "5"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 6" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 6" parent="." instance=ExtResource("4_tk56w")]
 offset_left = -700.0
 offset_top = 195.0
 offset_right = -700.0
@@ -437,7 +437,7 @@ text = "6"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
 
-[node name="Level 7" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 7" parent="." instance=ExtResource("4_tk56w")]
 offset_left = -350.0
 offset_top = 195.0
 offset_right = -350.0
@@ -485,7 +485,7 @@ text = "7"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 8" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 8" parent="." instance=ExtResource("4_tk56w")]
 offset_top = 195.0
 offset_bottom = 195.0
 vertical_intensity = 6.0
@@ -531,7 +531,7 @@ text = "8"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 9" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 9" parent="." instance=ExtResource("4_tk56w")]
 offset_left = 350.0
 offset_top = 195.0
 offset_right = 350.0
@@ -579,7 +579,7 @@ text = "9"
 material = SubResource("ShaderMaterial_ksqc6")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 10" parent="." instance=ExtResource("3_gv1li")]
+[node name="Level 10" parent="." instance=ExtResource("4_tk56w")]
 offset_left = 700.0
 offset_top = 195.0
 offset_right = 700.0

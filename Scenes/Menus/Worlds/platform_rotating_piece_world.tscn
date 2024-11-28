@@ -132,7 +132,6 @@ _data = {
 }
 
 [node name="Platform Rotating Piece World" instance=ExtResource("1_dvjd8")]
-position = Vector2(0, 0)
 nb_of_completed_levels = 0
 
 [node name="Shape" parent="." index="1"]

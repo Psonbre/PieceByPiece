@@ -10,7 +10,7 @@ var overlapping_pieces = []
 var default_scale
 var was_on_floor := false
 var last_vertical_speed :=  0.0
-static var current_level := 1
+var current_level : Level
 static var winning := false
 static var entering_portal := false
 static var exiting_portal := false
@@ -21,6 +21,7 @@ var winning_door
 func _ready():
 	default_scale = global_scale
 	editor_sprite.visible = false
+	current_level = find_parent("Level*")
 	play_animation("Idle");
 
 func reset_proportions():
@@ -86,6 +87,7 @@ func win(door):
 		winning_door = door
 		Player.winning = true
 		set_physics_process(false)
+		SaveManager.save_level_as_completed(current_level.world, current_level.scene_file_path)
 
 func teleport(portal : Portal):
 	set_physics_process(false)
@@ -107,9 +109,8 @@ func _process(delta):
 		global_scale = global_scale.move_toward(Vector2.ZERO, 1.0 * delta)
 		if global_scale.x <= 0.1 :
 			winning = false
-			current_level += 1
 			has_collectible = false
-			SubSystemManager.get_scene_manager().load_scene_from_path("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(1,0))
+			SubSystemManager.get_scene_manager().load_scene(current_level.next_level, Vector2(1,0))
 			
 	elif entering_portal :
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)

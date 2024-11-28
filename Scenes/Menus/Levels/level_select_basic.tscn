@@ -1,18 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://oh2gfsbglqam"]
 
-[ext_resource type="PackedScene" uid="uid://dd7kj180ttcj3" path="res://Scenes/Menus/Levels/level_select_base.tscn" id="1_gq7u7"]
-[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_3ln8f"]
+[ext_resource type="PackedScene" uid="uid://dd7kj180ttcj3" path="res://Scenes/Menus/Levels/level_select_template.tscn" id="1_3fopv"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_wv3rx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ienw4"]
 resource_local_to_scene = true
-shader = ExtResource("5_3ln8f")
+shader = ExtResource("2_wv3rx")
 shader_parameter/speed = 1.405
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
-[node name="LevelSelectMedieval" instance=ExtResource("1_gq7u7")]
+[node name="LevelSelectBasic" instance=ExtResource("1_3fopv")]
+
+[node name="Level Button" parent="Level 1" index="0"]
+collected_collectible = true
 
 [node name="Outline" parent="Level 1/Level Button" index="3"]
 material = SubResource("ShaderMaterial_ienw4")
+
+[node name="Level Button" parent="Level 2" index="0"]
+completed = true
+collected_collectible = true
 
 [node name="Outline" parent="Level 2/Level Button" index="3"]
 material = SubResource("ShaderMaterial_ienw4")

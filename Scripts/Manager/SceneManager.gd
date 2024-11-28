@@ -5,19 +5,20 @@ class_name SceneManager
 
 var old_screen : Node2D
 var current_screen : Node2D
+var current_screen_resource : PackedScene
 var default_resolution = Vector2(2560, 1440)
 var direction = Vector2(-1, 0)
 
-enum WORLDS {MEDIEVAL}
+enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM}
 const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
 const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
-const LEVEL_SELECT_MEDIEVAL = preload("res://Scenes/Menus/Levels/level_select_medieval.tscn")
+const LEVEL_SELECT_BASIC = preload("res://Scenes/Menus/Levels/level_select_basic.tscn")
 
 func load_level_select(world : WORLDS, new_direction := Vector2(-1,0)):
 	match world :
-		WORLDS.MEDIEVAL:
-			load_scene(LEVEL_SELECT_MEDIEVAL, new_direction)
+		WORLDS.BASIC:
+			load_scene(LEVEL_SELECT_BASIC, new_direction)
 
 func load_main_menu(new_direction := Vector2(1, 0)):
 	load_scene(MAIN_MENU, new_direction)
@@ -44,6 +45,7 @@ func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0)):
 	
 	old_screen = current_screen
 	current_screen = scene
+	current_screen_resource = scene_resource
 	
 	direction = new_direction  # Update the global direction
 	
@@ -71,8 +73,5 @@ func _process(delta):
 			old_screen = null
 
 func reset_level() :
-	if !Player.winning and old_screen == null:
-		if Player.has_collectible:
-			SubSystemManager.get_collectible_manager().remove_piece()
-		load_scene_from_path("res://Scenes/Levels/Level" + str(Player.current_level) + ".tscn", Vector2(0,-1))
-		Player.has_collectible = false
+	load_scene(current_screen_resource, Vector2(0,-1))
+	Player.has_collectible = false

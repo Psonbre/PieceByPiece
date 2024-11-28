@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://h8ecs5ipml41"]
+[gd_scene load_steps=21 format=4 uid="uid://h8ecs5ipml41"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_6uoky"]
+[ext_resource type="PackedScene" uid="uid://r2uxc4jshqed" path="res://Scenes/Levels/Level2.tscn" id="2_5ehlf"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_s567u"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_v5ulq"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="3_y41o0"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_6kv26"]
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="5_md24c"]
 
@@ -49,6 +51,7 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [node name="Level" instance=ExtResource("1_6uoky")]
+next_level = ExtResource("2_5ehlf")
 
 [node name="LevelName2" type="Label" parent="Control" index="1"]
 z_index = 30
@@ -57,9 +60,10 @@ offset_left = -513.882
 offset_top = -190.118
 offset_right = -321.882
 offset_bottom = -167.118
-scale = Vector2(1.26, 1.26)
+scale = Vector2(0.126, 0.126)
 theme_override_fonts/font = ExtResource("2_s567u")
 text = "WASD to move"
+label_settings = ExtResource("3_y41o0")
 script = ExtResource("3_v5ulq")
 
 [node name="LevelName4" type="Label" parent="Control" index="2"]
@@ -69,9 +73,10 @@ offset_left = -220.0
 offset_top = 248.471
 offset_right = 148.0
 offset_bottom = 271.471
-scale = Vector2(1.26, 1.26)
+scale = Vector2(0.126, 0.126)
 theme_override_fonts/font = ExtResource("2_s567u")
 text = "Drag and drop the piece"
+label_settings = ExtResource("3_y41o0")
 script = ExtResource("3_v5ulq")
 
 [node name="LevelName3" type="Label" parent="Control" index="3"]
@@ -81,9 +86,10 @@ offset_left = 269.647
 offset_top = -195.765
 offset_right = 435.647
 offset_bottom = -172.765
-scale = Vector2(1.545, 1.545)
+scale = Vector2(0.126, 0.126)
 theme_override_fonts/font = ExtResource("2_s567u")
 text = "R to reset"
+label_settings = ExtResource("3_y41o0")
 script = ExtResource("3_v5ulq")
 
 [node name="PuzzlePiece" parent="." index="4" instance=ExtResource("5_md24c")]
