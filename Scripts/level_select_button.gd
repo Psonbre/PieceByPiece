@@ -17,13 +17,24 @@ func _ready():
 	overlay.polygon = $Shape.polygon
 	if requires and !requires.completed :
 		visible = false
+	if completed :
+		overlay.self_modulate = Color(1,1,1,0)
+	else :
+		overlay.self_modulate = Color(0,0,0,0.7)
 	
 func _process(delta):
 	scale = scale.move_toward(target_scale, abs((target_scale - scale).length()) * delta * 6.0)
-	if mouse_hover :
-		overlay.self_modulate = Color(1,1,1, move_toward(overlay.self_modulate.a, 0.1, delta / 2.0))
+	if completed : 
+		if mouse_hover :
+			overlay.self_modulate = Color(1,1,1, move_toward(overlay.self_modulate.a, 0.1, delta / 2.0))
+		else :
+			overlay.self_modulate = Color(1,1,1,move_toward(overlay.self_modulate.a, 0, delta / 2.0))
 	else :
-		overlay.self_modulate = Color(1,1,1,move_toward(overlay.self_modulate.a, 0, delta / 2.0))
+		if mouse_hover :
+			overlay.self_modulate = Color(0,0,0, move_toward(overlay.self_modulate.a, 0.6, delta / 2.0))
+		else :
+			overlay.self_modulate = Color(0,0,0,move_toward(overlay.self_modulate.a, 0.7, delta / 2.0))
+		
 
 func _on_mouse_entered():
 	$Outline.set_type(PuzzlePieceOutline.OutlineType.DRAGGING)
