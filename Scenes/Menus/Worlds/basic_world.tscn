@@ -84,7 +84,6 @@ _data = {
 }
 
 [node name="Basic World" instance=ExtResource("1_vnc16")]
-position = Vector2(0, 0)
 level_select_scene = ExtResource("2_gq1il")
 
 [node name="Shape" parent="." index="1"]

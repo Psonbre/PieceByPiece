@@ -61,7 +61,7 @@ scale = Vector2(0.8, 0.8)
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
 tile_set = ExtResource("2_dcqmi")
 
-[node name="PlayerSprite" type="Node2D" parent="Shape" groups=["PlayerSprites"]]
+[node name="PlayerSprite" type="Node2D" parent="Shape"]
 position = Vector2(-28, 22)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite"]

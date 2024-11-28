@@ -8,9 +8,16 @@ var current_screen : Node2D
 var default_resolution = Vector2(2560, 1440)
 var direction = Vector2(-1, 0)
 
+enum WORLDS {MEDIEVAL}
 const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
 const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
+const LEVEL_SELECT_MEDIEVAL = preload("res://Scenes/Menus/Levels/level_select_medieval.tscn")
+
+func load_level_select(world : WORLDS, new_direction := Vector2(-1,0)):
+	match world :
+		WORLDS.MEDIEVAL:
+			load_scene(LEVEL_SELECT_MEDIEVAL, new_direction)
 
 func load_main_menu(new_direction := Vector2(1, 0)):
 	load_scene(MAIN_MENU, new_direction)
