@@ -1,0 +1,156 @@
+[gd_scene load_steps=17 format=4 uid="uid://g04py0wl4i5h"]
+
+[ext_resource type="Script" path="res://Scripts/level_select_button.gd" id="1_6ru04"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="1_hwgnd"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_12a0w"]
+[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="3_q3am1"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_u3tsx"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="6_phcub"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="7_jmlqv"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_k0jot"]
+[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="10_r224p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
+size = Vector2(256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6k41f"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hkjc"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l8la"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v4v0"]
+size = Vector2(35, 70)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
+resource_local_to_scene = true
+shader = ExtResource("7_jmlqv")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hwgnd")
+
+[node name="Level Button" type="Area2D" parent="." groups=["PuzzlePieces"]]
+collision_mask = 5
+script = ExtResource("1_6ru04")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button"]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Level Button"]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+script = ExtResource("2_12a0w")
+
+[node name="Background" type="TileMapLayer" parent="Level Button/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("3_q3am1")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Level Button/Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAA=")
+tile_set = ExtResource("3_q3am1")
+
+[node name="Connectors" type="Node2D" parent="Level Button/Shape"]
+z_index = 2
+metadata/_edit_lock_ = true
+
+[node name="RightConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
+position = Vector2(128, 0)
+collision_mask = 5
+script = ExtResource("5_u3tsx")
+shape = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/RightConnector"]
+shape = SubResource("CircleShape2D_6k41f")
+metadata/_edit_lock_ = true
+
+[node name="LeftConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
+position = Vector2(-128, 0)
+rotation = 3.14159
+collision_mask = 5
+script = ExtResource("5_u3tsx")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/LeftConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_0hkjc")
+metadata/_edit_lock_ = true
+
+[node name="TopConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
+position = Vector2(0, -128)
+rotation = -1.57079
+collision_mask = 5
+script = ExtResource("5_u3tsx")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/TopConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_7l8la")
+metadata/_edit_lock_ = true
+
+[node name="BottomConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
+position = Vector2(0, 128)
+rotation = 1.57079
+collision_mask = 5
+script = ExtResource("5_u3tsx")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/BottomConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_2v4v0")
+metadata/_edit_lock_ = true
+
+[node name="Overlay" type="Polygon2D" parent="Level Button"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
+metadata/_edit_lock_ = true
+
+[node name="WorldName" type="Label" parent="Level Button/Overlay"]
+z_index = 1
+offset_left = -74.0
+offset_top = -29.0
+offset_right = 405.0
+offset_bottom = 171.0
+scale = Vector2(0.305, 0.305)
+text = "1"
+label_settings = ExtResource("6_phcub")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Outline" type="Line2D" parent="Level Button"]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("8_k0jot")
+moving_outline_texture = ExtResource("10_r224p")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Level Button" to="Level Button" method="_on_body_entered"]
+[connection signal="body_exited" from="Level Button" to="Level Button" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Level Button" to="Level Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Level Button" to="Level Button" method="_on_mouse_exited"]

@@ -29,6 +29,8 @@ var world_completed : bool :
 		nb_of_collectibles = value
 		update_labels()
 
+@export var level_select_scene : PackedScene
+
 func _ready():
 	default_scale = scale
 	target_scale = default_scale
@@ -60,3 +62,7 @@ func _on_mouse_exited():
 	animation_player.stop()
 	mouse_hover = false
 	target_scale = default_scale
+
+func _input(event: InputEvent) -> void:
+	if mouse_hover and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if level_select_scene : SubSystemManager.get_scene_manager().load_scene(level_select_scene)

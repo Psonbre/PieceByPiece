@@ -6,7 +6,7 @@ class_name PuzzlePieceShape
 @onready var left_connector : PuzzlePieceVisualConnector = $Connectors/LeftConnector
 @onready var top_connector : PuzzlePieceVisualConnector = $Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceVisualConnector = $Connectors/BottomConnector
-	
+
 var shape_size := 256
 
 @export var connector_radius := 35.0 :
@@ -46,6 +46,7 @@ func add_connector_points(connector, base_point, start_angle, end_angle):
 	return []
 
 func update_shape():
+	if !top_connector or !bottom_connector or !left_connector or !right_connector : return
 	var half_size = shape_size / 2.0
 	var points = []
 	points.append(Vector2(-half_size, -half_size))

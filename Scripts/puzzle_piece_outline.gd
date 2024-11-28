@@ -43,4 +43,4 @@ func regenerate(polygon):
 	
 func _ready():
 	if not Engine.is_editor_hint():
-		material = material.duplicate()
+		if material : material = material.duplicate()

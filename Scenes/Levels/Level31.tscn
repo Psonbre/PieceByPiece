@@ -208,6 +208,7 @@ shape = SubResource("RectangleShape2D_e7med")
 [node name="Collectible" parent="PuzzlePiece3/Shape" index="6"]
 visible = true
 position = Vector2(0, -87)
+scale = Vector2(0.1, 0.1)
 
 [node name="Outline" parent="PuzzlePiece3" index="2"]
 material = SubResource("ShaderMaterial_idbiu")

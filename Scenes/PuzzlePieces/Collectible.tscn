@@ -1,23 +1,118 @@
-[gd_scene load_steps=4 format=3 uid="uid://33mcraqrs0sn"]
+[gd_scene load_steps=11 format=3 uid="uid://33mcraqrs0sn"]
 
 [ext_resource type="Script" path="res://Scripts/collectible.gd" id="1_eqgs7"]
-[ext_resource type="Texture2D" uid="uid://cph5l5ltrh8xo" path="res://icon.svg" id="1_tvbqm"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_1sppi"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="3_apvo1"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="5_uf66a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5van3"]
-radius = 1.60078
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
+size = Vector2(256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wvyj"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk0l2"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuvt0"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67grv"]
+size = Vector2(40, 80)
 
 [node name="Collectible" type="Area2D"]
+scale = Vector2(0.1, 0.1)
+collision_mask = 5
 script = ExtResource("1_eqgs7")
-vertical_intensity = 13.0
-horizontal_speed = 0.3
-horizontal_intensity = 10.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.522665, 0.522665)
-texture = ExtResource("1_tvbqm")
+vertical_intensity = 6.0
+horizontal_intensity = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(20, 20)
-shape = SubResource("CircleShape2D_5van3")
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+script = ExtResource("2_1sppi")
+connector_radius = 40.0
+
+[node name="Connectors" type="Node2D" parent="Shape"]
+visible = false
+z_index = 2
+metadata/_edit_lock_ = true
+
+[node name="RightConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(128, 0)
+collision_mask = 5
+script = ExtResource("3_apvo1")
+shape = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
+shape = SubResource("CircleShape2D_5wvyj")
+metadata/_edit_lock_ = true
+
+[node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(-128, 0)
+rotation = 3.14159
+collision_mask = 5
+script = ExtResource("3_apvo1")
+shape = 1
+type = -1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_hk0l2")
+metadata/_edit_lock_ = true
+
+[node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(0, -128)
+rotation = -1.57079
+collision_mask = 5
+script = ExtResource("3_apvo1")
+shape = 1
+type = -1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_tuvt0")
+metadata/_edit_lock_ = true
+
+[node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(0, 128)
+rotation = 1.57079
+collision_mask = 5
+script = ExtResource("3_apvo1")
+shape = 1
+type = -1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_67grv")
+metadata/_edit_lock_ = true
+
+[node name="Outline" type="Line2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+texture_repeat = 2
+points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+default_color = Color(0, 0, 0, 1)
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("5_uf66a")
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
