@@ -95,7 +95,7 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 tile_map_data = PackedByteArray("AAD+//3/AAAEAAEAAAD9//3/AAAEAAEAAAD9//7/AAAEAAEAAAD9////AAAEAAEAAAD9/wEAAAAEAAEAAAADAP3/AAAEAAEAAAA=")
 
 [node name="Foreground" parent="Shape" index="1"]
-tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAQAAAAAAAAAAAD+//7/BwABAAYAAAD+////BwABAAYAAAD+/wAABwABAAYAAAD+/wEABwABAAYAAAD+/wIABwABAAYAAAD//wIABwABAAYAAAD//wEABwABAAYAAAD//wAABwABAAYAAAD/////BwABAAYAAAD///7/BwABAAYAAAD///3/BwABAAYAAAAAAP7/BwABAAYAAAAAAP//BwABAAYAAAAAAAAABwABAAYAAAAAAAEABwABAAYAAAAAAAIABwABAAYAAAABAAIABwABAAYAAAABAAEABwABAAYAAAABAAAABwABAAYAAAABAP//BwABAAYAAAABAP7/BwABAAYAAAABAP3/BwABAAYAAAACAP7/BwABAAYAAAACAP//BwABAAYAAAACAAAABwABAAYAAAACAAEABwABAAYAAAACAAIABwABAAYAAAA=")
 
 [node name="PlayerSprite" parent="Shape" index="2"]
 visible = false
@@ -135,10 +135,10 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 [node name="WorldName" parent="Overlay" index="0"]
 text = "[FINAL]"
 
-[node name="Levels" parent="Overlay" index="1"]
+[node name="Collectibles" parent="Overlay" index="1"]
 text = "0/20"
 
-[node name="Collectibles" parent="Overlay" index="2"]
+[node name="Levels" parent="Overlay" index="2"]
 text = "0/20"
 
 [node name="Outline" parent="." index="3"]

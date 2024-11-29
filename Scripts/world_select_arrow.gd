@@ -8,9 +8,8 @@ var enabled := true :
 		enabled = value
 		visible = value
 
-@export var direction := Vector2()
-@export var target_world : WorldSelectButton
-@export var required_targeted_world : WorldSelectButton
+@export var target_world_group : WorldSelectTree.TARGET_GROUPS
+@export var self_world_group : WorldSelectTree.TARGET_GROUPS
 @export var required_completed_worlds : Array[WorldSelectButton]
 @onready var tree = $"../"
 
@@ -30,7 +29,7 @@ func requirements_fufilled():
 	for button in required_completed_worlds :
 		if !button.world_completed :
 			return false
-	if required_targeted_world != tree.target_world :
+	if self_world_group != tree.target_group :
 		return false
 	return true
 
@@ -45,7 +44,4 @@ func _on_mouse_exited():
 func _input(event):
 	if !enabled : return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and mouse_hover:
-		tree.target_position += direction
-		tree.target_world = target_world
-		for arrow in get_tree().get_nodes_in_group("Arrow"):
-			arrow.update_enabled()
+		tree.set_target_group(target_world_group)

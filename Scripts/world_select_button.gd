@@ -9,26 +9,14 @@ class_name WorldSelectButton
 
 var default_scale : Vector2
 var mouse_hover := false
-var target_scale : Vector2
+var target_scale := Vector2.ZERO
 var world_completed : bool :
 	get():
 		return nb_of_completed_levels >= nb_of_levels
-		
-@export var nb_of_levels := 10 :
-	set(value):
-		nb_of_levels = value
-		update_labels()
-		
-@export var nb_of_completed_levels := 0 :
-	set(value):
-		nb_of_completed_levels = value
-		update_labels()
-		
-@export var nb_of_collectibles := 0 :
-	set(value):
-		nb_of_collectibles = value
-		update_labels()
 
+@export var nb_of_levels := 10	
+@export var nb_of_completed_levels := 0		
+@export var nb_of_collectibles := 0
 @export var world : SceneManager.WORLDS
 
 func _ready():
@@ -67,4 +55,8 @@ func _on_mouse_exited():
 
 func _input(event: InputEvent) -> void:
 	if mouse_hover and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		SubSystemManager.get_scene_manager().load_level_select(world, Vector2(1,0))
+		if SubSystemManager.get_scene_manager().load_level_select(world, Vector2(1,0)) :
+			for group in get_tree().get_nodes_in_group("WorldGroup"):
+				group.visible = group.is_ancestor_of(self)
+			for arrow in get_tree().get_nodes_in_group("Arrow"):
+				arrow.visible = false

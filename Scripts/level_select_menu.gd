@@ -1,10 +1,14 @@
 extends	Node
 
 @export var world : SceneManager.WORLDS
+@export var world_select_tree_target_group := WorldSelectTree.TARGET_GROUPS.BASIC
+var can_exit := true
 
 func _input(_event):
-	if Input.is_action_just_pressed("Pause"):
-		SubSystemManager.get_scene_manager().load_world_select_menu(Vector2(-1,0))
+	var scene_manager := SubSystemManager.get_scene_manager()
+	if Input.is_action_just_pressed("Pause") and can_exit and scene_manager.old_screen != self:
+		can_exit = false
+		scene_manager.load_world_select_menu(Vector2(-1,0), world_select_tree_target_group)
 
 func _ready() -> void:
 	var buttons = get_tree().get_nodes_in_group("LevelSelectButton")

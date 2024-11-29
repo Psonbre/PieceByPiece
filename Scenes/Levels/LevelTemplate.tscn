@@ -35,3 +35,7 @@ theme_override_fonts/font = ExtResource("4_otehi")
 text = "Level 1"
 label_settings = ExtResource("5_weia1")
 script = ExtResource("5_k5ua4")
+
+[node name="ResetLevelCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true

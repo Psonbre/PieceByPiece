@@ -369,10 +369,10 @@ offset_bottom = 121.0
 text = "ALIEN 
 ADVENTURE"
 
-[node name="Levels" parent="Overlay" index="1"]
+[node name="Collectibles" parent="Overlay" index="1"]
 text = "0/5"
 
-[node name="Collectibles" parent="Overlay" index="2"]
+[node name="Levels" parent="Overlay" index="2"]
 text = "0/5"
 
 [node name="Outline" parent="." index="3"]

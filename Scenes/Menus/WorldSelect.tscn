@@ -1,6 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://ipbkkv76xi8l"]
 
 [ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_ilqow"]
+[ext_resource type="Script" path="res://Scripts/world_select_tree.gd" id="2_gvy45"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_nohmi"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_op76w"]
 [ext_resource type="PackedScene" uid="uid://bugeuopf4jxs7" path="res://Scenes/Menus/Worlds/basic_world.tscn" id="4_wjvt0"]
@@ -17,22 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bndsfuv4ll7tr" path="res://Scenes/Menus/Worlds/final_world.tscn" id="15_6boim"]
 [ext_resource type="PackedScene" uid="uid://dtt0tdkls3xon" path="res://Scenes/Menus/Worlds/rotating_piece_world.tscn" id="15_ecnri"]
 
-[sub_resource type="GDScript" id="GDScript_32lsb"]
-script/source = "extends Control
-
-var target_position = Vector2.ZERO
-@onready var target_world := $\"Basic/Basic World\"
-
-func _ready():
-	target_position = position
-	for arrow in get_tree().get_nodes_in_group(\"Arrow\"):
-		arrow.update_enabled()
-		
-func _process(delta):
-	var distance = target_position - position
-	position += delta * distance * 8.0
-"
-
 [node name="WorldSelect" type="Node2D"]
 script = ExtResource("1_ilqow")
 
@@ -45,7 +30,7 @@ anchors_preset = 0
 offset_top = 1280.0
 offset_bottom = 1280.0
 scale = Vector2(1.70503, 1.70503)
-script = SubResource("GDScript_32lsb")
+script = ExtResource("2_gvy45")
 
 [node name="Title" type="Control" parent="Tree"]
 z_index = 2
@@ -73,7 +58,7 @@ label_settings = ExtResource("2_op76w")
 horizontal_alignment = 1
 script = ExtResource("2_nohmi")
 
-[node name="Basic" type="Control" parent="Tree"]
+[node name="Basic" type="Control" parent="Tree" groups=["WorldGroup"]]
 layout_mode = 3
 anchors_preset = 0
 offset_top = -750.0
@@ -84,11 +69,11 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Basic World" parent="Tree/Basic" groups=["PuzzlePieces"] instance=ExtResource("4_wjvt0")]
+[node name="Basic World" parent="Tree/Basic" instance=ExtResource("4_wjvt0")]
 scale = Vector2(1.25, 1.25)
 nb_of_completed_levels = 0
 
-[node name="Advanced" type="Control" parent="Tree"]
+[node name="Advanced" type="Control" parent="Tree" groups=["WorldGroup"]]
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(1.25, 1.25)
@@ -97,11 +82,11 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Advanced World" parent="Tree/Advanced" groups=["PuzzlePieces"] instance=ExtResource("5_80pre")]
+[node name="Advanced World" parent="Tree/Advanced" instance=ExtResource("5_80pre")]
 scale = Vector2(1.25, 1.25)
 nb_of_completed_levels = 0
 
-[node name="MiddleGroup" type="Control" parent="Tree"]
+[node name="MiddleGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
 anchors_preset = 0
 offset_top = 750.0
 offset_bottom = 750.0
@@ -117,7 +102,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Portal World" parent="Tree/MiddleGroup/Portals" groups=["PuzzlePieces"] instance=ExtResource("6_plgfp")]
+[node name="Portal World" parent="Tree/MiddleGroup/Portals" instance=ExtResource("6_plgfp")]
 
 [node name="Combined" type="Control" parent="Tree/MiddleGroup"]
 layout_mode = 3
@@ -128,7 +113,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" groups=["PuzzlePieces"] instance=ExtResource("7_2tw7h")]
+[node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" instance=ExtResource("7_2tw7h")]
 
 [node name="Dirt" type="Control" parent="Tree/MiddleGroup"]
 layout_mode = 3
@@ -141,9 +126,9 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Dirt World" parent="Tree/MiddleGroup/Dirt" groups=["PuzzlePieces"] instance=ExtResource("12_ega6f")]
+[node name="Dirt World" parent="Tree/MiddleGroup/Dirt" instance=ExtResource("12_ega6f")]
 
-[node name="LeftGroup" type="Control" parent="Tree"]
+[node name="LeftGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
 anchors_preset = 0
 offset_left = -1500.0
 offset_top = 750.0
@@ -161,7 +146,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Gravity World" parent="Tree/LeftGroup/Gravity" groups=["PuzzlePieces"] instance=ExtResource("9_7xlvv")]
+[node name="Gravity World" parent="Tree/LeftGroup/Gravity" instance=ExtResource("9_7xlvv")]
 
 [node name="Combined" type="Control" parent="Tree/LeftGroup"]
 layout_mode = 3
@@ -172,7 +157,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Gravity Key World" parent="Tree/LeftGroup/Combined" groups=["PuzzlePieces"] instance=ExtResource("10_hv8tc")]
+[node name="Gravity Key World" parent="Tree/LeftGroup/Combined" instance=ExtResource("10_hv8tc")]
 
 [node name="Key" type="Control" parent="Tree/LeftGroup"]
 layout_mode = 3
@@ -185,9 +170,9 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Key World" parent="Tree/LeftGroup/Key" groups=["PuzzlePieces"] instance=ExtResource("11_j58w6")]
+[node name="Key World" parent="Tree/LeftGroup/Key" instance=ExtResource("11_j58w6")]
 
-[node name="RightGroup" type="Control" parent="Tree"]
+[node name="RightGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
 anchors_preset = 0
 offset_left = 1500.0
 offset_top = 750.0
@@ -205,7 +190,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Platform World" parent="Tree/RightGroup/Platform" groups=["PuzzlePieces"] instance=ExtResource("14_poyu8")]
+[node name="Platform World" parent="Tree/RightGroup/Platform" instance=ExtResource("14_poyu8")]
 
 [node name="Combined" type="Control" parent="Tree/RightGroup"]
 layout_mode = 3
@@ -216,7 +201,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Rotating Piece Platform World" parent="Tree/RightGroup/Combined" groups=["PuzzlePieces"] instance=ExtResource("10_7ff8v")]
+[node name="Rotating Piece Platform World" parent="Tree/RightGroup/Combined" instance=ExtResource("10_7ff8v")]
 
 [node name="RotatingPiece" type="Control" parent="Tree/RightGroup"]
 layout_mode = 3
@@ -229,9 +214,9 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Rotating Piece World" parent="Tree/RightGroup/RotatingPiece" groups=["PuzzlePieces"] instance=ExtResource("15_ecnri")]
+[node name="Rotating Piece World" parent="Tree/RightGroup/RotatingPiece" instance=ExtResource("15_ecnri")]
 
-[node name="Final" type="Control" parent="Tree"]
+[node name="Final" type="Control" parent="Tree" groups=["WorldGroup"]]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 1500.0
@@ -242,10 +227,10 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Final World" parent="Tree/Final" groups=["PuzzlePieces"] instance=ExtResource("15_6boim")]
+[node name="Final World" parent="Tree/Final" instance=ExtResource("15_6boim")]
 scale = Vector2(1.3, 1.3)
 
-[node name="BottomArrow" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -264,9 +249,7 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(0, -1280)
-target_world = NodePath("../Advanced/Advanced World")
-required_targeted_world = NodePath("../Basic/Basic World")
+target_world_group = 1
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -281,7 +264,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow2" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow2" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -300,9 +283,7 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(0, 1280)
-target_world = NodePath("../Basic/Basic World")
-required_targeted_world = NodePath("../Advanced/Advanced World")
+self_world_group = 1
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -317,7 +298,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow3" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow3" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -336,9 +317,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(0, -1280)
-target_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
-required_targeted_world = NodePath("../Advanced/Advanced World")
+target_world_group = 2
+self_world_group = 1
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -353,7 +333,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow5" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow5" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -372,9 +352,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(0, -1280)
-target_world = NodePath("../Final/Final World")
-required_targeted_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
+target_world_group = 5
+self_world_group = 2
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -389,7 +368,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow11" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow11" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -408,9 +387,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(-2550, -1280)
-target_world = NodePath("../Final/Final World")
-required_targeted_world = NodePath("../LeftGroup/Combined/Gravity Key World")
+target_world_group = 5
+self_world_group = 3
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -425,7 +403,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow12" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow12" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -444,9 +422,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(2550, -1280)
-target_world = NodePath("../Final/Final World")
-required_targeted_world = NodePath("../RightGroup/Combined/Rotating Piece Platform World")
+target_world_group = 5
+self_world_group = 4
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -461,7 +438,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow4" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow4" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -480,9 +457,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(0, 1280)
-target_world = NodePath("../Advanced/Advanced World")
-required_targeted_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
+target_world_group = 1
+self_world_group = 2
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -497,7 +473,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow7" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow7" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -515,9 +491,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(-2550, 0)
-target_world = NodePath("../RightGroup/Combined/Rotating Piece Platform World")
-required_targeted_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
+target_world_group = 4
+self_world_group = 2
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -532,7 +507,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow10" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow10" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -550,9 +525,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(-2550, 0)
-target_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
-required_targeted_world = NodePath("../LeftGroup/Combined/Gravity Key World")
+target_world_group = 2
+self_world_group = 3
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -567,7 +541,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow9" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow9" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -586,9 +560,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(2550, 0)
-target_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
-required_targeted_world = NodePath("../RightGroup/Combined/Rotating Piece Platform World")
+target_world_group = 2
+self_world_group = 4
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -603,7 +576,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow8" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow8" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -622,9 +595,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(2550, 0)
-target_world = NodePath("../LeftGroup/Combined/Gravity Key World")
-required_targeted_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
+target_world_group = 3
+self_world_group = 2
 vertical_intensity = 10.0
 horizontal_intensity = 7
 
@@ -639,7 +611,7 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
-[node name="BottomArrow6" type="Control" parent="Tree" node_paths=PackedStringArray("target_world", "required_targeted_world") groups=["Arrow"]]
+[node name="BottomArrow6" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -658,9 +630,8 @@ pivot_offset = Vector2(50, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
-direction = Vector2(0, 1280)
-target_world = NodePath("../MiddleGroup/Combined/Dirt Portal World")
-required_targeted_world = NodePath("../Final/Final World")
+target_world_group = 2
+self_world_group = 5
 vertical_intensity = 10.0
 horizontal_intensity = 7
 

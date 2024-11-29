@@ -13,7 +13,3 @@ position = Vector2(0, 0)
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_b1voc")
-
-[node name="SceneChangeCooldown" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
