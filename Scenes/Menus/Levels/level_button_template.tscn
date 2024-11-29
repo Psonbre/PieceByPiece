@@ -55,7 +55,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_hwgnd")
 
-[node name="Level Button" type="Area2D" parent="." groups=["PuzzlePieces"]]
+[node name="Level Button" type="Area2D" parent="." groups=["LevelSelectButton"]]
 collision_mask = 5
 script = ExtResource("1_6ru04")
 

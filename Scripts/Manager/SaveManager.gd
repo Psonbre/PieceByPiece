@@ -14,9 +14,8 @@ static func _load_from_file():
 		var parse_result = json_parser.parse(save_file.get_as_text())
 		if parse_result == OK:
 			var loaded_data = json_parser.get_data()
-			# Convert string keys back to enums
 			for key in loaded_data.keys():
-				var enum_key = SceneManager.WORLDS.get(int(key))
+				var enum_key = int(key) as SceneManager.WORLDS
 				world_data[enum_key] = loaded_data[key]
 		save_file.close()
 
@@ -42,10 +41,7 @@ static func is_collectible_collected(world: SceneManager.WORLDS, level: String) 
 
 # New functions to retrieve lists of levels
 static func get_completed_levels(world: SceneManager.WORLDS) -> Array:
-	return world_data.get(world, {}).get("completed_levels", [])
+	return world_data.get(world).get("completed_levels", [])
 
 static func get_collectible_levels(world: SceneManager.WORLDS) -> Array:
 	return world_data.get(world, {}).get("collectible_levels", [])
-
-static func initialize():
-	_load_from_file()

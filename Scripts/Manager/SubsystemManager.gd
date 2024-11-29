@@ -6,13 +6,12 @@ static var instance : SubSystemManager :
 static var scene_manager : SceneManager
 static var music_manager: MusicManager
 static var sound_manager: SoundManager
-static var collectible_manager: CollectibleManager
-static var save_manager : SaveManager
 
 func _initialize() -> void:
 	get_scene_manager()
 	if !root.has_node("Intro"):
 		get_music_manager()
+	SaveManager._load_from_file()
 	
 static func get_scene_manager() -> SceneManager:
 	if scene_manager == null:
@@ -35,13 +34,3 @@ static func get_sound_manager() -> SoundManager:
 		sound_manager = sound_manager_scene.instantiate()
 		instance.root.add_child(sound_manager)
 	return sound_manager
-	
-static func get_collectible_manager() -> CollectibleManager:
-	if collectible_manager == null:
-		collectible_manager = CollectibleManager.new()
-	return collectible_manager
-
-static func get_save_manager() -> SaveManager:
-	if save_manager == null:
-		save_manager = SaveManager.new()
-	return save_manager

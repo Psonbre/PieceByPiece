@@ -21,7 +21,6 @@ var winning_door
 func _ready():
 	default_scale = global_scale
 	editor_sprite.visible = false
-	current_level = find_parent("Level*")
 	play_animation("Idle");
 
 func reset_proportions():
@@ -88,6 +87,8 @@ func win(door):
 		Player.winning = true
 		set_physics_process(false)
 		SaveManager.save_level_as_completed(current_level.world, current_level.scene_file_path)
+		if has_collectible :
+			SaveManager.save_level_as_collectible_collected(current_level.world, current_level.scene_file_path)
 
 func teleport(portal : Portal):
 	set_physics_process(false)
@@ -110,7 +111,11 @@ func _process(delta):
 		if global_scale.x <= 0.1 :
 			winning = false
 			has_collectible = false
-			SubSystemManager.get_scene_manager().load_scene(current_level.next_level, Vector2(1,0))
+			if current_level.next_level :
+				SubSystemManager.get_scene_manager().load_scene(current_level.next_level, Vector2(1,0))
+			else :
+				SubSystemManager.get_scene_manager().load_level_select(current_level.world)
+				
 			
 	elif entering_portal :
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
@@ -159,7 +164,6 @@ func pause_animation():
 		player_sprite.pause()
 
 func land(speed):
-	print("landing speed : " + str(speed))
 	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.squash(speed / 100.0)
 	last_vertical_speed = 0
