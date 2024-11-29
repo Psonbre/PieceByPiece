@@ -29,12 +29,14 @@ var world_completed : bool :
 		nb_of_collectibles = value
 		update_labels()
 
-@export var level_select_scene : PackedScene
+@export var world : SceneManager.WORLDS
 
 func _ready():
 	default_scale = scale
 	target_scale = default_scale
 	overlay.polygon = $Shape.polygon
+	nb_of_completed_levels = SaveManager.get_completed_levels(world).size()
+	nb_of_collectibles = SaveManager.get_collectible_levels(world).size()
 	update_labels()
 	
 func _process(delta):
@@ -49,7 +51,7 @@ func _process(delta):
 
 func update_labels() :
 	if levels_text : levels_text.text = str(nb_of_completed_levels) + "/" + str(nb_of_levels)
-	if collectibles_text : collectibles_text.text = str(nb_of_collectibles) + "/" + str(nb_of_levels)
+	if collectibles_text : collectibles_text.text = str(nb_of_collectibles)
 
 func _on_mouse_entered():
 	if Engine.is_editor_hint() : return
@@ -65,4 +67,4 @@ func _on_mouse_exited():
 
 func _input(event: InputEvent) -> void:
 	if mouse_hover and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if level_select_scene : SubSystemManager.get_scene_manager().load_scene(level_select_scene)
+		SubSystemManager.get_scene_manager().load_level_select(world, Vector2(1,0))

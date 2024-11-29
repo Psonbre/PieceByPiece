@@ -9,7 +9,7 @@ var current_screen_resource : PackedScene
 var default_resolution = Vector2(2560, 1440)
 var direction = Vector2(-1, 0)
 
-enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM}
+enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM, DIRT, KEY, FINAL, GRAVITY_KEY, DIRT_PORTAL, PLATFORM_ROTATING}
 const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
 const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
