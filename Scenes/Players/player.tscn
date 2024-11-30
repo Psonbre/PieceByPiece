@@ -17,3 +17,7 @@ shape = SubResource("CircleShape2D_m0ql6")
 scale = Vector2(0.828875, 0.828875)
 sprite_frames = ExtResource("2_p15im")
 animation = &"Idle"
+
+[node name="StepSoundCooldown" type="Timer" parent="."]
+wait_time = 0.33
+one_shot = true

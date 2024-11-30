@@ -1,8 +1,6 @@
 extends Node
 class_name SoundManager
 
-@onready var timer: Timer = $Timer
-
 @export var pool_size: int = 4
 var audio_pool: Array = []
 

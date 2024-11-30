@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var collision_shape = $CollisionShape2D
 @onready var editor_sprite = $EditorSprite
+@onready var step_sound_cooldown: Timer = $StepSoundCooldown
 
 const SPEED := 300.0
 const JUMP_VELOCITY := -400.0
@@ -41,7 +42,9 @@ func _physics_process(delta):
 		if (velocity.x  > 0) : set_flip(false)
 		elif (velocity.x < 0) : set_flip(true)
 		play_animation("Moving");
-		if is_on_floor() : SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3)
+		if is_on_floor() and step_sound_cooldown.is_stopped() : 
+			step_sound_cooldown.start()
+			SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3, (randf() - 0.5) * 0.5 + 1)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if is_on_floor() : play_animation("Idle");

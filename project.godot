@@ -26,7 +26,6 @@ settings/stdout/verbose_stdout=true
 window/size/viewport_width=2560
 window/size/viewport_height=1440
 window/size/mode=2
-window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 

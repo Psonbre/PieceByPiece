@@ -116,6 +116,8 @@ func has_all_sides_connected():
 func start_dragging():
 	if Player.winning || Player.entering_portal || Player.exiting_portal : return
 	
+	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"))
+	
 	if shape.has_node("Player") :
 		set_player_sprites_visible(false)
 		player_sprite.sprite.visible = true 
@@ -162,6 +164,7 @@ func attempt_connection():
 	var compatible_connector = get_first_compatible_overlapping_connector()
 	if compatible_connector != null :
 		snap_to_connector(compatible_connector)
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -5)
 		
 	await get_tree().physics_frame
 	await get_tree().physics_frame
