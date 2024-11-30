@@ -149,7 +149,10 @@ func stop_dragging():
 	is_dragging = false
 	global_dragging = false
 	scale = default_scale
+	var old_position = global_position
 	attempt_connection()
+	if !global_position.is_equal_approx(old_position) :
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -5)
 	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -214,14 +217,10 @@ func cancel_drag():
 	set_colliders_in_drag_mode(false)
 	
 func snap_to_connector(connector : PuzzlePieceConnector):
-	var old_position = global_position
 	connector.puzzle_piece.global_rotation = deg_to_rad(round(connector.puzzle_piece.target_rotated_angle / 90.0) * 90)
 	global_position = connector.get_adjacent_piece_position(false)
 	global_rotation = deg_to_rad(round(target_rotated_angle / 90.0) * 90)
 	tilt_angle = 0
-	
-	if global_position != old_position :
-		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -5)
 
 func connect_all_sides():
 	left_connector.connect_with_closest()
