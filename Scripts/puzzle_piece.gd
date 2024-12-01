@@ -266,18 +266,21 @@ func set_colliders_in_drag_mode(drag_mode: bool):
 	_set_colliders_recursive(self, drag_mode)
 	shape.get_node("Foreground").collision_enabled = !drag_mode
 
-func _set_colliders_recursive(node: Node, drag_mode: bool):
-	if node.has_method("set_physics_process") and node is not Player:
-		node.set_physics_process(!drag_mode)
-	elif node is Player :
+func _set_colliders_recursive(node: Node, drag_mode: bool) -> void:
+	if node is Player:
 		node.set_locked(drag_mode)
-	elif node.has_method("set_collision_layer_value"):
+	elif node.has_method("set_physics_process"):
+		node.set_physics_process(!drag_mode)
+
+	if node.has_method("set_collision_layer_value"):
 		node.set_collision_layer_value(3, drag_mode)
 		node.set_collision_layer_value(1, !drag_mode)
-		if !node.find_parent("Colliders") && !node.find_parent("Connectors") :
+
+		var has_special_parent = node.find_parent("Colliders") or node.find_parent("Connectors")
+		if not has_special_parent:
 			node.set_collision_mask_value(3, drag_mode)
 			node.set_collision_mask_value(1, !drag_mode)
-			
+
 	for child in node.get_children():
 		_set_colliders_recursive(child, drag_mode)
 

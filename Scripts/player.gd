@@ -49,36 +49,44 @@ func set_locked(locked : bool):
 func _physics_process(delta):
 	if non_tilted_velocity.y != 0 : last_vertical_speed = non_tilted_velocity.y
 	
-	if not is_on_floor() :
+	#gravity
+	if is_on_floor() :
+		non_tilted_velocity.y = 0
+	else :
 		non_tilted_velocity.y += gravity * delta
 		if squash_cooldown.is_stopped() :
 			play_animation("Jump");
-	else :
-		non_tilted_velocity.y = 0
-	var direction : Vector2
-	if digging :
-		direction = digging_direction
-	else :
-		direction = Input.get_vector("Left", "Right", "Up", "Down")
+	
+	#head bump	
+	if is_on_ceiling() :
+		non_tilted_velocity.y = 1
 		
-	if direction:
-		non_tilted_velocity.x = direction.x * speed
-		if digging : 
-			non_tilted_velocity = direction * speed
-		if (direction.x  > 0) : set_flip(false)
-		elif (direction.x < 0) : set_flip(true)
-		play_animation("Moving");
-		if is_on_floor() and step_sound_cooldown.is_stopped() : 
-			step_sound_cooldown.start()
-			SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3.0, (randf() - 0.5) * 0.5 + 1.0)
-	else:
-		non_tilted_velocity.x = move_toward(non_tilted_velocity.x, 0, speed)
-		if is_on_floor() : play_animation("Idle");
+	#Horizontal movement
+	var horizontal_input := Input.get_axis("Left","Right")
+	if digging : 
+		non_tilted_velocity = digging_direction * speed
+	else : 
+		non_tilted_velocity.x = horizontal_input * speed
+	
+	#Sprites and animations
+	if horizontal_input != 0:
+		if (horizontal_input  > 0) : set_flip(false)
+		elif (horizontal_input < 0) : set_flip(true)
+		if is_on_floor() : 
+			play_animation("Moving");
+			if step_sound_cooldown.is_stopped() : 
+				step_sound_cooldown.start()
+				SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3.0, (randf() - 0.5) * 0.5 + 1.0)
+			
+	elif is_on_floor():
+		play_animation("Idle");
 
+	#jump
 	if is_on_floor() and Input.is_action_just_pressed("Jump") and !digging:
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.ogg"), -7)
 		non_tilted_velocity.y = JUMP_VELOCITY
-	check_diggable(direction)
+	
+	check_diggable(Input.get_vector("Left", "Right", "Up", "Down"))
 	
 	velocity = non_tilted_velocity.rotated(global_rotation)
 	move_and_slide()
