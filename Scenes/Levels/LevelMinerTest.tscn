@@ -38,7 +38,7 @@ size = Vector2(35, 70)
 world = 2
 
 [node name="Player" parent="." index="1"]
-position = Vector2(294, 29)
+position = Vector2(396, -16)
 
 [node name="LevelName" parent="Control" index="0"]
 offset_left = -191.2
@@ -87,7 +87,7 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 3
 tile_map_data = PackedByteArray("AAD+/wIACAABAAAAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAABAAAAAAA=")
 
 [node name="Diggable" parent="PuzzlePiece2/Shape" index="5"]
-tile_map_data = PackedByteArray()
+tile_map_data = PackedByteArray("AAD+/wEABwAEAAAAAAD+/wAABwAEAAAAAAD+////BwAEAAAAAAD/////BwAEAAAAAAD//wAABwAEAAAAAAD//wEABwAEAAAAAAAAAAEABwAEAAAAAAAAAAAABwAEAAAAAAABAAEABwAEAAAAAAA=")
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("RectangleShape2D_vkmd6")

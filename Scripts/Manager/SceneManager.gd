@@ -42,7 +42,7 @@ func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group :
 func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	return load_scene(CREDITS, new_direction)
 
-func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), transition_speed := transition_speed) -> Node2D:
+func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), transition_speed := self.transition_speed) -> Node2D:
 	if !scene_change_cooldown.is_stopped() : return null
 	scene_change_cooldown.start()
 	if old_screen != null: 

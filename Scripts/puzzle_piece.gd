@@ -265,6 +265,7 @@ func get_all_pieces_with_compatible_overlapping_connectors():
 func set_colliders_in_drag_mode(drag_mode: bool):
 	_set_colliders_recursive(self, drag_mode)
 	shape.get_node("Foreground").collision_enabled = !drag_mode
+	if shape.has_node("Diggable") : shape.get_node("Diggable").collision_enabled = !drag_mode
 
 func _set_colliders_recursive(node: Node, drag_mode: bool) -> void:
 	if node is Player:

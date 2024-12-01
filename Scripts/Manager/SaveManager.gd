@@ -4,7 +4,7 @@ static var world_data: Dictionary = {}
 
 static func _save_to_file():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	save_file.store_string(JSON.new().stringify(world_data))
+	save_file.store_string(JSON.stringify(world_data))
 	save_file.close()
 
 static func _load_from_file():
