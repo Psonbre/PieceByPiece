@@ -3,6 +3,7 @@ class_name PuzzlePiece
 
 @export var is_rotating_piece := false
 
+const max_tilt := deg_to_rad(15)
 static var global_dragging := false
 
 @onready var ghost_piece : GhostPiece = $"../GhostPiece"
@@ -76,7 +77,6 @@ func _process(delta):
 		
 		if velocity.length() > 0:
 			var tilt_by = deg_to_rad(velocity.x) / 30.0
-			var max_tilt = deg_to_rad(15)
 			tilt_angle += tilt_by
 			tilt_angle = clamp(tilt_angle, -max_tilt, max_tilt)
 		
@@ -151,6 +151,7 @@ func stop_dragging():
 	scale = default_scale
 	var old_position = global_position
 	attempt_connection()
+	
 	if !global_position.is_equal_approx(old_position) :
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -5)
 	
@@ -266,9 +267,11 @@ func set_colliders_in_drag_mode(drag_mode: bool):
 	shape.get_node("Foreground").collision_enabled = !drag_mode
 
 func _set_colliders_recursive(node: Node, drag_mode: bool):
-	if node.has_method("set_physics_process"):
+	if node.has_method("set_physics_process") and node is not Player:
 		node.set_physics_process(!drag_mode)
-	if node.has_method("set_collision_layer_value"):
+	elif node is Player :
+		node.set_locked(drag_mode)
+	elif node.has_method("set_collision_layer_value"):
 		node.set_collision_layer_value(3, drag_mode)
 		node.set_collision_layer_value(1, !drag_mode)
 		if !node.find_parent("Colliders") && !node.find_parent("Connectors") :

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=4 uid="uid://yv773nmgndad"]
+
+[ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_rcear"]
+[ext_resource type="PackedScene" uid="uid://bo1bq6h0vd5ie" path="res://Scenes/PuzzlePieces/MinerPuzzlePieceTemplate.tscn" id="2_egt36"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="4_ddfdn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hfto"]
+resource_local_to_scene = true
+shader = ExtResource("4_ddfdn")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[node name="Level" instance=ExtResource("1_rcear")]
+world = 2
+
+[node name="Player" parent="." index="1"]
+position = Vector2(294, 29)
+
+[node name="LevelName" parent="Control" index="0"]
+offset_left = -191.2
+offset_right = 1408.8
+text = "Level 63"
+
+[node name="PuzzlePiece" parent="." index="5" instance=ExtResource("2_egt36")]
+position = Vector2(-358, -1)
+
+[node name="Foreground" parent="PuzzlePiece/Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+/wIACAABAAAAAAD//wIACAABAAAAAAA=")
+
+[node name="Diggable" parent="PuzzlePiece/Shape" index="5"]
+tile_map_data = PackedByteArray("AAABAP//BwAEAAAAAAABAAAABwAEAAAAAAABAAEABwAEAAAAAAACAAEABwAEAAAAAAACAAAABwAEAAAAAAAAAAEABwAEAAAAAAAAAAAABwAEAAAAAAAAAP//BwAEAAAAAAD+/wAABwAEAAAAAAD//wAABwAEAAAAAAACAAIABwAEAAAAAAABAAIABwAEAAAAAAAAAAIABwAEAAAAAAA=")
+
+[node name="Outline" parent="PuzzlePiece" index="2"]
+material = SubResource("ShaderMaterial_2hfto")
+
+[node name="PuzzlePiece2" parent="." index="6" instance=ExtResource("2_egt36")]
+position = Vector2(305, -1)
+
+[node name="Foreground" parent="PuzzlePiece2/Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+/wIACAABAAAAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAABAAAAAAA=")
+
+[node name="Diggable" parent="PuzzlePiece2/Shape" index="5"]
+tile_map_data = PackedByteArray()
+
+[node name="Outline" parent="PuzzlePiece2" index="2"]
+material = SubResource("ShaderMaterial_2hfto")
+
+[editable path="PuzzlePiece"]
+[editable path="PuzzlePiece/Shape/Door"]
+[editable path="PuzzlePiece2"]
+[editable path="PuzzlePiece2/Shape/Door"]

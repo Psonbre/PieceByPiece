@@ -4,9 +4,15 @@ extends CharacterBody2D
 @onready var collision_shape = $CollisionShape2D
 @onready var editor_sprite = $EditorSprite
 @onready var step_sound_cooldown: Timer = $StepSoundCooldown
+@onready var diggable_raycast: RayCast2D = $DiggableRaycast
+@onready var digging_particles: GPUParticles2D = $DiggingParticles
+@onready var squash_cooldown: Timer = $SquashCooldown
 
-const SPEED := 300.0
+const DEFAULT_SPEED := 300.0
 const JUMP_VELOCITY := -400.0
+var speed := DEFAULT_SPEED
+var gravity := 980.0
+var gravity_direction := Vector2(0,1)
 var overlapping_pieces = []
 var default_scale
 var was_on_floor := false
@@ -18,6 +24,10 @@ static var exiting_portal := false
 static var target_portal : Portal
 static var has_collectible = false
 var winning_door
+var digging := false
+var digging_direction := Vector2.ZERO
+var non_tilted_velocity : Vector2
+var locked := false
 
 func _ready():
 	default_scale = global_scale
@@ -27,32 +37,50 @@ func _ready():
 func reset_proportions():
 	global_scale = default_scale
 	rotation = 0
+
+func set_locked(locked : bool):
+	self.locked = locked
+	if locked :
+		set_physics_process(false)
+		return
+	await get_tree().physics_frame
+	if !self.locked : set_physics_process(true)
 	
 func _physics_process(delta):
-	if velocity.y != 0 : last_vertical_speed = velocity.y
+	if non_tilted_velocity.y != 0 : last_vertical_speed = non_tilted_velocity.y
 	
 	if not is_on_floor() :
-		velocity += get_gravity() * delta
-		if abs(velocity.y) > 20.0 :
+		non_tilted_velocity.y += gravity * delta
+		if squash_cooldown.is_stopped() :
 			play_animation("Jump");
-
-	var direction = Input.get_axis("Left", "Right")
+	else :
+		non_tilted_velocity.y = 0
+	var direction : Vector2
+	if digging :
+		direction = digging_direction
+	else :
+		direction = Input.get_vector("Left", "Right", "Up", "Down")
+		
 	if direction:
-		velocity.x = direction * SPEED
-		if (velocity.x  > 0) : set_flip(false)
-		elif (velocity.x < 0) : set_flip(true)
+		non_tilted_velocity.x = direction.x * speed
+		if digging : 
+			non_tilted_velocity = direction * speed
+		if (direction.x  > 0) : set_flip(false)
+		elif (direction.x < 0) : set_flip(true)
 		play_animation("Moving");
 		if is_on_floor() and step_sound_cooldown.is_stopped() : 
 			step_sound_cooldown.start()
-			SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3, (randf() - 0.5) * 0.5 + 1)
+			SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3.0, (randf() - 0.5) * 0.5 + 1.0)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		non_tilted_velocity.x = move_toward(non_tilted_velocity.x, 0, speed)
 		if is_on_floor() : play_animation("Idle");
 
-	if is_on_floor() and Input.is_action_just_pressed("Jump") :
+	if is_on_floor() and Input.is_action_just_pressed("Jump") and !digging:
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.ogg"), -7)
-		velocity.y = JUMP_VELOCITY
-			
+		non_tilted_velocity.y = JUMP_VELOCITY
+	check_diggable(direction)
+	
+	velocity = non_tilted_velocity.rotated(global_rotation)
 	move_and_slide()
 	
 	if overlapping_pieces.size() > 0 :
@@ -66,6 +94,36 @@ func _physics_process(delta):
 		if closest_piece != null && (find_parent("Shape") == null || closest_piece.shape != get_parent()):
 			reparent(closest_piece.shape)
 			reset_proportions()
+
+func check_diggable(input : Vector2):
+	input = input.normalized()
+	if abs(input.x) > abs(input.y):
+		input = Vector2(sign(input.x), 0)
+	else:
+		input = Vector2(0, sign(input.y))  # Snap to vertical (up or down)
+	diggable_raycast.position = -input * 25.0
+	diggable_raycast.target_position = input * 50.0
+	if diggable_raycast.get_collider() :
+		set_digging(true, diggable_raycast.target_position.normalized())
+	else : 
+		set_digging(false)
+
+func set_digging(is_digging : bool, direction := Vector2.ZERO):
+	if is_digging and !digging:
+		digging = true
+		set_collision_mask_value(4, false)
+		non_tilted_velocity = Vector2.ZERO
+		digging_direction = direction
+		speed = DEFAULT_SPEED / 2.0
+		gravity = 0
+		digging_particles.emitting = true
+	elif !is_digging and digging :
+		digging = false
+		set_collision_mask_value(4, true)
+		speed = DEFAULT_SPEED
+		digging_direction = Vector2.ZERO
+		gravity = 980
+		digging_particles.emitting = false
 
 func add_overlapping_piece(piece : PuzzlePiece):
 	if piece not in overlapping_pieces:
@@ -104,7 +162,7 @@ func _process(delta):
 	if !is_physics_processing() and editor_sprite.is_playing() :
 		pause_animation()
 	
-	if !was_on_floor and is_on_floor() and abs(last_vertical_speed) > 10:
+	if !was_on_floor and is_on_floor():
 		land(last_vertical_speed)
 	
 	if (winning) :
@@ -134,7 +192,7 @@ func _process(delta):
 				entering_portal = false
 				global_scale = default_scale
 				rotation = 0
-				velocity = Vector2.ZERO
+				non_tilted_velocity = Vector2.ZERO
 				set_physics_process(true)
 			
 	elif exiting_portal :
@@ -145,7 +203,7 @@ func _process(delta):
 			target_portal.entered = true
 			target_portal.cooldown.start()
 			set_physics_process(true)
-			velocity = Vector2.ZERO
+			non_tilted_velocity = Vector2.ZERO
 			rotation = 0
 			exiting_portal = false
 			
@@ -166,7 +224,8 @@ func pause_animation():
 	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.pause()
 
-func land(speed):
-	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
-		player_sprite.squash(speed / 100.0)
+func land(landing_speed):
+	if squash_cooldown.is_stopped() :
+		for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
+			player_sprite.squash(landing_speed / 100.0)
 	last_vertical_speed = 0
