@@ -6,8 +6,8 @@ class_name WorldSelectTree
 enum TARGET_GROUPS {BASIC, ADVANCED, MIDDLE, LEFT, RIGHT, FINAL}
 var target_group : TARGET_GROUPS
 
-func set_target_group(target_group : TARGET_GROUPS):
-	self.target_group = target_group
+func set_target_group(group_to_target : TARGET_GROUPS):
+	target_group = group_to_target
 	var old_target_node := target_node
 	match target_group :
 		TARGET_GROUPS.BASIC:

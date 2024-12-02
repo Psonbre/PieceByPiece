@@ -121,6 +121,8 @@ skip_intro={
 2d_physics/layer_2="GhostPiece"
 2d_physics/layer_3="DraggingPiece"
 2d_physics/layer_4="Diggable"
+2d_physics/layer_5="DigBounce"
+2d_physics/layer_6="Layer 6"
 
 [rendering]
 

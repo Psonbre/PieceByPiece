@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyrv4i083tx3b"]
+[gd_scene load_steps=9 format=3 uid="uid://dyrv4i083tx3b"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1gs7j"]
 [ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="2_p15im"]
@@ -33,6 +33,9 @@ hue_variation_min = -0.1
 hue_variation_max = 0.12
 collision_use_scale = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y0no"]
+size = Vector2(20, 40.07)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 collision_mask = 9
@@ -51,7 +54,8 @@ wait_time = 0.33
 one_shot = true
 
 [node name="DiggableRaycast" type="RayCast2D" parent="."]
-target_position = Vector2(25, 0)
+position = Vector2(-20, 0)
+target_position = Vector2(45, 0)
 collision_mask = 8
 hit_from_inside = true
 
@@ -66,3 +70,7 @@ speed_scale = 1.5
 [node name="SquashCooldown" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="WallCheck" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_7y0no")
+target_position = Vector2(16, 0)

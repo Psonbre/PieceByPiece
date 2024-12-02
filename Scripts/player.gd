@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var editor_sprite = $EditorSprite
 @onready var step_sound_cooldown: Timer = $StepSoundCooldown
 @onready var diggable_raycast: RayCast2D = $DiggableRaycast
+@onready var wall_check: ShapeCast2D = $WallCheck
 @onready var digging_particles: GPUParticles2D = $DiggingParticles
 @onready var squash_cooldown: Timer = $SquashCooldown
 
@@ -38,13 +39,13 @@ func reset_proportions():
 	global_scale = default_scale
 	rotation = 0
 
-func set_locked(locked : bool):
-	self.locked = locked
+func set_locked(should_lock : bool):
+	locked = should_lock
 	if locked :
 		set_physics_process(false)
 		return
 	await get_tree().physics_frame
-	if !self.locked : set_physics_process(true)
+	if !locked : set_physics_process(true)
 	
 func _physics_process(delta):
 	if non_tilted_velocity.y != 0 : last_vertical_speed = non_tilted_velocity.y
@@ -86,7 +87,7 @@ func _physics_process(delta):
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.ogg"), -7)
 		non_tilted_velocity.y = JUMP_VELOCITY
 	
-	check_diggable(Input.get_vector("Left", "Right", "Up", "Down"))
+	check_diggable(digging_direction if digging else Input.get_vector("Left", "Right", "Up", "Down"))
 	
 	velocity = non_tilted_velocity.rotated(global_rotation)
 	move_and_slide()
@@ -109,15 +110,23 @@ func check_diggable(input : Vector2):
 		input = Vector2(sign(input.x), 0)
 	else:
 		input = Vector2(0, sign(input.y))  # Snap to vertical (up or down)
-	diggable_raycast.position = -input * 25.0
-	diggable_raycast.target_position = input * 50.0
-	if diggable_raycast.get_collider() :
-		set_digging(true, diggable_raycast.target_position.normalized())
+		
+	diggable_raycast.position = -input * 20.0
+	diggable_raycast.target_position = input * 45.0
+	wall_check.rotation = input.angle()
+	
+	if diggable_raycast.is_colliding() :
+		if wall_check.is_colliding() :
+			digging_direction = -digging_direction
+			wall_check.rotation = digging_direction.angle()
+			speed = DEFAULT_SPEED * 2.0
+		else :
+			set_digging(true, diggable_raycast.target_position.normalized())
 	else : 
 		set_digging(false)
 
-func set_digging(is_digging : bool, direction := Vector2.ZERO):
-	if is_digging and !digging:
+func set_digging(should_dig : bool, direction := Vector2.ZERO):
+	if should_dig and !digging:
 		digging = true
 		set_collision_mask_value(4, false)
 		non_tilted_velocity = Vector2.ZERO
@@ -125,11 +134,10 @@ func set_digging(is_digging : bool, direction := Vector2.ZERO):
 		speed = DEFAULT_SPEED / 2.0
 		gravity = 0
 		digging_particles.emitting = true
-	elif !is_digging and digging :
+	elif !should_dig and digging :
 		digging = false
 		set_collision_mask_value(4, true)
 		speed = DEFAULT_SPEED
-		digging_direction = Vector2.ZERO
 		gravity = 980
 		digging_particles.emitting = false
 

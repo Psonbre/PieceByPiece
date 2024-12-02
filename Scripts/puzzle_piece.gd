@@ -44,7 +44,6 @@ func _ready():
 	start_drag_tilt = tilt_angle
 	default_scale = scale
 	player_sprite.sprite.visible = true
-	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
@@ -115,7 +114,7 @@ func has_all_sides_connected():
 
 func start_dragging():
 	if Player.winning || Player.entering_portal || Player.exiting_portal : return
-	
+	if shape.has_node("Player") and shape.get_node("Player").digging : return
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"))
 	
 	if shape.has_node("Player") :

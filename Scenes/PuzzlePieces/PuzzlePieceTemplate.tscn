@@ -34,7 +34,7 @@ a = Vector2(0, -128)
 b = Vector2(0, 128)
 
 [node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
-collision_mask = 5
+collision_mask = 37
 script = ExtResource("1_kspp0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -157,12 +157,14 @@ metadata/_edit_group_ = true
 
 [node name="LeftCollider" type="StaticBody2D" parent="Colliders"]
 position = Vector2(-128, 0)
+collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/LeftCollider"]
 shape = SubResource("SegmentShape2D_i6rnc")
 
 [node name="RightCollider" type="StaticBody2D" parent="Colliders"]
 position = Vector2(128, 0)
+collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightCollider"]
 shape = SubResource("SegmentShape2D_i6rnc")
@@ -170,6 +172,7 @@ shape = SubResource("SegmentShape2D_i6rnc")
 [node name="TopCollider" type="StaticBody2D" parent="Colliders"]
 position = Vector2(0, -128)
 rotation = 1.57079
+collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/TopCollider"]
 shape = SubResource("SegmentShape2D_i6rnc")
@@ -177,6 +180,7 @@ shape = SubResource("SegmentShape2D_i6rnc")
 [node name="BottomCollider" type="StaticBody2D" parent="Colliders"]
 position = Vector2(0, 128)
 rotation = 1.57079
+collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/BottomCollider"]
 shape = SubResource("SegmentShape2D_i6rnc")

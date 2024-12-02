@@ -42,13 +42,13 @@ func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group :
 func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	return load_scene(CREDITS, new_direction)
 
-func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), transition_speed := self.transition_speed) -> Node2D:
+func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed := transition_speed) -> Node2D:
 	if !scene_change_cooldown.is_stopped() : return null
 	scene_change_cooldown.start()
 	if old_screen != null: 
 		old_screen.queue_free()
 		old_screen = null
-	self.transition_speed = transition_speed
+	transition_speed = speed
 	var scene = scene_resource.instantiate()
 	var new_cam: Camera2D = scene.get_node("Camera2D")
 	camera.target_position = new_cam.global_position
@@ -67,8 +67,8 @@ func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), trans
 	add_child(scene)
 	return scene
 
-func reset_scene(direction := Vector2(0, -1)):
-	load_scene(current_screen_resource , direction)
+func reset_scene(reset_direction := Vector2(0, -1)):
+	load_scene(current_screen_resource , reset_direction)
 	Player.has_collectible = false
 	
 func _process(delta):
