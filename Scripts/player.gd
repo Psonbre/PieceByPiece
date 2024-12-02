@@ -116,6 +116,7 @@ func check_diggable(input : Vector2):
 	wall_check.rotation = input.angle()
 	
 	if diggable_raycast.is_colliding() :
+		wall_check.force_shapecast_update()
 		if wall_check.is_colliding() :
 			digging_direction = -digging_direction
 			wall_check.rotation = digging_direction.angle()
