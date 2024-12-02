@@ -33,6 +33,11 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="Piece By Piece"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/adamm/Downloads/PiecebyPiece.avi"
+movie_writer/disable_vsync=true
+
 [global_group]
 
 PuzzlePieces=""
