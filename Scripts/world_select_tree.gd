@@ -26,7 +26,7 @@ func set_target_group(group_to_target : TARGET_GROUPS):
 		arrow.update_enabled()
 	for group in get_tree().get_nodes_in_group("WorldGroup") :
 		if group == old_target_node or group == target_node : group.visible = true
-		else : group.visible = false
+		elif is_ancestor_of(group) : group.visible = false
 
 func finish_transition_instantly():
 	position = -target_node.position * scale
