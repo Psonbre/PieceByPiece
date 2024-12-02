@@ -1,15 +1,15 @@
-[gd_scene load_steps=32 format=4 uid="uid://b68uehlcqyv87"]
+[gd_scene load_steps=32 format=4 uid="uid://vsb4i5bsu0wc"]
 
-[ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_wrs4d"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_6kkkk"]
-[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_y27b6"]
-[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_lfhfd"]
-[ext_resource type="PackedScene" uid="uid://g04py0wl4i5h" path="res://Scenes/Menus/Levels/level_button_template.tscn" id="4_61g36"]
-[ext_resource type="PackedScene" uid="uid://dn5jdke6odae0" path="res://Scenes/Levels/Level61.tscn" id="5_p7g4x"]
-[ext_resource type="PackedScene" uid="uid://xy8dgw8ddwtj" path="res://Scenes/Levels/Level62.tscn" id="7_3qmq7"]
-[ext_resource type="PackedScene" uid="uid://my76ea7e63pe" path="res://Scenes/Levels/Level63.tscn" id="8_uln5d"]
-[ext_resource type="PackedScene" uid="uid://ctl2lnwlg5677" path="res://Scenes/Levels/Level4.tscn" id="9_a7irw"]
-[ext_resource type="PackedScene" uid="uid://6ol74pgrytr8" path="res://Scenes/Levels/Level5.tscn" id="10_lu731"]
+[ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_jnik4"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_k4otj"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_8hu3s"]
+[ext_resource type="PackedScene" uid="uid://g04py0wl4i5h" path="res://Scenes/Menus/Levels/level_button_template.tscn" id="4_rjmgu"]
+[ext_resource type="PackedScene" uid="uid://dn5jdke6odae0" path="res://Scenes/Levels/Level61.tscn" id="5_1m54r"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="6_h5g3h"]
+[ext_resource type="PackedScene" uid="uid://xy8dgw8ddwtj" path="res://Scenes/Levels/Level62.tscn" id="7_luj2v"]
+[ext_resource type="PackedScene" uid="uid://my76ea7e63pe" path="res://Scenes/Levels/Level63.tscn" id="8_o4sps"]
+[ext_resource type="PackedScene" uid="uid://ctl2lnwlg5677" path="res://Scenes/Levels/Level4.tscn" id="9_uoyow"]
+[ext_resource type="PackedScene" uid="uid://6ol74pgrytr8" path="res://Scenes/Levels/Level5.tscn" id="10_16alh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7g540"]
 radius = 35.0
@@ -25,7 +25,7 @@ size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ienw4"]
 resource_local_to_scene = true
-shader = ExtResource("2_y27b6")
+shader = ExtResource("6_h5g3h")
 shader_parameter/speed = 1.405
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
@@ -77,9 +77,9 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvavl"]
 size = Vector2(35, 70)
 
-[node name="LevelSelectPortal" type="Node2D"]
-script = ExtResource("1_wrs4d")
-world = 2
+[node name="LevelSelectDirt" type="Node2D"]
+script = ExtResource("1_jnik4")
+world = 6
 world_select_tree_target_group = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -108,11 +108,11 @@ offset_bottom = 225.743
 scale = Vector2(0.346379, 0.346379)
 theme_override_font_sizes/font_size = 1
 text = "Alien Adventure"
-label_settings = ExtResource("2_6kkkk")
+label_settings = ExtResource("2_k4otj")
 horizontal_alignment = 1
-script = ExtResource("3_lfhfd")
+script = ExtResource("3_8hu3s")
 
-[node name="Level 1" parent="." instance=ExtResource("4_61g36")]
+[node name="Level 1" parent="." instance=ExtResource("4_rjmgu")]
 offset_left = -700.0
 offset_top = -4.0
 offset_right = -700.0
@@ -121,7 +121,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 1" index="0"]
-level = ExtResource("5_p7g4x")
+level = ExtResource("5_1m54r")
 
 [node name="Background" parent="Level 1/Level Button/Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
@@ -144,7 +144,7 @@ shape = SubResource("RectangleShape2D_7frmv")
 [node name="Outline" parent="Level 1/Level Button" index="3"]
 material = SubResource("ShaderMaterial_ienw4")
 
-[node name="Level 2" parent="." instance=ExtResource("4_61g36")]
+[node name="Level 2" parent="." instance=ExtResource("4_rjmgu")]
 offset_left = -350.0
 offset_top = -4.0
 offset_right = -350.0
@@ -153,7 +153,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 2" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("7_3qmq7")
+level = ExtResource("7_luj2v")
 requires = NodePath("../../Level 1/Level Button")
 
 [node name="Shape" parent="Level 2/Level Button" index="1"]
@@ -188,14 +188,14 @@ text = "2"
 material = SubResource("ShaderMaterial_ienw4")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 3" parent="." instance=ExtResource("4_61g36")]
+[node name="Level 3" parent="." instance=ExtResource("4_rjmgu")]
 offset_top = -4.0
 offset_bottom = -4.0
 vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 3" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("8_uln5d")
+level = ExtResource("8_o4sps")
 requires = NodePath("../../Level 2/Level Button")
 
 [node name="Shape" parent="Level 3/Level Button" index="1"]
@@ -230,7 +230,7 @@ text = "3"
 material = SubResource("ShaderMaterial_ienw4")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 4" parent="." instance=ExtResource("4_61g36")]
+[node name="Level 4" parent="." instance=ExtResource("4_rjmgu")]
 offset_left = 350.0
 offset_top = -4.0
 offset_right = 350.0
@@ -239,7 +239,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 4" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("9_a7irw")
+level = ExtResource("9_uoyow")
 requires = NodePath("../../Level 3/Level Button")
 
 [node name="Shape" parent="Level 4/Level Button" index="1"]
@@ -274,7 +274,7 @@ text = "4"
 material = SubResource("ShaderMaterial_ienw4")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
-[node name="Level 5" parent="." instance=ExtResource("4_61g36")]
+[node name="Level 5" parent="." instance=ExtResource("4_rjmgu")]
 offset_left = 700.0
 offset_top = -4.0
 offset_right = 700.0
@@ -283,7 +283,7 @@ vertical_intensity = 6.0
 horizontal_intensity = 8
 
 [node name="Level Button" parent="Level 5" index="0" node_paths=PackedStringArray("requires")]
-level = ExtResource("10_lu731")
+level = ExtResource("10_16alh")
 requires = NodePath("../../Level 4/Level Button")
 
 [node name="Shape" parent="Level 5/Level Button" index="1"]

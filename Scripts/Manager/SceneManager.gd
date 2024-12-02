@@ -12,21 +12,29 @@ var direction = Vector2(-1, 0)
 var transition_speed := 3.0
 
 enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM, DIRT, KEY, FINAL, GRAVITY_KEY, DIRT_PORTAL, PLATFORM_ROTATING}
+
+const LEVEL_SELECT_SCENES = {
+	WORLDS.BASIC: preload("res://Scenes/Menus/Levels/level_select_basic.tscn"),
+	WORLDS.ADVANCED: preload("res://Scenes/Menus/Levels/level_select_advanced.tscn"),
+	WORLDS.PORTAL: preload("res://Scenes/Menus/Levels/level_select_portal.tscn"),
+	WORLDS.GRAVITY: preload("res://Scenes/Menus/Levels/level_select_gravity.tscn"),
+	WORLDS.ROTATING: preload("res://Scenes/Menus/Levels/level_select_rotating.tscn"),
+	WORLDS.PLATFORM: preload("res://Scenes/Menus/Levels/level_select_platform.tscn"),
+	WORLDS.DIRT: preload("res://Scenes/Menus/Levels/level_select_dirt.tscn"),
+	WORLDS.KEY: preload("res://Scenes/Menus/Levels/level_select_key.tscn"),
+	WORLDS.FINAL: preload("res://Scenes/Menus/Levels/level_select_final.tscn"),
+	WORLDS.GRAVITY_KEY: preload("res://Scenes/Menus/Levels/level_select_gravity-key.tscn"),
+	WORLDS.DIRT_PORTAL: preload("res://Scenes/Menus/Levels/level_select_dirt-portal.tscn"),
+	WORLDS.PLATFORM_ROTATING: preload("res://Scenes/Menus/Levels/level_select_platform-rotating.tscn")
+}
+
 const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
 const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
-const LEVEL_SELECT_BASIC = preload("res://Scenes/Menus/Levels/level_select_basic.tscn")
-const LEVEL_SELECT_PORTAL = preload("res://Scenes/Menus/Levels/level_select_portal.tscn")
 
-func load_level_select(world : WORLDS, new_direction := Vector2(-1,0)) -> Node2D:
-	match world :
-		WORLDS.BASIC:
-			return load_scene(LEVEL_SELECT_BASIC, new_direction)
-		WORLDS.PORTAL:
-			return load_scene(LEVEL_SELECT_PORTAL, new_direction)
-		_:
-			return null
-			
+func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D:
+	return load_scene(LEVEL_SELECT_SCENES[world], new_direction)
+	
 func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	return load_scene(MAIN_MENU, new_direction)
 
