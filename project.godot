@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Piece By Piece"
 run/main_scene="res://Scenes/Menus/Intro.tscn"
+config/use_custom_user_dir=true
 run/main_loop_type="SubSystemManager"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
