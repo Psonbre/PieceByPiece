@@ -84,7 +84,7 @@ func _physics_process(delta):
 
 	#jump
 	if is_on_floor() and Input.is_action_just_pressed("Jump") and !digging:
-		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.ogg"), -7)
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.wav"), 20, (randf() + 1.0) / 1.5)
 		non_tilted_velocity.y = JUMP_VELOCITY
 	
 	check_diggable(digging_direction if digging else Input.get_vector("Left", "Right", "Up", "Down"))
