@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://bo1bq6h0vd5ie"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_tsh7o"]
+[ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="2_bbxbt"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="2_px2ad"]
-[ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="2_toxa1"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_xjnxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwxro"]
@@ -35,7 +35,7 @@ tile_map_data = PackedByteArray("AAD+//7/CAAEAAQAAAD///7/CAAEAAQAAAAAAP7/CAAEAAQ
 [node name="Arrows" parent="Shape" index="3"]
 modulate = Color(1, 1, 1, 0.168627)
 
-[node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_toxa1")]
+[node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_bbxbt")]
 
 [node name="Diggable" type="TileMapLayer" parent="Shape" index="5"]
 modulate = Color(0.535115, 0.387407, 0.183384, 1)
