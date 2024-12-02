@@ -21,5 +21,5 @@ func _process(_delta):
 func _on_body_entered(body):
 	if body is Player and body.is_physics_processing() && !get_parent().get_parent().is_dragging && !Player.has_collectible && SubSystemManager.get_scene_manager().old_screen == null:
 		Player.has_collectible = true
-		SubSystemManager.get_sound_manager().play_sound(COLLECT_JINGLE, -5)
+		SubSystemManager.get_sound_manager().play_sound(COLLECT_JINGLE, -8)
 		visible = false

@@ -77,14 +77,14 @@ func _physics_process(delta):
 			play_animation("Moving");
 			if step_sound_cooldown.is_stopped() : 
 				step_sound_cooldown.start()
-				SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -3.0, (randf() - 0.5) * 0.5 + 1.0)
+				SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -8.0, (randf() - 0.5) * 0.5 + 1.0)
 			
 	elif is_on_floor():
 		play_animation("Idle");
 
 	#jump
 	if is_on_floor() and Input.is_action_just_pressed("Jump") and !digging:
-		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.wav"), 20, (randf() + 1.0) / 1.5)
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.wav"), 12, (randf() + 2) / 2.0)
 		non_tilted_velocity.y = JUMP_VELOCITY
 	
 	check_diggable(digging_direction if digging else Input.get_vector("Left", "Right", "Up", "Down"))

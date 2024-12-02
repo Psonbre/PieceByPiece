@@ -73,6 +73,7 @@ func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed
 	direction = new_direction  # Update the global direction
 	
 	add_child(scene)
+	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/transition.wav"), 0, transition_speed / 6.0 + (randf() - 0.5) / 4.0)
 	return scene
 
 func reset_scene(reset_direction := Vector2(0, -1)):

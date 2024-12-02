@@ -21,10 +21,9 @@ func get_audio_player() -> AudioStreamPlayer:
 	audio_pool.append(audio_player)
 	return audio_player
 	
-func play_sound(sound_effect: AudioStream, volume_db: float = 0.0, pitch_scale = 1.0) -> void:
+func play_sound(sound_effect: AudioStream, volume_db := 0.0, pitch_scale := 1.0, start_at := 0.0) -> void:
 	var audio_player := get_audio_player()
 	audio_player.stream = sound_effect
 	audio_player.volume_db = volume_db
 	audio_player.pitch_scale = pitch_scale
-	audio_player.play()
-	
+	audio_player.play(start_at)

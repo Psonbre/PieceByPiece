@@ -115,7 +115,7 @@ func has_all_sides_connected():
 func start_dragging():
 	if Player.winning || Player.entering_portal || Player.exiting_portal : return
 	if shape.has_node("Player") and shape.get_node("Player").digging : return
-	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"))
+	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"), -7)
 	
 	if shape.has_node("Player") :
 		set_player_sprites_visible(false)
@@ -152,7 +152,7 @@ func stop_dragging():
 	attempt_connection()
 	
 	if !global_position.is_equal_approx(old_position) :
-		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -5)
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -13)
 	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -195,6 +195,7 @@ func clamp_player():
 		player.position = Vector2(clampf(player.position.x, left_connector.position.x + 20, right_connector.position.x - 20), clampf(player.position.y, top_connector.position.y + 20, bottom_connector.position.y - 20))
 
 func cancel_drag():
+	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_drop.wav"), 5, 0.5, 0.05)
 	ghost_piece.hide_display()
 	global_position = start_drag_position
 	target_rotated_angle = start_drag_target_rotated_angle

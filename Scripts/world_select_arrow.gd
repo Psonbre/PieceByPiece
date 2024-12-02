@@ -45,3 +45,4 @@ func _input(event):
 	if !enabled : return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and mouse_hover:
 		tree.set_target_group(target_world_group)
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/transition.wav"), -5, 0.5 + (randf() - 0.5) / 4.0)

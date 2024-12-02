@@ -8,5 +8,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body is Player && body.is_physics_processing() && !puzzle_piece.is_dragging && SubSystemManager.get_scene_manager().old_screen == null:
-		SubSystemManager.get_sound_manager().play_sound(WIN_JINGLE, -5)
+		SubSystemManager.get_sound_manager().play_sound(WIN_JINGLE, -8)
 		body.win(self)
