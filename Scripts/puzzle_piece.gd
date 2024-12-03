@@ -2,7 +2,7 @@ extends Area2D
 class_name PuzzlePiece
 
 @export var is_rotating_piece := false
-
+@export var theme : SceneManager.WORLDS
 const max_tilt := deg_to_rad(15)
 static var global_dragging := false
 

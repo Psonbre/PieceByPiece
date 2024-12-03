@@ -89,12 +89,13 @@ func connect_with_closest():
 	if other_connector and other_connector.puzzle_piece is GhostPiece : other_connector = null
 	connected_to = other_connector
 	
-	if other_connector and other_connector.rift == null :
+	if !rift and other_connector and other_connector.rift == null and puzzle_piece.theme != other_connector.puzzle_piece.theme:
 		rift = preload("res://Scenes/PuzzlePieces/rift.tscn").instantiate()
 		get_tree().root.add_child(rift)
 		rift.connected_to = self
-	elif rift:
+	elif other_connector == null and rift != null:
 		rift.connected_to = null
 		rift = null	
+		
 func has_connection() :
 	return connected_to != null || type == ConnectorShape.FLAT
