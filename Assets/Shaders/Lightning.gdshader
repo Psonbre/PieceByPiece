@@ -10,7 +10,7 @@ uniform float speed = 1;
 uniform float thickness: hint_range(0.0, 10.0) = 1.25; // Thickness of the effect
 
 // Pixelation parameters
-uniform float pixel_size: hint_range(1.0, 150.0, 1.0) = 10.0; // Size of pixelation effect
+uniform float pixel_size: hint_range(1.0, 150.0) = 10.0; // Size of pixelation effect
 
 // Hash and noise functions
 float hash12(vec2 x) {

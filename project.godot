@@ -49,6 +49,7 @@ PlayerSprites=""
 GameManager=""
 Level=""
 LevelSelectButton=""
+Rifts=""
 
 [gui]
 

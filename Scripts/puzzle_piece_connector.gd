@@ -4,6 +4,7 @@ class_name PuzzlePieceConnector
 
 @onready var puzzle_piece : PuzzlePiece = $"../../.."
 @export var side_collider : StaticBody2D
+var rift : Rift
 
 var connected_to : PuzzlePieceConnector = null :
 	set(value):
@@ -46,21 +47,17 @@ func get_all_pieces_with_compatible_overlapping_connectors() :
 				pieces_with_valid_overlapping_connectors.append(connector.puzzle_piece)
 	return pieces_with_valid_overlapping_connectors
 
-func is_connector_compatible(other_connector: PuzzlePieceConnector, require_same_connection_group := true) -> bool:
+func get_rounded_rotation():
 	var normalized_self_rotation = global_rotation_degrees
 	if normalized_self_rotation < 0:
 		normalized_self_rotation += 360 * ceil(abs(normalized_self_rotation) / 360.0)
 	elif normalized_self_rotation >= 360:
-		normalized_self_rotation -= 360 * floor(normalized_self_rotation / 360.0)
-
-	var normalized_other_rotation = other_connector.global_rotation_degrees
-	if normalized_other_rotation < 0:
-		normalized_other_rotation += 360 * ceil(abs(normalized_other_rotation) / 360.0)
-	elif normalized_other_rotation >= 360:
-		normalized_other_rotation -= 360 * floor(normalized_other_rotation / 360.0)
-
-	var rounded_self_rotation = round(normalized_self_rotation / 90.0) * 90
-	var rounded_other_rotation = round(normalized_other_rotation / 90.0) * 90
+		normalized_self_rotation -= 360 * floor(normalized_self_rotation / 360.0)	
+	return round(normalized_self_rotation / 90.0) * 90
+	
+func is_connector_compatible(other_connector: PuzzlePieceConnector, require_same_connection_group := true) -> bool:
+	var rounded_self_rotation = get_rounded_rotation()
+	var rounded_other_rotation = other_connector.get_rounded_rotation()
 
 	var angle_diff = abs(rounded_self_rotation - rounded_other_rotation)
 
@@ -92,5 +89,12 @@ func connect_with_closest():
 	if other_connector and other_connector.puzzle_piece is GhostPiece : other_connector = null
 	connected_to = other_connector
 	
+	if other_connector and other_connector.rift == null :
+		rift = preload("res://Scenes/PuzzlePieces/rift.tscn").instantiate()
+		get_tree().root.add_child(rift)
+		rift.connected_to = self
+	elif rift:
+		rift.connected_to = null
+		rift = null	
 func has_connection() :
 	return connected_to != null || type == ConnectorShape.FLAT

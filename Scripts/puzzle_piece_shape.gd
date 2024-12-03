@@ -81,3 +81,42 @@ func update_shape():
 
 	# Update the outline
 	$"../Outline".regenerate(polygon)
+
+func get_segment_points(side: String) -> Array:
+	var start_point: Vector2
+	var end_point: Vector2
+
+	match side:
+		"left":
+			start_point = Vector2(-shape_size / 2.0, shape_size / 2.0)  # Bottom-left
+			end_point = Vector2(-shape_size / 2.0, -shape_size / 2.0)   # Top-left
+		"right":
+			start_point = Vector2(shape_size / 2.0, -shape_size / 2.0)  # Top-right
+			end_point = Vector2(shape_size / 2.0, shape_size / 2.0)     # Bottom-right
+		"top":
+			start_point = Vector2(-shape_size / 2.0, -shape_size / 2.0) # Top-left
+			end_point = Vector2(shape_size / 2.0, -shape_size / 2.0)    # Top-right
+		"down":
+			start_point = Vector2(shape_size / 2.0, shape_size / 2.0)   # Bottom-right
+			end_point = Vector2(-shape_size / 2.0, shape_size / 2.0)    # Bottom-left
+		_:
+			print("Invalid side specified: ", side)
+			return []
+
+	# Collect points between the two delimiting corners
+	var segment_points = []
+	var collecting = false
+
+	var cloned_polygon = polygon.duplicate()
+	cloned_polygon.append(cloned_polygon[0])
+	for point in cloned_polygon:
+		# Start collecting once the start point is encountered
+		if point == start_point:
+			collecting = true
+
+		if collecting:
+			segment_points.append(point)
+			if point == end_point:
+				break
+
+	return segment_points
