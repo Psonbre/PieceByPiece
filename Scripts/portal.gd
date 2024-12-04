@@ -19,6 +19,9 @@ var brightness := 2.0
 var target_birghtness := 2.0
 var entered := false
 
+func _ready() -> void:
+	foreground.visible = false
+
 func activate():
 	if activated: return
 	activated = true
