@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://cr6tqpwvtumc5"]
+[gd_scene load_steps=14 format=4 uid="uid://cr6tqpwvtumc5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_lpi0x"]
 [ext_resource type="SpriteFrames" uid="uid://byvdlkywtissw" path="res://Scenes/PlayerSprites/player4_frames.tres" id="2_d1xlg"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_b8p7t"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Lightning.gdshader" id="4_o6nop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8di5"]
 size = Vector2(35, 70)
@@ -131,6 +132,17 @@ _data = {
 "RESET": SubResource("Animation_ngr5p")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_073ja"]
+shader = ExtResource("4_o6nop")
+shader_parameter/effect_color = Color(0.262577, 0.0796149, 1, 1)
+shader_parameter/octave_count = 10
+shader_parameter/amp_start = 0.5
+shader_parameter/amp_coeff = 0.5
+shader_parameter/freq_coeff = 0.0
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 1.25
+shader_parameter/pixel_size = 3.0
+
 [node name="Dirt Portal World" instance=ExtResource("1_lpi0x")]
 nb_of_completed_levels = 0
 world = 10
@@ -142,7 +154,7 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275,
 tile_map_data = PackedByteArray("AAD+//7/CAABAAEAAAD+////CAABAAIAAAD+/wAACAABAAEAAAD+/wEACAABAAEAAAD+/wIACAABAAEAAAD//wIACAABAAEAAAD//wEACAABAAEAAAD//wAACAABAAEAAAD/////CAABAAEAAAD///7/CAABAAEAAAAAAP7/CAACAAEAAAAAAP//CAABAAEAAAAAAAAACAABAAEAAAACAP3/AAAEAAEAAAABAP3/AAAEAAEAAAAAAP3/AAAEAAEAAAD///3/AAAEAAEAAAD+//3/AAAEAAEAAAD9//3/AAAEAAEAAAD9/wIAAAAEAAEAAAD9/wMAAAAEAAEAAAD+/wMAAAAEAAEAAAACAAMAAAAEAAEAAAADAAMAAAAEAAEAAAADAAIAAAAEAAEAAAADAAEACAABAAAAAAADAAAACAABAAEAAAADAP//CAABAAEAAAADAP7/AAAEAAEAAAADAP3/AAAEAAEAAAA=")
 
 [node name="Foreground" parent="Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+/wIACAADAAEAAAD+/wEACAADAAAAAAAAAAEABwABAAYAAAAAAAIABwABAAYAAAABAAIABwABAAYAAAABAAEABwABAAYAAAABAAAABwABAAYAAAABAP//BwABAAYAAAABAP7/BwABAAYAAAACAP7/BwABAAYAAAACAP//BwABAAYAAAACAAAABwABAAYAAAACAAEABwABAAYAAAACAAIABwABAAYAAAADAAIABwABAAYAAAADAAEABwABAAYAAAADAAAABwABAAYAAAADAP//BwABAAYAAAADAP7/BwABAAYAAAADAAMABwABAAYAAAACAAMABwABAAYAAAABAAMABwABAAYAAAAAAAMABwABAAYAAAD//wMABwABAAYAAAA=")
+tile_map_data = PackedByteArray("AAABAP7/BwABAAYAAAACAP7/BwABAAYAAAD+/wIACAADAAEAAAAAAAIABwABAAYAAAABAAIABwABAAYAAAACAAIABwABAAYAAAD+/wEACAADAAAAAAAAAAEABwABAAYAAAABAAEABwABAAYAAAABAAAABwABAAYAAAABAP//BwABAAYAAAACAP//BwABAAYAAAACAAAABwABAAYAAAACAAEABwABAAYAAAADAAIABwABAAYAAAADAAEABwABAAYAAAADAAAABwABAAYAAAADAP//BwABAAYAAAADAP7/BwABAAYAAAADAAMABwABAAYAAAACAAMABwABAAYAAAABAAMABwABAAYAAAAAAAMABwABAAYAAAD//wMABwABAAYAAAA=")
 
 [node name="PlayerSprite" parent="Shape" index="2"]
 visible = false
@@ -197,3 +209,9 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 
 libraries = {
 "": SubResource("AnimationLibrary_sdhiq")
 }
+
+[node name="Rift" type="Line2D" parent="." index="6" groups=["Rifts"]]
+material = SubResource("ShaderMaterial_073ja")
+points = PackedVector2Array(26, -128, 27, 26, -26, 25, -26, 128, -35, 128)
+texture_mode = 1
+joint_mode = 2

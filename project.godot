@@ -10,13 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Piece By Piece"
+config/name="Piece by Piece"
+config/version="1.0.0"
 run/main_scene="res://Scenes/Menus/Intro.tscn"
 config/use_custom_user_dir=true
 run/main_loop_type="SubSystemManager"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://favicon.ico"
+config/windows_native_icon="res://favicon.ico"
 
 [debug]
 
@@ -32,7 +34,7 @@ window/vsync/vsync_mode=0
 
 [dotnet]
 
-project/assembly_name="Piece By Piece"
+project/assembly_name="Piece by Piece"
 
 [editor]
 

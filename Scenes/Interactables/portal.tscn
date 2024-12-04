@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cqfgi7k08veo6"]
 
-[ext_resource type="Texture2D" uid="uid://cph5l5ltrh8xo" path="res://icon.svg" id="1_bkrhv"]
+[ext_resource type="Texture2D" uid="uid://cph5l5ltrh8xo" path="res://Assets/Sprites/portal.svg" id="1_bkrhv"]
 [ext_resource type="Script" path="res://Scripts/portal.gd" id="1_en4pa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcee6"]
@@ -174,7 +174,6 @@ material = SubResource("ShaderMaterial_avu2b")
 texture = ExtResource("1_bkrhv")
 
 [node name="Foreground" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_1hfet")
 texture = ExtResource("1_bkrhv")
 

@@ -1,0 +1,696 @@
+[gd_scene load_steps=18 format=3 uid="uid://4gg3xf80a2qe"]
+
+[ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_q5kbk"]
+[ext_resource type="Script" path="res://Scripts/world_select_tree.gd" id="2_uuris"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="3_ci1o0"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="4_bny4r"]
+[ext_resource type="PackedScene" uid="uid://bugeuopf4jxs7" path="res://Scenes/Menus/Worlds/basic_world.tscn" id="5_2x5tc"]
+[ext_resource type="PackedScene" uid="uid://e7wskfnclaq6" path="res://Scenes/Menus/Worlds/advanced_world.tscn" id="6_8giab"]
+[ext_resource type="PackedScene" uid="uid://dbkth5a8frbf4" path="res://Scenes/Menus/Worlds/portal_world.tscn" id="7_2d2s5"]
+[ext_resource type="PackedScene" uid="uid://cr6tqpwvtumc5" path="res://Scenes/Menus/Worlds/dirt_portal_world.tscn" id="8_oc3b8"]
+[ext_resource type="PackedScene" uid="uid://da810mvip5tid" path="res://Scenes/Menus/Worlds/dirt_world.tscn" id="9_1kpsb"]
+[ext_resource type="PackedScene" uid="uid://0o8gu1xmxrtt" path="res://Scenes/Menus/Worlds/gravity_world.tscn" id="10_isvnh"]
+[ext_resource type="PackedScene" uid="uid://d0vob1weoau0o" path="res://Scenes/Menus/Worlds/gravity_key_world.tscn" id="11_wr1ul"]
+[ext_resource type="PackedScene" uid="uid://2yttmrg0xk0j" path="res://Scenes/Menus/Worlds/key_world.tscn" id="12_kwqg7"]
+[ext_resource type="PackedScene" uid="uid://cbojjfoan0d2q" path="res://Scenes/Menus/Worlds/platform_world.tscn" id="13_6tgfo"]
+[ext_resource type="PackedScene" uid="uid://bou8388epmvgw" path="res://Scenes/Menus/Worlds/platform_rotating_piece_world.tscn" id="14_ji6by"]
+[ext_resource type="PackedScene" uid="uid://dtt0tdkls3xon" path="res://Scenes/Menus/Worlds/rotating_piece_world.tscn" id="15_8hgbi"]
+[ext_resource type="PackedScene" uid="uid://bndsfuv4ll7tr" path="res://Scenes/Menus/Worlds/final_world.tscn" id="16_2qj1u"]
+[ext_resource type="Script" path="res://Scripts/world_select_arrow.gd" id="17_awmkw"]
+
+[node name="WorldSelect" type="Node2D"]
+script = ExtResource("1_q5kbk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.015, 1.015)
+
+[node name="Tree" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1280.0
+offset_bottom = 1280.0
+scale = Vector2(1.70503, 1.70503)
+script = ExtResource("2_uuris")
+
+[node name="Title" type="Control" parent="Tree"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -1125.43
+offset_bottom = -1125.43
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Tree/Title"]
+layout_mode = 2
+offset_left = -206.448
+offset_top = 25.7426
+offset_right = 993.552
+offset_bottom = 225.743
+scale = Vector2(0.346379, 0.346379)
+theme_override_font_sizes/font_size = 1
+text = "Worlds"
+label_settings = ExtResource("3_ci1o0")
+horizontal_alignment = 1
+script = ExtResource("4_bny4r")
+
+[node name="Demo" type="Control" parent="Tree" groups=["WorldGroup"]]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -750.0
+offset_bottom = -750.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic World" parent="Tree/Demo" instance=ExtResource("5_2x5tc")]
+scale = Vector2(1.25, 1.25)
+nb_of_completed_levels = 0
+
+[node name="Basic" type="Control" parent="Tree" groups=["WorldGroup"]]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.14441e-05
+offset_bottom = 1.14441e-05
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Basic World" parent="Tree/Basic" instance=ExtResource("5_2x5tc")]
+scale = Vector2(1.25, 1.25)
+nb_of_completed_levels = 0
+
+[node name="Advanced" type="Control" parent="Tree" groups=["WorldGroup"]]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 750.0
+offset_bottom = 750.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Advanced World" parent="Tree/Advanced" instance=ExtResource("6_8giab")]
+scale = Vector2(1.25, 1.25)
+nb_of_completed_levels = 0
+
+[node name="MiddleGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
+anchors_preset = 0
+offset_top = 1500.0
+offset_bottom = 1500.0
+
+[node name="Portals" type="Control" parent="Tree/MiddleGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -400.0
+offset_right = -400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Portal World" parent="Tree/MiddleGroup/Portals" instance=ExtResource("7_2d2s5")]
+
+[node name="Combined" type="Control" parent="Tree/MiddleGroup"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" instance=ExtResource("8_oc3b8")]
+
+[node name="Dirt" type="Control" parent="Tree/MiddleGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_right = 400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Dirt World" parent="Tree/MiddleGroup/Dirt" instance=ExtResource("9_1kpsb")]
+
+[node name="LeftGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
+anchors_preset = 0
+offset_left = -1500.0
+offset_top = 1500.0
+offset_right = -1500.0
+offset_bottom = 1500.0
+
+[node name="Gravity" type="Control" parent="Tree/LeftGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -400.0
+offset_right = -400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Gravity World" parent="Tree/LeftGroup/Gravity" instance=ExtResource("10_isvnh")]
+
+[node name="Combined" type="Control" parent="Tree/LeftGroup"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Gravity Key World" parent="Tree/LeftGroup/Combined" instance=ExtResource("11_wr1ul")]
+
+[node name="Key" type="Control" parent="Tree/LeftGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_right = 400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Key World" parent="Tree/LeftGroup/Key" instance=ExtResource("12_kwqg7")]
+
+[node name="RightGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
+anchors_preset = 0
+offset_left = 1500.0
+offset_top = 1500.0
+offset_right = 1500.0
+offset_bottom = 1500.0
+
+[node name="Platform" type="Control" parent="Tree/RightGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -400.0
+offset_right = -400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Platform World" parent="Tree/RightGroup/Platform" instance=ExtResource("13_6tgfo")]
+
+[node name="Combined" type="Control" parent="Tree/RightGroup"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Rotating Piece Platform World" parent="Tree/RightGroup/Combined" instance=ExtResource("14_ji6by")]
+
+[node name="RotatingPiece" type="Control" parent="Tree/RightGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_right = 400.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Rotating Piece World" parent="Tree/RightGroup/RotatingPiece" instance=ExtResource("15_8hgbi")]
+
+[node name="Final" type="Control" parent="Tree" groups=["WorldGroup"]]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 2250.0
+offset_bottom = 2250.0
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Final World" parent="Tree/Final" instance=ExtResource("16_2qj1u")]
+scale = Vector2(1.3, 1.3)
+
+[node name="BottomArrow" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 250.0
+offset_right = 50.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 1
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow2" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 338.863
+offset_right = 50.0
+offset_bottom = 538.863
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71238
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+self_world_group = 1
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow2"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow2/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow3" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 1001.02
+offset_right = 50.0
+offset_bottom = 1201.02
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 2
+self_world_group = 1
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow3"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow3/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow5" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 1718.9
+offset_right = 50.0
+offset_bottom = 1918.9
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 5
+self_world_group = 2
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow5"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow5/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow11" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1548.95
+offset_top = 1718.9
+offset_right = -1448.95
+offset_bottom = 1918.9
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 5
+self_world_group = 3
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow11"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow11/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow12" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1452.76
+offset_top = 1718.9
+offset_right = 1552.76
+offset_bottom = 1918.9
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 5
+self_world_group = 4
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow12"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow12/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow4" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 1106.01
+offset_right = 50.0
+offset_bottom = 1306.01
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71238
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 1
+self_world_group = 2
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow4"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow4/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow7" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 600.0
+offset_top = 1400.0
+offset_right = 700.0
+offset_bottom = 1600.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 4
+self_world_group = 2
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow7"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow7/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow10" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -886.788
+offset_top = 1400.0
+offset_right = -786.788
+offset_bottom = 1600.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 2
+self_world_group = 3
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow10"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow10/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow9" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 813.475
+offset_top = 1400.0
+offset_right = 913.475
+offset_bottom = 1600.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 2
+self_world_group = 4
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow9"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow9/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow8" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = 1400.0
+offset_right = -600.0
+offset_bottom = 1600.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 3
+self_world_group = 2
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow8"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow8/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="BottomArrow6" type="Control" parent="Tree" groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 1860.83
+offset_right = 50.0
+offset_bottom = 2060.83
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.71238
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+target_world_group = 2
+self_world_group = 5
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow6"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow6/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Tree/BottomArrow6/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[connection signal="mouse_entered" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow3" to="Tree/BottomArrow3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow3" to="Tree/BottomArrow3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow5" to="Tree/BottomArrow5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow5" to="Tree/BottomArrow5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow11" to="Tree/BottomArrow11" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow11" to="Tree/BottomArrow11" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow12" to="Tree/BottomArrow12" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow12" to="Tree/BottomArrow12" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow4" to="Tree/BottomArrow4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow4" to="Tree/BottomArrow4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow7" to="Tree/BottomArrow7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow7" to="Tree/BottomArrow7" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow10" to="Tree/BottomArrow10" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow10" to="Tree/BottomArrow10" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow9" to="Tree/BottomArrow9" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow9" to="Tree/BottomArrow9" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow8" to="Tree/BottomArrow8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow8" to="Tree/BottomArrow8" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow6" to="Tree/BottomArrow6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow6" to="Tree/BottomArrow6" method="_on_mouse_exited"]

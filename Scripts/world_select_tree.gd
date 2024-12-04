@@ -3,7 +3,7 @@ class_name WorldSelectTree
 
 @onready var target_node := $"Basic"
 
-enum TARGET_GROUPS {BASIC, ADVANCED, MIDDLE, LEFT, RIGHT, FINAL}
+enum TARGET_GROUPS {BASIC, ADVANCED, MIDDLE, LEFT, RIGHT, FINAL, DEMO}
 var target_group : TARGET_GROUPS
 
 func set_target_group(group_to_target : TARGET_GROUPS):

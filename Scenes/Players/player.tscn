@@ -73,5 +73,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="WallCheck" type="ShapeCast2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_7y0no")
 target_position = Vector2(15, 0)
