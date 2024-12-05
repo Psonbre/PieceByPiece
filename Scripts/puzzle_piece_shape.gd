@@ -8,7 +8,9 @@ class_name PuzzlePieceShape
 @onready var bottom_connector : PuzzlePieceVisualConnector = $Connectors/BottomConnector
 
 var shape_size := 256
-
+var puzzle_piece : PuzzlePiece : 
+	get():
+		return get_parent()
 @export var connector_radius := 35.0 :
 	set(value):
 		connector_radius = value

@@ -52,6 +52,7 @@ GameManager=""
 Level=""
 LevelSelectButton=""
 Rifts=""
+Tracks=""
 
 [gui]
 
