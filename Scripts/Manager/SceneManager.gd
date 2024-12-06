@@ -11,7 +11,7 @@ var default_resolution = Vector2(2560, 1440)
 var direction = Vector2(-1, 0)
 var transition_speed := 3.0
 
-enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM, DIRT, KEY, FINAL, GRAVITY_KEY, DIRT_PORTAL, PLATFORM_ROTATING}
+enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM, DIRT, KEY, FINAL, GRAVITY_KEY, DIRT_PORTAL, PLATFORM_ROTATING, DEMO}
 
 const LEVEL_SELECT_SCENES = {
 	WORLDS.BASIC: preload("res://Scenes/Menus/Levels/level_select_basic.tscn"),
@@ -25,12 +25,14 @@ const LEVEL_SELECT_SCENES = {
 	WORLDS.FINAL: preload("res://Scenes/Menus/Levels/level_select_final.tscn"),
 	WORLDS.GRAVITY_KEY: preload("res://Scenes/Menus/Levels/level_select_gravity-key.tscn"),
 	WORLDS.DIRT_PORTAL: preload("res://Scenes/Menus/Levels/level_select_dirt-portal.tscn"),
-	WORLDS.PLATFORM_ROTATING: preload("res://Scenes/Menus/Levels/level_select_platform-rotating.tscn")
+	WORLDS.PLATFORM_ROTATING: preload("res://Scenes/Menus/Levels/level_select_platform-rotating.tscn"),
+	WORLDS.DEMO : preload("res://Scenes/Menus/Levels/level_select_demo.tscn")
 }
 
 const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
-const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
+#const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
+const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelectDemo.tscn")
 
 func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D:
 	return load_scene(LEVEL_SELECT_SCENES[world], new_direction)
@@ -38,11 +40,11 @@ func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D
 func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	return load_scene(MAIN_MENU, new_direction)
 
-func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group := WorldSelectTree.TARGET_GROUPS.BASIC) -> Node2D:
+func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
 	var menu = load_scene(WORLD_SELECT, new_direction)
 	if menu:
 		var tree = menu.get_node("Tree")
-		tree.set_target_group(target_world_group)
+		if target_world_group != null : tree.set_target_group(target_world_group)
 		tree.finish_transition_instantly()
 		return menu
 	return null

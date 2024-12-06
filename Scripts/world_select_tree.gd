@@ -1,14 +1,19 @@
 extends Control
 class_name WorldSelectTree
 
-@onready var target_node := $"Basic"
+@export var target_group : TARGET_GROUPS
 
 enum TARGET_GROUPS {BASIC, ADVANCED, MIDDLE, LEFT, RIGHT, FINAL, DEMO}
-var target_group : TARGET_GROUPS
+var default_target_group := target_group
+var target_node : Control
+
+func _ready() -> void:
+	set_target_group(target_group)
 
 func set_target_group(group_to_target : TARGET_GROUPS):
 	target_group = group_to_target
 	var old_target_node := target_node
+	
 	match target_group :
 		TARGET_GROUPS.BASIC:
 			target_node = $Basic
@@ -22,6 +27,9 @@ func set_target_group(group_to_target : TARGET_GROUPS):
 			target_node = $RightGroup
 		TARGET_GROUPS.FINAL:
 			target_node = $Final
+		TARGET_GROUPS.DEMO:
+			target_node = $Demo
+			
 	for arrow in get_tree().get_nodes_in_group("Arrow"):
 		arrow.update_enabled()
 	for group in get_tree().get_nodes_in_group("WorldGroup") :
