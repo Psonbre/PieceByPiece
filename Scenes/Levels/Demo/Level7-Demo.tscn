@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://dea1pvndtuh11"]
+[gd_scene load_steps=18 format=4 uid="uid://dea1pvndtuh11"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_13lvb"]
+[ext_resource type="PackedScene" uid="uid://cgqumf6yset2j" path="res://Scenes/Levels/Demo/Level8-Demo.tscn" id="2_8s7oy"]
 [ext_resource type="PackedScene" uid="uid://bagvy8vbt68i" path="res://Scenes/PuzzlePieces/PiratePuzzlePieceTemplate.tscn" id="2_k8ai1"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_s186f"]
 
@@ -47,6 +48,8 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [node name="Level" instance=ExtResource("1_13lvb")]
+world = 12
+next_level = ExtResource("2_8s7oy")
 
 [node name="Camera2D" parent="." index="0"]
 zoom = Vector2(1.7, 1.7)
@@ -57,7 +60,7 @@ position = Vector2(-458, 40)
 [node name="LevelName" parent="Control" index="0"]
 offset_left = -191.2
 offset_right = 1408.8
-text = "Level 11"
+text = "Level 7"
 
 [node name="PuzzlePiece" parent="." index="5" instance=ExtResource("2_k8ai1")]
 position = Vector2(-428, -3)
@@ -141,7 +144,7 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 163, 0, 128, 35, 1
 tile_map_data = PackedByteArray("AAD+//7/AAAEAAEAAAD+////AAAEAAAAAAD+/wAAAAAEAAEAAAD+/wEAAAAEAAIAAAD+/wIAAAAEAAEAAAD//wIAAAAEAAEAAAD//wEAAAAFAAIAAAD//wAAAAAFAAEAAAD/////AAAFAAAAAAD///7/AAAEAAEAAAAAAP7/AAAEAAEAAAAAAP//AAAEAAAAAAAAAAAAAAAEAAEAAAAAAAEAAAAEAAIAAAAAAAIAAAAEAAEAAAABAAIAAAAEAAEAAAABAAEAAAAEAAIAAAABAAAAAAAEAAEAAAABAP7/AAAEAAEAAAABAP//AAAEAAAAAAACAAIAAAAEAAEAAAACAAEAAAADAAIAAAACAAAAAAADAAEAAAACAP//AAADAAAAAAACAP7/AAAEAAEAAAACAP3/AAAEAAEAAAABAP3/AAAEAAEAAAAAAP3/AAAEAAEAAAD///3/AAAEAAEAAAD+//3/AAAEAAEAAAD9//3/AAAEAAEAAAD9//7/AAAEAAEAAAD9////AAAEAAEAAAD9/wAAAAAEAAEAAAD9/wEAAAAEAAEAAAD9/wIAAAAEAAEAAAD9/wMAAAAEAAEAAAD+/wMAAAAEAAEAAAD//wMAAAAEAAEAAAAAAAMAAAAEAAEAAAABAAMAAAAEAAEAAAACAAMAAAAEAAEAAAADAAMAAAAEAAEAAAADAAIAAAAEAAEAAAADAAEAAAAEAAEAAAADAAAAAAAEAAEAAAADAP//AAAEAAEAAAADAP7/AAAEAAEAAAADAP3/AAAEAAEAAAA=")
 
 [node name="Foreground" parent="PuzzlePiece3/Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+//7/AAABAAIAAAD///7/AAABAAIAAAACAP7/AAABAAIAAAD+/wIAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAQAAAABAAIAAAAAAAQAAAACAAIAAAABAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAP//AAAAAAEAAAABAAEAAAACAAEAAAABAAAAAAACAAEAAAABAP//AAACAAEAAAAAAP7/AAABAAMAAAABAP7/AAAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AAABAAIAAAD///7/AAABAAIAAAAAAP7/AAABAAMAAAABAP7/AAAAAAMAAAACAP7/AAABAAIAAAD+/wIAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAQAAAABAAIAAAAAAAQAAAACAAIAAAABAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAP//AAAAAAEAAAABAAEAAAACAAEAAAABAAAAAAACAAEAAAABAP//AAACAAEAAAA=")
 
 [node name="Door" parent="PuzzlePiece3/Shape" index="2"]
 visible = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=4 uid="uid://bae5jvcs0yxp2"]
+[gd_scene load_steps=23 format=4 uid="uid://bae5jvcs0yxp2"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_002jp"]
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="2_bgabo"]
+[ext_resource type="PackedScene" uid="uid://dea1pvndtuh11" path="res://Scenes/Levels/Demo/Level7-Demo.tscn" id="2_w5o7i"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_t31ac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykhu5"]
@@ -65,6 +66,8 @@ size = Vector2(35, 70)
 radius = 35.0
 
 [node name="Level" instance=ExtResource("1_002jp")]
+world = 12
+next_level = ExtResource("2_w5o7i")
 
 [node name="Camera2D" parent="." index="0"]
 zoom = Vector2(1.7, 1.7)
@@ -75,7 +78,7 @@ position = Vector2(-518, 23)
 [node name="LevelName" parent="Control" index="0"]
 offset_left = -191.2
 offset_right = 1408.8
-text = "Level 10"
+text = "Level 6"
 
 [node name="PuzzlePiece" parent="." index="4" instance=ExtResource("2_bgabo")]
 position = Vector2(549, -2)
@@ -165,7 +168,7 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 tile_map_data = PackedByteArray("AAD+//7/AwABAAgAAAD+////AwAIAAgAAAD+/wAAAwACAAgAAAD+/wEAAwAIAAcAAAD+/wIAAwABAAgAAAD//wIAAwADAAgAAAD//wEAAwADAAgAAAD//wAAAwADAAgAAAD/////AwADAAgAAAD///7/AwADAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwABAAgAAAABAAEAAwABAAgAAAABAAAAAwABAAgAAAABAP7/AwABAAgAAAABAP//AwABAAgAAAACAAIAAwADAAgAAAACAAEAAwAHAAcAAAACAAAAAwACAAgAAAACAP//AwAHAAgAAAACAP7/AwADAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwADAAgAAAAAAAMAAwACAAgAAAABAAMAAwABAAgAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
 
 [node name="Foreground" parent="PuzzlePiece4/Shape" index="1"]
-tile_map_data = PackedByteArray("AAAAAP7/AwAFAAIAAAAAAP//AwAFAAIAAAAAAAAAAwAFAAIAAAAAAAEAAwAFAAIAAAAAAAIAAwAFAAIAAAAAAAMAAwAFAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AwAFAAIAAAAAAAIAAwAFAAIAAAAAAP//AwAFAAIAAAAAAAAAAwAFAAIAAAAAAAEAAwAFAAIAAAAAAAMAAwAFAAIAAAA=")
 
 [node name="RightConnector" parent="PuzzlePiece4/Shape/Connectors" index="0"]
 shape = 1
@@ -210,7 +213,7 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 tile_map_data = PackedByteArray("AAD+//7/AwABAAgAAAD+////AwAIAAgAAAD+/wAAAwACAAgAAAD+/wEAAwAIAAcAAAD+/wIAAwABAAgAAAD//wIAAwADAAgAAAD//wEAAwADAAgAAAD//wAAAwADAAgAAAD/////AwADAAgAAAD///7/AwADAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwABAAgAAAABAAEAAwABAAgAAAABAAAAAwABAAgAAAABAP7/AwABAAgAAAABAP//AwABAAgAAAACAAIAAwADAAgAAAACAAEAAwAHAAcAAAACAAAAAwACAAgAAAACAP//AwAHAAgAAAACAP7/AwADAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwADAAgAAAAAAAMAAwACAAgAAAABAAMAAwABAAgAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
 
 [node name="Foreground" parent="PuzzlePiece3/Shape" index="1"]
-tile_map_data = PackedByteArray("AAAAAP7/AwAFAAIAAAAAAP//AwAFAAIAAAAAAAAAAwAFAAIAAAAAAAEAAwAFAAIAAAAAAAIAAwAFAAIAAAAAAAMAAwAFAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AwAFAAIAAAAAAAIAAwAFAAIAAAAAAP//AwAFAAIAAAAAAAAAAwAFAAIAAAAAAAEAAwAFAAIAAAAAAAMAAwAFAAIAAAA=")
 
 [node name="RightConnector" parent="PuzzlePiece3/Shape/Connectors" index="0"]
 shape = 1

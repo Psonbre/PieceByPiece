@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=45 format=3 uid="uid://bfocqsl618xby"]
+[gd_resource type="SpriteFrames" load_steps=42 format=3 uid="uid://bfocqsl618xby"]
 
 [ext_resource type="Texture2D" uid="uid://cxn8uflv5qok3" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/1-Idle/1.png" id="1_jimcs"]
 [ext_resource type="Texture2D" uid="uid://b0fdvl8oryeai" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/1-Idle/2.png" id="2_1v42j"]
@@ -27,9 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://nj8swidjgio" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/1-Idle/25.png" id="25_amxma"]
 [ext_resource type="Texture2D" uid="uid://djqr2t2mdu1n4" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/1-Idle/26.png" id="26_2b86y"]
 [ext_resource type="Texture2D" uid="uid://bwsjx4gmpcfmk" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/4-Jump/1.png" id="27_7k72h"]
-[ext_resource type="Texture2D" uid="uid://1acqyoeye758" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/4-Jump/2.png" id="28_ocyib"]
-[ext_resource type="Texture2D" uid="uid://cu04ir2ewl4g0" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/4-Jump/3.png" id="29_v3x5s"]
-[ext_resource type="Texture2D" uid="uid://dhmcadbvgbyg6" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/4-Jump/4.png" id="30_vvxgs"]
 [ext_resource type="Texture2D" uid="uid://cbq8k8j0anmpg" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/2-Run/1.png" id="31_ly6nx"]
 [ext_resource type="Texture2D" uid="uid://b25gh20g4kqwb" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/2-Run/2.png" id="32_ihrff"]
 [ext_resource type="Texture2D" uid="uid://bgtk6fx8dt3nc" path="res://Assets/Sprites/Pirate/1-Player-Bomb Guy/2-Run/3.png" id="33_bruhi"]
@@ -133,19 +130,10 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("27_7k72h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_ocyib")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_v3x5s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_vvxgs")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,

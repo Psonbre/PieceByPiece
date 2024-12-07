@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://ddbqursefwsts"]
+[gd_scene load_steps=23 format=4 uid="uid://ddbqursefwsts"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_yvu2a"]
+[ext_resource type="PackedScene" uid="uid://bae5jvcs0yxp2" path="res://Scenes/Levels/Demo/Level6-Demo.tscn" id="2_0rneu"]
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="2_0sd64"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_jeqs0"]
 
@@ -65,6 +66,8 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [node name="Level" instance=ExtResource("1_yvu2a")]
+world = 12
+next_level = ExtResource("2_0rneu")
 
 [node name="Camera2D" parent="." index="0"]
 zoom = Vector2(1.7, 1.7)
@@ -73,7 +76,7 @@ zoom = Vector2(1.7, 1.7)
 position = Vector2(-518, 23)
 
 [node name="LevelName" parent="Control" index="0"]
-text = "Level 7"
+text = "Level 5"
 
 [node name="PuzzlePiece" parent="." index="4" instance=ExtResource("2_0sd64")]
 position = Vector2(549, -2)
