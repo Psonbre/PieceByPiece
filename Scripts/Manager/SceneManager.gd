@@ -10,7 +10,7 @@ var current_screen_resource : PackedScene
 var default_resolution = Vector2(2560, 1440)
 var direction = Vector2(-1, 0)
 var transition_speed := 3.0
-
+var discord_rpc
 enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM, DIRT, KEY, FINAL, GRAVITY_KEY, DIRT_PORTAL, PLATFORM_ROTATING, DEMO}
 
 const WORLDS_LEVEL_SELECT_SCENES = {
@@ -111,7 +111,7 @@ func reset_scene(reset_direction := Vector2(0, -1)):
 	Player.has_collectible = false
 	
 func _process(delta):
-	DiscordRPC.run_callbacks()
+	if discord_rpc : discord_rpc.run_callbacks()
 	if current_screen:
 		# Target position for the new screen
 		var target_position = Vector2(0, 0)
@@ -129,13 +129,18 @@ func _process(delta):
 			old_screen = null
 
 func _ready() -> void:
-	DiscordRPC.app_id = 1315378919494385725
-	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
-	DiscordRPC.refresh()
+	if OS.has_feature("web") :
+		print("discord rich presence is disabled")
+	else :
+		discord_rpc = Engine.get_singleton("DiscordRPC")
+		discord_rpc.app_id = 1315378919494385725
+		discord_rpc.start_timestamp = int(Time.get_unix_time_from_system())
+		discord_rpc.refresh()
 
 func updated_discord_presence(main : String, state := ""):
-	if !DiscordRPC.get_is_discord_working() : return
-	DiscordRPC.details = main
-	DiscordRPC.state = state
-	DiscordRPC.refresh()
+	if OS.get_name() in ["Windows", "Linux", "macOS"]:
+		if !discord_rpc or !discord_rpc.get_is_discord_working() : return
+		discord_rpc.details = main
+		discord_rpc.state = state
+		discord_rpc.refresh()
 	

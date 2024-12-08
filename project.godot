@@ -20,11 +20,6 @@ boot_splash/show_image=false
 config/icon="res://favicon.ico"
 config/windows_native_icon="res://favicon.ico"
 
-[autoload]
-
-DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
-RuntimeDebugTools="*res://addons/runtime_debug_tools/scenes/remote_inspector.tscn"
-
 [debug]
 
 settings/stdout/verbose_stdout=true
