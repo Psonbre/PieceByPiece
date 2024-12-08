@@ -280,6 +280,41 @@ width = 4.085
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
 
+[node name="BottomArrow13" type="Control" parent="Tree" node_paths=PackedStringArray("required_completed_worlds") groups=["Arrow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 263.925
+offset_right = 50.0
+offset_bottom = 463.925
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("17_awmkw")
+self_world_group = 6
+required_completed_worlds = [NodePath("../Demo/Demo World")]
+vertical_intensity = 10.0
+horizontal_intensity = 7
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow13"]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="Tree/BottomArrow13/ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
 [node name="BottomArrow2" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
@@ -705,6 +740,8 @@ joint_mode = 2
 
 [connection signal="mouse_entered" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Tree/BottomArrow13" to="Tree/BottomArrow13" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tree/BottomArrow13" to="Tree/BottomArrow13" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Tree/BottomArrow14" to="Tree/BottomArrow14" method="_on_mouse_entered"]

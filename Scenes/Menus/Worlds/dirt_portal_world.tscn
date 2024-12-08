@@ -5,23 +5,17 @@
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_b8p7t"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Lightning.gdshader" id="4_o6nop"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8di5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyfpv"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyllt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk1yj"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_27dec"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y42pv"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eoe3l"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5jyw"]
 radius = 35.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib866"]
-resource_local_to_scene = true
-shader = ExtResource("3_b8p7t")
-shader_parameter/speed = 1.405
-shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_bgnga"]
 resource_name = "Preview"
@@ -132,6 +126,12 @@ _data = {
 "RESET": SubResource("Animation_ngr5p")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib866"]
+resource_local_to_scene = true
+shader = ExtResource("3_b8p7t")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_073ja"]
 shader = ExtResource("4_o6nop")
 shader_parameter/effect_color = Color(0.262577, 0.0796149, 1, 1)
@@ -173,24 +173,24 @@ type = -1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_a8di5")
+shape = SubResource("RectangleShape2D_pyfpv")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 type = -1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_dyllt")
+shape = SubResource("RectangleShape2D_xk1yj")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_27dec")
+shape = SubResource("RectangleShape2D_y42pv")
 
 [node name="BottomConnector" parent="Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_eoe3l")
+shape = SubResource("CircleShape2D_h5jyw")
 
 [node name="Overlay" parent="." index="2"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
@@ -201,14 +201,17 @@ offset_bottom = 121.0
 text = "ALIEN
 EXCAVATION"
 
-[node name="Outline" parent="." index="3"]
-material = SubResource("ShaderMaterial_ib866")
+[node name="Shadow" parent="." index="3"]
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_sdhiq")
 }
+
+[node name="Outline" parent="." index="5"]
+material = SubResource("ShaderMaterial_ib866")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
 [node name="Rift" type="Line2D" parent="." index="6" groups=["Rifts"]]
 material = SubResource("ShaderMaterial_073ja")
