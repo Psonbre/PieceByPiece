@@ -4,10 +4,11 @@ class_name WorldSelectTree
 @export var target_group : TARGET_GROUPS
 
 enum TARGET_GROUPS {BASIC, ADVANCED, MIDDLE, LEFT, RIGHT, FINAL, DEMO}
-var default_target_group := target_group
+var default_target_group
 var target_node : Control
 
 func _ready() -> void:
+	default_target_group = target_group
 	set_target_group(target_group)
 
 func set_target_group(group_to_target : TARGET_GROUPS):
