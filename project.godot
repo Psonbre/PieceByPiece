@@ -20,6 +20,10 @@ boot_splash/show_image=false
 config/icon="res://favicon.ico"
 config/windows_native_icon="res://favicon.ico"
 
+[autoload]
+
+DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
+
 [debug]
 
 settings/stdout/verbose_stdout=true
@@ -40,6 +44,10 @@ project/assembly_name="Piece by Piece"
 
 movie_writer/movie_file="C:/Users/adamm/Downloads/PiecebyPiece.avi"
 movie_writer/disable_vsync=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
 
 [global_group]
 

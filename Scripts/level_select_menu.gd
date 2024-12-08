@@ -1,5 +1,5 @@
 extends	Node
-
+class_name LevelSelect
 @export var world : SceneManager.WORLDS
 @export var world_select_tree_target_group := WorldSelectTree.TARGET_GROUPS.BASIC
 var can_exit := true

@@ -52,7 +52,7 @@ size = Vector2(35, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gn2sx"]
 radius = 35.0
 
-[node name="Level" instance=ExtResource("1_nu50j")]
+[node name="Level 5" instance=ExtResource("1_nu50j")]
 
 [node name="Player" parent="." index="1"]
 position = Vector2(-4, 39)

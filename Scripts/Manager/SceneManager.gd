@@ -13,7 +13,7 @@ var transition_speed := 3.0
 
 enum WORLDS {BASIC, ADVANCED, PORTAL, GRAVITY, ROTATING, PLATFORM, DIRT, KEY, FINAL, GRAVITY_KEY, DIRT_PORTAL, PLATFORM_ROTATING, DEMO}
 
-const LEVEL_SELECT_SCENES = {
+const WORLDS_LEVEL_SELECT_SCENES = {
 	WORLDS.BASIC: preload("res://Scenes/Menus/Levels/level_select_basic.tscn"),
 	WORLDS.ADVANCED: preload("res://Scenes/Menus/Levels/level_select_advanced.tscn"),
 	WORLDS.PORTAL: preload("res://Scenes/Menus/Levels/level_select_portal.tscn"),
@@ -28,6 +28,21 @@ const LEVEL_SELECT_SCENES = {
 	WORLDS.PLATFORM_ROTATING: preload("res://Scenes/Menus/Levels/level_select_platform-rotating.tscn"),
 	WORLDS.DEMO : preload("res://Scenes/Menus/Levels/level_select_demo.tscn")
 }
+const WORLDS_DISCORD_PRESENCE = {
+	WORLDS.BASIC: "Completing the King's Quest",
+	WORLDS.ADVANCED: "Having Lumber Party",
+	WORLDS.PORTAL: "Going on an Alien Adventure",
+	WORLDS.GRAVITY: "Gravity",
+	WORLDS.ROTATING: "Rotating",
+	WORLDS.PLATFORM: "Platform",
+	WORLDS.DIRT: "Mining Session",
+	WORLDS.KEY: "Key",
+	WORLDS.FINAL: "Final",
+	WORLDS.GRAVITY_KEY: "Gravity Key",
+	WORLDS.DIRT_PORTAL: "Dirt Portal",
+	WORLDS.PLATFORM_ROTATING: "Platform Rotating",
+	WORLDS.DEMO : "Trying out the Demo !"
+}
 
 const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
@@ -35,10 +50,14 @@ const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
 const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelectDemo.tscn")
 
 func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D:
-	return load_scene(LEVEL_SELECT_SCENES[world], new_direction)
+	var scene = load_scene(WORLDS_LEVEL_SELECT_SCENES[world], new_direction)
+	if scene : updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], "Choosing a level")
+	return scene
 	
 func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
-	return load_scene(MAIN_MENU, new_direction)
+	var main_menu = load_scene(MAIN_MENU, new_direction)
+	if main_menu : updated_discord_presence("Staring at the main menu", "")
+	return main_menu
 
 func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
 	var menu = load_scene(WORLD_SELECT, new_direction)
@@ -46,11 +65,20 @@ func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group =
 		var tree = menu.get_node("Tree")
 		if target_world_group != null : tree.set_target_group(target_world_group)
 		tree.finish_transition_instantly()
-		return menu
-	return null
+		updated_discord_presence("Selecting a world", "")
+	return menu
 
 func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
-	return load_scene(CREDITS, new_direction)
+	var credits = load_scene(CREDITS, new_direction)
+	if credits : updated_discord_presence("Looking at the credits", "")
+	return credits
+
+func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vector2(1, 0)):
+	var level = load_scene(scene_resource, new_direction)
+	var regex = RegEx.new()
+	regex.compile(r"\d+")
+	if level : updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], level.name)
+	return level
 
 func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed := transition_speed) -> Node2D:
 	if !scene_change_cooldown.is_stopped() : return null
@@ -83,6 +111,7 @@ func reset_scene(reset_direction := Vector2(0, -1)):
 	Player.has_collectible = false
 	
 func _process(delta):
+	DiscordRPC.run_callbacks()
 	if current_screen:
 		# Target position for the new screen
 		var target_position = Vector2(0, 0)
@@ -98,3 +127,15 @@ func _process(delta):
 		if (old_screen.global_position - target_position).length() < 100:
 			old_screen.queue_free()
 			old_screen = null
+
+func _ready() -> void:
+	DiscordRPC.app_id = 1315378919494385725
+	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
+	DiscordRPC.refresh()
+
+func updated_discord_presence(main : String, state := ""):
+	if !DiscordRPC.get_is_discord_working() : return
+	DiscordRPC.details = main
+	DiscordRPC.state = state
+	DiscordRPC.refresh()
+	

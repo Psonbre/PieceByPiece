@@ -190,7 +190,7 @@ func _process(delta):
 			winning = false
 			has_collectible = false
 			if current_level.next_level :
-				SubSystemManager.get_scene_manager().load_scene(current_level.next_level, Vector2(1,0))
+				SubSystemManager.get_scene_manager().load_level(current_level.world, current_level.next_level, Vector2(1,0))
 			else :
 				SubSystemManager.get_scene_manager().load_level_select(current_level.world)
 				

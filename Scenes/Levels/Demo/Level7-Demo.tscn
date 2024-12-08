@@ -47,7 +47,7 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84xhv"]
 size = Vector2(35, 70)
 
-[node name="Level" instance=ExtResource("1_13lvb")]
+[node name="Level 7" instance=ExtResource("1_13lvb")]
 world = 12
 next_level = ExtResource("2_8s7oy")
 

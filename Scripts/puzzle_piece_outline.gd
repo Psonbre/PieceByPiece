@@ -40,7 +40,7 @@ func set_type(type : OutlineType):
 
 func regenerate(polygon):
 	points = polygon
-	if $"../Shadow" : 
+	if get_parent().has_node("Shadow") :
 		$"../Shadow".z_index = -2
 		$"../Shadow".points = points
 	

@@ -58,7 +58,7 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8328"]
 size = Vector2(35, 70)
 
-[node name="Level" instance=ExtResource("1_8drb8")]
+[node name="Level 18" instance=ExtResource("1_8drb8")]
 
 [node name="Player" parent="." index="1"]
 position = Vector2(-156, 181)

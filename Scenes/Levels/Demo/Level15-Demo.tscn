@@ -54,7 +54,7 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfngf"]
 size = Vector2(35, 70)
 
-[node name="Level" instance=ExtResource("1_ewueu")]
+[node name="Level 15" instance=ExtResource("1_ewueu")]
 world = 12
 
 [node name="Player" parent="." index="1"]

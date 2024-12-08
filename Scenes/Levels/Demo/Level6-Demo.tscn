@@ -65,7 +65,7 @@ size = Vector2(35, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0y88"]
 radius = 35.0
 
-[node name="Level" instance=ExtResource("1_002jp")]
+[node name="Level 6" instance=ExtResource("1_002jp")]
 world = 12
 next_level = ExtResource("2_w5o7i")
 
@@ -156,9 +156,6 @@ shape = SubResource("RectangleShape2D_dmlqa")
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/BottomConnector" index="0"]
 shape = SubResource("RectangleShape2D_ommf2")
-
-[node name="Shadow" parent="PuzzlePiece2" index="2"]
-points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
 
 [node name="Outline" parent="PuzzlePiece2" index="3"]
 material = SubResource("ShaderMaterial_wynl3")

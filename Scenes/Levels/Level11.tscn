@@ -46,7 +46,7 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcqps"]
 size = Vector2(35, 70)
 
-[node name="Level" instance=ExtResource("1_2r2gt")]
+[node name="Level 11" instance=ExtResource("1_2r2gt")]
 
 [node name="Camera2D" parent="." index="0"]
 zoom = Vector2(1.7, 1.7)

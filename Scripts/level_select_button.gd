@@ -55,5 +55,5 @@ func _on_mouse_exited():
 func _input(event: InputEvent) -> void:
 	if mouse_hover and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if level : 
-			if SubSystemManager.get_scene_manager().load_scene(level) :
+			if SubSystemManager.get_scene_manager().load_level(get_parent().get_parent().world, level) :
 				SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)

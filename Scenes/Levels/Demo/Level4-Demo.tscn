@@ -53,7 +53,7 @@ size = Vector2(35, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yfpk"]
 radius = 35.0
 
-[node name="Level" instance=ExtResource("1_yvu2a")]
+[node name="Level 4" instance=ExtResource("1_yvu2a")]
 world = 12
 next_level = ExtResource("2_eldpr")
 

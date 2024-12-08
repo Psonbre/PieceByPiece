@@ -64,7 +64,7 @@ size = Vector2(35, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnd5t"]
 radius = 35.0
 
-[node name="Level" instance=ExtResource("1_51gv2")]
+[node name="Level 10" instance=ExtResource("1_51gv2")]
 
 [node name="Camera2D" parent="." index="0"]
 zoom = Vector2(1.7, 1.7)
