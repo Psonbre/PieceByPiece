@@ -129,13 +129,13 @@ func _process(delta):
 			old_screen = null
 
 func _ready() -> void:
-	if OS.has_feature("web") :
-		print("discord rich presence is disabled")
-	else :
+	if OS.has_feature("discord_rpc") || OS.has_feature("editor") :
 		discord_rpc = Engine.get_singleton("DiscordRPC")
 		discord_rpc.app_id = 1315378919494385725
 		discord_rpc.start_timestamp = int(Time.get_unix_time_from_system())
 		discord_rpc.refresh()
+	else :
+		print("discord rich presence is disabled")
 
 func updated_discord_presence(main : String, state := ""):
 	if OS.get_name() in ["Windows", "Linux", "macOS"]:
