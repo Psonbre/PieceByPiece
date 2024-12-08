@@ -9,7 +9,7 @@
 position = Vector2(0, 24)
 scale = Vector2(1.70725, 1.70725)
 sprite_frames = ExtResource("2_taq3u")
-animation = &"Idle"
+animation = &"Moving"
 offset = Vector2(0, -14.0577)
 
 [node name="CollisionShape2D" parent="." index="1"]

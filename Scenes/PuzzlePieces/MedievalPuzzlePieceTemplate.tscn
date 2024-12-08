@@ -50,7 +50,7 @@ shape = SubResource("RectangleShape2D_vkfnv")
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
 shape = SubResource("RectangleShape2D_lya54")
 
-[node name="Outline" parent="." index="2"]
+[node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_n3bvn")
 
 [editable path="Shape/Door"]

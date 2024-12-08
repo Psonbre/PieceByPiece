@@ -40,6 +40,9 @@ func set_type(type : OutlineType):
 
 func regenerate(polygon):
 	points = polygon
+	if $"../Shadow" : 
+		$"../Shadow".z_index = -2
+		$"../Shadow".points = points
 	
 func _ready():
 	if not Engine.is_editor_hint():
