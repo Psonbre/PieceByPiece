@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=20 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
@@ -11,22 +11,23 @@
 [ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_fwkty"]
 [ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="6_patsr"]
 [ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="8_dvmwe"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shadow.gd" id="9_jegeb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_movio"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss6hc"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlo50"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dcrl"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y081g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep3wg"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xp6w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dchuu"]
 size = Vector2(35, 70)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
@@ -88,7 +89,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_movio")
+shape = SubResource("RectangleShape2D_ss6hc")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
@@ -101,7 +102,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_xlo50")
+shape = SubResource("RectangleShape2D_1dcrl")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
@@ -114,7 +115,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_y081g")
+shape = SubResource("RectangleShape2D_ep3wg")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
@@ -127,7 +128,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_7xp6w")
+shape = SubResource("RectangleShape2D_dchuu")
 metadata/_edit_lock_ = true
 
 [node name="Collectible" parent="Shape" instance=ExtResource("8_dvmwe")]
@@ -139,13 +140,14 @@ scale = Vector2(0.337808, 0.337808)
 z_index = -2
 texture_repeat = 2
 position = Vector2(4, 4)
-points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
 width = 9.62
 default_color = Color(0, 0, 0, 1)
 texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+script = ExtResource("9_jegeb")
 metadata/_edit_lock_ = true
 
 [node name="Outline" type="Line2D" parent="."]
