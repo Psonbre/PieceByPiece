@@ -69,10 +69,10 @@ script = ExtResource("3_v5ulq")
 [node name="LevelName4" type="Label" parent="Control" index="2"]
 z_index = 30
 layout_mode = 0
-offset_left = -220.0
+offset_left = -301.6
 offset_top = 248.471
-offset_right = 148.0
-offset_bottom = 271.471
+offset_right = 4498.4
+offset_bottom = 448.471
 scale = Vector2(0.126, 0.126)
 theme_override_fonts/font = ExtResource("2_s567u")
 text = "Drag and drop the pieces"
