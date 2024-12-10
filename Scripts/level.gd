@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Level
 @export var world : SceneManager.WORLDS
 @export var next_level : PackedScene
@@ -10,9 +10,9 @@ var can_exit := true
 func _input(_event):
 	if Engine.is_editor_hint() : return
 	var scene_manager = SubSystemManager.get_scene_manager()
-	if Input.is_action_just_pressed("Pause") and can_exit and scene_manager.old_screen != self:
+	if Input.is_action_just_pressed("Pause") and can_exit and scene_manager.old_screen != self and !Player.winning:
 		if scene_manager.load_level_select(world) : can_exit = false
-	if Input.is_action_just_pressed("Reset") and can_reset and scene_manager.old_screen != self and reset_level_cooldown.is_stopped():
+	if Input.is_action_just_pressed("Reset") and can_reset and scene_manager.old_screen != self and reset_level_cooldown.is_stopped() and !Player.winning:
 		if scene_manager.reset_scene() : can_reset = false
 	if !PuzzlePiece.global_dragging :
 		var cam = SubSystemManager.get_scene_manager().camera

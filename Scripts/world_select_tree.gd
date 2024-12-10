@@ -42,4 +42,4 @@ func finish_transition_instantly():
 
 func _process(delta):
 	var distance = -target_node.position * scale - position
-	position += delta * distance * 4.0
+	position += delta * distance * 6.0
