@@ -71,7 +71,6 @@ horizontal_intensity = 7
 
 [node name="Basic World" parent="Tree/Basic" instance=ExtResource("4_wjvt0")]
 scale = Vector2(1.25, 1.25)
-nb_of_completed_levels = 0
 
 [node name="Advanced" type="Control" parent="Tree" groups=["WorldGroup"]]
 layout_mode = 3
@@ -82,9 +81,9 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Advanced World" parent="Tree/Advanced" instance=ExtResource("5_80pre")]
+[node name="Advanced World" parent="Tree/Advanced" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("5_80pre")]
 scale = Vector2(1.25, 1.25)
-nb_of_completed_levels = 0
+required_completed_worlds = [NodePath("../../Basic/Basic World")]
 
 [node name="MiddleGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
 anchors_preset = 0
@@ -102,7 +101,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Portal World" parent="Tree/MiddleGroup/Portals" instance=ExtResource("6_plgfp")]
+[node name="Portal World" parent="Tree/MiddleGroup/Portals" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("6_plgfp")]
+required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Combined" type="Control" parent="Tree/MiddleGroup"]
 layout_mode = 3
@@ -113,7 +113,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" instance=ExtResource("7_2tw7h")]
+[node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("7_2tw7h")]
+required_completed_worlds = [NodePath("../../Portals/Portal World"), NodePath("../../Dirt/Dirt World")]
 
 [node name="Dirt" type="Control" parent="Tree/MiddleGroup"]
 layout_mode = 3
@@ -126,7 +127,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Dirt World" parent="Tree/MiddleGroup/Dirt" instance=ExtResource("12_ega6f")]
+[node name="Dirt World" parent="Tree/MiddleGroup/Dirt" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("12_ega6f")]
+required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="LeftGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
 anchors_preset = 0
@@ -146,7 +148,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Gravity World" parent="Tree/LeftGroup/Gravity" instance=ExtResource("9_7xlvv")]
+[node name="Gravity World" parent="Tree/LeftGroup/Gravity" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("9_7xlvv")]
+required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Combined" type="Control" parent="Tree/LeftGroup"]
 layout_mode = 3
@@ -157,7 +160,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Gravity Key World" parent="Tree/LeftGroup/Combined" instance=ExtResource("10_hv8tc")]
+[node name="Gravity Key World" parent="Tree/LeftGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("10_hv8tc")]
+required_completed_worlds = [NodePath("../../Gravity/Gravity World"), NodePath("../../Key/Key World")]
 
 [node name="Key" type="Control" parent="Tree/LeftGroup"]
 layout_mode = 3
@@ -170,7 +174,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Key World" parent="Tree/LeftGroup/Key" instance=ExtResource("11_j58w6")]
+[node name="Key World" parent="Tree/LeftGroup/Key" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("11_j58w6")]
+required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="RightGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
 anchors_preset = 0
@@ -190,7 +195,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Platform World" parent="Tree/RightGroup/Platform" instance=ExtResource("14_poyu8")]
+[node name="Platform World" parent="Tree/RightGroup/Platform" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("14_poyu8")]
+required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Combined" type="Control" parent="Tree/RightGroup"]
 layout_mode = 3
@@ -201,7 +207,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Rotating Piece Platform World" parent="Tree/RightGroup/Combined" instance=ExtResource("10_7ff8v")]
+[node name="Rotating Piece Platform World" parent="Tree/RightGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("10_7ff8v")]
+required_completed_worlds = [NodePath("../../Platform/Platform World"), NodePath("../../RotatingPiece/Rotating Piece World")]
 
 [node name="RotatingPiece" type="Control" parent="Tree/RightGroup"]
 layout_mode = 3
@@ -214,7 +221,8 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Rotating Piece World" parent="Tree/RightGroup/RotatingPiece" instance=ExtResource("15_ecnri")]
+[node name="Rotating Piece World" parent="Tree/RightGroup/RotatingPiece" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("15_ecnri")]
+required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Final" type="Control" parent="Tree" groups=["WorldGroup"]]
 layout_mode = 3
@@ -227,8 +235,9 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Final World" parent="Tree/Final" instance=ExtResource("15_6boim")]
+[node name="Final World" parent="Tree/Final" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("15_6boim")]
 scale = Vector2(1.3, 1.3)
+required_completed_worlds = [NodePath("../../LeftGroup/Combined/Gravity Key World"), NodePath("../../RightGroup/Combined/Rotating Piece Platform World"), NodePath("../../MiddleGroup/Combined/Dirt Portal World")]
 
 [node name="BottomArrow" type="Control" parent="Tree" groups=["Arrow"]]
 layout_mode = 1

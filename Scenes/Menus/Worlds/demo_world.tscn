@@ -256,7 +256,6 @@ shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="Demo World" instance=ExtResource("1_tbae5")]
 nb_of_levels = 15
-nb_of_completed_levels = 0
 world = 12
 
 [node name="Shape" parent="." index="1"]

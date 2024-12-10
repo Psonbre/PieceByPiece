@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bx8ht3bt5lbpu"]
+[gd_scene load_steps=23 format=4 uid="uid://bx8ht3bt5lbpu"]
 
 [ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="1_fwsvf"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_5d7h1"]
@@ -7,6 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/player2_frames.tres" id="4_iobep"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_ag18d"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_hwcmm"]
+[ext_resource type="Texture2D" uid="uid://mwlqduyhjj8h" path="res://Assets/Sprites/lock.png" id="6_86jjf"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_ymn1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
@@ -14,16 +15,16 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tkihx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndu03"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bmdbj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_edbf5"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8bwn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc4mv"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h7fo"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq6c1"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
@@ -52,7 +53,6 @@ size = Vector2(40, 80)
 [node name="Template World" type="Area2D"]
 collision_mask = 5
 script = ExtResource("1_fwsvf")
-nb_of_completed_levels = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -100,7 +100,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_tkihx")
+shape = SubResource("CircleShape2D_ndu03")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
@@ -112,7 +112,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_bmdbj")
+shape = SubResource("CircleShape2D_edbf5")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
@@ -124,7 +124,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_t8bwn")
+shape = SubResource("RectangleShape2D_oc4mv")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
@@ -136,14 +136,14 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_4h7fo")
+shape = SubResource("RectangleShape2D_gq6c1")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
-polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 metadata/_edit_lock_ = true
 
 [node name="WorldName" type="Label" parent="Overlay"]
@@ -181,11 +181,19 @@ text = "0/10"
 label_settings = ExtResource("4_2tobx")
 vertical_alignment = 1
 
+[node name="Lock" type="Sprite2D" parent="Overlay"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.607843)
+z_index = 1
+scale = Vector2(0.158067, 0.158067)
+texture = ExtResource("6_86jjf")
+
 [node name="PlayIcon" type="Polygon2D" parent="Overlay"]
+visible = false
 z_index = 1
 position = Vector2(7, 0)
 scale = Vector2(1.12274, 1.12274)
-color = Color(1, 1, 1, 0.411765)
+color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-25, 25, 25, 0, -25, -25)
 
 [node name="Shadow" type="Line2D" parent="."]
