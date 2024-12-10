@@ -14,3 +14,7 @@ func equals(other : ConnectionGroup):
 func add_member(piece : PuzzlePiece):
 	if piece == null : return
 	if !members.has(piece) : members.append(piece)
+
+func move(amount : Vector2):
+	for piece : PuzzlePiece in members :
+		piece.position += amount

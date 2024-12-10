@@ -2,6 +2,7 @@ extends	Node
 class_name LevelSelect
 @export var world : SceneManager.WORLDS
 @export var world_select_tree_target_group := WorldSelectTree.TARGET_GROUPS.BASIC
+@export var background_gradient : Gradient = preload("res://Assets/Gradients/rainbow_gradient.tres")
 var can_exit := true
 
 func _input(_event):

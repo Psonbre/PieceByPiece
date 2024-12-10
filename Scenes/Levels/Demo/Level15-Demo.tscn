@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://b4dh1c2w4e851"]
+[gd_scene load_steps=21 format=4 uid="uid://b4dh1c2w4e851"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_ewueu"]
 [ext_resource type="PackedScene" uid="uid://bo1bq6h0vd5ie" path="res://Scenes/PuzzlePieces/MinerPuzzlePieceTemplate.tscn" id="2_biv21"]
+[ext_resource type="Gradient" uid="uid://b2twdclajye8e" path="res://Assets/Gradients/portal_gradient.tres" id="2_p561r"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_w5rn3"]
 [ext_resource type="PackedScene" uid="uid://dt1hdr68qpd77" path="res://Scenes/PuzzlePieces/SciFiPuzzlePieceTemplate.tscn" id="4_ahiea"]
 [ext_resource type="PackedScene" uid="uid://cqfgi7k08veo6" path="res://Scenes/Interactables/portal.tscn" id="5_b2mjs"]
@@ -56,6 +57,7 @@ size = Vector2(35, 70)
 
 [node name="Level 15" instance=ExtResource("1_ewueu")]
 world = 12
+background_gradient = ExtResource("2_p561r")
 
 [node name="Player" parent="." index="1"]
 position = Vector2(-323, -30)

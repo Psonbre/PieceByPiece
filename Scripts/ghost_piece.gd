@@ -12,6 +12,7 @@ var displayed := false
 @onready var visual_bottom_connector = $VisualShape/Connectors/BottomConnector
 
 func _ready():
+	hide_display()
 	start_drag_position = position
 	default_scale = scale
 	
@@ -49,6 +50,9 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_globa
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
+	update_placement_validity()
+	
+func update_placement_validity():
 	update_connection_group()
 	
 	if all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped():
@@ -64,8 +68,8 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_globa
 
 func hide_display():
 	displayed = false
-	last_displayed_position = Vector2.INF
-	global_position = Vector2.INF
+	last_displayed_position = Vector2.ONE * 100000
+	global_position = Vector2.ONE * 100000
 	valid_placement = true
 	visual_shape.visible = false
 	outline.visible = false
@@ -98,7 +102,7 @@ func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: Puzzl
 		cg.add_member(piece.top_connector.connected_to.puzzle_piece)
 	if piece.bottom_connector.connected_to:
 		cg.add_member(piece.bottom_connector.connected_to.puzzle_piece)
-		
+	
 func _process(_delta):
 	pass
 	

@@ -1,9 +1,10 @@
 extends Node2D
 class_name SceneManager
 
+@export var default_gradient : Gradient
 @onready var camera = %Camera2D
 @onready var scene_change_cooldown: Timer = $SceneChangeCooldown
-
+@onready var background: Background = $Background
 var old_screen : Node2D
 var current_screen : Node2D
 var current_screen_resource : PackedScene
@@ -51,12 +52,16 @@ const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelectDemo.tscn")
 
 func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D:
 	var scene = load_scene(WORLDS_LEVEL_SELECT_SCENES[world], new_direction)
-	if scene : updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], "Choosing a level")
+	if scene : 
+		updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], "Choosing a level")
+		background.switch_gradient(scene.background_gradient)
 	return scene
 	
 func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	var main_menu = load_scene(MAIN_MENU, new_direction)
-	if main_menu : updated_discord_presence("Staring at the main menu", "")
+	if main_menu : 
+		updated_discord_presence("Staring at the main menu", "")
+		background.switch_gradient(default_gradient)
 	return main_menu
 
 func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
@@ -66,18 +71,21 @@ func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group =
 		if target_world_group != null : tree.set_target_group(target_world_group)
 		tree.finish_transition_instantly()
 		updated_discord_presence("Selecting a world", "")
+		background.switch_gradient(default_gradient)
 	return menu
 
 func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	var credits = load_scene(CREDITS, new_direction)
-	if credits : updated_discord_presence("Looking at the credits", "")
+	if credits : 
+		updated_discord_presence("Looking at the credits", "")
+		background.switch_gradient(default_gradient)
 	return credits
 
 func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vector2(1, 0)):
 	var level = load_scene(scene_resource, new_direction)
-	var regex = RegEx.new()
-	regex.compile(r"\d+")
-	if level : updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], level.name)
+	if level : 
+		updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], level.name)
+		background.switch_gradient(level.background_gradient)
 	return level
 
 func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed := transition_speed) -> Node2D:

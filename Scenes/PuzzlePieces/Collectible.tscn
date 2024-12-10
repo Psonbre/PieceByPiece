@@ -30,7 +30,6 @@ vertical_intensity = 6.0
 horizontal_intensity = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_812v4")
 metadata/_edit_lock_ = true
 
