@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://eikkd0hg8ct6"]
+[gd_scene load_steps=21 format=4 uid="uid://eikkd0hg8ct6"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_i5yom"]
 [ext_resource type="PackedScene" uid="uid://bk5guxhmjadcm" path="res://Scenes/Levels/Demo/Level2-Demo.tscn" id="2_hmbtr"]
-[ext_resource type="Gradient" uid="uid://b2twdclajye8e" path="res://Assets/Gradients/portal_gradient.tres" id="3_167l3"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_ictpj"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="4_dlefh"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="5_gpy1c"]
@@ -54,7 +53,6 @@ size = Vector2(35, 70)
 [node name="Level 1" instance=ExtResource("1_i5yom")]
 world = 12
 next_level = ExtResource("2_hmbtr")
-background_gradient = ExtResource("3_167l3")
 
 [node name="LevelName2" type="Label" parent="Control" index="1"]
 z_index = 30
