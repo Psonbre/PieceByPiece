@@ -27,8 +27,10 @@ settings/stdout/verbose_stdout=true
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
-window/size/mode=4
+window/size/mode=3
+window/size/transparent=true
 window/stretch/mode="viewport"
+window/per_pixel_transparency/allowed=true
 window/vsync/vsync_mode=0
 
 [dotnet]
@@ -42,7 +44,7 @@ movie_writer/disable_vsync=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 
@@ -155,3 +157,4 @@ Fullscreen={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+viewport/transparent_background=true
