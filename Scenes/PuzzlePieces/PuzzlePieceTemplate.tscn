@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=19 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="3_45og6"]
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="4_1hnxu"]
-[ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_5o85m"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="4_b24ea"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
@@ -68,7 +67,6 @@ scale = Vector2(0.642018, 0.642018)
 visible = false
 modulate = Color(0, 0, 0, 0.168627)
 scale = Vector2(0.137801, 0.13741)
-texture = ExtResource("4_5o85m")
 script = ExtResource("5_fwkty")
 default_color = Color(0, 0, 0, 0.23)
 selected_color = Color(1, 1, 1, 0.747)

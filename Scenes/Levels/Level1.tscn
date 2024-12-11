@@ -125,9 +125,6 @@ scale = Vector2(0.519999, 0.519999)
 [node name="Sprite2D" parent="PuzzlePiece/Shape/Door" index="1"]
 texture = null
 
-[node name="Arrows" parent="PuzzlePiece/Shape" index="3"]
-texture = null
-
 [node name="PlayerSprite" parent="PuzzlePiece/Shape" index="4"]
 visible = true
 
@@ -167,9 +164,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 scale = Vector2(0.519999, 0.519999)
 
 [node name="Sprite2D" parent="PuzzlePiece2/Shape/Door" index="1"]
-texture = null
-
-[node name="Arrows" parent="PuzzlePiece2/Shape" index="3"]
 texture = null
 
 [node name="PlayerSprite" parent="PuzzlePiece2/Shape" index="4"]
@@ -218,9 +212,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 visible = true
 position = Vector2(-14, 48)
 scale = Vector2(0.617147, 0.617147)
-
-[node name="Arrows" parent="PuzzlePiece3/Shape" index="3"]
-texture = null
 
 [node name="PlayerSprite" parent="PuzzlePiece3/Shape" index="4"]
 visible = true
