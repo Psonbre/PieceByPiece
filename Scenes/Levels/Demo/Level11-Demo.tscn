@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=4 uid="uid://dd5hrwf1mnmt5"]
 
-[ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_4abms"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_4abms"]
 [ext_resource type="PackedScene" uid="uid://uglbjo1sjwt3" path="res://Scenes/Levels/Demo/Level12-Demo.tscn" id="2_0biq3"]
-[ext_resource type="PackedScene" uid="uid://bagvy8vbt68i" path="res://Scenes/PuzzlePieces/PiratePuzzlePieceTemplate.tscn" id="2_d4t5d"]
+[ext_resource type="PackedScene" path="res://Scenes/PuzzlePieces/PiratePuzzlePieceTemplate.tscn" id="2_d4t5d"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_fblpt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wslg4"]

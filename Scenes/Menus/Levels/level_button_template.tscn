@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=4 uid="uid://g04py0wl4i5h"]
+[gd_scene load_steps=25 format=4 uid="uid://g04py0wl4i5h"]
 
 [ext_resource type="Script" path="res://Scripts/level_select_button.gd" id="1_6ru04"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="1_hwgnd"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_12a0w"]
+[ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="3_nuvwt"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="3_q3am1"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_u3tsx"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="6_phcub"]
@@ -15,16 +16,16 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nxtb6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jyw05"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6xx7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppdan"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n6uh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs7e0"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr8gs"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gfvi"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
@@ -32,6 +33,8 @@ resource_local_to_scene = true
 shader = ExtResource("7_jmlqv")
 shader_parameter/speed = 1.405
 shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0k0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2rt7"]
 size = Vector2(256, 256)
@@ -68,7 +71,7 @@ metadata/_edit_lock_ = true
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
-script = ExtResource("2_12a0w")
+script = ExtResource("3_nuvwt")
 
 [node name="Background" type="TileMapLayer" parent="Level Button/Shape"]
 position = Vector2(-25.6, -25.6)
@@ -95,7 +98,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_nxtb6")
+shape = SubResource("CircleShape2D_jyw05")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -107,7 +110,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_p6xx7")
+shape = SubResource("RectangleShape2D_ppdan")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -119,7 +122,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_3n6uh")
+shape = SubResource("RectangleShape2D_gs7e0")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -131,7 +134,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_xr8gs")
+shape = SubResource("RectangleShape2D_8gfvi")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="Level Button"]
@@ -179,6 +182,28 @@ end_cap_mode = 2
 script = ExtResource("8_k0jot")
 moving_outline_texture = ExtResource("10_r224p")
 metadata/_edit_lock_ = true
+
+[node name="BevelLeft" type="Polygon2D" parent="Level Button"]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_j0k0n")
+polygon = PackedVector2Array(-128, 128, -128, -128, -123, -123, -123, 123)
+
+[node name="BevelTop" type="Polygon2D" parent="Level Button"]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_j0k0n")
+polygon = PackedVector2Array(-128, -128, 128, -128, 123, -123, -123, -123)
+
+[node name="BevelRight" type="Polygon2D" parent="Level Button"]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_j0k0n")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 123, 123, 123, 35, 129.828, 34.3275, 136.394, 32.3358, 142.445, 29.1014, 147.749, 24.7487, 152.101, 19.445, 155.336, 13.3939, 157.327, 6.82816, 158, 0, 157.327, -6.82816, 155.336, -13.3939, 152.101, -19.445, 147.749, -24.7487, 142.445, -29.1014, 136.394, -32.3358, 129.828, -34.3275, 123, -35, 123, -123)
+
+[node name="BevelBottom" type="Polygon2D" parent="Level Button"]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_j0k0n")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, 128, -128, 128, -123, 123, 123, 123)
 
 [node name="Collectible" type="Area2D" parent="Level Button"]
 position = Vector2(116, -119)

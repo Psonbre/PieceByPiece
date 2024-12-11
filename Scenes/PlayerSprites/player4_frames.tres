@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://byvdlkywtissw"]
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://pfqe3y6qifpl"]
 
 [ext_resource type="Texture2D" uid="uid://g8tky0iwibad" path="res://Assets/Sprites/Sci-fi/png/1x/xeno-grunt-idle/xeno-grunt-idle1.png" id="1_suvg3"]
 [ext_resource type="Texture2D" uid="uid://b27j350jq3fj4" path="res://Assets/Sprites/Sci-fi/png/1x/xeno-grunt-jumping/xeno-grunt-jumping.png" id="2_arlm3"]

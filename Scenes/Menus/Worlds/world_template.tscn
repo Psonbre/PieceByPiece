@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=4 uid="uid://bx8ht3bt5lbpu"]
+[gd_scene load_steps=25 format=4 uid="uid://bx8ht3bt5lbpu"]
 
 [ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="1_fwsvf"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_5d7h1"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="2_dcqmi"]
+[ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_xppke"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="4_2tobx"]
 [ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/player2_frames.tres" id="4_iobep"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_ag18d"]
@@ -15,17 +16,19 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ndu03"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1yvgy"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_edbf5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_852f3"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc4mv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1eqi"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq6c1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mewyk"]
 size = Vector2(35, 70)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rowhg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
 resource_local_to_scene = true
@@ -63,7 +66,8 @@ metadata/_edit_lock_ = true
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
-script = ExtResource("2_5d7h1")
+script = ExtResource("2_xppke")
+bevel_width = 3.46
 
 [node name="Background" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
@@ -100,7 +104,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_ndu03")
+shape = SubResource("CircleShape2D_1yvgy")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
@@ -112,7 +116,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_edbf5")
+shape = SubResource("CircleShape2D_852f3")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
@@ -124,7 +128,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_oc4mv")
+shape = SubResource("RectangleShape2D_o1eqi")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
@@ -136,7 +140,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_gq6c1")
+shape = SubResource("RectangleShape2D_mewyk")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="."]
@@ -189,12 +193,49 @@ scale = Vector2(0.158067, 0.158067)
 texture = ExtResource("6_86jjf")
 
 [node name="PlayIcon" type="Polygon2D" parent="Overlay"]
-visible = false
 z_index = 1
 position = Vector2(7, 0)
 scale = Vector2(1.12274, 1.12274)
-color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-25, 25, 25, 0, -25, -25)
+
+[node name="Shadow" type="Polygon2D" parent="Overlay/PlayIcon"]
+show_behind_parent = true
+z_index = 1
+position = Vector2(2, 2)
+scale = Vector2(1, 1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-25, 25, 25, 0, 22.1771, -1.41147, -25, 22.1241)
+
+[node name="Line2D" type="Line2D" parent="Overlay/PlayIcon"]
+points = PackedVector2Array(-25, 25, 25, 0, -25, -25)
+closed = true
+width = 1.27
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="BevelLeft" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_rowhg")
+polygon = PackedVector2Array(-128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128, -124.54, -124.54, -124.54, -35, -131.368, -34.3275, -137.934, -32.3358, -143.985, -29.1014, -149.289, -24.7487, -153.641, -19.445, -156.876, -13.3939, -158.867, -6.82816, -159.54, 4.28612e-15, -158.867, 6.82816, -156.876, 13.3939, -153.641, 19.445, -149.289, 24.7487, -143.985, 29.1014, -137.934, 32.3358, -131.368, 34.3275, -124.54, 35, -124.54, 124.54)
+
+[node name="BevelTop" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_rowhg")
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.54, -124.54, -124.54, -124.54)
+
+[node name="BevelRight" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_rowhg")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.54, 124.54, 124.54, 35, 131.368, 34.3275, 137.934, 32.3358, 143.985, 29.1014, 149.289, 24.7487, 153.641, 19.445, 156.876, 13.3939, 158.867, 6.82816, 159.54, 0, 158.867, -6.82816, 156.876, -13.3939, 153.641, -19.445, 149.289, -24.7487, 143.985, -29.1014, 137.934, -32.3358, 131.368, -34.3275, 124.54, -35, 124.54, -124.54)
+
+[node name="BevelBottom" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_rowhg")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, 128, -128, 128, -124.54, 124.54, 124.54, 124.54)
 
 [node name="Shadow" type="Line2D" parent="."]
 z_index = -2

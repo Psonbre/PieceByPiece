@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=4 uid="uid://h8ecs5ipml41"]
 
-[ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_6uoky"]
-[ext_resource type="PackedScene" uid="uid://r2uxc4jshqed" path="res://Scenes/Levels/Level2.tscn" id="2_5ehlf"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_6uoky"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/Level2.tscn" id="2_5ehlf"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_s567u"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_v5ulq"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="3_y41o0"]

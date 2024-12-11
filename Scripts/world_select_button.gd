@@ -43,9 +43,9 @@ func _process(delta):
 	scale = scale.move_toward(target_scale, abs((target_scale - scale).length()) * delta * 6.0)
 	if play_icon :
 		if mouse_hover :
-			play_icon.color = Color(1,1,1, move_toward(play_icon.color.a, 0.6, delta * 2.0))
+			play_icon.modulate = Color(1,1,1, move_toward(play_icon.modulate.a, 1, delta * 2.0))
 		else :
-			play_icon.color = Color(1,1,1,move_toward(play_icon.color.a, 0, delta * 2.0))
+			play_icon.modulate = Color(1,1,1,move_toward(play_icon.modulate.a, 0, delta * 2.0))
 
 func update_labels() :
 	if levels_text : levels_text.text = str(nb_of_completed_levels) + "/" + str(nb_of_levels)
