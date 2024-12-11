@@ -22,7 +22,6 @@ var current_level : Level
 static var winning := false
 static var entering_portal := false
 static var exiting_portal := false
-static var target_portal : Portal
 static var has_collectible = false
 var winning_door
 var digging := false
@@ -77,14 +76,12 @@ func _physics_process(delta):
 			play_animation("Moving");
 			if step_sound_cooldown.is_stopped() : 
 				step_sound_cooldown.start()
-				SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -8.0, (randf() - 0.5) * 0.5 + 1.0)
 			
 	elif is_on_floor():
 		play_animation("Idle");
 
 	#jump
 	if is_on_floor() and Input.is_action_just_pressed("Jump") and !digging:
-		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.wav"), 12, (randf() + 2) / 2.0)
 		non_tilted_velocity.y = JUMP_VELOCITY
 	
 	check_diggable(digging_direction if digging else Input.get_vector("Left", "Right", "Up", "Down"))
@@ -164,16 +161,7 @@ func win(door):
 		winning_door = door
 		Player.winning = true
 		set_physics_process(false)
-		SaveManager.save_level_as_completed(current_level.world, current_level.scene_file_path)
-		if has_collectible :
-			SaveManager.save_level_as_collectible_collected(current_level.world, current_level.scene_file_path)
 
-func teleport(portal : Portal):
-	set_physics_process(false)
-	portal.entered = true
-	portal.cooldown.start()
-	entering_portal = true
-	target_portal = portal
 
 func _process(delta):
 	if !is_physics_processing() and editor_sprite.is_playing() :
@@ -189,40 +177,7 @@ func _process(delta):
 		if global_scale.x <= 0.1 :
 			winning = false
 			has_collectible = false
-			if current_level.next_level :
-				SubSystemManager.get_scene_manager().load_level(current_level.world, current_level.next_level, Vector2(1,0))
-			else :
-				SubSystemManager.get_scene_manager().load_level_select(current_level.world)
-				
-			
-	elif entering_portal :
-		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
-		rotate(12 * delta)
-		global_scale = global_scale.move_toward(Vector2.ZERO, 5.0 * delta)
-		if global_scale.x <= 0.1 :
-			if target_portal.connected_portal :
-				global_position = target_portal.connected_portal.global_position
-				target_portal = target_portal.connected_portal
-				entering_portal = false
-				exiting_portal = true
-			else :
-				entering_portal = false
-				global_scale = default_scale
-				rotation = 0
-				non_tilted_velocity = Vector2.ZERO
-				set_physics_process(true)
-			
-	elif exiting_portal :
-		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
-		rotate(12 * delta)
-		global_scale = global_scale.move_toward(default_scale, 5 * delta)
-		if global_scale.x >= default_scale.x :
-			target_portal.entered = true
-			target_portal.cooldown.start()
-			set_physics_process(true)
-			non_tilted_velocity = Vector2.ZERO
-			rotation = 0
-			exiting_portal = false
+			get_tree().reload_current_scene()
 			
 	was_on_floor = is_on_floor()
 	

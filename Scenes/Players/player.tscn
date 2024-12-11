@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyrv4i083tx3b"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1gs7j"]
-[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="2_p15im"]
+[ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/player2_frames.tres" id="2_p15im"]
 [ext_resource type="Texture2D" uid="uid://bais5v5ba5bem" path="res://Assets/Sprites/dirt.png" id="3_7bhw1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m0ql6"]

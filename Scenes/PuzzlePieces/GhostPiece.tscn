@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_20p4n"]
 [ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="4_7anr5"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_hctjr"]
-[ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="5_iepm8"]
+[ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="5_iepm8"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="5_kivp6"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="6_ylgl7"]
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="7_gooue"]
@@ -86,6 +86,9 @@ shape = SubResource("CircleShape2D_5ty2t")
 visible = false
 scale = Vector2(0.519999, 0.519999)
 script = null
+
+[node name="Sprite2D" parent="Shape/Door" index="1"]
+texture = null
 
 [node name="PlayerSprite" parent="Shape" instance=ExtResource("5_iepm8")]
 

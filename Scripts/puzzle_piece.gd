@@ -2,7 +2,6 @@ extends Area2D
 class_name PuzzlePiece
 
 @export var is_rotating_piece := false
-@export var theme : SceneManager.WORLDS
 const max_tilt := deg_to_rad(15)
 static var global_dragging := false
 
@@ -15,7 +14,6 @@ static var global_dragging := false
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite : PlayerSprite = $Shape/PlayerSprite
 @onready var door = $Shape/Door
-var portal : Portal
 
 var has_attempted_connection_this_tick := false
 
@@ -36,8 +34,6 @@ var start_drag_tilt := 0.0
 
 func _ready():
 	door.get_node("CollisionShape2D").disabled = !door.visible 
-	portal = shape.get_node("Portal") if shape.has_node("Portal") else null
-	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
 	start_drag_target_rotated_angle = target_rotated_angle
 	start_drag_rotation = global_rotation
@@ -115,7 +111,6 @@ func has_all_sides_connected():
 func start_dragging():
 	if Player.winning || Player.entering_portal || Player.exiting_portal : return
 	if shape.has_node("Player") and shape.get_node("Player").digging : return
-	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"), -7)
 	
 	if shape.has_node("Player") :
 		set_player_sprites_visible(false)
@@ -151,8 +146,6 @@ func stop_dragging():
 	var old_position = global_position
 	attempt_connection()
 	
-	if !global_position.is_equal_approx(old_position) :
-		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -13)
 	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -195,7 +188,6 @@ func clamp_player():
 		player.position = Vector2(clampf(player.position.x, left_connector.position.x + 20, right_connector.position.x - 20), clampf(player.position.y, top_connector.position.y + 20, bottom_connector.position.y - 20))
 
 func cancel_drag():
-	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_drop.wav"), 5, 0.5, 0.05)
 	ghost_piece.hide_display()
 	global_position = start_drag_position
 	target_rotated_angle = start_drag_target_rotated_angle
@@ -313,25 +305,7 @@ func update_connection_group():
 			if piece not in tested_pieces :
 				add_piece_connections_to_connection_group(connection_group, piece)
 				tested_pieces.append(piece)
-	connect_portals()
 	
-func connect_portals():
-	var portals = connection_group.members.filter(
-		func(member): return member.portal != null
-	).map(
-		func(member): return member.portal
-	)
-	
-	if portals.size() == 2 :
-		portals[0].activate()
-		portals[0].connected_portal = portals[1] 
-		portals[1].activate()
-		portals[1].connected_portal = portals[0]
-		outline.set_type(PuzzlePieceOutline.OutlineType.PORTAL)
-	else :
-		for portal_in_group in portals :
-			portal_in_group.deactivate()
-		outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 	
 func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: PuzzlePiece):
 	if piece.left_connector.connected_to:

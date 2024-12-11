@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://h8ecs5ipml41"]
+[gd_scene load_steps=22 format=4 uid="uid://h8ecs5ipml41"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_ts22w"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_s567u"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b47cgkimuryss" path="res://Scenes/PuzzlePieces/GhostPiece.tscn" id="4_jehc4"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_6kv26"]
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="5_md24c"]
-[ext_resource type="Texture2D" uid="uid://bqolhag0ce77y" path="res://Assets/Sprites/Pirate/7-Objects/2-Door/1-Closed/1.png" id="9_ckqxh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lglkd"]
 radius = 35.0
@@ -122,12 +121,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 [node name="Door" parent="PuzzlePiece/Shape" index="2"]
 scale = Vector2(0.519999, 0.519999)
 
-[node name="Sprite2D" parent="PuzzlePiece/Shape/Door" index="1"]
-texture = null
-
-[node name="Arrows" parent="PuzzlePiece/Shape" index="3"]
-texture = null
-
 [node name="PlayerSprite" parent="PuzzlePiece/Shape" index="4"]
 visible = true
 
@@ -165,12 +158,6 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 
 [node name="Door" parent="PuzzlePiece2/Shape" index="2"]
 scale = Vector2(0.519999, 0.519999)
-
-[node name="Sprite2D" parent="PuzzlePiece2/Shape/Door" index="1"]
-texture = null
-
-[node name="Arrows" parent="PuzzlePiece2/Shape" index="3"]
-texture = null
 
 [node name="PlayerSprite" parent="PuzzlePiece2/Shape" index="4"]
 visible = true
@@ -216,14 +203,8 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAM
 
 [node name="Door" parent="PuzzlePiece3/Shape" index="2"]
 visible = true
-position = Vector2(-14, 48)
-scale = Vector2(0.617147, 0.617147)
-
-[node name="Sprite2D" parent="PuzzlePiece3/Shape/Door" index="1"]
-texture = ExtResource("9_ckqxh")
-
-[node name="Arrows" parent="PuzzlePiece3/Shape" index="3"]
-texture = null
+position = Vector2(-3, 53)
+scale = Vector2(0.5, 0.5)
 
 [node name="PlayerSprite" parent="PuzzlePiece3/Shape" index="4"]
 visible = true

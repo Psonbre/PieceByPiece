@@ -4,7 +4,6 @@ class_name PuzzlePieceConnector
 
 @onready var puzzle_piece : PuzzlePiece = $"../../.."
 @export var side_collider : StaticBody2D
-var rift : Rift
 
 var connected_to : PuzzlePieceConnector = null :
 	set(value):
@@ -89,13 +88,13 @@ func connect_with_closest():
 	if other_connector and other_connector.puzzle_piece is GhostPiece : other_connector = null
 	connected_to = other_connector
 	
-	if !rift and other_connector and other_connector.rift == null and puzzle_piece.theme != other_connector.puzzle_piece.theme:
-		rift = preload("res://Scenes/PuzzlePieces/rift.tscn").instantiate()
-		SubSystemManager.get_scene_manager().current_screen.add_child(rift)
-		rift.connected_to = self
-	elif other_connector == null and rift != null:
-		rift.connected_to = null
-		rift = null	
+	#if !rift and other_connector and other_connector.rift == null and puzzle_piece.theme != other_connector.puzzle_piece.theme:
+		#rift = preload("res://Scenes/PuzzlePieces/rift.tscn").instantiate()
+		#get_parent().get_parent().get_parent().get_parent().add_child(rift)
+		#rift.connected_to = self
+	#elif other_connector == null and rift != null:
+		#rift.connected_to = null
+		#rift = null	
 		
 func has_connection() :
 	return connected_to != null || type == ConnectorShape.FLAT

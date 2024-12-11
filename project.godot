@@ -12,9 +12,8 @@ config_version=5
 
 config/name="Piece by Piece"
 config/version="1.0.0"
-run/main_scene="res://Scenes/Menus/Intro.tscn"
+run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/use_custom_user_dir=true
-run/main_loop_type="SubSystemManager"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://favicon.ico"
