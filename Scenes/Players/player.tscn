@@ -44,7 +44,7 @@ script = ExtResource("1_1gs7j")
 shape = SubResource("CircleShape2D_m0ql6")
 
 [node name="EditorSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.828875, 0.828875)
+scale = Vector2(1.68127, 1.68127)
 sprite_frames = ExtResource("2_p15im")
 animation = &"Idle"
 
