@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=4 uid="uid://ctpilqtu4ujva"]
+
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_kckti"]
+[ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="2_6unmi"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_cbxkv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwxro"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0grw"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkfnv"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lya54"]
+size = Vector2(35, 70)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
+resource_local_to_scene = true
+shader = ExtResource("2_cbxkv")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[node name="PuzzlePiece" instance=ExtResource("1_kckti")]
+theme = 6
+
+[node name="Background" parent="Shape" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAgAAAAAAAMAAwACAAgAAAABAAMAAwACAAgAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+
+[node name="Foreground" parent="Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+
+[node name="Arrows" parent="Shape" index="3"]
+modulate = Color(1, 1, 1, 0.168627)
+
+[node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_6unmi")]
+visible = false
+metadata/_edit_pinned_properties_ = [&"visible"]
+
+[node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("RectangleShape2D_dwxro")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_v0grw")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_vkfnv")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_lya54")
+
+[node name="Outline" parent="." index="3"]
+material = SubResource("ShaderMaterial_n3bvn")
+
+[editable path="Shape/Door"]

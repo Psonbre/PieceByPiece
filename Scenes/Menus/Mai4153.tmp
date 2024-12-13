@@ -1,0 +1,157 @@
+[gd_scene load_steps=8 format=3 uid="uid://iiopsl2jnac1"]
+
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_y3dni"]
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_ifsr2"]
+[ext_resource type="Script" path="res://Scripts/Buttons/PlayButton.gd" id="4_q0me5"]
+[ext_resource type="Script" path="res://Scripts/Buttons/credits_button.gd" id="5_tryhm"]
+[ext_resource type="Script" path="res://Scripts/Buttons/ExitButton.gd" id="6_xfefy"]
+[ext_resource type="Texture2D" uid="uid://bnjlvngyx4wqx" path="res://Assets/Sprites/MainMenu/Piece.svg" id="7_8dkh6"]
+[ext_resource type="Texture2D" uid="uid://chvbdbjo8xytd" path="res://Assets/Sprites/MainMenu/By.svg" id="8_gt78w"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 124.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.75428, 1.75428)
+metadata/_edit_horizontal_guides_ = [695.0]
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 2
+offset_left = -360.0
+offset_top = -94.0
+offset_right = 362.0
+offset_bottom = -49.0
+script = ExtResource("2_y3dni")
+vertical_intensity = 7.0
+horizontal_speed = 0.25
+
+[node name="Start" type="Button" parent="MainMenu/CenterContainer"]
+custom_minimum_size = Vector2(210, 45)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ifsr2")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+script = ExtResource("4_q0me5")
+
+[node name="CenterContainer2" type="CenterContainer" parent="MainMenu"]
+layout_mode = 2
+offset_left = -360.0
+offset_top = -22.0
+offset_right = 362.0
+offset_bottom = 23.0
+script = ExtResource("2_y3dni")
+vertical_intensity = 7.0
+horizontal_speed = 0.25
+
+[node name="Credits" type="Button" parent="MainMenu/CenterContainer2"]
+custom_minimum_size = Vector2(210, 45)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ifsr2")
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+script = ExtResource("5_tryhm")
+
+[node name="CenterContainer3" type="CenterContainer" parent="MainMenu"]
+layout_mode = 2
+offset_left = -360.0
+offset_top = 61.0
+offset_right = 362.0
+offset_bottom = 106.0
+script = ExtResource("2_y3dni")
+vertical_intensity = 7.0
+horizontal_speed = 0.25
+
+[node name="Exit" type="Button" parent="MainMenu/CenterContainer3"]
+custom_minimum_size = Vector2(210, 45)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ifsr2")
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+script = ExtResource("6_xfefy")
+
+[node name="Piece" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -274.0
+offset_top = -236.0
+offset_right = -234.0
+offset_bottom = -196.0
+scale = Vector2(0.75, 0.75)
+script = ExtResource("2_y3dni")
+vertical_intensity = 14.0
+horizontal_intensity = 10
+
+[node name="Piece" type="Sprite2D" parent="MainMenu/Piece"]
+texture = ExtResource("7_8dkh6")
+
+[node name="Piece2" type="Sprite2D" parent="MainMenu/Piece/Piece"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(10, 10)
+texture = ExtResource("7_8dkh6")
+
+[node name="By" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = -237.0
+offset_right = 41.0
+offset_bottom = -197.0
+scale = Vector2(0.75, 0.75)
+script = ExtResource("2_y3dni")
+vertical_intensity = 14.0
+horizontal_intensity = 10
+
+[node name="Piece" type="Sprite2D" parent="MainMenu/By"]
+texture = ExtResource("8_gt78w")
+
+[node name="Piece2" type="Sprite2D" parent="MainMenu/By/Piece"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(10, 10)
+texture = ExtResource("8_gt78w")
+
+[node name="Piece2" type="Control" parent="MainMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 273.0
+offset_top = -236.0
+offset_right = 313.0
+offset_bottom = -196.0
+scale = Vector2(0.75, 0.75)
+script = ExtResource("2_y3dni")
+vertical_intensity = 14.0
+horizontal_intensity = 10
+
+[node name="Piece" type="Sprite2D" parent="MainMenu/Piece2"]
+texture = ExtResource("7_8dkh6")
+
+[node name="Piece3" type="Sprite2D" parent="MainMenu/Piece2/Piece"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(10, 10)
+texture = ExtResource("7_8dkh6")
+
+[connection signal="mouse_entered" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_pressed"]
+[connection signal="mouse_entered" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_pressed"]
+[connection signal="mouse_entered" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_pressed"]

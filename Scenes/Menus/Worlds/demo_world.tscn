@@ -1,0 +1,368 @@
+[gd_scene load_steps=16 format=4 uid="uid://c5vxwbnikmdly"]
+
+[ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_tbae5"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_tpegy"]
+[ext_resource type="PackedScene" uid="uid://bma7yafpcsvkx" path="res://Scenes/PuzzlePieces/rift.tscn" id="2_we3y2"]
+[ext_resource type="SpriteFrames" uid="uid://pfqe3y6qifpl" path="res://Scenes/PlayerSprites/player4_frames.tres" id="3_tmip6"]
+[ext_resource type="PackedScene" uid="uid://cqfgi7k08veo6" path="res://Scenes/Interactables/portal.tscn" id="3_wu544"]
+[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="4_pbfxf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hogv"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p02ft"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yqyq"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_icquk"]
+radius = 35.0
+
+[sub_resource type="Animation" id="Animation_t6n88"]
+resource_name = "Preview"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 0,
+"values": [Vector2(-62, -27), Vector2(10, -27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shape/PlayerSprite/Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
+"update": 1,
+"values": [&"Moving"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shape/PlayerSprite2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 0,
+"values": [Vector2(-1, 57), Vector2(-102, 57)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shape/PlayerSprite3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 0,
+"values": [Vector2(75, -65), Vector2(78, 26)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shape/PlayerSprite/Sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(0.4, 0.4, 0.4, 0.4, 0.4),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shape/PlayerSprite2/Sprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Moving"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shape/PlayerSprite2/Sprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shape/PlayerSprite2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.866667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -6.28319]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Shape/PlayerSprite2:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.866667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.832936, 0.832936), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_3iwhe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape/PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-62, -27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shape/PlayerSprite/Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shape/PlayerSprite2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 57)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shape/PlayerSprite3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(75, -65)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shape/PlayerSprite/Sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shape/PlayerSprite2/Sprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shape/PlayerSprite2/Sprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shape/PlayerSprite2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Shape/PlayerSprite2:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.832936, 0.832936)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1l7q"]
+_data = {
+"Preview": SubResource("Animation_t6n88"),
+"RESET": SubResource("Animation_3iwhe")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib866"]
+resource_local_to_scene = true
+shader = ExtResource("2_tpegy")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[node name="Demo World" instance=ExtResource("1_tbae5")]
+nb_of_levels = 15
+world = 12
+
+[node name="Shape" parent="." index="1"]
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
+
+[node name="Background" parent="Shape" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEACAABAAIAAAD+/wIACAABAAIAAAD//wIACAACAAIAAAD//wEACAACAAIAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAACAAIAAAABAAEAAAAEAAEAAAABAAAAAAAEAAEAAAABAP7/AAAEAAEAAAABAP//AAAEAAEAAAACAAIACAABAAIAAAACAAEAAAAEAAEAAAACAAAAAAAEAAEAAAACAP//AAAEAAEAAAACAP7/AAAEAAEAAAD//wMACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAADAAEAAwACAAgAAAA=")
+
+[node name="Foreground" parent="Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwADAAMAAAD+/wIACAABAAAAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAABAAAAAAD+/wAAAwACAAUAAAD//wAAAwACAAUAAAAAAAAAAwADAAUAAAD//wMACAAGAAIAAAAAAAMACAAGAAIAAAABAAMACAAGAAIAAAA=")
+
+[node name="PlayerSprite" parent="Shape" index="2"]
+position = Vector2(-62, -27)
+
+[node name="Sprite" parent="Shape/PlayerSprite" index="0"]
+frame = 1
+
+[node name="Connectors" parent="Shape" index="3"]
+visible = false
+
+[node name="RightConnector" parent="Shape/Connectors" index="0"]
+shape = 0
+
+[node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_1hogv")
+
+[node name="LeftConnector" parent="Shape/Connectors" index="1"]
+shape = 0
+
+[node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_p02ft")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_7yqyq")
+
+[node name="BottomConnector" parent="Shape/Connectors" index="3"]
+shape = 1
+
+[node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_icquk")
+
+[node name="Rift" parent="Shape" index="4" instance=ExtResource("2_we3y2")]
+points = PackedVector2Array(26, -129, 26, 76, 129, 76)
+script = null
+
+[node name="Rift2" parent="Shape" index="5" instance=ExtResource("2_we3y2")]
+points = PackedVector2Array(-128, 24, 24, 24)
+script = null
+
+[node name="Portal" parent="Shape" index="6" instance=ExtResource("3_wu544")]
+position = Vector2(-103, 53)
+scale = Vector2(0.754805, 0.754805)
+script = null
+
+[node name="PlayerSprite2" type="Node2D" parent="Shape" index="7"]
+position = Vector2(-1, 57)
+scale = Vector2(0.832936, 0.832936)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite2" index="0"]
+position = Vector2(0, 24)
+scale = Vector2(2.42857, 2.42857)
+sprite_frames = ExtResource("3_tmip6")
+animation = &"Idle"
+offset = Vector2(-1.98257e-35, -9.47059)
+flip_h = true
+
+[node name="PlayerSprite3" type="Node2D" parent="Shape" index="8"]
+position = Vector2(75, -65)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite3" index="0"]
+position = Vector2(0, 24)
+scale = Vector2(0.845389, 0.845389)
+sprite_frames = ExtResource("4_pbfxf")
+animation = &"Jump"
+offset = Vector2(-1.98257e-35, -9.47059)
+
+[node name="Overlay" parent="." index="2"]
+clip_children = 0
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
+
+[node name="WorldName" parent="Overlay" index="0"]
+text = "DEMO WORLD"
+
+[node name="BevelLeft" parent="." index="3"]
+polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_g1l7q")
+}
+
+[node name="BevelRight" parent="." index="6"]
+polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
+
+[node name="BevelBottom" parent="." index="7"]
+polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
+
+[node name="Shadow" parent="." index="8"]
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
+
+[node name="Outline" parent="." index="9"]
+material = SubResource("ShaderMaterial_ib866")
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)

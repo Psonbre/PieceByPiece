@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ds33yj24o01gh"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="1_pfbrb"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_pfbrb")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)

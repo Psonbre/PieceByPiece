@@ -1,9 +1,0 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dk1qri28oar0r"]
-
-[ext_resource type="Texture2D" uid="uid://ct5cs5f5n1clb" path="res://Assets/Wooden Pixel Art GUI 32x32.png" id="1_rtji6"]
-
-[resource]
-texture = ExtResource("1_rtji6")
-expand_margin_top = 5.0
-expand_margin_bottom = 10.0
-region_rect = Rect2(289, 1056, 94, 31)

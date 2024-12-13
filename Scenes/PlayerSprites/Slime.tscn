@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci3ywdqt5k8t3"]
+
+[ext_resource type="PackedScene" uid="uid://8vkpgii0j3ff" path="res://Scenes/PlayerSprites/PlayerSprite.tscn" id="1_85ydg"]
+[ext_resource type="SpriteFrames" uid="uid://orhbrvew8ol3" path="res://Scenes/PlayerSprites/player3_frames.tres" id="2_28f1n"]
+
+[node name="PlayerSprite" instance=ExtResource("1_85ydg")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, 24)
+sprite_frames = ExtResource("2_28f1n")
+animation = &"Idle"
+offset = Vector2(0.969697, -31.9091)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)

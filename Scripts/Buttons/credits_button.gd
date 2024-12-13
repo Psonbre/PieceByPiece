@@ -1,8 +1,8 @@
 extends Button
 
 func _on_pressed() -> void:
-	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
-	get_tree().root.get_node("Game").load_credits()
+	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)
+	SubSystemManager.get_scene_manager().load_credits_menu()
 	focus_mode = FocusMode.FOCUS_NONE
 
 func _on_mouse_entered():

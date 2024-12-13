@@ -1,0 +1,491 @@
+[gd_scene load_steps=52 format=4 uid="uid://do5msplhj0lcw"]
+
+[ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_cmgma"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_ittv0"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_8eivk"]
+[ext_resource type="PackedScene" uid="uid://g04py0wl4i5h" path="res://Scenes/Menus/Levels/level_button_template.tscn" id="4_31nba"]
+[ext_resource type="PackedScene" uid="uid://dn5jdke6odae0" path="res://Scenes/Levels/Level61.tscn" id="5_5mwcp"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="6_i820s"]
+[ext_resource type="PackedScene" uid="uid://xy8dgw8ddwtj" path="res://Scenes/Levels/Level62.tscn" id="7_rxx5b"]
+[ext_resource type="PackedScene" uid="uid://my76ea7e63pe" path="res://Scenes/Levels/Level63.tscn" id="8_0bw15"]
+[ext_resource type="PackedScene" uid="uid://ctl2lnwlg5677" path="res://Scenes/Levels/Level4.tscn" id="9_vkb2o"]
+[ext_resource type="PackedScene" uid="uid://6ol74pgrytr8" path="res://Scenes/Levels/Level5.tscn" id="10_j3lcc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3j5s"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxn2l"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahfca"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th6xp"]
+size = Vector2(35, 70)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ienw4"]
+resource_local_to_scene = true
+shader = ExtResource("6_i820s")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4sv7"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bflff"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xbkq"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i05ti"]
+size = Vector2(40, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilv1j"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26itm"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jvml"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3hta"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1sgjb"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xv7mo"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijq0c"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm8l1"]
+size = Vector2(40, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yeujp"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3c0c"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h8om"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ji5"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejbje"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mn0n3"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjo2j"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2b80"]
+size = Vector2(40, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2dxy"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhmse"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_su2cr"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knv1c"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqago"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsnqb"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgndp"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2d7in"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jb4y"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfbuf"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fosd"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62tn4"]
+size = Vector2(35, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e73dh"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm7xo"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qljvk"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssvjj"]
+size = Vector2(40, 80)
+
+[node name="LevelSelectPlatform" type="Node2D"]
+script = ExtResource("1_cmgma")
+world = 5
+world_select_tree_target_group = 4
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.015, 1.015)
+
+[node name="Title" type="Control" parent="."]
+z_index = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -638.892
+offset_bottom = -638.892
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.525, 1.525)
+
+[node name="Title" type="Label" parent="Title"]
+layout_mode = 2
+offset_left = -518.689
+offset_top = 25.7426
+offset_right = 2481.31
+offset_bottom = 225.743
+scale = Vector2(0.346379, 0.346379)
+theme_override_font_sizes/font_size = 1
+text = "Alien Adventure"
+label_settings = ExtResource("2_ittv0")
+horizontal_alignment = 1
+script = ExtResource("3_8eivk")
+
+[node name="Level 1" parent="." instance=ExtResource("4_31nba")]
+offset_left = -700.0
+offset_top = -4.0
+offset_right = -700.0
+offset_bottom = -4.0
+vertical_intensity = 6.0
+horizontal_intensity = 8
+
+[node name="Level Button" parent="Level 1" index="0"]
+level = ExtResource("5_5mwcp")
+
+[node name="Background" parent="Level 1/Level Button/Shape" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
+
+[node name="Foreground" parent="Level 1/Level Button/Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAACAAEACAAAAAEAAAAAAAMACAACAAIAAAADAAEACAACAAIAAAD+/wEACAADAAEAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAD//wMACAACAAIAAAABAAMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAIACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_n3j5s")
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_oxn2l")
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_ahfca")
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_th6xp")
+
+[node name="Outline" parent="Level 1/Level Button" index="4"]
+material = SubResource("ShaderMaterial_ienw4")
+
+[node name="Shape" parent="Level 1/Level Button/Collectible" index="1"]
+polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_t4sv7")
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_bflff")
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_2xbkq")
+
+[node name="CollisionShape2D" parent="Level 1/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_i05ti")
+
+[node name="Outline" parent="Level 1/Level Button/Collectible" index="2"]
+points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="Level 2" parent="." instance=ExtResource("4_31nba")]
+offset_left = -350.0
+offset_top = -4.0
+offset_right = -350.0
+offset_bottom = -4.0
+vertical_intensity = 6.0
+horizontal_intensity = 8
+
+[node name="Level Button" parent="Level 2" index="0" node_paths=PackedStringArray("requires")]
+level = ExtResource("7_rxx5b")
+requires = NodePath("../../Level 1/Level Button")
+
+[node name="Shape" parent="Level 2/Level Button" index="1"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" parent="Level 2/Level Button/Shape" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
+
+[node name="Foreground" parent="Level 2/Level Button/Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAD+/wEACAADAAEAAAACAAEACAAAAAEAAAADAAEACAACAAIAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAD//wMACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAIACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_ilv1j")
+
+[node name="LeftConnector" parent="Level 2/Level Button/Shape/Connectors" index="1"]
+shape = 1
+type = -1
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_26itm")
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_2jvml")
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_y3hta")
+
+[node name="WorldName" parent="Level 2/Level Button/Overlay" index="0"]
+text = "2"
+
+[node name="Shadow" parent="Level 2/Level Button" index="3"]
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" parent="Level 2/Level Button" index="4"]
+material = SubResource("ShaderMaterial_ienw4")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Shape" parent="Level 2/Level Button/Collectible" index="1"]
+polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_1sgjb")
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_xv7mo")
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_ijq0c")
+
+[node name="CollisionShape2D" parent="Level 2/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_jm8l1")
+
+[node name="Outline" parent="Level 2/Level Button/Collectible" index="2"]
+points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="Level 3" parent="." instance=ExtResource("4_31nba")]
+offset_top = -4.0
+offset_bottom = -4.0
+vertical_intensity = 6.0
+horizontal_intensity = 8
+
+[node name="Level Button" parent="Level 3" index="0" node_paths=PackedStringArray("requires")]
+level = ExtResource("8_0bw15")
+requires = NodePath("../../Level 2/Level Button")
+
+[node name="Shape" parent="Level 3/Level Button" index="1"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" parent="Level 3/Level Button/Shape" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
+
+[node name="Foreground" parent="Level 3/Level Button/Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAD+/wEACAADAAEAAAACAAEACAAAAAEAAAADAAEACAACAAIAAAD//wMACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAIACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_yeujp")
+
+[node name="LeftConnector" parent="Level 3/Level Button/Shape/Connectors" index="1"]
+shape = 1
+type = -1
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_b3c0c")
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_6h8om")
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_q0ji5")
+
+[node name="WorldName" parent="Level 3/Level Button/Overlay" index="0"]
+text = "3"
+
+[node name="Shadow" parent="Level 3/Level Button" index="3"]
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" parent="Level 3/Level Button" index="4"]
+material = SubResource("ShaderMaterial_ienw4")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Shape" parent="Level 3/Level Button/Collectible" index="1"]
+polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_ejbje")
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_mn0n3")
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_kjo2j")
+
+[node name="CollisionShape2D" parent="Level 3/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_b2b80")
+
+[node name="Outline" parent="Level 3/Level Button/Collectible" index="2"]
+points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="Level 4" parent="." instance=ExtResource("4_31nba")]
+offset_left = 350.0
+offset_top = -4.0
+offset_right = 350.0
+offset_bottom = -4.0
+vertical_intensity = 6.0
+horizontal_intensity = 8
+
+[node name="Level Button" parent="Level 4" index="0" node_paths=PackedStringArray("requires")]
+level = ExtResource("9_vkb2o")
+requires = NodePath("../../Level 3/Level Button")
+
+[node name="Shape" parent="Level 4/Level Button" index="1"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" parent="Level 4/Level Button/Shape" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
+
+[node name="Foreground" parent="Level 4/Level Button/Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAD+/wEACAADAAEAAAACAAEACAAAAAEAAAADAAEACAACAAIAAAADAAIACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAD//wMACAACAAIAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_g2dxy")
+
+[node name="LeftConnector" parent="Level 4/Level Button/Shape/Connectors" index="1"]
+shape = 1
+type = -1
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_mhmse")
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_su2cr")
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_knv1c")
+
+[node name="WorldName" parent="Level 4/Level Button/Overlay" index="0"]
+text = "4"
+
+[node name="Shadow" parent="Level 4/Level Button" index="3"]
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" parent="Level 4/Level Button" index="4"]
+material = SubResource("ShaderMaterial_ienw4")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Shape" parent="Level 4/Level Button/Collectible" index="1"]
+polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_uqago")
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_lsnqb")
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_jgndp")
+
+[node name="CollisionShape2D" parent="Level 4/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_2d7in")
+
+[node name="Outline" parent="Level 4/Level Button/Collectible" index="2"]
+points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="Level 5" parent="." instance=ExtResource("4_31nba")]
+offset_left = 700.0
+offset_top = -4.0
+offset_right = 700.0
+offset_bottom = -4.0
+vertical_intensity = 6.0
+horizontal_intensity = 8
+
+[node name="Level Button" parent="Level 5" index="0" node_paths=PackedStringArray("requires")]
+level = ExtResource("10_j3lcc")
+requires = NodePath("../../Level 4/Level Button")
+
+[node name="Shape" parent="Level 5/Level Button" index="1"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Background" parent="Level 5/Level Button/Shape" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
+
+[node name="Foreground" parent="Level 5/Level Button/Shape" index="1"]
+tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAD+/wEACAADAAEAAAACAAEACAAAAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAAAAAMACAACAAIAAAD//wMACAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAD+//3/CAACAAIAAAD+////CAADAAEAAAD+/wAACAADAAEAAAD+/wMACAACAAIAAAD///3/CAACAAIAAAAAAP3/CAACAAIAAAABAP3/CAACAAIAAAABAAMACAACAAIAAAACAP3/CAACAAIAAAACAAMACAACAAIAAAADAP3/CAACAAIAAAADAP7/CAACAAIAAAADAP//CAACAAIAAAADAAAACAACAAIAAAADAAEACAACAAIAAAADAAIACAACAAIAAAADAAMACAACAAIAAAA=")
+
+[node name="RightConnector" parent="Level 5/Level Button/Shape/Connectors" index="0"]
+shape = 0
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/RightConnector" index="0"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_8jb4y")
+
+[node name="LeftConnector" parent="Level 5/Level Button/Shape/Connectors" index="1"]
+shape = 1
+type = -1
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_wfbuf")
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_1fosd")
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_62tn4")
+
+[node name="WorldName" parent="Level 5/Level Button/Overlay" index="0"]
+text = "5"
+
+[node name="Shadow" parent="Level 5/Level Button" index="3"]
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Outline" parent="Level 5/Level Button" index="4"]
+material = SubResource("ShaderMaterial_ienw4")
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="Shape" parent="Level 5/Level Button/Collectible" index="1"]
+polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("CircleShape2D_e73dh")
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_hm7xo")
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_qljvk")
+
+[node name="CollisionShape2D" parent="Level 5/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_ssvjj")
+
+[node name="Outline" parent="Level 5/Level Button/Collectible" index="2"]
+points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+
+[editable path="Level 1"]
+[editable path="Level 2"]
+[editable path="Level 3"]
+[editable path="Level 4"]
+[editable path="Level 5"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxgrba7hrmmij"]
+
+[ext_resource type="Script" path="res://Scripts/Manager/SceneManager.gd" id="1_yswi4"]
+[ext_resource type="PackedScene" uid="uid://dvws0si7ljhkm" path="res://Scenes/Background.tscn" id="2_6cqbi"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="3_b1voc"]
+
+[node name="SceneManager" type="Node2D" groups=["GameManager"]]
+script = ExtResource("1_yswi4")
+
+[node name="Background" parent="." instance=ExtResource("2_6cqbi")]
+position = Vector2(0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_b1voc")

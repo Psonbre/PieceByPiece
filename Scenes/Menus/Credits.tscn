@@ -1,0 +1,307 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5ui348xrja2j"]
+
+[ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="1_fll2r"]
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_jgnww"]
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_yqpi3"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_xtxaf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_56lap"]
+font = ExtResource("2_yqpi3")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_dvsln"]
+font = ExtResource("2_yqpi3")
+font_size = 32
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_jgnww")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Credits" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.895, 1.895)
+
+[node name="Title" type="Label" parent="Credits"]
+layout_mode = 2
+offset_left = -245.0
+offset_top = -305.0
+offset_right = 276.0
+offset_bottom = -217.0
+text = "Credits"
+label_settings = SubResource("LabelSettings_56lap")
+horizontal_alignment = 1
+script = ExtResource("3_xtxaf")
+
+[node name="Back" type="Button" parent="Credits"]
+layout_mode = 0
+offset_left = -636.412
+offset_top = -350.396
+offset_right = -519.412
+offset_bottom = -292.396
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+script = ExtResource("1_fll2r")
+scroll_direction = Vector2(-1, 0)
+
+[node name="Sounds" type="VBoxContainer" parent="Credits"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+offset_left = -531.926
+offset_top = 86.0158
+offset_right = 98.0739
+offset_bottom = 565.016
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 20
+script = ExtResource("3_xtxaf")
+vertical_speed = 0.25
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+
+[node name="SubTitle" type="Label" parent="Credits/Sounds"]
+layout_mode = 2
+text = "Sounds
+"
+label_settings = SubResource("LabelSettings_dvsln")
+horizontal_alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="Credits/Sounds"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CenterContainer5" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Interface sounds - Kenney"
+underline = 1
+uri = "https://kenney.nl/assets/interface-sounds"
+
+[node name="CenterContainer6" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Impact sounds - Kenney"
+underline = 1
+uri = "https://kenney.nl/assets/impact-sounds"
+
+[node name="CenterContainer7" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Rubbing Wooden sticks - NoisyRedFox"
+underline = 1
+uri = "https://freesound.org/people/NoisyRedFox/sounds/734227/"
+
+[node name="CenterContainer8" type="CenterContainer" parent="Credits/Sounds/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer8"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "2 Tallando madera - Checholio"
+underline = 1
+uri = "https://freesound.org/people/checholio/sounds/443537/"
+
+[node name="Music" type="VBoxContainer" parent="Credits"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+offset_left = 58.0475
+offset_top = -161.478
+offset_right = 688.047
+offset_bottom = -41.4778
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 20
+script = ExtResource("3_xtxaf")
+vertical_speed = 0.25
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+
+[node name="SubTitle" type="Label" parent="Credits/Music"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_dvsln")
+horizontal_alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="Credits/Music"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CenterContainer4" type="CenterContainer" parent="Credits/Music/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Music/Names/CenterContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Cozy - One man symphony"
+underline = 1
+uri = "https://onemansymphony.bandcamp.com/album/downtempo-lofi-progressive-music-pack-vol-1-free"
+
+[node name="Game" type="VBoxContainer" parent="Credits"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+offset_left = -541.953
+offset_top = -157.256
+offset_right = 88.0474
+offset_bottom = -21.2559
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 20
+script = ExtResource("3_xtxaf")
+vertical_speed = 0.25
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+
+[node name="SubTitle2" type="Label" parent="Credits/Game"]
+layout_mode = 2
+text = "Game by"
+label_settings = SubResource("LabelSettings_dvsln")
+horizontal_alignment = 1
+
+[node name="Names2" type="VBoxContainer" parent="Credits/Game"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CenterContainer" type="CenterContainer" parent="Credits/Game/Names2"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Adam Maps"
+underline = 1
+uri = "https://psonbre.itch.io/"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Credits/Game/Names2"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Philippe St-Laurent-Recoura"
+underline = 1
+uri = "https://philou213.itch.io/"
+
+[node name="CenterContainer3" type="CenterContainer" parent="Credits/Game/Names2"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Zachary Meunier"
+underline = 1
+uri = "https://backderiz.itch.io/"
+
+[node name="Assets" type="VBoxContainer" parent="Credits"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+offset_left = 130.343
+offset_top = 57.5198
+offset_right = 634.343
+offset_bottom = 536.52
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 20
+script = ExtResource("3_xtxaf")
+vertical_speed = 0.25
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+
+[node name="SubTitle" type="Label" parent="Credits/Assets"]
+layout_mode = 2
+text = "Assets"
+label_settings = SubResource("LabelSettings_dvsln")
+horizontal_alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="Credits/Assets"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CenterContainer4" type="CenterContainer" parent="Credits/Assets/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Wooden pixel art GUI - Narik"
+underline = 1
+uri = "https://soulofkiran.itch.io/pixel-art-wooden-gui-v1"
+
+[node name="CenterContainer5" type="CenterContainer" parent="Credits/Assets/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Xeno Grunt - Pixramen "
+underline = 1
+uri = "https://pixramen.itch.io/2d-action-platformer-sci-fi-enemy-xeno-grunt?download"
+
+[node name="CenterContainer6" type="CenterContainer" parent="Credits/Assets/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Sci-fi lab - Foozle"
+underline = 1
+uri = "https://foozlecc.itch.io/sci-fi-lab-tileset-decor-traps"
+
+[node name="CenterContainer7" type="CenterContainer" parent="Credits/Assets/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Pirate bomb - Pixel frog"
+underline = 1
+uri = "https://pixelfrog-assets.itch.io/pirate-bomb"
+
+[node name="CenterContainer8" type="CenterContainer" parent="Credits/Assets/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer8"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Kings and pigs - Pixel frog"
+underline = 1
+uri = "https://pixelfrog-assets.itch.io/kings-and-pigs"
+
+[node name="CenterContainer9" type="CenterContainer" parent="Credits/Assets/Names"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer9"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Oubliette - Safwyl"
+underline = 1
+uri = "https://safwyl.itch.io/oubliette-tileset"
+
+[connection signal="pressed" from="Credits/Back" to="Credits/Back" method="_on_pressed"]

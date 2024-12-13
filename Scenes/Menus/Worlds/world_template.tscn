@@ -1,0 +1,355 @@
+[gd_scene load_steps=25 format=4 uid="uid://bx8ht3bt5lbpu"]
+
+[ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="1_fwsvf"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_5d7h1"]
+[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="2_dcqmi"]
+[ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_xppke"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="4_2tobx"]
+[ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/player2_frames.tres" id="4_iobep"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_ag18d"]
+[ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_hwcmm"]
+[ext_resource type="Texture2D" uid="uid://mwlqduyhjj8h" path="res://Assets/Sprites/lock.png" id="6_86jjf"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_ymn1m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
+size = Vector2(256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xppge"]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ym8w"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prwn6"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocapx"]
+size = Vector2(35, 70)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rowhg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
+resource_local_to_scene = true
+shader = ExtResource("5_hwcmm")
+shader_parameter/speed = 1.405
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwce8"]
+size = Vector2(256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2c0g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg250"]
+radius = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnm3l"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrsw8"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpvsi"]
+size = Vector2(40, 80)
+
+[node name="Template World" type="Area2D"]
+collision_mask = 5
+script = ExtResource("1_fwsvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+script = ExtResource("2_xppke")
+bevel_width = 3.7
+
+[node name="Background" type="TileMapLayer" parent="Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
+tile_set = ExtResource("2_dcqmi")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
+tile_set = ExtResource("2_dcqmi")
+
+[node name="PlayerSprite" type="Node2D" parent="Shape"]
+position = Vector2(-28, 22)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite"]
+position = Vector2(-28, 3)
+scale = Vector2(1.70725, 1.70725)
+sprite_frames = ExtResource("4_iobep")
+animation = &"Idle"
+offset = Vector2(0, -14.0577)
+
+[node name="Connectors" type="Node2D" parent="Shape"]
+z_index = 2
+metadata/_edit_lock_ = true
+
+[node name="RightConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(128, 0)
+collision_mask = 5
+script = ExtResource("5_ag18d")
+shape = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
+shape = SubResource("CircleShape2D_xppge")
+metadata/_edit_lock_ = true
+
+[node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(-128, 0)
+rotation = 3.14159
+collision_mask = 5
+script = ExtResource("5_ag18d")
+shape = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
+shape = SubResource("CircleShape2D_1ym8w")
+metadata/_edit_lock_ = true
+
+[node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(0, -128)
+rotation = -1.57079
+collision_mask = 5
+script = ExtResource("5_ag18d")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_prwn6")
+metadata/_edit_lock_ = true
+
+[node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
+position = Vector2(0, 128)
+rotation = 1.57079
+collision_mask = 5
+script = ExtResource("5_ag18d")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_ocapx")
+metadata/_edit_lock_ = true
+
+[node name="Overlay" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+metadata/_edit_lock_ = true
+
+[node name="WorldName" type="Label" parent="Overlay"]
+z_index = 1
+offset_left = -119.0
+offset_top = 97.0
+offset_right = 2281.0
+offset_bottom = 297.0
+scale = Vector2(0.1, 0.1)
+text = "KING'S QUEST"
+label_settings = ExtResource("4_2tobx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Collectibles" type="Label" parent="Overlay"]
+z_index = 1
+offset_left = 17.0
+offset_top = -113.0
+offset_right = 667.0
+offset_bottom = 87.0
+scale = Vector2(0.1, 0.1)
+text = "10"
+label_settings = ExtResource("4_2tobx")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Levels" type="Label" parent="Overlay"]
+z_index = 1
+offset_left = -124.0
+offset_top = -112.0
+offset_right = 676.0
+offset_bottom = 88.0
+scale = Vector2(0.1, 0.1)
+text = "0/10"
+label_settings = ExtResource("4_2tobx")
+vertical_alignment = 1
+
+[node name="Lock" type="Sprite2D" parent="Overlay"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.607843)
+z_index = 1
+scale = Vector2(0.158067, 0.158067)
+texture = ExtResource("6_86jjf")
+
+[node name="PlayIcon" type="Polygon2D" parent="Overlay"]
+z_index = 1
+position = Vector2(7, 0)
+scale = Vector2(1.12274, 1.12274)
+polygon = PackedVector2Array(-25, 25, 25, 0, -25, -25)
+
+[node name="Shadow" type="Polygon2D" parent="Overlay/PlayIcon"]
+show_behind_parent = true
+z_index = 1
+position = Vector2(2, 2)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-25, 25, 25, 0, 22.1771, -1.41147, -25, 22.1241)
+
+[node name="Line2D" type="Line2D" parent="Overlay/PlayIcon"]
+points = PackedVector2Array(-25, 25, 25, 0, -25, -25)
+closed = true
+width = 1.27
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="BevelLeft" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_rowhg")
+polygon = PackedVector2Array(-128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128, -124.3, -124.3, -124.3, -35, -131.128, -34.3275, -137.694, -32.3358, -143.745, -29.1014, -149.049, -24.7487, -153.401, -19.445, -156.636, -13.3939, -158.627, -6.82816, -159.3, 4.28612e-15, -158.627, 6.82816, -156.636, 13.3939, -153.401, 19.445, -149.049, 24.7487, -143.745, 29.1014, -137.694, 32.3358, -131.128, 34.3275, -124.3, 35, -124.3, 124.3)
+
+[node name="BevelTop" type="Polygon2D" parent="."]
+self_modulate = Color(0.745617, 0.745617, 0.745617, 0.360784)
+material = SubResource("ShaderMaterial_rowhg")
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.501961)
+material = SubResource("ShaderMaterial_rowhg")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
+
+[node name="BevelBottom" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_rowhg")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
+
+[node name="Shadow" type="Line2D" parent="."]
+z_index = -2
+texture_repeat = 2
+position = Vector2(4, 4)
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+width = 9.62
+default_color = Color(0, 0, 0, 1)
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Outline" type="Line2D" parent="."]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pb4r2")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("8_ymn1m")
+metadata/_edit_lock_ = true
+
+[node name="Collectible" type="Area2D" parent="."]
+position = Vector2(105, -104)
+scale = Vector2(0.107197, 0.107197)
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible"]
+visible = false
+shape = SubResource("RectangleShape2D_gwce8")
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Polygon2D" parent="Collectible"]
+clip_children = 2
+material = SubResource("ShaderMaterial_x2c0g")
+polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+script = ExtResource("2_5d7h1")
+connector_radius = 40.0
+
+[node name="Connectors" type="Node2D" parent="Collectible/Shape"]
+visible = false
+z_index = 2
+metadata/_edit_lock_ = true
+
+[node name="RightConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
+position = Vector2(128, 0)
+collision_mask = 5
+script = ExtResource("5_ag18d")
+shape = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/RightConnector"]
+shape = SubResource("CircleShape2D_cg250")
+metadata/_edit_lock_ = true
+
+[node name="LeftConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
+position = Vector2(-128, 0)
+rotation = 3.14159
+collision_mask = 5
+script = ExtResource("5_ag18d")
+shape = 1
+type = -1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/LeftConnector"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_bnm3l")
+metadata/_edit_lock_ = true
+
+[node name="TopConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
+position = Vector2(0, -128)
+rotation = -1.57079
+collision_mask = 5
+script = ExtResource("5_ag18d")
+shape = 1
+type = -1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/TopConnector"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_yrsw8")
+metadata/_edit_lock_ = true
+
+[node name="BottomConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
+position = Vector2(0, 128)
+rotation = 1.57079
+collision_mask = 5
+script = ExtResource("5_ag18d")
+shape = 1
+type = -1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/BottomConnector"]
+position = Vector2(-19, 0)
+shape = SubResource("RectangleShape2D_xpvsi")
+metadata/_edit_lock_ = true
+
+[node name="Outline" type="Line2D" parent="Collectible"]
+texture_repeat = 2
+points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+width = 13.0
+default_color = Color(0, 0, 0, 1)
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("8_ymn1m")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,527 +1,208 @@
-[gd_scene load_steps=28 format=4 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=20 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
-[ext_resource type="Texture2D" uid="uid://cp1jwkshqvg4t" path="res://Assets/pieces_sprites/piece.png" id="2_kfp4e"]
-[ext_resource type="Shader" path="res://Scenes/PuzzlePieces/PuzzleOutline.gdshader" id="2_l11ur"]
-[ext_resource type="Texture2D" uid="uid://10p6j3qrbahm" path="res://Assets/Sprites/Pirate/8-Tile-Sets/Tile-Sets (64-64).png" id="3_ita4c"]
-[ext_resource type="Shader" path="res://Scenes/PuzzlePieces/PuzzleMovingOutline.gdshader" id="4_hn1bs"]
-[ext_resource type="Texture2D" uid="uid://cstyrvqibocr" path="res://Assets/Sprites/Medievale/14-TileSets/Terrain (64x64).png" id="6_woa8x"]
-[ext_resource type="Texture2D" uid="uid://o1odiq448bc7" path="res://Assets/Sprites/Medievale/14-TileSets/Decorations (64x64).png" id="7_vkwob"]
-[ext_resource type="Texture2D" uid="uid://btpc4xex0poeb" path="res://Assets/Sprites/Oubliette/oubliette_tileset.png" id="8_wdx8a"]
-[ext_resource type="Texture2D" uid="uid://c4byi4qgpbicc" path="res://Assets/Sprites/Sci-fi/Tileset/level_tileset.png" id="9_iaq1q"]
+[ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="3_45og6"]
+[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="4_1hnxu"]
+[ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_5o85m"]
+[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="4_b24ea"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
+[ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_fwkty"]
+[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="6_patsr"]
+[ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="8_dvmwe"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shadow.gd" id="9_jegeb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
-size = Vector2(200, 200)
+size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym7pf"]
-size = Vector2(2, 20)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mughw"]
-size = Vector2(2, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss6hc"]
+size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i716b"]
-size = Vector2(20, 2)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dcrl"]
+size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1622a"]
-size = Vector2(20, 2)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep3wg"]
+size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x6ai"]
-size = Vector2(5.4, 7)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dchuu"]
+size = Vector2(35, 70)
 
-[sub_resource type="Gradient" id="Gradient_gbxod"]
-offsets = PackedFloat32Array(0.0134228)
-colors = PackedColorArray(0, 1, 0, 0.184314)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7pyhj"]
-gradient = SubResource("Gradient_gbxod")
-width = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi8qm"]
-size = Vector2(10, 4.15)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxsww"]
-size = Vector2(149, 164)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_20ux4"]
-shader = ExtResource("2_l11ur")
-shader_parameter/max_line_width = 4.0
-shader_parameter/min_line_width = 1.0
-shader_parameter/freq = 3.0
-shader_parameter/block_size = 20.0
-shader_parameter/outline_colour = Vector4(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hs13t"]
-shader = ExtResource("4_hn1bs")
-shader_parameter/line_color = Vector4(1, 1, 1, 1)
-shader_parameter/line_thickness = 8.0
-shader_parameter/frequency = 10.0
-shader_parameter/phase_speed = 10.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6rph2"]
-texture = ExtResource("3_ita4c")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -23, 1, -19.5, -28, -22)
-5:3/0 = 0
-5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -19, -32, -19.5)
-0:4/0 = 0
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:4/0 = 0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, 32, -18.5, -32, -19.5)
-5:4/0 = 0
-5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -19.5, -32, -19.5)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apfjr"]
-texture = ExtResource("6_woa8x")
-texture_region_size = Vector2i(64, 64)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, -32, -32, 32, -32, 32, 32)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-5:1/0 = 0
-5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-7:1/0 = 0
-7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-8:1/0 = 0
-8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-10:1/0 = 0
-10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-11:1/0 = 0
-11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-13:1/0 = 0
-13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-14:1/0 = 0
-14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-16:1/0 = 0
-16:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:2/0 = 0
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-7:2/0 = 0
-7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-8:2/0 = 0
-8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-10:2/0 = 0
-10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-11:2/0 = 0
-11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-13:2/0 = 0
-13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-14:2/0 = 0
-14:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-16:2/0 = 0
-16:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-17:2/0 = 0
-17:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-5:3/0 = 0
-5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-7:4/0 = 0
-7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-8:4/0 = 0
-8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-10:4/0 = 0
-10:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-11:4/0 = 0
-11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-13:4/0 = 0
-13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-14:4/0 = 0
-14:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-16:4/0 = 0
-16:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-17:4/0 = 0
-17:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:5/0 = 0
-1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-2:5/0 = 0
-2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-3:5/0 = 0
-3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-5:5/0 = 0
-5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-7:5/0 = 0
-7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-8:5/0 = 0
-8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-10:5/0 = 0
-10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-11:5/0 = 0
-11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-13:5/0 = 0
-13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-14:5/0 = 0
-14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-16:5/0 = 0
-16:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-17:5/0 = 0
-17:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-5:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-10:7/0 = 0
-11:7/0 = 0
-13:7/0 = 0
-14:7/0 = 0
-16:7/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-5:8/0 = 0
-7:8/0 = 0
-8:8/0 = 0
-10:8/0 = 0
-11:8/0 = 0
-13:8/0 = 0
-14:8/0 = 0
-16:8/0 = 0
-17:8/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-5:9/0 = 0
-18:9/0 = 0
-7:10/0 = 0
-8:10/0 = 0
-10:10/0 = 0
-11:10/0 = 0
-13:10/0 = 0
-14:10/0 = 0
-16:10/0 = 0
-17:10/0 = 0
-1:11/0 = 0
-2:11/0 = 0
-3:11/0 = 0
-5:11/0 = 0
-7:11/0 = 0
-8:11/0 = 0
-10:11/0 = 0
-11:11/0 = 0
-13:11/0 = 0
-14:11/0 = 0
-16:11/0 = 0
-17:11/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hlk27"]
-texture = ExtResource("7_vkwob")
-texture_region_size = Vector2i(64, 64)
-1:1/0 = 0
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -22.5, -32, -23)
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -22, 32, -21.5, -32, -21.5)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -22.5, -32, -23)
-5:1/0 = 0
-5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -23, -32, -21.5)
-1:2/0 = 0
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, 32, -8, -32, -8.5)
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -8, -32, -7)
-4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -8.5, -32, -8.5)
-5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -8, -32, -8.5, -32, -8.5)
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jh6rs"]
-texture = ExtResource("8_wdx8a")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hx2pl"]
-texture = ExtResource("9_iaq1q")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_j4ljc"]
-tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_6rph2")
-sources/3 = SubResource("TileSetAtlasSource_apfjr")
-sources/4 = SubResource("TileSetAtlasSource_hlk27")
-sources/7 = SubResource("TileSetAtlasSource_jh6rs")
-sources/8 = SubResource("TileSetAtlasSource_hx2pl")
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
+a = Vector2(0, -128)
+b = Vector2(0, 128)
 
 [node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
+collision_mask = 37
 script = ExtResource("1_kspp0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_812v4")
+metadata/_edit_lock_ = true
 
-[node name="PuzzlePiece" type="Node2D" parent="."]
-scale = Vector2(10, 10)
-
-[node name="LeftCollider" type="StaticBody2D" parent="PuzzlePiece"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/LeftCollider"]
-position = Vector2(-10.8, 0)
-shape = SubResource("RectangleShape2D_ym7pf")
-
-[node name="RightCollider" type="StaticBody2D" parent="PuzzlePiece"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/RightCollider"]
-position = Vector2(10.8, 0)
-shape = SubResource("RectangleShape2D_mughw")
-
-[node name="TopCollider" type="StaticBody2D" parent="PuzzlePiece"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/TopCollider"]
-position = Vector2(0, -10.8)
-shape = SubResource("RectangleShape2D_i716b")
-
-[node name="BottomCollider" type="StaticBody2D" parent="PuzzlePiece"]
-position = Vector2(0, 20)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/BottomCollider"]
-position = Vector2(0, -9.2)
-shape = SubResource("RectangleShape2D_1622a")
-
-[node name="LeftBound" type="Area2D" parent="PuzzlePiece"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/LeftBound"]
-position = Vector2(-11.1, 0.8)
-shape = SubResource("RectangleShape2D_1x6ai")
-
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlePiece/LeftBound"]
-visible = false
-position = Vector2(-12.6, 0)
-scale = Vector2(4.85, 4.85)
-texture = SubResource("GradientTexture1D_7pyhj")
-
-[node name="RightBound" type="Area2D" parent="PuzzlePiece"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/RightBound"]
-position = Vector2(9.2, 0.7)
-shape = SubResource("RectangleShape2D_1x6ai")
-
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlePiece/RightBound"]
-visible = false
-position = Vector2(12.2, 1.52588e-06)
-scale = Vector2(4.85, 4.85)
-texture = SubResource("GradientTexture1D_7pyhj")
-
-[node name="TopBound" type="Area2D" parent="PuzzlePiece"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/TopBound"]
-position = Vector2(0, -9.25)
-shape = SubResource("RectangleShape2D_qi8qm")
-
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlePiece/TopBound"]
-visible = false
-position = Vector2(9.53674e-07, -12.7)
-scale = Vector2(4.85, 4.85)
-texture = SubResource("GradientTexture1D_7pyhj")
-
-[node name="BottomBound" type="Area2D" parent="PuzzlePiece"]
-position = Vector2(0, 20)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePiece/BottomBound"]
-position = Vector2(0, -8.675)
-shape = SubResource("RectangleShape2D_qi8qm")
-
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlePiece/BottomBound"]
-visible = false
-position = Vector2(9.53674e-07, -7.3)
-scale = Vector2(4.85, 4.85)
-texture = SubResource("GradientTexture1D_7pyhj")
-
-[node name="Content" type="Node2D" parent="PuzzlePiece" groups=["PuzzlePieceContent"]]
-
-[node name="PuzzlePieceOverlap" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzlePieceOverlap"]
-position = Vector2(-9.5, 10)
-shape = SubResource("RectangleShape2D_wxsww")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-clip_children = 1
-z_index = 10
-scale = Vector2(0.783, 0.783)
-texture = ExtResource("2_kfp4e")
-
-[node name="SpriteOutline" type="Sprite2D" parent="Sprite"]
+[node name="Shape" type="Polygon2D" parent="."]
 clip_children = 2
-z_index = -2
-material = SubResource("ShaderMaterial_20ux4")
-texture = ExtResource("2_kfp4e")
+material = SubResource("ShaderMaterial_g8q12")
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+script = ExtResource("3_45og6")
 
-[node name="SpriteMovingOutline" type="Sprite2D" parent="Sprite"]
+[node name="Background" type="TileMapLayer" parent="Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_set = ExtResource("4_b24ea")
+collision_enabled = false
+
+[node name="Foreground" type="TileMapLayer" parent="Shape"]
+position = Vector2(-25.6, -25.6)
+scale = Vector2(0.8, 0.8)
+tile_set = ExtResource("4_b24ea")
+
+[node name="Door" parent="Shape" instance=ExtResource("6_patsr")]
 visible = false
-clip_children = 2
-z_index = -5
-material = SubResource("ShaderMaterial_hs13t")
-texture = ExtResource("2_kfp4e")
+scale = Vector2(0.642018, 0.642018)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Sprite"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -384.0
-offset_top = -384.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Arrows" type="Sprite2D" parent="Shape"]
+visible = false
+modulate = Color(0, 0, 0, 0.168627)
+scale = Vector2(0.137801, 0.13741)
+texture = ExtResource("4_5o85m")
+script = ExtResource("5_fwkty")
+default_color = Color(0, 0, 0, 0.23)
+selected_color = Color(1, 1, 1, 0.747)
+default_scale = Vector2(0.138, 0.138)
+selected_scale = Vector2(0.207, 0.207)
+metadata/_edit_pinned_properties_ = [&"default_scale", &"selected_scale", &"default_color", &"selected_color"]
 
-[node name="SubViewport" type="SubViewport" parent="Sprite/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(384, 384)
-render_target_update_mode = 4
-
-[node name="Background" type="TileMapLayer" parent="Sprite/SubViewportContainer/SubViewport"]
-z_index = -1
-tile_map_data = PackedByteArray("AAADAAMAAAAEAAEAAAADAAQAAAAEAAEAAAAEAAQAAAAEAAEAAAAEAAMAAAAEAAEAAAAFAAMAAAAEAAEAAAAFAAQAAAAEAAEAAAAFAAUAAAAEAAEAAAAEAAUAAAAEAAEAAAADAAUAAAAEAAEAAAACAAUAAAAEAAEAAAABAAUAAAAEAAEAAAABAAQAAAAEAAEAAAABAAMAAAAEAAEAAAAAAAMAAAAEAAEAAAAAAAQAAAAEAAEAAAACAAQAAAAEAAEAAAACAAMAAAAEAAEAAAACAAIAAAAEAAEAAAADAAIAAAAEAAEAAAAEAAIAAAAEAAEAAAAFAAIAAAAEAAEAAAAEAAEAAAAEAAEAAAADAAEAAAAEAAEAAAACAAEAAAAEAAEAAAABAAIAAAAEAAEAAAACAAYAAAAEAAEAAAADAAYAAAAEAAEAAAAEAAYAAAAEAAEAAAAFAAYAAAAEAAEAAAABAAYAAAAEAAEAAAAAAAYAAAAEAAEAAAAGAAYAAAAEAAEAAAAGAAUAAAAEAAEAAAAGAAQAAAAEAAEAAAAGAAMAAAAEAAEAAAAGAAIAAAAEAAEAAAAHAAYAAAAEAAEAAAAHAAUAAAAEAAEAAAAGAAEAAAAEAAEAAAAFAAEAAAAEAAEAAAABAAEAAAAEAAEAAAAAAAEAAAAEAAEAAAD//wEAAAAEAAEAAAD//wIAAAAEAAEAAAD//wMAAAAEAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAEAAAACAAAAAAAEAAEAAAADAAAAAAAEAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAAEAAEAAAAGAAAAAAAEAAEAAAAAAAIAAAAEAAEAAAAAAAUAAAAEAAEAAAA=")
-tile_set = SubResource("TileSet_j4ljc")
-
-[node name="Foreground" type="TileMapLayer" parent="Sprite/SubViewportContainer/SubViewport"]
+[node name="Connectors" type="Node2D" parent="Shape"]
 z_index = 1
-tile_map_data = PackedByteArray("AAABAAQAAAABAAIAADACAAQAAAABAAIAADADAAQAAAABAAIAADAEAAQAAAABAAIAADABAAEAAAABAAIAAAACAAEAAAABAAIAAAADAAEAAAABAAIAAAAEAAEAAAABAAIAAAACAAUAAAABAAEAAAADAAUAAAABAAEAAAACAAMAAAAEAAMAAAADAAMAAAAEAAQAAAA=")
-tile_set = SubResource("TileSet_j4ljc")
+metadata/_edit_lock_ = true
 
-[node name="Collisions" type="StaticBody2D" parent="."]
-position = Vector2(-28, -12)
+[node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+position = Vector2(128, 0)
+collision_mask = 5
+script = ExtResource("4_rsc72")
+side_collider = NodePath("../../../Colliders/RightCollider")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_ss6hc")
+metadata/_edit_lock_ = true
+
+[node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+position = Vector2(-128, 0)
+rotation = 3.14159
+collision_mask = 5
+script = ExtResource("4_rsc72")
+side_collider = NodePath("../../../Colliders/LeftCollider")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_1dcrl")
+metadata/_edit_lock_ = true
+
+[node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+position = Vector2(0, -128)
+rotation = -1.57079
+collision_mask = 5
+script = ExtResource("4_rsc72")
+side_collider = NodePath("../../../Colliders/TopCollider")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_ep3wg")
+metadata/_edit_lock_ = true
+
+[node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+position = Vector2(0, 128)
+rotation = 1.57079
+collision_mask = 5
+script = ExtResource("4_rsc72")
+side_collider = NodePath("../../../Colliders/BottomCollider")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
+position = Vector2(-16.5, 0)
+shape = SubResource("RectangleShape2D_dchuu")
+metadata/_edit_lock_ = true
+
+[node name="Collectible" parent="Shape" instance=ExtResource("8_dvmwe")]
+visible = false
+position = Vector2(-64, 13)
+scale = Vector2(0.337808, 0.337808)
+
+[node name="Shadow" type="Line2D" parent="."]
+z_index = -2
+texture_repeat = 2
+position = Vector2(4, 4)
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+width = 9.62
+default_color = Color(0, 0, 0, 1)
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("9_jegeb")
+metadata/_edit_lock_ = true
+
+[node name="Outline" type="Line2D" parent="."]
+z_index = -1
+texture_repeat = 2
+material = ExtResource("2_34fut")
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+width = 5.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("4_jtsul")
+moving_outline_texture = ExtResource("4_1hnxu")
+moving_width = 6.0
+metadata/_edit_lock_ = true
+
+[node name="Colliders" type="Node2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="LeftCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(-128, 0)
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/LeftCollider"]
+shape = SubResource("SegmentShape2D_i6rnc")
+
+[node name="RightCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(128, 0)
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightCollider"]
+shape = SubResource("SegmentShape2D_i6rnc")
+
+[node name="TopCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(0, -128)
+rotation = 1.57079
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/TopCollider"]
+shape = SubResource("SegmentShape2D_i6rnc")
+
+[node name="BottomCollider" type="StaticBody2D" parent="Colliders"]
+position = Vector2(0, 128)
+rotation = 1.57079
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/BottomCollider"]
+shape = SubResource("SegmentShape2D_i6rnc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+
+[editable path="Shape/Door"]

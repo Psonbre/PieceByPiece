@@ -1,13 +1,10 @@
 extends Button
 
 func _on_pressed() -> void:
-	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
-	get_tree().root.get_node("Game").load_level("Level" + str(Player.current_level))
+	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)
+	SubSystemManager.get_scene_manager().load_world_select_menu(Vector2(0, 1))
 	focus_mode = FocusMode.FOCUS_NONE
 	
-
-
-
 func _on_mouse_entered():
 	scale = 1.1 * Vector2.ONE
 

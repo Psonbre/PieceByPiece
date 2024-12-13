@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://lpcw04j58awc"]
-
-[ext_resource type="Texture2D" uid="uid://ct5cs5f5n1clb" path="res://Assets/Wooden Pixel Art GUI 32x32.png" id="1_a3yjl"]
-
-[resource]
-atlas = ExtResource("1_a3yjl")
-region = Rect2(288, 832, 32, 32)

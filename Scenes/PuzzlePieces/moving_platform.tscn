@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://0v6tsj0m17vc"]
+
+[ext_resource type="Texture2D" uid="uid://8qwqbiftrp3p" path="res://Assets/Sprites/platform.png" id="1_ago5r"]
+[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="2_btq0f"]
+[ext_resource type="Texture2D" uid="uid://sq6fjc1n5kfc" path="res://Assets/Sprites/gear.png" id="2_vxblo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_642jr"]
+size = Vector2(64, 9)
+
+[node name="Platform" type="Sprite2D"]
+texture = ExtResource("1_ago5r")
+script = ExtResource("2_btq0f")
+
+[node name="Gear" type="Sprite2D" parent="."]
+scale = Vector2(1.75899, 1.75899)
+texture = ExtResource("2_vxblo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_642jr")
+one_way_collision = true
