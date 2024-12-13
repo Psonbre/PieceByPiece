@@ -38,33 +38,33 @@ func addVsyncs():
 		vsyncSlider.set_item_tooltip(index,hint)
 		
 func update_volume_sliders():
-	masterSlider.value = SubsystemManager.get_settings_manager().masterVolume
-	musicSlider.value = SubsystemManager.get_settings_manager().musicVolume
-	sfxSlider.value = SubsystemManager.get_settings_manager().sfxVolume
+	masterSlider.value = SubSystemManager.get_settings_manager().masterVolume
+	musicSlider.value = SubSystemManager.get_settings_manager().musicVolume
+	sfxSlider.value = SubSystemManager.get_settings_manager().sfxVolume
 
 
 func _on_display_slider_item_selected(index: int) -> void:
 	var itemText = displaySlider.get_item_text(index)
 	var displayMode = displayModePossible[itemText]
-	SubsystemManager.get_settings_manager()._update_display_mode(displayMode)
+	SubSystemManager.get_settings_manager()._update_display_mode(displayMode)
 
 
 func _on_vsync_slider_item_selected(index: int) -> void:
 	var itemText = vsyncSlider.get_item_text(index)
 	var vsyncmode = vsyncModePossible[itemText]
-	SubsystemManager.get_settings_manager()._update_Vsync_mode(vsyncmode[0])	
+	SubSystemManager.get_settings_manager()._update_Vsync_mode(vsyncmode[0])	
 
 func _on_master_slider_value_changed(value: float) -> void:
-	SubsystemManager.get_settings_manager()._update_master_volume(value)
+	SubSystemManager.get_settings_manager()._update_master_volume(value)
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-	SubsystemManager.get_settings_manager()._update_music_volume(value)
+	SubSystemManager.get_settings_manager()._update_music_volume(value)
 
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-	SubsystemManager.get_settings_manager()._update_sfx_volume(value)
+	SubSystemManager.get_settings_manager()._update_sfx_volume(value)
 
 
 func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
-	SubsystemManager.get_sound_manager().play_sound("res://Assets/Sounds/button_click.ogg", 0, 1)
+	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)

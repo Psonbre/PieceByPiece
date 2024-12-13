@@ -49,6 +49,7 @@ const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
 #const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
 const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelectDemo.tscn")
+const SETTINGS = preload("res://Scenes/Menus/Settings.tscn")
 
 func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D:
 	var scene = load_scene(WORLDS_LEVEL_SELECT_SCENES[world], new_direction)
@@ -80,6 +81,13 @@ func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
 		updated_discord_presence("Looking at the credits", "")
 		background.switch_gradient(default_gradient)
 	return credits
+	
+func load_settings_menu(new_direction := Vector2(1, 0)) -> Node2D:
+	var settings = load_scene(SETTINGS, new_direction)
+	if settings : 
+		updated_discord_presence("Modifying the settings", "")
+		background.switch_gradient(default_gradient)
+	return settings
 
 func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vector2(1, 0)):
 	var level = load_scene(scene_resource, new_direction)
