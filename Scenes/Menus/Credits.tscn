@@ -304,4 +304,6 @@ text = "Oubliette - Safwyl"
 underline = 1
 uri = "https://safwyl.itch.io/oubliette-tileset"
 
+[connection signal="mouse_entered" from="Credits/Back" to="Credits/Back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Credits/Back" to="Credits/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="Credits/Back" to="Credits/Back" method="_on_pressed"]
