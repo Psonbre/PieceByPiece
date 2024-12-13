@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://bae5jvcs0yxp2"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_002jp"]
+[ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_002jp"]
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="2_bgabo"]
 [ext_resource type="PackedScene" uid="uid://dea1pvndtuh11" path="res://Scenes/Levels/Demo/Level7-Demo.tscn" id="2_w5o7i"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_t31ac"]
