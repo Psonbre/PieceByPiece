@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbl6sigulrew8"]
+[gd_scene load_steps=9 format=3 uid="uid://dbl6sigulrew8"]
 
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_7isfi"]
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="3_uwmcr"]
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="4_fs3n1"]
 [ext_resource type="LabelSettings" uid="uid://m61ok162yvmy" path="res://Assets/Fonts/pixelFont.tres" id="5_e5vn6"]
 [ext_resource type="LabelSettings" uid="uid://bg3bjthyi6ao5" path="res://Assets/Fonts/settingsFont.tres" id="6_fiaql"]
+[ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_p0cnu"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="6_yel2d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_56lap"]
@@ -40,14 +41,16 @@ script = ExtResource("6_yel2d")
 
 [node name="Back" type="Button" parent="Settings"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 41.0
-offset_right = 159.0
-offset_bottom = 99.0
+offset_left = -22.5
+offset_top = -40.5
+offset_right = 94.5
+offset_bottom = 17.5
 theme_override_fonts/font = ExtResource("1_7isfi")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 script = ExtResource("3_uwmcr")
+vertical_intensity = 15.0
+horizontal_intensity = 10
 
 [node name="SettingsPanel" type="VBoxContainer" parent="Settings"]
 custom_minimum_size = Vector2(256, 0)
@@ -72,10 +75,16 @@ layout_mode = 2
 text = "Display"
 label_settings = ExtResource("5_e5vn6")
 horizontal_alignment = 1
+script = ExtResource("6_p0cnu")
+vertical_intensity = 5.0
+horizontal_intensity = 5
 
 [node name="Display" type="VBoxContainer" parent="Settings/SettingsPanel"]
 layout_mode = 2
 theme_override_constants/separation = 15
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.0
+horizontal_intensity = 2
 
 [node name="DisplayMode" type="CenterContainer" parent="Settings/SettingsPanel/Display"]
 layout_mode = 2
@@ -122,10 +131,16 @@ layout_mode = 2
 text = "Sound"
 label_settings = ExtResource("5_e5vn6")
 horizontal_alignment = 1
+script = ExtResource("6_p0cnu")
+vertical_intensity = 5.0
+horizontal_intensity = 5
 
 [node name="Sounds" type="VBoxContainer" parent="Settings/SettingsPanel"]
 layout_mode = 2
 theme_override_constants/separation = 15
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.0
+horizontal_intensity = 2
 
 [node name="Master" type="CenterContainer" parent="Settings/SettingsPanel/Sounds"]
 layout_mode = 2

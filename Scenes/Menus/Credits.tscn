@@ -46,12 +46,13 @@ offset_left = -636.412
 offset_top = -350.396
 offset_right = -519.412
 offset_bottom = -292.396
-scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 script = ExtResource("1_fll2r")
 scroll_direction = Vector2(-1, 0)
+vertical_intensity = 15.0
+horizontal_intensity = 10
 
 [node name="Sounds" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
