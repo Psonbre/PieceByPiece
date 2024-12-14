@@ -4,11 +4,14 @@ class_name PuzzlePieceConnector
 
 @onready var puzzle_piece : PuzzlePiece = $"../../.."
 @export var side_collider : StaticBody2D
+@export var bevel_side : Polygon2D
+
 var rift : Rift
 
 var connected_to : PuzzlePieceConnector = null :
 	set(value):
 		side_collider.get_node("CollisionShape2D").disabled = value != null
+		bevel_side.visible = !value
 		connected_to = value
 			
 func get_first_compatible_overlapping_connector(include_dragging_piece := false, allow_flat_sides := false) -> PuzzlePieceConnector:
