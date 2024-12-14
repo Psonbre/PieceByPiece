@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=21 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
-[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="3_45og6"]
+[ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_k13o6"]
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="4_1hnxu"]
 [ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_5o85m"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="4_b24ea"]
@@ -18,21 +18,23 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss6hc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jec6y"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dcrl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejlyy"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep3wg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7oad"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dchuu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uctss"]
 size = Vector2(35, 70)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
 a = Vector2(0, -128)
 b = Vector2(0, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wnkx"]
 
 [node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
 collision_mask = 37
@@ -47,7 +49,8 @@ metadata/_edit_lock_ = true
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
-script = ExtResource("3_45og6")
+script = ExtResource("2_k13o6")
+bevel_width = 3.7
 
 [node name="Background" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
@@ -80,55 +83,59 @@ metadata/_edit_pinned_properties_ = [&"default_scale", &"selected_scale", &"defa
 z_index = 1
 metadata/_edit_lock_ = true
 
-[node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+[node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(128, 0)
 collision_mask = 5
 script = ExtResource("4_rsc72")
 side_collider = NodePath("../../../Colliders/RightCollider")
+bevel_side = NodePath("../../../BevelRight")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_ss6hc")
+shape = SubResource("RectangleShape2D_jec6y")
 metadata/_edit_lock_ = true
 
-[node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+[node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(-128, 0)
 rotation = 3.14159
 collision_mask = 5
 script = ExtResource("4_rsc72")
 side_collider = NodePath("../../../Colliders/LeftCollider")
+bevel_side = NodePath("../../../BevelLeft")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_1dcrl")
+shape = SubResource("RectangleShape2D_ejlyy")
 metadata/_edit_lock_ = true
 
-[node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+[node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(0, -128)
 rotation = -1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
 side_collider = NodePath("../../../Colliders/TopCollider")
+bevel_side = NodePath("../../../BevelTop")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_ep3wg")
+shape = SubResource("RectangleShape2D_m7oad")
 metadata/_edit_lock_ = true
 
-[node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider")]
+[node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(0, 128)
 rotation = 1.57079
 collision_mask = 5
 script = ExtResource("4_rsc72")
 side_collider = NodePath("../../../Colliders/BottomCollider")
+bevel_side = NodePath("../../../BevelBottom")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_dchuu")
+shape = SubResource("RectangleShape2D_uctss")
 metadata/_edit_lock_ = true
 
 [node name="Collectible" parent="Shape" instance=ExtResource("8_dvmwe")]
@@ -167,8 +174,8 @@ metadata/_edit_lock_ = true
 
 [node name="Colliders" type="Node2D" parent="."]
 visible = false
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="LeftCollider" type="StaticBody2D" parent="Colliders"]
 position = Vector2(-128, 0)
@@ -199,6 +206,28 @@ collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/BottomCollider"]
 shape = SubResource("SegmentShape2D_i6rnc")
+
+[node name="BevelLeft" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_8wnkx")
+polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)
+
+[node name="BevelTop" type="Polygon2D" parent="."]
+self_modulate = Color(0.745617, 0.745617, 0.745617, 0.360784)
+material = SubResource("ShaderMaterial_8wnkx")
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.501961)
+material = SubResource("ShaderMaterial_8wnkx")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
+
+[node name="BevelBottom" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.360784)
+material = SubResource("ShaderMaterial_8wnkx")
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
