@@ -6,6 +6,8 @@ extends Control
 @onready var musicSlider = $Sounds/HBoxContainer2/HSplitContainer/MusicSlider
 @onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
 
+@export var popupItemFontSize = 32
+
 var resolutionsPossible: Dictionary = {}
 var displayModePossible: Dictionary = {
 		'Windowed' : DisplayServer.WINDOW_MODE_MAXIMIZED,
@@ -26,6 +28,8 @@ func _ready() -> void:
 func addDisplays():
 	for displayPossible in displayModePossible:
 		displaySlider.add_item(displayPossible, displayModePossible[displayPossible])
+		
+	displaySlider.get_popup().add_theme_font_size_override("font_size",popupItemFontSize)
 
 func addVsyncs():
 	for vsyncMode in vsyncModePossible:
@@ -36,6 +40,9 @@ func addVsyncs():
 		
 		var index = vsyncSlider.get_item_count() - 1
 		vsyncSlider.set_item_tooltip(index,hint)
+		vsyncSlider.get_item_tooltip(index)
+	
+	vsyncSlider.get_popup().add_theme_font_size_override("font_size",popupItemFontSize)
 		
 func update_volume_sliders():
 	masterSlider.value = SubSystemManager.get_settings_manager().masterVolume
