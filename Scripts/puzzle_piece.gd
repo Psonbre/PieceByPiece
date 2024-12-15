@@ -267,6 +267,7 @@ func set_colliders_in_drag_mode(drag_mode: bool):
 	shape.get_node("Foreground").collision_enabled = !drag_mode
 	if shape.has_node("Diggable") : shape.get_node("Diggable").collision_enabled = !drag_mode
 	set_collision_mask_value(1, true)
+	
 func _set_colliders_recursive(node: Node, drag_mode: bool) -> void:
 	if node is Player:
 		node.set_locked(drag_mode)

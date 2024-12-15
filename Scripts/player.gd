@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var wall_check: ShapeCast2D = $WallCheck
 @onready var digging_particles: GPUParticles2D = $DiggingParticles
 @onready var squash_cooldown: Timer = $SquashCooldown
+@onready var falling_raycast: RayCast2D = $FallingRaycast
 
 const DEFAULT_SPEED := 300.0
 const JUMP_VELOCITY := -400.0
@@ -16,8 +17,6 @@ var gravity := 980.0
 var gravity_direction := Vector2(0,1)
 var overlapping_pieces = []
 var default_scale
-var was_on_floor := false
-var last_vertical_speed :=  0.0
 var current_level : Level
 static var winning := false
 static var entering_portal := false
@@ -48,8 +47,13 @@ func set_locked(should_lock : bool):
 	if !locked : set_physics_process(true)
 	
 func _physics_process(delta):
-	if non_tilted_velocity.y != 0 : last_vertical_speed = non_tilted_velocity.y
 	
+	falling_raycast.target_position = Vector2(0, non_tilted_velocity.normalized().y * 5)
+	falling_raycast.force_raycast_update()
+	if falling_raycast.is_colliding():
+		position.y += 5.0
+		land(non_tilted_velocity.y)
+		non_tilted_velocity.y = 0
 	#gravity
 	if is_on_floor() :
 		non_tilted_velocity.y = 0
@@ -86,6 +90,8 @@ func _physics_process(delta):
 	if is_on_floor() and Input.is_action_just_pressed("Jump") and !digging:
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.wav"), 12, (randf() + 2) / 2.0)
 		non_tilted_velocity.y = JUMP_VELOCITY
+		for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
+			player_sprite.jump_stretch()
 	
 	check_diggable(digging_direction if digging else Input.get_vector("Left", "Right", "Up", "Down"))
 	
@@ -101,6 +107,7 @@ func _physics_process(delta):
 				min_distance = distance
 				closest_piece = piece
 		if closest_piece != null && (find_parent("Shape") == null || closest_piece.shape != get_parent()):
+			squash_cooldown.start()
 			reparent(closest_piece.shape)
 			reset_proportions()
 
@@ -179,9 +186,6 @@ func _process(delta):
 	if !is_physics_processing() and editor_sprite.is_playing() :
 		pause_animation()
 	
-	if !was_on_floor and is_on_floor():
-		land(last_vertical_speed)
-	
 	if (winning) :
 		global_position = global_position.move_toward(winning_door.global_position, 10 * delta)
 		rotate(12 * delta)
@@ -224,8 +228,6 @@ func _process(delta):
 			rotation = 0
 			exiting_portal = false
 			
-	was_on_floor = is_on_floor()
-	
 func play_animation(animation : String):
 	editor_sprite.play(animation)
 	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
@@ -244,5 +246,4 @@ func pause_animation():
 func land(landing_speed):
 	if squash_cooldown.is_stopped() :
 		for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
-			player_sprite.squash(landing_speed / 100.0)
-	last_vertical_speed = 0
+			player_sprite.squash(landing_speed / 330.0)
