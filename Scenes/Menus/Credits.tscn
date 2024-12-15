@@ -46,6 +46,7 @@ offset_left = -636.412
 offset_top = -350.396
 offset_right = -519.412
 offset_bottom = -292.396
+pivot_offset = Vector2(56.9925, 30.0794)
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 24
 text = "Back"

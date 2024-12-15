@@ -4,6 +4,7 @@ class_name LevelSelect
 @export var world_select_tree_target_group := WorldSelectTree.TARGET_GROUPS.BASIC
 @export var background_gradient : Gradient = preload("res://Assets/Gradients/rainbow_gradient.tres")
 var can_exit := true
+var can_select_level := true
 
 func _input(_event):
 	var scene_manager := SubSystemManager.get_scene_manager()

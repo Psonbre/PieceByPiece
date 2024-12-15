@@ -6,8 +6,9 @@ func _on_pressed() -> void:
 	focus_mode = FocusMode.FOCUS_NONE
 
 func _on_mouse_entered():
-	scale = 1.1 * Vector2.ONE
-
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE * 1.05, 1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 func _on_mouse_exited():
-	scale = 1.0 * Vector2.ONE
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE * 1.0, 1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)

@@ -2,7 +2,6 @@ extends FloatingUI
 
 var default_scale : Vector2
 var mouse_hover := false
-var target_scale : Vector2
 var enabled := true :
 	set(value):
 		enabled = value
@@ -16,11 +15,9 @@ var enabled := true :
 func _ready():
 	super._ready()
 	default_scale = scale
-	target_scale = default_scale
 	
 func _process(delta):
 	super._process(delta)
-	scale = scale.move_toward(target_scale, abs((target_scale - scale).length()) * delta * 12.0)
 
 func update_enabled():
 	enabled = requirements_fufilled()
@@ -35,11 +32,11 @@ func requirements_fufilled():
 
 func _on_mouse_entered():
 	mouse_hover = true
-	target_scale = default_scale * 1.2
+	create_tween().tween_property(self, "scale", default_scale * 1.1, 1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 func _on_mouse_exited():
 	mouse_hover = false
-	target_scale = default_scale
+	create_tween().tween_property(self, "scale", default_scale * 1.0, 1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 func _input(event):
 	if !enabled : return

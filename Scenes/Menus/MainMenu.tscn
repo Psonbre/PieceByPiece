@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://iiopsl2jnac1"]
+[gd_scene load_steps=11 format=3 uid="uid://iiopsl2jnac1"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_2asjq"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_y3dni"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_ifsr2"]
 [ext_resource type="Script" path="res://Scripts/Buttons/PlayButton.gd" id="4_q0me5"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="5_pi4rr"]
 [ext_resource type="Script" path="res://Scripts/Buttons/credits_button.gd" id="5_tryhm"]
 [ext_resource type="Script" path="res://Scripts/Buttons/settingsButton.gd" id="6_7art6"]
 [ext_resource type="Script" path="res://Scripts/Buttons/ExitButton.gd" id="6_xfefy"]
@@ -29,12 +30,14 @@ grow_vertical = 2
 scale = Vector2(1.75428, 1.75428)
 metadata/_edit_horizontal_guides_ = [695.0]
 
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+[node name="CenterContainer" type="Control" parent="MainMenu"]
 layout_mode = 2
+anchors_preset = 0
 offset_left = -360.0
 offset_top = -94.0
 offset_right = 362.0
 offset_bottom = -49.0
+pivot_offset = Vector2(360, 22.7457)
 script = ExtResource("2_y3dni")
 vertical_intensity = 7.0
 horizontal_speed = 0.25
@@ -42,14 +45,39 @@ horizontal_speed = 0.25
 [node name="Start" type="Button" parent="MainMenu/CenterContainer"]
 custom_minimum_size = Vector2(210, 45)
 layout_mode = 2
+offset_left = 256.0
+offset_right = 466.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(104, 22.7457)
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
-text = "Play"
 script = ExtResource("4_q0me5")
 
-[node name="CenterContainer2" type="CenterContainer" parent="MainMenu"]
+[node name="Label" type="Label" parent="MainMenu/CenterContainer/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -295.0
+offset_top = -77.5
+offset_right = 295.0
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(399.57, 100.246)
+theme_override_font_sizes/font_size = 0
+text = "PLAY"
+label_settings = ExtResource("5_pi4rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="Control" parent="MainMenu"]
 layout_mode = 2
+anchors_preset = 0
 offset_left = -360.0
 offset_top = 51.0
 offset_right = 362.0
@@ -61,14 +89,19 @@ horizontal_speed = 0.25
 [node name="Credits" type="Button" parent="MainMenu/CenterContainer2"]
 custom_minimum_size = Vector2(210, 45)
 layout_mode = 2
+offset_left = 256.0
+offset_right = 466.0
+offset_bottom = 45.0
+pivot_offset = Vector2(103.43, 23.1045)
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
 text = "Credits"
 script = ExtResource("5_tryhm")
 
-[node name="CenterContainer4" type="CenterContainer" parent="MainMenu"]
+[node name="CenterContainer4" type="Control" parent="MainMenu"]
 layout_mode = 2
+anchors_preset = 0
 offset_left = -360.0
 offset_top = -22.0
 offset_right = 362.0
@@ -80,14 +113,19 @@ horizontal_speed = 0.25
 [node name="Settings" type="Button" parent="MainMenu/CenterContainer4"]
 custom_minimum_size = Vector2(210, 45)
 layout_mode = 2
+offset_left = 256.0
+offset_right = 466.0
+offset_bottom = 45.0
+pivot_offset = Vector2(103.43, 19.7199)
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
 text = "Settings"
 script = ExtResource("6_7art6")
 
-[node name="CenterContainer3" type="CenterContainer" parent="MainMenu"]
+[node name="CenterContainer3" type="Control" parent="MainMenu"]
 layout_mode = 2
+anchors_preset = 0
 offset_left = -360.0
 offset_top = 120.0
 offset_right = 362.0
@@ -99,6 +137,10 @@ horizontal_speed = 0.25
 [node name="Exit" type="Button" parent="MainMenu/CenterContainer3"]
 custom_minimum_size = Vector2(210, 45)
 layout_mode = 2
+offset_left = 256.0
+offset_right = 466.0
+offset_bottom = 45.0
+pivot_offset = Vector2(105.71, 20.7985)
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24

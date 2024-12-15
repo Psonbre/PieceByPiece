@@ -16,7 +16,6 @@ var locked := true :
 		
 var default_scale : Vector2
 var mouse_hover := false
-var target_scale := Vector2.ZERO
 var world_completed : bool :
 	get():
 		return nb_of_completed_levels >= nb_of_levels
@@ -33,14 +32,12 @@ var nb_of_collectibles : int :
 
 func _ready():
 	default_scale = scale
-	target_scale = default_scale
 	overlay.polygon = $Shape.polygon
 	update_labels()
 	locked = !required_completed_worlds.all(func(world) : return world.world_completed)
 	print(locked)
 	
 func _process(delta):
-	scale = scale.move_toward(target_scale, abs((target_scale - scale).length()) * delta * 6.0)
 	if play_icon :
 		if mouse_hover :
 			play_icon.modulate = Color(1,1,1, move_toward(play_icon.modulate.a, 1, delta * 2.0))
@@ -55,13 +52,13 @@ func _on_mouse_entered():
 	if Engine.is_editor_hint() : return
 	animation_player.play("Preview")
 	mouse_hover = true
-	target_scale = default_scale * 1.1
+	create_tween().tween_property(self, "scale", default_scale * 1.1, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 func _on_mouse_exited():
 	if Engine.is_editor_hint() : return
 	animation_player.stop()
 	mouse_hover = false
-	target_scale = default_scale
+	create_tween().tween_property(self, "scale", default_scale * 1.0, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 func _input(event: InputEvent) -> void:
 	if mouse_hover and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and !locked:
