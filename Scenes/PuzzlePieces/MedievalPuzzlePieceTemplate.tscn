@@ -4,16 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="2_6unmi"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_cbxkv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl821"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlwny"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tp2o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyi1t"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypwp0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xawb3"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdf3o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ibq5"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
@@ -39,16 +39,16 @@ visible = false
 metadata/_edit_pinned_properties_ = [&"visible"]
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_rl821")
+shape = SubResource("RectangleShape2D_nlwny")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_0tp2o")
+shape = SubResource("RectangleShape2D_pyi1t")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_ypwp0")
+shape = SubResource("RectangleShape2D_xawb3")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_hdf3o")
+shape = SubResource("RectangleShape2D_3ibq5")
 
 [node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_n3bvn")

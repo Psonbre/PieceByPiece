@@ -49,6 +49,7 @@ theme_override_fonts/font = ExtResource("1_7isfi")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 script = ExtResource("3_uwmcr")
+scroll_direction = Vector2(-1, 0)
 vertical_intensity = 15.0
 horizontal_intensity = 10
 
@@ -82,12 +83,12 @@ horizontal_intensity = 5
 [node name="Display" type="VBoxContainer" parent="Settings/SettingsPanel"]
 layout_mode = 2
 theme_override_constants/separation = 15
-script = ExtResource("6_p0cnu")
-vertical_intensity = 2.0
-horizontal_intensity = 2
 
 [node name="DisplayMode" type="CenterContainer" parent="Settings/SettingsPanel/Display"]
 layout_mode = 2
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.5
+horizontal_intensity = 4
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Display/DisplayMode"]
 layout_mode = 2
@@ -108,6 +109,9 @@ theme_override_fonts/font = ExtResource("1_7isfi")
 
 [node name="V-Sync" type="CenterContainer" parent="Settings/SettingsPanel/Display"]
 layout_mode = 2
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.5
+horizontal_intensity = 4
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Display/V-Sync"]
 layout_mode = 2
@@ -138,12 +142,12 @@ horizontal_intensity = 5
 [node name="Sounds" type="VBoxContainer" parent="Settings/SettingsPanel"]
 layout_mode = 2
 theme_override_constants/separation = 15
-script = ExtResource("6_p0cnu")
-vertical_intensity = 2.0
-horizontal_intensity = 2
 
 [node name="Master" type="CenterContainer" parent="Settings/SettingsPanel/Sounds"]
 layout_mode = 2
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.5
+horizontal_intensity = 4
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Sounds/Master"]
 layout_mode = 2
@@ -165,6 +169,9 @@ step = 0.01
 
 [node name="HBoxContainer2" type="CenterContainer" parent="Settings/SettingsPanel/Sounds"]
 layout_mode = 2
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.5
+horizontal_intensity = 4
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Sounds/HBoxContainer2"]
 layout_mode = 2
@@ -186,6 +193,9 @@ step = 0.01
 
 [node name="HBoxContainer3" type="CenterContainer" parent="Settings/SettingsPanel/Sounds"]
 layout_mode = 2
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.5
+horizontal_intensity = 4
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Sounds/HBoxContainer3"]
 layout_mode = 2
