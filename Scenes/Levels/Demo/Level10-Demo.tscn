@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://cs0gay44eqvia"]
+[gd_scene load_steps=19 format=4 uid="uid://cs0gay44eqvia"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_ehusi"]
+[ext_resource type="PackedScene" uid="uid://dm23pghbgfyj" path="res://Scenes/Levels/Demo/Level11-Demo.tscn" id="2_5lf6a"]
 [ext_resource type="PackedScene" uid="uid://bo1bq6h0vd5ie" path="res://Scenes/PuzzlePieces/MinerPuzzlePieceTemplate.tscn" id="2_r0op0"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_0etny"]
+[ext_resource type="Gradient" uid="uid://ccylk25qfs6j5" path="res://Assets/Gradients/rainbow_gradient.tres" id="3_iakvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qwm2"]
 size = Vector2(35, 70)
@@ -48,6 +50,8 @@ size = Vector2(35, 70)
 
 [node name="Level 10" instance=ExtResource("1_ehusi")]
 world = 6
+next_level = ExtResource("2_5lf6a")
+background_gradient = ExtResource("3_iakvp")
 
 [node name="Player" parent="." index="1"]
 position = Vector2(-427, 0)

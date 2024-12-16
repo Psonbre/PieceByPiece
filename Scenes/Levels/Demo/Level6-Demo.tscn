@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://duwi1lgvkyllg"]
+[gd_scene load_steps=22 format=4 uid="uid://duwi1lgvkyllg"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_xjht7"]
 [ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="2_bgabo"]
+[ext_resource type="PackedScene" uid="uid://uglbjo1sjwt3" path="res://Scenes/Levels/Demo/Level7-Demo.tscn" id="2_w5o7i"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_hoky1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kn5mi"]
@@ -59,6 +60,7 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [node name="Level 6" instance=ExtResource("1_xjht7")]
+next_level = ExtResource("2_w5o7i")
 
 [node name="Camera2D" parent="." index="0"]
 zoom = Vector2(1.7, 1.7)
