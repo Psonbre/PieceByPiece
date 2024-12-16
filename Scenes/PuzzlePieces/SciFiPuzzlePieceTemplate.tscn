@@ -4,16 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="2_6u701"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_lhbi1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q5m6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x856"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_va35k"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgn6"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajxnr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdyyv"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q0hc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkda6"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
@@ -34,16 +34,16 @@ tile_map_data = PackedByteArray("AAD+//7/CAABAAAAAAD///7/CAABAAAAAAAAAP7/CAABAAA
 [node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_6u701")]
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_3q5m6")
+shape = SubResource("RectangleShape2D_0x856")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_va35k")
+shape = SubResource("RectangleShape2D_iwgn6")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_ajxnr")
+shape = SubResource("RectangleShape2D_mdyyv")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_1q0hc")
+shape = SubResource("RectangleShape2D_vkda6")
 
 [node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_n3bvn")

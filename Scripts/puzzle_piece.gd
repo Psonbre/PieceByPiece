@@ -6,6 +6,7 @@ class_name PuzzlePiece
 const max_tilt := deg_to_rad(15)
 static var global_dragging := false
 
+@onready var level: Level = $".."
 @onready var ghost_piece : GhostPiece = $"../GhostPiece"
 @onready var shape : PuzzlePieceShape = $Shape
 @onready var outline : PuzzlePieceOutline = $Outline

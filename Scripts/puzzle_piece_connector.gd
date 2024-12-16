@@ -94,7 +94,7 @@ func connect_with_closest():
 	
 	if !rift and other_connector and other_connector.rift == null and puzzle_piece.theme != other_connector.puzzle_piece.theme:
 		rift = preload("res://Scenes/PuzzlePieces/rift.tscn").instantiate()
-		SubSystemManager.get_scene_manager().current_screen.add_child(rift)
+		puzzle_piece.level.add_child(rift)
 		rift.connected_to = self
 	elif other_connector == null and rift != null:
 		rift.connected_to = null

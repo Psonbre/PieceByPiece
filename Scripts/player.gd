@@ -7,7 +7,6 @@ extends CharacterBody2D
 @onready var diggable_raycast: RayCast2D = $DiggableRaycast
 @onready var wall_check: ShapeCast2D = $WallCheck
 @onready var digging_particles: GPUParticles2D = $DiggingParticles
-@onready var squash_cooldown: Timer = $SquashCooldown
 
 const DEFAULT_SPEED := 300.0
 const JUMP_VELOCITY := -400.0
@@ -51,8 +50,7 @@ func _physics_process(delta):
 		non_tilted_velocity.y = 0
 	else :
 		non_tilted_velocity.y += gravity * delta
-		if squash_cooldown.is_stopped() :
-			play_animation("Jump");
+		play_animation("Jump");
 	
 	#head bump	
 	if is_on_ceiling() :
@@ -103,7 +101,6 @@ func _physics_process(delta):
 				min_distance = distance
 				closest_piece = piece
 		if closest_piece != null && (find_parent("Shape") == null || closest_piece.shape != get_parent()):
-			squash_cooldown.start()
 			reparent(closest_piece.shape)
 			reset_proportions()
 
@@ -240,6 +237,5 @@ func pause_animation():
 		player_sprite.pause()
 
 func land(landing_speed):
-	if squash_cooldown.is_stopped() :
-		for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
-			player_sprite.squash(landing_speed / 330.0)
+	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
+		player_sprite.squash(landing_speed / 330.0)

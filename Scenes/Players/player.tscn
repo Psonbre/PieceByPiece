@@ -68,10 +68,6 @@ process_material = SubResource("ParticleProcessMaterial_kdxxg")
 texture = ExtResource("3_7bhw1")
 speed_scale = 1.5
 
-[node name="SquashCooldown" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
 [node name="WallCheck" type="ShapeCast2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_7y0no")
