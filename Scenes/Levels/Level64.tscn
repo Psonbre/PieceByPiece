@@ -59,7 +59,7 @@ size = Vector2(35, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ds1p4"]
 radius = 35.0
 
-[node name="Level 63" instance=ExtResource("1_5i142")]
+[node name="Level 64" instance=ExtResource("1_5i142")]
 world = 2
 
 [node name="Player" parent="." index="1"]
