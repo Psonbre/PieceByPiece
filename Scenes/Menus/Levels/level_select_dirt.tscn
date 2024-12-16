@@ -11,16 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://ctl2lnwlg5677" path="res://Scenes/Levels/Level4.tscn" id="9_uoyow"]
 [ext_resource type="PackedScene" uid="uid://6ol74pgrytr8" path="res://Scenes/Levels/Level5.tscn" id="10_16alh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hjv8k"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3223c"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kpk7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojs07"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r64my"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwnkx"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl4dy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lhji"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ienw4"]
@@ -41,16 +41,16 @@ size = Vector2(40, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l25h2"]
 size = Vector2(40, 80)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jgidu"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0h1a"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbwb8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpv07"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e03w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ish7m"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fy1d"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye0kn"]
 size = Vector2(35, 70)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxf6b"]
@@ -65,16 +65,16 @@ size = Vector2(40, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7sqe"]
 size = Vector2(40, 80)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_06sxv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_81p6d"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6yuh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4o0gw"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nedje"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyadb"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_my3am"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8wpw"]
 size = Vector2(35, 70)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vaq6n"]
@@ -89,16 +89,16 @@ size = Vector2(40, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2clyj"]
 size = Vector2(40, 80)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vo50x"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ckxs"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r31ye"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp1q3"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7sqq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eihhs"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_muin1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t43yy"]
 size = Vector2(35, 70)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6on70"]
@@ -113,16 +113,16 @@ size = Vector2(40, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6g8a"]
 size = Vector2(40, 80)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4e4m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ijks"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_an1qf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r25hn"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iw56"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3jm1"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwn32"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u5e3"]
 size = Vector2(35, 70)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83rm7"]
@@ -137,7 +137,7 @@ size = Vector2(40, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bakq3"]
 size = Vector2(40, 80)
 
-[node name="LevelSelectDirt" type="Node2D"]
+[node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_jnik4")
 world = 6
 world_select_tree_target_group = 2
@@ -183,6 +183,10 @@ horizontal_intensity = 8
 [node name="Level Button" parent="Level 1" index="0"]
 level = ExtResource("5_1m54r")
 
+[node name="Shape" parent="Level 1/Level Button" index="1"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+bevel_width = 3.7
+
 [node name="Background" parent="Level 1/Level Button/Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
 
@@ -190,19 +194,35 @@ tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAI
 tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAACAAEACAAAAAEAAAAAAAMACAACAAIAAAADAAEACAACAAIAAAD+/wEACAADAAEAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAD//wMACAACAAIAAAABAAMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAIACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_hjv8k")
+shape = SubResource("CircleShape2D_3223c")
 
 [node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_7kpk7")
+shape = SubResource("RectangleShape2D_ojs07")
 
 [node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_r64my")
+shape = SubResource("RectangleShape2D_pwnkx")
 
 [node name="CollisionShape2D" parent="Level 1/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_pl4dy")
+shape = SubResource("RectangleShape2D_6lhji")
+
+[node name="Shadow" parent="Level 1/Level Button" index="3"]
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
 
 [node name="Outline" parent="Level 1/Level Button" index="4"]
 material = SubResource("ShaderMaterial_ienw4")
+points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+
+[node name="BevelLeft" parent="Level 1/Level Button" index="5"]
+polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)
+
+[node name="BevelTop" parent="Level 1/Level Button" index="6"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" parent="Level 1/Level Button" index="7"]
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
+
+[node name="BevelBottom" parent="Level 1/Level Button" index="8"]
+polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
 [node name="CollisionShape2D" parent="Level 1/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("CircleShape2D_p1v70")
@@ -230,6 +250,7 @@ requires = NodePath("../../Level 1/Level Button")
 
 [node name="Shape" parent="Level 2/Level Button" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+bevel_width = 3.7
 
 [node name="Background" parent="Level 2/Level Button/Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
@@ -238,20 +259,20 @@ tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAI
 tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAD+/wEACAADAAEAAAACAAEACAAAAAEAAAADAAEACAACAAIAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAD//wMACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAIACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_jgidu")
+shape = SubResource("CircleShape2D_c0h1a")
 
 [node name="LeftConnector" parent="Level 2/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_sbwb8")
+shape = SubResource("RectangleShape2D_wpv07")
 
 [node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_0e03w")
+shape = SubResource("RectangleShape2D_ish7m")
 
 [node name="CollisionShape2D" parent="Level 2/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_2fy1d")
+shape = SubResource("RectangleShape2D_ye0kn")
 
 [node name="WorldName" parent="Level 2/Level Button/Overlay" index="0"]
 text = "2"
@@ -262,6 +283,18 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 
 [node name="Outline" parent="Level 2/Level Button" index="4"]
 material = SubResource("ShaderMaterial_ienw4")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="BevelLeft" parent="Level 2/Level Button" index="5"]
+polygon = PackedVector2Array(-128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128, -124.3, -124.3, -124.3, -35, -117.472, -34.3275, -110.906, -32.3358, -104.855, -29.1014, -99.5513, -24.7487, -95.1986, -19.445, -91.9642, -13.3939, -89.9725, -6.82816, -89.3, 0, -89.9725, 6.82816, -91.9642, 13.3939, -95.1986, 19.445, -99.5513, 24.7487, -104.855, 29.1014, -110.906, 32.3358, -117.472, 34.3275, -124.3, 35, -124.3, 124.3)
+
+[node name="BevelTop" parent="Level 2/Level Button" index="6"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" parent="Level 2/Level Button" index="7"]
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
+
+[node name="BevelBottom" parent="Level 2/Level Button" index="8"]
+polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
 [node name="CollisionShape2D" parent="Level 2/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("CircleShape2D_fxf6b")
@@ -287,6 +320,7 @@ requires = NodePath("../../Level 2/Level Button")
 
 [node name="Shape" parent="Level 3/Level Button" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+bevel_width = 3.7
 
 [node name="Background" parent="Level 3/Level Button/Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
@@ -295,20 +329,20 @@ tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAI
 tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAD+/wEACAADAAEAAAACAAEACAAAAAEAAAADAAEACAACAAIAAAD//wMACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAIACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_06sxv")
+shape = SubResource("CircleShape2D_81p6d")
 
 [node name="LeftConnector" parent="Level 3/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_y6yuh")
+shape = SubResource("RectangleShape2D_4o0gw")
 
 [node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_nedje")
+shape = SubResource("RectangleShape2D_kyadb")
 
 [node name="CollisionShape2D" parent="Level 3/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_my3am")
+shape = SubResource("RectangleShape2D_r8wpw")
 
 [node name="WorldName" parent="Level 3/Level Button/Overlay" index="0"]
 text = "3"
@@ -319,6 +353,18 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 
 [node name="Outline" parent="Level 3/Level Button" index="4"]
 material = SubResource("ShaderMaterial_ienw4")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="BevelLeft" parent="Level 3/Level Button" index="5"]
+polygon = PackedVector2Array(-128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128, -124.3, -124.3, -124.3, -35, -117.472, -34.3275, -110.906, -32.3358, -104.855, -29.1014, -99.5513, -24.7487, -95.1986, -19.445, -91.9642, -13.3939, -89.9725, -6.82816, -89.3, 0, -89.9725, 6.82816, -91.9642, 13.3939, -95.1986, 19.445, -99.5513, 24.7487, -104.855, 29.1014, -110.906, 32.3358, -117.472, 34.3275, -124.3, 35, -124.3, 124.3)
+
+[node name="BevelTop" parent="Level 3/Level Button" index="6"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" parent="Level 3/Level Button" index="7"]
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
+
+[node name="BevelBottom" parent="Level 3/Level Button" index="8"]
+polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
 [node name="CollisionShape2D" parent="Level 3/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("CircleShape2D_vaq6n")
@@ -346,6 +392,7 @@ requires = NodePath("../../Level 3/Level Button")
 
 [node name="Shape" parent="Level 4/Level Button" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+bevel_width = 3.7
 
 [node name="Background" parent="Level 4/Level Button/Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
@@ -354,20 +401,20 @@ tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAI
 tile_map_data = PackedByteArray("AAD+//7/CAAEAAMAAAD///7/CAABAAMAAAAAAP7/CAABAAMAAAABAP7/CAABAAMAAAACAP7/CAAFAAMAAAD+/wIACAAEAAQAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAFAAQAAAD+/wEACAADAAEAAAACAAEACAAAAAEAAAADAAEACAACAAIAAAADAAIACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAD//wMACAACAAIAAAD+/wAACAADAAEAAAD+////CAADAAEAAAACAAAACAAAAAEAAAACAP//CAAAAAEAAAD+/wMACAACAAIAAAACAAMACAACAAIAAAADAAMACAACAAIAAAADAAAACAACAAIAAAADAP//CAACAAIAAAADAP7/CAACAAIAAAADAP3/CAACAAIAAAACAP3/CAACAAIAAAABAP3/CAACAAIAAAAAAP3/CAACAAIAAAD///3/CAACAAIAAAD+//3/CAACAAIAAAD9//3/CAACAAIAAAD9//7/CAACAAIAAAD9////CAACAAIAAAD9/wAACAACAAIAAAD9/wEACAACAAIAAAD9/wIACAACAAIAAAD9/wMACAACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_vo50x")
+shape = SubResource("CircleShape2D_8ckxs")
 
 [node name="LeftConnector" parent="Level 4/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_r31ye")
+shape = SubResource("RectangleShape2D_yp1q3")
 
 [node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_f7sqq")
+shape = SubResource("RectangleShape2D_eihhs")
 
 [node name="CollisionShape2D" parent="Level 4/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_muin1")
+shape = SubResource("RectangleShape2D_t43yy")
 
 [node name="WorldName" parent="Level 4/Level Button/Overlay" index="0"]
 text = "4"
@@ -378,6 +425,18 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 
 [node name="Outline" parent="Level 4/Level Button" index="4"]
 material = SubResource("ShaderMaterial_ienw4")
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="BevelLeft" parent="Level 4/Level Button" index="5"]
+polygon = PackedVector2Array(-128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128, -124.3, -124.3, -124.3, -35, -117.472, -34.3275, -110.906, -32.3358, -104.855, -29.1014, -99.5513, -24.7487, -95.1986, -19.445, -91.9642, -13.3939, -89.9725, -6.82816, -89.3, 0, -89.9725, 6.82816, -91.9642, 13.3939, -95.1986, 19.445, -99.5513, 24.7487, -104.855, 29.1014, -110.906, 32.3358, -117.472, 34.3275, -124.3, 35, -124.3, 124.3)
+
+[node name="BevelTop" parent="Level 4/Level Button" index="6"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" parent="Level 4/Level Button" index="7"]
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
+
+[node name="BevelBottom" parent="Level 4/Level Button" index="8"]
+polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
 [node name="CollisionShape2D" parent="Level 4/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("CircleShape2D_6on70")
@@ -405,6 +464,7 @@ requires = NodePath("../../Level 4/Level Button")
 
 [node name="Shape" parent="Level 5/Level Button" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+bevel_width = 3.7
 
 [node name="Background" parent="Level 5/Level Button/Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+//7/CAACAAIAAAD+////CAABAAIAAAD+/wAACAACAAIAAAD+/wEACAACAAIAAAD+/wIACAABAAIAAAD//wIACAABAAIAAAD//wEACAABAAIAAAD//wAACAACAAIAAAD/////CAABAAIAAAD///7/CAABAAIAAAAAAP7/CAACAAIAAAAAAP//CAACAAIAAAAAAAAACAACAAIAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAABAAIAAAABAAEACAABAAIAAAABAAAACAABAAIAAAABAP7/CAACAAIAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAIAAAACAAAACAACAAIAAAACAP//CAACAAIAAAACAP7/CAABAAIAAAACAP3/CAABAAIAAAABAP3/CAABAAIAAAAAAP3/CAABAAIAAAD///3/CAABAAIAAAD+//3/CAABAAIAAAD9//3/CAABAAIAAAD9//7/CAACAAIAAAD9////CAABAAIAAAD9/wAACAABAAIAAAD9/wEACAABAAIAAAD9/wIACAABAAIAAAD9/wMACAABAAIAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAABAAIAAAADAAMACAABAAIAAAADAAIACAABAAIAAAADAAEACAABAAIAAAADAAAACAABAAIAAAADAP//CAABAAIAAAADAP7/CAABAAIAAAADAP3/CAABAAIAAAA=")
@@ -417,20 +477,20 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_d4e4m")
+shape = SubResource("RectangleShape2D_4ijks")
 
 [node name="LeftConnector" parent="Level 5/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_an1qf")
+shape = SubResource("RectangleShape2D_r25hn")
 
 [node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_5iw56")
+shape = SubResource("RectangleShape2D_n3jm1")
 
 [node name="CollisionShape2D" parent="Level 5/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_fwn32")
+shape = SubResource("RectangleShape2D_8u5e3")
 
 [node name="WorldName" parent="Level 5/Level Button/Overlay" index="0"]
 text = "5"
@@ -441,6 +501,18 @@ points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35
 [node name="Outline" parent="Level 5/Level Button" index="4"]
 material = SubResource("ShaderMaterial_ienw4")
 points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
+
+[node name="BevelLeft" parent="Level 5/Level Button" index="5"]
+polygon = PackedVector2Array(-128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128, -124.3, -124.3, -124.3, -35, -117.472, -34.3275, -110.906, -32.3358, -104.855, -29.1014, -99.5513, -24.7487, -95.1986, -19.445, -91.9642, -13.3939, -89.9725, -6.82816, -89.3, 0, -89.9725, 6.82816, -91.9642, 13.3939, -95.1986, 19.445, -99.5513, 24.7487, -104.855, 29.1014, -110.906, 32.3358, -117.472, 34.3275, -124.3, 35, -124.3, 124.3)
+
+[node name="BevelTop" parent="Level 5/Level Button" index="6"]
+polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" parent="Level 5/Level Button" index="7"]
+polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
+
+[node name="BevelBottom" parent="Level 5/Level Button" index="8"]
+polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
 [node name="CollisionShape2D" parent="Level 5/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
 shape = SubResource("CircleShape2D_83rm7")

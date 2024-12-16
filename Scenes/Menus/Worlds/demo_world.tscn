@@ -9,16 +9,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrtxw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlfkc"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeaah"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8wrh"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbbo0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbsrd"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pyk83"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_igdx6"]
 radius = 35.0
 
 [sub_resource type="Animation" id="Animation_t6n88"]
@@ -257,7 +257,7 @@ shader_parameter/speed = 1.405
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="Demo World" instance=ExtResource("1_tbae5")]
-nb_of_levels = 15
+nb_of_levels = 13
 world = 12
 
 [node name="Shape" parent="." index="1"]
@@ -284,24 +284,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_lrtxw")
+shape = SubResource("RectangleShape2D_vlfkc")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_eeaah")
+shape = SubResource("RectangleShape2D_d8wrh")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_qbbo0")
+shape = SubResource("RectangleShape2D_nbsrd")
 
 [node name="BottomConnector" parent="Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_pyk83")
+shape = SubResource("CircleShape2D_igdx6")
 
 [node name="Rift" parent="Shape" index="4" instance=ExtResource("2_we3y2")]
 points = PackedVector2Array(26, -129, 26, 76, 129, 76)

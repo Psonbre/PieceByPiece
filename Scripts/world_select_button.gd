@@ -35,7 +35,6 @@ func _ready():
 	overlay.polygon = $Shape.polygon
 	update_labels()
 	locked = !required_completed_worlds.all(func(world) : return world.world_completed)
-	print(locked)
 	
 func _process(delta):
 	if play_icon :

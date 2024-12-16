@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var wall_check: ShapeCast2D = $WallCheck
 @onready var digging_particles: GPUParticles2D = $DiggingParticles
 @onready var squash_cooldown: Timer = $SquashCooldown
-@onready var falling_raycast: RayCast2D = $FallingRaycast
 
 const DEFAULT_SPEED := 300.0
 const JUMP_VELOCITY := -400.0
@@ -28,7 +27,6 @@ var digging := false
 var digging_direction := Vector2.ZERO
 var non_tilted_velocity : Vector2
 var locked := false
-
 func _ready():
 	default_scale = global_scale
 	editor_sprite.visible = false
@@ -47,13 +45,7 @@ func set_locked(should_lock : bool):
 	if !locked : set_physics_process(true)
 	
 func _physics_process(delta):
-	
-	falling_raycast.target_position = Vector2(0, non_tilted_velocity.normalized().y * 5)
-	falling_raycast.force_raycast_update()
-	if falling_raycast.is_colliding():
-		position.y += 5.0
-		land(non_tilted_velocity.y)
-		non_tilted_velocity.y = 0
+	var was_on_floor := is_on_floor()
 	#gravity
 	if is_on_floor() :
 		non_tilted_velocity.y = 0
@@ -98,6 +90,10 @@ func _physics_process(delta):
 	velocity = non_tilted_velocity.rotated(global_rotation)
 	move_and_slide()
 	
+	if is_on_floor() and !was_on_floor:
+		land(non_tilted_velocity.y)
+		non_tilted_velocity.y = 0
+		
 	if overlapping_pieces.size() > 0 :
 		var closest_piece : PuzzlePiece = null
 		var min_distance = INF

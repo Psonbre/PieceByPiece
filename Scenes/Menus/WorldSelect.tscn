@@ -239,7 +239,7 @@ horizontal_intensity = 7
 scale = Vector2(1.3, 1.3)
 required_completed_worlds = [NodePath("../../LeftGroup/Combined/Gravity Key World"), NodePath("../../RightGroup/Combined/Rotating Piece Platform World"), NodePath("../../MiddleGroup/Combined/Dirt Portal World")]
 
-[node name="BottomArrow" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="BottomArrow" type="Control" parent="Tree" node_paths=PackedStringArray("required_completed_worlds") groups=["Arrow"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -259,6 +259,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_t704p")
 target_world_group = 1
+required_completed_worlds = [NodePath("../Basic/Basic World")]
 vertical_intensity = 10.0
 horizontal_intensity = 7
 

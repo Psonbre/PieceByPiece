@@ -4,7 +4,7 @@ class_name LevelSelectButton
 @onready var collectible_shape: PuzzlePieceShape = $Collectible/Shape
 @onready var collectible_outline: PuzzlePieceOutline = $Collectible/Outline
 @onready var overlay = $Overlay
-@onready var level_select: LevelSelect = $"../../"
+@onready var level_select: LevelSelect
 @export var level : PackedScene
 @export var completed := false
 @export var collected_collectible := false :
@@ -19,8 +19,8 @@ class_name LevelSelectButton
 var default_scale : Vector2
 var mouse_hover := false
 
-
 func _ready():
+	level_select = find_parent("LevelSelect")
 	default_scale = scale
 	overlay.polygon = $Shape.polygon
 
