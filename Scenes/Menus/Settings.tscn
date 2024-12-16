@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbl6sigulrew8"]
+[gd_scene load_steps=10 format=3 uid="uid://dbl6sigulrew8"]
 
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_7isfi"]
+[ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="1_gliny"]
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="3_uwmcr"]
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="4_fs3n1"]
 [ext_resource type="LabelSettings" uid="uid://m61ok162yvmy" path="res://Assets/Fonts/pixelFont.tres" id="5_e5vn6"]
@@ -16,7 +17,7 @@ font_size = 64
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Settings" type="Control" parent="."]
+[node name="Settings" type="Control" parent="." node_paths=PackedStringArray("FirstControl")]
 layout_mode = 3
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -27,6 +28,8 @@ offset_bottom = -564.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+script = ExtResource("1_gliny")
+FirstControl = NodePath("Back")
 
 [node name="Title" type="Label" parent="Settings"]
 layout_mode = 2

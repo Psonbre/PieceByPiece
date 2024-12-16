@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5ui348xrja2j"]
+[gd_scene load_steps=8 format=3 uid="uid://b5ui348xrja2j"]
 
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="1_fll2r"]
 [ext_resource type="Script" path="res://Scripts/credits.gd" id="1_jgnww"]
+[ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_m0gci"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_yqpi3"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_xtxaf"]
 
@@ -18,7 +19,7 @@ script = ExtResource("1_jgnww")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Credits" type="Control" parent="."]
+[node name="Credits" type="Control" parent="." node_paths=PackedStringArray("FirstControl")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,6 +29,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.895, 1.895)
+script = ExtResource("2_m0gci")
+FirstControl = NodePath("Back")
 
 [node name="Title" type="Label" parent="Credits"]
 layout_mode = 2
