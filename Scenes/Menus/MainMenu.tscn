@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://iiopsl2jnac1"]
+[gd_scene load_steps=12 format=3 uid="uid://iiopsl2jnac1"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_2asjq"]
+[ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_q8shq"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_y3dni"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_ifsr2"]
 [ext_resource type="Script" path="res://Scripts/Buttons/PlayButton.gd" id="4_q0me5"]
@@ -16,7 +17,7 @@ script = ExtResource("1_2asjq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("FirstControl")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,6 +29,8 @@ offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.75428, 1.75428)
+script = ExtResource("2_q8shq")
+FirstControl = NodePath("CenterContainer/Start")
 metadata/_edit_horizontal_guides_ = [695.0]
 
 [node name="CenterContainer" type="Control" parent="MainMenu"]
@@ -93,6 +96,8 @@ offset_left = 256.0
 offset_right = 466.0
 offset_bottom = 45.0
 pivot_offset = Vector2(103.43, 23.1045)
+focus_next = NodePath("../../CenterContainer3/Exit")
+focus_previous = NodePath("../../CenterContainer4/Settings")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
@@ -117,6 +122,8 @@ offset_left = 256.0
 offset_right = 466.0
 offset_bottom = 45.0
 pivot_offset = Vector2(103.43, 19.7199)
+focus_next = NodePath("../../CenterContainer2/Credits")
+focus_previous = NodePath("../../CenterContainer/Start")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
@@ -141,6 +148,7 @@ offset_left = 256.0
 offset_right = 466.0
 offset_bottom = 45.0
 pivot_offset = Vector2(105.71, 20.7985)
+focus_previous = NodePath("../../CenterContainer2/Credits")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
