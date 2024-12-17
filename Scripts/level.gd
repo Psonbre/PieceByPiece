@@ -23,6 +23,9 @@ func _input(_event):
 		
 		
 func _ready() -> void:
+	if get_tree().current_scene == self :
+		SubSystemManager.get_scene_manager().load_level.call_deferred(world, load(scene_file_path), Vector2.ZERO)
+		queue_free()
 	for piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces"):
 		piece.shape.update_shape()
 	find_child("Player").current_level = self

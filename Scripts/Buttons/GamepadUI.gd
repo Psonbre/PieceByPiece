@@ -1,6 +1,6 @@
 extends Control
 
-var IsMouseControlled = true
+var IsMouseControlled = false
 var Inputs = []
 var can_exit := true
 @export var FirstControl : Control

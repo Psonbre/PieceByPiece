@@ -110,7 +110,12 @@ func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed
 	scene.remove_child(new_cam)
 	
 	# Set the starting position of the new screen based on direction
-	scene.global_position = new_direction * camera.target_zoom * default_resolution
+	if new_direction != Vector2.ZERO:
+		scene.global_position = new_direction * camera.target_zoom * default_resolution
+	else :
+		scene.global_position = Vector2.ZERO
+		camera.zoom = camera.target_zoom
+		camera.global_position = camera.target_position
 	
 	old_screen = current_screen
 	current_screen = scene
