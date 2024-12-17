@@ -36,10 +36,8 @@ func set_target_group(group_to_target : TARGET_GROUPS):
 	for group in get_tree().get_nodes_in_group("WorldGroup") :
 		if group == old_target_node or group == target_node : group.visible = true
 		elif is_ancestor_of(group) : group.visible = false
+	
+		create_tween().tween_property(self, "position", -target_node.position * scale, 1.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 func finish_transition_instantly():
-	position = -target_node.position * scale
-
-func _process(delta):
-	var distance = -target_node.position * scale - position
-	position += delta * distance * 6.0
+	position = -target_node.start_position * scale

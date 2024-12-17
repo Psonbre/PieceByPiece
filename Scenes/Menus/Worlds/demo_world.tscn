@@ -9,16 +9,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_37ss3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idcrv"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu7sx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s45fj"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c75lp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0hh2"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mtshx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1v144"]
 radius = 35.0
 
 [sub_resource type="Animation" id="Animation_t6n88"]
@@ -284,24 +284,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_37ss3")
+shape = SubResource("RectangleShape2D_idcrv")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_iu7sx")
+shape = SubResource("RectangleShape2D_s45fj")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_c75lp")
+shape = SubResource("RectangleShape2D_f0hh2")
 
 [node name="BottomConnector" parent="Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_mtshx")
+shape = SubResource("CircleShape2D_1v144")
 
 [node name="Rift" parent="Shape" index="4" instance=ExtResource("2_we3y2")]
 points = PackedVector2Array(26, -129, 26, 76, 129, 76)

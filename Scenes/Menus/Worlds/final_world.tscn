@@ -4,16 +4,16 @@
 [ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="2_uevmo"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_p30nk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a77uw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvbx2"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wj77"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meevi"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlq37"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dbs5"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qfvm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idpwx"]
 size = Vector2(35, 70)
 
 [sub_resource type="Animation" id="Animation_bgnga"]
@@ -85,7 +85,6 @@ shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="Final World" instance=ExtResource("1_pd1kv")]
 nb_of_levels = 20
-nb_of_completed_levels = 0
 world = 8
 
 [node name="Shape" parent="." index="1"]
@@ -110,24 +109,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_a77uw")
+shape = SubResource("RectangleShape2D_bvbx2")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_8wj77")
+shape = SubResource("RectangleShape2D_meevi")
 
 [node name="TopConnector" parent="Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_wlq37")
+shape = SubResource("RectangleShape2D_1dbs5")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_7qfvm")
+shape = SubResource("RectangleShape2D_idpwx")
 
 [node name="Overlay" parent="." index="2"]
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
@@ -141,14 +140,23 @@ text = "0/20"
 [node name="Levels" parent="Overlay" index="2"]
 text = "0/20"
 
-[node name="Shadow" parent="." index="3"]
-points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+[node name="BevelLeft" parent="." index="3"]
+polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_sdhiq")
 }
 
-[node name="Outline" parent="." index="5"]
+[node name="BevelTop" parent="." index="5"]
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 124.3, -124.3, 35, -124.3, 34.3275, -117.472, 32.3358, -110.906, 29.1014, -104.855, 24.7487, -99.5513, 19.445, -95.1986, 13.3939, -91.9642, 6.82816, -89.9725, 2.14306e-15, -89.3, -6.82816, -89.9725, -13.3939, -91.9642, -19.445, -95.1986, -24.7487, -99.5513, -29.1014, -104.855, -32.3358, -110.906, -34.3275, -117.472, -35, -124.3, -124.3, -124.3)
+
+[node name="BevelRight" parent="." index="6"]
+polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
+
+[node name="Shadow" parent="." index="8"]
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+
+[node name="Outline" parent="." index="9"]
 material = SubResource("ShaderMaterial_ib866")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
