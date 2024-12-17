@@ -26,7 +26,7 @@ func _ready():
 	overlay.polygon = $"Level Button/Shape".polygon
 
 func set_start_position():
-	start_position = level_button.global_position
+	start_position = level_button.position
 	
 func update_visuals():
 	if requires and !requires.completed :
@@ -38,7 +38,7 @@ func update_visuals():
 		collectible_outline.texture = null
 
 func _process(delta):
-	level_button.global_position = start_position + Vector2(cos(Time.get_unix_time_from_system() * horizontal_speed + rand) * horizontal_intensity, sin(Time.get_unix_time_from_system() + rand * vertical_speed) * vertical_intensity)
+	level_button.position = start_position + Vector2(cos(Time.get_unix_time_from_system() * horizontal_speed + rand) * horizontal_intensity, sin(Time.get_unix_time_from_system() + rand * vertical_speed) * vertical_intensity)
 	if mouse_hover :
 		overlay.self_modulate = Color(1,1,1, move_toward(overlay.self_modulate.a, 0.1, delta / 2.0))
 	else :

@@ -22,6 +22,10 @@ var vsyncModePossible: Dictionary = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if get_tree().current_scene == get_parent().get_parent() :
+		SubSystemManager.get_scene_manager().load_settings_menu.call_deferred(Vector2.ZERO)
+		get_parent().get_parent().queue_free()
+		return
 	addDisplays()
 	addVsyncs()
 	update_volume_sliders()

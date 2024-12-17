@@ -12,6 +12,10 @@ func _input(_event):
 		if scene_manager.load_world_select_menu(Vector2(-1,0), world_select_tree_target_group) : can_exit = false
 
 func _ready() -> void:
+	if get_tree().current_scene == self :
+		SubSystemManager.get_scene_manager().load_level_select.call_deferred(world, Vector2.ZERO)
+		queue_free()
+		return
 	var buttons = get_tree().get_nodes_in_group("LevelSelectButton")
 	var completed_levels = SaveManager.get_completed_levels(world)
 	var collectible_levels = SaveManager.get_collectible_levels(world)
