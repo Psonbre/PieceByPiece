@@ -96,7 +96,7 @@ func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vect
 		background.switch_gradient(level.background_gradient)
 	return level
 
-func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed := transition_speed) -> Node2D:
+func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), destroy_old_screen := true, speed := transition_speed) -> Node2D:
 	if !scene_change_cooldown.is_stopped() : return null
 	scene_change_cooldown.start()
 	if old_screen != null: 
@@ -125,18 +125,30 @@ func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed
 	
 	add_child(scene)
 	
-	slide_screens()
+	slide_screens(destroy_old_screen)
 	
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/transition.wav"), 0, transition_speed / 6.0 + (randf() - 0.5) / 4.0)
 	
 	return scene
 
-func slide_screens():
+func slide_screens(destroy_old_screen := true):
 	current_screen.create_tween().tween_property(current_screen, "global_position", Vector2.ZERO, 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	if old_screen :
 		var old_screen_tween = old_screen.create_tween().tween_property(old_screen, "global_position", -direction * camera.target_zoom * default_resolution, 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		old_screen_tween.finished.connect(func () : old_screen.queue_free())
-	
+		if destroy_old_screen : old_screen_tween.finished.connect(
+			func () : 
+				old_screen.queue_free()
+				old_screen = null)
+
+## Can only be used if load_scene() was called previously with the destroy_old_screen parameter set to false
+func load_previous_scene():
+	if old_screen :
+		var temp := old_screen
+		old_screen = current_screen
+		current_screen = temp
+		direction = - direction
+		slide_screens()
+
 func reset_scene(reset_direction := Vector2(0, -1)):
 	load_scene(current_screen_resource , reset_direction)
 	Player.has_collectible = false
