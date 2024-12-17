@@ -8,7 +8,7 @@ var can_select_level := true
 
 func _input(_event):
 	var scene_manager := SubSystemManager.get_scene_manager()
-	if Input.is_action_just_pressed("Pause") and can_exit and scene_manager.old_screen != self:
+	if Input.is_action_just_pressed("ui_cancel") and can_exit and scene_manager.old_screen != self:
 		if scene_manager.load_world_select_menu(Vector2(-1,0), world_select_tree_target_group) : can_exit = false
 
 func _ready() -> void:
