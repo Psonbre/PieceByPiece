@@ -60,6 +60,7 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [node name="Level 6" instance=ExtResource("1_xjht7")]
+world = 12
 next_level = ExtResource("2_w5o7i")
 
 [node name="Camera2D" parent="." index="0"]

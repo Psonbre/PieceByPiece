@@ -2,6 +2,7 @@ extends Control
 
 var IsMouseControlled = true
 var Inputs = []
+var can_exit := true
 @export var FirstControl : Control
 
 func _init():

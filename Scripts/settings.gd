@@ -7,6 +7,7 @@ extends Control
 @onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
 
 @export var popupItemFontSize = 32
+var can_exit := true
 
 var resolutionsPossible: Dictionary = {}
 var displayModePossible: Dictionary = {
@@ -24,6 +25,11 @@ func _ready() -> void:
 	addDisplays()
 	addVsyncs()
 	update_volume_sliders()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel") :
+		if can_exit and SubSystemManager.get_scene_manager().load_main_menu(Vector2(-1,0)) :
+			can_exit = false
 
 func addDisplays():
 	for displayPossible in displayModePossible:

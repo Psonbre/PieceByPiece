@@ -57,7 +57,7 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [node name="Level 11" instance=ExtResource("1_d0y0y")]
-world = 6
+world = 12
 next_level = ExtResource("2_0biq3")
 background_gradient = ExtResource("3_sh4bx")
 

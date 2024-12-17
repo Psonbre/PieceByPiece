@@ -68,7 +68,7 @@ size = Vector2(35, 70)
 size = Vector2(35, 70)
 
 [node name="Level 13" instance=ExtResource("1_nth5y")]
-world = 6
+world = 12
 background_gradient = ExtResource("2_v0ie0")
 
 [node name="Player" parent="." index="1"]
