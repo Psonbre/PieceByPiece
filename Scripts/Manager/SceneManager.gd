@@ -124,30 +124,25 @@ func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed
 	direction = new_direction  # Update the global direction
 	
 	add_child(scene)
+	
+	slide_screens()
+	
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/transition.wav"), 0, transition_speed / 6.0 + (randf() - 0.5) / 4.0)
+	
 	return scene
 
+func slide_screens():
+	current_screen.create_tween().tween_property(current_screen, "global_position", Vector2.ZERO, 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	if old_screen :
+		var old_screen_tween = old_screen.create_tween().tween_property(old_screen, "global_position", -direction * camera.target_zoom * default_resolution, 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		old_screen_tween.finished.connect(func () : old_screen.queue_free())
+	
 func reset_scene(reset_direction := Vector2(0, -1)):
 	load_scene(current_screen_resource , reset_direction)
 	Player.has_collectible = false
 	
 func _process(delta):
 	if discord_rpc : discord_rpc.run_callbacks()
-	if current_screen:
-		# Target position for the new screen
-		var target_position = Vector2(0, 0)
-		var speed = maxf((current_screen.global_position - target_position).length() * transition_speed, 0) * delta
-		current_screen.global_position = current_screen.global_position.move_toward(target_position, speed)
-	
-	if old_screen:
-		# Target position for the old screen (opposite of the direction)
-		var target_position = -direction * camera.target_zoom * default_resolution
-		var speed = maxf((old_screen.global_position - target_position).length() * transition_speed, 0) * delta
-		old_screen.global_position = old_screen.global_position.move_toward(target_position, speed)
-		
-		if (old_screen.global_position - target_position).length() < 100:
-			old_screen.queue_free()
-			old_screen = null
 
 func _ready() -> void:
 	if OS.has_feature("discord_rpc") || OS.has_feature("editor") :
