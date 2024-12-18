@@ -1,6 +1,6 @@
 extends Control
 
-@onready var menu = $DropdownSection/DropDownMenu
+@onready var menu = $Container/DropdownSection/DropDownMenu
 @export var hiddenPosition : Vector2
 @export var showPosition : Vector2
 @export var animationDuration : float = 1

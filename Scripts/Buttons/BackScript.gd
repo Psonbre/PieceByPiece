@@ -2,6 +2,10 @@ extends FloatingUI
 
 @export var scroll_direction := Vector2(1,0)
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel") :
+		_on_pressed()
+
 func _on_pressed() -> void:
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)
 	SubSystemManager.get_scene_manager().load_previous_scene()
