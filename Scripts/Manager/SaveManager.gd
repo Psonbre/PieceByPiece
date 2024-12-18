@@ -63,3 +63,4 @@ static func get_collectible_levels(world: SceneManager.WORLDS) -> Array:
 static func initialize_world_data(world: SceneManager.WORLDS):
 	if not world_data.has(world):
 		world_data[world] = {"completed_levels": [], "collectible_levels": []}
+		

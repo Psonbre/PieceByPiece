@@ -35,7 +35,17 @@ func addDisplays():
 		displaySlider.add_item(displayPossible, displayModePossible[displayPossible])
 		
 	displaySlider.get_popup().add_theme_font_size_override("font_size",popupItemFontSize)
-
+	
+	_select_display_mode()
+	
+func _select_display_mode():
+	var currentDisplay = SubSystemManager.get_settings_manager()._get_display_mode()
+	# Iterate through the items in the OptionButton
+	for i in range(displaySlider.item_count):
+		if displaySlider.get_item_id(i) == currentDisplay:
+			displaySlider.select(i)
+			return
+			
 func addVsyncs():
 	for vsyncMode in vsyncModePossible:
 		var vsync_data = vsyncModePossible[vsyncMode]
@@ -48,6 +58,16 @@ func addVsyncs():
 		vsyncSlider.get_item_tooltip(index)
 	
 	vsyncSlider.get_popup().add_theme_font_size_override("font_size",popupItemFontSize)
+	
+	_select_vsync_mode()
+	
+func _select_vsync_mode():
+	var currentVsync = SubSystemManager.get_settings_manager()._get_vsync_mode()
+	# Iterate through the items in the OptionButton
+	for i in range(vsyncSlider.item_count):
+		if vsyncSlider.get_item_id(i) == currentVsync:
+			vsyncSlider.select(i)
+			return
 		
 func update_volume_sliders():
 	masterSlider.value = SubSystemManager.get_settings_manager().masterVolume

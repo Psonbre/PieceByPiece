@@ -7,8 +7,10 @@ static var scene_manager : SceneManager
 static var music_manager: MusicManager
 static var sound_manager: SoundManager
 static var settings_manager: SettingsManager
+static var config_file_manager: ConfigFileManager
 
 func _initialize() -> void:
+	get_config_file_manager()._load_config()
 	get_scene_manager()
 	if !root.has_node("Intro"):
 		get_music_manager()
@@ -40,3 +42,8 @@ static func get_settings_manager() -> SettingsManager:
 	if settings_manager == null:
 		settings_manager = SettingsManager.new()
 	return settings_manager
+		
+static func get_config_file_manager() -> ConfigFileManager:
+	if config_file_manager == null:
+		config_file_manager = ConfigFileManager.new()
+	return config_file_manager
