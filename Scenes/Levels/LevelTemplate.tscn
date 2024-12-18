@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl1hijhabrmas"]
+[gd_scene load_steps=8 format=3 uid="uid://bl1hijhabrmas"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_0cx67"]
 [ext_resource type="PackedScene" uid="uid://dyrv4i083tx3b" path="res://Scenes/Players/player.tscn" id="2_5mjql"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="4_otehi"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="5_k5ua4"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="5_weia1"]
+[ext_resource type="PackedScene" uid="uid://be11aroqcumi2" path="res://Scenes/Menus/LevelMenu.tscn" id="7_bsxew"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0cx67")
@@ -36,6 +37,19 @@ text = "Level 1"
 label_settings = ExtResource("5_weia1")
 script = ExtResource("5_k5ua4")
 
+[node name="LevelMenu" parent="Control" instance=ExtResource("7_bsxew")]
+layout_mode = 1
+offset_left = -588.0
+offset_top = -319.2
+offset_right = -588.0
+offset_bottom = -319.2
+scale = Vector2(0.5, 0.5)
+
 [node name="ResetLevelCooldown" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[connection signal="on_pause_input" from="." to="Control/LevelMenu" method="_on_level_on_pause_input"]
+[connection signal="on_quit_clicked" from="Control/LevelMenu" to="." method="_on_level_menu_on_quit_clicked"]
+[connection signal="on_restart_clicked" from="Control/LevelMenu" to="." method="_on_level_menu_on_restart_clicked"]
+[connection signal="on_settings_clicked" from="Control/LevelMenu" to="." method="_on_level_menu_on_settings_clicked"]

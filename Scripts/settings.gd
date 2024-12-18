@@ -30,11 +30,6 @@ func _ready() -> void:
 	addVsyncs()
 	update_volume_sliders()
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel") :
-		if can_exit and SubSystemManager.get_scene_manager().load_main_menu(Vector2(-1,0)) :
-			can_exit = false
-
 func addDisplays():
 	for displayPossible in displayModePossible:
 		displaySlider.add_item(displayPossible, displayModePossible[displayPossible])

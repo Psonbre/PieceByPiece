@@ -83,7 +83,7 @@ func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	return credits
 	
 func load_settings_menu(new_direction := Vector2(1, 0)) -> Node2D:
-	var settings = load_scene(SETTINGS, new_direction)
+	var settings = load_scene(SETTINGS, new_direction, false)
 	if settings : 
 		updated_discord_presence("Modifying the settings", "")
 		background.switch_gradient(default_gradient)
