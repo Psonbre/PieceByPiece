@@ -47,4 +47,6 @@ func _on_level_menu_on_restart_clicked():
 
 
 func _on_level_menu_on_settings_clicked():
-	pass # Replace with function body.
+	var scene_manager = SubSystemManager.get_scene_manager()
+	if scene_manager.old_screen != self and !Player.winning:
+		scene_manager.load_settings_menu() 
