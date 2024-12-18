@@ -1,90 +1,90 @@
-[gd_scene load_steps=9 format=3 uid="uid://be11aroqcumi2"]
+[gd_scene load_steps=9 format=3 uid="uid://dh4cjxs7i6o8c"]
 
-[ext_resource type="Script" path="res://Scripts/Pause/level_menu.gd" id="1_biako"]
-[ext_resource type="Texture2D" uid="uid://whbh7aod6y0e" path="res://Assets/Icons/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="2_78q3r"]
-[ext_resource type="Texture2D" uid="uid://b25umqcyc7lr4" path="res://Assets/Icons/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="2_cxn54"]
-[ext_resource type="Texture2D" uid="uid://bmdpyw1lbygn0" path="res://Assets/Icons/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="3_e2wyo"]
-[ext_resource type="Texture2D" uid="uid://b7awj8cuibmoa" path="res://Assets/Icons/refresh_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="4_xlg0d"]
-[ext_resource type="Texture2D" uid="uid://dryd3defeh2y" path="res://Assets/Icons/settings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="5_2g7gg"]
-[ext_resource type="Script" path="res://Scripts/Buttons/dropdown_button.gd" id="5_t5ygl"]
-[ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_0b08p"]
+[ext_resource type="Script" path="res://Scripts/Buttons/pause_menu.gd" id="1_87pjb"]
+[ext_resource type="Script" path="res://Scripts/floating_section.gd" id="2_dc83r"]
+[ext_resource type="Texture2D" uid="uid://b25umqcyc7lr4" path="res://Assets/Icons/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="3_60wth"]
+[ext_resource type="Texture2D" uid="uid://bmdpyw1lbygn0" path="res://Assets/Icons/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="4_x5f66"]
+[ext_resource type="Script" path="res://Scripts/pause_menu_button.gd" id="5_1twl6"]
+[ext_resource type="Texture2D" uid="uid://whbh7aod6y0e" path="res://Assets/Icons/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="6_3c6h6"]
+[ext_resource type="Texture2D" uid="uid://b7awj8cuibmoa" path="res://Assets/Icons/refresh_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="7_6n21h"]
+[ext_resource type="Texture2D" uid="uid://dryd3defeh2y" path="res://Assets/Icons/settings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="8_hp646"]
 
-[node name="LevelMenu" type="Control"]
+[node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_biako")
-hiddenPosition = Vector2(0.9, -23)
-showPosition = Vector2(0.9, 5)
+script = ExtResource("1_87pjb")
+hiddenPosition = Vector2(0, -24)
+showPosition = Vector2(0, 2)
 
 [node name="Container" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("6_0b08p")
+mouse_filter = 2
+script = ExtResource("2_dc83r")
 
 [node name="DropDownButton" type="TextureButton" parent="Container"]
 layout_mode = 2
 offset_right = 96.0
 offset_bottom = 96.0
+pivot_offset = Vector2(47, 46)
 toggle_mode = true
-texture_normal = ExtResource("2_cxn54")
-texture_pressed = ExtResource("3_e2wyo")
-script = ExtResource("5_t5ygl")
+texture_normal = ExtResource("3_60wth")
+texture_pressed = ExtResource("4_x5f66")
+script = ExtResource("5_1twl6")
 
 [node name="DropdownSection" type="Control" parent="Container"]
 clip_contents = true
 layout_mode = 2
 anchors_preset = 0
-offset_left = 1.0
+offset_left = 6.0
 offset_top = 72.0
-offset_right = 41.0
-offset_bottom = 112.0
+offset_right = 26.0
+offset_bottom = 97.0
 scale = Vector2(4.29972, 12.2796)
+mouse_filter = 2
 
 [node name="DropDownMenu" type="VBoxContainer" parent="Container/DropdownSection"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.018
 anchor_bottom = 0.016
-offset_left = 0.930294
-offset_top = 3.33888
-offset_right = 96.2103
-offset_bottom = 350.699
+offset_top = 1.0
+offset_right = 95.64
+offset_bottom = 348.632
 scale = Vector2(0.2, 0.066)
+mouse_filter = 2
 theme_override_constants/separation = 30
 
 [node name="QuitButton" type="TextureButton" parent="Container/DropdownSection/DropDownMenu"]
 layout_mode = 2
-texture_normal = ExtResource("2_78q3r")
-script = ExtResource("5_t5ygl")
+texture_normal = ExtResource("6_3c6h6")
+script = ExtResource("5_1twl6")
 
 [node name="RestartButton" type="TextureButton" parent="Container/DropdownSection/DropDownMenu"]
 layout_mode = 2
-texture_normal = ExtResource("4_xlg0d")
-script = ExtResource("5_t5ygl")
+texture_normal = ExtResource("7_6n21h")
+script = ExtResource("5_1twl6")
 
 [node name="SettingsButton" type="TextureButton" parent="Container/DropdownSection/DropDownMenu"]
 layout_mode = 2
-texture_normal = ExtResource("5_2g7gg")
-script = ExtResource("5_t5ygl")
+texture_normal = ExtResource("8_hp646")
+script = ExtResource("5_1twl6")
 
 [connection signal="mouse_entered" from="Container/DropDownButton" to="Container/DropDownButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/DropDownButton" to="Container/DropDownButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="Container/DropDownButton" to="." method="_on_drop_down_menu_pressed"]
+[connection signal="pressed" from="Container/DropDownButton" to="." method="_on_drop_down_button_pressed"]
 [connection signal="pressed" from="Container/DropDownButton" to="Container/DropDownButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="Container/DropdownSection/DropDownMenu/QuitButton" to="Container/DropdownSection/DropDownMenu/QuitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/DropdownSection/DropDownMenu/QuitButton" to="Container/DropdownSection/DropDownMenu/QuitButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="Container/DropdownSection/DropDownMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Container/DropdownSection/DropDownMenu/QuitButton" to="Container/DropdownSection/DropDownMenu/QuitButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="Container/DropdownSection/DropDownMenu/RestartButton" to="Container/DropdownSection/DropDownMenu/RestartButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/DropdownSection/DropDownMenu/RestartButton" to="Container/DropdownSection/DropDownMenu/RestartButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="Container/DropdownSection/DropDownMenu/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Container/DropdownSection/DropDownMenu/RestartButton" to="Container/DropdownSection/DropDownMenu/RestartButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="Container/DropdownSection/DropDownMenu/SettingsButton" to="Container/DropdownSection/DropDownMenu/SettingsButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/DropdownSection/DropDownMenu/SettingsButton" to="Container/DropdownSection/DropDownMenu/SettingsButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="Container/DropdownSection/DropDownMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Container/DropdownSection/DropDownMenu/SettingsButton" to="Container/DropdownSection/DropDownMenu/SettingsButton" method="_on_pressed"]

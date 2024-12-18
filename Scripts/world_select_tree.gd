@@ -10,8 +10,7 @@ var current_tween : Tween
 
 func _ready() -> void:
 	default_target_group = target_group
-	set_target_group.call_deferred(target_group)
-			
+	
 func set_target_group(group_to_target : TARGET_GROUPS):
 	target_group = group_to_target
 	var old_target_node := target_node
@@ -34,12 +33,26 @@ func set_target_group(group_to_target : TARGET_GROUPS):
 			
 	for arrow in get_tree().get_nodes_in_group("Arrow"):
 		arrow.update_enabled()
+	for group in get_tree().get_nodes_in_group("WorldGroup"):
+		if group.is_ancestor_of(target_node) :
+			group.modulate = Color.WHITE
+			break
 	FirstControl = target_node
 	current_tween = create_tween()
 	current_tween.tween_property(self, "position", -get_button_relative_position(target_node) + Vector2(size.x / 2.0 - 128, 0), 1.2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-	
+
+func hide_other_groups(hide_own_arrows := true):
+	for group in get_tree().get_nodes_in_group("WorldGroup") :
+		if is_ancestor_of(group) and !group.is_ancestor_of(target_node) :
+			group.modulate = Color.TRANSPARENT
+	if hide_own_arrows :
+		for arrow in get_tree().get_nodes_in_group("Arrow"):
+			arrow.visible = false
+	else :
+		for arrow in get_tree().get_nodes_in_group("Arrow"):
+			arrow.update_enabled()
+		
 func finish_transition_instantly():
-	if target_node : set_target_group(default_target_group)
 	if current_tween : current_tween.custom_step(99)
 
 func get_button_relative_position(world_button : WorldSelectButton):

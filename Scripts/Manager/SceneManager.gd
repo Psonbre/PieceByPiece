@@ -69,8 +69,10 @@ func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group =
 	var menu = load_scene(WORLD_SELECT, new_direction)
 	if menu:
 		var tree : WorldSelectTree = menu.get_node("TreeContainer/Tree")
-		if target_world_group != null : tree.set_target_group(target_world_group)
+		if target_world_group == null : target_world_group = tree.target_group
+		tree.set_target_group.call_deferred(target_world_group)
 		tree.finish_transition_instantly.call_deferred()
+		tree.hide_other_groups.call_deferred(false)
 		updated_discord_presence("Selecting a world", "")
 		background.switch_gradient(default_gradient)
 	return menu
@@ -137,7 +139,7 @@ func slide_screens(destroy_old_screen := true):
 		var old_screen_tween = old_screen.create_tween().tween_property(old_screen, "global_position", -direction * camera.target_zoom * default_resolution, 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 		if destroy_old_screen : old_screen_tween.finished.connect(
 			func () : 
-				old_screen.queue_free()
+				if old_screen : old_screen.queue_free()
 				old_screen = null)
 
 ## Can only be used if load_scene() was called previously with the destroy_old_screen parameter set to false
