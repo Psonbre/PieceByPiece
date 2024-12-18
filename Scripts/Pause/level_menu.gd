@@ -28,6 +28,7 @@ func move_dropdown(final_position : Vector2):
 	var duration : float = calculate_animation_duration(final_position)
 	var animation = create_tween()
 	current_animation_tween = animation
+	animation.set_trans(Tween.TRANS_CUBIC)
 	animation.tween_property(menu,"position", final_position, duration)
 	animation.play()
 	menu_open = !menu_open

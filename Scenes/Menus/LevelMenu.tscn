@@ -15,9 +15,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_biako")
-hiddenPosition = Vector2(0.5, -23)
-showPosition = Vector2(0.5, 5)
-animationDuration = 0.5
+hiddenPosition = Vector2(0.9, -23)
+showPosition = Vector2(0.9, 5)
 
 [node name="DropDownButton" type="TextureButton" parent="."]
 layout_mode = 0
