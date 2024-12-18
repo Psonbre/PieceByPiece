@@ -5,6 +5,10 @@ extends Control
 @export var showPosition : Vector2
 @export var animationDuration : float = 1
 
+signal on_restart_clicked
+signal on_quit_clicked
+signal on_settings_clicked
+
 var menu_open : bool = false
 var current_animation_tween: Tween
 
@@ -56,3 +60,17 @@ func calculate_pourcentage_movement(start : Vector2, destination : Vector2):
 	
 func calculate_movement_speed(movementPourcentage : float):
 	return movementPourcentage * animationDuration
+
+
+func _on_quit_button_pressed():
+	emit_signal("on_quit_clicked")
+
+func _on_restart_button_pressed():
+	emit_signal("on_restart_clicked")
+
+func _on_settings_button_pressed():
+	emit_signal("on_settings_clicked")
+
+
+func _on_level_on_pause_input():
+	_on_drop_down_menu_pressed()

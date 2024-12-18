@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://be11aroqcumi2"]
+[gd_scene load_steps=8 format=3 uid="uid://be11aroqcumi2"]
 
 [ext_resource type="Script" path="res://Scripts/Pause/level_menu.gd" id="1_biako"]
 [ext_resource type="Texture2D" uid="uid://whbh7aod6y0e" path="res://Assets/Icons/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="2_78q3r"]
 [ext_resource type="Texture2D" uid="uid://b25umqcyc7lr4" path="res://Assets/Icons/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="2_cxn54"]
 [ext_resource type="Texture2D" uid="uid://bmdpyw1lbygn0" path="res://Assets/Icons/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="3_e2wyo"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="4_gqtbi"]
 [ext_resource type="Texture2D" uid="uid://b7awj8cuibmoa" path="res://Assets/Icons/refresh_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="4_xlg0d"]
 [ext_resource type="Texture2D" uid="uid://dryd3defeh2y" path="res://Assets/Icons/settings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="5_2g7gg"]
 
@@ -25,6 +26,7 @@ offset_bottom = 96.0
 toggle_mode = true
 texture_normal = ExtResource("2_cxn54")
 texture_pressed = ExtResource("3_e2wyo")
+script = ExtResource("4_gqtbi")
 
 [node name="DropdownSection" type="Control" parent="."]
 clip_contents = true
@@ -60,3 +62,6 @@ layout_mode = 2
 texture_normal = ExtResource("5_2g7gg")
 
 [connection signal="pressed" from="DropDownButton" to="." method="_on_drop_down_menu_pressed"]
+[connection signal="pressed" from="DropdownSection/DropDownMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="DropdownSection/DropDownMenu/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="DropdownSection/DropDownMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
