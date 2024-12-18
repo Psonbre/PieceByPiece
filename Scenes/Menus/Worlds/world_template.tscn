@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bx8ht3bt5lbpu"]
+[gd_scene load_steps=26 format=4 uid="uid://bx8ht3bt5lbpu"]
 
 [ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="1_fwsvf"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_5d7h1"]
@@ -10,22 +10,22 @@
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_hwcmm"]
 [ext_resource type="Texture2D" uid="uid://mwlqduyhjj8h" path="res://Assets/Sprites/lock.png" id="6_86jjf"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_ymn1m"]
+[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="10_mtlgj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
-size = Vector2(256, 256)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2vi6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xppge"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ua35"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1ym8w"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2b3b"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_prwn6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogt2a"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocapx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mixs1"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rowhg"]
@@ -53,18 +53,30 @@ size = Vector2(40, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpvsi"]
 size = Vector2(40, 80)
 
-[node name="Template World" type="Area2D"]
-collision_mask = 5
+[node name="Template World" type="Button"]
+custom_minimum_size = Vector2(256, 256)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v2vi6")
+flat = true
 script = ExtResource("1_fwsvf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_812v4")
-metadata/_edit_lock_ = true
 
 [node name="Shape" type="Polygon2D" parent="."]
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
+position = Vector2(128, 128)
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 script = ExtResource("2_xppke")
 bevel_width = 3.7
@@ -104,7 +116,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_xppge")
+shape = SubResource("CircleShape2D_1ua35")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
@@ -116,7 +128,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_1ym8w")
+shape = SubResource("CircleShape2D_f2b3b")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
@@ -128,7 +140,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_prwn6")
+shape = SubResource("RectangleShape2D_ogt2a")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
@@ -140,15 +152,15 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_ocapx")
+shape = SubResource("RectangleShape2D_mixs1")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
+position = Vector2(128, 128)
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
-metadata/_edit_lock_ = true
 
 [node name="WorldName" type="Label" parent="Overlay"]
 z_index = 1
@@ -217,29 +229,33 @@ end_cap_mode = 2
 [node name="BevelLeft" type="Polygon2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.360784)
 material = SubResource("ShaderMaterial_rowhg")
+position = Vector2(128, 128)
 polygon = PackedVector2Array(-128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128, -124.3, -124.3, -124.3, -35, -131.128, -34.3275, -137.694, -32.3358, -143.745, -29.1014, -149.049, -24.7487, -153.401, -19.445, -156.636, -13.3939, -158.627, -6.82816, -159.3, 4.28612e-15, -158.627, 6.82816, -156.636, 13.3939, -153.401, 19.445, -149.049, 24.7487, -143.745, 29.1014, -137.694, 32.3358, -131.128, 34.3275, -124.3, 35, -124.3, 124.3)
 
 [node name="BevelTop" type="Polygon2D" parent="."]
 self_modulate = Color(0.745617, 0.745617, 0.745617, 0.360784)
 material = SubResource("ShaderMaterial_rowhg")
+position = Vector2(128, 128)
 polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
 
 [node name="BevelRight" type="Polygon2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.501961)
 material = SubResource("ShaderMaterial_rowhg")
+position = Vector2(128, 128)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
 
 [node name="BevelBottom" type="Polygon2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.360784)
 material = SubResource("ShaderMaterial_rowhg")
+position = Vector2(128, 128)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
 [node name="Shadow" type="Line2D" parent="."]
 z_index = -2
 texture_repeat = 2
-position = Vector2(4, 4)
+position = Vector2(132, 132)
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 width = 9.62
 default_color = Color(0, 0, 0, 1)
@@ -247,12 +263,12 @@ texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="Outline" type="Line2D" parent="."]
 z_index = -1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_pb4r2")
+position = Vector2(128, 128)
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 width = 5.0
 texture_mode = 1
@@ -260,10 +276,11 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("8_ymn1m")
-metadata/_edit_lock_ = true
+moving_outline_texture = ExtResource("10_mtlgj")
+moving_width = 5.0
 
 [node name="Collectible" type="Area2D" parent="."]
-position = Vector2(105, -104)
+position = Vector2(233, 24)
 scale = Vector2(0.107197, 0.107197)
 collision_mask = 5
 
@@ -349,7 +366,8 @@ end_cap_mode = 2
 script = ExtResource("8_ymn1m")
 metadata/_edit_lock_ = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="focus_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

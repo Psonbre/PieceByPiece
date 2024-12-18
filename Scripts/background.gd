@@ -4,8 +4,8 @@ class_name Background
 var transition_time := 1.0
 
 func switch_gradient(gradient: Gradient):
-	if not gradient : return
 	var current_gradient_texture: GradientTexture1D = material.get_shader_parameter("gradient")
+	if not gradient or gradient == current_gradient_texture.gradient: return
 	var gradient_speed: float = material.get_shader_parameter("gradient_speed")
 	var transition_progress: float = material.get_shader_parameter("transition_progress")
 	var time: float = Time.get_ticks_msec() / 1000.0

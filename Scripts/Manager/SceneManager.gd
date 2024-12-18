@@ -68,7 +68,7 @@ func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
 	var menu = load_scene(WORLD_SELECT, new_direction)
 	if menu:
-		var tree : WorldSelectTree = menu.get_node("Tree")
+		var tree : WorldSelectTree = menu.get_node("TreeContainer/Tree")
 		if target_world_group != null : tree.set_target_group(target_world_group)
 		tree.finish_transition_instantly.call_deferred()
 		updated_discord_presence("Selecting a world", "")

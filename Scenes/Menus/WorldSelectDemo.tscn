@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bugeuopf4jxs7" path="res://Scenes/Menus/Worlds/basic_world.tscn" id="5_2x5tc"]
 [ext_resource type="PackedScene" uid="uid://c5vxwbnikmdly" path="res://Scenes/Menus/Worlds/demo_world.tscn" id="5_hgd0u"]
 [ext_resource type="PackedScene" uid="uid://e7wskfnclaq6" path="res://Scenes/Menus/Worlds/advanced_world.tscn" id="6_8giab"]
+[ext_resource type="PackedScene" uid="uid://b1uyvpqy0gvyg" path="res://Scenes/Menus/Worlds/world_select_arrow.tscn" id="6_o7i7l"]
 [ext_resource type="PackedScene" uid="uid://dbkth5a8frbf4" path="res://Scenes/Menus/Worlds/portal_world.tscn" id="7_2d2s5"]
 [ext_resource type="PackedScene" uid="uid://cr6tqpwvtumc5" path="res://Scenes/Menus/Worlds/dirt_portal_world.tscn" id="8_oc3b8"]
 [ext_resource type="PackedScene" uid="uid://da810mvip5tid" path="res://Scenes/Menus/Worlds/dirt_world.tscn" id="9_1kpsb"]
@@ -17,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bou8388epmvgw" path="res://Scenes/Menus/Worlds/platform_rotating_piece_world.tscn" id="14_ji6by"]
 [ext_resource type="PackedScene" uid="uid://dtt0tdkls3xon" path="res://Scenes/Menus/Worlds/rotating_piece_world.tscn" id="15_8hgbi"]
 [ext_resource type="PackedScene" uid="uid://bndsfuv4ll7tr" path="res://Scenes/Menus/Worlds/final_world.tscn" id="16_2qj1u"]
-[ext_resource type="Script" path="res://Scripts/world_select_arrow.gd" id="17_awmkw"]
 
 [node name="WorldSelect" type="Node2D"]
 script = ExtResource("1_q5kbk")
@@ -25,754 +25,562 @@ script = ExtResource("1_q5kbk")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.015, 1.015)
 
-[node name="Tree" type="Control" parent="."]
+[node name="TreeContainer" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-scale = Vector2(1.70503, 1.70503)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3568.0
+offset_top = -256.0
+offset_right = -2.0
+offset_bottom = 2774.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="Tree" type="VBoxContainer" parent="TreeContainer" node_paths=PackedStringArray("FirstControl")]
+layout_mode = 2
+anchor_top = -0.115512
+anchor_right = 1.0
+anchor_bottom = 0.884
+offset_bottom = 1.47974
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 350
 script = ExtResource("2_uuris")
 target_group = 6
+FirstControl = NodePath("DemoWorldContainer/Demo World")
+metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Control" parent="Tree"]
+[node name="Title" type="Control" parent="TreeContainer/Tree"]
 z_index = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_bny4r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="TreeContainer/Tree/Title"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -373.014
-offset_bottom = -373.014
+offset_left = -221.0
+offset_top = 157.5
+offset_right = 979.0
+offset_bottom = 357.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Title" type="Label" parent="Tree/Title"]
-layout_mode = 2
-offset_left = -206.448
-offset_top = 25.7426
-offset_right = 993.552
-offset_bottom = 225.743
-scale = Vector2(0.346379, 0.346379)
+scale = Vector2(0.355, 0.355)
 theme_override_font_sizes/font_size = 1
 text = "Worlds"
 label_settings = ExtResource("3_ci1o0")
 horizontal_alignment = 1
-script = ExtResource("4_bny4r")
 
-[node name="Demo" type="Control" parent="Tree" groups=["WorldGroup"]]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 2.41608
-offset_bottom = 2.41608
-scale = Vector2(1.25, 1.25)
+[node name="DemoWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("4_bny4r")
 vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Demo World" parent="Tree/Demo" instance=ExtResource("5_hgd0u")]
-scale = Vector2(1.25, 1.25)
-
-[node name="Basic" type="Control" parent="Tree" groups=["WorldGroup"]]
-layout_mode = 3
+[node name="Demo World" parent="TreeContainer/Tree/DemoWorldContainer" instance=ExtResource("5_hgd0u")]
+layout_mode = 2
 anchors_preset = 0
-offset_top = 752.416
-offset_bottom = 752.416
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Basic World" parent="Tree/Basic" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("5_2x5tc")]
-scale = Vector2(1.25, 1.25)
-required_completed_worlds = [NodePath("../../Final/Final World")]
-
-[node name="Advanced" type="Control" parent="Tree" groups=["WorldGroup"]]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 1502.42
-offset_bottom = 1502.42
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Advanced World" parent="Tree/Advanced" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("6_8giab")]
-scale = Vector2(1.25, 1.25)
-required_completed_worlds = [NodePath("../../Basic/Basic World")]
-
-[node name="MiddleGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
-anchors_preset = 0
-offset_top = 2252.42
-offset_bottom = 2252.42
-
-[node name="Portals" type="Control" parent="Tree/MiddleGroup"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -400.0
-offset_right = -400.0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Portal World" parent="Tree/MiddleGroup/Portals" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("7_2d2s5")]
-required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
-
-[node name="Combined" type="Control" parent="Tree/MiddleGroup"]
-layout_mode = 3
-anchors_preset = 0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("8_oc3b8")]
-required_completed_worlds = [NodePath("../../Portals/Portal World"), NodePath("../../Dirt/Dirt World")]
-
-[node name="Dirt" type="Control" parent="Tree/MiddleGroup"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 400.0
-offset_right = 400.0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Dirt World" parent="Tree/MiddleGroup/Dirt" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("9_1kpsb")]
-required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
-
-[node name="LeftGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
-anchors_preset = 0
-offset_left = -1500.0
-offset_top = 2252.42
-offset_right = -1500.0
-offset_bottom = 2252.42
-
-[node name="Gravity" type="Control" parent="Tree/LeftGroup"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -400.0
-offset_right = -400.0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Gravity World" parent="Tree/LeftGroup/Gravity" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("10_isvnh")]
-required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
-
-[node name="Combined" type="Control" parent="Tree/LeftGroup"]
-layout_mode = 3
-anchors_preset = 0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Gravity Key World" parent="Tree/LeftGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("11_wr1ul")]
-required_completed_worlds = [NodePath("../../Gravity/Gravity World"), NodePath("../../Key/Key World")]
-
-[node name="Key" type="Control" parent="Tree/LeftGroup"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 400.0
-offset_right = 400.0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Key World" parent="Tree/LeftGroup/Key" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("12_kwqg7")]
-required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
-
-[node name="RightGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
-anchors_preset = 0
-offset_left = 1500.0
-offset_top = 2252.42
-offset_right = 1500.0
-offset_bottom = 2252.42
-
-[node name="Platform" type="Control" parent="Tree/RightGroup"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -400.0
-offset_right = -400.0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Platform World" parent="Tree/RightGroup/Platform" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("13_6tgfo")]
-required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
-
-[node name="Combined" type="Control" parent="Tree/RightGroup"]
-layout_mode = 3
-anchors_preset = 0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Rotating Piece Platform World" parent="Tree/RightGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("14_ji6by")]
-required_completed_worlds = [NodePath("../../Platform/Platform World"), NodePath("../../RotatingPiece/Rotating Piece World")]
-
-[node name="RotatingPiece" type="Control" parent="Tree/RightGroup"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 400.0
-offset_right = 400.0
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Rotating Piece World" parent="Tree/RightGroup/RotatingPiece" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("15_8hgbi")]
-required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
-
-[node name="Final" type="Control" parent="Tree" groups=["WorldGroup"]]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 3002.42
-offset_bottom = 3002.42
-scale = Vector2(1.25, 1.25)
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
-
-[node name="Final World" parent="Tree/Final" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("16_2qj1u")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
 scale = Vector2(1.3, 1.3)
-required_completed_worlds = [NodePath("../../RightGroup/Combined/Rotating Piece Platform World"), NodePath("../../LeftGroup/Combined/Gravity Key World"), NodePath("../../MiddleGroup/Combined/Dirt Portal World")]
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Arrow")
+focus_next = NodePath("../Arrow")
+focus_previous = NodePath(".")
 
-[node name="BottomArrow" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="Arrow" parent="TreeContainer/Tree/DemoWorldContainer" node_paths=PackedStringArray("target_focus_node") instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 1002.42
-offset_right = 50.0
-offset_bottom = 1202.42
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = 1.70703
+anchor_right = 0.498047
+anchor_bottom = 1.70703
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 1.57079
+scale = Vector2(0.657755, 0.657755)
+target_focus_node = NodePath("../../BasicWorldContainer/Basic World")
+
+[node name="BasicWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("17_awmkw")
-target_world_group = 1
+script = ExtResource("4_bny4r")
 vertical_intensity = 10.0
+horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+[node name="Basic World" parent="TreeContainer/Tree/BasicWorldContainer" instance=ExtResource("5_2x5tc")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+scale = Vector2(1.3, 1.3)
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../UpArrow")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../DownArrow")
+focus_next = NodePath("../DownArrow")
+focus_previous = NodePath("../UpArrow")
 
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow13" type="Control" parent="Tree" node_paths=PackedStringArray("required_completed_worlds") groups=["Arrow"]]
+[node name="UpArrow" parent="TreeContainer/Tree/BasicWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 263.925
-offset_right = 50.0
-offset_bottom = 463.925
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
-self_world_group = 6
-required_completed_worlds = [NodePath("../Demo/Demo World")]
-vertical_intensity = 10.0
-horizontal_intensity = 7
-
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow13"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow13/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow2" type="Control" parent="Tree" groups=["Arrow"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 1091.28
-offset_right = 50.0
-offset_bottom = 1291.28
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 4.71238
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
-self_world_group = 1
-vertical_intensity = 10.0
-horizontal_intensity = 7
-
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow2"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow2/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow14" type="Control" parent="Tree" groups=["Arrow"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 341.866
-offset_right = 50.0
-offset_bottom = 541.866
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 4.71238
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = -0.513672
+anchor_right = 0.498047
+anchor_bottom = -0.513672
+grow_horizontal = 1
+grow_vertical = 1
+rotation = -1.57079
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 6
-vertical_intensity = 10.0
-horizontal_intensity = 7
+self_world_group = 0
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow14"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow14/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow3" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="DownArrow" parent="TreeContainer/Tree/BasicWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 1753.44
-offset_right = 50.0
-offset_bottom = 1953.44
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = 1.70703
+anchor_right = 0.498047
+anchor_bottom = 1.70703
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 1.57079
+scale = Vector2(0.657755, 0.657755)
+target_world_group = 1
+self_world_group = 0
+
+[node name="AdvancedWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Advanced World" parent="TreeContainer/Tree/AdvancedWorldContainer" instance=ExtResource("6_8giab")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+scale = Vector2(1.3, 1.3)
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../UpArrow")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../DownArrow")
+focus_next = NodePath("../DownArrow")
+focus_previous = NodePath("../UpArrow")
+
+[node name="DownArrow" parent="TreeContainer/Tree/AdvancedWorldContainer" instance=ExtResource("6_o7i7l")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = 1.70703
+anchor_right = 0.498047
+anchor_bottom = 1.70703
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 1.57079
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 2
 self_world_group = 1
-vertical_intensity = 10.0
-horizontal_intensity = 7
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow3"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow3/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow5" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="UpArrow" parent="TreeContainer/Tree/AdvancedWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 2471.32
-offset_right = 50.0
-offset_bottom = 2671.32
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = -0.513672
+anchor_right = 0.498047
+anchor_bottom = -0.513672
+grow_horizontal = 1
+grow_vertical = 1
+rotation = -1.57079
+scale = Vector2(0.657755, 0.657755)
+self_world_group = 1
+
+[node name="ThemedWorldsContainer" type="HBoxContainer" parent="TreeContainer/Tree"]
+layout_mode = 2
+theme_override_constants/separation = 256
+
+[node name="GravityKeyWorldsContainer" type="HBoxContainer" parent="TreeContainer/Tree/ThemedWorldsContainer" groups=["WorldGroup"]]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("17_awmkw")
-target_world_group = 5
-self_world_group = 2
+theme_override_constants/separation = 125
+
+[node name="GravityWorldContainer" type="CenterContainer" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer"]
+layout_mode = 2
+script = ExtResource("4_bny4r")
 vertical_intensity = 10.0
+horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow5"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+[node name="Gravity World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityWorldContainer" instance=ExtResource("10_isvnh")]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../GravityKeyWorldContainer/Gravity Key World")
+focus_neighbor_bottom = NodePath("../../GravityKeyWorldContainer/DownArrow")
+focus_next = NodePath("../../GravityKeyWorldContainer/Gravity Key World")
+focus_previous = NodePath("../../KeyWorldContainer/Key World")
 
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow5/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
+[node name="GravityKeyWorldContainer" type="Control" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
 
-[node name="BottomArrow11" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="Gravity Key World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityKeyWorldContainer" instance=ExtResource("11_wr1ul")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+focus_neighbor_left = NodePath("../../GravityWorldContainer/Gravity World")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../KeyWorldContainer/Key World")
+focus_neighbor_bottom = NodePath("../DownArrow")
+focus_next = NodePath("../../KeyWorldContainer/Key World")
+focus_previous = NodePath("../../GravityWorldContainer/Gravity World")
+
+[node name="DownArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityKeyWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1548.95
-offset_top = 2471.32
-offset_right = -1448.95
-offset_bottom = 2671.32
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = 1.70703
+anchor_right = 0.498047
+anchor_bottom = 1.70703
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 1.57079
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 5
 self_world_group = 3
+
+[node name="RightArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityKeyWorldContainer" node_paths=PackedStringArray("target_focus_node") instance=ExtResource("6_o7i7l")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.77539
+anchor_top = 0.445312
+anchor_right = 2.77539
+anchor_bottom = 0.445312
+offset_left = -49.0
+offset_top = -81.9999
+offset_right = 51.0
+offset_bottom = 118.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.657755, 0.657755)
+target_world_group = 2
+target_focus_node = NodePath("../../../PortalMiningWorldsContainer/PortalWorldContainer/Portal World")
+self_world_group = 3
+
+[node name="KeyWorldContainer" type="CenterContainer" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer"]
+layout_mode = 2
+script = ExtResource("4_bny4r")
 vertical_intensity = 10.0
+horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow11"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+[node name="Key World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/KeyWorldContainer" instance=ExtResource("12_kwqg7")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../GravityKeyWorldContainer/Gravity Key World")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../GravityKeyWorldContainer/RightArrow")
+focus_neighbor_bottom = NodePath("../../GravityKeyWorldContainer/DownArrow")
+focus_next = NodePath("../../GravityWorldContainer/Gravity World")
+focus_previous = NodePath("../../GravityKeyWorldContainer/Gravity Key World")
 
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow11/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow12" type="Control" parent="Tree" groups=["Arrow"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1452.76
-offset_top = 2471.32
-offset_right = 1552.76
-offset_bottom = 2671.32
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
+[node name="PortalMiningWorldsContainer" type="HBoxContainer" parent="TreeContainer/Tree/ThemedWorldsContainer" groups=["WorldGroup"]]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+theme_override_constants/separation = 125
+
+[node name="PortalWorldContainer" type="CenterContainer" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer"]
+layout_mode = 2
+script = ExtResource("4_bny4r")
+
+[node name="Portal World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalWorldContainer" instance=ExtResource("7_2d2s5")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../PortalMiningWorldContainer/LeftArrow")
+focus_neighbor_top = NodePath("../../PortalMiningWorldContainer/UpArrow")
+focus_neighbor_right = NodePath("../../PortalMiningWorldContainer/Dirt Portal World")
+focus_neighbor_bottom = NodePath("../../PortalMiningWorldContainer/DownArrow")
+focus_next = NodePath("../../PortalMiningWorldContainer/Dirt Portal World")
+focus_previous = NodePath("../../MiningWorldContainer/Dirt World")
+
+[node name="PortalMiningWorldContainer" type="Control" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+script = ExtResource("4_bny4r")
+
+[node name="Dirt Portal World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" instance=ExtResource("8_oc3b8")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+focus_neighbor_left = NodePath("../../PortalWorldContainer/Portal World")
+focus_neighbor_top = NodePath("../UpArrow")
+focus_neighbor_right = NodePath("../../MiningWorldContainer/Dirt World")
+focus_neighbor_bottom = NodePath("../DownArrow")
+focus_next = NodePath("../../MiningWorldContainer/Dirt World")
+focus_previous = NodePath("../../PortalWorldContainer/Portal World")
+
+[node name="DownArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" instance=ExtResource("6_o7i7l")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = 1.70703
+anchor_right = 0.498047
+anchor_bottom = 1.70703
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 1.57079
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 5
-self_world_group = 4
-vertical_intensity = 10.0
-horizontal_intensity = 7
+self_world_group = 2
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow12"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow12/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow4" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="UpArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 1858.43
-offset_right = 50.0
-offset_bottom = 2058.43
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 4.71238
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = -0.513672
+anchor_right = 0.498047
+anchor_bottom = -0.513672
+grow_horizontal = 1
+grow_vertical = 1
+rotation = -1.57079
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 1
 self_world_group = 2
-vertical_intensity = 10.0
-horizontal_intensity = 7
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow4"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow4/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow7" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="RightArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" node_paths=PackedStringArray("target_focus_node") instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 600.0
-offset_top = 2152.42
-offset_right = 700.0
-offset_bottom = 2352.42
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+anchors_preset = -1
+anchor_left = 2.77539
+anchor_top = 0.445312
+anchor_right = 2.77539
+anchor_bottom = 0.445312
+offset_left = -49.0
+offset_top = -81.9999
+offset_right = 51.0
+offset_bottom = 118.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 4
+target_focus_node = NodePath("../../../RotatingPlatformWorldsContainer/PlatformWorldContainer/Platform World")
 self_world_group = 2
-vertical_intensity = 10.0
-horizontal_intensity = 7
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow7"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow7/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow10" type="Control" parent="Tree" groups=["Arrow"]]
+[node name="LeftArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" node_paths=PackedStringArray("target_focus_node") instance=ExtResource("6_o7i7l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -886.788
-offset_top = 2152.42
-offset_right = -786.788
-offset_bottom = 2352.42
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
-target_world_group = 2
-self_world_group = 3
-vertical_intensity = 10.0
-horizontal_intensity = 7
-
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow10"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow10/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow9" type="Control" parent="Tree" groups=["Arrow"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 813.475
-offset_top = 2152.42
-offset_right = 913.475
-offset_bottom = 2352.42
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.14159
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
-target_world_group = 2
-self_world_group = 4
-vertical_intensity = 10.0
-horizontal_intensity = 7
-
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow9"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow9/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="BottomArrow8" type="Control" parent="Tree" groups=["Arrow"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = 2152.42
-offset_right = -600.0
-offset_bottom = 2352.42
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.14159
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+anchors_preset = -1
+anchor_left = -1.52344
+anchor_top = 0.498047
+anchor_right = -1.52344
+anchor_bottom = 0.498047
+offset_left = -106.0
+offset_right = -6.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = -3.14159
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 3
+target_focus_node = NodePath("../../../GravityKeyWorldsContainer/KeyWorldContainer/Key World")
 self_world_group = 2
-vertical_intensity = 10.0
-horizontal_intensity = 7
 
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow8"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+[node name="MiningWorldContainer" type="CenterContainer" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer"]
+layout_mode = 2
+script = ExtResource("4_bny4r")
 
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow8/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
+[node name="Dirt World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/MiningWorldContainer" instance=ExtResource("9_1kpsb")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../PortalMiningWorldContainer/Dirt Portal World")
+focus_neighbor_top = NodePath("../../PortalMiningWorldContainer/UpArrow")
+focus_neighbor_right = NodePath("../../PortalMiningWorldContainer/RightArrow")
+focus_neighbor_bottom = NodePath("../../PortalMiningWorldContainer/DownArrow")
+focus_next = NodePath("../../PortalWorldContainer/Portal World")
+focus_previous = NodePath("../../PortalMiningWorldContainer/Dirt Portal World")
 
-[node name="BottomArrow6" type="Control" parent="Tree" groups=["Arrow"]]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = 2613.25
-offset_right = 50.0
-offset_bottom = 2813.25
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 4.71238
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 100)
+[node name="RotatingPlatformWorldsContainer" type="HBoxContainer" parent="TreeContainer/Tree/ThemedWorldsContainer" groups=["WorldGroup"]]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("17_awmkw")
+theme_override_constants/separation = 125
+
+[node name="PlatformWorldContainer" type="CenterContainer" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer"]
+layout_mode = 2
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Platform World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/PlatformWorldContainer" instance=ExtResource("13_6tgfo")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../RotatingPlatformWorldContainer/LeftArrow")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece Platform World")
+focus_neighbor_bottom = NodePath("../../RotatingPlatformWorldContainer/DownArrow")
+focus_next = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece Platform World")
+focus_previous = NodePath("../../RotatingWorldContainer/Rotating Piece World")
+
+[node name="RotatingPlatformWorldContainer" type="Control" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Rotating Piece Platform World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingPlatformWorldContainer" instance=ExtResource("14_ji6by")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+focus_neighbor_left = NodePath("../../PlatformWorldContainer/Platform World")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../../RotatingWorldContainer/Rotating Piece World")
+focus_neighbor_bottom = NodePath("../DownArrow")
+focus_next = NodePath("../../RotatingWorldContainer/Rotating Piece World")
+focus_previous = NodePath("../../PlatformWorldContainer/Platform World")
+
+[node name="DownArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingPlatformWorldContainer" instance=ExtResource("6_o7i7l")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = 1.70703
+anchor_right = 0.498047
+anchor_bottom = 1.70703
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 1.57079
+scale = Vector2(0.657755, 0.657755)
+target_world_group = 5
+self_world_group = 4
+
+[node name="LeftArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingPlatformWorldContainer" node_paths=PackedStringArray("target_focus_node") instance=ExtResource("6_o7i7l")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.52344
+anchor_top = 0.498047
+anchor_right = -1.52344
+anchor_bottom = 0.498047
+offset_left = -106.0
+offset_right = -6.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = -3.14159
+scale = Vector2(0.657755, 0.657755)
+target_world_group = 2
+target_focus_node = NodePath("../../../PortalMiningWorldsContainer/MiningWorldContainer/Dirt World")
+self_world_group = 4
+
+[node name="RotatingWorldContainer" type="CenterContainer" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer"]
+layout_mode = 2
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Rotating Piece World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingWorldContainer" instance=ExtResource("15_8hgbi")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece Platform World")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../RotatingPlatformWorldContainer/DownArrow")
+focus_next = NodePath("../../PlatformWorldContainer/Platform World")
+focus_previous = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece Platform World")
+
+[node name="FinalWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Final World" parent="TreeContainer/Tree/FinalWorldContainer" instance=ExtResource("16_2qj1u")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../UpArrow")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+
+[node name="UpArrow" parent="TreeContainer/Tree/FinalWorldContainer" instance=ExtResource("6_o7i7l")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498047
+anchor_top = -0.513672
+anchor_right = 0.498047
+anchor_bottom = -0.513672
+grow_horizontal = 1
+grow_vertical = 1
+rotation = -1.57079
+scale = Vector2(0.657755, 0.657755)
 target_world_group = 2
 self_world_group = 5
-vertical_intensity = 10.0
-horizontal_intensity = 7
-
-[node name="ScreenScrollArrow" type="Polygon2D" parent="Tree/BottomArrow6"]
-position = Vector2(50, 100)
-polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-
-[node name="Line2D" type="Line2D" parent="Tree/BottomArrow6/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[node name="Line2D2" type="Line2D" parent="Tree/BottomArrow6/ScreenScrollArrow"]
-points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
-closed = true
-width = 4.085
-default_color = Color(0, 0, 0, 1)
-joint_mode = 2
-
-[connection signal="mouse_entered" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow" to="Tree/BottomArrow" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow13" to="Tree/BottomArrow13" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow13" to="Tree/BottomArrow13" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow2" to="Tree/BottomArrow2" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow14" to="Tree/BottomArrow14" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow14" to="Tree/BottomArrow14" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow3" to="Tree/BottomArrow3" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow3" to="Tree/BottomArrow3" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow5" to="Tree/BottomArrow5" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow5" to="Tree/BottomArrow5" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow11" to="Tree/BottomArrow11" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow11" to="Tree/BottomArrow11" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow12" to="Tree/BottomArrow12" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow12" to="Tree/BottomArrow12" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow4" to="Tree/BottomArrow4" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow4" to="Tree/BottomArrow4" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow7" to="Tree/BottomArrow7" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow7" to="Tree/BottomArrow7" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow10" to="Tree/BottomArrow10" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow10" to="Tree/BottomArrow10" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow9" to="Tree/BottomArrow9" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow9" to="Tree/BottomArrow9" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow8" to="Tree/BottomArrow8" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow8" to="Tree/BottomArrow8" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Tree/BottomArrow6" to="Tree/BottomArrow6" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Tree/BottomArrow6" to="Tree/BottomArrow6" method="_on_mouse_exited"]

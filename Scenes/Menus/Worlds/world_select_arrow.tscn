@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1uyvpqy0gvyg"]
+
+[ext_resource type="Script" path="res://Scripts/world_select_arrow.gd" id="1_kh0iv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oknwu"]
+
+[node name="Arrow" type="Button" groups=["Arrow"]]
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 50.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oknwu")
+flat = true
+script = ExtResource("1_kh0iv")
+self_world_group = 6
+vertical_intensity = 10.0
+horizontal_intensity = 7
+metadata/_edit_use_anchors_ = true
+
+[node name="ScreenScrollArrow" type="Polygon2D" parent="."]
+position = Vector2(50, 100)
+polygon = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+
+[node name="Line2D" type="Line2D" parent="ScreenScrollArrow"]
+points = PackedVector2Array(-40, 100, 50, 0, -40, -100, -40, -60, 20, 0, -40, 60)
+closed = true
+width = 4.085
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_pressed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

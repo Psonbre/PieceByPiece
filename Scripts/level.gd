@@ -21,7 +21,6 @@ func _input(_event):
 		if Input.is_action_just_pressed("Unzoom"):
 			cam.target_zoom -= Vector2(0.1, 0.1)
 		
-		
 func _ready() -> void:
 	if get_tree().current_scene == self :
 		SubSystemManager.get_scene_manager().load_level.call_deferred(world, load(scene_file_path), Vector2.ZERO)

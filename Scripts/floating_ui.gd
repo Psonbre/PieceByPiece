@@ -16,6 +16,5 @@ func _ready():
 func set_start_position():
 	start_position = position
 	
-
 func _process(_delta):
 	position = start_position + Vector2(cos(Time.get_unix_time_from_system() * horizontal_speed + rand) * horizontal_intensity, sin(Time.get_unix_time_from_system() + rand * vertical_speed) * vertical_intensity)
