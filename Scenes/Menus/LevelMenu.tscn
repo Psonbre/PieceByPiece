@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://be11aroqcumi2"]
+[gd_scene load_steps=7 format=3 uid="uid://be11aroqcumi2"]
 
 [ext_resource type="Script" path="res://Scripts/Pause/level_menu.gd" id="1_biako"]
-[ext_resource type="Texture2D" uid="uid://dtc6ckladq0td" path="res://addons/discord-rpc-gd/nodes/assets/circle.svg" id="1_k4wdt"]
-[ext_resource type="Texture2D" uid="uid://compmm3kviqqe" path="res://addons/discord-rpc-gd/nodes/assets/Unchecked.svg" id="2_2brra"]
-[ext_resource type="Texture2D" uid="uid://dnfq6kug4x6o2" path="res://addons/discord-rpc-gd/nodes/assets/Checked.svg" id="3_mtmgh"]
+[ext_resource type="Texture2D" uid="uid://whbh7aod6y0e" path="res://Assets/Icons/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="2_78q3r"]
+[ext_resource type="Texture2D" uid="uid://b25umqcyc7lr4" path="res://Assets/Icons/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="2_cxn54"]
+[ext_resource type="Texture2D" uid="uid://bmdpyw1lbygn0" path="res://Assets/Icons/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="3_e2wyo"]
+[ext_resource type="Texture2D" uid="uid://b7awj8cuibmoa" path="res://Assets/Icons/refresh_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="4_xlg0d"]
+[ext_resource type="Texture2D" uid="uid://dryd3defeh2y" path="res://Assets/Icons/settings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="5_2g7gg"]
 
 [node name="LevelMenu" type="Control"]
 layout_mode = 3
@@ -13,26 +15,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_biako")
-hiddenPosition = Vector2(7, -35)
-showPosition = Vector2(7, 2)
+hiddenPosition = Vector2(0.5, -23)
+showPosition = Vector2(0.5, 5)
 animationDuration = 0.5
 
 [node name="DropDownButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_right = 834.0
-offset_bottom = 500.0
-scale = Vector2(0.2, 0.2)
+offset_right = 96.0
+offset_bottom = 96.0
 toggle_mode = true
-texture_normal = ExtResource("2_2brra")
-texture_pressed = ExtResource("3_mtmgh")
+texture_normal = ExtResource("2_cxn54")
+texture_pressed = ExtResource("3_e2wyo")
 
 [node name="DropdownSection" type="Control" parent="."]
 clip_contents = true
 anchors_preset = 0
 offset_left = 1.0
-offset_top = 102.0
+offset_top = 72.0
 offset_right = 41.0
-offset_bottom = 142.0
+offset_bottom = 112.0
 scale = Vector2(4.29972, 12.2796)
 
 [node name="DropDownMenu" type="VBoxContainer" parent="DropdownSection"]
@@ -40,23 +41,23 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.018
 anchor_bottom = 0.016
-offset_left = 7.0
-offset_top = 0.8
-offset_right = 51.28
-offset_bottom = 195.16
-scale = Vector2(0.5, 0.169)
+offset_left = 0.930294
+offset_top = 3.33888
+offset_right = 96.2103
+offset_bottom = 350.699
+scale = Vector2(0.2, 0.066)
 theme_override_constants/separation = 30
 
 [node name="QuitButton" type="TextureButton" parent="DropdownSection/DropDownMenu"]
 layout_mode = 2
-texture_normal = ExtResource("1_k4wdt")
+texture_normal = ExtResource("2_78q3r")
 
 [node name="RestartButton" type="TextureButton" parent="DropdownSection/DropDownMenu"]
 layout_mode = 2
-texture_normal = ExtResource("1_k4wdt")
+texture_normal = ExtResource("4_xlg0d")
 
 [node name="SettingsButton" type="TextureButton" parent="DropdownSection/DropDownMenu"]
 layout_mode = 2
-texture_normal = ExtResource("1_k4wdt")
+texture_normal = ExtResource("5_2g7gg")
 
 [connection signal="pressed" from="DropDownButton" to="." method="_on_drop_down_menu_pressed"]
