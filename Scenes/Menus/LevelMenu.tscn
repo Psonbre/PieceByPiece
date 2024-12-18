@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://be11aroqcumi2"]
+
+[ext_resource type="Script" path="res://Scripts/Pause/level_menu.gd" id="1_biako"]
+[ext_resource type="Texture2D" uid="uid://dtc6ckladq0td" path="res://addons/discord-rpc-gd/nodes/assets/circle.svg" id="1_k4wdt"]
+[ext_resource type="Texture2D" uid="uid://compmm3kviqqe" path="res://addons/discord-rpc-gd/nodes/assets/Unchecked.svg" id="2_2brra"]
+[ext_resource type="Texture2D" uid="uid://dnfq6kug4x6o2" path="res://addons/discord-rpc-gd/nodes/assets/Checked.svg" id="3_mtmgh"]
+
+[node name="LevelMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_biako")
+hiddenPosition = Vector2(57, -100)
+showPosition = Vector2(57, 120)
+animationDuration = 0.5
+
+[node name="DropDownMenu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.018
+anchor_bottom = 0.016
+offset_left = 57.0
+offset_top = 120.0
+offset_right = 55.92
+offset_bottom = 291.96
+theme_override_constants/separation = 30
+
+[node name="QuitButton" type="TextureButton" parent="DropDownMenu"]
+layout_mode = 2
+texture_normal = ExtResource("1_k4wdt")
+
+[node name="RestartButton" type="TextureButton" parent="DropDownMenu"]
+layout_mode = 2
+texture_normal = ExtResource("1_k4wdt")
+
+[node name="SettingsButton" type="TextureButton" parent="DropDownMenu"]
+layout_mode = 2
+texture_normal = ExtResource("1_k4wdt")
+
+[node name="DropDownButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 834.0
+offset_bottom = 500.0
+scale = Vector2(0.2, 0.2)
+toggle_mode = true
+texture_normal = ExtResource("2_2brra")
+texture_pressed = ExtResource("3_mtmgh")
+
+[connection signal="pressed" from="DropDownButton" to="." method="_on_drop_down_menu_pressed"]
