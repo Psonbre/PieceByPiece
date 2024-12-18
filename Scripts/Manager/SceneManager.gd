@@ -68,9 +68,9 @@ func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
 	var menu = load_scene(WORLD_SELECT, new_direction)
 	if menu:
-		var tree = menu.get_node("Tree")
+		var tree : WorldSelectTree = menu.get_node("Tree")
 		if target_world_group != null : tree.set_target_group(target_world_group)
-		tree.finish_transition_instantly()
+		tree.finish_transition_instantly.call_deferred()
 		updated_discord_presence("Selecting a world", "")
 		background.switch_gradient(default_gradient)
 	return menu
@@ -96,7 +96,7 @@ func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vect
 		background.switch_gradient(level.background_gradient)
 	return level
 
-func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed := transition_speed) -> Node2D:
+func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), destroy_old_screen := true, speed := transition_speed) -> Node2D:
 	if !scene_change_cooldown.is_stopped() : return null
 	scene_change_cooldown.start()
 	if old_screen != null: 
@@ -124,8 +124,30 @@ func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), speed
 	direction = new_direction  # Update the global direction
 	
 	add_child(scene)
+	
+	slide_screens(destroy_old_screen)
+	
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/transition.wav"), 0, transition_speed / 6.0 + (randf() - 0.5) / 4.0)
+	
 	return scene
+
+func slide_screens(destroy_old_screen := true):
+	current_screen.create_tween().tween_property(current_screen, "global_position", Vector2.ZERO, 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	if old_screen :
+		var old_screen_tween = old_screen.create_tween().tween_property(old_screen, "global_position", -direction * camera.target_zoom * default_resolution, 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		if destroy_old_screen : old_screen_tween.finished.connect(
+			func () : 
+				old_screen.queue_free()
+				old_screen = null)
+
+## Can only be used if load_scene() was called previously with the destroy_old_screen parameter set to false
+func load_previous_scene():
+	if old_screen :
+		var temp := old_screen
+		old_screen = current_screen
+		current_screen = temp
+		direction = - direction
+		slide_screens()
 
 func reset_scene(reset_direction := Vector2(0, -1)):
 	load_scene(current_screen_resource , reset_direction)
@@ -133,21 +155,6 @@ func reset_scene(reset_direction := Vector2(0, -1)):
 	
 func _process(delta):
 	if discord_rpc : discord_rpc.run_callbacks()
-	if current_screen:
-		# Target position for the new screen
-		var target_position = Vector2(0, 0)
-		var speed = maxf((current_screen.global_position - target_position).length() * transition_speed, 0) * delta
-		current_screen.global_position = current_screen.global_position.move_toward(target_position, speed)
-	
-	if old_screen:
-		# Target position for the old screen (opposite of the direction)
-		var target_position = -direction * camera.target_zoom * default_resolution
-		var speed = maxf((old_screen.global_position - target_position).length() * transition_speed, 0) * delta
-		old_screen.global_position = old_screen.global_position.move_toward(target_position, speed)
-		
-		if (old_screen.global_position - target_position).length() < 100:
-			old_screen.queue_free()
-			old_screen = null
 
 func _ready() -> void:
 	if OS.has_feature("discord_rpc") || OS.has_feature("editor") :
