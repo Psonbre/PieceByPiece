@@ -40,8 +40,8 @@ func _ready():
 	locked = !required_completed_worlds.all(func(world) : return world.world_completed)
 	
 func update_labels() :
-	if levels_text : levels_text.text = str(nb_of_completed_levels) + "/" + str(nb_of_levels)
-	if collectibles_text : collectibles_text.text = str(nb_of_collectibles)
+	if levels_text : levels_text.text = str(min(nb_of_completed_levels, nb_of_levels)) + "/" + str(nb_of_levels)
+	if collectibles_text : collectibles_text.text = str(min(nb_of_collectibles, nb_of_levels))
 
 func _on_mouse_entered():
 	animation_player.play("Preview")

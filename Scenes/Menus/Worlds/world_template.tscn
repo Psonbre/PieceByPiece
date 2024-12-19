@@ -16,16 +16,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xb8g4"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7x25"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l3ofo"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qgio"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3kcu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjcjj"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hv8p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vqsn"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rowhg"]
@@ -116,7 +116,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_xb8g4")
+shape = SubResource("CircleShape2D_r7x25")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
@@ -128,7 +128,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_l3ofo")
+shape = SubResource("CircleShape2D_7qgio")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
@@ -140,7 +140,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_f3kcu")
+shape = SubResource("RectangleShape2D_pjcjj")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
@@ -152,7 +152,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_3hv8p")
+shape = SubResource("RectangleShape2D_8vqsn")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="."]
