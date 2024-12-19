@@ -14,7 +14,8 @@ func _on_pressed() -> void:
 		if !exitting and SubSystemManager.get_scene_manager().load_main_menu(Vector2(-1,0)) :
 			exitting = true
 	elif exit_mode == EXIT_MODE.RESTORE :
-		if !exitting and SubSystemManager.get_scene_manager().load_previous_scene() :
+		if !exitting :
+			SubSystemManager.get_scene_manager().load_previous_scene()
 			exitting = true
 
 func _on_mouse_entered():
