@@ -3,16 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_vnc16"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_qptbq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya1ox"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_barop"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn7fx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0px4"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g17ht"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ramcv"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xm733"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wg730"]
 radius = 35.0
 
 [sub_resource type="Animation" id="Animation_t6n88"]
@@ -92,24 +92,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_ya1ox")
+shape = SubResource("RectangleShape2D_barop")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_hn7fx")
+shape = SubResource("RectangleShape2D_j0px4")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_g17ht")
+shape = SubResource("RectangleShape2D_ramcv")
 
 [node name="BottomConnector" parent="Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_xm733")
+shape = SubResource("CircleShape2D_wg730")
 
 [node name="BevelLeft" parent="." index="2"]
 polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)

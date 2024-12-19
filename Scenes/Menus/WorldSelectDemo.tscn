@@ -104,7 +104,7 @@ focus_neighbor_bottom = NodePath("../Arrow")
 focus_next = NodePath("../Arrow")
 focus_previous = NodePath(".")
 
-[node name="Arrow" parent="TreeContainer/Tree/DemoWorldContainer" node_paths=PackedStringArray("target_focus_node") instance=ExtResource("6_o7i7l")]
+[node name="Arrow" parent="TreeContainer/Tree/DemoWorldContainer" node_paths=PackedStringArray("target_focus_node", "required_completed_worlds") instance=ExtResource("6_o7i7l")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.498047
@@ -116,6 +116,7 @@ grow_vertical = 1
 rotation = 1.57079
 scale = Vector2(0.657755, 0.657755)
 target_focus_node = NodePath("../../BasicWorldContainer/Basic World")
+required_completed_worlds = [NodePath("../Demo World")]
 
 [node name="BasicWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
 custom_minimum_size = Vector2(256, 256)
@@ -127,7 +128,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Basic World" parent="TreeContainer/Tree/BasicWorldContainer" instance=ExtResource("5_2x5tc")]
+[node name="Basic World" parent="TreeContainer/Tree/BasicWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("5_2x5tc")]
 layout_mode = 2
 anchors_preset = 0
 anchor_left = 0.0
@@ -145,6 +146,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../DownArrow")
 focus_next = NodePath("../DownArrow")
 focus_previous = NodePath("../UpArrow")
+required_completed_worlds = [NodePath("../../AdvancedWorldContainer/Advanced World")]
 
 [node name="UpArrow" parent="TreeContainer/Tree/BasicWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
@@ -184,7 +186,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Advanced World" parent="TreeContainer/Tree/AdvancedWorldContainer" instance=ExtResource("6_8giab")]
+[node name="Advanced World" parent="TreeContainer/Tree/AdvancedWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("6_8giab")]
 layout_mode = 2
 anchors_preset = 0
 anchor_left = 0.0
@@ -202,6 +204,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../DownArrow")
 focus_next = NodePath("../DownArrow")
 focus_previous = NodePath("../UpArrow")
+required_completed_worlds = [NodePath("../../BasicWorldContainer/Basic World")]
 
 [node name="DownArrow" parent="TreeContainer/Tree/AdvancedWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
@@ -247,7 +250,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Gravity World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityWorldContainer" instance=ExtResource("10_isvnh")]
+[node name="Gravity World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("10_isvnh")]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
@@ -255,6 +258,7 @@ focus_neighbor_right = NodePath("../../GravityKeyWorldContainer/Gravity Key Worl
 focus_neighbor_bottom = NodePath("../../GravityKeyWorldContainer/DownArrow")
 focus_next = NodePath("../../GravityKeyWorldContainer/Gravity Key World")
 focus_previous = NodePath("../../KeyWorldContainer/Key World")
+required_completed_worlds = [NodePath("../../../../AdvancedWorldContainer/Advanced World")]
 
 [node name="GravityKeyWorldContainer" type="Control" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer"]
 custom_minimum_size = Vector2(256, 256)
@@ -264,7 +268,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Gravity Key World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityKeyWorldContainer" instance=ExtResource("11_wr1ul")]
+[node name="Gravity Key World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityKeyWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("11_wr1ul")]
 layout_mode = 2
 anchors_preset = 0
 anchor_left = 0.0
@@ -281,6 +285,7 @@ focus_neighbor_right = NodePath("../../KeyWorldContainer/Key World")
 focus_neighbor_bottom = NodePath("../DownArrow")
 focus_next = NodePath("../../KeyWorldContainer/Key World")
 focus_previous = NodePath("../../GravityWorldContainer/Gravity World")
+required_completed_worlds = [NodePath("../../GravityWorldContainer/Gravity World"), NodePath("../../KeyWorldContainer/Key World")]
 
 [node name="DownArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/GravityKeyWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
@@ -321,7 +326,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Key World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/KeyWorldContainer" instance=ExtResource("12_kwqg7")]
+[node name="Key World" parent="TreeContainer/Tree/ThemedWorldsContainer/GravityKeyWorldsContainer/KeyWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("12_kwqg7")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../GravityKeyWorldContainer/Gravity Key World")
 focus_neighbor_top = NodePath(".")
@@ -329,6 +334,7 @@ focus_neighbor_right = NodePath("../../GravityKeyWorldContainer/RightArrow")
 focus_neighbor_bottom = NodePath("../../GravityKeyWorldContainer/DownArrow")
 focus_next = NodePath("../../GravityWorldContainer/Gravity World")
 focus_previous = NodePath("../../GravityKeyWorldContainer/Gravity Key World")
+required_completed_worlds = [NodePath("../../../../AdvancedWorldContainer/Advanced World")]
 
 [node name="PortalMiningWorldsContainer" type="HBoxContainer" parent="TreeContainer/Tree/ThemedWorldsContainer" groups=["WorldGroup"]]
 layout_mode = 2
@@ -340,7 +346,7 @@ theme_override_constants/separation = 125
 layout_mode = 2
 script = ExtResource("4_bny4r")
 
-[node name="Portal World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalWorldContainer" instance=ExtResource("7_2d2s5")]
+[node name="Portal World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("7_2d2s5")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../PortalMiningWorldContainer/LeftArrow")
 focus_neighbor_top = NodePath("../../PortalMiningWorldContainer/UpArrow")
@@ -348,13 +354,14 @@ focus_neighbor_right = NodePath("../../PortalMiningWorldContainer/Dirt Portal Wo
 focus_neighbor_bottom = NodePath("../../PortalMiningWorldContainer/DownArrow")
 focus_next = NodePath("../../PortalMiningWorldContainer/Dirt Portal World")
 focus_previous = NodePath("../../MiningWorldContainer/Dirt World")
+required_completed_worlds = [NodePath("../../../../AdvancedWorldContainer/Advanced World")]
 
 [node name="PortalMiningWorldContainer" type="Control" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer"]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 script = ExtResource("4_bny4r")
 
-[node name="Dirt Portal World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" instance=ExtResource("8_oc3b8")]
+[node name="Dirt Portal World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("8_oc3b8")]
 layout_mode = 2
 anchors_preset = 0
 anchor_left = 0.0
@@ -371,6 +378,7 @@ focus_neighbor_right = NodePath("../../MiningWorldContainer/Dirt World")
 focus_neighbor_bottom = NodePath("../DownArrow")
 focus_next = NodePath("../../MiningWorldContainer/Dirt World")
 focus_previous = NodePath("../../PortalWorldContainer/Portal World")
+required_completed_worlds = [NodePath("../../PortalWorldContainer/Portal World"), NodePath("../../MiningWorldContainer/Dirt World")]
 
 [node name="DownArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
@@ -439,7 +447,7 @@ self_world_group = 2
 layout_mode = 2
 script = ExtResource("4_bny4r")
 
-[node name="Dirt World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/MiningWorldContainer" instance=ExtResource("9_1kpsb")]
+[node name="Dirt World" parent="TreeContainer/Tree/ThemedWorldsContainer/PortalMiningWorldsContainer/MiningWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("9_1kpsb")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../PortalMiningWorldContainer/Dirt Portal World")
 focus_neighbor_top = NodePath("../../PortalMiningWorldContainer/UpArrow")
@@ -447,6 +455,7 @@ focus_neighbor_right = NodePath("../../PortalMiningWorldContainer/RightArrow")
 focus_neighbor_bottom = NodePath("../../PortalMiningWorldContainer/DownArrow")
 focus_next = NodePath("../../PortalWorldContainer/Portal World")
 focus_previous = NodePath("../../PortalMiningWorldContainer/Dirt Portal World")
+required_completed_worlds = [NodePath("../../../../AdvancedWorldContainer/Advanced World")]
 
 [node name="RotatingPlatformWorldsContainer" type="HBoxContainer" parent="TreeContainer/Tree/ThemedWorldsContainer" groups=["WorldGroup"]]
 layout_mode = 2
@@ -461,7 +470,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Platform World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/PlatformWorldContainer" instance=ExtResource("13_6tgfo")]
+[node name="Platform World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/PlatformWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("13_6tgfo")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../RotatingPlatformWorldContainer/LeftArrow")
 focus_neighbor_top = NodePath(".")
@@ -469,6 +478,7 @@ focus_neighbor_right = NodePath("../../RotatingPlatformWorldContainer/Rotating P
 focus_neighbor_bottom = NodePath("../../RotatingPlatformWorldContainer/DownArrow")
 focus_next = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece Platform World")
 focus_previous = NodePath("../../RotatingWorldContainer/Rotating Piece World")
+required_completed_worlds = [NodePath("../../../../AdvancedWorldContainer/Advanced World")]
 
 [node name="RotatingPlatformWorldContainer" type="Control" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer"]
 custom_minimum_size = Vector2(256, 256)
@@ -478,7 +488,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Rotating Piece Platform World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingPlatformWorldContainer" instance=ExtResource("14_ji6by")]
+[node name="Rotating Piece Platform World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingPlatformWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("14_ji6by")]
 layout_mode = 2
 anchors_preset = 0
 anchor_left = 0.0
@@ -495,6 +505,7 @@ focus_neighbor_right = NodePath("../../RotatingWorldContainer/Rotating Piece Wor
 focus_neighbor_bottom = NodePath("../DownArrow")
 focus_next = NodePath("../../RotatingWorldContainer/Rotating Piece World")
 focus_previous = NodePath("../../PlatformWorldContainer/Platform World")
+required_completed_worlds = [NodePath("../../PlatformWorldContainer/Platform World"), NodePath("../../RotatingWorldContainer/Rotating Piece World")]
 
 [node name="DownArrow" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingPlatformWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1
@@ -534,7 +545,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Rotating Piece World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingWorldContainer" instance=ExtResource("15_8hgbi")]
+[node name="Rotating Piece World" parent="TreeContainer/Tree/ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("15_8hgbi")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece Platform World")
 focus_neighbor_top = NodePath(".")
@@ -542,6 +553,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../RotatingPlatformWorldContainer/DownArrow")
 focus_next = NodePath("../../PlatformWorldContainer/Platform World")
 focus_previous = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece Platform World")
+required_completed_worlds = [NodePath("../../../../AdvancedWorldContainer/Advanced World")]
 
 [node name="FinalWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
 custom_minimum_size = Vector2(256, 256)
@@ -553,7 +565,7 @@ vertical_intensity = 10.0
 horizontal_speed = 0.5
 horizontal_intensity = 7
 
-[node name="Final World" parent="TreeContainer/Tree/FinalWorldContainer" instance=ExtResource("16_2qj1u")]
+[node name="Final World" parent="TreeContainer/Tree/FinalWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("16_2qj1u")]
 layout_mode = 2
 anchors_preset = 0
 anchor_left = 0.0
@@ -570,6 +582,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+required_completed_worlds = [NodePath("../../ThemedWorldsContainer/PortalMiningWorldsContainer/PortalMiningWorldContainer/Dirt Portal World"), NodePath("../../ThemedWorldsContainer/RotatingPlatformWorldsContainer/RotatingPlatformWorldContainer/Rotating Piece Platform World"), NodePath("../../ThemedWorldsContainer/GravityKeyWorldsContainer/GravityKeyWorldContainer/Gravity Key World")]
 
 [node name="UpArrow" parent="TreeContainer/Tree/FinalWorldContainer" instance=ExtResource("6_o7i7l")]
 layout_mode = 1

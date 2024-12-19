@@ -58,10 +58,11 @@ func _on_mouse_exited():
 	outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 
 func _on_pressed() -> void:
-		if SubSystemManager.get_scene_manager().load_level_select(world, Vector2(1,0)) :
-			SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)
-			for group in get_tree().get_nodes_in_group("WorldGroup"):
-				if !group.is_ancestor_of(self) :
-					group.modulate = Color.TRANSPARENT
-			for arrow in get_tree().get_nodes_in_group("Arrow"):
-				arrow.visible = false
+	if locked : return
+	if SubSystemManager.get_scene_manager().load_level_select(world, Vector2(1,0)) :
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)
+		for group in get_tree().get_nodes_in_group("WorldGroup"):
+			if !group.is_ancestor_of(self) :
+				group.modulate = Color.TRANSPARENT
+		for arrow in get_tree().get_nodes_in_group("Arrow"):
+			arrow.visible = false
