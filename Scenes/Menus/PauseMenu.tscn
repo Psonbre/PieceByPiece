@@ -75,6 +75,7 @@ focus_neighbor_right = NodePath("../../DropdownSection/DropDownMenu/CenterContai
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../DropdownSection/DropDownMenu/CenterContainer2/RestartButton")
 focus_previous = NodePath("../../DropdownSection/DropDownMenu/CenterContainer/QuitButton")
+focus_mode = 0
 toggle_mode = true
 texture_normal = ExtResource("3_60wth")
 texture_pressed = ExtResource("4_x5f66")

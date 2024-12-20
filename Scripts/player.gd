@@ -45,46 +45,49 @@ func set_locked(should_lock : bool):
 	if !locked : set_physics_process(true)
 	
 func _physics_process(delta):
+	var horizontal_input := Input.get_axis("Left","Right") if !PauseManager.is_paused else 0.0
+	var jump_just_pressed := Input.is_action_just_pressed("Jump") if !PauseManager.is_paused else false
+	var input_vector := Input.get_vector("Left", "Right", "Up", "Down") if !PauseManager.is_paused else Vector2.ZERO
+
 	var was_on_floor := is_on_floor()
+	
 	#gravity
-	if is_on_floor() :
+	if is_on_floor():
 		non_tilted_velocity.y = 0
-	else :
+	else:
 		non_tilted_velocity.y += gravity * delta
-		play_animation("Jump");
+		play_animation("Jump")
 	
 	#head bump	
-	if is_on_ceiling() :
+	if is_on_ceiling():
 		non_tilted_velocity.y = 1
 		
 	#Horizontal movement
-	var horizontal_input := Input.get_axis("Left","Right")
-	if digging : 
+	if digging: 
 		non_tilted_velocity = digging_direction * speed
-	else : 
+	else: 
 		non_tilted_velocity.x = horizontal_input * speed
 	
 	#Sprites and animations
 	if horizontal_input != 0:
-		if (horizontal_input  > 0) : set_flip(false)
-		elif (horizontal_input < 0) : set_flip(true)
-		if is_on_floor() : 
-			play_animation("Moving");
-			if step_sound_cooldown.is_stopped() : 
+		if (horizontal_input > 0): set_flip(false)
+		elif (horizontal_input < 0): set_flip(true)
+		if is_on_floor():
+			play_animation("Moving")
+			if step_sound_cooldown.is_stopped():
 				step_sound_cooldown.start()
 				SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/walk.ogg"), -8.0, (randf() - 0.5) * 0.5 + 1.0)
-			
 	elif is_on_floor():
-		play_animation("Idle");
+		play_animation("Idle")
 
 	#jump
-	if is_on_floor() and Input.is_action_just_pressed("Jump") and !digging:
+	if is_on_floor() and jump_just_pressed and !digging:
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/jump.wav"), 12, (randf() + 2) / 2.0)
 		non_tilted_velocity.y = JUMP_VELOCITY
 		for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 			player_sprite.jump_stretch()
 	
-	check_diggable(digging_direction if digging else Input.get_vector("Left", "Right", "Up", "Down"))
+	check_diggable(digging_direction if digging else input_vector)
 	
 	velocity = non_tilted_velocity.rotated(global_rotation)
 	move_and_slide()
@@ -93,7 +96,7 @@ func _physics_process(delta):
 		land(non_tilted_velocity.y)
 		non_tilted_velocity.y = 0
 		
-	if overlapping_pieces.size() > 0 :
+	if overlapping_pieces.size() > 0:
 		var closest_piece : PuzzlePiece = null
 		var min_distance = INF
 		for piece in overlapping_pieces:
@@ -101,9 +104,10 @@ func _physics_process(delta):
 			if distance < min_distance:
 				min_distance = distance
 				closest_piece = piece
-		if closest_piece != null && (find_parent("Shape") == null || closest_piece.shape != get_parent()):
+		if closest_piece != null and (find_parent("Shape") == null or closest_piece.shape != get_parent()):
 			reparent(closest_piece.shape)
 			reset_proportions()
+
 
 func check_diggable(input : Vector2):
 	input = input.normalized()

@@ -20,6 +20,10 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
 		drop_down_button.button_pressed = !drop_down_button.button_pressed
+	if Input.is_action_just_pressed("ui_cancel") :
+		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
+		drop_down_button.button_pressed = false
+		
 	
 func set_is_menu_opened(open):
 	is_opened = open
@@ -68,5 +72,8 @@ func _on_drop_down_button_toggled(toggled_on: bool) -> void:
 	PauseManager.set_paused(is_opened)
 	if is_opened : 
 		super_container.IsMouseControlled = true
+		drop_down_button.focus_mode = Control.FOCUS_ALL
 		drop_down_button.grab_focus()
-	else : get_viewport().gui_release_focus()
+	else : 
+		get_viewport().gui_release_focus()
+		drop_down_button.focus_mode = Control.FOCUS_NONE
