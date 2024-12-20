@@ -1,46 +1,62 @@
 extends Control
 class_name PauseMenu
 
-@export var hiddenPosition : Vector2
-@export var showPosition : Vector2
+@export var hiddenPosition := Vector2(-75, 0.5)
+@export var showPosition := Vector2(-6.5, 0.5)
 @export var animationDuration : float = 1
-@onready var drop_down_menu: BoxContainer = $Container/DropdownSection/DropDownMenu
+@onready var drop_down_menu: BoxContainer = $SuperContainer/Container/DropdownSection/DropDownMenu
 @onready var level: Level = $"../.."
-@onready var drop_down_button: TextureButton = $Container/DropDownButton
-@onready var container = $Container
+@onready var drop_down_button: TextureButton = $SuperContainer/Container/Control/DropDownButton
+@onready var container: Control = $SuperContainer/Container
 @onready var blur: ColorRect = $Blur
+@onready var super_container: Control = $SuperContainer
 
 var is_opened := false
-var container_tween : Tween
+var current_tween : Tween
 func _ready():
 	drop_down_menu.position = hiddenPosition
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		if level != SubSystemManager.get_scene_manager().current_screen : return
+		drop_down_button.button_pressed = !drop_down_button.button_pressed
+	
 func set_is_menu_opened(open):
 	is_opened = open
+	PauseManager.set_paused(open)
+	#get_tree().paused = open
 	if is_opened : 
+		if current_tween : current_tween.kill()
 		blur.visible = true
-		blur.create_tween().tween_method(func (bluriness) : blur.material.set_shader_parameter("amount", bluriness), blur.material.get_shader_parameter("amount"), 2.0, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		drop_down_menu.create_tween().tween_property(drop_down_menu, "position", showPosition, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		drop_down_button.create_tween().parallel().tween_property(drop_down_button, "rotation_degrees", 270, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween = create_tween()
+		current_tween.tween_method(func (bluriness) : blur.material.set_shader_parameter("amount", bluriness), blur.material.get_shader_parameter("amount"), 2.5, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween.parallel().tween_property(drop_down_menu, "position", showPosition, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween.parallel().tween_property(drop_down_button, "rotation_degrees", 270, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween.parallel().tween_property(super_container, "global_position", Vector2.ZERO, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween.parallel().tween_property(super_container, "scale", Vector2.ONE * 3, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	else : 
-		blur.visible = false
-		blur.create_tween().tween_method(func (bluriness) : blur.material.set_shader_parameter("amount", bluriness), blur.material.get_shader_parameter("amount"), 0.0, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		drop_down_menu.create_tween().tween_property(drop_down_menu, "position", hiddenPosition, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		drop_down_button.create_tween().parallel().tween_property(drop_down_button, "rotation_degrees", 0, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-		if container_tween : container_tween.kill()
+		if current_tween : current_tween.kill()
+		current_tween = create_tween()
+		current_tween.tween_method(func (bluriness) : blur.material.set_shader_parameter("amount", bluriness), blur.material.get_shader_parameter("amount"), 0.0, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween.parallel().tween_property(drop_down_menu, "position", hiddenPosition, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween.parallel().tween_property(drop_down_button, "rotation_degrees", 0, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).finished.connect(func() : blur.visible = false)
+		current_tween.parallel().tween_property(super_container, "position", Vector2.ZERO, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		current_tween.parallel().tween_property(super_container, "scale", Vector2.ONE * 1, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 		
 func _on_quit_button_pressed() -> void:
-	SubSystemManager.get_scene_manager().load_level_select(level.world ,Vector2(-1,0))
 	drop_down_button.button_pressed = false
+	SubSystemManager.get_scene_manager().load_level_select(level.world ,Vector2(-1,0))
 
 func _on_restart_button_pressed() -> void:
-	SubSystemManager.get_scene_manager().reset_scene()
 	drop_down_button.button_pressed = false
+	SubSystemManager.get_scene_manager().reset_scene()
 
 func _on_settings_button_pressed() -> void:
-	SubSystemManager.get_scene_manager().load_settings_menu(Vector2(0, -1), false)
 	drop_down_button.button_pressed = false
+	SubSystemManager.get_scene_manager().load_settings_menu(Vector2(0, -1), false)
 
 func _on_drop_down_button_toggled(toggled_on: bool) -> void:
+	if SubSystemManager.get_scene_manager().old_screen : return
 	set_is_menu_opened(toggled_on)
 	is_opened = toggled_on
+	PauseManager.set_paused(is_opened)

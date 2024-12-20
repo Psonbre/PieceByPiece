@@ -102,7 +102,7 @@ func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vect
 		updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], level.name)
 		background.switch_gradient(level.background_gradient)
 	return level
-
+ 
 func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), destroy_old_screen := true, allow_same_scene := false, speed := transition_speed) -> Node2D:
 	if !scene_change_cooldown.is_stopped() : return null
 	if scene_resource == current_screen_resource and !allow_same_scene: return null

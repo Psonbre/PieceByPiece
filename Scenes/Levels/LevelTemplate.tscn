@@ -39,10 +39,10 @@ script = ExtResource("5_k5ua4")
 
 [node name="LevelMenu" parent="Control" instance=ExtResource("7_bsxew")]
 layout_mode = 1
-offset_left = -588.0
-offset_top = -319.2
-offset_right = -588.0
-offset_bottom = -319.2
+offset_left = -476.0
+offset_top = -303.2
+offset_right = -476.0
+offset_bottom = -303.2
 scale = Vector2(0.5, 0.5)
 
 [node name="ResetLevelCooldown" type="Timer" parent="."]

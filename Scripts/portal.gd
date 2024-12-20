@@ -51,7 +51,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Player :
-		if activated and !Player.entering_portal and !Player.exiting_portal and !entered:
+		if activated and !Player.entering_portal and !Player.exiting_portal and !entered and puzzle_piece.is_ancestor_of(body):
 			body.teleport(self)
 
 func _on_body_exited(body):

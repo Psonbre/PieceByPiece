@@ -6,15 +6,14 @@ class_name Level
 @onready var pause_menu: PauseMenu = $Control/LevelMenu
 @export var background_gradient : Gradient
 
+signal on_pause_input
+
 var can_reset := true
 var can_exit := true
 
 func _input(_event):
 	if Engine.is_editor_hint() : return
 	var scene_manager = SubSystemManager.get_scene_manager()
-	if Input.is_action_just_pressed("Pause"):
-		if self != SubSystemManager.get_scene_manager().current_screen : return
-		pause_menu.drop_down_button.button_pressed = !pause_menu.drop_down_button.button_pressed
 	if Input.is_action_just_pressed("Reset"):
 		_on_level_menu_on_restart_clicked()
 	if !PuzzlePiece.global_dragging :

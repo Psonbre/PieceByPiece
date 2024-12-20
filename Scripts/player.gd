@@ -26,6 +26,7 @@ var digging := false
 var digging_direction := Vector2.ZERO
 var non_tilted_velocity : Vector2
 var locked := false
+
 func _ready():
 	default_scale = global_scale
 	editor_sprite.visible = false
