@@ -9,7 +9,7 @@ class_name PauseMenu
 @onready var drop_down_button: TextureButton = $SuperContainer/Container/Control/DropDownButton
 @onready var container: Control = $SuperContainer/Container
 @onready var blur: ColorRect = $Blur
-@onready var super_container: Control = $SuperContainer
+@onready var super_container: GamepadUI = $SuperContainer
 
 var is_opened := false
 var current_tween : Tween
@@ -18,7 +18,7 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Pause"):
-		if level != SubSystemManager.get_scene_manager().current_screen : return
+		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
 		drop_down_button.button_pressed = !drop_down_button.button_pressed
 	
 func set_is_menu_opened(open):
@@ -44,19 +44,29 @@ func set_is_menu_opened(open):
 		current_tween.parallel().tween_property(super_container, "scale", Vector2.ONE * 1, animationDuration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 		
 func _on_quit_button_pressed() -> void:
+	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
+	if !is_opened : return
 	drop_down_button.button_pressed = false
 	SubSystemManager.get_scene_manager().load_level_select(level.world ,Vector2(-1,0))
 
 func _on_restart_button_pressed() -> void:
+	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
+	if !is_opened : return
 	drop_down_button.button_pressed = false
 	SubSystemManager.get_scene_manager().reset_scene()
 
 func _on_settings_button_pressed() -> void:
+	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
+	if !is_opened : return
 	drop_down_button.button_pressed = false
 	SubSystemManager.get_scene_manager().load_settings_menu(Vector2(0, -1), false)
 
 func _on_drop_down_button_toggled(toggled_on: bool) -> void:
-	if SubSystemManager.get_scene_manager().old_screen : return
+	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
 	set_is_menu_opened(toggled_on)
 	is_opened = toggled_on
 	PauseManager.set_paused(is_opened)
+	if is_opened : 
+		super_container.IsMouseControlled = true
+		drop_down_button.grab_focus()
+	else : get_viewport().gui_release_focus()

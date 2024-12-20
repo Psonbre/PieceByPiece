@@ -11,7 +11,8 @@ func _init():
 	
 func _initialize_inputs():
 	_get_focusable_children()
-
+	print(Inputs)
+	
 func _input(event):
 	#Mouse inputs
 	if (event is InputEventMouse):
@@ -57,8 +58,9 @@ func _get_focusable_children():
 	Inputs = focusable_nodes
 
 func _find_focusable_children(node, focusable_nodes):
-	for child in node.get_children():
-		if child.has_method("get_focus_mode") and (child is Button or child is Range):
+	var children = node.get_children()
+	for child in children:
+		if child.has_method("get_focus_mode") and (child is BaseButton or child is Range):
 			focusable_nodes.append(child)
 		_find_focusable_children(child, focusable_nodes)
 	
