@@ -40,9 +40,9 @@ scale = Vector2(2, 2)
 
 [node name="Tree" type="VBoxContainer" parent="TreeContainer" node_paths=PackedStringArray("FirstControl")]
 layout_mode = 2
-anchor_top = -0.115512
+anchor_top = 0.00115512
 anchor_right = 1.0
-anchor_bottom = 0.884
+anchor_bottom = 1.00067
 offset_bottom = 1.47974
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -52,15 +52,30 @@ target_group = 6
 FirstControl = NodePath("DemoWorldContainer/Demo World")
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Control" parent="TreeContainer/Tree"]
+[node name="DemoWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_bny4r")
+vertical_intensity = 10.0
+horizontal_speed = 0.5
+horizontal_intensity = 7
+
+[node name="Title" type="Control" parent="TreeContainer/Tree/DemoWorldContainer"]
 z_index = 2
 layout_mode = 2
+anchors_preset = 0
+offset_left = 128.0
+offset_top = -350.0
+offset_right = 128.0
+offset_bottom = -350.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("4_bny4r")
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Label" parent="TreeContainer/Tree/Title"]
+[node name="Title" type="Label" parent="TreeContainer/Tree/DemoWorldContainer/Title"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,16 +93,6 @@ theme_override_font_sizes/font_size = 1
 text = "Worlds"
 label_settings = ExtResource("3_ci1o0")
 horizontal_alignment = 1
-
-[node name="DemoWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
-custom_minimum_size = Vector2(256, 256)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("4_bny4r")
-vertical_intensity = 10.0
-horizontal_speed = 0.5
-horizontal_intensity = 7
 
 [node name="Demo World" parent="TreeContainer/Tree/DemoWorldContainer" instance=ExtResource("5_hgd0u")]
 layout_mode = 2

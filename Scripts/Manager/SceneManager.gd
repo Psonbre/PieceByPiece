@@ -99,6 +99,7 @@ func load_settings_menu(new_direction := Vector2(1, 0), destroy_old_screen := tr
 func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vector2(1, 0)):
 	var level = load_scene(scene_resource, new_direction)
 	if level : 
+		PuzzlePiece.global_dragging = false
 		updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], level.name)
 		background.switch_gradient(level.background_gradient)
 	return level

@@ -20,11 +20,15 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
 		drop_down_button.button_pressed = !drop_down_button.button_pressed
-	if Input.is_action_just_pressed("ui_cancel") :
+	elif Input.is_action_just_pressed("ui_cancel") :
 		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
 		drop_down_button.button_pressed = false
-		
-	
+	if !event is InputEventMouse : 
+		if !is_opened:
+			drop_down_button.set_focus_mode.call_deferred(Control.FOCUS_NONE)
+		else :
+			drop_down_button.set_focus_mode.call_deferred(Control.FOCUS_ALL)
+			
 func set_is_menu_opened(open):
 	is_opened = open
 	PauseManager.set_paused(open)

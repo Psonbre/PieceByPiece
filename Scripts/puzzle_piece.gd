@@ -4,6 +4,7 @@ class_name PuzzlePiece
 @export var is_rotating_piece := false
 @export var theme : SceneManager.WORLDS
 const max_tilt := deg_to_rad(15)
+const controller_drag_speed := 100.0
 static var global_dragging := false
 
 @onready var level: Level = $".."
@@ -60,16 +61,22 @@ func _input(event):
 			tilt_angle = 0
 
 func _process(delta):
-	if Input.is_action_just_pressed("Click") and is_hovering and !global_dragging:
+	if Input.is_action_just_pressed("Click") and is_hovering and !global_dragging and !PauseManager.is_paused:
 		start_dragging()
-	elif Input.is_action_just_released("Click") and is_dragging:
+	elif Input.is_action_just_released("Click") and is_dragging and !PauseManager.is_paused:
 		stop_dragging()
 		
 	if shape.has_node("Player") && !Player.winning && !Player.entering_portal && !Player.exiting_portal:
 		shape.get_node("Player").global_rotation = 0 + tilt_angle
 		
 	if is_dragging:
-		var target_position = get_global_mouse_position()
+		var target_position : Vector2 
+		
+		if level.is_mouse_controlled :
+			target_position = get_global_mouse_position()
+		else :
+			target_position = global_position + Input.get_vector("SelectPieceLeft", "SelectPieceRight", "SelectPieceUp", "SelectPieceDown") * controller_drag_speed
+			
 		var distance = target_position - global_position
 		velocity = distance * drag_speed * delta
 		global_position += velocity
@@ -114,6 +121,7 @@ func has_all_sides_connected():
 	if !bottom_connector.has_connection : return false
 
 func start_dragging():
+	if SubSystemManager.get_scene_manager().current_screen != level : return
 	if Player.winning || Player.entering_portal || Player.exiting_portal : return
 	if shape.has_node("Player") and shape.get_node("Player").digging : return
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"), -7)
@@ -144,7 +152,6 @@ func stop_dragging():
 	ghost_piece.hide_display()
 	
 	set_player_sprites_visible(true)
-	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
 	is_dragging = false
 	global_dragging = false
@@ -329,11 +336,9 @@ func connect_portals():
 		portals[0].connected_portal = portals[1] 
 		portals[1].activate()
 		portals[1].connected_portal = portals[0]
-		outline.set_type(PuzzlePieceOutline.OutlineType.PORTAL)
 	else :
 		for portal_in_group in portals :
 			portal_in_group.deactivate()
-		outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 	
 func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: PuzzlePiece):
 	if piece.left_connector.connected_to:
@@ -345,20 +350,37 @@ func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: Puzzl
 	if piece.bottom_connector.connected_to:
 		cg.add_member(piece.bottom_connector.connected_to.puzzle_piece)
 
-func _on_mouse_entered():
+func focus() :
+	if PauseManager.is_paused : return
+	for piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces") :
+		if piece != self : piece.unfocus()
 	is_hovering = true
 	if !global_dragging:
 		outline.z_index = 1
+		outline.set_type(PuzzlePieceOutline.OutlineType.DRAGGING)
 
-func _on_mouse_exited():
+func unfocus():
+	if PauseManager.is_paused : return
 	is_hovering = false
 	if !is_dragging:
 		outline.z_index = -1
+		outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
+	
 
+func _on_mouse_entered():
+	if level.is_mouse_controlled :
+		focus()
+	
+func _on_mouse_exited():
+	if level.is_mouse_controlled :
+		unfocus()
+	
 func _on_body_entered(player):
+	if PauseManager.is_paused : return
 	if player is Player && player.get_parent() != shape && !is_dragging:
 		player.add_overlapping_piece(self)
 
 func _on_body_exited(player):
+	if PauseManager.is_paused : return
 	if(player is Player):
 		player.remove_overlapping_piece(self)

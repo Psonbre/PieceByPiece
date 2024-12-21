@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://lu5y0jd2qsrn"]
+
+[ext_resource type="Script" path="res://Scripts/cursror.gd" id="1_ilrm5"]
+[ext_resource type="Texture2D" uid="uid://dooxovvgyttr4" path="res://Assets/Icons/cursor.svg" id="2_hchk4"]
+
+[node name="Cursor" type="Node2D"]
+z_index = 4096
+script = ExtResource("1_ilrm5")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_hchk4")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(2, 2)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_hchk4")
