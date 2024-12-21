@@ -167,6 +167,7 @@ func remove_overlapping_piece(piece_to_remove : PuzzlePiece):
 		
 func win(door):
 	if !winning :
+		current_level.pause_menu.drop_down_button.button_pressed = false
 		winning_door = door
 		Player.winning = true
 		set_physics_process(false)
