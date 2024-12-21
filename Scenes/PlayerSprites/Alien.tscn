@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbrr8wr55oiq0"]
 
 [ext_resource type="PackedScene" uid="uid://8vkpgii0j3ff" path="res://Scenes/PlayerSprites/PlayerSprite.tscn" id="1_lkalg"]
-[ext_resource type="SpriteFrames" uid="uid://byvdlkywtissw" path="res://Scenes/PlayerSprites/player4_frames.tres" id="2_bdls8"]
+[ext_resource type="SpriteFrames" uid="uid://pfqe3y6qifpl" path="res://Scenes/PlayerSprites/player4_frames.tres" id="2_bdls8"]
 
 [node name="PlayerSprite" instance=ExtResource("1_lkalg")]
 

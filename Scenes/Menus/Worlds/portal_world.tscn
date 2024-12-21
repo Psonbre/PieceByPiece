@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_jq5tp"]
 [ext_resource type="Texture2D" uid="uid://cph5l5ltrh8xo" path="res://Assets/Sprites/portal.svg" id="2_4fpvw"]
-[ext_resource type="SpriteFrames" uid="uid://byvdlkywtissw" path="res://Scenes/PlayerSprites/player4_frames.tres" id="3_oit8j"]
+[ext_resource type="SpriteFrames" uid="uid://pfqe3y6qifpl" path="res://Scenes/PlayerSprites/player4_frames.tres" id="3_oit8j"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_v8gl4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcee6"]
@@ -165,16 +165,16 @@ color = Color(0.721569, 0, 0.721569, 0.482353)
 color_ramp = SubResource("GradientTexture1D_ku1i3")
 turbulence_enabled = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ij1am"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_brvof"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n18c8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pxi2"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6jh8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nod44"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwlbr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnb6e"]
 size = Vector2(35, 70)
 
 [sub_resource type="Animation" id="Animation_bgnga"]
@@ -294,10 +294,9 @@ shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="Portal World" instance=ExtResource("1_jq5tp")]
 nb_of_levels = 5
-nb_of_completed_levels = 0
 world = 2
 
-[node name="Shape" parent="." index="1"]
+[node name="Shape" parent="." index="0"]
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
 
 [node name="Background" parent="Shape" index="0"]
@@ -341,26 +340,26 @@ offset = Vector2(-0.410496, -1.33236)
 flip_h = true
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_ij1am")
+shape = SubResource("CircleShape2D_brvof")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_n18c8")
+shape = SubResource("RectangleShape2D_5pxi2")
 
 [node name="TopConnector" parent="Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_j6jh8")
+shape = SubResource("RectangleShape2D_nod44")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_qwlbr")
+shape = SubResource("RectangleShape2D_bnb6e")
 
-[node name="Overlay" parent="." index="2"]
+[node name="Overlay" parent="." index="1"]
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
 
 [node name="WorldName" parent="Overlay" index="0"]
@@ -375,15 +374,24 @@ text = "0/5"
 [node name="Levels" parent="Overlay" index="2"]
 text = "0/5"
 
-[node name="Shadow" parent="." index="3"]
-points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+[node name="BevelLeft" parent="." index="2"]
+polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)
+
+[node name="BevelTop" parent="." index="3"]
+polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 124.3, -124.3, 35, -124.3, 34.3275, -117.472, 32.3358, -110.906, 29.1014, -104.855, 24.7487, -99.5513, 19.445, -95.1986, 13.3939, -91.9642, 6.82816, -89.9725, 2.14306e-15, -89.3, -6.82816, -89.9725, -13.3939, -91.9642, -19.445, -95.1986, -24.7487, -99.5513, -29.1014, -104.855, -32.3358, -110.906, -34.3275, -117.472, -35, -124.3, -124.3, -124.3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_sdhiq")
 }
 
-[node name="Outline" parent="." index="5"]
+[node name="BevelRight" parent="." index="5"]
+polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
+
+[node name="Shadow" parent="." index="7"]
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
+
+[node name="Outline" parent="." index="8"]
 material = SubResource("ShaderMaterial_ib866")
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, -128)
 
