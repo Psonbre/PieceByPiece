@@ -98,5 +98,5 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	SubSystemManager.get_settings_manager()._update_sfx_volume(value)
 
 
-func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
+func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)

@@ -13,7 +13,6 @@ func _ready() -> void:
 	
 func set_target_group(group_to_target : TARGET_GROUPS):
 	target_group = group_to_target
-	var old_target_node := target_node
 	
 	match target_group :
 		TARGET_GROUPS.BASIC:

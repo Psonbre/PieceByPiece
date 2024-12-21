@@ -70,7 +70,9 @@ func _on_settings_button_pressed() -> void:
 	SubSystemManager.get_scene_manager().load_settings_menu(Vector2(0, -1), false)
 
 func _on_drop_down_button_toggled(toggled_on: bool) -> void:
-	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
+	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: 
+		drop_down_button.set_pressed_no_signal(false)
+		return
 	set_is_menu_opened(toggled_on)
 	is_opened = toggled_on
 	PauseManager.set_paused(is_opened)

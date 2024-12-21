@@ -37,7 +37,7 @@ func _ready():
 	overlay.polygon = $Shape.polygon
 	play_icon.modulate = Color(1,1,1,0)
 	update_labels()
-	locked = !required_completed_worlds.all(func(world) : return world.world_completed)
+	locked = !required_completed_worlds.all(func(w) : return w.world_completed)
 	
 func update_labels() :
 	if levels_text : levels_text.text = str(min(nb_of_completed_levels, nb_of_levels)) + "/" + str(nb_of_levels)

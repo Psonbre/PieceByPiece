@@ -45,9 +45,10 @@ func set_locked(should_lock : bool):
 	if !locked : set_physics_process(true)
 	
 func _physics_process(delta):
-	var horizontal_input := Input.get_axis("Left","Right") if !PauseManager.is_paused else 0.0
-	var jump_just_pressed := Input.is_action_just_pressed("Jump") if !PauseManager.is_paused else false
-	var input_vector := Input.get_vector("Left", "Right", "Up", "Down") if !PauseManager.is_paused else Vector2.ZERO
+	var is_current_scene := SubSystemManager.get_scene_manager().current_screen == current_level
+	var horizontal_input := Input.get_axis("Left","Right") if !PauseManager.is_paused and is_current_scene else 0.0
+	var jump_just_pressed := Input.is_action_just_pressed("Jump") if !PauseManager.is_paused and is_current_scene else false
+	var input_vector := Input.get_vector("Left", "Right", "Up", "Down") if !PauseManager.is_paused and is_current_scene else Vector2.ZERO
 
 	var was_on_floor := is_on_floor()
 	

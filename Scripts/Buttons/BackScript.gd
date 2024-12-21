@@ -4,7 +4,7 @@ enum EXIT_MODE {DEFAULT, RESTORE}
 var exit_mode := EXIT_MODE.DEFAULT
 var exitting := false
 @export var scroll_direction := Vector2(1,0)
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel") :
 		_on_pressed()
 

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0wr8j8l3j7t7"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="1_5tk3h"]
+
+[resource]
+shader = ExtResource("1_5tk3h")
+shader_parameter/old_color = null
+shader_parameter/bottom_color = Color(0, 0, 0, 1)
+shader_parameter/wave_amp = 0.011
+shader_parameter/wave_size = 1.0
+shader_parameter/wave_time_mul = 0.271
+shader_parameter/total_phases = 20
+shader_parameter/gradient_speed = 0.01
+shader_parameter/transition_progress = 0.0

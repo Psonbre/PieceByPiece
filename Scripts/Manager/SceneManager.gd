@@ -169,7 +169,7 @@ func reset_scene(reset_direction := Vector2(0, -1)):
 	load_scene(current_screen_resource , reset_direction, true, true)
 	Player.has_collectible = false
 	
-func _process(delta):
+func _process(_delta):
 	if discord_rpc : discord_rpc.run_callbacks()
 
 func _ready() -> void:
@@ -188,7 +188,7 @@ func updated_discord_presence(main : String, state := ""):
 		discord_rpc.state = state
 		discord_rpc.refresh()
 
-func  _input(event: InputEvent) -> void:
+func  _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Fullscreen") :
 		if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN :
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
