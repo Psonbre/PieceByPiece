@@ -13,7 +13,7 @@
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hhk6c"]
 gradient = ExtResource("4_3u6s1")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbwcr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k86tq"]
 resource_local_to_scene = true
 shader = ExtResource("3_c7yis")
 shader_parameter/old_color = Color(1, 1, 1, 1)
@@ -31,7 +31,7 @@ script = ExtResource("1_yswi4")
 default_gradient = ExtResource("4_3u6s1")
 
 [node name="Background" parent="." instance=ExtResource("2_6cqbi")]
-material = SubResource("ShaderMaterial_kbwcr")
+material = SubResource("ShaderMaterial_k86tq")
 position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
