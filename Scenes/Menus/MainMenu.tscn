@@ -57,6 +57,7 @@ pivot_offset = Vector2(104, 22.7457)
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
+flat = true
 script = ExtResource("4_q0me5")
 
 [node name="Label" type="Label" parent="MainMenu/CenterContainer/Start"]
@@ -101,8 +102,27 @@ focus_previous = NodePath("../../CenterContainer4/Settings")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
-text = "Credits"
+flat = true
 script = ExtResource("5_tryhm")
+
+[node name="Label" type="Label" parent="MainMenu/CenterContainer2/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -334.357
+offset_top = -77.5
+offset_right = 855.644
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.14, 0.14)
+pivot_offset = Vector2(399.57, 100.246)
+theme_override_font_sizes/font_size = 0
+text = "CREDITS"
+label_settings = ExtResource("5_pi4rr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer4" type="Control" parent="MainMenu"]
 layout_mode = 2
@@ -127,8 +147,27 @@ focus_previous = NodePath("../../CenterContainer/Start")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
-text = "Settings"
+flat = true
 script = ExtResource("6_7art6")
+
+[node name="Label" type="Label" parent="MainMenu/CenterContainer4/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -344.047
+offset_top = -77.5
+offset_right = 1045.95
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.125, 0.125)
+pivot_offset = Vector2(399.57, 100.246)
+theme_override_font_sizes/font_size = 0
+text = "SETTINGS"
+label_settings = ExtResource("5_pi4rr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer3" type="Control" parent="MainMenu"]
 layout_mode = 2
@@ -152,8 +191,27 @@ focus_previous = NodePath("../../CenterContainer2/Credits")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
-text = "Exit"
+flat = true
 script = ExtResource("6_xfefy")
+
+[node name="Label" type="Label" parent="MainMenu/CenterContainer3/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -334.357
+offset_top = -77.5
+offset_right = 855.644
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.14, 0.14)
+pivot_offset = Vector2(399.57, 100.246)
+theme_override_font_sizes/font_size = 0
+text = "EXIT"
+label_settings = ExtResource("5_pi4rr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Piece" type="Control" parent="MainMenu"]
 layout_mode = 3
