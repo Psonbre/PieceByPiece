@@ -24,6 +24,11 @@ func _ready():
 	super._ready()
 	default_scale = level_button.scale
 	overlay.polygon = $"Level Button/Shape".polygon
+	
+	collectible_shape.right_connector.type = PuzzlePieceVisualConnector.ConnectorType.values().pick_random()
+	collectible_shape.left_connector.type = PuzzlePieceVisualConnector.ConnectorType.values().pick_random()
+	collectible_shape.top_connector.type = PuzzlePieceVisualConnector.ConnectorType.values().pick_random()
+	collectible_shape.bottom_connector.type = PuzzlePieceVisualConnector.ConnectorType.values().pick_random()
 
 func set_start_position():
 	start_position = level_button.position
