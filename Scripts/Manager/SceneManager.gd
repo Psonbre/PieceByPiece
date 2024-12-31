@@ -166,9 +166,12 @@ func load_previous_scene():
 		slide_screens(previous_screen_resource, true, previous_scene_camera_position, previous_scene_zoom)
 
 func reset_scene(reset_direction := Vector2(0, -1)):
-	load_scene(current_screen_resource , reset_direction, true, true)
-	Player.has_collectible = false
-	
+	var scene := load_scene(current_screen_resource , reset_direction, true, true)
+	if scene :
+		Player.has_collectible = false
+		for puzzle_piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces") :
+			if puzzle_piece.is_dragging : puzzle_piece.stop_dragging()
+		return scene
 func _process(_delta):
 	if discord_rpc : discord_rpc.run_callbacks()
 
