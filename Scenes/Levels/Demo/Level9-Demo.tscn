@@ -63,6 +63,7 @@ text = "Level 9"
 
 [node name="PuzzlePiece" parent="." index="5" instance=ExtResource("2_6sp2i")]
 position = Vector2(-358, -1)
+theme = 3
 
 [node name="Shape" parent="PuzzlePiece" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 93, -4.28612e-15, 128, 35, 128, 128, -128, 128, -128, -128)
@@ -104,6 +105,7 @@ polygon = PackedVector2Array(128, -128, 128, -35, 93, -4.28612e-15, 128, 35, 128
 
 [node name="PuzzlePiece2" parent="." index="6" instance=ExtResource("2_6sp2i")]
 position = Vector2(1, -1)
+theme = 3
 
 [node name="Shape" parent="PuzzlePiece2" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, 35, -163, 4.28612e-15, -128, -35, -128, -128)
@@ -148,6 +150,7 @@ polygon = PackedVector2Array(-128, 128, -128, 35, -163, 4.28612e-15, -128, -35, 
 
 [node name="PuzzlePiece3" parent="." index="7" instance=ExtResource("2_6sp2i")]
 position = Vector2(341, -1)
+theme = 3
 
 [node name="Shape" parent="PuzzlePiece3" index="1"]
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 93, -4.28612e-15, 128, 35, 128, 128, -128, 128, -128, -128)
