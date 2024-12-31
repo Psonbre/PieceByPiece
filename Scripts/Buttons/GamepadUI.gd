@@ -20,15 +20,16 @@ func _input(event):
 			_set_inputs_focus_mode(Control.FOCUS_NONE)
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
+		if event is not InputEventKey : Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		#First key input
 		if IsMouseControlled:
 			IsMouseControlled = false
-			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			_set_inputs_focus_mode(Control.FOCUS_ALL)
 			#Set focus on first control
 			if FirstControl:
 				_disable_first_controls_focus_neighbors()
 				FirstControl.grab_focus()
+			
 		#Second key input
 		elif FirstControl.has_focus():
 				#Allows inputs navigation

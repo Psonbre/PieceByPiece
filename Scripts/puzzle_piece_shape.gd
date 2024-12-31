@@ -82,7 +82,8 @@ func update_shape():
 	collider_shape.b = Vector2(0, half_size)
 
 	# Update the outline
-	$"../Outline".regenerate(polygon)
+	var outline := $"../Outline"
+	outline.regenerate(polygon)
 
 func get_segment_points(side: String) -> Array:
 	var start_point: Vector2

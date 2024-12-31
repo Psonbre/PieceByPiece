@@ -356,14 +356,12 @@ func focus() :
 		if piece != self : piece.unfocus()
 	is_hovering = true
 	if !global_dragging:
-		outline.z_index = 1
-		outline.set_type(PuzzlePieceOutline.OutlineType.DRAGGING)
+		outline.set_type(PuzzlePieceOutline.OutlineType.HIGHLIGHT)
 
 func unfocus():
 	if PauseManager.is_paused : return
 	is_hovering = false
 	if !is_dragging:
-		outline.z_index = -1
 		outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 	
 
