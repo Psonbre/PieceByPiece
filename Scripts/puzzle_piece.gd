@@ -2,7 +2,9 @@ extends Area2D
 class_name PuzzlePiece
 
 @export var is_rotating_piece := false
-@export var theme : SceneManager.WORLDS
+
+enum THEME {MEDIEVAL, PIRATE, ALIEN, MINER}
+@export var theme := THEME.MEDIEVAL
 const max_tilt := deg_to_rad(15)
 const controller_drag_speed := 100.0
 static var global_dragging := false
@@ -15,8 +17,7 @@ static var global_dragging := false
 @onready var left_connector : PuzzlePieceConnector = $Shape/Connectors/LeftConnector
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
-@onready var player_sprite : PlayerSprite = $Shape/PlayerSprite
-@onready var door = $Shape/Door
+@onready var player_sprite : PlayerSprite
 var portal : Portal
 
 var has_attempted_connection_this_tick := false
@@ -36,8 +37,14 @@ var start_drag_target_rotated_angle := 0
 var start_drag_rotation := 0.0
 var start_drag_tilt := 0.0
 
+const PLAYER_SPRITES = {
+	THEME.MEDIEVAL : preload("res://Scenes/PlayerSprites/King.tscn"),
+	THEME.MINER : preload("res://Scenes/PlayerSprites/King.tscn"),
+	THEME.ALIEN : preload("res://Scenes/PlayerSprites/Alien.tscn"),
+	THEME.PIRATE : preload("res://Scenes/PlayerSprites/Pirate.tscn"),
+}
+
 func _ready():
-	door.get_node("CollisionShape2D").disabled = !door.visible 
 	portal = shape.get_node("Portal") if shape.has_node("Portal") else null
 	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
@@ -45,6 +52,9 @@ func _ready():
 	start_drag_rotation = global_rotation
 	start_drag_tilt = tilt_angle
 	default_scale = scale
+	
+	player_sprite = PLAYER_SPRITES.get(theme).instantiate()
+	shape.add_child(player_sprite)
 	player_sprite.sprite.visible = true
 	await get_tree().physics_frame
 	await get_tree().physics_frame

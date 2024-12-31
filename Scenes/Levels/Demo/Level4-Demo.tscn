@@ -1,10 +1,9 @@
 [gd_scene load_steps=23 format=4 uid="uid://bae5jvcs0yxp2"]
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_yvu2a"]
-[ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="2_0sd64"]
 [ext_resource type="PackedScene" uid="uid://n0m5cm5i07y2" path="res://Scenes/Levels/Demo/Level5-Demo.tscn" id="2_eldpr"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_jeqs0"]
-
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePiece.tscn" id="2_0sd64"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwy4q"]
 size = Vector2(35, 70)
 

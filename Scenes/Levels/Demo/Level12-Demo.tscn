@@ -2,10 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_g3gob"]
 [ext_resource type="PackedScene" uid="uid://cilri2klcsvjr" path="res://Scenes/Levels/Demo/Level13-Demo.tscn" id="2_1ry0w"]
-[ext_resource type="PackedScene" uid="uid://bo1bq6h0vd5ie" path="res://Scenes/PuzzlePieces/MinerPuzzlePieceTemplate.tscn" id="2_ablxp"]
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePiece.tscn" id="2_ablxp"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_6kqw8"]
 [ext_resource type="Gradient" uid="uid://ccylk25qfs6j5" path="res://Assets/Gradients/rainbow_gradient.tres" id="3_b0kea"]
-[ext_resource type="PackedScene" uid="uid://dt1hdr68qpd77" path="res://Scenes/PuzzlePieces/SciFiPuzzlePieceTemplate.tscn" id="4_feg1i"]
 [ext_resource type="PackedScene" uid="uid://cqfgi7k08veo6" path="res://Scenes/Interactables/portal.tscn" id="5_0foq7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hm5ry"]
@@ -135,7 +134,7 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 [node name="BevelBottom" parent="PuzzlePiece2" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="PuzzlePiece4" parent="." index="6" instance=ExtResource("4_feg1i")]
+[node name="PuzzlePiece4" parent="." index="6" instance=ExtResource("2_ablxp")]
 position = Vector2(-385, -11)
 
 [node name="Shape" parent="PuzzlePiece4" index="1"]
@@ -187,7 +186,7 @@ polygon = PackedVector2Array(128, -128, 128, -35, 121.172, -34.3275, 114.606, -3
 [node name="BevelBottom" parent="PuzzlePiece4" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 121.172, 32.3358, 114.606, 29.1014, 108.555, 24.7487, 103.251, 19.445, 98.8986, 13.3939, 95.6642, 6.82816, 93.6725, 2.14306e-15, 93, -6.82816, 93.6725, -13.3939, 95.6642, -19.445, 98.8986, -24.7487, 103.251, -29.1014, 108.555, -32.3358, 114.606, -34.3275, 121.172, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 117.472, -32.3358, 110.906, -29.1014, 104.855, -24.7487, 99.5513, -19.445, 95.1986, -13.3939, 91.9642, -6.82816, 89.9725, 2.14306e-15, 89.3, 6.82816, 89.9725, 13.3939, 91.9642, 19.445, 95.1986, 24.7487, 99.5513, 29.1014, 104.855, 32.3358, 110.906, 34.3275, 117.472, 35, 124.3, 124.3, 124.3)
 
-[node name="PuzzlePiece5" parent="." index="7" instance=ExtResource("4_feg1i")]
+[node name="PuzzlePiece5" parent="." index="7" instance=ExtResource("2_ablxp")]
 position = Vector2(373, -3)
 
 [node name="Shape" parent="PuzzlePiece5" index="1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://bagvy8vbt68i"]
 
-[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_nqvcu"]
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePiece.tscn" id="1_nqvcu"]
 [ext_resource type="PackedScene" uid="uid://csigeyux5ckx1" path="res://Scenes/PlayerSprites/Pirate.tscn" id="2_s5f21"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_44psn"]
 

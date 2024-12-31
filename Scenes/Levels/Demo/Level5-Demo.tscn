@@ -2,9 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bl1hijhabrmas" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_yvu2a"]
 [ext_resource type="PackedScene" uid="uid://duwi1lgvkyllg" path="res://Scenes/Levels/Demo/Level6-Demo.tscn" id="2_0rneu"]
-[ext_resource type="PackedScene" uid="uid://bagvy8vbt68i" path="res://Scenes/PuzzlePieces/PiratePuzzlePieceTemplate.tscn" id="3_6h4r5"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_jeqs0"]
-
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePiece.tscn" id="3_6h4r5"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoecr"]
 size = Vector2(35, 70)
 

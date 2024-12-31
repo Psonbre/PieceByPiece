@@ -1,38 +1,36 @@
-[gd_scene load_steps=26 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=24 format=3 uid="uid://b0c43sr0v666w"]
 
-[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
-[ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
-[ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_k13o6"]
-[ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_5o85m"]
-[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="4_b24ea"]
-[ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="4_jtsul"]
-[ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_rsc72"]
-[ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_fwkty"]
-[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="6_patsr"]
-[ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="8_dvmwe"]
-[ext_resource type="Script" path="res://Scripts/puzzle_piece_shadow.gd" id="9_jegeb"]
-[ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="12_d02t7"]
-[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="13_qeb8o"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_uhv7f"]
+[ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_2oxp2"]
+[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="3_3l438"]
+[ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_obp8e"]
+[ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_os0q1"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="6_qba2m"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_shadow.gd" id="7_k3mtu"]
+[ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="8_cqfvh"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="9_0xn0f"]
+[ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="10_6o36s"]
+[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="11_7l2qo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsxw6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iep83"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2x6b7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vww57"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq2i4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlikk"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eeg3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epfdc"]
 size = Vector2(35, 70)
 
 [sub_resource type="Resource" id="Resource_08waj"]
-script = ExtResource("12_d02t7")
+script = ExtResource("10_6o36s")
 color = Color(0, 0, 0, 1)
 visible = false
 width = 2.0
@@ -40,7 +38,7 @@ scrolling_speed = 0.0
 z_index = 0
 
 [sub_resource type="Resource" id="Resource_ysjuc"]
-script = ExtResource("12_d02t7")
+script = ExtResource("10_6o36s")
 color = Color(0, 0, 0, 1)
 visible = true
 width = 4.0
@@ -48,20 +46,20 @@ scrolling_speed = 0.0
 z_index = -1
 
 [sub_resource type="Resource" id="Resource_fa8wk"]
-script = ExtResource("12_d02t7")
+script = ExtResource("10_6o36s")
 color = Color(1, 1, 1, 1)
 visible = true
 width = 4.0
-texture = ExtResource("13_qeb8o")
+texture = ExtResource("11_7l2qo")
 scrolling_speed = 1.4
 z_index = 1
 
 [sub_resource type="Resource" id="Resource_vsofx"]
-script = ExtResource("12_d02t7")
+script = ExtResource("10_6o36s")
 color = Color(1, 0, 0, 1)
 visible = true
 width = 4.0
-texture = ExtResource("13_qeb8o")
+texture = ExtResource("11_7l2qo")
 scrolling_speed = 1.4
 z_index = 1
 
@@ -73,7 +71,7 @@ b = Vector2(0, 128)
 
 [node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
 collision_mask = 37
-script = ExtResource("1_kspp0")
+script = ExtResource("1_uhv7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -84,30 +82,26 @@ metadata/_edit_lock_ = true
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
-script = ExtResource("2_k13o6")
+script = ExtResource("2_2oxp2")
 bevel_width = 3.7
 
 [node name="Background" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
 scale = Vector2(0.8, 0.8)
-tile_set = ExtResource("4_b24ea")
+tile_set = ExtResource("3_3l438")
 collision_enabled = false
 
 [node name="Foreground" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
 scale = Vector2(0.8, 0.8)
-tile_set = ExtResource("4_b24ea")
-
-[node name="Door" parent="Shape" instance=ExtResource("6_patsr")]
-visible = false
-scale = Vector2(0.642018, 0.642018)
+tile_set = ExtResource("3_3l438")
 
 [node name="Arrows" type="Sprite2D" parent="Shape"]
 visible = false
 modulate = Color(0, 0, 0, 0.168627)
 scale = Vector2(0.137801, 0.13741)
-texture = ExtResource("4_5o85m")
-script = ExtResource("5_fwkty")
+texture = ExtResource("4_obp8e")
+script = ExtResource("5_os0q1")
 default_color = Color(0, 0, 0, 0.23)
 selected_color = Color(1, 1, 1, 0.747)
 default_scale = Vector2(0.138, 0.138)
@@ -121,62 +115,57 @@ metadata/_edit_lock_ = true
 [node name="RightConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(128, 0)
 collision_mask = 5
-script = ExtResource("4_rsc72")
+script = ExtResource("6_qba2m")
 side_collider = NodePath("../../../Colliders/RightCollider")
 bevel_side = NodePath("../../../BevelRight")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_xsxw6")
+shape = SubResource("RectangleShape2D_iep83")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(-128, 0)
 rotation = 3.14159
 collision_mask = 5
-script = ExtResource("4_rsc72")
+script = ExtResource("6_qba2m")
 side_collider = NodePath("../../../Colliders/LeftCollider")
 bevel_side = NodePath("../../../BevelLeft")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_2x6b7")
+shape = SubResource("RectangleShape2D_vww57")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(0, -128)
 rotation = -1.57079
 collision_mask = 5
-script = ExtResource("4_rsc72")
+script = ExtResource("6_qba2m")
 side_collider = NodePath("../../../Colliders/TopCollider")
 bevel_side = NodePath("../../../BevelTop")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_lq2i4")
+shape = SubResource("RectangleShape2D_xlikk")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(0, 128)
 rotation = 1.57079
 collision_mask = 5
-script = ExtResource("4_rsc72")
+script = ExtResource("6_qba2m")
 side_collider = NodePath("../../../Colliders/BottomCollider")
 bevel_side = NodePath("../../../BevelBottom")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_7eeg3")
+shape = SubResource("RectangleShape2D_epfdc")
 metadata/_edit_lock_ = true
-
-[node name="Collectible" parent="Shape" instance=ExtResource("8_dvmwe")]
-visible = false
-position = Vector2(-64, 13)
-scale = Vector2(0.337808, 0.337808)
 
 [node name="Shadow" type="Line2D" parent="."]
 z_index = -2
@@ -189,13 +178,13 @@ texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-script = ExtResource("9_jegeb")
+script = ExtResource("7_k3mtu")
 metadata/_edit_lock_ = true
 
 [node name="Outline" type="Line2D" parent="."]
 z_index = -1
 texture_repeat = 2
-material = ExtResource("2_34fut")
+material = ExtResource("8_cqfvh")
 points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
 closed = true
 width = 4.0
@@ -204,7 +193,7 @@ texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-script = ExtResource("4_jtsul")
+script = ExtResource("9_0xn0f")
 hidden_outline = SubResource("Resource_08waj")
 normal_outline = SubResource("Resource_ysjuc")
 dragging_outline = SubResource("Resource_fa8wk")
@@ -273,5 +262,3 @@ polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-
-[editable path="Shape/Door"]

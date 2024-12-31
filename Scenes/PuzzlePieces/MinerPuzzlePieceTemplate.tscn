@@ -1,20 +1,20 @@
 [gd_scene load_steps=10 format=4 uid="uid://bo1bq6h0vd5ie"]
 
-[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_tsh7o"]
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePiece.tscn" id="1_tsh7o"]
 [ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="2_bbxbt"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="2_px2ad"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_xjnxo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_68pj4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs5e1"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx6sd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6smrr"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xklee"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqvr4"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx6m8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o17j6"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
@@ -45,16 +45,16 @@ tile_map_data = PackedByteArray("AAABAP//BwAEAAAAAAABAAAABwAEAAAAAAABAAEABwAEAAA
 tile_set = ExtResource("2_px2ad")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_68pj4")
+shape = SubResource("RectangleShape2D_qs5e1")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_rx6sd")
+shape = SubResource("RectangleShape2D_6smrr")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_xklee")
+shape = SubResource("RectangleShape2D_kqvr4")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_kx6m8")
+shape = SubResource("RectangleShape2D_o17j6")
 
 [node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_n3bvn")
