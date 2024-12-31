@@ -23,7 +23,7 @@ func _ready() -> void:
 		var sprite := MOVING_PLATFORM_SPRITE.instantiate()
 		var shape = piece.get_node("Shape")
 		shape.add_child.call_deferred(sprite)
-		shape.move_child.call_deferred(sprite, shape.get_node("PlayerSprite").get_index() - 1)
+		shape.move_child.call_deferred(sprite, shape.get_node("Foreground").get_index() + 2)
 		sprite.follows = self
 		
 func _process(delta: float) -> void:

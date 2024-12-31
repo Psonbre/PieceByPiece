@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_v5ulq"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="3_y41o0"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_6kv26"]
-[ext_resource type="PackedScene" uid="uid://ctpilqtu4ujva" path="res://Scenes/PuzzlePieces/MedievalPuzzlePieceTemplate.tscn" id="5_md24c"]
+[ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePiece.tscn" id="5_md24c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7khj"]
 radius = 35.0
