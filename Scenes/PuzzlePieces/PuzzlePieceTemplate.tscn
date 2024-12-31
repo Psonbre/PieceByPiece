@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=26 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_kspp0"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="2_34fut"]
@@ -11,23 +11,59 @@
 [ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="6_patsr"]
 [ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="8_dvmwe"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shadow.gd" id="9_jegeb"]
+[ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="12_d02t7"]
+[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="13_qeb8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj1ei"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsxw6"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf46r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2x6b7"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfa6w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq2i4"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1hx1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eeg3"]
 size = Vector2(35, 70)
+
+[sub_resource type="Resource" id="Resource_08waj"]
+script = ExtResource("12_d02t7")
+color = Color(0, 0, 0, 1)
+visible = false
+width = 2.0
+scrolling_speed = 0.0
+z_index = 0
+
+[sub_resource type="Resource" id="Resource_ysjuc"]
+script = ExtResource("12_d02t7")
+color = Color(0, 0, 0, 1)
+visible = true
+width = 4.0
+scrolling_speed = 0.0
+z_index = -1
+
+[sub_resource type="Resource" id="Resource_fa8wk"]
+script = ExtResource("12_d02t7")
+color = Color(1, 1, 1, 1)
+visible = true
+width = 4.0
+texture = ExtResource("13_qeb8o")
+scrolling_speed = 1.4
+z_index = 1
+
+[sub_resource type="Resource" id="Resource_vsofx"]
+script = ExtResource("12_d02t7")
+color = Color(1, 0, 0, 1)
+visible = true
+width = 4.0
+texture = ExtResource("13_qeb8o")
+scrolling_speed = 1.4
+z_index = 1
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i6rnc"]
 a = Vector2(0, -128)
@@ -92,7 +128,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_mj1ei")
+shape = SubResource("RectangleShape2D_xsxw6")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -106,7 +142,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_lf46r")
+shape = SubResource("RectangleShape2D_2x6b7")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -120,7 +156,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_jfa6w")
+shape = SubResource("RectangleShape2D_lq2i4")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -134,7 +170,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_m1hx1")
+shape = SubResource("RectangleShape2D_7eeg3")
 metadata/_edit_lock_ = true
 
 [node name="Collectible" parent="Shape" instance=ExtResource("8_dvmwe")]
@@ -162,16 +198,18 @@ texture_repeat = 2
 material = ExtResource("2_34fut")
 points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
 closed = true
-width = 5.0
+width = 4.0
 default_color = Color(0, 0, 0, 1)
 texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("4_jtsul")
-normal_width = null
-highlight_width = null
-dragging_width = null
+hidden_outline = SubResource("Resource_08waj")
+normal_outline = SubResource("Resource_ysjuc")
+dragging_outline = SubResource("Resource_fa8wk")
+error_outline = SubResource("Resource_vsofx")
+highlight_outline = SubResource("Resource_fa8wk")
 metadata/_edit_lock_ = true
 
 [node name="Colliders" type="Node2D" parent="."]

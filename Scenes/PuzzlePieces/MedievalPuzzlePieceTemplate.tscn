@@ -4,22 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="2_6unmi"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_cbxkv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bynm0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erl8y"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7f76"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyjys"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5u8e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7ocq"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbipu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnmjk"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
 resource_local_to_scene = true
 shader = ExtResource("2_cbxkv")
-shader_parameter/speed = 1.405
+shader_parameter/speed = 0.0
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="PuzzlePiece" instance=ExtResource("1_kckti")]
@@ -39,21 +39,18 @@ visible = false
 metadata/_edit_pinned_properties_ = [&"visible"]
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_bynm0")
+shape = SubResource("RectangleShape2D_erl8y")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_d7f76")
+shape = SubResource("RectangleShape2D_wyjys")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_f5u8e")
+shape = SubResource("RectangleShape2D_e7ocq")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_cbipu")
+shape = SubResource("RectangleShape2D_vnmjk")
 
 [node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_n3bvn")
-normal_width = null
-highlight_width = null
-dragging_width = null
 
 [editable path="Shape/Door"]

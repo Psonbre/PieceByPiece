@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://33mcraqrs0sn"]
+[gd_scene load_steps=12 format=3 uid="uid://33mcraqrs0sn"]
 
 [ext_resource type="Script" path="res://Scripts/collectible.gd" id="1_eqgs7"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_1sppi"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="3_apvo1"]
+[ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="4_kfm5p"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="5_uf66a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
@@ -101,8 +102,12 @@ metadata/_edit_lock_ = true
 [node name="Outline" type="Line2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
+z_index = -1
 texture_repeat = 2
+material = ExtResource("4_kfm5p")
 points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
+closed = true
+width = 8.0
 default_color = Color(0, 0, 0, 1)
 texture_mode = 1
 joint_mode = 2

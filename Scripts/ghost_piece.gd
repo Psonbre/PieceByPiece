@@ -12,6 +12,7 @@ var displayed := false
 @onready var visual_bottom_connector = $VisualShape/Connectors/BottomConnector
 
 func _ready():
+	visible = true
 	hide_display()
 	start_drag_position = position
 	default_scale = scale

@@ -1,13 +1,25 @@
-[gd_scene load_steps=5 format=4 uid="uid://bagvy8vbt68i"]
+[gd_scene load_steps=9 format=4 uid="uid://bagvy8vbt68i"]
 
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePieceTemplate.tscn" id="1_nqvcu"]
 [ext_resource type="PackedScene" uid="uid://csigeyux5ckx1" path="res://Scenes/PlayerSprites/Pirate.tscn" id="2_s5f21"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_44psn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lcmu"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2xov"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do7pk"]
+size = Vector2(35, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq60u"]
+size = Vector2(35, 70)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
 resource_local_to_scene = true
 shader = ExtResource("3_44psn")
-shader_parameter/speed = 1.405
+shader_parameter/speed = 0.0
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="PuzzlePiece" instance=ExtResource("1_nqvcu")]
@@ -21,7 +33,19 @@ tile_map_data = PackedByteArray("AAD+//7/AAABAAIAAAD///7/AAABAAIAAAAAAP7/AAABAAI
 
 [node name="PlayerSprite" parent="Shape" index="4" instance=ExtResource("2_s5f21")]
 
-[node name="Outline" parent="." index="2"]
+[node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
+shape = SubResource("RectangleShape2D_3lcmu")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
+shape = SubResource("RectangleShape2D_d2xov")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
+shape = SubResource("RectangleShape2D_do7pk")
+
+[node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
+shape = SubResource("RectangleShape2D_yq60u")
+
+[node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_n3bvn")
 
 [editable path="Shape/Door"]

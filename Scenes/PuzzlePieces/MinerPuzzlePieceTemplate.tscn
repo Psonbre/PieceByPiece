@@ -5,22 +5,22 @@
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="2_px2ad"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_xjnxo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwxro"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68pj4"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0grw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx6sd"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkfnv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xklee"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lya54"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx6m8"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bvn"]
 resource_local_to_scene = true
 shader = ExtResource("3_xjnxo")
-shader_parameter/speed = 1.405
+shader_parameter/speed = 0.0
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="PuzzlePiece" instance=ExtResource("1_tsh7o")]
@@ -45,18 +45,18 @@ tile_map_data = PackedByteArray("AAABAP//BwAEAAAAAAABAAAABwAEAAAAAAABAAEABwAEAAA
 tile_set = ExtResource("2_px2ad")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_dwxro")
+shape = SubResource("RectangleShape2D_68pj4")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_v0grw")
+shape = SubResource("RectangleShape2D_rx6sd")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_vkfnv")
+shape = SubResource("RectangleShape2D_xklee")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_lya54")
+shape = SubResource("RectangleShape2D_kx6m8")
 
-[node name="Outline" parent="." index="2"]
+[node name="Outline" parent="." index="3"]
 material = SubResource("ShaderMaterial_n3bvn")
 
 [editable path="Shape/Door"]
