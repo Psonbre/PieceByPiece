@@ -34,8 +34,9 @@ func create_arc(center: Vector2, start_angle: float, end_angle: float, segments 
 		arc_points.append(center + Vector2(cos(angle), sin(angle)) * connector_radius)
 	return arc_points
 
-func add_connector_points(connector, base_point, start_angle, end_angle):
+func add_connector_points(connector : PuzzlePieceVisualConnector, base_point, start_angle, end_angle):
 	if connector.shape == PuzzlePieceConnector.ConnectorShape.FLAT : return []
+	if connector is PuzzlePieceConnector and connector.connected_to != null : return []
 	var segments = 16 
 	if connector.shape == PuzzlePieceConnector.ConnectorShape.TRIANGLE :
 		segments = 2

@@ -20,7 +20,6 @@ func _ready() -> void:
 	closed = true
 	if not Engine.is_editor_hint():
 		if material : material = material.duplicate()
-	await get_tree().get_frame()
 	set_type(OutlineType.NORMAL)
 		
 func set_type(type : OutlineType):

@@ -55,8 +55,9 @@ func _ready():
 	
 	player_sprite = PLAYER_SPRITES.get(theme).instantiate()
 	shape.add_child(player_sprite)
-	shape.move_child(player_sprite, shape.get_node("Dirt").get_index() - 1)
+	shape.move_child(player_sprite, shape.get_node("Dirt").get_index())
 	player_sprite.sprite.visible = true
+	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
@@ -173,9 +174,6 @@ func stop_dragging():
 	if !global_position.is_equal_approx(old_position) :
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -13)
 	
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	
 	attempt_connection_on_all_other_pieces()
 	set_colliders_in_drag_mode(false)
 	
@@ -187,14 +185,7 @@ func attempt_connection():
 	if compatible_connector != null :
 		snap_to_connector(compatible_connector)
 		
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	
 	connect_all_sides()
-	
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	
 	update_connection_group()
 	
 func attempt_connection_on_all_other_pieces():
@@ -247,6 +238,8 @@ func connect_all_sides():
 	right_connector.connect_with_closest()
 	top_connector.connect_with_closest()
 	bottom_connector.connect_with_closest()
+	shape.update_shape()
+	
 
 func get_first_compatible_overlapping_connector() -> PuzzlePieceConnector:
 	var connection_result = left_connector.get_first_compatible_overlapping_connector(is_dragging)

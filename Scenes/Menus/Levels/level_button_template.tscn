@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/level_select_button.gd" id="1_6ru04"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_12a0w"]
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="3_nuvwt"]
-[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/PuzzlePieceTileSet.tres" id="3_q3am1"]
+[ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="3_q3am1"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_u3tsx"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="6_phcub"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="7_jmlqv"]
