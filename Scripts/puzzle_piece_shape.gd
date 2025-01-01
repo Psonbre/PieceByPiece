@@ -34,9 +34,11 @@ func create_arc(center: Vector2, start_angle: float, end_angle: float, segments 
 		arc_points.append(center + Vector2(cos(angle), sin(angle)) * connector_radius)
 	return arc_points
 
-func add_connector_points(connector : PuzzlePieceVisualConnector, base_point, start_angle, end_angle):
+func add_connector_points(connector : PuzzlePieceVisualConnector, base_point : Vector2, start_angle : float, end_angle : float, flatten_connected : bool):
 	if connector.shape == PuzzlePieceConnector.ConnectorShape.FLAT : return []
-	if connector is PuzzlePieceConnector and connector.connected_to != null : return []
+	if connector is PuzzlePieceConnector and flatten_connected:
+		if connector.connected_to != null and connector.connected_to.puzzle_piece.theme == connector.puzzle_piece.theme :
+			return []
 	var segments = 16 
 	if connector.shape == PuzzlePieceConnector.ConnectorShape.TRIANGLE :
 		segments = 2
@@ -51,27 +53,38 @@ func add_connector_points(connector : PuzzlePieceVisualConnector, base_point, st
 func update_shape():
 	if !top_connector or !bottom_connector or !left_connector or !right_connector : return
 	var half_size = shape_size / 2.0
-	var points = []
-	points.append(Vector2(-half_size, -half_size))
+	var shape_points = []
+	var outline_points = []
+	
+	shape_points.append(Vector2(-half_size, -half_size))
+	outline_points.append(Vector2(-half_size, -half_size))
 
 	# Top Connector
-	points += add_connector_points(top_connector, Vector2(0, -half_size), PI, 2 * PI)
-	points.append(Vector2(half_size, -half_size))
+	shape_points += add_connector_points(top_connector, Vector2(0, -half_size), PI, 2 * PI, true)
+	shape_points.append(Vector2(half_size, -half_size))
+	outline_points += add_connector_points(top_connector, Vector2(0, -half_size), PI, 2 * PI, false)
+	outline_points.append(Vector2(half_size, -half_size))
 
 	# Right Connector
-	points += add_connector_points(right_connector, Vector2(half_size, 0), -PI / 2, PI / 2)
-	points.append(Vector2(half_size, half_size))
+	shape_points += add_connector_points(right_connector, Vector2(half_size, 0), -PI / 2, PI / 2, true)
+	shape_points.append(Vector2(half_size, half_size))
+	outline_points += add_connector_points(right_connector, Vector2(half_size, 0), -PI / 2, PI / 2, false)
+	outline_points.append(Vector2(half_size, half_size))
 
 	# Bottom Connector
-	points += add_connector_points(bottom_connector, Vector2(0, half_size), 0, PI)
-	points.append(Vector2(-half_size, half_size))
+	shape_points += add_connector_points(bottom_connector, Vector2(0, half_size), 0, PI, true)
+	shape_points.append(Vector2(-half_size, half_size))
+	outline_points += add_connector_points(bottom_connector, Vector2(0, half_size), 0, PI, false)
+	outline_points.append(Vector2(-half_size, half_size))
 
 	# Left Connector
-	points += add_connector_points(left_connector, Vector2(-half_size, 0), PI / 2, 3 * PI / 2)
-	points.append(Vector2(-half_size, -half_size))
+	shape_points += add_connector_points(left_connector, Vector2(-half_size, 0), PI / 2, 3 * PI / 2, true)
+	shape_points.append(Vector2(-half_size, -half_size))
+	outline_points += add_connector_points(left_connector, Vector2(-half_size, 0), PI / 2, 3 * PI / 2, false)
+	outline_points.append(Vector2(-half_size, -half_size))
 
 	# Generate the polygon and update connectors
-	polygon = points
+	polygon = shape_points
 	right_connector.update_shape(connector_radius)
 	left_connector.update_shape(connector_radius)
 	top_connector.update_shape(connector_radius)
@@ -84,7 +97,7 @@ func update_shape():
 
 	# Update the outline
 	var outline := $"../Outline"
-	outline.regenerate(polygon)
+	outline.regenerate(outline_points)
 
 func get_segment_points(side: String) -> Array:
 	var start_point: Vector2
