@@ -55,6 +55,7 @@ func _ready():
 	
 	player_sprite = PLAYER_SPRITES.get(theme).instantiate()
 	shape.add_child(player_sprite)
+	shape.move_child(player_sprite, shape.get_node("Dirt").get_index() - 1)
 	player_sprite.sprite.visible = true
 	await get_tree().physics_frame
 	await get_tree().physics_frame
