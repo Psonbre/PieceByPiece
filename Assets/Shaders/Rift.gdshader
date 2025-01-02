@@ -1,16 +1,19 @@
 shader_type canvas_item;
 
 // Effect parameters
-uniform vec3 effect_color: source_color = vec3(0.2, 0.3, 0.8);
-uniform int octave_count: hint_range(1, 20) = 10;
+uniform vec3 effect_color : source_color = vec3(0.2, 0.3, 0.8);
+uniform int octave_count : hint_range(1, 20) = 10;
 uniform float amp_start = 0.5;
 uniform float amp_coeff = 0.5;
 uniform float freq_coeff = 0;
 uniform float speed = 1;
-uniform float thickness: hint_range(0.0, 10.0) = 1.25; // Thickness of the effect
+uniform float thickness : hint_range(0.0, 10.0) = 1.25; // Thickness of the effect
 
 // Pixelation parameters
-uniform float pixel_size: hint_range(1.0, 150.0) = 10.0; // Size of pixelation effect
+uniform float pixel_size : hint_range(1.0, 150.0) = 10.0; // Size of pixelation effect
+
+// Screen texture uniform
+uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
 
 // Hash and noise functions
 float hash12(vec2 x) {
@@ -58,11 +61,17 @@ void fragment() {
     pixel_uv += 2.0 * fbm(pixel_uv + TIME * speed, octave_count) - 1.0;
     float dist = abs(pixel_uv.x);
 
+    // Sample the screen texture at the current fragment's position
+    vec4 screen_color = texture(screen_texture, SCREEN_UV);
+
+    // Calculate contrast color (inverted color)
+    vec3 contrast_color = vec3(1.0) - screen_color.rgb;
+
     // Modify alpha based on distance and thickness
     float edge_factor = smoothstep(thickness, 0.0, dist);
 
-    // Retain color variation
-    vec3 color = effect_color * edge_factor;
+    // Blend effect color with contrast color based on edge factor
+    vec3 color = mix(effect_color, contrast_color, edge_factor);
 
     // Clamp alpha to binary values while keeping color gradients
     float alpha = step(0.5, edge_factor); // Clamp alpha to 0 or 1

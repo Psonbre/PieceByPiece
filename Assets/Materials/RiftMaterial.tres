@@ -6,9 +6,9 @@
 shader = ExtResource("1_mj6ge")
 shader_parameter/effect_color = Color(1, 1, 1, 1)
 shader_parameter/octave_count = 10
-shader_parameter/amp_start = 0.5
-shader_parameter/amp_coeff = 0.5
+shader_parameter/amp_start = 0.37
+shader_parameter/amp_coeff = 0.62
 shader_parameter/freq_coeff = 0.0
 shader_parameter/speed = 1.0
 shader_parameter/thickness = 0.8
-shader_parameter/pixel_size = 2.5
+shader_parameter/pixel_size = 39.421
