@@ -90,7 +90,7 @@ func _process(delta):
 			target_position = global_position + Input.get_vector("SelectPieceLeft", "SelectPieceRight", "SelectPieceUp", "SelectPieceDown") * controller_drag_speed
 			
 		var distance = target_position - global_position
-		velocity = distance * drag_speed * delta
+		velocity = distance * drag_speed * delta * 1.5
 		global_position += velocity
 		scale = scale.move_toward(default_scale * 1.1, 0.6 * delta)
 		
@@ -277,7 +277,7 @@ func get_all_pieces_with_compatible_overlapping_connectors():
 func set_colliders_in_drag_mode(drag_mode: bool):
 	_set_colliders_recursive(self, drag_mode)
 	shape.get_node("Foreground").collision_enabled = !drag_mode
-	if shape.has_node("Diggable") : shape.get_node("Diggable").collision_enabled = !drag_mode
+	if shape.has_node("Dirt") : shape.get_node("Dirt").collision_enabled = !drag_mode
 	set_collision_mask_value(1, true)
 	
 func _set_colliders_recursive(node: Node, drag_mode: bool) -> void:

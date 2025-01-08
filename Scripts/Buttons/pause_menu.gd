@@ -19,6 +19,7 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
+		if PuzzlePiece.global_dragging : return
 		drop_down_button.button_pressed = !drop_down_button.button_pressed
 	elif Input.is_action_just_pressed("ui_cancel") :
 		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return

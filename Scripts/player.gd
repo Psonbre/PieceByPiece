@@ -244,5 +244,6 @@ func pause_animation():
 		player_sprite.pause()
 
 func land(landing_speed):
+	if landing_speed < 30.0 : return
 	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.squash(landing_speed / 330.0)
