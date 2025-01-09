@@ -15,8 +15,16 @@ var is_opened := false
 var current_tween : Tween
 func _ready():
 	drop_down_menu.position = hiddenPosition
-
+	Input.joy_connection_changed.connect(on_controller_disconnected)
+	
+func on_controller_disconnected(device, connected) :
+	if device == 0 and not connected : 
+		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
+		if PuzzlePiece.global_dragging : return
+		drop_down_button.button_pressed = !drop_down_button.button_pressed
+	
 func _input(event: InputEvent) -> void:
+	
 	if Input.is_action_just_pressed("Pause"):
 		if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return
 		if PuzzlePiece.global_dragging : return
