@@ -5,7 +5,7 @@ class_name PuzzlePiece
 
 enum THEME {MEDIEVAL, PIRATE, ALIEN, MINER}
 @export var theme := THEME.MEDIEVAL
-const max_tilt := deg_to_rad(15)
+const max_tilt := deg_to_rad(12)
 const controller_drag_speed := 100.0
 static var global_dragging := false
 
@@ -19,6 +19,7 @@ static var global_dragging := false
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite : PlayerSprite
 var portal : Portal
+var stop_dragging_next_physics_frame := false
 
 var has_attempted_connection_this_tick := false
 
@@ -90,14 +91,14 @@ func _process(delta):
 			target_position = global_position + Input.get_vector("SelectPieceLeft", "SelectPieceRight", "SelectPieceUp", "SelectPieceDown") * controller_drag_speed
 			
 		var distance = target_position - global_position
-		velocity = distance * drag_speed * delta * 1.5
+		velocity = distance * drag_speed * delta
 		global_position += velocity
-		scale = scale.move_toward(default_scale * 1.1, 0.6 * delta)
 		
 		if velocity.length() > 0:
-			var tilt_by = deg_to_rad(velocity.x) / 30.0
+			var tilt_by = deg_to_rad(velocity.x) / 45.0
 			tilt_angle += tilt_by
 			tilt_angle = clamp(tilt_angle, -max_tilt, max_tilt)
+		scale = scale.move_toward(default_scale * 1.1, 0.6 * delta)
 		
 		rotated_angle = move_toward(rotated_angle, deg_to_rad(target_rotated_angle), abs(deg_to_rad(target_rotated_angle) - rotated_angle) * delta * 10.0)
 		
@@ -176,6 +177,9 @@ func stop_dragging():
 	
 	attempt_connection_on_all_other_pieces()
 	set_colliders_in_drag_mode(false)
+	
+	if is_hovering : outline.set_type(PuzzlePieceOutline.OutlineType.HIGHLIGHT)
+	else : outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 	
 func attempt_connection():
 	if has_attempted_connection_this_tick: return
@@ -281,10 +285,11 @@ func set_colliders_in_drag_mode(drag_mode: bool):
 	set_collision_mask_value(1, true)
 	
 func _set_colliders_recursive(node: Node, drag_mode: bool) -> void:
-	if node is Player:
-		node.set_locked(drag_mode)
-	elif node.has_method("set_physics_process"):
-		node.set_physics_process(!drag_mode)
+	if node is not PuzzlePiece :
+		if node is Player:
+			node.set_locked(drag_mode)
+		elif node.has_method("set_physics_process"):
+			node.set_physics_process(!drag_mode)
 
 	if node.has_method("set_collision_layer_value"):
 		node.set_collision_layer_value(3, drag_mode)

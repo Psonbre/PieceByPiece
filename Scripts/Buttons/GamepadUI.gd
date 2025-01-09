@@ -13,6 +13,8 @@ func _initialize_inputs():
 	_get_focusable_children()
 	
 func _input(event):
+	var current_screen := SubSystemManager.get_scene_manager().current_screen
+	if not current_screen or not current_screen.is_ancestor_of(self) : return
 	#Mouse inputs
 	if (event is InputEventMouse):
 		if (!IsMouseControlled):
@@ -29,13 +31,16 @@ func _input(event):
 			if FirstControl:
 				_disable_first_controls_focus_neighbors()
 				FirstControl.grab_focus()
-			
 		#Second key input
 		elif FirstControl.has_focus():
 				#Allows inputs navigation
 				_reset_first_controls_focus_neighbors()
-
-
+		if get_viewport().gui_get_focus_owner() == null :
+			_set_inputs_focus_mode(Control.FOCUS_ALL)
+			if FirstControl:
+				_disable_first_controls_focus_neighbors()
+				FirstControl.grab_focus()
+			
 func _set_inputs_focus_mode(mode : Control.FocusMode):
 	for input in Inputs:
 		input.focus_mode = mode
