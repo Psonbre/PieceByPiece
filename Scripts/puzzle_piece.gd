@@ -8,7 +8,7 @@ enum THEME {MEDIEVAL, PIRATE, ALIEN, MINER}
 @export var theme := THEME.MEDIEVAL :
 	set(value) :
 		theme = value
-		update_tilemap()
+		update_tilemap.call_deferred()
 const max_tilt := deg_to_rad(12)
 const controller_drag_speed := 100.0
 static var global_dragging := false
