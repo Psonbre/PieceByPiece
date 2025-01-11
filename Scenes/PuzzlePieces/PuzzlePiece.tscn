@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=24 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_uhv7f"]
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_2oxp2"]
@@ -16,18 +16,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_etugk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x157f"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1udmg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8o8j"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6x6h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwiik"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6ydt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5xpt"]
 size = Vector2(35, 70)
 
 [sub_resource type="Resource" id="Resource_08waj"]
@@ -80,27 +78,25 @@ shape = SubResource("RectangleShape2D_812v4")
 metadata/_edit_lock_ = true
 
 [node name="Shape" type="Polygon2D" parent="."]
-clip_children = 2
-material = SubResource("ShaderMaterial_g8q12")
+clip_children = 1
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -128)
 script = ExtResource("2_2oxp2")
 bevel_width = 3.7
 
 [node name="Background" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.6, 1.6)
 tile_set = ExtResource("3_3l438")
 collision_enabled = false
 
 [node name="Foreground" type="TileMapLayer" parent="Shape"]
 position = Vector2(-25.6, -25.6)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.6, 1.6)
 tile_set = ExtResource("3_3l438")
 
 [node name="Dirt" type="TileMapLayer" parent="Shape"]
-modulate = Color(0.501961, 0.278431, 0.133333, 1)
 position = Vector2(-25.6, -25.6)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.6, 1.6)
 tile_set = ExtResource("4_c62oi")
 
 [node name="Arrows" type="Sprite2D" parent="Shape"]
@@ -129,7 +125,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_etugk")
+shape = SubResource("RectangleShape2D_x157f")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -143,7 +139,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_1udmg")
+shape = SubResource("RectangleShape2D_l8o8j")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -157,7 +153,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_k6x6h")
+shape = SubResource("RectangleShape2D_nwiik")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -171,7 +167,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_s6ydt")
+shape = SubResource("RectangleShape2D_c5xpt")
 metadata/_edit_lock_ = true
 
 [node name="Shadow" type="Line2D" parent="."]

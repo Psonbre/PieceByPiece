@@ -1,10 +1,14 @@
+@tool
 extends Area2D
 class_name PuzzlePiece
 
 @export var is_rotating_piece := false
 
 enum THEME {MEDIEVAL, PIRATE, ALIEN, MINER}
-@export var theme := THEME.MEDIEVAL
+@export var theme := THEME.MEDIEVAL :
+	set(value) :
+		theme = value
+		update_tilemap()
 const max_tilt := deg_to_rad(12)
 const controller_drag_speed := 100.0
 static var global_dragging := false
@@ -18,6 +22,9 @@ static var global_dragging := false
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite : PlayerSprite
+@onready var foreground: TileMapLayer = $Shape/Foreground
+@onready var background: TileMapLayer = $Shape/Background
+
 var portal : Portal
 var stop_dragging_next_physics_frame := false
 
@@ -40,12 +47,20 @@ var start_drag_tilt := 0.0
 
 const PLAYER_SPRITES = {
 	THEME.MEDIEVAL : preload("res://Scenes/PlayerSprites/King.tscn"),
-	THEME.MINER : preload("res://Scenes/PlayerSprites/King.tscn"),
+	THEME.MINER : preload("res://Scenes/PlayerSprites/Miner.tscn"),
 	THEME.ALIEN : preload("res://Scenes/PlayerSprites/Alien.tscn"),
 	THEME.PIRATE : preload("res://Scenes/PlayerSprites/Pirate.tscn"),
 }
 
+const THEME_TILESET_MAP = {
+	THEME.MEDIEVAL : 3,
+	THEME.MINER : 2,
+	THEME.ALIEN : 8,
+	THEME.PIRATE : 0,
+}
+
 func _ready():
+	if Engine.is_editor_hint() : return
 	portal = shape.get_node("Portal") if shape.has_node("Portal") else null
 	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
@@ -65,6 +80,7 @@ func _ready():
 	attempt_connection()
 
 func _input(event):
+	if Engine.is_editor_hint() : return
 	if is_dragging && is_rotating_piece :
 		if event.is_action_pressed("Rotate Right"):
 			target_rotated_angle = target_rotated_angle + 90
@@ -74,6 +90,7 @@ func _input(event):
 			tilt_angle = 0
 
 func _process(delta):
+	if Engine.is_editor_hint() : return
 	if Input.is_action_just_pressed("Click") and is_hovering and !global_dragging and !PauseManager.is_paused:
 		start_dragging()
 	elif Input.is_action_just_released("Click") and is_dragging and !PauseManager.is_paused:
@@ -126,7 +143,12 @@ func _process(delta):
 	
 	has_attempted_connection_this_tick = false
 
-	
+func update_tilemap():
+	for cell : Vector2i in foreground.get_used_cells() :
+		foreground.set_cell(cell, THEME_TILESET_MAP.get(theme), foreground.get_cell_atlas_coords(cell))
+	for cell : Vector2i in background.get_used_cells() :
+		background.set_cell(cell, THEME_TILESET_MAP.get(theme), background.get_cell_atlas_coords(cell))
+
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false
 	if !right_connector.has_connection : return false
@@ -375,19 +397,23 @@ func unfocus():
 	
 
 func _on_mouse_entered():
+	if Engine.is_editor_hint() : return
 	if level.is_mouse_controlled :
 		focus()
 	
 func _on_mouse_exited():
+	if Engine.is_editor_hint() : return
 	if level.is_mouse_controlled :
 		unfocus()
 	
 func _on_body_entered(player):
+	if Engine.is_editor_hint() : return
 	if PauseManager.is_paused : return
 	if player is Player && player.get_parent() != shape && !is_dragging:
 		player.add_overlapping_piece(self)
 
 func _on_body_exited(player):
+	if Engine.is_editor_hint() : return
 	if PauseManager.is_paused : return
 	if(player is Player):
 		player.remove_overlapping_piece(self)

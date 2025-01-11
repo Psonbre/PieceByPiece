@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_tnu1q"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_4ixfp"]
-[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="2_ur6vp"]
+[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/pirate_frames.tres" id="2_ur6vp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3emvr"]
 size = Vector2(35, 70)

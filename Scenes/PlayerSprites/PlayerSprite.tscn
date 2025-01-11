@@ -2,20 +2,21 @@
 
 [ext_resource type="Script" path="res://Scripts/player_sprite.gd" id="1_3qpoe"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bf8b2"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_6x3eo"]
 radius = 24.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bf8b2"]
 
 [node name="PlayerSprite" type="Node2D" groups=["PlayerSprites"]]
 script = ExtResource("1_3qpoe")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_bf8b2")
+[node name="StretchParent" type="Node2D" parent="."]
+position = Vector2(0, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StretchParent"]
 position = Vector2(0, -24)
 shape = SubResource("CircleShape2D_6x3eo")
 disabled = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="StretchParent"]
+sprite_frames = SubResource("SpriteFrames_bf8b2")

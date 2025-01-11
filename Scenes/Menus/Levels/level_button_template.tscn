@@ -18,16 +18,16 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qxird"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0pm3b"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvqbe"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8lay"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb26d"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gakr7"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1mp5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm41o"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
@@ -105,14 +105,14 @@ bevel_width = 3.7
 
 [node name="Background" type="TileMapLayer" parent="Level Button/Shape"]
 position = Vector2(-25.6, -25.6)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.6, 1.6)
 tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
 tile_set = ExtResource("3_q3am1")
 collision_enabled = false
 
 [node name="Foreground" type="TileMapLayer" parent="Level Button/Shape"]
 position = Vector2(-25.6, -25.6)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.6, 1.6)
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAA=")
 tile_set = ExtResource("3_q3am1")
 
@@ -128,7 +128,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_qxird")
+shape = SubResource("CircleShape2D_0pm3b")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -140,7 +140,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_dvqbe")
+shape = SubResource("RectangleShape2D_d8lay")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -152,7 +152,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_cb26d")
+shape = SubResource("RectangleShape2D_gakr7")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -164,7 +164,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_n1mp5")
+shape = SubResource("RectangleShape2D_mm41o")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="Level Button"]

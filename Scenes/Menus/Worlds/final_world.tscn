@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://bndsfuv4ll7tr"]
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_pd1kv"]
-[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/player1_frames.tres" id="2_uevmo"]
+[ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/pirate_frames.tres" id="2_uevmo"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_p30nk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4x0st"]

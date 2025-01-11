@@ -70,6 +70,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Basic World" parent="Tree/Basic" instance=ExtResource("4_wjvt0")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 scale = Vector2(1.25, 1.25)
 
 [node name="Advanced" type="Control" parent="Tree" groups=["WorldGroup"]]
@@ -82,6 +94,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Advanced World" parent="Tree/Advanced" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("5_80pre")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 scale = Vector2(1.25, 1.25)
 required_completed_worlds = [NodePath("../../Basic/Basic World")]
 
@@ -102,6 +126,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Portal World" parent="Tree/MiddleGroup/Portals" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("6_plgfp")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Combined" type="Control" parent="Tree/MiddleGroup"]
@@ -114,6 +150,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Dirt Portal World" parent="Tree/MiddleGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("7_2tw7h")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../Portals/Portal World"), NodePath("../../Dirt/Dirt World")]
 
 [node name="Dirt" type="Control" parent="Tree/MiddleGroup"]
@@ -128,6 +176,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Dirt World" parent="Tree/MiddleGroup/Dirt" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("12_ega6f")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="LeftGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
@@ -149,6 +209,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Gravity World" parent="Tree/LeftGroup/Gravity" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("9_7xlvv")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Combined" type="Control" parent="Tree/LeftGroup"]
@@ -161,6 +233,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Gravity Key World" parent="Tree/LeftGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("10_hv8tc")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../Gravity/Gravity World"), NodePath("../../Key/Key World")]
 
 [node name="Key" type="Control" parent="Tree/LeftGroup"]
@@ -175,6 +259,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Key World" parent="Tree/LeftGroup/Key" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("11_j58w6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="RightGroup" type="Control" parent="Tree" groups=["WorldGroup"]]
@@ -196,6 +292,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Platform World" parent="Tree/RightGroup/Platform" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("14_poyu8")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Combined" type="Control" parent="Tree/RightGroup"]
@@ -208,6 +316,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Rotating Piece Platform World" parent="Tree/RightGroup/Combined" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("10_7ff8v")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../Platform/Platform World"), NodePath("../../RotatingPiece/Rotating Piece World")]
 
 [node name="RotatingPiece" type="Control" parent="Tree/RightGroup"]
@@ -222,6 +342,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Rotating Piece World" parent="Tree/RightGroup/RotatingPiece" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("15_ecnri")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 required_completed_worlds = [NodePath("../../../Advanced/Advanced World")]
 
 [node name="Final" type="Control" parent="Tree" groups=["WorldGroup"]]
@@ -236,6 +368,18 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Final World" parent="Tree/Final" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("15_6boim")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 1
+grow_vertical = 1
 scale = Vector2(1.3, 1.3)
 required_completed_worlds = [NodePath("../../LeftGroup/Combined/Gravity Key World"), NodePath("../../RightGroup/Combined/Rotating Piece Platform World"), NodePath("../../MiddleGroup/Combined/Dirt Portal World")]
 
