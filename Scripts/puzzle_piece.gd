@@ -148,6 +148,7 @@ func update_tilemap():
 		foreground.set_cell(cell, THEME_TILESET_MAP.get(theme), foreground.get_cell_atlas_coords(cell))
 	for cell : Vector2i in background.get_used_cells() :
 		background.set_cell(cell, THEME_TILESET_MAP.get(theme), background.get_cell_atlas_coords(cell))
+	if shape.has_node("Door") : shape.get_node("Door").set_theme(theme)
 
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false
