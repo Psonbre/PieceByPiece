@@ -134,6 +134,7 @@ horizontal_speed = 0.5
 horizontal_intensity = 7
 
 [node name="Basic World" parent="TreeContainer/Tree/BasicWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("5_2x5tc")]
+visible = false
 layout_mode = 2
 anchors_preset = 0
 anchor_left = 0.0
@@ -167,7 +168,8 @@ scale = Vector2(0.657755, 0.657755)
 target_world_group = 6
 self_world_group = 0
 
-[node name="DownArrow" parent="TreeContainer/Tree/BasicWorldContainer" instance=ExtResource("6_o7i7l")]
+[node name="DownArrow" parent="TreeContainer/Tree/BasicWorldContainer" node_paths=PackedStringArray("required_completed_worlds") instance=ExtResource("6_o7i7l")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.498047
@@ -180,8 +182,25 @@ rotation = 1.57079
 scale = Vector2(0.657755, 0.657755)
 target_world_group = 1
 self_world_group = 0
+required_completed_worlds = [NodePath("../../FinalWorldContainer/Final World")]
+
+[node name="Label" type="Label" parent="TreeContainer/Tree/BasicWorldContainer"]
+layout_mode = 0
+offset_left = -341.0
+offset_top = 20.5
+offset_right = 9059.0
+offset_bottom = 2360.5
+scale = Vector2(0.1, 0.1)
+text = "Congrats on finishing the Piece by Piece demo !
+
+Buy the full game to explore 
+8 unique themes and 100 levels !"
+label_settings = ExtResource("3_ci1o0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AdvancedWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
+visible = false
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -239,6 +258,7 @@ scale = Vector2(0.657755, 0.657755)
 self_world_group = 1
 
 [node name="ThemedWorldsContainer" type="HBoxContainer" parent="TreeContainer/Tree"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 256
 
@@ -561,6 +581,7 @@ focus_previous = NodePath("../../RotatingPlatformWorldContainer/Rotating Piece P
 required_completed_worlds = [NodePath("../../../../AdvancedWorldContainer/Advanced World")]
 
 [node name="FinalWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
+visible = false
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4

@@ -9,16 +9,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqx3h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2he72"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3whck"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlamb"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_32k15"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_in8kd"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xh7sx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5dqe"]
 radius = 35.0
 
 [sub_resource type="Animation" id="Animation_t6n88"]
@@ -276,10 +276,10 @@ material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
 
 [node name="Background" parent="Shape" index="0"]
-tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEACAABAAIAAAD+/wIACAABAAIAAAD//wIACAACAAIAAAD//wEACAACAAIAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEACAACAAIAAAAAAAIACAABAAIAAAABAAIACAACAAIAAAABAAEAAgAAAAcAAAABAAAAAgAAAAYAAAABAP7/AgAAAAUAAAABAP//AgAAAAYAAAACAAIACAABAAIAAAACAAEAAgACAAcAAAACAAAAAgACAAYAAAACAP//AgACAAYAAAACAP7/AgACAAUAAAD//wMACAACAAIAAAAAAAMACAACAAIAAAABAAMACAACAAIAAAADAAEAAwACAAgAAAA=")
+tile_map_data = PackedByteArray("AAD+////AwABAAgAAAD/////AwABAAgAAAAAAP//AwABAAgAAAABAAEAAgAAAAcAAAABAAAAAgAAAAYAAAABAP7/AgAAAAUAAAABAP//AgAAAAYAAAACAAEAAgACAAcAAAACAAAAAgACAAYAAAACAP//AgACAAYAAAACAP7/AgACAAUAAAADAAEAAwACAAgAAAD+/wEACAABAAgAAAD//wEACAABAAgAAAAAAAEACAABAAgAAAD9/wEACAAAAAgAAAA=")
 
 [node name="Foreground" parent="Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwADAAMAAAD+/wIACAABAAAAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAABAAAAAAD+/wAAAwACAAUAAAD//wAAAwACAAUAAAAAAAAAAwADAAUAAAD//wMACAAGAAIAAAAAAAMACAAGAAIAAAABAAMACAAGAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AwABAAMAAAD///7/AwABAAMAAAAAAP7/AwABAAMAAAD+/wIACAABAAAAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAACAAAAAAD+/wAAAwABAAMAAAD//wAAAwABAAMAAAAAAAAAAwABAAMAAAD+/wMACAABAAIAAAD//wMACAABAAIAAAAAAAMACAABAAIAAAABAAMACAABAAIAAAACAAMACAACAAIAAAD9/wIACAAAAAAAAAD9/wMACAAAAAIAAAA=")
 
 [node name="PlayerSprite" parent="Shape" index="2"]
 position = Vector2(-62, -27)
@@ -295,24 +295,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_cqx3h")
+shape = SubResource("RectangleShape2D_2he72")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_3whck")
+shape = SubResource("RectangleShape2D_jlamb")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_32k15")
+shape = SubResource("RectangleShape2D_in8kd")
 
 [node name="BottomConnector" parent="Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_xh7sx")
+shape = SubResource("CircleShape2D_r5dqe")
 
 [node name="Rift" parent="Shape" index="4" instance=ExtResource("2_we3y2")]
 points = PackedVector2Array(26, -129, 26, 76, 129, 76)
