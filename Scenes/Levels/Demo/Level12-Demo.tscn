@@ -9,16 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="7_bjg8o"]
 [ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="8_wn4ai"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cfg83"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndj6o"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dybul"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkdka"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jqur7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rw134"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rx0pw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7jfp"]
 radius = 35.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2hfto"]
@@ -27,16 +27,16 @@ shader = ExtResource("3_6kqw8")
 shader_parameter/speed = 0.0
 shader_parameter/color = Vector4(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l0yf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2qws"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvdgi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4513"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ostq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiykp"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d84a7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt15w"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gw1hg"]
@@ -45,16 +45,16 @@ shader = ExtResource("3_6kqw8")
 shader_parameter/speed = 0.0
 shader_parameter/color = Vector4(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i57tt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5a6d"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnsaa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fixpc"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_shj5l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ook82"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kttmo"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd1x6"]
 size = Vector2(35, 70)
 
 [node name="Level 12" instance=ExtResource("1_g3gob")]
@@ -78,10 +78,10 @@ theme = 3
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -134.828, -32.3358, -141.394, -29.1014, -147.445, -24.7487, -152.749, -19.445, -157.101, -13.3939, -160.336, -6.82816, -162.327, -6.42918e-15, -163, 6.82816, -162.327, 13.3939, -160.336, 19.445, -157.101, 24.7487, -152.749, 29.1014, -147.445, 32.3358, -141.394, 34.3275, -134.828, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
 
 [node name="Background" parent="PuzzlePiece2/Shape" index="0"]
-tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAgABAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAgABAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AgADAAYAAAAAAP//AgADAAYAAAAAAAAAAgAIAAkAAAAAAAEAAgADAAYAAAAAAAIAAgADAAYAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAgABAAgAAAABAP7/AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAgABAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AgABAAgAAAABAP3/AgABAAgAAAAAAP3/AgAIAAUAAAD///3/AgABAAgAAAD+//3/AgABAAgAAAD9//3/AgAEAAUAAAD9//7/AgADAAYAAAD9////AgADAAYAAAD9/wAAAgAEAAkAAAD9/wEAAgADAAYAAAD9/wIAAgADAAYAAAD9/wMAAgAEAAgAAAD+/wMAAgABAAgAAAD//wMAAgABAAgAAAAAAAMAAgAIAAgAAAABAAMAAgABAAgAAAACAAMAAgABAAgAAAADAAMAAgAHAAgAAAADAAIAAgADAAYAAAADAAEAAgADAAYAAAADAAAAAgAHAAkAAAADAP//AgADAAYAAAADAP7/AgADAAYAAAADAP3/AgAHAAUAAAABAP//AwACAAgAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AgACAAgAAAD+////AgACAAgAAAD+/wAAAgABAAgAAAD+/wEAAgACAAgAAAD+/wIAAgACAAgAAAD//wIAAgACAAgAAAD//wEAAgACAAgAAAD//wAAAgABAAgAAAD/////AgACAAgAAAD///7/AgACAAgAAAAAAP7/AgADAAYAAAAAAP//AgADAAYAAAAAAAAAAgAIAAkAAAAAAAEAAgADAAYAAAAAAAIAAgADAAYAAAABAAIAAgACAAgAAAABAAEAAgACAAgAAAABAAAAAgABAAgAAAABAP7/AgACAAgAAAACAAIAAgACAAgAAAACAAEAAgACAAgAAAACAAAAAgABAAgAAAACAP//AgACAAgAAAACAP7/AgACAAgAAAACAP3/AgABAAgAAAABAP3/AgABAAgAAAAAAP3/AgAIAAUAAAD///3/AgABAAgAAAD+//3/AgABAAgAAAD9//3/AgAEAAUAAAD9//7/AgADAAYAAAD9////AgADAAYAAAD9/wAAAgAEAAkAAAD9/wEAAgADAAYAAAD9/wIAAgADAAYAAAD9/wMAAgAEAAgAAAD+/wMAAgABAAgAAAD//wMAAgABAAgAAAAAAAMAAgAIAAgAAAABAAMAAgABAAgAAAACAAMAAgABAAgAAAADAAMAAgAHAAgAAAADAAIAAgADAAYAAAADAAEAAgADAAYAAAADAAAAAgAHAAkAAAADAP//AgADAAYAAAADAP7/AgADAAYAAAADAP3/AgAHAAUAAAABAP//AgACAAgAAAA=")
 
 [node name="Foreground" parent="PuzzlePiece2/Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+//7/AgAAAAAAAAD///7/AgACAAAAAAABAP7/AgAAAAAAAAACAP7/AgACAAAAAAD+/wIAAgAAAAIAAAD//wIAAgACAAIAAAABAAIAAgAAAAIAAAACAAIAAgACAAIAAAADAAIACAACAAIAAAADAP7/CAACAAIAAAD//wEAAgACAAAAAAD+/wEAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgACAAAAAAABAP//AgAAAAIAAAACAP//AgACAAIAAAD+////AgAAAAIAAAD/////AgACAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/AgAAAAAAAAD///7/AgACAAAAAAABAP7/AgAAAAAAAAACAP7/AgACAAAAAAD+/wIAAgAAAAIAAAD//wIAAgACAAIAAAABAAIAAgAAAAIAAAACAAIAAgACAAIAAAADAAIAAgACAAIAAAADAP7/AgACAAIAAAD//wEAAgACAAAAAAD+/wEAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgACAAAAAAABAP//AgAAAAIAAAACAP//AgACAAIAAAD+////AgAAAAIAAAD/////AgACAAIAAAA=")
 
 [node name="Dirt" parent="PuzzlePiece2/Shape" index="2"]
 tile_map_data = PackedByteArray("AAD+/wAAAQAAAAAAAAD//wAAAQABAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQABAAAAAAAAAAEAAQABAAAAAAAAAAIAAQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAA=")
@@ -91,28 +91,28 @@ shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_cfg83")
+shape = SubResource("CircleShape2D_ndj6o")
 
 [node name="LeftConnector" parent="PuzzlePiece2/Shape/Connectors" index="1"]
 shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_dybul")
+shape = SubResource("CircleShape2D_kkdka")
 
 [node name="TopConnector" parent="PuzzlePiece2/Shape/Connectors" index="2"]
 shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/TopConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_jqur7")
+shape = SubResource("CircleShape2D_rw134")
 
 [node name="BottomConnector" parent="PuzzlePiece2/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece2/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_rx0pw")
+shape = SubResource("CircleShape2D_j7jfp")
 
 [node name="Shadow" parent="PuzzlePiece2" index="2"]
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -134.828, -32.3358, -141.394, -29.1014, -147.445, -24.7487, -152.749, -19.445, -157.101, -13.3939, -160.336, -6.82816, -162.327, -6.42918e-15, -163, 6.82816, -162.327, 13.3939, -160.336, 19.445, -157.101, 24.7487, -152.749, 29.1014, -147.445, 32.3358, -141.394, 34.3275, -134.828, 35, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35)
@@ -141,10 +141,10 @@ theme = 2
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 121.172, 32.3358, 114.606, 29.1014, 108.555, 24.7487, 103.251, 19.445, 98.8986, 13.3939, 95.6642, 6.82816, 93.6725, 2.14306e-15, 93, -6.82816, 93.6725, -13.3939, 95.6642, -19.445, 98.8986, -24.7487, 103.251, -29.1014, 108.555, -32.3358, 114.606, -34.3275, 121.172, -35, 128, -128, 128, -128, -128)
 
 [node name="Background" parent="PuzzlePiece4/Shape" index="0"]
-tile_map_data = PackedByteArray("AAD+//7/CAABAAIAAAD+////CAABAAEAAAD+/wAACAABAAIAAAD+/wEACAABAAEAAAD+/wIACAABAAIAAAD//wIACAACAAIAAAD//wEACAACAAEAAAD//wAACAACAAIAAAD/////CAACAAEAAAD///7/CAACAAIAAAAAAP7/CAABAAEAAAAAAP//CAABAAIAAAAAAAAACAABAAEAAAAAAAEACAABAAEAAAAAAAIACAABAAIAAAABAAIACAACAAIAAAABAAEACAACAAEAAAABAAAACAACAAEAAAABAP7/CAACAAEAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAEAAAACAAAACAABAAIAAAACAP//CAABAAEAAAACAP7/CAABAAIAAAACAP3/CAABAAEAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/CAACAAEAAAD+//3/CAABAAEAAAD9//3/CAACAAEAAAD9//7/CAACAAIAAAD9////CAACAAEAAAD9/wAACAACAAIAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMACAABAAIAAAD//wMACAACAAIAAAAAAAMACAABAAIAAAABAAMACAACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIACAACAAIAAAADAAEACAABAAEAAAADAAAACAABAAEAAAADAP//CAABAAEAAAADAP7/CAACAAIAAAADAP3/CAACAAEAAAD8//3/CAABAAEAAAD8//7/CAABAAIAAAD8////CAABAAEAAAD8/wAACAABAAIAAAA=")
+tile_map_data = PackedByteArray("AAD9/wEACAAAAAYAAAADAAMACAACAAcAAAD8//3/CAAHAAEAAAD8//7/CAADAAIAAAABAP7/CAAAAAYAAAABAP//CAAAAAYAAAABAAAACAAAAAcAAAACAAAACAABAAcAAAACAP//CAAJAAkAAAACAP7/CAAKAAkAAAADAAAACAACAAcAAAADAP//CAACAAYAAAADAP7/CAACAAYAAAADAP3/CAACAAUAAAACAP3/CAABAAUAAAABAP3/CAAAAAUAAAD///7/CAACAAYAAAD///3/CAACAAUAAAD+//3/CAABAAUAAAD9//3/CAAAAAUAAAD9//7/CAAAAAYAAAD9////CAAAAAYAAAD9/wAACAAAAAYAAAD+////CAABAAYAAAD+//7/CAAKAAkAAAD+/wAACAAKAAkAAAD+/wEACAAJAAkAAAD+/wIACAAKAAkAAAD+/wMACAABAAcAAAD9/wMACAAAAAcAAAD9/wIACAAAAAYAAAD/////CAACAAYAAAD//wAACAACAAYAAAD//wEACAACAAYAAAD//wIACAAFAAcAAAD//wMACAABAAcAAAAAAAMACAABAAcAAAABAAMACAABAAcAAAACAAMACAABAAcAAAADAAIACAACAAUAAAACAAIACAABAAUAAAABAAIACAABAAUAAAAAAAIACAABAAUAAAA=")
 
 [node name="Foreground" parent="PuzzlePiece4/Shape" index="1"]
-tile_map_data = PackedByteArray("AAAAAP7/CAADAAEAAAACAAEACAACAAAAAAABAAEACAACAAAAAAAAAAEACAAEAAQAAAAAAAAACAADAAEAAAAAAP//CAADAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/CAADAAEAAAACAAEACAABAAMAAAABAAEACAABAAMAAAAAAAEACAAEAAMAAAAAAAAACAADAAEAAAAAAP//CAADAAEAAAA=")
 
 [node name="Portal" parent="PuzzlePiece4/Shape" index="2" instance=ExtResource("5_0foq7")]
 position = Vector2(-76, -87)
@@ -154,20 +154,20 @@ shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_4l0yf")
+shape = SubResource("RectangleShape2D_b2qws")
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_lvdgi")
+shape = SubResource("RectangleShape2D_c4513")
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_7ostq")
+shape = SubResource("RectangleShape2D_xiykp")
 
 [node name="BottomConnector" parent="PuzzlePiece4/Shape/Connectors" index="3"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_d84a7")
+shape = SubResource("RectangleShape2D_dt15w")
 
 [node name="Shadow" parent="PuzzlePiece4" index="2"]
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 121.172, 32.3358, 114.606, 29.1014, 108.555, 24.7487, 103.251, 19.445, 98.8986, 13.3939, 95.6642, 6.82816, 93.6725, 2.14306e-15, 93, -6.82816, 93.6725, -13.3939, 95.6642, -19.445, 98.8986, -24.7487, 103.251, -29.1014, 108.555, -32.3358, 114.606, -34.3275, 121.172, -35, 128, -128, 128)
@@ -190,10 +190,10 @@ theme = 2
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, 35, 128, 34.3275, 121.172, 32.3358, 114.606, 29.1014, 108.555, 24.7487, 103.251, 19.445, 98.8986, 13.3939, 95.6642, 6.82816, 93.6725, 2.14306e-15, 93, -6.82816, 93.6725, -13.3939, 95.6642, -19.445, 98.8986, -24.7487, 103.251, -29.1014, 108.555, -32.3358, 114.606, -34.3275, 121.172, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35, -128, -128)
 
 [node name="Background" parent="PuzzlePiece5/Shape" index="0"]
-tile_map_data = PackedByteArray("AAD+//7/CAABAAIAAAD+////CAABAAEAAAD+/wAACAABAAIAAAD+/wEACAABAAEAAAD+/wIACAABAAIAAAD//wIACAACAAIAAAD//wEACAACAAEAAAD//wAACAACAAIAAAD/////CAACAAEAAAD///7/CAACAAIAAAAAAP7/CAABAAEAAAAAAP//CAABAAIAAAAAAAAACAABAAEAAAAAAAEACAABAAEAAAAAAAIACAABAAIAAAABAAIACAACAAIAAAABAAEACAACAAEAAAABAAAACAACAAEAAAABAP7/CAACAAEAAAABAP//CAACAAIAAAACAAIACAABAAIAAAACAAEACAABAAEAAAACAAAACAABAAIAAAACAP//CAABAAEAAAACAP7/CAABAAIAAAACAP3/CAABAAEAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/CAACAAEAAAD+//3/CAABAAEAAAD9//3/CAACAAEAAAD9//7/CAACAAIAAAD9////CAABAAEAAAD9/wAACAABAAEAAAD9/wEACAABAAEAAAD9/wIACAABAAEAAAD9/wMAAwACAAgAAAD+/wMACAABAAIAAAD//wMACAACAAIAAAAAAAMACAABAAIAAAABAAMACAACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIACAACAAIAAAADAAEACAACAAEAAAADAAAACAACAAIAAAADAP//CAACAAEAAAADAP7/CAACAAIAAAADAP3/CAACAAEAAAD8//3/CAABAAEAAAD8//7/CAABAAIAAAD8////CAABAAEAAAD8/wAACAABAAIAAAA=")
+tile_map_data = PackedByteArray("AAD9/wMACAACAAgAAAACAAMACAAAAAgAAAADAAMACAACAAgAAAADAAEACAACAAcAAAD8//3/CAACAAEAAAD8//7/CAACAAEAAAD8////CAACAAEAAAD8/wAACAACAAIAAAD+////CAACAAUAAAD+/wAACAACAAYAAAD+/wEACAACAAcAAAAAAAAACAAAAAUAAAAAAAEACAAEAAYAAAABAAEACAABAAcAAAACAAEACAABAAcAAAACAAAACAABAAUAAAABAAAACAABAAUAAAAAAP7/CAAAAAcAAAABAP7/CAABAAcAAAACAP7/CAABAAcAAAAAAP3/CAAAAAUAAAABAP3/CAABAAUAAAACAP3/CAABAAUAAAADAP3/CAACAAUAAAADAP7/CAACAAcAAAADAAAACAACAAUAAAD9////CAAAAAUAAAD9/wAACAAAAAYAAAD9/wEACAAAAAcAAAAAAAIACAADAAYAAAAAAAMACAADAAcAAAA=")
 
 [node name="Foreground" parent="PuzzlePiece5/Shape" index="1"]
-tile_map_data = PackedByteArray("AAD+//7/CAACAAMAAAD///7/CAAFAAMAAAD+/wIACAACAAAAAAD//wIACAAFAAQAAAAAAAIAAAAFAAQAAAABAAIACAAAAAAAAAACAAIACAACAAAAAAD//wEACAAAAAEAAAD/////CAAAAAEAAAD//wAACAAAAAEAAAAAAP//CAACAAAAAAABAP//CAACAAAAAAACAP//CAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+//7/CAABAAMAAAD///7/CAAHAAAAAAD+/wIACAABAAMAAAD//wIACAAHAAMAAAABAAIACAAAAAMAAAACAAIACAABAAMAAAD//wEACAADAAEAAAD/////CAAEAAQAAAD//wAACAADAAEAAAAAAP//CAABAAMAAAABAP//CAABAAMAAAACAP//CAABAAMAAAAAAAIACAABAAQAAAA=")
 
 [node name="Door" parent="PuzzlePiece5/Shape" index="2" instance=ExtResource("8_wn4ai")]
 position = Vector2(83, 51)
@@ -208,28 +208,28 @@ position = Vector2(94, -101)
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_i57tt")
+shape = SubResource("RectangleShape2D_v5a6d")
 
 [node name="LeftConnector" parent="PuzzlePiece5/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_jnsaa")
+shape = SubResource("RectangleShape2D_fixpc")
 
 [node name="TopConnector" parent="PuzzlePiece5/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_shj5l")
+shape = SubResource("RectangleShape2D_ook82")
 
 [node name="BottomConnector" parent="PuzzlePiece5/Shape/Connectors" index="3"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_kttmo")
+shape = SubResource("RectangleShape2D_sd1x6")
 
 [node name="Shadow" parent="PuzzlePiece5" index="2"]
 points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, 35, 128, 34.3275, 121.172, 32.3358, 114.606, 29.1014, 108.555, 24.7487, 103.251, 19.445, 98.8986, 13.3939, 95.6642, 6.82816, 93.6725, 2.14306e-15, 93, -6.82816, 93.6725, -13.3939, 95.6642, -19.445, 98.8986, -24.7487, 103.251, -29.1014, 108.555, -32.3358, 114.606, -34.3275, 121.172, -35, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35)
