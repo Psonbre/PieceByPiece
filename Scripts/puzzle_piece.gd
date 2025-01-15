@@ -61,7 +61,9 @@ const THEME_TILESET_MAP = {
 
 func _ready():
 	if Engine.is_editor_hint() : return
-	portal = shape.get_node("Portal") if shape.has_node("Portal") else null
+	if shape.has_node("Portal") : portal = shape.get_node("Portal") 
+	if shape.has_node("Foreground") : foreground = shape.get_node("Foreground") 
+	if shape.has_node("Background") : background = shape.get_node("Background") 
 	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
 	start_drag_target_rotated_angle = target_rotated_angle
@@ -144,11 +146,13 @@ func _process(delta):
 	has_attempted_connection_this_tick = false
 
 func update_tilemap():
-	for cell : Vector2i in foreground.get_used_cells() :
-		foreground.set_cell(cell, THEME_TILESET_MAP.get(theme), foreground.get_cell_atlas_coords(cell))
-	for cell : Vector2i in background.get_used_cells() :
-		background.set_cell(cell, THEME_TILESET_MAP.get(theme), background.get_cell_atlas_coords(cell))
-	if shape.has_node("Door") : shape.get_node("Door").set_theme(theme)
+	if foreground :
+		for cell : Vector2i in foreground.get_used_cells() :
+			foreground.set_cell(cell, THEME_TILESET_MAP.get(theme), foreground.get_cell_atlas_coords(cell))
+	if background :
+		for cell : Vector2i in background.get_used_cells() :
+			background.set_cell(cell, THEME_TILESET_MAP.get(theme), background.get_cell_atlas_coords(cell))
+	if shape and shape.has_node("Door") : shape.get_node("Door").set_theme(theme)
 
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false

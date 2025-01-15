@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxgrba7hrmmij"]
+[gd_scene load_steps=13 format=3 uid="uid://cxgrba7hrmmij"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/SceneManager.gd" id="1_yswi4"]
 [ext_resource type="PackedScene" uid="uid://dvws0si7ljhkm" path="res://Scenes/Background.tscn" id="2_6cqbi"]
@@ -9,11 +9,12 @@
 [ext_resource type="Material" uid="uid://0wr8j8l3j7t7" path="res://Assets/Materials/BackgroundMaterial.tres" id="7_at5i3"]
 [ext_resource type="Texture2D" uid="uid://dooxovvgyttr4" path="res://Assets/Icons/cursor.svg" id="7_hfdng"]
 [ext_resource type="Material" uid="uid://boigv2m1amh6o" path="res://Assets/Materials/RiftMaterial.tres" id="8_gufrd"]
+[ext_resource type="Texture2D" uid="uid://k18w3q75rbex" path="res://Assets/Sprites/table.png" id="10_thjw3"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hhk6c"]
 gradient = ExtResource("4_3u6s1")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k86tq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h7uqb"]
 resource_local_to_scene = true
 shader = ExtResource("3_c7yis")
 shader_parameter/old_color = Color(1, 1, 1, 1)
@@ -31,7 +32,7 @@ script = ExtResource("1_yswi4")
 default_gradient = ExtResource("4_3u6s1")
 
 [node name="Background" parent="." instance=ExtResource("2_6cqbi")]
-material = SubResource("ShaderMaterial_k86tq")
+material = SubResource("ShaderMaterial_h7uqb")
 position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -59,3 +60,9 @@ material = ExtResource("6_jb4f7")
 position = Vector2(-73, 42)
 points = PackedVector2Array(-76, -85, 209, -113)
 width = 10.06
+
+[node name="Table" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+scale = Vector2(0.313081, 0.313081)
+texture = ExtResource("10_thjw3")

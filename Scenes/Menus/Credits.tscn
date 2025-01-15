@@ -87,46 +87,38 @@ theme_override_constants/separation = 15
 [node name="CenterContainer5" type="CenterContainer" parent="Credits/Sounds/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer5"]
+[node name="LinkButton" type="Label" parent="Credits/Sounds/Names/CenterContainer5"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Interface sounds - Kenney"
-underline = 1
-uri = "https://kenney.nl/assets/interface-sounds"
 
 [node name="CenterContainer6" type="CenterContainer" parent="Credits/Sounds/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer6"]
+[node name="LinkButton" type="Label" parent="Credits/Sounds/Names/CenterContainer6"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Impact sounds - Kenney"
-underline = 1
-uri = "https://kenney.nl/assets/impact-sounds"
 
 [node name="CenterContainer7" type="CenterContainer" parent="Credits/Sounds/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer7"]
+[node name="LinkButton" type="Label" parent="Credits/Sounds/Names/CenterContainer7"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Rubbing Wooden sticks - NoisyRedFox"
-underline = 1
-uri = "https://freesound.org/people/NoisyRedFox/sounds/734227/"
 
 [node name="CenterContainer8" type="CenterContainer" parent="Credits/Sounds/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Sounds/Names/CenterContainer8"]
+[node name="LinkButton" type="Label" parent="Credits/Sounds/Names/CenterContainer8"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "2 Tallando madera - Checholio"
-underline = 1
-uri = "https://freesound.org/people/checholio/sounds/443537/"
 
 [node name="Music" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
@@ -155,13 +147,11 @@ theme_override_constants/separation = 15
 [node name="CenterContainer4" type="CenterContainer" parent="Credits/Music/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Music/Names/CenterContainer4"]
+[node name="LinkButton" type="Label" parent="Credits/Music/Names/CenterContainer4"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Cozy - One man symphony"
-underline = 1
-uri = "https://onemansymphony.bandcamp.com/album/downtempo-lofi-progressive-music-pack-vol-1-free"
 
 [node name="Game" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
@@ -190,42 +180,45 @@ theme_override_constants/separation = 15
 [node name="CenterContainer" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer"]
+[node name="LinkButton" type="Label" parent="Credits/Game/Names2/CenterContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Adam Maps"
-underline = 1
-uri = "https://psonbre.itch.io/"
 
 [node name="CenterContainer2" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer2"]
+[node name="LinkButton" type="Label" parent="Credits/Game/Names2/CenterContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Philippe St-Laurent-Recoura"
-underline = 1
-uri = "https://philou213.itch.io/"
 
 [node name="CenterContainer3" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Game/Names2/CenterContainer3"]
+[node name="LinkButton" type="Label" parent="Credits/Game/Names2/CenterContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Zachary Meunier"
-underline = 1
-uri = "https://backderiz.itch.io/"
+
+[node name="CenterContainer4" type="CenterContainer" parent="Credits/Game/Names2"]
+layout_mode = 2
+
+[node name="LinkButton" type="Label" parent="Credits/Game/Names2/CenterContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yqpi3")
+theme_override_font_sizes/font_size = 18
+text = "Chase Clayton"
 
 [node name="Assets" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 130.343
+offset_left = 78.1003
 offset_top = 57.5198
-offset_right = 634.343
+offset_right = 672.1
 offset_bottom = 536.52
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
@@ -245,70 +238,60 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="CenterContainer4" type="CenterContainer" parent="Credits/Assets/Names"]
+visible = false
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer4"]
+[node name="LinkButton" type="Label" parent="Credits/Assets/Names/CenterContainer4"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Wooden pixel art GUI - Narik"
-underline = 1
-uri = "https://soulofkiran.itch.io/pixel-art-wooden-gui-v1"
 
 [node name="CenterContainer5" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer5"]
+[node name="LinkButton" type="Label" parent="Credits/Assets/Names/CenterContainer5"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Xeno Grunt - Pixramen "
-underline = 1
-uri = "https://pixramen.itch.io/2d-action-platformer-sci-fi-enemy-xeno-grunt?download"
 
 [node name="CenterContainer6" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer6"]
+[node name="LinkButton" type="Label" parent="Credits/Assets/Names/CenterContainer6"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Sci-fi lab - Foozle"
-underline = 1
-uri = "https://foozlecc.itch.io/sci-fi-lab-tileset-decor-traps"
 
 [node name="CenterContainer7" type="CenterContainer" parent="Credits/Assets/Names"]
+visible = false
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer7"]
+[node name="LinkButton" type="Label" parent="Credits/Assets/Names/CenterContainer7"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Pirate bomb - Pixel frog"
-underline = 1
-uri = "https://pixelfrog-assets.itch.io/pirate-bomb"
 
 [node name="CenterContainer8" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer8"]
+[node name="LinkButton" type="Label" parent="Credits/Assets/Names/CenterContainer8"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Kings and pigs - Pixel frog"
-underline = 1
-uri = "https://pixelfrog-assets.itch.io/kings-and-pigs"
 
 [node name="CenterContainer9" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Credits/Assets/Names/CenterContainer9"]
+[node name="LinkButton" type="Label" parent="Credits/Assets/Names/CenterContainer9"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
-text = "Oubliette - Safwyl"
-underline = 1
-uri = "https://safwyl.itch.io/oubliette-tileset"
+text = "Miner Theme - SpaceCadetAstrodite"
 
 [connection signal="mouse_entered" from="Credits/Back" to="Credits/Back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Credits/Back" to="Credits/Back" method="_on_mouse_exited"]
