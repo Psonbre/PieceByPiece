@@ -2,15 +2,22 @@
 extends Area2D
 class_name PuzzlePiece
 
-@export var is_rotating_piece := false
-
 enum THEME {MEDIEVAL, PIRATE, ALIEN, MINER}
+const max_tilt := deg_to_rad(12)
+const controller_drag_speed := 100.0
+const THEME_RESOURCE_MAP = {
+	THEME.MEDIEVAL : preload("res://Assets/PuzzlePieceThemes/medieval_theme.tres"),
+	THEME.MINER : preload("res://Assets/PuzzlePieceThemes/miner_theme.tres"),
+	THEME.ALIEN : preload("res://Assets/PuzzlePieceThemes/alien_theme.tres"),
+	THEME.PIRATE : preload("res://Assets/PuzzlePieceThemes/pirate_theme.tres"),
+} 
+
+@export var is_rotating_piece := false
 @export var theme := THEME.MEDIEVAL :
 	set(value) :
 		theme = value
-		update_tilemap.call_deferred()
-const max_tilt := deg_to_rad(12)
-const controller_drag_speed := 100.0
+		update_theme.call_deferred()
+
 static var global_dragging := false
 
 @onready var level: Level = $".."
@@ -24,6 +31,7 @@ static var global_dragging := false
 @onready var player_sprite : PlayerSprite
 @onready var foreground: TileMapLayer = $Shape/Foreground
 @onready var background: TileMapLayer = $Shape/Background
+@onready var dirt: TileMapLayer = $Shape/Dirt
 
 var portal : Portal
 var stop_dragging_next_physics_frame := false
@@ -45,20 +53,6 @@ var start_drag_target_rotated_angle := 0
 var start_drag_rotation := 0.0
 var start_drag_tilt := 0.0
 
-const PLAYER_SPRITES = {
-	THEME.MEDIEVAL : preload("res://Scenes/PlayerSprites/King.tscn"),
-	THEME.MINER : preload("res://Scenes/PlayerSprites/Miner.tscn"),
-	THEME.ALIEN : preload("res://Scenes/PlayerSprites/Alien.tscn"),
-	THEME.PIRATE : preload("res://Scenes/PlayerSprites/Pirate.tscn"),
-}
-
-const THEME_TILESET_MAP = {
-	THEME.MEDIEVAL : 3,
-	THEME.MINER : 2,
-	THEME.ALIEN : 8,
-	THEME.PIRATE : 0,
-}
-
 func _ready():
 	if Engine.is_editor_hint() : return
 	if shape.has_node("Portal") : portal = shape.get_node("Portal") 
@@ -71,7 +65,7 @@ func _ready():
 	start_drag_tilt = tilt_angle
 	default_scale = scale
 	
-	player_sprite = PLAYER_SPRITES.get(theme).instantiate()
+	player_sprite = THEME_RESOURCE_MAP.get(theme).player_sprite.instantiate()
 	shape.add_child(player_sprite)
 	shape.move_child(player_sprite, shape.get_node("Dirt").get_index())
 	player_sprite.sprite.visible = true
@@ -145,15 +139,20 @@ func _process(delta):
 	
 	has_attempted_connection_this_tick = false
 
-func update_tilemap():
+func update_theme():
+	var theme_resource : PuzzlePieceTheme = THEME_RESOURCE_MAP.get(theme)
 	if foreground :
 		for cell : Vector2i in foreground.get_used_cells() :
-			foreground.set_cell(cell, THEME_TILESET_MAP.get(theme), foreground.get_cell_atlas_coords(cell))
+			foreground.set_cell(cell, theme_resource.tileset_id, foreground.get_cell_atlas_coords(cell))
 	if background :
 		for cell : Vector2i in background.get_used_cells() :
-			background.set_cell(cell, THEME_TILESET_MAP.get(theme), background.get_cell_atlas_coords(cell))
-	if shape and shape.has_node("Door") : shape.get_node("Door").set_theme(theme)
-
+			background.set_cell(cell, theme_resource.tileset_id, background.get_cell_atlas_coords(cell))
+	if shape and shape.has_node("Door") : shape.get_node("Door").set_texture(theme_resource.door_texture)
+	modulate = theme_resource.modulate
+	foreground.light_mask = theme_resource.light_mask
+	background.light_mask = theme_resource.light_mask
+	dirt.light_mask = theme_resource.light_mask
+	
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false
 	if !right_connector.has_connection : return false

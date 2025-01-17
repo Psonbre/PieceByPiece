@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PuzzlePieceTheme" load_steps=4 format=3 uid="uid://dmmlflwuf4lql"]
+
+[ext_resource type="Texture2D" uid="uid://bqolhag0ce77y" path="res://Assets/Sprites/Medieval/medieval_door.png" id="1_qvbua"]
+[ext_resource type="PackedScene" uid="uid://csigeyux5ckx1" path="res://Scenes/PlayerSprites/Pirate.tscn" id="2_cmkj3"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_theme_resource.gd" id="3_wdobg"]
+
+[resource]
+script = ExtResource("3_wdobg")
+player_sprite = ExtResource("2_cmkj3")
+tileset_id = 0
+door_texture = ExtResource("1_qvbua")
+modulate = Color(1, 1, 1, 1)
+light_mask = 1

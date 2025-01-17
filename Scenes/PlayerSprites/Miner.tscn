@@ -1,17 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://caowxwood2ngv"]
+[gd_scene load_steps=6 format=3 uid="uid://caowxwood2ngv"]
 
 [ext_resource type="PackedScene" uid="uid://8vkpgii0j3ff" path="res://Scenes/PlayerSprites/PlayerSprite.tscn" id="1_10px2"]
 [ext_resource type="SpriteFrames" uid="uid://orhbrvew8ol3" path="res://Scenes/PlayerSprites/miner_frames.tres" id="2_su6u0"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6x3eo"]
+radius = 24.0
+
+[sub_resource type="Gradient" id="Gradient_d0cmq"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_50aby"]
+gradient = SubResource("Gradient_d0cmq")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="PlayerSprite" instance=ExtResource("1_10px2")]
 
-[node name="StretchParent" parent="." index="0"]
-position = Vector2(0, 24)
+[node name="CollisionShape2D" parent="StretchParent" index="0"]
+shape = SubResource("CircleShape2D_6x3eo")
 
 [node name="Sprite" parent="StretchParent" index="1"]
-visible = true
-position = Vector2(-9.53674e-07, 1.90735e-06)
+light_mask = 3
+position = Vector2(0, -24)
 scale = Vector2(1.7, 1.7)
 sprite_frames = ExtResource("2_su6u0")
-animation = &"Moving"
-offset = Vector2(7.64706, -14.1177)
+animation = &"Dig_Up"
+centered = false
+offset = Vector2(-11.1765, -14.1176)
+
+[node name="PointLight2D" type="PointLight2D" parent="StretchParent" index="2"]
+position = Vector2(4.76837e-07, -24)
+scale = Vector2(1.065, 1.065)
+energy = 0.5
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_50aby")

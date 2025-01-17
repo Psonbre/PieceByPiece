@@ -9,5 +9,5 @@
 position = Vector2(0, -1.90735e-06)
 scale = Vector2(2.51945, 2.51945)
 sprite_frames = ExtResource("2_bdls8")
-animation = &"Idle"
+animation = &"Moving"
 offset = Vector2(-0.793822, -9.52587)

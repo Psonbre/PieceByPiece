@@ -55,7 +55,7 @@ func _physics_process(delta):
 	#gravity
 	if is_on_floor():
 		non_tilted_velocity.y = 0
-	else:
+	elif not digging:
 		non_tilted_velocity.y += gravity * delta
 		play_animation("Jump")
 	
@@ -137,10 +137,18 @@ func set_digging(should_dig : bool, direction := Vector2.ZERO):
 		digging = true
 		set_collision_mask_value(4, false)
 		non_tilted_velocity = Vector2.ZERO
-		digging_direction = direction
 		speed = DEFAULT_SPEED / 2.0
 		gravity = 0
 		digging_particles.emitting = true
+		digging_direction = direction
+		
+		if digging_direction == Vector2(0, -1) :
+			play_animation("Dig_Up")
+		elif digging_direction == Vector2(0, 1) :
+			play_animation("Dig_Down")
+		else:
+			play_animation("Dig_Horizontal")
+			
 	elif !should_dig and digging :
 		digging = false
 		set_collision_mask_value(4, true)
@@ -229,7 +237,6 @@ func _process(delta):
 			exiting_portal = false
 			
 func play_animation(animation : String):
-	editor_sprite.play(animation)
 	for player_sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites"):
 		player_sprite.play(animation)
 

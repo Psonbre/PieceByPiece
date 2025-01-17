@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://33mcraqrs0sn"]
+[gd_scene load_steps=37 format=3 uid="uid://33mcraqrs0sn"]
 
 [ext_resource type="Script" path="res://Scripts/collectible.gd" id="1_eqgs7"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_1sppi"]
@@ -179,6 +179,17 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_g6yb0"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_72opr"]
+gradient = SubResource("Gradient_g6yb0")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.957346, 0.503318)
+
 [node name="Collectible" type="Area2D"]
 scale = Vector2(0.1, 0.1)
 collision_mask = 5
@@ -273,9 +284,19 @@ script = ExtResource("5_uf66a")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
 scale = Vector2(10.2869, 10.2869)
 sprite_frames = SubResource("SpriteFrames_vdd52")
 frame_progress = 0.259573
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(7.03833, 7.03833)
+energy = 1.5
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_72opr")
+height = 10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

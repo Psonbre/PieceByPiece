@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpkfo11giqamn"]
+[gd_scene load_steps=4 format=3 uid="uid://cpkfo11giqamn"]
 
 [ext_resource type="PackedScene" uid="uid://8vkpgii0j3ff" path="res://Scenes/PlayerSprites/PlayerSprite.tscn" id="1_a8y47"]
 [ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/king_frames.tres" id="2_taq3u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6x3eo"]
+radius = 24.0
 
 [node name="PlayerSprite" instance=ExtResource("1_a8y47")]
 
 [node name="CollisionShape2D" parent="StretchParent" index="0"]
 position = Vector2(0, -24.1787)
+shape = SubResource("CircleShape2D_6x3eo")
 
 [node name="Sprite" parent="StretchParent" index="1"]
 position = Vector2(4.76837e-07, -0.178682)

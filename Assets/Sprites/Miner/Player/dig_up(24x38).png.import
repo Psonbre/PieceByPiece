@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mdss6m1h18ma"
-path="res://.godot/imported/dig (78x58).png-f15149cef86d3bcb1bf5aa36112417aa.ctex"
+uid="uid://blklwnfdcihyy"
+path="res://.godot/imported/dig_up(24x38).png-4f1df131a90628bc04ab571131d26e93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Miner/Player/dig (78x58).png"
-dest_files=["res://.godot/imported/dig (78x58).png-f15149cef86d3bcb1bf5aa36112417aa.ctex"]
+source_file="res://Assets/Sprites/Miner/Player/dig_up(24x38).png"
+dest_files=["res://.godot/imported/dig_up(24x38).png-4f1df131a90628bc04ab571131d26e93.ctex"]
 
 [params]
 

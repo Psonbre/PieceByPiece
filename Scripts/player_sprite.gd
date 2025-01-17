@@ -28,7 +28,9 @@ func jump_stretch():
 	tween.tween_property(stretch_parent, "scale", Vector2(sign(default_stretch_parent_scale.x)*default_stretch_parent_scale.x, default_stretch_parent_scale.y), 0.8).set_ease(Tween.EASE_OUT)
 	
 func play(animation : String):
-	if sprite : sprite.play(animation)
+	if sprite : 
+		if sprite.sprite_frames.has_animation(animation) :
+			sprite.play(animation)
 
 func pause():
 	if sprite : sprite.pause()

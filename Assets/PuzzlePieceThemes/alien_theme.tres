@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PuzzlePieceTheme" load_steps=4 format=3 uid="uid://76fg0f332cad"]
+
+[ext_resource type="Texture2D" uid="uid://bqolhag0ce77y" path="res://Assets/Sprites/Medieval/medieval_door.png" id="1_liw60"]
+[ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="2_q8elk"]
+[ext_resource type="Script" path="res://Scripts/puzzle_piece_theme_resource.gd" id="3_2j13v"]
+
+[resource]
+script = ExtResource("3_2j13v")
+player_sprite = ExtResource("2_q8elk")
+tileset_id = 8
+door_texture = ExtResource("1_liw60")
+modulate = Color(1, 1, 1, 1)
+light_mask = 1
