@@ -14,12 +14,12 @@ func _ready():
 	default_stretch_parent_scale = stretch_parent.scale
 	var player_sprites := get_tree().get_nodes_in_group("PlayerSprites")
 	if player_sprites.any(func (s) : return s != self and s.scene_file_path == scene_file_path and puzzle_piece.level == s.puzzle_piece.level) :
-		for light : Light2D in find_children("*", "Light2D") :
+		for light : Light2D in find_children("*", "Light2D", true, false) :
 			light.visible = false
 			
 func _process(_delta):
-	var player: Player = get_tree().get_nodes_in_group("Player")[get_tree().get_node_count_in_group("Player") - 1]
-	global_transform = player.global_transform
+	var player: Player = get_tree().get_nodes_in_group("Player").filter(func (p) : return puzzle_piece.level.is_ancestor_of(p))[0]
+	if player : global_transform = player.global_transform
 
 func squash(squash_strenght):
 	squash_strenght = clampf(squash_strenght, 1.2, 1.4)

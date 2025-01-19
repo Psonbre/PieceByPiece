@@ -83,18 +83,18 @@ polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128, -128, -
 script = ExtResource("2_2oxp2")
 bevel_width = 3.7
 
-[node name="Background" type="TileMapLayer" parent="Shape"]
+[node name="Background" type="TileMapLayer" parent="Shape" groups=["AffectedByInternalLight"]]
 position = Vector2(-25.6, -25.6)
 scale = Vector2(1.6, 1.6)
 tile_set = ExtResource("3_3l438")
 collision_enabled = false
 
-[node name="Foreground" type="TileMapLayer" parent="Shape"]
+[node name="Foreground" type="TileMapLayer" parent="Shape" groups=["AffectedByInternalLight"]]
 position = Vector2(-25.6, -25.6)
 scale = Vector2(1.6, 1.6)
 tile_set = ExtResource("3_3l438")
 
-[node name="Dirt" type="TileMapLayer" parent="Shape"]
+[node name="Dirt" type="TileMapLayer" parent="Shape" groups=["AffectedByInternalLight"]]
 position = Vector2(-25.6, -25.6)
 scale = Vector2(1.6, 1.6)
 tile_set = ExtResource("4_c62oi")

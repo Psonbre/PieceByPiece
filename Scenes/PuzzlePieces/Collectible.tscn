@@ -283,7 +283,7 @@ end_cap_mode = 2
 script = ExtResource("5_uf66a")
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["AffectedByInternalLight"]]
 light_mask = 2
 scale = Vector2(10.2869, 10.2869)
 sprite_frames = SubResource("SpriteFrames_vdd52")

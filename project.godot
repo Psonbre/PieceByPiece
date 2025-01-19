@@ -61,6 +61,7 @@ Level=""
 LevelSelectButton=""
 Rifts=""
 Tracks=""
+AffectedByInternalLight="This group will automatically change the light masks of its members according to their parent puzzle piece."
 
 [gui]
 

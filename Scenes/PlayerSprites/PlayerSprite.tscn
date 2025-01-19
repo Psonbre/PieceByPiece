@@ -18,5 +18,5 @@ position = Vector2(0, -24)
 shape = SubResource("CircleShape2D_6x3eo")
 disabled = true
 
-[node name="Sprite" type="AnimatedSprite2D" parent="StretchParent"]
+[node name="Sprite" type="AnimatedSprite2D" parent="StretchParent" groups=["AffectedByInternalLight"]]
 sprite_frames = SubResource("SpriteFrames_bf8b2")

@@ -66,6 +66,11 @@ func _ready():
 	start_drag_rotation = global_rotation
 	start_drag_tilt = tilt_angle
 	default_scale = scale
+	var tile_set = foreground.tile_set.duplicate(true)
+	foreground.tile_set = tile_set
+	background.tile_set = tile_set
+	dirt.tile_set = dirt.tile_set.duplicate(true)
+	update_theme()
 	
 	player_sprite = THEME_RESOURCE_MAP.get(theme).player_sprite.instantiate()
 	player_sprite.puzzle_piece = self
@@ -153,11 +158,19 @@ func update_theme():
 	if shape and shape.has_node("Door") : shape.get_node("Door").set_texture(theme_resource.door_texture)
 	modulate = theme_resource.modulate
 	
-	var new_light_mask = theme_resource.light_mask
-	foreground.light_mask = new_light_mask
-	foreground.light_mask = new_light_mask
-	background.light_mask = new_light_mask
-
+func update_lighting_range():
+	var emitters_mask := 4 if is_dragging else 2
+	var receivers_mask = theme_resource.dragging_light_mask if is_dragging else theme_resource.light_mask
+	
+	for light_affected_node : Node2D in get_tree().get_nodes_in_group("AffectedByInternalLight").filter(func(n) : return shape.is_ancestor_of(n)) :
+		light_affected_node.light_mask = receivers_mask
+	
+	foreground.tile_set.set_occlusion_layer_light_mask(0, emitters_mask)
+	dirt.tile_set.set_occlusion_layer_light_mask(0, emitters_mask)
+	for light : Light2D in find_children("*", "Light2D", true, false) :
+		light.shadow_item_cull_mask = emitters_mask
+		light.range_item_cull_mask = emitters_mask
+		
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false
 	if !right_connector.has_connection : return false
@@ -181,13 +194,14 @@ func start_dragging():
 	clamp_player()
 	set_colliders_in_drag_mode(true)
 	outline.outline_type = PuzzlePieceOutline.OutlineType.DRAGGING
-	z_index = 3
+	z_index = 5
 	start_drag_position = global_position
 	start_drag_target_rotated_angle = target_rotated_angle % 360
 	start_drag_rotation = global_rotation
 	start_drag_tilt = tilt_angle
 	is_dragging = true
 	global_dragging = true
+	update_lighting_range()
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
 	
@@ -203,6 +217,7 @@ func stop_dragging():
 	global_dragging = false
 	scale = default_scale
 	var old_position = global_position
+	update_lighting_range()
 	attempt_connection()
 	
 	if !global_position.is_equal_approx(old_position) :
