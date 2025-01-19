@@ -183,6 +183,10 @@ func win(door):
 		if has_collectible :
 			SaveManager.save_level_as_collectible_collected(current_level.world, current_level.scene_file_path)
 
+func set_light_layer(dragging := false):
+	for sprite : PlayerSprite in get_tree().get_nodes_in_group("PlayerSprites") :
+		sprite.set_light_layer(dragging)
+
 func teleport(portal : Portal):
 	set_physics_process(false)
 	portal.entered = true

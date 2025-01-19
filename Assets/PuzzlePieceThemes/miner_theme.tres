@@ -10,4 +10,5 @@ player_sprite = ExtResource("2_xtfqo")
 tileset_id = 2
 door_texture = ExtResource("1_tewyu")
 modulate = Color(0.41888, 0.41888, 0.418879, 1)
-light_mask = 7
+light_mask = 3
+dragging_light_mask = 5

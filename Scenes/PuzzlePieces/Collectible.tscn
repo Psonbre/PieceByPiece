@@ -180,7 +180,7 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_g6yb0"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_72opr"]
 gradient = SubResource("Gradient_g6yb0")

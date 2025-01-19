@@ -6,12 +6,17 @@ class_name PlayerSprite
 
 var default_sprite_scale: Vector2
 var default_stretch_parent_scale: Vector2
+var puzzle_piece : PuzzlePiece
 
 func _ready():
 	visible = true
 	default_sprite_scale = sprite.scale
 	default_stretch_parent_scale = stretch_parent.scale
-
+	var player_sprites := get_tree().get_nodes_in_group("PlayerSprites")
+	if player_sprites.any(func (s) : return s != self and s.scene_file_path == scene_file_path and puzzle_piece.level == s.puzzle_piece.level) :
+		for light : Light2D in find_children("*", "Light2D") :
+			light.visible = false
+			
 func _process(_delta):
 	var player: Player = get_tree().get_nodes_in_group("Player")[get_tree().get_node_count_in_group("Player") - 1]
 	global_transform = player.global_transform

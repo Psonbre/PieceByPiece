@@ -13,10 +13,12 @@ const THEME_RESOURCE_MAP = {
 } 
 
 @export var is_rotating_piece := false
+
 @export var theme := THEME.MEDIEVAL :
 	set(value) :
 		theme = value
 		update_theme.call_deferred()
+var theme_resource : PuzzlePieceTheme
 
 static var global_dragging := false
 
@@ -66,6 +68,7 @@ func _ready():
 	default_scale = scale
 	
 	player_sprite = THEME_RESOURCE_MAP.get(theme).player_sprite.instantiate()
+	player_sprite.puzzle_piece = self
 	shape.add_child(player_sprite)
 	shape.move_child(player_sprite, shape.get_node("Dirt").get_index())
 	player_sprite.sprite.visible = true
@@ -140,7 +143,7 @@ func _process(delta):
 	has_attempted_connection_this_tick = false
 
 func update_theme():
-	var theme_resource : PuzzlePieceTheme = THEME_RESOURCE_MAP.get(theme)
+	theme_resource = THEME_RESOURCE_MAP.get(theme)
 	if foreground :
 		for cell : Vector2i in foreground.get_used_cells() :
 			foreground.set_cell(cell, theme_resource.tileset_id, foreground.get_cell_atlas_coords(cell))
@@ -149,10 +152,12 @@ func update_theme():
 			background.set_cell(cell, theme_resource.tileset_id, background.get_cell_atlas_coords(cell))
 	if shape and shape.has_node("Door") : shape.get_node("Door").set_texture(theme_resource.door_texture)
 	modulate = theme_resource.modulate
-	foreground.light_mask = theme_resource.light_mask
-	background.light_mask = theme_resource.light_mask
-	dirt.light_mask = theme_resource.light_mask
 	
+	var new_light_mask = theme_resource.light_mask
+	foreground.light_mask = new_light_mask
+	foreground.light_mask = new_light_mask
+	background.light_mask = new_light_mask
+
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false
 	if !right_connector.has_connection : return false
@@ -162,15 +167,17 @@ func has_all_sides_connected():
 func start_dragging():
 	if SubSystemManager.get_scene_manager().current_screen != level : return
 	if Player.winning || Player.entering_portal || Player.exiting_portal : return
-	if shape.has_node("Player") and shape.get_node("Player").digging : return
+	if shape.has_node("Player") :
+		var player : Player = shape.get_node("Player")
+		if player.digging : return
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"), -7)
 	
 	if shape.has_node("Player") :
 		set_player_sprites_visible(false)
-		player_sprite.sprite.visible = true 
+		player_sprite.sprite.visible = true
 	else : 
 		player_sprite.sprite.visible = false
-		
+	
 	clamp_player()
 	set_colliders_in_drag_mode(true)
 	outline.outline_type = PuzzlePieceOutline.OutlineType.DRAGGING

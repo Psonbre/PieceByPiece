@@ -1,10 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b47cgkimuryss"]
+[gd_scene load_steps=13 format=3 uid="uid://b47cgkimuryss"]
 
 [ext_resource type="Script" path="res://Scripts/ghost_piece.gd" id="1_ns84n"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_20p4n"]
-[ext_resource type="PackedScene" uid="uid://dhlcjmkh6dl43" path="res://Scenes/Interactables/Door.tscn" id="4_7anr5"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="4_hctjr"]
-[ext_resource type="PackedScene" uid="uid://bbrr8wr55oiq0" path="res://Scenes/PlayerSprites/Alien.tscn" id="5_iepm8"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="5_kivp6"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="6_ylgl7"]
 
@@ -81,13 +79,6 @@ script = ExtResource("4_hctjr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")
-
-[node name="Door" parent="Shape" instance=ExtResource("4_7anr5")]
-visible = false
-scale = Vector2(0.519999, 0.519999)
-script = null
-
-[node name="PlayerSprite" parent="Shape" instance=ExtResource("5_iepm8")]
 
 [node name="VisualShape" type="Polygon2D" parent="."]
 visible = false
@@ -188,5 +179,3 @@ disabled = true
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-
-[editable path="Shape/Door"]

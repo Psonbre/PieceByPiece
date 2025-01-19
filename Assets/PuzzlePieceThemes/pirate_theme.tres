@@ -11,3 +11,4 @@ tileset_id = 0
 door_texture = ExtResource("1_qvbua")
 modulate = Color(1, 1, 1, 1)
 light_mask = 1
+dragging_light_mask = 1
