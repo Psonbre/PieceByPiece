@@ -31,9 +31,9 @@ static var global_dragging := false
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite : PlayerSprite
-@onready var foreground: TileMapLayer = $Shape/Foreground
-@onready var background: TileMapLayer = $Shape/Background
-@onready var dirt: TileMapLayer = $Shape/Dirt
+var foreground: TileMapLayer
+var background: TileMapLayer
+var dirt: TileMapLayer
 
 var portal : Portal
 var stop_dragging_next_physics_frame := false
@@ -57,32 +57,30 @@ var start_drag_tilt := 0.0
 
 func _ready():
 	if Engine.is_editor_hint() : return
-	if shape.has_node("Portal") : portal = shape.get_node("Portal") 
-	if shape.has_node("Foreground") : foreground = shape.get_node("Foreground") 
-	if shape.has_node("Background") : background = shape.get_node("Background") 
+	portal = shape.get_node_or_null("Portal") 
 	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
 	start_drag_target_rotated_angle = target_rotated_angle
 	start_drag_rotation = global_rotation
 	start_drag_tilt = tilt_angle
 	default_scale = scale
-	var tile_set = foreground.tile_set.duplicate(true)
-	foreground.tile_set = tile_set
-	background.tile_set = tile_set
-	dirt.tile_set = dirt.tile_set.duplicate(true)
-	update_theme()
+	foreground = shape.get_node_or_null("Foreground")
+	background = shape.get_node_or_null("Background")
+	dirt = shape.get_node_or_null("Dirt")
+	
 	
 	player_sprite = THEME_RESOURCE_MAP.get(theme).player_sprite.instantiate()
 	player_sprite.puzzle_piece = self
 	shape.add_child(player_sprite)
 	shape.move_child(player_sprite, shape.get_node("Dirt").get_index())
-	player_sprite.sprite.visible = true
+	player_sprite.visible = true
+	update_theme()
 	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
 	attempt_connection()
-
+	
 func _input(event):
 	if Engine.is_editor_hint() : return
 	if is_dragging && is_rotating_piece :
@@ -149,6 +147,8 @@ func _process(delta):
 
 func update_theme():
 	theme_resource = THEME_RESOURCE_MAP.get(theme)
+	foreground = shape.get_node_or_null("Foreground")
+	background = shape.get_node_or_null("Background")
 	if foreground :
 		for cell : Vector2i in foreground.get_used_cells() :
 			foreground.set_cell(cell, theme_resource.tileset_id, foreground.get_cell_atlas_coords(cell))
@@ -157,20 +157,29 @@ func update_theme():
 			background.set_cell(cell, theme_resource.tileset_id, background.get_cell_atlas_coords(cell))
 	if shape and shape.has_node("Door") : shape.get_node("Door").set_texture(theme_resource.door_texture)
 	modulate = theme_resource.modulate
+	update_lighting_range()
 	
 func update_lighting_range():
-	var emitters_mask := 4 if is_dragging else 2
-	var receivers_mask = theme_resource.dragging_light_mask if is_dragging else theme_resource.light_mask
+	var emitters_mask = theme_resource.illuminating_when_dragging if is_dragging else theme_resource.illuminating
+	var receivers_mask = theme_resource.illuminated_by_when_dragging if is_dragging else theme_resource.illuminated_by
+	
+	update_cells_occlusion_layer()
 	
 	for light_affected_node : Node2D in get_tree().get_nodes_in_group("AffectedByInternalLight").filter(func(n) : return shape.is_ancestor_of(n)) :
 		light_affected_node.light_mask = receivers_mask
 	
-	foreground.tile_set.set_occlusion_layer_light_mask(0, emitters_mask)
-	dirt.tile_set.set_occlusion_layer_light_mask(0, emitters_mask)
 	for light : Light2D in find_children("*", "Light2D", true, false) :
 		light.shadow_item_cull_mask = emitters_mask
 		light.range_item_cull_mask = emitters_mask
-		
+
+func update_cells_occlusion_layer():
+	for cell in foreground.get_used_cells() :
+		foreground.set_cell(cell, theme_resource.tileset_id, foreground.get_cell_atlas_coords(cell), 1 if is_dragging else 0)
+	for cell in background.get_used_cells() :
+		background.set_cell(cell, theme_resource.tileset_id, background.get_cell_atlas_coords(cell), 1 if is_dragging else 0)
+	for cell in dirt.get_used_cells() :
+		dirt.set_cell(cell, 1, dirt.get_cell_atlas_coords(cell), 1 if is_dragging else 0)
+	
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false
 	if !right_connector.has_connection : return false
@@ -187,9 +196,9 @@ func start_dragging():
 	
 	if shape.has_node("Player") :
 		set_player_sprites_visible(false)
-		player_sprite.sprite.visible = true
+		player_sprite.visible = true
 	else : 
-		player_sprite.sprite.visible = false
+		player_sprite.visible = false
 	
 	clamp_player()
 	set_colliders_in_drag_mode(true)
@@ -266,11 +275,12 @@ func cancel_drag():
 	global_rotation = start_drag_rotation
 	outline.outline_type = PuzzlePieceOutline.OutlineType.NORMAL
 	z_index = 0
-	player_sprite.sprite.visible = true
+	player_sprite.visible = true
 	is_dragging = false
 	global_dragging = false
 	scale = default_scale
 	set_player_sprites_visible(true)
+	update_lighting_range()
 	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -363,7 +373,7 @@ func can_be_dropped():
 
 func set_player_sprites_visible(shown : bool) :
 	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
-		sprite.sprite.visible = shown
+		sprite.visible = shown
 		
 
 func update_all_connection_groups():

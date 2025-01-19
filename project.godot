@@ -235,8 +235,10 @@ SelectPieceRight={
 
 [layer_names]
 
-2d_render/layer_2="PuzzlePieceInternalLight"
-2d_render/layer_3="PuzzlePieceInternalDraggingLight"
+2d_render/layer_1="Table"
+2d_render/layer_2="AlienTheme"
+2d_render/layer_3="MinerTheme"
+2d_render/layer_10="DraggedPieces"
 2d_physics/layer_2="GhostPiece"
 2d_physics/layer_3="DraggingPiece"
 2d_physics/layer_4="Diggable"

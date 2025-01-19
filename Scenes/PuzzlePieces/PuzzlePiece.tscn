@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_uhv7f"]
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_2oxp2"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="3_3l438"]
-[ext_resource type="TileSet" uid="uid://chmck55rlgg50" path="res://Assets/TileSets/DigTileSet.tres" id="4_c62oi"]
+[ext_resource type="TileSet" uid="uid://chmck55rlgg50" path="res://Assets/TileSets/DirtTileSet.tres" id="4_c62oi"]
 [ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_obp8e"]
 [ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_os0q1"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="6_qba2m"]
@@ -16,16 +16,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubnqa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8j6p"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_73hek"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oxjq"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjlgk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xxnc"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_emjh1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3o5s"]
 size = Vector2(35, 70)
 
 [sub_resource type="Resource" id="Resource_08waj"]
@@ -125,7 +125,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_ubnqa")
+shape = SubResource("RectangleShape2D_d8j6p")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -139,7 +139,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_73hek")
+shape = SubResource("RectangleShape2D_1oxjq")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -153,7 +153,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_vjlgk")
+shape = SubResource("RectangleShape2D_1xxnc")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -167,7 +167,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_emjh1")
+shape = SubResource("RectangleShape2D_n3o5s")
 metadata/_edit_lock_ = true
 
 [node name="Shadow" type="Line2D" parent="."]
