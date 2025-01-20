@@ -262,7 +262,3 @@ func _get_height_by_class(p_class_name : String) -> int:
 		return 0
 
 	return controls[0].size.y
-
-
-
-

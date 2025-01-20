@@ -7,6 +7,7 @@ var connected_portal : Portal = null
 @onready var foreground = $Foreground
 @onready var particles = $Particles
 @onready var cooldown = $Cooldown
+@onready var point_light_2d: PointLight2D = $PointLight2D
 var puzzle_piece : PuzzlePiece
 
 var activated := false
@@ -24,6 +25,7 @@ func _ready() -> void:
 
 func activate():
 	if activated: return
+	point_light_2d.visible = true
 	activated = true
 	foreground.visible = true
 	pixel_size = 0
@@ -33,6 +35,7 @@ func activate():
 
 func deactivate():
 	if !activated: return
+	point_light_2d.visible = false
 	activated = false
 	foreground.visible = false
 	target_pixel_size = 40.0

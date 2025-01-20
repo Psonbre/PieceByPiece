@@ -156,14 +156,22 @@ func update_theme():
 		for cell : Vector2i in background.get_used_cells() :
 			background.set_cell(cell, theme_resource.tileset_id, background.get_cell_atlas_coords(cell))
 	if shape and shape.has_node("Door") : shape.get_node("Door").set_texture(theme_resource.door_texture)
+	if shape and shape.has_node("Collectible") : shape.get_node("Collectible").light.energy = theme_resource.collectable_light_energy
 	modulate = theme_resource.modulate
 	update_lighting_range()
 	
-func update_lighting_range():
-	var emitters_mask = theme_resource.illuminating_when_dragging if is_dragging else theme_resource.illuminating
-	var receivers_mask = theme_resource.illuminated_by_when_dragging if is_dragging else theme_resource.illuminated_by
+func update_lighting_range(call_for_all_piece := false):
+	const dragging_light_layer := 512
+	var emitters_mask : int = dragging_light_layer if is_dragging else theme_resource.light_layer
+	var receivers_mask := emitters_mask + 1
 	
 	update_cells_occlusion_layer()
+	
+	if shape.has_node("Player") :
+		var player_sprites := get_tree().get_nodes_in_group("PlayerSprites")
+		for sprite in player_sprites.filter(func (s) : return s.scene_file_path == player_sprite.scene_file_path and level == s.puzzle_piece.level) :
+			for light : Light2D in sprite.find_children("*", "Light2D", true, false) :
+				light.visible = sprite == player_sprite
 	
 	for light_affected_node : Node2D in get_tree().get_nodes_in_group("AffectedByInternalLight").filter(func(n) : return shape.is_ancestor_of(n)) :
 		light_affected_node.light_mask = receivers_mask
@@ -171,6 +179,11 @@ func update_lighting_range():
 	for light : Light2D in find_children("*", "Light2D", true, false) :
 		light.shadow_item_cull_mask = emitters_mask
 		light.range_item_cull_mask = emitters_mask
+	
+	if call_for_all_piece :
+		for piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces") : 
+			if piece != self : piece.update_lighting_range()
+
 
 func update_cells_occlusion_layer():
 	for cell in foreground.get_used_cells() :

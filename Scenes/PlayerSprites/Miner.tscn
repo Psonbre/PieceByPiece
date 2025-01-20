@@ -25,6 +25,7 @@ shape = SubResource("CircleShape2D_6x3eo")
 [node name="PointLight2D" type="PointLight2D" parent="StretchParent" index="1"]
 position = Vector2(4.76837e-07, -24)
 scale = Vector2(1.065, 1.065)
+color = Color(1, 0.993344, 0.269287, 1)
 energy = 1.5
 range_item_cull_mask = 2
 shadow_enabled = true

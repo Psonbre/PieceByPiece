@@ -10,6 +10,7 @@ var start_position : Vector2
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var shape: PuzzlePieceShape = $Shape
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var light: PointLight2D = $PointLight2D
 var rand := 0.0
 
 func _ready():

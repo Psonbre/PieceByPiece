@@ -69,7 +69,6 @@ b = Vector2(0, 128)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8wnkx"]
 
 [node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
-collision_mask = 37
 script = ExtResource("1_uhv7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
