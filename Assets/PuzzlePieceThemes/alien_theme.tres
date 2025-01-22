@@ -11,3 +11,4 @@ tileset_id = 8
 door_texture = ExtResource("1_liw60")
 modulate = Color(0.82452, 0.856306, 0.96273, 1)
 light_layer = 2
+collectable_light_energy = 1.5

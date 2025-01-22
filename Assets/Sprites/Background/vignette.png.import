@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsnv1h8d3qo4a"
-valid=false
+uid="uid://dpnggfvmye3ty"
+path="res://.godot/imported/vignette.png-49b11d3320bbc7a44428c6851473ea00.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Assets/Sprites/Table.png"
+source_file="res://Assets/Sprites/Background/vignette.png"
+dest_files=["res://.godot/imported/vignette.png-49b11d3320bbc7a44428c6851473ea00.ctex"]
 
 [params]
 

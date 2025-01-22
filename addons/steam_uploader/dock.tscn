@@ -1,0 +1,111 @@
+[gd_scene load_steps=2 format=3 uid="uid://hv0oc6brtgsy"]
+
+[sub_resource type="GDScript" id="GDScript_3et7d"]
+script/source = "@tool
+extends VBoxContainer
+
+@onready var build_preset_input: OptionButton = $BuildPreset/BuildPreset
+@onready var app_id_input: LineEdit = $AppID/AppID
+@onready var build_path_input: LineEdit = $BuildPath/BuildPath
+@onready var button: Button = $Button
+var build_preset : String :
+	get() :
+		return build_preset_input.get_item_text(build_preset_input.selected)
+var app_id : String :
+	get():
+		return app_id_input.text
+var build_path : String :
+	get():
+		return build_path_input.text
+
+func _ready() -> void:
+	for preset in get_export_preset_names() :
+		build_preset_input.add_item(preset)
+
+func get_export_preset_names():
+	var preset_names = []
+	var config = ConfigFile.new()
+	var err = config.load(\"res://export_presets.cfg\")
+	
+	if err == OK:
+		var preset_index = 0
+		while true:
+			var section_name = \"preset.%d\" % preset_index
+			if not config.has_section(section_name):
+				break
+			var preset_name = config.get_value(section_name, \"name\", \"\")
+			if preset_name != \"\":
+				preset_names.append(preset_name)
+			preset_index += 1
+	else:
+		push_error(\"Failed to load export_presets.cfg: %s\" % err)
+	
+	return preset_names
+"
+
+[node name="Steam Uploader" type="VBoxContainer"]
+offset_right = 403.0
+offset_bottom = 136.0
+script = SubResource("GDScript_3et7d")
+
+[node name="AppID" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AppID"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "Steam App ID :"
+clip_text = true
+
+[node name="AppID" type="LineEdit" parent="AppID"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 3
+
+[node name="BuildPreset" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BuildPreset"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "Build Preset :"
+clip_text = true
+
+[node name="BuildPreset" type="OptionButton" parent="BuildPreset"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+fit_to_longest_item = false
+item_count = 6
+popup/item_0/text = "Windows Desktop"
+popup/item_1/text = "Web"
+popup/item_1/id = 1
+popup/item_2/text = "Windows Desktop"
+popup/item_2/id = 2
+popup/item_3/text = "Web"
+popup/item_3/id = 3
+popup/item_4/text = "Windows Desktop"
+popup/item_4/id = 4
+popup/item_5/text = "Web"
+popup/item_5/id = 5
+
+[node name="BuildPath" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BuildPath"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "Build Path :"
+clip_text = true
+
+[node name="BuildPath" type="LineEdit" parent="BuildPath"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Upload on Steam"

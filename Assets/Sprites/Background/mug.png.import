@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsnv1h8d3qo4a"
-valid=false
+uid="uid://vsjuocvn3h7"
+path="res://.godot/imported/mug.png-6a5430d6776f7b381e1bdedf7492b791.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Assets/Sprites/Table.png"
+source_file="res://Assets/Sprites/Background/mug.png"
+dest_files=["res://.godot/imported/mug.png-6a5430d6776f7b381e1bdedf7492b791.ctex"]
 
 [params]
 

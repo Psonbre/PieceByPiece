@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsnv1h8d3qo4a"
-valid=false
+uid="uid://dkr36h85j2k67"
+path="res://.godot/imported/notebook.png-6cac3c931b116f0b02a814f98f91c1c6.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Assets/Sprites/Table.png"
+source_file="res://Assets/Sprites/Background/notebook.png"
+dest_files=["res://.godot/imported/notebook.png-6cac3c931b116f0b02a814f98f91c1c6.ctex"]
 
 [params]
 
