@@ -1,9 +1,5 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1slhdnlsv2qt"]
 
-[ext_resource type="Texture2D" uid="uid://dnfq6kug4x6o2" path="res://addons/discord-rpc-gd/nodes/assets/Checked.svg" id="2_q6tao"]
-[ext_resource type="Texture2D" uid="uid://compmm3kviqqe" path="res://addons/discord-rpc-gd/nodes/assets/Unchecked.svg" id="3_5cyem"]
-[ext_resource type="Texture2D" uid="uid://dtc6ckladq0td" path="res://addons/discord-rpc-gd/nodes/assets/circle.svg" id="3_goflf"]
-
 [sub_resource type="GDScript" id="GDScript_ak1tp"]
 resource_name = "Debug"
 script/source = "extends Node
@@ -77,6 +73,15 @@ func _on_print_friends_pressed():
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8abo6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hho4m"]
+load_path = "res://.godot/imported/Checked.svg-80704e37f30c24e2ec3dfc0955f5f21c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njy5r"]
+load_path = "res://.godot/imported/Unchecked.svg-b526adfd78f7b1577fc3c10a8ea626ee.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8utlr"]
+load_path = "res://.godot/imported/circle.svg-d0b0579c9433c6250a5869daf4f70024.ctex"
 
 [sub_resource type="Animation" id="Animation_mmtmn"]
 length = 0.001
@@ -232,8 +237,8 @@ offset_bottom = 665.375
 grow_vertical = 2
 scale = Vector2(0.05, 0.05)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8abo6")
-theme_override_icons/checked = ExtResource("2_q6tao")
-theme_override_icons/unchecked = ExtResource("3_5cyem")
+theme_override_icons/checked = SubResource("CompressedTexture2D_hho4m")
+theme_override_icons/unchecked = SubResource("CompressedTexture2D_njy5r")
 button_pressed = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
@@ -252,7 +257,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(29.0693, 29.0693)
-texture = ExtResource("3_goflf")
+texture = SubResource("CompressedTexture2D_8utlr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/TextureRect"]
 libraries = {

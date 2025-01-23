@@ -1,26 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://hv0oc6brtgsy"]
+[gd_scene load_steps=6 format=3 uid="uid://hv0oc6brtgsy"]
 
 [sub_resource type="GDScript" id="GDScript_3et7d"]
 script/source = "@tool
 extends VBoxContainer
 
-@onready var build_preset_input: OptionButton = $BuildPreset/BuildPreset
-@onready var app_id_input: LineEdit = $AppID/AppID
-@onready var build_path_input: LineEdit = $BuildPath/BuildPath
-@onready var button: Button = $Button
-var build_preset : String :
-	get() :
-		return build_preset_input.get_item_text(build_preset_input.selected)
-var app_id : String :
-	get():
-		return app_id_input.text
-var build_path : String :
-	get():
-		return build_path_input.text
+@onready var build_preset: OptionButton = $\"Build/BuildPreset/Build Preset\"
+@onready var run_build: Button = $Build/RunBuild
 
 func _ready() -> void:
+	build_preset.clear()
 	for preset in get_export_preset_names() :
-		build_preset_input.add_item(preset)
+		build_preset.add_item(preset)
+
+func _on_build_path_changed(new_text: String) -> void:
+	$Build/RunBuild.disabled = !FileAccess.file_exists($\"Build/BuildPath/HBoxContainer/Build Path\".text + \"\\\\\" + $\"Build/FileName/File Name\".text)
+	
+func get_value(input_name : String):
+	var input := find_child(input_name)
+	if input != null :
+		if input is SpinBox : return input.value
+		elif input is LineEdit : return input.text
+		elif input is OptionButton : return input.get_item_text(input.selected) 
+	else : push_error(\"There is no input with that name\")
 
 func get_export_preset_names():
 	var preset_names = []
@@ -43,69 +44,305 @@ func get_export_preset_names():
 	return preset_names
 "
 
+[sub_resource type="GDScript" id="GDScript_yplel"]
+script/source = "@tool
+extends ConfirmationDialog
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	add_button(\"Upload to Steam\", false, \"upload_to_steam\")
+
+
+
+func _on_confirmed() -> void:
+	var result = OS.execute_with_pipe($\"../Build/BuildPath/HBoxContainer/Build Path\".text + \"\\\\\" + $\"../Build/FileName/File Name\".text, [])
+
+
+func _on_custom_action(action: StringName) -> void:
+	if action == \"upload_to_steam\":
+		pass
+"
+
+[sub_resource type="GDScript" id="GDScript_3pr4l"]
+script/source = "@tool
+extends Button
+
+@onready var file_dialog: FileDialog = $\"../FileDialog\"
+@export var path: LineEdit
+
+
+func _on_pressed() -> void:
+	file_dialog.popup_centered()
+
+func _on_file_dialog_dir_selected(dir: String) -> void:
+	path.text = dir
+
+func _on_file_dialog_file_selected(file: String) -> void:
+	path.text = file
+"
+
+[sub_resource type="GDScript" id="GDScript_hb1na"]
+script/source = "@tool
+extends Button
+
+func _on_pressed() -> void:
+	var result = OS.execute_with_pipe($\"../BuildPath/HBoxContainer/Build Path\".text + \"\\\\\" + $\"../FileName/File Name\".text, [])
+"
+
+[sub_resource type="GDScript" id="GDScript_7y1ml"]
+script/source = "@tool
+extends LineEdit
+
+@onready var app_request: HTTPRequest = $AppRequest
+@onready var depots_request: HTTPRequest = $DepotsRequest
+@onready var steam_app_id: OptionButton = $\"../../../AppID/Steam App ID\"
+@onready var steam_depot_ids: OptionButton = $\"../../../DepotIds/Steam depot IDs\"
+
+func _ready() -> void:
+	_on_text_changed.call_deferred(text)
+
+func _on_text_changed(new_text: String) -> void:
+	if !new_text.strip_edges().is_empty() and new_text.strip_edges().length() == 32:
+		editable = false
+		steam_app_id.disabled = true
+		steam_app_id.clear()
+		steam_depot_ids.disabled = true
+		steam_depot_ids.clear()
+		fetch_steam_apps(new_text.strip_edges())
+
+func _on_steam_app_id_item_selected(index: int) -> void:
+	if !text.strip_edges().is_empty():
+		steam_app_id.disabled = true
+		steam_depot_ids.disabled = true
+		editable = false
+		steam_depot_ids.clear()
+		fetch_depots(text.strip_edges() ,str(steam_app_id.get_item_id(index)))
+
+func fetch_steam_apps(api_key: String) -> void:
+	app_request.request(\"https://partner.steam-api.com/ISteamApps/GetPartnerAppListForWebAPIKey/v2/?key=%s\" % api_key)
+
+func fetch_depots(api_key: String, app_id : String) -> void:
+	depots_request.request(\"https://partner.steam-api.com/ISteamApps/GetAppDepotVersions/v1/?key=%s&appid=%s\" % [api_key, str(app_id)])
+
+func _on_app_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	steam_app_id.clear()
+	if response_code == 200:
+		var json = JSON.new()
+		var parse_result = json.parse(body.get_string_from_utf8())
+		for app in json.data.applist.apps.app :
+			steam_app_id.add_item(app.app_name + \" (\" + str(app.appid) + \")\", app.appid)
+		fetch_depots(text.strip_edges(), str(steam_app_id.get_item_id(steam_app_id.selected)))
+	else:
+		push_error(\"HTTP request failed with response code: %d\" % response_code)
+
+func _on_depots_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	steam_depot_ids.clear()
+	if response_code == 200:
+		var json = JSON.new()
+		var parse_result = json.parse(body.get_string_from_utf8())
+		for id in json.data.response.depots.keys() :
+			steam_depot_ids.add_item(id, int(id))
+			steam_app_id.disabled = false
+			steam_depot_ids.disabled = false
+			editable = true
+	else:
+		push_error(\"HTTP request failed with response code: %d\" % response_code)
+"
+
 [node name="Steam Uploader" type="VBoxContainer"]
-offset_right = 403.0
-offset_bottom = 136.0
+offset_right = 503.0
+offset_bottom = 171.0
 script = SubResource("GDScript_3et7d")
 
-[node name="AppID" type="HBoxContainer" parent="."]
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Build successful !"
+initial_position = 2
+size = Vector2i(349, 132)
+ok_button_text = "Run build"
+dialog_text = "Your build was successfull !
+
+Would you like to test the build now?"
+dialog_autowrap = true
+script = SubResource("GDScript_yplel")
+
+[node name="Build" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="AppID"]
+[node name="BuildTitle" type="CenterContainer" parent="Build"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Build/BuildTitle"]
+layout_mode = 2
+text = "Build"
+
+[node name="FileName" type="HBoxContainer" parent="Build"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Build/FileName"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.6
-text = "Steam App ID :"
+text = "File Name :"
 clip_text = true
 
-[node name="AppID" type="LineEdit" parent="AppID"]
+[node name="File Name" type="LineEdit" parent="Build/FileName"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 3
+placeholder_text = "game.exe"
 
-[node name="BuildPreset" type="HBoxContainer" parent="."]
+[node name="BuildPath" type="HBoxContainer" parent="Build"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BuildPreset"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.6
-text = "Build Preset :"
-clip_text = true
-
-[node name="BuildPreset" type="OptionButton" parent="BuildPreset"]
-layout_mode = 2
-size_flags_horizontal = 3
-selected = 0
-fit_to_longest_item = false
-item_count = 6
-popup/item_0/text = "Windows Desktop"
-popup/item_1/text = "Web"
-popup/item_1/id = 1
-popup/item_2/text = "Windows Desktop"
-popup/item_2/id = 2
-popup/item_3/text = "Web"
-popup/item_3/id = 3
-popup/item_4/text = "Windows Desktop"
-popup/item_4/id = 4
-popup/item_5/text = "Web"
-popup/item_5/id = 5
-
-[node name="BuildPath" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="BuildPath"]
+[node name="Label" type="Label" parent="Build/BuildPath"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.6
 text = "Build Path :"
 clip_text = true
 
-[node name="BuildPath" type="LineEdit" parent="BuildPath"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Build/BuildPath"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 3
 
-[node name="Button" type="Button" parent="."]
+[node name="Build Path" type="LineEdit" parent="Build/BuildPath/HBoxContainer"]
 layout_mode = 2
-text = "Upload on Steam"
+size_flags_horizontal = 3
+placeholder_text = "C:\\Users\\user\\Downloads\\Project\\"
+
+[node name="SelectFolder" type="Button" parent="Build/BuildPath/HBoxContainer" node_paths=PackedStringArray("path")]
+layout_mode = 2
+text = "Select Folder"
+script = SubResource("GDScript_3pr4l")
+path = NodePath("../Build Path")
+
+[node name="FileDialog" type="FileDialog" parent="Build/BuildPath/HBoxContainer"]
+title = "Open a Directory"
+initial_position = 2
+size = Vector2i(352, 180)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="BuildPreset" type="HBoxContainer" parent="Build"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Build/BuildPreset"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "Build Preset :"
+clip_text = true
+
+[node name="Build Preset" type="OptionButton" parent="Build/BuildPreset"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Windows Desktop"
+popup/item_1/text = "Web"
+popup/item_1/id = 1
+popup/item_2/text = "Linux"
+popup/item_2/id = 2
+
+[node name="Build" type="Button" parent="Build"]
+layout_mode = 2
+text = "Build project"
+
+[node name="RunBuild" type="Button" parent="Build"]
+layout_mode = 2
+tooltip_text = "There is no build to run"
+disabled = true
+text = "Run Build"
+script = SubResource("GDScript_hb1na")
+
+[node name="UploadToSteam" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="UploadToSteam"]
+layout_mode = 2
+
+[node name="SteamTitle" type="CenterContainer" parent="UploadToSteam"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadToSteam/SteamTitle"]
+layout_mode = 2
+text = "Upload to Steam"
+
+[node name="SteamAPIKey" type="HBoxContainer" parent="UploadToSteam"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadToSteam/SteamAPIKey"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "Steam API Key :"
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UploadToSteam/SteamAPIKey"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Steam API Key" type="LineEdit" parent="UploadToSteam/SteamAPIKey/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Steam API Key"
+secret = true
+script = SubResource("GDScript_7y1ml")
+
+[node name="AppRequest" type="HTTPRequest" parent="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key"]
+
+[node name="DepotsRequest" type="HTTPRequest" parent="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key"]
+
+[node name="AppID" type="HBoxContainer" parent="UploadToSteam"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadToSteam/AppID"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+text = "Steam App :"
+clip_text = true
+
+[node name="Steam App ID" type="OptionButton" parent="UploadToSteam/AppID"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "You must first input your Steam API key to select an App"
+disabled = true
+
+[node name="DepotIds" type="HBoxContainer" parent="UploadToSteam"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadToSteam/DepotIds"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+text = "Steam depot ID :"
+clip_text = true
+
+[node name="Steam depot IDs" type="OptionButton" parent="UploadToSteam/DepotIds"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "You must first input your Steam API key to select a depot"
+disabled = true
+
+[node name="Upload" type="Button" parent="UploadToSteam"]
+layout_mode = 2
+tooltip_text = "You must have a Steam API key and a valid build to upload on Steam"
+disabled = true
+text = "Upload latest build on Steam"
+
+[connection signal="confirmed" from="ConfirmationDialog" to="ConfirmationDialog" method="_on_confirmed"]
+[connection signal="custom_action" from="ConfirmationDialog" to="ConfirmationDialog" method="_on_custom_action"]
+[connection signal="text_changed" from="Build/FileName/File Name" to="." method="_on_build_path_changed"]
+[connection signal="text_changed" from="Build/BuildPath/HBoxContainer/Build Path" to="." method="_on_build_path_changed"]
+[connection signal="pressed" from="Build/BuildPath/HBoxContainer/SelectFolder" to="Build/BuildPath/HBoxContainer/SelectFolder" method="_on_pressed"]
+[connection signal="dir_selected" from="Build/BuildPath/HBoxContainer/FileDialog" to="Build/BuildPath/HBoxContainer/SelectFolder" method="_on_file_dialog_dir_selected"]
+[connection signal="pressed" from="Build/RunBuild" to="Build/RunBuild" method="_on_pressed"]
+[connection signal="text_changed" from="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_text_changed"]
+[connection signal="request_completed" from="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key/AppRequest" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_app_request_completed"]
+[connection signal="request_completed" from="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key/DepotsRequest" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_depots_request_completed"]
+[connection signal="item_selected" from="UploadToSteam/AppID/Steam App ID" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_steam_app_id_item_selected"]
