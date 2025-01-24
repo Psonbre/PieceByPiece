@@ -6,7 +6,6 @@ const SETTINGS_PATH_PREFIX = "SteamUploader/presets/"
 
 func _enter_tree() -> void:
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_BL, dock)
-	dock.get_node("Build/Build").connect("pressed", func(): build_project())
 	load_inputs()
 
 func _exit_tree() -> void:
@@ -28,12 +27,12 @@ func load_inputs():
 			var setting_path = SETTINGS_PATH_PREFIX + child.name
 			if settings.has_setting(setting_path):
 				child.selected = settings.get_setting(setting_path)
-	dock._on_build_path_changed("")
 	
 func save_inputs():
 	var settings = EditorInterface.get_editor_settings()
 	for child in dock.find_children("*"):
 		var setting_path = SETTINGS_PATH_PREFIX + child.name
+		StreamPeerBuffer
 		if child is LineEdit: 
 			settings.set_setting(setting_path, child.text)
 			if child.secret :
@@ -42,29 +41,8 @@ func save_inputs():
 					"type": "string",
 					"usage" : PROPERTY_USAGE_NO_EDITOR,
 				})
+				
 		if child is SpinBox: 
 			settings.set_setting(setting_path, child.value)
 		elif child is OptionButton:
 			settings.set_setting(setting_path, child.selected)
-	
-func build_project():
-	# Validate inputs dynamically
-	for child in dock.find_children("*"):
-		if child is LineEdit and child.text.is_empty():
-			push_error(child.name + " must not be empty")
-			return
-	# Get the path to the current Godot executable
-	var godot_executable = OS.get_executable_path()
-
-	# Construct the command line arguments
-	var args = [
-		"--headless",
-		"--export-release",
-		dock.get_value("Build Preset"), 
-		str(dock.get_value("Build Path")) + "\\" + str(dock.get_value("File Name")),
-		"--quit"
-	]
-
-	var output = []
-	var result = OS.execute(godot_executable, args, output)
-	dock.get_node("ConfirmationDialog").popup_centered()

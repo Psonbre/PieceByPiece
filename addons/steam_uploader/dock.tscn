@@ -1,20 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://hv0oc6brtgsy"]
+[gd_scene load_steps=11 format=3 uid="uid://hv0oc6brtgsy"]
 
 [sub_resource type="GDScript" id="GDScript_3et7d"]
 script/source = "@tool
 extends VBoxContainer
 
-@onready var build_preset: OptionButton = $\"Build/BuildPreset/Build Preset\"
-@onready var run_build: Button = $Build/RunBuild
+@export var build_preset: OptionButton
 
 func _ready() -> void:
 	build_preset.clear()
 	for preset in get_export_preset_names() :
 		build_preset.add_item(preset)
 
-func _on_build_path_changed(new_text: String) -> void:
-	$Build/RunBuild.disabled = !FileAccess.file_exists($\"Build/BuildPath/HBoxContainer/Build Path\".text + \"\\\\\" + $\"Build/FileName/File Name\".text)
-	
 func get_value(input_name : String):
 	var input := find_child(input_name)
 	if input != null :
@@ -48,46 +44,12 @@ func get_export_preset_names():
 script/source = "@tool
 extends ConfirmationDialog
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	add_button(\"Upload to Steam\", false, \"upload_to_steam\")
-
-
+var build_path := ProjectSettings.globalize_path(\"res://addons/steam_uploader/builds\")
+@export var file_name: LineEdit
+@export var build_preset: OptionButton
 
 func _on_confirmed() -> void:
-	var result = OS.execute_with_pipe($\"../Build/BuildPath/HBoxContainer/Build Path\".text + \"\\\\\" + $\"../Build/FileName/File Name\".text, [])
-
-
-func _on_custom_action(action: StringName) -> void:
-	if action == \"upload_to_steam\":
-		pass
-"
-
-[sub_resource type="GDScript" id="GDScript_3pr4l"]
-script/source = "@tool
-extends Button
-
-@onready var file_dialog: FileDialog = $\"../FileDialog\"
-@export var path: LineEdit
-
-
-func _on_pressed() -> void:
-	file_dialog.popup_centered()
-
-func _on_file_dialog_dir_selected(dir: String) -> void:
-	path.text = dir
-
-func _on_file_dialog_file_selected(file: String) -> void:
-	path.text = file
-"
-
-[sub_resource type="GDScript" id="GDScript_hb1na"]
-script/source = "@tool
-extends Button
-
-func _on_pressed() -> void:
-	var result = OS.execute_with_pipe($\"../BuildPath/HBoxContainer/Build Path\".text + \"\\\\\" + $\"../FileName/File Name\".text, [])
+	var result = OS.execute_with_pipe(build_path + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\"+ file_name.text, [])
 "
 
 [sub_resource type="GDScript" id="GDScript_7y1ml"]
@@ -96,15 +58,20 @@ extends LineEdit
 
 @onready var app_request: HTTPRequest = $AppRequest
 @onready var depots_request: HTTPRequest = $DepotsRequest
+@onready var branch_request: HTTPRequest = $BranchRequest
 @onready var steam_app_id: OptionButton = $\"../../../AppID/Steam App ID\"
 @onready var steam_depot_ids: OptionButton = $\"../../../DepotIds/Steam depot IDs\"
+@onready var branch: LineEdit = $\"../../../Branch/Branch\"
+@onready var description: LineEdit = $\"../../../Description/Description\"
 
 func _ready() -> void:
-	_on_text_changed.call_deferred(text)
-
+	_on_text_changed.call_deferred(EditorInterface.get_editor_settings().get_setting(\"SteamUploader/presets/Steam API Key\"))
+	
 func _on_text_changed(new_text: String) -> void:
 	if !new_text.strip_edges().is_empty() and new_text.strip_edges().length() == 32:
 		editable = false
+		branch.editable = false
+		description.editable = false
 		steam_app_id.disabled = true
 		steam_app_id.clear()
 		steam_depot_ids.disabled = true
@@ -116,6 +83,8 @@ func _on_steam_app_id_item_selected(index: int) -> void:
 		steam_app_id.disabled = true
 		steam_depot_ids.disabled = true
 		editable = false
+		branch.editable = false
+		description.editable = false
 		steam_depot_ids.clear()
 		fetch_depots(text.strip_edges() ,str(steam_app_id.get_item_id(index)))
 
@@ -124,7 +93,13 @@ func fetch_steam_apps(api_key: String) -> void:
 
 func fetch_depots(api_key: String, app_id : String) -> void:
 	depots_request.request(\"https://partner.steam-api.com/ISteamApps/GetAppDepotVersions/v1/?key=%s&appid=%s\" % [api_key, str(app_id)])
-
+	
+func fetch_branches(api_key: String, app_id: String) -> void:
+	# Change this URL if needed. The below is an example:
+	branch_request.request(
+		\"https://partner.steam-api.com/ISteamApps/GetBranchList/v1?key=%s&appid=%s\" 
+		% [api_key, app_id]
+	)
 func _on_app_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	steam_app_id.clear()
 	if response_code == 200:
@@ -146,35 +121,274 @@ func _on_depots_request_completed(result: int, response_code: int, headers: Pack
 			steam_app_id.disabled = false
 			steam_depot_ids.disabled = false
 			editable = true
+			branch.editable = true
+			description.editable = true
 	else:
 		push_error(\"HTTP request failed with response code: %d\" % response_code)
 "
 
-[node name="Steam Uploader" type="VBoxContainer"]
+[sub_resource type="GDScript" id="GDScript_it7gn"]
+script/source = "@tool
+extends Button
+
+var build_path := ProjectSettings.globalize_path(\"res://addons/steam_uploader/builds\")
+@export var build_preset: OptionButton
+@export var file_name: LineEdit
+@export var confirmation_dialog: ConfirmationDialog
+@export var run_build: Button
+var thread := Thread.new()
+
+func _ready() -> void:
+	var settings = EditorInterface.get_editor_settings()
+	disabled = settings.get_setting(\"SteamUploader/presets/File Name\").is_empty() || settings.get_setting(\"SteamUploader/presets/Build Preset\") == -1
+
+
+func _on_pressed() -> void:
+	var godot_executable = OS.get_executable_path()
+
+	# Construct the command line arguments
+	var args = [
+		\"--headless\",
+		\"--export-release\",
+		build_preset.get_item_text(build_preset.selected), 
+		build_path.strip_edges() + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\" + file_name.text.strip_edges(),
+		\"--quit\"
+	]
+
+	var result = OS.execute(godot_executable, args)
+	confirmation_dialog.popup_centered()
+
+func _exit_tree() -> void:
+	thread.wait_to_finish()
+
+func _create_missing_directories(path: String) -> void:
+	var absolute_path = ProjectSettings.globalize_path(path)
+	var err = DirAccess.make_dir_recursive_absolute(absolute_path)
+	if err != OK:
+		push_error(\"Failed to create directory: %s. Error code: %d\" % [path, err])
+
+func _on_file_name_text_changed(new_text: String) -> void:
+	disabled = file_name.text.is_empty() || build_preset.get_item_text(build_preset.selected).is_empty()
+
+func _on_build_preset_item_selected(index: int) -> void:
+	disabled = file_name.text.is_empty() || build_preset.get_item_text(build_preset.selected).is_empty()
+"
+
+[sub_resource type="GDScript" id="GDScript_hb1na"]
+script/source = "@tool
+extends Button
+
+var build_path := ProjectSettings.globalize_path(\"res://addons/steam_uploader/builds\")
+@export var build_preset: OptionButton
+@export var file_name: LineEdit
+
+func _ready() -> void:
+	var settings = EditorInterface.get_editor_settings()
+	(
+		func() -> void:
+			disabled = !build_exists()
+	).call_deferred()
+
+func _on_pressed() -> void:
+	var result = OS.execute_with_pipe(build_path + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\"+ file_name.text, [])
+
+func _on_build_preset_item_selected(index: int) -> void:
+	disabled = !build_exists()
+
+func _on_file_name_text_changed(new_text: String) -> void:
+	disabled = !build_exists()
+
+func build_exists() :
+	return !(
+		!FileAccess.file_exists(build_path + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\" + file_name.text)
+		or !file_name.text.to_lower().ends_with(\".exe\")
+	)
+"
+
+[sub_resource type="GDScript" id="GDScript_d3ll5"]
+script/source = "@tool
+extends Button
+
+var build_path := ProjectSettings.globalize_path(\"res://addons/steam_uploader/builds\")
+@export var build_preset: OptionButton
+@export var file_name: LineEdit
+@export var steam_api_key: LineEdit
+@export var steam_depot_i_ds: OptionButton
+@export var branch: LineEdit
+@export var description: LineEdit
+@export var steam_app_id: OptionButton
+@export var steam_upload: HTTPRequest
+@export var upload_dialog: ConfirmationDialog
+@export var steam_cmd_dialog: ConfirmationDialog
+
+func _ready() -> void:
+	var settings = EditorInterface.get_editor_settings()
+	(
+		func() -> void:
+			disabled = !build_exists()
+	).call_deferred()
+
+func build_exists() :
+	return !(
+		!FileAccess.file_exists(build_path + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\" + file_name.text)
+	)
+	
+func _on_build_preset_item_selected(index: int) -> void:
+	disabled = !build_exists()
+
+func _on_file_name_text_changed(new_text: String) -> void:
+	disabled = !build_exists()
+	
+func _on_pressed() -> void:
+	var current_steamcmd_path = EditorInterface.get_editor_settings().get_setting(\"SteamUploader/presets/SteamCMD\")
+	if !current_steamcmd_path.ends_with(\"steamcmd.exe\") or !FileAccess.file_exists(current_steamcmd_path) :
+		steam_cmd_dialog.popup_centered()
+	else:
+		upload_dialog.popup_centered()
+"
+
+[sub_resource type="GDScript" id="GDScript_3nftx"]
+script/source = "@tool
+extends ConfirmationDialog
+
+var build_path := ProjectSettings.globalize_path(\"res://addons/steam_uploader/builds\")
+@export var username: LineEdit
+@export var password: LineEdit
+@export var tfa: LineEdit
+@export var file_name: LineEdit
+@export var build_preset: OptionButton
+@export var steam_api_key: LineEdit
+@export var steam_app_id: OptionButton
+@export var steam_depot_i_ds: OptionButton
+@export var branch: LineEdit
+@export var description: LineEdit
+@export var steam_cmd: LineEdit  # Path to steamcmd.exe
+
+func _on_confirmed() -> void:
+	# Build the full path to the .exe
+	var selected_preset := build_preset.get_item_text(build_preset.get_selected())
+	var final_file_path := build_path + \"/\" + selected_preset + \"/\" + file_name.text.strip_edges()
+
+	# Get selected IDs as strings
+	var selected_app_id := steam_app_id.get_item_id(steam_app_id.get_selected())
+	var selected_depot_id := steam_depot_i_ds.get_item_text(steam_depot_i_ds.get_selected())
+
+	# Generate the VDF content
+	var vdf_content := '\"appbuild\"\\n{\\n'
+	vdf_content += '    \"appid\" \"%s\"\\n' % selected_app_id
+	vdf_content += '    \"desc\" \"%s\"\\n' % description.text.strip_edges()
+	vdf_content += '    \"buildoutput\" \"%s\"\\n' % build_path
+	vdf_content += '    \"contentroot\" \"%s\"\\n' % (build_path + \"/\" + selected_preset)
+	#vdf_content += '    \"setlive\" \"%s\"\\n' % branch.text.strip_edges()
+	vdf_content += '    \"SetLive\" \"public\"\\n'
+	vdf_content += '    \"preview\" \"0\"\\n'
+	vdf_content += '    \"depots\"\\n'
+	vdf_content += '    {\\n'
+	vdf_content += '        \"%s\"\\n' % selected_depot_id
+	vdf_content += '        {\\n'
+	vdf_content += '            \"FileMapping\"\\n'
+	vdf_content += '            {\\n'
+	vdf_content += '                \"LocalPath\" \"*\"\\n'
+	vdf_content += '                \"DepotPath\" \".\"\\n'
+	vdf_content += '                \"recursive\" \"1\"\\n'
+	vdf_content += '            }\\n'
+	vdf_content += '        }\\n'
+	vdf_content += '    }\\n'
+	vdf_content += '}\\n'
+
+	# Write the VDF to a file
+	var build_script_path := build_path + \"/build_script.vdf\"
+	var file = FileAccess.open(build_script_path, FileAccess.WRITE)
+	file.store_string(vdf_content)
+	file.close()
+
+	var steamcmd_path := steam_cmd.text.strip_edges()
+
+	var output = []
+	var result = OS.execute(steamcmd_path, [
+		\"+login\",
+		username.text.strip_edges(),
+		password.text.strip_edges(),
+		tfa.text.strip_edges(),
+		\"+run_app_build_http\",
+		build_script_path,
+		\"+quit\"
+	], output)
+	
+	if result == 0 :
+		print(\"The build was uploaded successfully !\")
+	elif result == 5:
+		printerr(\"The wrong TFA code was provided\")
+		print(output)
+	else :
+		print(result)
+		push_error(\"The upload failed.\")
+		print(output)
+"
+
+[sub_resource type="GDScript" id="GDScript_e4uko"]
+script/source = "@tool
+extends ConfirmationDialog
+@export var steam_cmd: LineEdit
+@export var upload_dialog: ConfirmationDialog
+@export var error: Label
+
+func _on_confirmed() -> void:
+	if steam_cmd.text.ends_with(\"steamcmd.exe\") and FileAccess.file_exists(steam_cmd.text) :
+		EditorInterface.get_editor_settings().set_setting(\"SteamUploader/presets/SteamCMD\", steam_cmd.text)
+		hide()
+		upload_dialog.popup_centered()
+	else :
+		error.visible = true
+
+func _on_canceled() -> void:
+	steam_cmd.clear()
+
+func _on_about_to_popup() -> void:
+	error.visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_7e6n7"]
+script/source = "@tool
+extends Button
+@export var file_dialog: FileDialog
+
+func _on_pressed() -> void:
+	file_dialog.popup_centered()
+"
+
+[sub_resource type="GDScript" id="GDScript_3o2nl"]
+script/source = "@tool
+extends FileDialog
+
+@export var steam_cmd: LineEdit
+
+func _on_file_selected(path: String) -> void:
+	steam_cmd.text = path
+"
+
+[node name="Steam Uploader" type="VBoxContainer" node_paths=PackedStringArray("build_preset")]
 offset_right = 503.0
 offset_bottom = 171.0
 script = SubResource("GDScript_3et7d")
+build_preset = NodePath("Build/BuildPreset/Build Preset")
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="." node_paths=PackedStringArray("file_name", "build_preset")]
 title = "Build successful !"
 initial_position = 2
 size = Vector2i(349, 132)
+exclusive = false
 ok_button_text = "Run build"
 dialog_text = "Your build was successfull !
 
 Would you like to test the build now?"
 dialog_autowrap = true
 script = SubResource("GDScript_yplel")
+file_name = NodePath("../Build/FileName/File Name")
+build_preset = NodePath("../Build/BuildPreset/Build Preset")
 
 [node name="Build" type="VBoxContainer" parent="."]
 layout_mode = 2
-
-[node name="BuildTitle" type="CenterContainer" parent="Build"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Build/BuildTitle"]
-layout_mode = 2
-text = "Build"
 
 [node name="FileName" type="HBoxContainer" parent="Build"]
 layout_mode = 2
@@ -189,41 +403,8 @@ clip_text = true
 [node name="File Name" type="LineEdit" parent="Build/FileName"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "The name of the file that will be executed by Steam. This needs to have the same name as the one you set up in Steamworks."
 placeholder_text = "game.exe"
-
-[node name="BuildPath" type="HBoxContainer" parent="Build"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Build/BuildPath"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.6
-text = "Build Path :"
-clip_text = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Build/BuildPath"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Build Path" type="LineEdit" parent="Build/BuildPath/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "C:\\Users\\user\\Downloads\\Project\\"
-
-[node name="SelectFolder" type="Button" parent="Build/BuildPath/HBoxContainer" node_paths=PackedStringArray("path")]
-layout_mode = 2
-text = "Select Folder"
-script = SubResource("GDScript_3pr4l")
-path = NodePath("../Build Path")
-
-[node name="FileDialog" type="FileDialog" parent="Build/BuildPath/HBoxContainer"]
-title = "Open a Directory"
-initial_position = 2
-size = Vector2i(352, 180)
-ok_button_text = "Select Current Folder"
-file_mode = 2
-access = 2
-use_native_dialog = true
 
 [node name="BuildPreset" type="HBoxContainer" parent="Build"]
 layout_mode = 2
@@ -238,6 +419,7 @@ clip_text = true
 [node name="Build Preset" type="OptionButton" parent="Build/BuildPreset"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "If you don't see any build preset you need to create one in Project -> Export -> Add new"
 selected = 0
 fit_to_longest_item = false
 item_count = 3
@@ -247,29 +429,8 @@ popup/item_1/id = 1
 popup/item_2/text = "Linux"
 popup/item_2/id = 2
 
-[node name="Build" type="Button" parent="Build"]
-layout_mode = 2
-text = "Build project"
-
-[node name="RunBuild" type="Button" parent="Build"]
-layout_mode = 2
-tooltip_text = "There is no build to run"
-disabled = true
-text = "Run Build"
-script = SubResource("GDScript_hb1na")
-
 [node name="UploadToSteam" type="VBoxContainer" parent="."]
 layout_mode = 2
-
-[node name="HSeparator3" type="HSeparator" parent="UploadToSteam"]
-layout_mode = 2
-
-[node name="SteamTitle" type="CenterContainer" parent="UploadToSteam"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UploadToSteam/SteamTitle"]
-layout_mode = 2
-text = "Upload to Steam"
 
 [node name="SteamAPIKey" type="HBoxContainer" parent="UploadToSteam"]
 layout_mode = 2
@@ -288,13 +449,17 @@ size_flags_horizontal = 3
 [node name="Steam API Key" type="LineEdit" parent="UploadToSteam/SteamAPIKey/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "You can get your Steam API key in Steamworks in Accounts and permissions -> Manage Groups -> Everyone -> API Web (on the right sidebar)"
 placeholder_text = "Steam API Key"
+editable = false
 secret = true
 script = SubResource("GDScript_7y1ml")
 
 [node name="AppRequest" type="HTTPRequest" parent="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key"]
 
 [node name="DepotsRequest" type="HTTPRequest" parent="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key"]
+
+[node name="BranchRequest" type="HTTPRequest" parent="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key"]
 
 [node name="AppID" type="HBoxContainer" parent="UploadToSteam"]
 layout_mode = 2
@@ -309,8 +474,14 @@ clip_text = true
 [node name="Steam App ID" type="OptionButton" parent="UploadToSteam/AppID"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "You must first input your Steam API key to select an App"
+tooltip_text = "You must input your Steam API key to select an App"
 disabled = true
+selected = 0
+item_count = 2
+popup/item_0/text = "Piece by Piece (3249380)"
+popup/item_0/id = 3249380
+popup/item_1/text = "Piece by Piece Demo (3429540)"
+popup/item_1/id = 3429540
 
 [node name="DepotIds" type="HBoxContainer" parent="UploadToSteam"]
 layout_mode = 2
@@ -326,23 +497,252 @@ clip_text = true
 [node name="Steam depot IDs" type="OptionButton" parent="UploadToSteam/DepotIds"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "You must first input your Steam API key to select a depot"
+tooltip_text = "You must input your Steam API key to select a depot"
 disabled = true
 
-[node name="Upload" type="Button" parent="UploadToSteam"]
+[node name="Branch" type="HBoxContainer" parent="UploadToSteam"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadToSteam/Branch"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+text = "Branch :"
+clip_text = true
+
+[node name="Branch" type="LineEdit" parent="UploadToSteam/Branch"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "You can leave this blank and assign a branch manually on the Steamworks website in Edit Steamworks Settings -> SteamPipe -> Builds"
+placeholder_text = "default"
+editable = false
+
+[node name="Description" type="HBoxContainer" parent="UploadToSteam"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadToSteam/Description"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+text = "Build description :"
+clip_text = true
+
+[node name="Description" type="LineEdit" parent="UploadToSteam/Description"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "An optionnal build description that will show in the Steamworks website"
+placeholder_text = "fixed all the things"
+editable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UploadToSteam"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Build" type="Button" parent="UploadToSteam/HBoxContainer" node_paths=PackedStringArray("build_preset", "file_name", "confirmation_dialog", "run_build")]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Build project"
+script = SubResource("GDScript_it7gn")
+build_preset = NodePath("../../../Build/BuildPreset/Build Preset")
+file_name = NodePath("../../../Build/FileName/File Name")
+confirmation_dialog = NodePath("../../../ConfirmationDialog")
+run_build = NodePath("../RunBuild")
+
+[node name="RunBuild" type="Button" parent="UploadToSteam/HBoxContainer" node_paths=PackedStringArray("build_preset", "file_name")]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Run Build"
+script = SubResource("GDScript_hb1na")
+build_preset = NodePath("../../../Build/BuildPreset/Build Preset")
+file_name = NodePath("../../../Build/FileName/File Name")
+
+[node name="Upload" type="Button" parent="UploadToSteam" node_paths=PackedStringArray("build_preset", "file_name", "steam_api_key", "steam_depot_i_ds", "branch", "description", "steam_app_id", "steam_upload", "upload_dialog", "steam_cmd_dialog")]
 layout_mode = 2
 tooltip_text = "You must have a Steam API key and a valid build to upload on Steam"
 disabled = true
-text = "Upload latest build on Steam"
+text = "Upload to Steam"
+script = SubResource("GDScript_d3ll5")
+build_preset = NodePath("../../Build/BuildPreset/Build Preset")
+file_name = NodePath("../../Build/FileName/File Name")
+steam_api_key = NodePath("../SteamAPIKey/HBoxContainer/Steam API Key")
+steam_depot_i_ds = NodePath("../DepotIds/Steam depot IDs")
+branch = NodePath("../Branch/Branch")
+description = NodePath("../Description/Description")
+steam_app_id = NodePath("../AppID/Steam App ID")
+steam_upload = NodePath("SteamUpload")
+upload_dialog = NodePath("../../UploadDialog")
+steam_cmd_dialog = NodePath("../../SteamCMDDialog")
+
+[node name="SteamUpload" type="HTTPRequest" parent="UploadToSteam/Upload"]
+
+[node name="UploadDialog" type="ConfirmationDialog" parent="." node_paths=PackedStringArray("username", "password", "tfa", "file_name", "build_preset", "steam_api_key", "steam_app_id", "steam_depot_i_ds", "branch", "description", "steam_cmd")]
+title = "Please log in to Steam to upload this build"
+initial_position = 2
+size = Vector2i(363, 158)
+exclusive = false
+ok_button_text = "Upload to Steam"
+script = SubResource("GDScript_3nftx")
+username = NodePath("VBoxContainer/Username/Username")
+password = NodePath("VBoxContainer/Password/Password")
+tfa = NodePath("VBoxContainer/TFA/TFA")
+file_name = NodePath("../Build/FileName/File Name")
+build_preset = NodePath("../Build/BuildPreset/Build Preset")
+steam_api_key = NodePath("../UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key")
+steam_app_id = NodePath("../UploadToSteam/AppID/Steam App ID")
+steam_depot_i_ds = NodePath("../UploadToSteam/DepotIds/Steam depot IDs")
+branch = NodePath("../UploadToSteam/Branch/Branch")
+description = NodePath("../UploadToSteam/Description/Description")
+steam_cmd = NodePath("../SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer/SteamCMD")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UploadDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 355.0
+offset_bottom = 109.0
+
+[node name="Username" type="HBoxContainer" parent="UploadDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadDialog/VBoxContainer/Username"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+text = "Username"
+clip_text = true
+
+[node name="Username" type="LineEdit" parent="UploadDialog/VBoxContainer/Username"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Your Steam username"
+placeholder_text = "Psonbre"
+
+[node name="Password" type="HBoxContainer" parent="UploadDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadDialog/VBoxContainer/Password"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+text = "Password"
+clip_text = true
+
+[node name="Password" type="LineEdit" parent="UploadDialog/VBoxContainer/Password"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Your Steam password"
+placeholder_text = "Password"
+secret = true
+
+[node name="TFA" type="HBoxContainer" parent="UploadDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UploadDialog/VBoxContainer/TFA"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+text = "TFA Code"
+clip_text = true
+
+[node name="TFA" type="LineEdit" parent="UploadDialog/VBoxContainer/TFA"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Your mobile app Steam Two Factor Authentication (TFA) code. Leave this blank if you do not have TFA enabled"
+placeholder_text = "AAA111"
+secret = true
+
+[node name="SteamCMDDialog" type="ConfirmationDialog" parent="." node_paths=PackedStringArray("steam_cmd", "upload_dialog", "error")]
+auto_translate_mode = 1
+title = "Please provide a path to steamcmd.exe"
+initial_position = 2
+size = Vector2i(453, 115)
+exclusive = false
+ok_button_text = "Confirm"
+dialog_hide_on_ok = false
+script = SubResource("GDScript_e4uko")
+steam_cmd = NodePath("VBoxContainer/SteamCMD/HBoxContainer/SteamCMD")
+upload_dialog = NodePath("../UploadDialog")
+error = NodePath("VBoxContainer/Error")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SteamCMDDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 445.0
+offset_bottom = 66.0
+
+[node name="SteamCMD" type="HBoxContainer" parent="SteamCMDDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SteamCMDDialog/VBoxContainer/SteamCMD"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.6
+text = "SteamCMD path : "
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SteamCMDDialog/VBoxContainer/SteamCMD"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SteamCMD" type="LineEdit" parent="SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Your Steam username"
+placeholder_text = "steamcmd.exe"
+
+[node name="Button" type="Button" parent="SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer" node_paths=PackedStringArray("file_dialog")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.21
+text = "Pick File"
+script = SubResource("GDScript_7e6n7")
+file_dialog = NodePath("FileDialog")
+
+[node name="FileDialog" type="FileDialog" parent="SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer/Button" node_paths=PackedStringArray("steam_cmd")]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(324, 180)
+exclusive = false
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+script = SubResource("GDScript_3o2nl")
+steam_cmd = NodePath("../../SteamCMD")
+
+[node name="Error" type="Label" parent="SteamCMDDialog/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "File does not exist"
 
 [connection signal="confirmed" from="ConfirmationDialog" to="ConfirmationDialog" method="_on_confirmed"]
 [connection signal="custom_action" from="ConfirmationDialog" to="ConfirmationDialog" method="_on_custom_action"]
 [connection signal="text_changed" from="Build/FileName/File Name" to="." method="_on_build_path_changed"]
-[connection signal="text_changed" from="Build/BuildPath/HBoxContainer/Build Path" to="." method="_on_build_path_changed"]
-[connection signal="pressed" from="Build/BuildPath/HBoxContainer/SelectFolder" to="Build/BuildPath/HBoxContainer/SelectFolder" method="_on_pressed"]
-[connection signal="dir_selected" from="Build/BuildPath/HBoxContainer/FileDialog" to="Build/BuildPath/HBoxContainer/SelectFolder" method="_on_file_dialog_dir_selected"]
-[connection signal="pressed" from="Build/RunBuild" to="Build/RunBuild" method="_on_pressed"]
+[connection signal="text_changed" from="Build/FileName/File Name" to="UploadToSteam/HBoxContainer/Build" method="_on_file_name_text_changed"]
+[connection signal="text_changed" from="Build/FileName/File Name" to="UploadToSteam/HBoxContainer/RunBuild" method="_on_file_name_text_changed"]
+[connection signal="text_changed" from="Build/FileName/File Name" to="UploadToSteam/Upload" method="_on_file_name_text_changed"]
+[connection signal="item_selected" from="Build/BuildPreset/Build Preset" to="UploadToSteam/HBoxContainer/Build" method="_on_build_preset_item_selected"]
+[connection signal="item_selected" from="Build/BuildPreset/Build Preset" to="UploadToSteam/HBoxContainer/RunBuild" method="_on_build_preset_item_selected"]
+[connection signal="item_selected" from="Build/BuildPreset/Build Preset" to="UploadToSteam/Upload" method="_on_build_preset_item_selected"]
 [connection signal="text_changed" from="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_text_changed"]
 [connection signal="request_completed" from="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key/AppRequest" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_app_request_completed"]
 [connection signal="request_completed" from="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key/DepotsRequest" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_depots_request_completed"]
 [connection signal="item_selected" from="UploadToSteam/AppID/Steam App ID" to="UploadToSteam/SteamAPIKey/HBoxContainer/Steam API Key" method="_on_steam_app_id_item_selected"]
+[connection signal="pressed" from="UploadToSteam/HBoxContainer/Build" to="UploadToSteam/HBoxContainer/Build" method="_on_pressed"]
+[connection signal="pressed" from="UploadToSteam/HBoxContainer/RunBuild" to="UploadToSteam/HBoxContainer/RunBuild" method="_on_pressed"]
+[connection signal="pressed" from="UploadToSteam/Upload" to="UploadToSteam/Upload" method="_on_pressed"]
+[connection signal="confirmed" from="UploadDialog" to="UploadDialog" method="_on_confirmed"]
+[connection signal="about_to_popup" from="SteamCMDDialog" to="SteamCMDDialog" method="_on_about_to_popup"]
+[connection signal="canceled" from="SteamCMDDialog" to="SteamCMDDialog" method="_on_canceled"]
+[connection signal="confirmed" from="SteamCMDDialog" to="SteamCMDDialog" method="_on_confirmed"]
+[connection signal="pressed" from="SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer/Button" to="SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer/Button" method="_on_pressed"]
+[connection signal="file_selected" from="SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer/Button/FileDialog" to="SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer/Button/FileDialog" method="_on_file_selected"]
