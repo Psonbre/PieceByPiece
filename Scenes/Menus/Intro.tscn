@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_6rt42"]
 
 [node name="Intro" type="Node2D"]
+z_index = 15
 script = ExtResource("1_rh3ju")
 
 [node name="Camera2D" type="Camera2D" parent="."]

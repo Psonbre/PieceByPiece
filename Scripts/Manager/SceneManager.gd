@@ -4,7 +4,6 @@ class_name SceneManager
 @export var default_gradient : Gradient
 @onready var camera = %Camera2D
 @onready var scene_change_cooldown: Timer = $SceneChangeCooldown
-@onready var background: Background = $Background
 var old_screen : Node2D
 var current_screen : Node2D
 var current_screen_resource : PackedScene
@@ -58,14 +57,12 @@ func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D
 	var scene = load_scene(WORLDS_LEVEL_SELECT_SCENES[world], new_direction)
 	if scene : 
 		updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], "Choosing a level")
-		background.switch_gradient(scene.background_gradient)
 	return scene
 	
 func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	var main_menu = load_scene(MAIN_MENU, new_direction)
 	if main_menu : 
 		updated_discord_presence("Staring at the main menu", "")
-		background.switch_gradient(default_gradient)
 	return main_menu
 
 func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
@@ -77,21 +74,18 @@ func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group =
 		tree.finish_transition_instantly.call_deferred()
 		tree.hide_other_groups.call_deferred(false)
 		updated_discord_presence("Selecting a world", "")
-		background.switch_gradient(default_gradient)
 	return menu
 
 func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
 	var credits = load_scene(CREDITS, new_direction)
 	if credits : 
 		updated_discord_presence("Looking at the credits", "")
-		background.switch_gradient(default_gradient)
 	return credits
 	
 func load_settings_menu(new_direction := Vector2(1, 0), destroy_old_screen := true) -> Node2D:
 	var settings = load_scene(SETTINGS, new_direction, destroy_old_screen)
 	if settings : 
 		updated_discord_presence("Modifying the settings", "")
-		background.switch_gradient(default_gradient)
 		if !destroy_old_screen :
 			settings.get_node("Settings/Back").exit_mode = 1
 	return settings
@@ -101,7 +95,6 @@ func load_level(world : WORLDS, scene_resource : Resource, new_direction := Vect
 	if level : 
 		PuzzlePiece.global_dragging = false
 		updated_discord_presence(WORLDS_DISCORD_PRESENCE[world], level.name)
-		background.switch_gradient(level.background_gradient)
 	return level
  
 func load_scene(scene_resource : Resource, new_direction := Vector2(1, 0), destroy_old_screen := true, allow_same_scene := false, speed := transition_speed) -> Node2D:

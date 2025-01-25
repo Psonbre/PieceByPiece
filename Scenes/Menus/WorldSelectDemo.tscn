@@ -47,6 +47,7 @@ func _on_mouse_exited() -> void:
 "
 
 [node name="WorldSelect" type="Node2D"]
+z_index = 15
 script = ExtResource("1_q5kbk")
 
 [node name="Camera2D" type="Camera2D" parent="."]

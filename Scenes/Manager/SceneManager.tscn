@@ -1,14 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxgrba7hrmmij"]
+[gd_scene load_steps=16 format=3 uid="uid://cxgrba7hrmmij"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/SceneManager.gd" id="1_yswi4"]
-[ext_resource type="PackedScene" uid="uid://dvws0si7ljhkm" path="res://Scenes/Background.tscn" id="2_6cqbi"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="3_b1voc"]
-[ext_resource type="Shader" path="res://Assets/Shaders/Background.gdshader" id="3_c7yis"]
 [ext_resource type="Gradient" uid="uid://ccylk25qfs6j5" path="res://Assets/Gradients/rainbow_gradient.tres" id="4_3u6s1"]
 [ext_resource type="Texture2D" uid="uid://dpnggfvmye3ty" path="res://Assets/Sprites/Background/vignette.png" id="6_idlif"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="6_jb4f7"]
-[ext_resource type="Script" path="res://Scenes/Manager/vignette_2.gd" id="7_1j0vo"]
-[ext_resource type="Material" uid="uid://0wr8j8l3j7t7" path="res://Assets/Materials/BackgroundMaterial.tres" id="7_at5i3"]
 [ext_resource type="Texture2D" uid="uid://dooxovvgyttr4" path="res://Assets/Icons/cursor.svg" id="7_hfdng"]
 [ext_resource type="Texture2D" uid="uid://vsjuocvn3h7" path="res://Assets/Sprites/Background/mug.png" id="8_3berb"]
 [ext_resource type="Material" uid="uid://boigv2m1amh6o" path="res://Assets/Materials/RiftMaterial.tres" id="8_gufrd"]
@@ -16,32 +12,57 @@
 [ext_resource type="Texture2D" uid="uid://dkr36h85j2k67" path="res://Assets/Sprites/Background/notebook.png" id="13_47img"]
 [ext_resource type="Texture2D" uid="uid://byo6t5pbjmemv" path="res://Assets/Sprites/Background/plant.png" id="15_w1u6n"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hhk6c"]
-gradient = ExtResource("4_3u6s1")
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wh5gs"]
+blend_mode = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bk35"]
-resource_local_to_scene = true
-shader = ExtResource("3_c7yis")
-shader_parameter/old_color = Color(1, 1, 1, 1)
-shader_parameter/bottom_color = Color(0, 0, 0, 1)
-shader_parameter/wave_amp = 0.011
-shader_parameter/wave_size = 1.0
-shader_parameter/wave_time_mul = 0.271
-shader_parameter/total_phases = 20
-shader_parameter/gradient_speed = 0.01
-shader_parameter/transition_progress = 1.0
-shader_parameter/gradient = SubResource("GradientTexture1D_hhk6c")
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i0njw"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(2.7, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1920.0
+direction = Vector3(0, 0, 0)
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -10.0
+radial_velocity_max = 9.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 3.0
+color = Color(1, 1, 1, 0.211765)
+turbulence_enabled = true
+turbulence_noise_strength = 3.45
+turbulence_noise_speed = Vector3(100, 100, 100)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jim8t"]
 blend_mode = 2
+
+[sub_resource type="GDScript" id="GDScript_ramw8"]
+script/source = "extends Sprite2D
+
+func _process(delta: float) -> void:
+	scale = (2.4 * Vector2.ONE) / %Camera2D.zoom
+"
 
 [node name="SceneManager" type="Node2D" groups=["GameManager"]]
 script = ExtResource("1_yswi4")
 default_gradient = ExtResource("4_3u6s1")
 
-[node name="Background" parent="." instance=ExtResource("2_6cqbi")]
-material = SubResource("ShaderMaterial_3bk35")
-position = Vector2(0, 0)
+[node name="GodRays" type="Polygon2D" parent="."]
+clip_children = 2
+z_index = 10
+material = SubResource("CanvasItemMaterial_wh5gs")
+position = Vector2(584, 349)
+rotation = 0.261799
+color = Color(0.0347826, 0.0345149, 0.0134894, 1)
+polygon = PackedVector2Array(-1193.23, -852.209, -832.829, -913.578, -621.203, 664.418, -1345.48, 781.878, 445.355, 417.976, 45.3179, -1156.12, -492.481, -1042.04, -293.994, 591.237)
+polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)]
+
+[node name="DustParticles" type="GPUParticles2D" parent="GodRays"]
+position = Vector2(-516.44, -231.214)
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_i0njw")
+lifetime = 3.0
+preprocess = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -60,7 +81,7 @@ z_index = 20
 material = SubResource("CanvasItemMaterial_jim8t")
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("6_idlif")
-script = ExtResource("7_1j0vo")
+script = SubResource("GDScript_ramw8")
 
 [node name="SceneChangeCooldown" type="Timer" parent="."]
 wait_time = 0.1
@@ -70,11 +91,6 @@ one_shot = true
 z_index = -99
 material = ExtResource("8_gufrd")
 position = Vector2(-12, 12)
-texture = ExtResource("7_hfdng")
-
-[node name="BackgroundShaderPreload" type="Sprite2D" parent="."]
-z_index = -99
-material = ExtResource("7_at5i3")
 texture = ExtResource("7_hfdng")
 
 [node name="OutlineShaderPreload" type="Line2D" parent="."]

@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dtt0tdkls3xon" path="res://Scenes/Menus/Worlds/rotating_piece_world.tscn" id="15_ecnri"]
 
 [node name="WorldSelect" type="Node2D"]
+z_index = 15
 script = ExtResource("1_ilqow")
 
 [node name="Camera2D" type="Camera2D" parent="."]

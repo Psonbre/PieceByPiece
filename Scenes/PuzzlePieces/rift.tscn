@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bma7yafpcsvkx"]
+[gd_scene load_steps=5 format=3 uid="uid://bma7yafpcsvkx"]
 
 [ext_resource type="Material" uid="uid://boigv2m1amh6o" path="res://Assets/Materials/RiftMaterial.tres" id="1_ftwdh"]
 [ext_resource type="Script" path="res://Scripts/rift.gd" id="2_60ipy"]
+
+[sub_resource type="Gradient" id="Gradient_vvfrc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q5s8b"]
+gradient = SubResource("Gradient_vvfrc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
 
 [node name="Rift" type="Line2D" groups=["Rifts"]]
 material = ExtResource("1_ftwdh")
@@ -9,3 +18,12 @@ points = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32
 texture_mode = 1
 joint_mode = 2
 script = ExtResource("2_60ipy")
+
+[node name="LightParent" type="Node2D" parent="."]
+
+[node name="Light" type="PointLight2D" parent="LightParent"]
+position = Vector2(126, 0)
+scale = Vector2(1.84375, 7.6875)
+energy = 0.6
+range_item_cull_mask = 30
+texture = SubResource("GradientTexture2D_q5s8b")

@@ -156,7 +156,7 @@ func update_theme():
 		for cell : Vector2i in background.get_used_cells() :
 			background.set_cell(cell, theme_resource.tileset_id, background.get_cell_atlas_coords(cell))
 	if shape and shape.has_node("Door") : shape.get_node("Door").set_texture(theme_resource.door_texture)
-	if shape and shape.has_node("Collectible") : shape.get_node("Collectible").light.energy = theme_resource.collectable_light_energy
+	if shape and shape.has_node("Collectible") : shape.get_node("Collectible/PointLight2D").energy = theme_resource.collectable_light_energy
 	modulate = theme_resource.modulate
 	update_lighting_range()
 	
@@ -190,8 +190,9 @@ func update_cells_occlusion_layer():
 		foreground.set_cell(cell, theme_resource.tileset_id, foreground.get_cell_atlas_coords(cell), 1 if is_dragging else 0)
 	for cell in background.get_used_cells() :
 		background.set_cell(cell, theme_resource.tileset_id, background.get_cell_atlas_coords(cell), 1 if is_dragging else 0)
-	for cell in dirt.get_used_cells() :
-		dirt.set_cell(cell, 1, dirt.get_cell_atlas_coords(cell), 1 if is_dragging else 0)
+	if dirt :
+		for cell in dirt.get_used_cells() :
+			dirt.set_cell(cell, 1, dirt.get_cell_atlas_coords(cell), 1 if is_dragging else 0)
 	
 func has_all_sides_connected():
 	if !left_connector.has_connection : return false

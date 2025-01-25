@@ -14,6 +14,7 @@ font = ExtResource("1_7isfi")
 font_size = 64
 
 [node name="Settings" type="Node2D"]
+z_index = 15
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
