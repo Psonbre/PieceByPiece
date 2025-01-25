@@ -1,0 +1,14 @@
+[2025-01-24 22:27:36]: Starting build for depot 3249381, content path is "C:\Users\adamm\Documents\Godot\Projets\WonderJam2024\addons\steam_uploader\builds\Windows Desktop\", build flags 0x0
+[2025-01-24 22:27:36]: Building file listing for depot 3249381 ...
+[2025-01-24 22:27:36]: Found 3 files for mapping: C:\Users\adamm\Documents\Godot\Projets\WonderJam2024\addons\steam_uploader\builds\Windows Desktop * -> .
+[2025-01-24 22:27:36]: Found 3 files (94 MB) for depot 3249381
+[2025-01-24 22:27:37]: Building depot 3249381, baseline manifest 8095621964448141496 (5 files)
+[2025-01-24 22:27:37]: Found 96 chunks ( 98 used previously ) for depot 3249381, took 0 minutes, 0 seconds
+[2025-01-24 22:27:37]: Changes to baseline manifest 8095621964448141496 :
+[2025-01-24 22:27:37]: Changed: "PieceByPiece.exe" 92431 KB size, 3343 KB changed 
+[2025-01-24 22:27:37]: Removed: app_build_3249380.log (1 KB)
+[2025-01-24 22:27:37]: Removed: depot_build_3249381.log (1 KB)
+[2025-01-24 22:27:37]: Summary: 0 files added (0 bytes), 1 files changed (3.26 MB), 2 files removed (1.01 KB)
+[2025-01-24 22:27:37]: Uploading new manifest to 208.78.164.214:80 (handle 7255727736704307176, 3544 bytes).
+[2025-01-24 22:27:38]: Uploading 4 out of 4 missing chunks.
+[2025-01-24 22:27:39]: Success! New manifestID 2043892232070906842 created and 4 new chunks uploaded.

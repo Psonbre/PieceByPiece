@@ -1,0 +1,21 @@
+"appbuild"
+{
+    "appid" "3249380"
+    "desc" "Added new background"
+    "buildoutput" "C:/Users/adamm/Documents/Godot/Projets/WonderJam2024/addons/steam_uploader/builds"
+    "contentroot" "C:/Users/adamm/Documents/Godot/Projets/WonderJam2024/addons/steam_uploader/builds/Linux"
+    "SetLive" "public"
+    "preview" "0"
+    "depots"
+    {
+        "3249382"
+        {
+            "FileMapping"
+            {
+                "LocalPath" "*"
+                "DepotPath" "."
+                "recursive" "1"
+            }
+        }
+    }
+}

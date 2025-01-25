@@ -135,31 +135,28 @@ var build_path := ProjectSettings.globalize_path(\"res://addons/steam_uploader/b
 @export var build_preset: OptionButton
 @export var file_name: LineEdit
 @export var confirmation_dialog: ConfirmationDialog
-@export var run_build: Button
-var thread := Thread.new()
 
 func _ready() -> void:
 	var settings = EditorInterface.get_editor_settings()
 	disabled = settings.get_setting(\"SteamUploader/presets/File Name\").is_empty() || settings.get_setting(\"SteamUploader/presets/Build Preset\") == -1
 
-
 func _on_pressed() -> void:
+	var preset_path := build_path.strip_edges() + \"\\\\\" + build_preset.get_item_text(build_preset.selected) 
+	_create_missing_directories(preset_path)
 	var godot_executable = OS.get_executable_path()
-
-	# Construct the command line arguments
+	print(godot_executable)
+	
 	var args = [
 		\"--headless\",
 		\"--export-release\",
-		build_preset.get_item_text(build_preset.selected), 
-		build_path.strip_edges() + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\" + file_name.text.strip_edges(),
+		build_preset.get_item_text(build_preset.selected),
+		preset_path + \"\\\\\" + file_name.text.strip_edges(),
 		\"--quit\"
 	]
 
-	var result = OS.execute(godot_executable, args)
+	OS.execute(godot_executable, args, [])
 	confirmation_dialog.popup_centered()
-
-func _exit_tree() -> void:
-	thread.wait_to_finish()
+	file_name.text_changed.emit.call_deferred(file_name.text)
 
 func _create_missing_directories(path: String) -> void:
 	var absolute_path = ProjectSettings.globalize_path(path)
@@ -279,8 +276,8 @@ func _on_confirmed() -> void:
 	vdf_content += '    \"desc\" \"%s\"\\n' % description.text.strip_edges()
 	vdf_content += '    \"buildoutput\" \"%s\"\\n' % build_path
 	vdf_content += '    \"contentroot\" \"%s\"\\n' % (build_path + \"/\" + selected_preset)
-	#vdf_content += '    \"setlive\" \"%s\"\\n' % branch.text.strip_edges()
-	vdf_content += '    \"SetLive\" \"public\"\\n'
+	vdf_content += '    \"SetLive\" \"%s\"\\n' % branch.text.strip_edges()
+	#vdf_content += '    \"SetLive\" \"public\"\\n'
 	vdf_content += '    \"preview\" \"0\"\\n'
 	vdf_content += '    \"depots\"\\n'
 	vdf_content += '    {\\n'
@@ -515,7 +512,7 @@ clip_text = true
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "You can leave this blank and assign a branch manually on the Steamworks website in Edit Steamworks Settings -> SteamPipe -> Builds"
-placeholder_text = "default"
+placeholder_text = "public"
 editable = false
 
 [node name="Description" type="HBoxContainer" parent="UploadToSteam"]
@@ -541,7 +538,7 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Build" type="Button" parent="UploadToSteam/HBoxContainer" node_paths=PackedStringArray("build_preset", "file_name", "confirmation_dialog", "run_build")]
+[node name="Build" type="Button" parent="UploadToSteam/HBoxContainer" node_paths=PackedStringArray("build_preset", "file_name", "confirmation_dialog")]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -550,7 +547,6 @@ script = SubResource("GDScript_it7gn")
 build_preset = NodePath("../../../Build/BuildPreset/Build Preset")
 file_name = NodePath("../../../Build/FileName/File Name")
 confirmation_dialog = NodePath("../../../ConfirmationDialog")
-run_build = NodePath("../RunBuild")
 
 [node name="RunBuild" type="Button" parent="UploadToSteam/HBoxContainer" node_paths=PackedStringArray("build_preset", "file_name")]
 layout_mode = 2
