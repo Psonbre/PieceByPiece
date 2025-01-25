@@ -7,6 +7,7 @@ class_name PuzzlePieceConnector
 @export var bevel_side : Polygon2D
 
 var rift : Rift
+var connection_light : ConnectionLight
 
 var connected_to : PuzzlePieceConnector = null :
 	set(value):
@@ -99,6 +100,14 @@ func connect_with_closest():
 	elif other_connector == null and rift != null:
 		rift.connected_to = null
 		rift = null	
+
+	if !connection_light and other_connector and other_connector.connection_light == null :
+		connection_light = preload("res://Scenes/PuzzlePieces/connection_light.tscn").instantiate()
+		puzzle_piece.level.add_child(connection_light)
+		connection_light.connected_to = self
+	elif other_connector == null and connection_light != null:
+		connection_light.connected_to = null
+		connection_light = null	
 		
 func has_connection() :
 	return connected_to != null || type == ConnectorShape.FLAT

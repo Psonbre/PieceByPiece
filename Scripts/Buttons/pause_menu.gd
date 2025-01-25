@@ -10,6 +10,7 @@ class_name PauseMenu
 @onready var container: Control = $SuperContainer/Container
 @onready var blur: ColorRect = $Blur
 @onready var super_container: GamepadUI = $SuperContainer
+@onready var level_name: Label = $"../LevelName"
 
 var is_opened := false
 var current_tween : Tween
@@ -89,6 +90,8 @@ func _on_drop_down_button_toggled(toggled_on: bool) -> void:
 		super_container.IsMouseControlled = true
 		drop_down_button.focus_mode = Control.FOCUS_ALL
 		drop_down_button.grab_focus()
+		level_name.show_title() 
 	else : 
 		get_viewport().gui_release_focus()
 		drop_down_button.focus_mode = Control.FOCUS_NONE
+		level_name.hide_title()

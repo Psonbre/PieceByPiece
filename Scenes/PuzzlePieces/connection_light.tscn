@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dub7m7y4bkb04"]
+
+[ext_resource type="Script" path="res://Scripts/connection_light.gd" id="1_34d42"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o0y66"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_vvfrc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q5s8b"]
+gradient = SubResource("Gradient_vvfrc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[node name="ConnectionLight" type="Line2D"]
+material = SubResource("CanvasItemMaterial_o0y66")
+points = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128)
+width = 4.0
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("1_34d42")
+
+[node name="LightParent" type="Node2D" parent="."]
+
+[node name="Light" type="PointLight2D" parent="LightParent"]
+position = Vector2(126, 0)
+scale = Vector2(1.84375, 7.6875)
+energy = 0.6
+range_item_cull_mask = 30
+texture = SubResource("GradientTexture2D_q5s8b")

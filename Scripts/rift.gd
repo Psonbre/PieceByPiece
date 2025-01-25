@@ -2,6 +2,7 @@ extends Line2D
 class_name Rift
 var target_resolution := 3.0
 @onready var light_parent: Node2D = $LightParent
+
 var connected_to : PuzzlePieceConnector :
 	set(value):
 		connected_to = value

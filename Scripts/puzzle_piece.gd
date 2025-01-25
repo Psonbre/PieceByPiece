@@ -31,6 +31,7 @@ static var global_dragging := false
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite : PlayerSprite
+var drop_particles: CPUParticles2D
 var foreground: TileMapLayer
 var background: TileMapLayer
 var dirt: TileMapLayer
@@ -57,6 +58,7 @@ var start_drag_tilt := 0.0
 
 func _ready():
 	if Engine.is_editor_hint() : return
+	drop_particles = get_node_or_null("DropParticles")
 	portal = shape.get_node_or_null("Portal") 
 	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
@@ -243,14 +245,14 @@ func stop_dragging():
 	update_lighting_range()
 	attempt_connection()
 	
+	if drop_particles : drop_particles.emitting = true
 	if !global_position.is_equal_approx(old_position) :
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -13)
 	
 	attempt_connection_on_all_other_pieces()
 	set_colliders_in_drag_mode(false)
 	
-	if is_hovering : outline.set_type(PuzzlePieceOutline.OutlineType.HIGHLIGHT)
-	else : outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
+	outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 	
 func attempt_connection():
 	if has_attempted_connection_this_tick: return
