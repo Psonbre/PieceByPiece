@@ -4,16 +4,16 @@
 [ext_resource type="SpriteFrames" uid="uid://bfocqsl618xby" path="res://Scenes/PlayerSprites/pirate_frames.tres" id="2_uevmo"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="3_p30nk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x0st"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6xb2"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcykb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2ddm"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn3yx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwlxk"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcyoc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnn5"]
 size = Vector2(35, 70)
 
 [sub_resource type="Animation" id="Animation_bgnga"]
@@ -80,8 +80,8 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ib866"]
 resource_local_to_scene = true
 shader = ExtResource("3_p30nk")
-shader_parameter/speed = 1.405
-shader_parameter/color = Vector4(1, 1, 1, 1)
+shader_parameter/speed = 0.0
+shader_parameter/color = Vector4(0, 0, 0, 1)
 
 [node name="Final World" instance=ExtResource("1_pd1kv")]
 nb_of_levels = 20
@@ -109,24 +109,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_4x0st")
+shape = SubResource("RectangleShape2D_s6xb2")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_wcykb")
+shape = SubResource("RectangleShape2D_p2ddm")
 
 [node name="TopConnector" parent="Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_kn3yx")
+shape = SubResource("RectangleShape2D_lwlxk")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_qcyoc")
+shape = SubResource("RectangleShape2D_0tnn5")
 
 [node name="Overlay" parent="." index="1"]
 polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
@@ -155,8 +155,8 @@ libraries = {
 polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
 
 [node name="Shadow" parent="." index="7"]
-points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128)
 
 [node name="Outline" parent="." index="8"]
 material = SubResource("ShaderMaterial_ib866")
-points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128, -128, -128)
+points = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358, -114.606, -29.1014, -108.555, -24.7487, -103.251, -19.445, -98.8986, -13.3939, -95.6642, -6.82816, -93.6725, 2.14306e-15, -93, 6.82816, -93.6725, 13.3939, -95.6642, 19.445, -98.8986, 24.7487, -103.251, 29.1014, -108.555, 32.3358, -114.606, 34.3275, -121.172, 35, -128, 128, -128, 128, 128, -128, 128)

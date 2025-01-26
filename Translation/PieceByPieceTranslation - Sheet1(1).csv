@@ -1,0 +1,37 @@
+key,en,fr
+#MENU,,
+PLAY,Play,Jouer
+SETTINGS,Settings,Paramètres
+CREDITS,Credits,Crédits
+BACK,Back,Retour
+EXIT,Exit,Quitter
+#SETTINGS,,
+GENERAL,General,Général
+LANGUAGES,Languages,Langues
+DISPLAY,Display,Affichage
+WINDOWED,Windowed,Fenêtré
+FULLSCREEN,Fullscreen,Plein écran
+VSYNC,V-Sync,V-Sync
+ENABLED,Enabled,Activé
+DISABLED,Disabled,Désactivé
+ADAPTIVE,Adaptive,Adaptif
+ADAPTIVE_TOOLTIP,Activate Vsync ONLY when the framerate is over the refresh rate of the display,Active V-Sync seulement quand le taux d'images par seconde (IPS) est au dessus du taux de rafraîchissement de l'écran
+AUDIO,Audio,Audio
+MASTER,Master,Général
+MUSIC,Music,Musique
+SFX,Sound effect,Effets sonores
+#CREDITS,,
+GAME_BY,Game by,Un jeu par
+VISUAL,Visuals,Visuels
+SOUND,Sounds,Sons
+#TUTORIAL,,
+MOVE_TUTORIAL,to move,pour se déplacer
+MOVE_PIECES_TUTORIAL,to move pieces,pour déplacer les pièces
+#WORLDS,,
+LEVEL,Level,Niveau
+WORLDS,Worlds,Mondes
+WORLD_DEMO,DEMO WORLD,MONDE DÉMO
+WORLD_KING,KING'S QUEST,LA QUÊTE DU ROI
+WORLD_LUMBER,LUMBER PARTY,LE FESTIVAL DU TRONC
+WORLD_ALIEN,ALIEN EXCAVATION,MINE EXTRATERRESTRE
+WORLD_MINER,MINING SESSION,AVOIR BONNE MINE

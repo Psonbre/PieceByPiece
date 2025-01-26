@@ -38,13 +38,12 @@ offset_left = -245.0
 offset_top = -305.0
 offset_right = 276.0
 offset_bottom = -217.0
-text = "Credits"
+text = "CREDITS"
 label_settings = SubResource("LabelSettings_56lap")
 horizontal_alignment = 1
 script = ExtResource("3_xtxaf")
 
 [node name="Back" type="Button" parent="Credits"]
-visible = false
 layout_mode = 0
 offset_left = -636.412
 offset_top = -350.396
@@ -53,7 +52,7 @@ offset_bottom = -292.396
 pivot_offset = Vector2(56.9925, 30.0794)
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 24
-text = "Back"
+text = "BACK"
 script = ExtResource("1_fll2r")
 scroll_direction = Vector2(-1, 0)
 vertical_intensity = 15.0
@@ -75,7 +74,7 @@ horizontal_speed = 0.5
 
 [node name="SubTitle" type="Label" parent="Credits/Sounds"]
 layout_mode = 2
-text = "Sounds
+text = "SOUND
 "
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
@@ -136,7 +135,7 @@ horizontal_speed = 0.5
 
 [node name="SubTitle" type="Label" parent="Credits/Music"]
 layout_mode = 2
-text = "Music"
+text = "MUSIC"
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
 
@@ -169,7 +168,7 @@ horizontal_speed = 0.5
 
 [node name="SubTitle2" type="Label" parent="Credits/Game"]
 layout_mode = 2
-text = "Game by"
+text = "GAME_BY"
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
 
@@ -229,7 +228,7 @@ horizontal_speed = 0.5
 
 [node name="SubTitle" type="Label" parent="Credits/Assets"]
 layout_mode = 2
-text = "Assets"
+text = "VISUAL"
 label_settings = SubResource("LabelSettings_dvsln")
 horizontal_alignment = 1
 

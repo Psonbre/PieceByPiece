@@ -235,7 +235,7 @@ SelectPieceRight={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Translation/PieceByPieceTranslation - Sheet1.en.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr.translation")
+locale/translations=PackedStringArray("res://Translation/PieceByPieceTranslation - Sheet1(1).en.translation", "res://Translation/PieceByPieceTranslation - Sheet1(1).fr.translation")
 
 [layer_names]
 

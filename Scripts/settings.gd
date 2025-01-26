@@ -11,13 +11,13 @@ extends Control
 var can_exit := true
 
 var displayModePossible: Dictionary = {
-		'Windowed' : DisplayServer.WINDOW_MODE_MAXIMIZED,
-		'Fullscreen' : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN,
+		'WINDOWED' : DisplayServer.WINDOW_MODE_MAXIMIZED,
+		'FULLSCREEN' : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN,
 		}
 var vsyncModePossible: Dictionary = {
-		'Disabled' : [DisplayServer.VSYNC_DISABLED,""],
-		'Enabled' : [DisplayServer.VSYNC_ENABLED,""],
-		'Adaptive' : [DisplayServer.VSYNC_ADAPTIVE, "Activate Vsync ONLY when the framerate is over the refresh rate of the display"]
+		'DISABLED' : [DisplayServer.VSYNC_DISABLED,""],
+		'ENABLED' : [DisplayServer.VSYNC_ENABLED,""],
+		'ADAPTIVE' : [DisplayServer.VSYNC_ADAPTIVE, "ADAPTIVE_TOOLTIP"]
 		}
 var languagesPossible: Dictionary = {
 		'English' : ['en',0],

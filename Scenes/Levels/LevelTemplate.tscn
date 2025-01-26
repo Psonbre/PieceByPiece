@@ -36,7 +36,7 @@ offset_bottom = -181.6
 scale = Vector2(0.240345, 0.240345)
 pivot_offset = Vector2(698.995, 109.842)
 theme_override_fonts/font = ExtResource("4_otehi")
-text = "Level 1"
+text = "LEVEL 1"
 label_settings = ExtResource("5_weia1")
 script = ExtResource("7_10osd")
 

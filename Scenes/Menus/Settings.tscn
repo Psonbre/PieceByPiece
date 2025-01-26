@@ -44,7 +44,6 @@ horizontal_alignment = 1
 script = ExtResource("6_yel2d")
 
 [node name="Back" type="Button" parent="Settings"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,7 +57,7 @@ grow_vertical = 2
 pivot_offset = Vector2(66.5, 28.5)
 theme_override_fonts/font = ExtResource("1_7isfi")
 theme_override_font_sizes/font_size = 24
-text = "Back"
+text = "BACK"
 script = ExtResource("3_uwmcr")
 scroll_direction = Vector2(-1, 0)
 vertical_intensity = 15.0
@@ -108,7 +107,7 @@ dragger_visibility = 1
 [node name="Languages" type="Label" parent="Settings/SettingsPanel/General/LanguagesMode/HSplitContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "Display"
+text = "DISPLAY"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
@@ -144,7 +143,7 @@ dragger_visibility = 1
 [node name="Resolution" type="Label" parent="Settings/SettingsPanel/Display/DisplayMode/HSplitContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "Display"
+text = "DISPLAY"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
@@ -167,7 +166,7 @@ dragger_visibility = 1
 [node name="Label" type="Label" parent="Settings/SettingsPanel/Display/V-Sync/HSplitContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "V-Sync"
+text = "VSYNC"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
@@ -203,7 +202,7 @@ dragger_visibility = 1
 [node name="Resolution" type="Label" parent="Settings/SettingsPanel/Sounds/Master/HSplitContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-text = "Master"
+text = "MASTER"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
@@ -227,7 +226,7 @@ dragger_visibility = 1
 [node name="Resolution" type="Label" parent="Settings/SettingsPanel/Sounds/HBoxContainer2/HSplitContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-text = "Music"
+text = "MUSIC"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
@@ -251,7 +250,7 @@ dragger_visibility = 1
 [node name="Resolution" type="Label" parent="Settings/SettingsPanel/Sounds/HBoxContainer3/HSplitContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-text = "Sound effects"
+text = "SFX"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
