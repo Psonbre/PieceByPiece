@@ -145,21 +145,21 @@ vertical_intensity = 2.5
 horizontal_intensity = 4
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="Resolution" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer"]
+[node name="Fullscreen" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "DISPLAY"
+text = "FULLSCREEN"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
-[node name="DisplaySlider" type="OptionButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="FullscreenCheckBox" type="CheckButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_7isfi")
 
 [node name="V-Sync" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
@@ -273,7 +273,7 @@ step = 0.01
 [connection signal="mouse_exited" from="Settings/Back" to="Settings/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="Settings/Back" to="Settings/Back" method="_on_pressed"]
 [connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer/LanguagesSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_languages_slider_item_selected"]
-[connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer/DisplaySlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_display_slider_item_selected"]
+[connection signal="toggled" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer/FullscreenCheckBox" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_fullscreen_check_box_toggled"]
 [connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync/HSplitContainer/VsyncSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_vsync_slider_item_selected"]
 [connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/Master/HSplitContainer/MasterSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer2/HSplitContainer/MusicSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_music_slider_value_changed"]

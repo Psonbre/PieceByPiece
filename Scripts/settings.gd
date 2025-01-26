@@ -1,7 +1,7 @@
 extends Control
 
 @onready var vsyncSlider = $"Display/V-Sync/HSplitContainer/VsyncSlider"
-@onready var displaySlider = $Display/DisplayMode/HSplitContainer/DisplaySlider
+@onready var fullscreenCheckbox : CheckButton = $Display/DisplayMode/HSplitContainer/FullscreenCheckBox
 @onready var masterSlider = $Sounds/Master/HSplitContainer/MasterSlider
 @onready var musicSlider = $Sounds/HBoxContainer2/HSplitContainer/MusicSlider
 @onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
@@ -10,10 +10,6 @@ extends Control
 @export var popupItemFontSize = 32
 var can_exit := true
 
-var displayModePossible: Dictionary = {
-		'WINDOWED' : DisplayServer.WINDOW_MODE_MAXIMIZED,
-		'FULLSCREEN' : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN,
-		}
 var vsyncModePossible: Dictionary = {
 		'DISABLED' : [DisplayServer.VSYNC_DISABLED,""],
 		'ENABLED' : [DisplayServer.VSYNC_ENABLED,""],
@@ -30,8 +26,8 @@ func _ready() -> void:
 		SubSystemManager.get_scene_manager().load_settings_menu.call_deferred(Vector2.ZERO)
 		get_parent().get_parent().queue_free()
 		return
-		
-	addDisplays()
+	
+	_update_fullscreen_mode()
 	addVsyncs()
 	addLanguages()
 	update_volume_sliders()
@@ -58,22 +54,14 @@ func _select_language():
 			languagesSlider.select(target_id)
 			return
 	
-#Display------------------------
-func addDisplays():
-	for displayPossible in displayModePossible:
-		displaySlider.add_item(displayPossible, displayModePossible[displayPossible])
-		
-	displaySlider.get_popup().add_theme_font_size_override("font_size",popupItemFontSize)
+#Fullscreen------------------------
+func _update_fullscreen_mode():
+	var fullscreen = SubSystemManager.get_settings_manager()._get_display_mode()
 	
-	_select_display_mode()
-	
-func _select_display_mode():
-	var currentDisplay = SubSystemManager.get_settings_manager()._get_display_mode()
-	# Iterate through the items in the OptionButton
-	for i in range(displaySlider.item_count):
-		if displaySlider.get_item_id(i) == currentDisplay:
-			displaySlider.select(i)
-			return
+	if (fullscreen == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN):
+		fullscreenCheckbox.button_pressed = true
+	else:
+		fullscreenCheckbox.button_pressed = false
 
 
 #VSync------------------------			
@@ -106,13 +94,6 @@ func update_volume_sliders():
 	musicSlider.value = SubSystemManager.get_settings_manager().musicVolume
 	sfxSlider.value = SubSystemManager.get_settings_manager().sfxVolume
 
-
-func _on_display_slider_item_selected(index: int) -> void:
-	var itemText = displaySlider.get_item_text(index)
-	var displayMode = displayModePossible[itemText]
-	SubSystemManager.get_settings_manager()._update_display_mode(displayMode)
-
-
 func _on_vsync_slider_item_selected(index: int) -> void:
 	var itemText = vsyncSlider.get_item_text(index)
 	var vsyncmode = vsyncModePossible[itemText]
@@ -138,3 +119,10 @@ func _on_languages_slider_item_selected(index: int) -> void:
 	var itemText = languagesSlider.get_item_text(index)
 	var language = languagesPossible[itemText]
 	SubSystemManager.get_settings_manager()._update_language(language[0])
+
+
+func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
+	if (toggled_on):
+		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_WINDOWED)
