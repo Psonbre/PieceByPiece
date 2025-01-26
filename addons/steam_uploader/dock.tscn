@@ -260,6 +260,7 @@ var build_path := ProjectSettings.globalize_path(\"res://addons/steam_uploader/b
 @export var branch: LineEdit
 @export var description: LineEdit
 @export var steam_cmd: LineEdit  # Path to steamcmd.exe
+@export var confirmed_upload: AcceptDialog
 
 func _on_confirmed() -> void:
 	# Build the full path to the .exe
@@ -321,6 +322,8 @@ func _on_confirmed() -> void:
 		print(result)
 		push_error(\"The upload failed.\")
 		print(output)
+	
+	confirmed_upload.popup_centered()
 "
 
 [sub_resource type="GDScript" id="GDScript_e4uko"]
@@ -576,7 +579,7 @@ steam_cmd_dialog = NodePath("../../SteamCMDDialog")
 
 [node name="SteamUpload" type="HTTPRequest" parent="UploadToSteam/Upload"]
 
-[node name="UploadDialog" type="ConfirmationDialog" parent="." node_paths=PackedStringArray("username", "password", "tfa", "file_name", "build_preset", "steam_api_key", "steam_app_id", "steam_depot_i_ds", "branch", "description", "steam_cmd")]
+[node name="UploadDialog" type="ConfirmationDialog" parent="." node_paths=PackedStringArray("username", "password", "tfa", "file_name", "build_preset", "steam_api_key", "steam_app_id", "steam_depot_i_ds", "branch", "description", "steam_cmd", "confirmed_upload")]
 title = "Please log in to Steam to upload this build"
 initial_position = 2
 size = Vector2i(363, 158)
@@ -594,6 +597,7 @@ steam_depot_i_ds = NodePath("../UploadToSteam/DepotIds/Steam depot IDs")
 branch = NodePath("../UploadToSteam/Branch/Branch")
 description = NodePath("../UploadToSteam/Description/Description")
 steam_cmd = NodePath("../SteamCMDDialog/VBoxContainer/SteamCMD/HBoxContainer/SteamCMD")
+confirmed_upload = NodePath("../ConfirmedUpload")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UploadDialog"]
 offset_left = 8.0
@@ -653,6 +657,14 @@ size_flags_horizontal = 3
 tooltip_text = "Your mobile app Steam Two Factor Authentication (TFA) code. Leave this blank if you do not have TFA enabled"
 placeholder_text = "AAA111"
 secret = true
+
+[node name="ConfirmedUpload" type="AcceptDialog" parent="."]
+auto_translate_mode = 1
+title = "Successful Upload"
+initial_position = 2
+size = Vector2i(304, 80)
+exclusive = false
+dialog_text = "The build was uploaded successfully !"
 
 [node name="SteamCMDDialog" type="ConfirmationDialog" parent="." node_paths=PackedStringArray("steam_cmd", "upload_dialog", "error")]
 auto_translate_mode = 1
