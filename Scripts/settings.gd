@@ -5,20 +5,24 @@ extends Control
 @onready var masterSlider = $Sounds/Master/HSplitContainer/MasterSlider
 @onready var musicSlider = $Sounds/HBoxContainer2/HSplitContainer/MusicSlider
 @onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
+@onready var languagesSlider = $General/LanguagesMode/HSplitContainer/LanguagesSlider
 
 @export var popupItemFontSize = 32
 var can_exit := true
 
-var resolutionsPossible: Dictionary = {}
 var displayModePossible: Dictionary = {
 		'Windowed' : DisplayServer.WINDOW_MODE_MAXIMIZED,
-		'Fullscreen' : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+		'Fullscreen' : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN,
 		}
 var vsyncModePossible: Dictionary = {
 		'Disabled' : [DisplayServer.VSYNC_DISABLED,""],
 		'Enabled' : [DisplayServer.VSYNC_ENABLED,""],
 		'Adaptive' : [DisplayServer.VSYNC_ADAPTIVE, "Activate Vsync ONLY when the framerate is over the refresh rate of the display"]
 		}
+var languagesPossible: Dictionary = {
+		'English' : ['en',0],
+		'Français' : ['fr',1]
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,10 +30,35 @@ func _ready() -> void:
 		SubSystemManager.get_scene_manager().load_settings_menu.call_deferred(Vector2.ZERO)
 		get_parent().get_parent().queue_free()
 		return
+		
 	addDisplays()
 	addVsyncs()
+	addLanguages()
 	update_volume_sliders()
-
+	
+#Languages------------------------
+func addLanguages():
+	for language in languagesPossible:
+		var language_data = languagesPossible[language]
+		var value = language_data[0]
+		var id = language_data[1]
+		languagesSlider.add_item(language, id)
+	
+	languagesSlider.get_popup().add_theme_font_size_override("font_size",popupItemFontSize)
+	
+	_select_language()
+	
+func _select_language():
+	var currentLanguage = SubSystemManager.get_settings_manager()._get_current_language()
+	# Iterate through the items in the OptionButton
+	for language_name in languagesPossible.keys():
+		if languagesPossible[language_name][0] == currentLanguage:  # Match the string (e.g., 'fr')
+			var target_id = languagesPossible[language_name][1]  # Get the corresponding ID
+			# Select the item in the OptionButton
+			languagesSlider.select(target_id)
+			return
+	
+#Display------------------------
 func addDisplays():
 	for displayPossible in displayModePossible:
 		displaySlider.add_item(displayPossible, displayModePossible[displayPossible])
@@ -45,7 +74,9 @@ func _select_display_mode():
 		if displaySlider.get_item_id(i) == currentDisplay:
 			displaySlider.select(i)
 			return
-			
+
+
+#VSync------------------------			
 func addVsyncs():
 	for vsyncMode in vsyncModePossible:
 		var vsync_data = vsyncModePossible[vsyncMode]
@@ -68,7 +99,8 @@ func _select_vsync_mode():
 		if vsyncSlider.get_item_id(i) == currentVsync:
 			vsyncSlider.select(i)
 			return
-		
+
+#Audio----------------------		
 func update_volume_sliders():
 	masterSlider.value = SubSystemManager.get_settings_manager().masterVolume
 	musicSlider.value = SubSystemManager.get_settings_manager().musicVolume
@@ -100,3 +132,9 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 
 func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)
+
+
+func _on_languages_slider_item_selected(index: int) -> void:
+	var itemText = languagesSlider.get_item_text(index)
+	var language = languagesPossible[itemText]
+	SubSystemManager.get_settings_manager()._update_language(language[0])

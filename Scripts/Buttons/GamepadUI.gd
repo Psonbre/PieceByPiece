@@ -71,3 +71,7 @@ func _find_focusable_children(node, focusable_nodes):
 			focusable_nodes.append(child)
 		_find_focusable_children(child, focusable_nodes)
 	
+
+
+func _on_languages_slider_item_selected(index: int) -> void:
+	pass # Replace with function body.

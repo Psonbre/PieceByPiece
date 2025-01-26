@@ -233,6 +233,10 @@ SelectPieceRight={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Translation/PieceByPieceTranslation - Sheet1.en.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr.translation")
+
 [layer_names]
 
 2d_render/layer_1="Table"

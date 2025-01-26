@@ -13,6 +13,11 @@ const MASTER_VOLUME = "masterVolume"
 const MUSIC_VOLUME = "musicVolume"
 const SFX_VOLUME = "sfxVolume"
 
+const GENERAL = "GENERAL"
+const LANGUAGE = "LANGUAGE"
+
+const DEFAULT_LANGUAGE = 'en'
+
 const DEFAULT_FULLSCREEN = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 const DEFAULT_VSYNC = DisplayServer.VSYNC_ENABLED
 
@@ -21,6 +26,9 @@ const DEFAULT_MUSIC_VOLUME = 1
 const DEFAULT_SFX_VOLUME = 1
 
 var config_template = {
+	GENERAL: {
+		LANGUAGE: DEFAULT_LANGUAGE
+	},
 	VIDEO: {
 		FULLSCREEN: DEFAULT_FULLSCREEN,
 		VSYNC: DEFAULT_VSYNC
@@ -43,6 +51,8 @@ func _load_config():
 #Apply config values to the game
 func _apply_config():
 	var settings = SubSystemManager.get_settings_manager()
+
+	settings._update_language(configFile.get_value(GENERAL,LANGUAGE))
 
 	settings._update_display_mode(configFile.get_value(VIDEO,FULLSCREEN))
 	settings._update_Vsync_mode(configFile.get_value(VIDEO,VSYNC))
@@ -73,6 +83,10 @@ func _verify_config():
 	if is_config_updated:
 		configFile.save(SETTINGS_FILE_PATH)
 		print("Config file updated with missing values.")
+		
+func _save_language(language : String):
+	configFile.set_value(GENERAL,LANGUAGE, language)
+	configFile.save(SETTINGS_FILE_PATH)
 		
 func _save_fullscreen_mode(fullscreenMode : DisplayServer.WindowMode):
 	configFile.set_value(VIDEO,FULLSCREEN, fullscreenMode)

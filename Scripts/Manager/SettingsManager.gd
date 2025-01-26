@@ -19,6 +19,13 @@ func _update_Vsync_mode(vsyncMode : DisplayServer.VSyncMode):
 	DisplayServer.window_set_vsync_mode(vsyncMode)
 	SubSystemManager.get_config_file_manager()._save_vsync_mode(vsyncMode)
 	
+func _get_current_language():
+	return TranslationServer.get_locale()
+	
+func _update_language(language : String):
+	TranslationServer.set_locale(language)
+	SubSystemManager.get_config_file_manager()._save_language(language)
+	
 func _update_master_volume(_volume : float):
 	masterVolume = _volume
 	var index = AudioServer.get_bus_index("Master")

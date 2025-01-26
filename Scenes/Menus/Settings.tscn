@@ -38,7 +38,7 @@ offset_left = 309.0
 offset_top = 25.0
 offset_right = 830.0
 offset_bottom = 113.0
-text = "Settings"
+text = "SETTINGS"
 label_settings = SubResource("LabelSettings_56lap")
 horizontal_alignment = 1
 script = ExtResource("6_yel2d")
@@ -82,9 +82,45 @@ scale = Vector2(1.4, 1.4)
 theme_override_constants/separation = 30
 script = ExtResource("4_fs3n1")
 
-[node name="SubTitle" type="Label" parent="Settings/SettingsPanel"]
+[node name="SubTitle3" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 2
+text = "General"
+label_settings = ExtResource("5_e5vn6")
+horizontal_alignment = 1
+script = ExtResource("6_p0cnu")
+vertical_intensity = 5.0
+horizontal_intensity = 5
+
+[node name="General" type="VBoxContainer" parent="Settings/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LanguagesMode" type="CenterContainer" parent="Settings/SettingsPanel/General"]
+layout_mode = 2
+script = ExtResource("6_p0cnu")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/General/LanguagesMode"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Languages" type="Label" parent="Settings/SettingsPanel/General/LanguagesMode/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Display"
+label_settings = ExtResource("6_fiaql")
+horizontal_alignment = 2
+
+[node name="LanguagesSlider" type="OptionButton" parent="Settings/SettingsPanel/General/LanguagesMode/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_7isfi")
+
+[node name="SubTitle" type="Label" parent="Settings/SettingsPanel"]
+layout_mode = 2
+text = "DISPLAY"
 label_settings = ExtResource("5_e5vn6")
 horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
@@ -143,7 +179,7 @@ theme_override_fonts/font = ExtResource("1_7isfi")
 
 [node name="SubTitle2" type="Label" parent="Settings/SettingsPanel"]
 layout_mode = 2
-text = "Sound"
+text = "AUDIO"
 label_settings = ExtResource("5_e5vn6")
 horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
@@ -229,6 +265,7 @@ step = 0.01
 [connection signal="mouse_entered" from="Settings/Back" to="Settings/Back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/Back" to="Settings/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="Settings/Back" to="Settings/Back" method="_on_pressed"]
+[connection signal="item_selected" from="Settings/SettingsPanel/General/LanguagesMode/HSplitContainer/LanguagesSlider" to="Settings/SettingsPanel" method="_on_languages_slider_item_selected"]
 [connection signal="item_selected" from="Settings/SettingsPanel/Display/DisplayMode/HSplitContainer/DisplaySlider" to="Settings/SettingsPanel" method="_on_display_slider_item_selected"]
 [connection signal="item_selected" from="Settings/SettingsPanel/Display/V-Sync/HSplitContainer/VsyncSlider" to="Settings/SettingsPanel" method="_on_vsync_slider_item_selected"]
 [connection signal="value_changed" from="Settings/SettingsPanel/Sounds/Master/HSplitContainer/MasterSlider" to="Settings/SettingsPanel" method="_on_master_slider_value_changed"]

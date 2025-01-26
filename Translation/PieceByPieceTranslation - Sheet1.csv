@@ -1,0 +1,24 @@
+key,en,fr
+PLAY,Play,Jouer
+SETTINGS,Settings,Paramètres
+CREDITS,Credits,Crédits
+EXIT,Exit,Quitter
+DISPLAY,Display,Affichage
+FULLSCREEN,Fullscreen,Plein écran
+VSYNC,V-Sync,V-Sync
+ENABLED,Enabled,Activé
+DISABLED,Disabled,Désactivé
+ADAPTIVE,Adaptive,Adaptif
+,Activate VSync only...,
+AUDIO,Audio,Audio
+MASTER,Master,Général
+MUSIC,Music,Musique
+SFX,Sound effect,Effets sonore
+MOVE_TUTORIAL,to move,pour se déplacer
+MOVE_PIECES_TUTORIAL,to move pieces,pour déplacer les pièces
+WORLDS,Worlds,Mondes
+WORLD_DEMO,Demo World,Monde démo
+LEVEL,Level,Niveau
+GAME_BY,Game by,Un jeu par
+SOUND,Sounds,Sons
+VISUAL,Visuals,Visuels
