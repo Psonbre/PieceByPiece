@@ -30,14 +30,14 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_gliny")
-FirstControl = NodePath("SettingsPanel/Display/DisplayMode/HSplitContainer/DisplaySlider")
+FirstControl = NodePath("ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer/LanguagesSlider")
 
 [node name="Title" type="Label" parent="Settings"]
 layout_mode = 2
 offset_left = 309.0
-offset_top = 25.0
+offset_top = -15.5
 offset_right = 830.0
-offset_bottom = 113.0
+offset_bottom = 72.5
 text = "SETTINGS"
 label_settings = SubResource("LabelSettings_56lap")
 horizontal_alignment = 1
@@ -63,61 +63,69 @@ scroll_direction = Vector2(-1, 0)
 vertical_intensity = 15.0
 horizontal_intensity = 10
 
-[node name="SettingsPanel" type="VBoxContainer" parent="Settings"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Settings"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 77.5
+offset_right = 995.0
+offset_bottom = 518.5
+scale = Vector2(1.2, 1.2)
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 30
+
+[node name="SettingsPanel2" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer"]
 custom_minimum_size = Vector2(256, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 28.5
-offset_top = 154.5
-offset_right = 789.5
-offset_bottom = 633.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.4, 1.4)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 30
+alignment = 1
 script = ExtResource("4_fs3n1")
 
-[node name="SubTitle3" type="Label" parent="Settings/SettingsPanel"]
+[node name="SubTitle3" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
-text = "General"
+text = "GENERAL"
 label_settings = ExtResource("5_e5vn6")
 horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
 horizontal_intensity = 5
 
-[node name="General" type="VBoxContainer" parent="Settings/SettingsPanel"]
+[node name="General" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="LanguagesMode" type="CenterContainer" parent="Settings/SettingsPanel/General"]
+[node name="LanguagesMode" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General"]
 layout_mode = 2
 script = ExtResource("6_p0cnu")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/General/LanguagesMode"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode"]
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="Languages" type="Label" parent="Settings/SettingsPanel/General/LanguagesMode/HSplitContainer"]
+[node name="Languages" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "DISPLAY"
+text = "LANGUAGES"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
-[node name="LanguagesSlider" type="OptionButton" parent="Settings/SettingsPanel/General/LanguagesMode/HSplitContainer"]
+[node name="LanguagesSlider" type="OptionButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_7isfi")
 
-[node name="SubTitle" type="Label" parent="Settings/SettingsPanel"]
+[node name="SubTitle" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
 text = "DISPLAY"
 label_settings = ExtResource("5_e5vn6")
@@ -126,57 +134,57 @@ script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
 horizontal_intensity = 5
 
-[node name="Display" type="VBoxContainer" parent="Settings/SettingsPanel"]
+[node name="Display" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="DisplayMode" type="CenterContainer" parent="Settings/SettingsPanel/Display"]
+[node name="DisplayMode" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
 script = ExtResource("6_p0cnu")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Display/DisplayMode"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode"]
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="Resolution" type="Label" parent="Settings/SettingsPanel/Display/DisplayMode/HSplitContainer"]
+[node name="Resolution" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "DISPLAY"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
-[node name="DisplaySlider" type="OptionButton" parent="Settings/SettingsPanel/Display/DisplayMode/HSplitContainer"]
+[node name="DisplaySlider" type="OptionButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_7isfi")
 
-[node name="V-Sync" type="CenterContainer" parent="Settings/SettingsPanel/Display"]
+[node name="V-Sync" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
 script = ExtResource("6_p0cnu")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Display/V-Sync"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync"]
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="Label" type="Label" parent="Settings/SettingsPanel/Display/V-Sync/HSplitContainer"]
+[node name="Label" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync/HSplitContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "VSYNC"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
-[node name="VsyncSlider" type="OptionButton" parent="Settings/SettingsPanel/Display/V-Sync/HSplitContainer"]
+[node name="VsyncSlider" type="OptionButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_7isfi")
 
-[node name="SubTitle2" type="Label" parent="Settings/SettingsPanel"]
+[node name="SubTitle2" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
 text = "AUDIO"
 label_settings = ExtResource("5_e5vn6")
@@ -185,76 +193,76 @@ script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
 horizontal_intensity = 5
 
-[node name="Sounds" type="VBoxContainer" parent="Settings/SettingsPanel"]
+[node name="Sounds" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Master" type="CenterContainer" parent="Settings/SettingsPanel/Sounds"]
+[node name="Master" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
 script = ExtResource("6_p0cnu")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Sounds/Master"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/Master"]
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="Resolution" type="Label" parent="Settings/SettingsPanel/Sounds/Master/HSplitContainer"]
+[node name="Resolution" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/Master/HSplitContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "MASTER"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
-[node name="MasterSlider" type="HSlider" parent="Settings/SettingsPanel/Sounds/Master/HSplitContainer"]
+[node name="MasterSlider" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/Master/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
 max_value = 1.0
 step = 0.01
 
-[node name="HBoxContainer2" type="CenterContainer" parent="Settings/SettingsPanel/Sounds"]
+[node name="HBoxContainer2" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
 script = ExtResource("6_p0cnu")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Sounds/HBoxContainer2"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer2"]
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="Resolution" type="Label" parent="Settings/SettingsPanel/Sounds/HBoxContainer2/HSplitContainer"]
+[node name="Resolution" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer2/HSplitContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "MUSIC"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
-[node name="MusicSlider" type="HSlider" parent="Settings/SettingsPanel/Sounds/HBoxContainer2/HSplitContainer"]
+[node name="MusicSlider" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer2/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
 max_value = 1.0
 step = 0.01
 
-[node name="HBoxContainer3" type="CenterContainer" parent="Settings/SettingsPanel/Sounds"]
+[node name="HBoxContainer3" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
 script = ExtResource("6_p0cnu")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Settings/SettingsPanel/Sounds/HBoxContainer3"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer3"]
 layout_mode = 2
 dragger_visibility = 1
 
-[node name="Resolution" type="Label" parent="Settings/SettingsPanel/Sounds/HBoxContainer3/HSplitContainer"]
+[node name="Resolution" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer3/HSplitContainer"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "SFX"
 label_settings = ExtResource("6_fiaql")
 horizontal_alignment = 2
 
-[node name="SFXSlider" type="HSlider" parent="Settings/SettingsPanel/Sounds/HBoxContainer3/HSplitContainer"]
+[node name="SFXSlider" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer3/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
@@ -264,10 +272,10 @@ step = 0.01
 [connection signal="mouse_entered" from="Settings/Back" to="Settings/Back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/Back" to="Settings/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="Settings/Back" to="Settings/Back" method="_on_pressed"]
-[connection signal="item_selected" from="Settings/SettingsPanel/General/LanguagesMode/HSplitContainer/LanguagesSlider" to="Settings/SettingsPanel" method="_on_languages_slider_item_selected"]
-[connection signal="item_selected" from="Settings/SettingsPanel/Display/DisplayMode/HSplitContainer/DisplaySlider" to="Settings/SettingsPanel" method="_on_display_slider_item_selected"]
-[connection signal="item_selected" from="Settings/SettingsPanel/Display/V-Sync/HSplitContainer/VsyncSlider" to="Settings/SettingsPanel" method="_on_vsync_slider_item_selected"]
-[connection signal="value_changed" from="Settings/SettingsPanel/Sounds/Master/HSplitContainer/MasterSlider" to="Settings/SettingsPanel" method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="Settings/SettingsPanel/Sounds/HBoxContainer2/HSplitContainer/MusicSlider" to="Settings/SettingsPanel" method="_on_music_slider_value_changed"]
-[connection signal="drag_ended" from="Settings/SettingsPanel/Sounds/HBoxContainer3/HSplitContainer/SFXSlider" to="Settings/SettingsPanel" method="_on_sfx_slider_drag_ended"]
-[connection signal="value_changed" from="Settings/SettingsPanel/Sounds/HBoxContainer3/HSplitContainer/SFXSlider" to="Settings/SettingsPanel" method="_on_sfx_slider_value_changed"]
+[connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer/LanguagesSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_languages_slider_item_selected"]
+[connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer/DisplaySlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_display_slider_item_selected"]
+[connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync/HSplitContainer/VsyncSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_vsync_slider_item_selected"]
+[connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/Master/HSplitContainer/MasterSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer2/HSplitContainer/MusicSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer3/HSplitContainer/SFXSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer3/HSplitContainer/SFXSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_sfx_slider_value_changed"]
