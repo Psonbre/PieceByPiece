@@ -12,10 +12,6 @@ func _ready():
 	visible = true
 	default_sprite_scale = sprite.scale
 	default_stretch_parent_scale = stretch_parent.scale
-	var player_sprites := get_tree().get_nodes_in_group("PlayerSprites")
-	if player_sprites.any(func (s) : return s != self and s.scene_file_path == scene_file_path and puzzle_piece.level == s.puzzle_piece.level) :
-		for light : Light2D in find_children("*", "Light2D", true, false) :
-			light.visible = false
 			
 func _process(_delta):
 	var player: Player = get_tree().get_nodes_in_group("Player").filter(func (p) : return puzzle_piece.level.is_ancestor_of(p))[0]
@@ -37,6 +33,14 @@ func play(animation : String):
 		if sprite.sprite_frames.has_animation(animation) :
 			sprite.play(animation)
 
+func claim_theme_light():
+	var same_theme_sprites = get_tree().get_nodes_in_group("PlayerSprites").filter(func (s) : return s != self and s.scene_file_path == scene_file_path and puzzle_piece.level == s.puzzle_piece.level and !s.puzzle_piece.is_dragging)
+	for other_sprite in same_theme_sprites :
+		for light : Light2D in other_sprite.find_children("*", "Light2D", true, false) :
+			light.visible = false
+	for light : Light2D in find_children("*", "Light2D", true, false) :
+		light.visible = true
+		
 func pause():
 	if sprite : sprite.pause()
 

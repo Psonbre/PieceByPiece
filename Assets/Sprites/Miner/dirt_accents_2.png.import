@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhuhu8owauutt"
-path="res://.godot/imported/destructable blocks_.png-8bdbf71ce809c4d2ed63dadb68de4301.ctex"
+uid="uid://ccuhfv5kc1qyg"
+path="res://.godot/imported/dirt_accents_2.png-549e0a274d66fcec4a577c4b94d9f892.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Miner/destructable blocks_.png"
-dest_files=["res://.godot/imported/destructable blocks_.png-8bdbf71ce809c4d2ed63dadb68de4301.ctex"]
+source_file="res://Assets/Sprites/Miner/dirt_accents_2.png"
+dest_files=["res://.godot/imported/dirt_accents_2.png-549e0a274d66fcec4a577c4b94d9f892.ctex"]
 
 [params]
 

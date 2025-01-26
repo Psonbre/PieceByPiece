@@ -15,3 +15,9 @@ func pan(new_position := Vector2.ZERO, new_zoom := Vector2.ONE) :
 	pan_tween = create_tween()
 	pan_tween.tween_property(self, "global_position", new_position, 4.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	pan_tween.parallel().tween_property(self, "zoom", new_zoom, 4.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	
+func _process(delta: float) -> void:
+	var dragging_piece := PuzzlePiece.dragging_piece
+	if dragging_piece : 
+		if !Rect2(global_position - (get_viewport_rect().size / zoom) / 2.0, get_viewport_rect().size / zoom).grow(-100).has_point(dragging_piece.global_position) :
+			pan(Vector2.ZERO, zoom - (Vector2.ONE * 0.15))

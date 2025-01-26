@@ -21,6 +21,7 @@ const THEME_RESOURCE_MAP = {
 var theme_resource : PuzzlePieceTheme
 
 static var global_dragging := false
+static var dragging_piece : PuzzlePiece
 
 @onready var level: Level = $".."
 @onready var ghost_piece : GhostPiece = $"../GhostPiece"
@@ -166,15 +167,18 @@ func update_lighting_range(call_for_all_piece := false):
 	const dragging_light_layer := 512
 	var emitters_mask : int = dragging_light_layer if is_dragging else theme_resource.light_layer
 	var receivers_mask := emitters_mask + 1
-	
+	var player_sprites := get_tree().get_nodes_in_group("PlayerSprites")
 	update_cells_occlusion_layer()
 	
 	if shape.has_node("Player") :
-		var player_sprites := get_tree().get_nodes_in_group("PlayerSprites")
 		for sprite in player_sprites.filter(func (s) : return s.scene_file_path == player_sprite.scene_file_path and level == s.puzzle_piece.level) :
 			for light : Light2D in sprite.find_children("*", "Light2D", true, false) :
 				light.visible = sprite == player_sprite
 	
+	var same_theme_sprites := player_sprites.filter(func (s) : return s != player_sprite and s.scene_file_path == player_sprite.scene_file_path and level == s.puzzle_piece.level)
+	if same_theme_sprites.size() > 0 :
+		same_theme_sprites[0].claim_theme_light()
+		
 	for light_affected_node : Node2D in get_tree().get_nodes_in_group("AffectedByInternalLight").filter(func(n) : return shape.is_ancestor_of(n)) :
 		light_affected_node.light_mask = receivers_mask
 	
@@ -226,6 +230,7 @@ func start_dragging():
 	start_drag_tilt = tilt_angle
 	is_dragging = true
 	global_dragging = true
+	dragging_piece = self
 	update_lighting_range()
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
@@ -240,6 +245,7 @@ func stop_dragging():
 	z_index = 0
 	is_dragging = false
 	global_dragging = false
+	dragging_piece = null
 	scale = default_scale
 	var old_position = global_position
 	update_lighting_range()
@@ -294,6 +300,7 @@ func cancel_drag():
 	player_sprite.visible = true
 	is_dragging = false
 	global_dragging = false
+	dragging_piece = null
 	scale = default_scale
 	set_player_sprites_visible(true)
 	update_lighting_range()

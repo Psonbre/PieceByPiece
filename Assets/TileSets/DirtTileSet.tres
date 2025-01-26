@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://chmck55rlgg50"]
 
-[ext_resource type="Texture2D" uid="uid://dhuhu8owauutt" path="res://Assets/Sprites/Miner/destructable blocks_.png" id="1_p3cfw"]
+[ext_resource type="Texture2D" uid="uid://dhuhu8owauutt" path="res://Assets/Sprites/Miner/dirt_tileset.png" id="1_p3cfw"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ym84s"]
 polygon = PackedVector2Array(-16, -9, -16, -14, -15, -14, -15, -15, -14, -15, -14, -16, -13, -16, -8, -16, -8, -15, 4, -15, 4, -16, 14, -16, 14, -15, 15, -15, 15, -14, 16, -14, 16, -10, 15, -10, 15, -6, 16, -6, 16, 14, 15, 14, 15, 15, 14, 15, 14, 16, 6, 16, 6, 15, -6, 15, -6, 16, -13.989, 16, -14, 15, -15, 15, -15, 14, -16, 14, -16, 9, -16, 2, -15, 2, -15, -9)

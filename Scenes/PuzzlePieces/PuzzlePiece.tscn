@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=27 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_uhv7f"]
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_2oxp2"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="3_3l438"]
 [ext_resource type="TileSet" uid="uid://chmck55rlgg50" path="res://Assets/TileSets/DirtTileSet.tres" id="4_c62oi"]
 [ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_obp8e"]
+[ext_resource type="Script" path="res://Scripts/dirt_layer.gd" id="5_a6qkd"]
 [ext_resource type="Script" path="res://Scripts/rotating_arrows.gd" id="5_os0q1"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_connector.gd" id="6_qba2m"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shadow.gd" id="7_k3mtu"]
@@ -102,6 +103,7 @@ tile_set = ExtResource("3_3l438")
 position = Vector2(-25.6, -25.6)
 scale = Vector2(1.6, 1.6)
 tile_set = ExtResource("4_c62oi")
+script = ExtResource("5_a6qkd")
 
 [node name="Arrows" type="Sprite2D" parent="Shape"]
 visible = false
