@@ -124,6 +124,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_7isfi")
+alignment = 1
 
 [node name="SubTitle" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2

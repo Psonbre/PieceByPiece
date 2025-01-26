@@ -10,14 +10,26 @@ extends Control
 @export var popupItemFontSize = 32
 var can_exit := true
 
+const flagsPath : String  = "res://Assets/Languages/"
+
 var vsyncModePossible: Dictionary = {
 		'DISABLED' : [DisplayServer.VSYNC_DISABLED,""],
 		'ENABLED' : [DisplayServer.VSYNC_ENABLED,""],
 		'ADAPTIVE' : [DisplayServer.VSYNC_ADAPTIVE, "ADAPTIVE_TOOLTIP"]
 		}
 var languagesPossible: Dictionary = {
-		'English' : ['en',0],
-		'Français' : ['fr',1]
+	'English' : ['en', flagsPath + "english.png"],
+	'Québecois' : ['fr_CA', flagsPath + "quebec.png"],
+	'Français' : ['fr', flagsPath + "french.png"],
+	'Español' : ['es', flagsPath + "spain.png"],
+	'Italiano' : ['it', flagsPath + "italy.png"],
+	'Português' : ['pt', flagsPath + "portugal.png"],
+	'Deutsch' : ['de', flagsPath + "germany.png"],
+	'Русский' : ['ru', flagsPath + "russian.png"],
+	'한국어' : ['ko', flagsPath + "south_korea.png"],
+	'日本語' : ['ja', flagsPath + "japan.png"],
+	'हिन्दी' : ['hi', flagsPath + "india.png"],
+	'普通话' : ['cmn', flagsPath + "china.png"]
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -34,12 +46,19 @@ func _ready() -> void:
 	
 #Languages------------------------
 func addLanguages():
+	var currentId : int = 0
 	for language in languagesPossible:
 		var language_data = languagesPossible[language]
 		var value = language_data[0]
-		var id = language_data[1]
-		languagesSlider.add_item(language, id)
-	
+		var flag = language_data[1]
+		language_data.append(currentId)
+		
+		languagesSlider.add_item(language, currentId)
+		
+		languagesSlider.set_item_icon(currentId, load(flag))
+		
+		currentId += 1
+		
 	languagesSlider.get_popup().add_theme_font_size_override("font_size",popupItemFontSize)
 	
 	_select_language()
@@ -49,7 +68,7 @@ func _select_language():
 	# Iterate through the items in the OptionButton
 	for language_name in languagesPossible.keys():
 		if languagesPossible[language_name][0] == currentLanguage:  # Match the string (e.g., 'fr')
-			var target_id = languagesPossible[language_name][1]  # Get the corresponding ID
+			var target_id = languagesPossible[language_name][2]  # Get the corresponding ID
 			# Select the item in the OptionButton
 			languagesSlider.select(target_id)
 			return
