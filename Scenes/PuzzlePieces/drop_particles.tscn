@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2fyaulhdrma0"]
+
+[ext_resource type="Texture2D" uid="uid://cvmgcxu0llfgn" path="res://Assets/Sprites/cloud.png" id="1_gks1v"]
+
+[sub_resource type="Gradient" id="Gradient_toule"]
+offsets = PackedFloat32Array(0.408511, 1)
+colors = PackedColorArray(1, 1, 1, 0.486275, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_f2hex"]
+script/source = "extends CPUParticles2D
+
+func _ready() -> void:
+	emitting = true
+	await finished
+	queue_free()
+"
+
+[node name="DropParticles" type="CPUParticles2D"]
+z_index = -1
+emitting = false
+amount = 32
+lifetime = 2.5
+one_shot = true
+preprocess = 2.2
+explosiveness = 1.0
+texture = ExtResource("1_gks1v")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+angular_velocity_min = -150.0
+angular_velocity_max = 150.0
+linear_accel_min = -78.21
+linear_accel_max = -78.21
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.48
+scale_amount_max = 1.92
+color_ramp = SubResource("Gradient_toule")
+script = SubResource("GDScript_f2hex")

@@ -32,7 +32,7 @@ static var dragging_piece : PuzzlePiece
 @onready var top_connector : PuzzlePieceConnector = $Shape/Connectors/TopConnector
 @onready var bottom_connector : PuzzlePieceConnector = $Shape/Connectors/BottomConnector
 @onready var player_sprite : PlayerSprite
-var drop_particles: CPUParticles2D
+@export var drop_particles_scene: PackedScene
 var foreground: TileMapLayer
 var background: TileMapLayer
 var dirt: TileMapLayer
@@ -59,7 +59,6 @@ var start_drag_tilt := 0.0
 
 func _ready():
 	if Engine.is_editor_hint() : return
-	drop_particles = get_node_or_null("DropParticles")
 	portal = shape.get_node_or_null("Portal") 
 	if portal : portal.puzzle_piece = self
 	start_drag_position = global_position
@@ -251,7 +250,10 @@ func stop_dragging():
 	update_lighting_range()
 	attempt_connection()
 	
-	if drop_particles : drop_particles.emitting = true
+	if drop_particles_scene : 
+		var drop_particles = drop_particles_scene.instantiate()
+		drop_particles.global_position = global_position
+		get_tree().root.add_child(drop_particles)
 	if !global_position.is_equal_approx(old_position) :
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -13)
 	
