@@ -69,8 +69,8 @@ func update_placement_validity():
 
 func hide_display():
 	displayed = false
-	last_displayed_position = Vector2.ONE * 100000
-	global_position = Vector2.ONE * 100000
+	last_displayed_position = Vector2.ONE * 1000000
+	global_position = Vector2.ONE * 1000000
 	valid_placement = true
 	visual_shape.visible = false
 	outline.visible = false

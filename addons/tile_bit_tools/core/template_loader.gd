@@ -254,4 +254,3 @@ func _assign_template_to_tag(template_id : int, tag_id : int) -> void:
 		_tags_to_templates[tag_id].append(template_id)
 	if !_templates_to_tags[template_id].has(tag_id):
 		_templates_to_tags[template_id].append(tag_id)
-

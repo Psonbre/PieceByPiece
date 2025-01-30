@@ -106,7 +106,7 @@ texture_repeat = 2
 scale = Vector2(0.72, 0.72)
 texture = ExtResource("10_1vqu7")
 region_enabled = true
-region_rect = Rect2(0, 0, 3555.56, 2000)
+region_rect = Rect2(0, 0, 14222.2, 8000)
 
 [node name="Notebook" type="Sprite2D" parent="."]
 z_index = -2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi5scemtnclaa"
-path="res://.godot/imported/xeno-grunt-run1.png-96f4e1970b9298daf599b8232806f76b.ctex"
+uid="uid://c30q6emk3wpnd"
+path="res://.godot/imported/jump-alien.png-f778b0b2de44007e4bd0f6199d328a98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Sci-fi/png/1x/xeno-grunt-run/xeno-grunt-run1.png"
-dest_files=["res://.godot/imported/xeno-grunt-run1.png-96f4e1970b9298daf599b8232806f76b.ctex"]
+source_file="res://Assets/Sprites/Sci-fi/Player/jump-alien.png"
+dest_files=["res://.godot/imported/jump-alien.png-f778b0b2de44007e4bd0f6199d328a98.ctex"]
 
 [params]
 

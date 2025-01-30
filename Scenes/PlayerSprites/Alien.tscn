@@ -1,33 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbrr8wr55oiq0"]
+[gd_scene load_steps=3 format=3 uid="uid://bbrr8wr55oiq0"]
 
 [ext_resource type="PackedScene" uid="uid://8vkpgii0j3ff" path="res://Scenes/PlayerSprites/PlayerSprite.tscn" id="1_lkalg"]
 [ext_resource type="SpriteFrames" uid="uid://pfqe3y6qifpl" path="res://Scenes/PlayerSprites/alien_frames.tres" id="2_bdls8"]
 
-[sub_resource type="Gradient" id="Gradient_n5ewp"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_swqmy"]
-gradient = SubResource("Gradient_n5ewp")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.881517, 0.512796)
-
 [node name="PlayerSprite" instance=ExtResource("1_lkalg")]
 
 [node name="Sprite" parent="StretchParent" index="1"]
-position = Vector2(0, -1.90735e-06)
-scale = Vector2(2.51945, 2.51945)
+position = Vector2(1.19209e-07, -9.53674e-07)
+scale = Vector2(1.6, 1.6)
 sprite_frames = ExtResource("2_bdls8")
 animation = &"Moving"
-offset = Vector2(-0.793822, -9.52587)
-
-[node name="PointLight2D" type="PointLight2D" parent="StretchParent/Sprite" index="0"]
-position = Vector2(3.96912, -14.2888)
-scale = Vector2(0.626471, 0.626471)
-color = Color(0.887576, 0, 0.176556, 1)
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_swqmy")
+frame_progress = 0.354756
+offset = Vector2(-0.168822, -14.5259)
