@@ -56,12 +56,8 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_globa
 func update_placement_validity():
 	update_connection_group()
 	
-	if all_overlapping_pieces_have_compatible_overlapping_connectors() && all_connectors_can_be_dropped():
-		outline.material.set_shader_parameter('color', Vector4(1,1,1,0.5))
-		valid_placement = true
-	else :
-		outline.material.set_shader_parameter('color', Vector4(1,0,0,0.5))
-		valid_placement = false
+	outline.material.set_shader_parameter('color', Vector4(1,1,1,0.5))
+	valid_placement = true
 	
 	visual_shape.visible = true
 	outline.visible = true
