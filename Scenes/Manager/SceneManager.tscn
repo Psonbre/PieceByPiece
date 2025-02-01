@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxgrba7hrmmij"]
+[gd_scene load_steps=20 format=3 uid="uid://cxgrba7hrmmij"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/SceneManager.gd" id="1_yswi4"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="3_b1voc"]
+[ext_resource type="Script" path="res://Scripts/day_night_cycle.gd" id="3_emugl"]
 [ext_resource type="Gradient" uid="uid://ccylk25qfs6j5" path="res://Assets/Gradients/rainbow_gradient.tres" id="4_3u6s1"]
 [ext_resource type="Texture2D" uid="uid://dpnggfvmye3ty" path="res://Assets/Sprites/Background/vignette.png" id="6_idlif"]
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="6_jb4f7"]
@@ -33,6 +34,15 @@ turbulence_enabled = true
 turbulence_noise_strength = 3.45
 turbulence_noise_speed = Vector3(100, 100, 100)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7bj46"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_ghj6j"]
+colors = PackedColorArray(1, 1, 1, 1, 0.479331, 0.641815, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ofycx"]
+gradient = SubResource("Gradient_ghj6j")
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jim8t"]
 blend_mode = 2
 
@@ -52,9 +62,8 @@ clip_children = 2
 z_index = 10
 material = SubResource("CanvasItemMaterial_wh5gs")
 position = Vector2(584, 349)
-rotation = 0.261799
 color = Color(0.0347826, 0.0345149, 0.0134894, 1)
-polygon = PackedVector2Array(-1193.23, -852.209, -832.829, -913.578, -621.203, 664.418, -1345.48, 781.878, 445.355, 417.976, 45.3179, -1156.12, -492.481, -1042.04, -293.994, 591.237)
+polygon = PackedVector2Array(-856, -1542, -513, -1458, -716, 619, -1711, 564, 483, 684, 335, -1407, -72, -1449, -203, 687)
 polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)]
 
 [node name="DustParticles" type="GPUParticles2D" parent="GodRays"]
@@ -63,6 +72,13 @@ amount = 2000
 process_material = SubResource("ParticleProcessMaterial_i0njw")
 lifetime = 3.0
 preprocess = 3.0
+
+[node name="DayNightModulator" type="Polygon2D" parent="."]
+z_index = 9
+material = SubResource("CanvasItemMaterial_7bj46")
+polygon = PackedVector2Array(-1280, -720, 1280, -720, 1280, 720, -1280, 720)
+script = ExtResource("3_emugl")
+gradient = SubResource("GradientTexture1D_ofycx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
