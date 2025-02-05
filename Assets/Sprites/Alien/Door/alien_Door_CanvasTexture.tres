@@ -1,8 +1,6 @@
-[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://b716j5g0j6piv"]
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://b716j5g0j6piv"]
 
 [ext_resource type="Texture2D" uid="uid://c1eaok3eewskq" path="res://Assets/Sprites/Alien/Door/alien_Door_Diffuse.png" id="1_7o6xn"]
-[ext_resource type="Texture2D" uid="uid://c0nfyjqv8ykeo" path="res://Assets/Sprites/Alien/Door/alien_Door_NormalMap.png" id="2_exae1"]
 
 [resource]
 diffuse_texture = ExtResource("1_7o6xn")
-normal_texture = ExtResource("2_exae1")

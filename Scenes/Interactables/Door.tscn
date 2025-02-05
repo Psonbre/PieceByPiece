@@ -16,7 +16,7 @@ shape = SubResource("RectangleShape2D_w8iru")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["AffectedByInternalLight"]]
 light_mask = 7
-position = Vector2(0, -8.99755)
+position = Vector2(0, -9)
 scale = Vector2(0.708384, 0.708384)
 texture = ExtResource("2_m3wcb")
 

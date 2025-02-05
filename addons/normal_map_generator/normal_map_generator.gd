@@ -73,22 +73,21 @@ func generate_canvas_texture(texture : Texture2D):
 			normal_image.set_pixel(x, y, Color(r, g, b, a))
 
 	# Save images as PNG
-	var orig_path = texture.resource_path
-	var base_dir = orig_path.get_base_dir()
-	var file_name = orig_path.get_file()
-	var dot_index = file_name.rfind(".")
-	var base_name = file_name.substr(0, dot_index) if dot_index != -1 else file_name
-
-	if not base_name.ends_with("_Diffuse"):
-		base_name += "_Diffuse"
-
+	var orig_path := texture.resource_path
+	var base_dir := orig_path.get_base_dir()
+	var file_name := orig_path.get_file()
+	var dot_index := file_name.rfind(".")
+	var base_name := file_name.substr(0, dot_index) if dot_index != -1 else file_name
+	if !base_name.to_lower().ends_with("_diffuse") : base_name += "_Diffuse"
+	
 	var diffuse_texture_path = base_dir + "/" + base_name + ".png"
 	var normal_texture_path = base_dir + "/" + base_name.replace("_Diffuse", "_NormalMap") + ".png"
 	var canvas_texture_path = base_dir + "/" + base_name.replace("_Diffuse", "_CanvasTexture") + ".tres"
 
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(texture.resource_path))
 	image.save_png(diffuse_texture_path)
 	normal_image.save_png(normal_texture_path)
-
+	
 	# Load or create CanvasTexture
 	var canvas_texture: CanvasTexture
 	if FileAccess.file_exists(canvas_texture_path):
