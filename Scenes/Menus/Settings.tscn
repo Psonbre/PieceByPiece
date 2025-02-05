@@ -85,11 +85,15 @@ custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 30
+theme_override_constants/separation = 50
 alignment = 1
 script = ExtResource("4_fs3n1")
 
-[node name="SubTitle3" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
+[node name="General" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SubTitle3" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General"]
 layout_mode = 2
 text = "GENERAL"
 label_settings = ExtResource("5_e5vn6")
@@ -97,10 +101,6 @@ horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
 horizontal_intensity = 5
-
-[node name="General" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
-layout_mode = 2
-theme_override_constants/separation = 15
 
 [node name="LanguagesMode" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General"]
 layout_mode = 2
@@ -126,7 +126,11 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("1_7isfi")
 alignment = 1
 
-[node name="SubTitle" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
+[node name="Display" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SubTitle" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
 text = "DISPLAY"
 label_settings = ExtResource("5_e5vn6")
@@ -134,10 +138,6 @@ horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
 horizontal_intensity = 5
-
-[node name="Display" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
-layout_mode = 2
-theme_override_constants/separation = 15
 
 [node name="DisplayMode" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
@@ -185,7 +185,11 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("1_7isfi")
 
-[node name="SubTitle2" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
+[node name="Sounds" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SubTitle2" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
 text = "AUDIO"
 label_settings = ExtResource("5_e5vn6")
@@ -193,10 +197,6 @@ horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
 horizontal_intensity = 5
-
-[node name="Sounds" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
-layout_mode = 2
-theme_override_constants/separation = 15
 
 [node name="Master" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
