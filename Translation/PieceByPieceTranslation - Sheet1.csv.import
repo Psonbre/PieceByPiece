@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b15v3jntyjqdb"
+
+[deps]
+
+files=["res://Translation/PieceByPieceTranslation - Sheet1.en.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr_CA.translation", "res://Translation/PieceByPieceTranslation - Sheet1.es.translation", "res://Translation/PieceByPieceTranslation - Sheet1.cmn.translation", "res://Translation/PieceByPieceTranslation - Sheet1.de.translation", "res://Translation/PieceByPieceTranslation - Sheet1.it.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ru.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ko.translation", "res://Translation/PieceByPieceTranslation - Sheet1.hi.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ja.translation", "res://Translation/PieceByPieceTranslation - Sheet1.pt.translation"]
+
+source_file="res://Translation/PieceByPieceTranslation - Sheet1.csv"
+dest_files=["res://Translation/PieceByPieceTranslation - Sheet1.en.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr_CA.translation", "res://Translation/PieceByPieceTranslation - Sheet1.es.translation", "res://Translation/PieceByPieceTranslation - Sheet1.cmn.translation", "res://Translation/PieceByPieceTranslation - Sheet1.de.translation", "res://Translation/PieceByPieceTranslation - Sheet1.it.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ru.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ko.translation", "res://Translation/PieceByPieceTranslation - Sheet1.hi.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ja.translation", "res://Translation/PieceByPieceTranslation - Sheet1.pt.translation"]
+
+[params]
+
+compress=true
+delimiter=0

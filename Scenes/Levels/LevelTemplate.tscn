@@ -38,6 +38,7 @@ pivot_offset = Vector2(698.995, 109.842)
 theme_override_fonts/font = ExtResource("4_otehi")
 text = "LEVEL 1"
 label_settings = ExtResource("5_weia1")
+horizontal_alignment = 1
 script = ExtResource("7_10osd")
 
 [node name="LevelMenu" parent="Control" instance=ExtResource("7_bsxew")]

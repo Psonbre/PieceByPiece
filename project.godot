@@ -235,7 +235,7 @@ SelectPieceRight={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Translation/Translation.cmn.translation", "res://Translation/Translation.de.translation", "res://Translation/Translation.en.translation", "res://Translation/Translation.es.translation", "res://Translation/Translation.fr.translation", "res://Translation/Translation.fr_CA.translation", "res://Translation/Translation.hi.translation", "res://Translation/Translation.it.translation", "res://Translation/Translation.ja.translation", "res://Translation/Translation.ko.translation", "res://Translation/Translation.pt.translation", "res://Translation/Translation.ru.translation")
+locale/translations=PackedStringArray("res://Translation/PieceByPieceTranslation - Sheet1.cmn.translation", "res://Translation/PieceByPieceTranslation - Sheet1.de.translation", "res://Translation/PieceByPieceTranslation - Sheet1.en.translation", "res://Translation/PieceByPieceTranslation - Sheet1.es.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr.translation", "res://Translation/PieceByPieceTranslation - Sheet1.fr_CA.translation", "res://Translation/PieceByPieceTranslation - Sheet1.hi.translation", "res://Translation/PieceByPieceTranslation - Sheet1.it.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ja.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ko.translation", "res://Translation/PieceByPieceTranslation - Sheet1.pt.translation", "res://Translation/PieceByPieceTranslation - Sheet1.ru.translation")
 
 [layer_names]
 
