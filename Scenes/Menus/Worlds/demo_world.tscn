@@ -9,16 +9,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5wc1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjsui"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8bhn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6v28"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yye68"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p180q"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_27kku"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvq53"]
 radius = 35.0
 
 [sub_resource type="Animation" id="Animation_t6n88"]
@@ -295,24 +295,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_x5wc1")
+shape = SubResource("RectangleShape2D_mjsui")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_a8bhn")
+shape = SubResource("RectangleShape2D_g6v28")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_yye68")
+shape = SubResource("RectangleShape2D_p180q")
 
 [node name="BottomConnector" parent="Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_27kku")
+shape = SubResource("CircleShape2D_bvq53")
 
 [node name="Rift" parent="Shape" index="4" instance=ExtResource("2_we3y2")]
 points = PackedVector2Array(26, -129, 26, 76, 129, 76)
@@ -355,7 +355,7 @@ material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
 
 [node name="WorldName" parent="Overlay" index="0"]
-text = "DEMO WORLD"
+text = "WORLD_DEMO"
 
 [node name="BevelLeft" parent="." index="2"]
 polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)

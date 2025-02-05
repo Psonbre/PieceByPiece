@@ -219,9 +219,7 @@ offset_top = -32.0
 offset_right = 11092.5
 offset_bottom = 2308.0
 scale = Vector2(0.1, 0.1)
-text = "Congrats on finishing the Piece by Piece demo and thank you for playing!
-
-Wishlist our game on Steam and be amongst the first to experience all 8 unique puzzle boxes with 100 levels!"
+text = "PLAY_STEAM"
 label_settings = ExtResource("3_ci1o0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -251,7 +249,7 @@ offset_top = 10.0
 offset_right = 2822.5
 offset_bottom = 210.0
 scale = Vector2(0.1, 0.1)
-text = "Visit on Steam"
+text = "VISIT_STEAM"
 label_settings = ExtResource("3_ci1o0")
 horizontal_alignment = 1
 vertical_alignment = 1
