@@ -1,6 +1,5 @@
 extends FloatingUI
 
-
 func _ready() -> void:
 	super._ready()
 	modulate.a = 0
