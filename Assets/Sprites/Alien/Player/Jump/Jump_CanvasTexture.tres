@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://b6fd6u22rt0v7"]
+
+[ext_resource type="Texture2D" uid="uid://cblh2n7gn58cw" path="res://Assets/Sprites/Alien/Player/Jump/Jump_Diffuse.png" id="1_kyvm1"]
+[ext_resource type="Texture2D" uid="uid://cp36pugji5ts4" path="res://Assets/Sprites/Alien/Player/Jump/Jump_NormalMap.png" id="2_1qjaa"]
+
+[resource]
+diffuse_texture = ExtResource("1_kyvm1")
+normal_texture = ExtResource("2_1qjaa")

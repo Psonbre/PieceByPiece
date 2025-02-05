@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0c43sr0v666w"]
+[gd_scene load_steps=26 format=3 uid="uid://b0c43sr0v666w"]
 
 [ext_resource type="Script" path="res://Scripts/puzzle_piece.gd" id="1_uhv7f"]
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_2oxp2"]
+[ext_resource type="PackedScene" uid="uid://d2fyaulhdrma0" path="res://Scenes/PuzzlePieces/drop_particles.tscn" id="2_db2ta"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="3_3l438"]
 [ext_resource type="TileSet" uid="uid://chmck55rlgg50" path="res://Assets/TileSets/DirtTileSet.tres" id="4_c62oi"]
 [ext_resource type="Texture2D" uid="uid://8dmxehskgryu" path="res://Assets/Sprites/arrows.svg" id="4_obp8e"]
@@ -13,21 +14,20 @@
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="9_0xn0f"]
 [ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="10_6o36s"]
 [ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="11_7l2qo"]
-[ext_resource type="Texture2D" uid="uid://cvmgcxu0llfgn" path="res://Assets/Sprites/cloud.png" id="13_7xlvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx2pf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir7ex"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jae5i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hypvl"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2otu4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xa7r"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk041"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqtxr"]
 size = Vector2(35, 70)
 
 [sub_resource type="Resource" id="Resource_08waj"]
@@ -70,12 +70,9 @@ b = Vector2(0, 128)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8wnkx"]
 
-[sub_resource type="Gradient" id="Gradient_toule"]
-offsets = PackedFloat32Array(0.408511, 1)
-colors = PackedColorArray(1, 1, 1, 0.486275, 1, 1, 1, 0)
-
 [node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
 script = ExtResource("1_uhv7f")
+drop_particles_scene = ExtResource("2_db2ta")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -131,7 +128,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_hx2pf")
+shape = SubResource("RectangleShape2D_ir7ex")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -145,7 +142,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_jae5i")
+shape = SubResource("RectangleShape2D_hypvl")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -159,7 +156,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_2otu4")
+shape = SubResource("RectangleShape2D_5xa7r")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -173,7 +170,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_yk041")
+shape = SubResource("RectangleShape2D_iqtxr")
 metadata/_edit_lock_ = true
 
 [node name="Shadow" type="Line2D" parent="."]
@@ -266,31 +263,6 @@ self_modulate = Color(1, 1, 1, 0.360784)
 material = SubResource("ShaderMaterial_8wnkx")
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
-
-[node name="DropParticles" type="CPUParticles2D" parent="."]
-z_index = -1
-emitting = false
-amount = 32
-lifetime = 2.5
-one_shot = true
-preprocess = 2.2
-explosiveness = 1.0
-texture = ExtResource("13_7xlvs")
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_max = 50.0
-angular_velocity_min = -150.0
-angular_velocity_max = 150.0
-linear_accel_min = -78.21
-linear_accel_max = -78.21
-radial_accel_min = 100.0
-radial_accel_max = 100.0
-angle_min = -720.0
-angle_max = 720.0
-scale_amount_min = 0.48
-scale_amount_max = 1.92
-color_ramp = SubResource("Gradient_toule")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

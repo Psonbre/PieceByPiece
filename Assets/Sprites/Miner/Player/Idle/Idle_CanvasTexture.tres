@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://4yfae1718tia"]
+
+[ext_resource type="Texture2D" uid="uid://ymk1bdi5sobw" path="res://Assets/Sprites/Miner/Player/Idle/Idle_Diffuse.png" id="1_71prd"]
+[ext_resource type="Texture2D" uid="uid://y5nffm3r31qk" path="res://Assets/Sprites/Miner/Player/Idle/Idle_NormalMap.png" id="2_g2mv2"]
+
+[resource]
+diffuse_texture = ExtResource("1_71prd")
+normal_texture = ExtResource("2_g2mv2")

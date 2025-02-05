@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://chvbdbjo8xytd" path="res://Assets/Sprites/MainMenu/By.svg" id="8_gt78w"]
 
 [node name="MainMenu" type="Node2D"]
+z_index = 15
 script = ExtResource("1_2asjq")
 
 [node name="Camera2D" type="Camera2D" parent="."]

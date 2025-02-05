@@ -14,6 +14,29 @@ var connected_to : PuzzlePieceConnector = null :
 		side_collider.get_node("CollisionShape2D").disabled = value != null
 		bevel_side.visible = !value
 		connected_to = value
+
+func _ready() -> void:
+	area_entered.connect(on_area_entered)
+	area_exited.connect(on_area_exited)
+
+func on_area_entered(other_area : Area2D):
+	if !puzzle_piece.is_dragging : return
+	
+	if other_area is PuzzlePieceConnector and is_connector_compatible(other_area) :
+		puzzle_piece.ghost_piece.display.call_deferred(
+			puzzle_piece,
+			other_area.get_adjacent_piece_position(false),
+			deg_to_rad(round(puzzle_piece.target_rotated_angle / 90.0) * 90),
+			other_area.get_adjacent_piece_position(true), 
+			other_area.puzzle_piece.tilt_angle + deg_to_rad(round(puzzle_piece.target_rotated_angle / 90.0) * 90)
+		)
+
+func on_area_exited(other_area : Area2D):
+	if !puzzle_piece.is_dragging : return
+	
+	if other_area is PuzzlePieceConnector and is_connector_compatible(other_area) :
+		if puzzle_piece.ghost_piece.global_position == other_area.get_adjacent_piece_position(false):
+			puzzle_piece.ghost_piece.hide_display()
 			
 func get_first_compatible_overlapping_connector(include_dragging_piece := false, allow_flat_sides := false) -> PuzzlePieceConnector:
 	if !include_dragging_piece && puzzle_piece.is_dragging : return
@@ -50,6 +73,18 @@ func get_all_pieces_with_compatible_overlapping_connectors() :
 			if is_connector_compatible(connector) :
 				pieces_with_valid_overlapping_connectors.append(connector.puzzle_piece)
 	return pieces_with_valid_overlapping_connectors
+
+func get_all_incompatible_overlapping_pieces() :
+	var overlapping_pieces = []
+	var overlapping_areas = get_overlapping_areas()
+	overlapping_pieces.append_array(overlapping_areas.filter(func(p) : return p is PuzzlePiece))
+	overlapping_pieces.append_array(overlapping_areas.filter(func(c) : return c is PuzzlePieceConnector).map(func(c) : return c.puzzle_piece))
+	var dedup_overlapping_pieces = []
+	for piece in overlapping_pieces :
+		if piece not in dedup_overlapping_pieces :
+			dedup_overlapping_pieces.append(piece)
+	var pieces_with_compatible_overlapping_connectors = get_all_pieces_with_compatible_overlapping_connectors()
+	return dedup_overlapping_pieces.filter(func (p) : return p not in pieces_with_compatible_overlapping_connectors)
 
 func get_rounded_rotation():
 	var normalized_self_rotation = global_rotation_degrees

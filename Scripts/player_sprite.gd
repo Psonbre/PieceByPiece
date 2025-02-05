@@ -21,7 +21,7 @@ func squash(squash_strenght):
 	squash_strenght = clampf(squash_strenght, 1.2, 1.4)
 	var tween = create_tween()
 	tween.tween_property(stretch_parent, "scale", Vector2(sign(default_stretch_parent_scale.x) * default_stretch_parent_scale.x * squash_strenght, default_stretch_parent_scale.y / squash_strenght), 0.07)
-	tween.tween_property(stretch_parent, "scale", Vector2(sign(default_stretch_parent_scale.x)* default_stretch_parent_scale.x, default_stretch_parent_scale.y), 0.07).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+	tween.tween_property(stretch_parent, "scale", Vector2(sign(default_stretch_parent_scale.x) * default_stretch_parent_scale.x, default_stretch_parent_scale.y), 0.07).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 	
 func jump_stretch():
 	var tween = create_tween()
