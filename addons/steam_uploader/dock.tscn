@@ -476,6 +476,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "You must input your Steam API key to select an App"
 disabled = true
+selected = 0
+item_count = 2
+popup/item_0/text = "Piece by Piece (3249380)"
+popup/item_0/id = 3249380
+popup/item_1/text = "Piece by Piece Demo (3429540)"
+popup/item_1/id = 3429540
 
 [node name="DepotIds" type="HBoxContainer" parent="UploadToSteam"]
 layout_mode = 2

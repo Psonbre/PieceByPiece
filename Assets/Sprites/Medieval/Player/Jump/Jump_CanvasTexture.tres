@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://bskp63ig574eu"]
+
+[ext_resource type="Texture2D" uid="uid://cffiyek8bcghk" path="res://Assets/Sprites/Medieval/Player/Jump/Jump_Diffuse.png" id="1_weyly"]
+[ext_resource type="Texture2D" uid="uid://rbdur651nbja" path="res://Assets/Sprites/Medieval/Player/Jump/Jump_NormalMap.png" id="2_rmt2u"]
+
+[resource]
+diffuse_texture = ExtResource("1_weyly")
+normal_texture = ExtResource("2_rmt2u")

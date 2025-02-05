@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PuzzlePieceTheme" load_steps=4 format=3 uid="uid://dlugaa2fii3rb"]
 
-[ext_resource type="Texture2D" uid="uid://bqolhag0ce77y" path="res://Assets/Sprites/Medieval/medieval_door.png" id="1_crm58"]
+[ext_resource type="Texture2D" uid="uid://bpyy2ttxfmape" path="res://Assets/Sprites/Medieval/Door/medieval_door_CanvasTexture.tres" id="1_k8dxh"]
 [ext_resource type="PackedScene" uid="uid://cpkfo11giqamn" path="res://Scenes/PlayerSprites/King.tscn" id="2_woow6"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_theme_resource.gd" id="3_wd4dy"]
 
@@ -8,7 +8,7 @@
 script = ExtResource("3_wd4dy")
 player_sprite = ExtResource("2_woow6")
 tileset_id = 3
-door_texture = ExtResource("1_crm58")
+door_texture = ExtResource("1_k8dxh")
 modulate = Color(1, 1, 1, 1)
 light_layer = 8
 collectable_light_energy = 0.5

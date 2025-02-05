@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://c334sk8fwnh0j"]
+
+[ext_resource type="Texture2D" uid="uid://62v5m10y2gbw" path="res://Assets/Sprites/Medieval/Player/Run/Run_Diffuse.png" id="1_6ll2x"]
+[ext_resource type="Texture2D" uid="uid://dtuxehw8hnfu4" path="res://Assets/Sprites/Medieval/Player/Run/Run_NormalMap.png" id="2_3w5r5"]
+
+[resource]
+diffuse_texture = ExtResource("1_6ll2x")
+normal_texture = ExtResource("2_3w5r5")

@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://bx4ahm24rm3fs"]
+
+[ext_resource type="Texture2D" uid="uid://dy3vysgirig0n" path="res://Assets/Sprites/Miner/Player/DigUp/dig_up_Diffuse.png" id="1_xr7s7"]
+[ext_resource type="Texture2D" uid="uid://d2k4pjt8a5jlx" path="res://Assets/Sprites/Miner/Player/DigUp/dig_up_NormalMap.png" id="2_sn0q1"]
+
+[resource]
+diffuse_texture = ExtResource("1_xr7s7")
+normal_texture = ExtResource("2_sn0q1")

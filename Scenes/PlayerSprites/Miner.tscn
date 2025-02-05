@@ -6,11 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6x3eo"]
 radius = 24.0
 
-[sub_resource type="Gradient" id="Gradient_4tdpi"]
+[sub_resource type="Gradient" id="Gradient_3t1pp"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_50aby"]
-gradient = SubResource("Gradient_4tdpi")
+gradient = SubResource("Gradient_3t1pp")
 width = 256
 height = 256
 fill = 1
@@ -22,21 +22,22 @@ fill_to = Vector2(1, 0.5)
 [node name="CollisionShape2D" parent="StretchParent" index="0"]
 shape = SubResource("CircleShape2D_6x3eo")
 
-[node name="PointLight2D" type="PointLight2D" parent="StretchParent" index="1"]
-position = Vector2(4.76837e-07, -24)
-scale = Vector2(1.065, 1.065)
-color = Color(1, 0.993344, 0.269287, 1)
-energy = 1.5
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_item_cull_mask = 2
-texture = SubResource("GradientTexture2D_50aby")
-
-[node name="Sprite" parent="StretchParent" index="2"]
-light_mask = 3
+[node name="Sprite" parent="StretchParent" index="1"]
+light_mask = 5
 position = Vector2(0, -24)
 scale = Vector2(1.7, 1.7)
 sprite_frames = ExtResource("2_su6u0")
-animation = &"Dig_Up"
+animation = &"Idle"
 centered = false
 offset = Vector2(-11.1765, -14.1176)
+
+[node name="PointLight2D" type="PointLight2D" parent="StretchParent/Sprite" index="0"]
+position = Vector2(5.68434e-14, 0)
+scale = Vector2(0.626471, 0.626471)
+color = Color(1, 0.993344, 0.269287, 1)
+energy = 1.5
+range_item_cull_mask = 4
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_50aby")
+height = 15.0
