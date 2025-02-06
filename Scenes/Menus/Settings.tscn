@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="1_gliny"]
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="3_uwmcr"]
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="4_fs3n1"]
-[ext_resource type="LabelSettings" uid="uid://bg3bjthyi6ao5" path="res://Assets/Fonts/settingsFont.tres" id="6_fiaql"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="6_fiaql"]
 [ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_p0cnu"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="6_yel2d"]
 

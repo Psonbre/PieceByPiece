@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b47cgkimuryss" path="res://Scenes/PuzzlePieces/GhostPiece.tscn" id="3_uuchg"]
 [ext_resource type="Script" path="res://Scripts/in-game_ui.gd" id="4_ht8iu"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="4_otehi"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="5_weia1"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="5_weia1"]
 [ext_resource type="Script" path="res://Scripts/level_title.gd" id="7_10osd"]
 [ext_resource type="PackedScene" uid="uid://dh4cjxs7i6o8c" path="res://Scenes/Menus/PauseMenu.tscn" id="7_bsxew"]
 
@@ -30,10 +30,10 @@ script = ExtResource("4_ht8iu")
 z_index = 101
 layout_mode = 0
 offset_left = -700.0
-offset_top = -381.6
+offset_top = -115.2
 offset_right = 700.0
-offset_bottom = -181.6
-scale = Vector2(0.240345, 0.240345)
+offset_bottom = -95.2
+scale = Vector2(2.30818, 2.30818)
 pivot_offset = Vector2(698.995, 109.842)
 theme_override_fonts/font = ExtResource("4_otehi")
 text = "LEVEL 1"

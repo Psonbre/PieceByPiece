@@ -1,16 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://iiopsl2jnac1"]
+[gd_scene load_steps=16 format=3 uid="uid://iiopsl2jnac1"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_2asjq"]
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_q8shq"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_y3dni"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_ifsr2"]
 [ext_resource type="Script" path="res://Scripts/Buttons/PlayButton.gd" id="4_q0me5"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="5_pi4rr"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="5_pi4rr"]
 [ext_resource type="Script" path="res://Scripts/Buttons/credits_button.gd" id="5_tryhm"]
 [ext_resource type="Script" path="res://Scripts/Buttons/settingsButton.gd" id="6_7art6"]
 [ext_resource type="Script" path="res://Scripts/Buttons/ExitButton.gd" id="6_xfefy"]
 [ext_resource type="Texture2D" uid="uid://bnjlvngyx4wqx" path="res://Assets/Sprites/MainMenu/Piece.svg" id="7_8dkh6"]
 [ext_resource type="Texture2D" uid="uid://chvbdbjo8xytd" path="res://Assets/Sprites/MainMenu/By.svg" id="8_gt78w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfsqc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uamwl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqc2g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3r05"]
 
 [node name="MainMenu" type="Node2D"]
 z_index = 15
@@ -31,95 +39,119 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.75428, 1.75428)
 script = ExtResource("2_q8shq")
-FirstControl = NodePath("CenterContainer/Start")
+FirstControl = NodePath("VBoxContainer/CenterContainer/Start")
 metadata/_edit_horizontal_guides_ = [695.0]
 
-[node name="CenterContainer" type="Control" parent="MainMenu"]
-layout_mode = 2
-anchors_preset = 0
-offset_left = -360.0
-offset_top = -94.0
-offset_right = 362.0
-offset_bottom = -49.0
-pivot_offset = Vector2(360, 22.7457)
-script = ExtResource("2_y3dni")
-vertical_intensity = 7.0
-horizontal_speed = 0.25
-
-[node name="Start" type="Button" parent="MainMenu/CenterContainer"]
-custom_minimum_size = Vector2(210, 45)
-layout_mode = 2
-offset_left = 256.0
-offset_right = 466.0
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(104, 22.7457)
-focus_mode = 0
-theme_override_fonts/font = ExtResource("3_ifsr2")
-theme_override_font_sizes/font_size = 24
-flat = true
-script = ExtResource("4_q0me5")
-
-[node name="Label" type="Label" parent="MainMenu/CenterContainer/Start"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -2215.0
-offset_top = -118.5
-offset_right = 6018.0
-offset_bottom = 148.5
+offset_left = -105.0
+offset_top = -70.6843
+offset_right = 105.0
+offset_bottom = 199.316
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.15, 0.15)
-pivot_offset = Vector2(1880.53, 118.526)
+theme_override_constants/separation = 30
+
+[node name="CenterContainer" type="Control" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(210, 45)
+layout_mode = 2
+script = ExtResource("2_y3dni")
+vertical_intensity = 7.0
+horizontal_speed = 0.25
+
+[node name="Start" type="Button" parent="MainMenu/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(210, 45)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -22.5
+offset_right = 171.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(170.43, 19.9512)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ifsr2")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nfsqc")
+flat = true
+script = ExtResource("4_q0me5")
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/CenterContainer/Start"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -368.0
+offset_top = -10.5
+offset_right = 151.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(39.1361, 8.91861)
 theme_override_font_sizes/font_size = 0
 text = "PLAY"
 label_settings = ExtResource("5_pi4rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer2" type="Control" parent="MainMenu"]
+[node name="CenterContainer2" type="Control" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(210, 45)
 layout_mode = 2
-anchors_preset = 0
-offset_left = -360.0
-offset_top = 51.0
-offset_right = 362.0
-offset_bottom = 96.0
 script = ExtResource("2_y3dni")
 vertical_intensity = 7.0
 horizontal_speed = 0.25
 
-[node name="Credits" type="Button" parent="MainMenu/CenterContainer2"]
+[node name="Credits" type="Button" parent="MainMenu/VBoxContainer/CenterContainer2"]
 custom_minimum_size = Vector2(210, 45)
-layout_mode = 2
-offset_left = 256.0
-offset_right = 466.0
-offset_bottom = 45.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -22.5
+offset_right = 105.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(103.43, 23.1045)
 focus_next = NodePath("../../CenterContainer3/Exit")
 focus_previous = NodePath("../../CenterContainer4/Settings")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uamwl")
 flat = true
 script = ExtResource("5_tryhm")
 
-[node name="Label" type="Label" parent="MainMenu/CenterContainer2/Credits"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/CenterContainer2/Credits"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -752.0
-offset_top = -88.0
-offset_right = 6376.0
-offset_bottom = 223.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = 38.5
+offset_right = 344.0
+offset_bottom = 58.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.14, 0.14)
+scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(399.57, 100.246)
 theme_override_font_sizes/font_size = 0
 text = "CREDITS"
@@ -127,44 +159,51 @@ label_settings = ExtResource("5_pi4rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer4" type="Control" parent="MainMenu"]
+[node name="CenterContainer4" type="Control" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(210, 45)
 layout_mode = 2
-anchors_preset = 0
-offset_left = -360.0
-offset_top = -22.0
-offset_right = 362.0
-offset_bottom = 23.0
 script = ExtResource("2_y3dni")
 vertical_intensity = 7.0
 horizontal_speed = 0.25
 
-[node name="Settings" type="Button" parent="MainMenu/CenterContainer4"]
+[node name="Settings" type="Button" parent="MainMenu/VBoxContainer/CenterContainer4"]
 custom_minimum_size = Vector2(210, 45)
-layout_mode = 2
-offset_left = 256.0
-offset_right = 466.0
-offset_bottom = 45.0
-pivot_offset = Vector2(103.43, 19.7199)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -22.5
+offset_right = 105.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(105, 18.7302)
 focus_next = NodePath("../../CenterContainer2/Credits")
 focus_previous = NodePath("../../CenterContainer/Start")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jqc2g")
 flat = true
 script = ExtResource("6_7art6")
 
-[node name="Label" type="Label" parent="MainMenu/CenterContainer4/Settings"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/CenterContainer4/Settings"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -727.0
-offset_top = -83.0
-offset_right = 6043.0
-offset_bottom = 155.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = 34.5
+offset_right = 353.0
+offset_bottom = 54.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.14, 0.14)
+scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(399.57, 100.246)
 theme_override_font_sizes/font_size = 0
 text = "SETTINGS"
@@ -172,43 +211,49 @@ label_settings = ExtResource("5_pi4rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer3" type="Control" parent="MainMenu"]
+[node name="CenterContainer3" type="Control" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(210, 45)
 layout_mode = 2
-anchors_preset = 0
-offset_left = -360.0
-offset_top = 120.0
-offset_right = 362.0
-offset_bottom = 165.0
 script = ExtResource("2_y3dni")
 vertical_intensity = 7.0
 horizontal_speed = 0.25
 
-[node name="Exit" type="Button" parent="MainMenu/CenterContainer3"]
-custom_minimum_size = Vector2(210, 45)
-layout_mode = 2
-offset_left = 256.0
-offset_right = 466.0
-offset_bottom = 45.0
+[node name="Exit" type="Button" parent="MainMenu/VBoxContainer/CenterContainer3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -22.5
+offset_right = 105.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(105.71, 20.7985)
 focus_previous = NodePath("../../CenterContainer2/Credits")
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ifsr2")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p3r05")
 flat = true
 script = ExtResource("6_xfefy")
 
-[node name="Label" type="Label" parent="MainMenu/CenterContainer3/Exit"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/CenterContainer3/Exit"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -788.0
-offset_top = -84.0
-offset_right = 6853.0
-offset_bottom = 161.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 142.649
+offset_top = 40.481
+offset_right = 222.649
+offset_bottom = 60.481
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.14, 0.14)
+scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(399.57, 100.246)
 theme_override_font_sizes/font_size = 0
 text = "EXIT"
@@ -279,23 +324,23 @@ z_index = -1
 position = Vector2(10, 10)
 texture = ExtResource("7_8dkh6")
 
-[connection signal="focus_entered" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_entered"]
-[connection signal="focus_exited" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_mouse_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer/Start" to="MainMenu/CenterContainer/Start" method="_on_pressed"]
-[connection signal="focus_entered" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_mouse_entered"]
-[connection signal="focus_exited" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_mouse_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer2/Credits" to="MainMenu/CenterContainer2/Credits" method="_on_pressed"]
-[connection signal="focus_entered" from="MainMenu/CenterContainer4/Settings" to="MainMenu/CenterContainer4/Settings" method="_on_mouse_entered"]
-[connection signal="focus_exited" from="MainMenu/CenterContainer4/Settings" to="MainMenu/CenterContainer4/Settings" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MainMenu/CenterContainer4/Settings" to="MainMenu/CenterContainer4/Settings" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenu/CenterContainer4/Settings" to="MainMenu/CenterContainer4/Settings" method="_on_mouse_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer4/Settings" to="MainMenu/CenterContainer4/Settings" method="_on_pressed"]
-[connection signal="focus_entered" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_mouse_entered"]
-[connection signal="focus_exited" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_mouse_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer3/Exit" to="MainMenu/CenterContainer3/Exit" method="_on_pressed"]
+[connection signal="focus_entered" from="MainMenu/VBoxContainer/CenterContainer/Start" to="MainMenu/VBoxContainer/CenterContainer/Start" method="_on_mouse_entered"]
+[connection signal="focus_exited" from="MainMenu/VBoxContainer/CenterContainer/Start" to="MainMenu/VBoxContainer/CenterContainer/Start" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/CenterContainer/Start" to="MainMenu/VBoxContainer/CenterContainer/Start" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/VBoxContainer/CenterContainer/Start" to="MainMenu/VBoxContainer/CenterContainer/Start" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer/Start" to="MainMenu/VBoxContainer/CenterContainer/Start" method="_on_pressed"]
+[connection signal="focus_entered" from="MainMenu/VBoxContainer/CenterContainer2/Credits" to="MainMenu/VBoxContainer/CenterContainer2/Credits" method="_on_mouse_entered"]
+[connection signal="focus_exited" from="MainMenu/VBoxContainer/CenterContainer2/Credits" to="MainMenu/VBoxContainer/CenterContainer2/Credits" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/CenterContainer2/Credits" to="MainMenu/VBoxContainer/CenterContainer2/Credits" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/VBoxContainer/CenterContainer2/Credits" to="MainMenu/VBoxContainer/CenterContainer2/Credits" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer2/Credits" to="MainMenu/VBoxContainer/CenterContainer2/Credits" method="_on_pressed"]
+[connection signal="focus_entered" from="MainMenu/VBoxContainer/CenterContainer4/Settings" to="MainMenu/VBoxContainer/CenterContainer4/Settings" method="_on_mouse_entered"]
+[connection signal="focus_exited" from="MainMenu/VBoxContainer/CenterContainer4/Settings" to="MainMenu/VBoxContainer/CenterContainer4/Settings" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/CenterContainer4/Settings" to="MainMenu/VBoxContainer/CenterContainer4/Settings" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/VBoxContainer/CenterContainer4/Settings" to="MainMenu/VBoxContainer/CenterContainer4/Settings" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer4/Settings" to="MainMenu/VBoxContainer/CenterContainer4/Settings" method="_on_pressed"]
+[connection signal="focus_entered" from="MainMenu/VBoxContainer/CenterContainer3/Exit" to="MainMenu/VBoxContainer/CenterContainer3/Exit" method="_on_mouse_entered"]
+[connection signal="focus_exited" from="MainMenu/VBoxContainer/CenterContainer3/Exit" to="MainMenu/VBoxContainer/CenterContainer3/Exit" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/CenterContainer3/Exit" to="MainMenu/VBoxContainer/CenterContainer3/Exit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/VBoxContainer/CenterContainer3/Exit" to="MainMenu/VBoxContainer/CenterContainer3/Exit" method="_on_mouse_exited"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer3/Exit" to="MainMenu/VBoxContainer/CenterContainer3/Exit" method="_on_pressed"]

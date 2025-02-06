@@ -144,4 +144,4 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 	if (toggled_on):
 		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
-		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)

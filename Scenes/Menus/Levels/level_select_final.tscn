@@ -1,7 +1,7 @@
 [gd_scene load_steps=47 format=4 uid="uid://8dcsbkm7pdis"]
 
 [ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_vnx21"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_bpxj6"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="2_bpxj6"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_1y4iv"]
 [ext_resource type="PackedScene" uid="uid://g04py0wl4i5h" path="res://Scenes/Menus/Levels/level_button_template.tscn" id="4_vgi4h"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="6_p8dck"]

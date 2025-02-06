@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="3_nuvwt"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="3_q3am1"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_u3tsx"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="6_phcub"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="6_phcub"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="7_jmlqv"]
 [ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="8_1h0t4"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_k0jot"]
@@ -18,16 +18,16 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_glnxm"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_uoil6"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p5ow"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f48wd"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkk13"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv1m0"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vkhh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3h8w"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
@@ -129,7 +129,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_glnxm")
+shape = SubResource("CircleShape2D_uoil6")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -141,7 +141,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_1p5ow")
+shape = SubResource("RectangleShape2D_f48wd")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -153,7 +153,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_gkk13")
+shape = SubResource("RectangleShape2D_tv1m0")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -165,7 +165,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_8vkhh")
+shape = SubResource("RectangleShape2D_e3h8w")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="Level Button"]
@@ -175,13 +175,14 @@ material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
 metadata/_edit_lock_ = true
 
-[node name="WorldName" type="Label" parent="Level Button/Overlay"]
+[node name="LevelNumber" type="Label" parent="Level Button/Overlay"]
 z_index = 1
-offset_left = -74.0
-offset_top = -29.0
-offset_right = 405.0
-offset_bottom = 171.0
-scale = Vector2(0.305, 0.305)
+offset_left = -43.0
+offset_top = -24.0
+offset_right = 43.0
+offset_bottom = 12.0
+scale = Vector2(3.02034, 3.02034)
+pivot_offset = Vector2(42.6229, 16.3934)
 text = "1"
 label_settings = ExtResource("6_phcub")
 horizontal_alignment = 1

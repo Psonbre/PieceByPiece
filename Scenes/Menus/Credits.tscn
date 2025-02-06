@@ -1,18 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5ui348xrja2j"]
+[gd_scene load_steps=7 format=3 uid="uid://b5ui348xrja2j"]
 
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="1_fll2r"]
 [ext_resource type="Script" path="res://Scripts/credits.gd" id="1_jgnww"]
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_m0gci"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_yqpi3"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="3_6aw2s"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_xtxaf"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_56lap"]
-font = ExtResource("2_yqpi3")
-font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_dvsln"]
-font = ExtResource("2_yqpi3")
-font_size = 32
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_jgnww")
@@ -34,12 +27,13 @@ FirstControl = NodePath("Back")
 
 [node name="Title" type="Label" parent="Credits"]
 layout_mode = 2
-offset_left = -245.0
-offset_top = -305.0
-offset_right = 276.0
-offset_bottom = -217.0
+offset_left = -362.0
+offset_top = -306.0
+offset_right = -64.0
+offset_bottom = -279.0
+scale = Vector2(2.43669, 2.43669)
 text = "CREDITS"
-label_settings = SubResource("LabelSettings_56lap")
+label_settings = ExtResource("3_6aw2s")
 horizontal_alignment = 1
 script = ExtResource("3_xtxaf")
 
@@ -61,10 +55,10 @@ horizontal_intensity = 10
 [node name="Sounds" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = -531.926
-offset_top = 86.0158
-offset_right = 98.0739
-offset_bottom = 565.016
+offset_left = -584.697
+offset_top = 64.9077
+offset_right = 115.303
+offset_bottom = 543.908
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
@@ -76,7 +70,7 @@ horizontal_speed = 0.5
 layout_mode = 2
 text = "SOUND
 "
-label_settings = SubResource("LabelSettings_dvsln")
+label_settings = ExtResource("3_6aw2s")
 horizontal_alignment = 1
 
 [node name="Names" type="VBoxContainer" parent="Credits/Sounds"]
@@ -91,6 +85,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Interface sounds - Kenney"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer6" type="CenterContainer" parent="Credits/Sounds/Names"]
 layout_mode = 2
@@ -100,6 +95,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Impact sounds - Kenney"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer7" type="CenterContainer" parent="Credits/Sounds/Names"]
 layout_mode = 2
@@ -109,6 +105,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Rubbing Wooden sticks - NoisyRedFox"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer8" type="CenterContainer" parent="Credits/Sounds/Names"]
 layout_mode = 2
@@ -118,13 +115,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "2 Tallando madera - Checholio"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="Music" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 58.0475
+offset_left = 79.1557
 offset_top = -161.478
-offset_right = 688.047
+offset_right = 709.155
 offset_bottom = -41.4778
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
@@ -136,7 +134,7 @@ horizontal_speed = 0.5
 [node name="SubTitle" type="Label" parent="Credits/Music"]
 layout_mode = 2
 text = "MUSIC"
-label_settings = SubResource("LabelSettings_dvsln")
+label_settings = ExtResource("3_6aw2s")
 horizontal_alignment = 1
 
 [node name="Names" type="VBoxContainer" parent="Credits/Music"]
@@ -151,14 +149,15 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Cozy - One man symphony"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="Game" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 offset_left = -541.953
-offset_top = -157.256
+offset_top = -177.309
 offset_right = 88.0474
-offset_bottom = -21.2559
+offset_bottom = -12.3087
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
@@ -169,7 +168,7 @@ horizontal_speed = 0.5
 [node name="SubTitle2" type="Label" parent="Credits/Game"]
 layout_mode = 2
 text = "GAME_BY"
-label_settings = SubResource("LabelSettings_dvsln")
+label_settings = ExtResource("3_6aw2s")
 horizontal_alignment = 1
 
 [node name="Names2" type="VBoxContainer" parent="Credits/Game"]
@@ -184,6 +183,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Adam Maps"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer2" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
@@ -193,6 +193,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Philippe St-Laurent-Recoura"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer3" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
@@ -202,6 +203,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Zachary Meunier"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer4" type="CenterContainer" parent="Credits/Game/Names2"]
 layout_mode = 2
@@ -211,14 +213,15 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Chase Clayton"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="Assets" type="VBoxContainer" parent="Credits"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
-offset_left = 78.1003
-offset_top = 57.5198
-offset_right = 672.1
-offset_bottom = 536.52
+offset_left = 77.0449
+offset_top = 72.2955
+offset_right = 737.045
+offset_bottom = 551.296
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 20
 script = ExtResource("3_xtxaf")
@@ -229,7 +232,7 @@ horizontal_speed = 0.5
 [node name="SubTitle" type="Label" parent="Credits/Assets"]
 layout_mode = 2
 text = "VISUAL"
-label_settings = SubResource("LabelSettings_dvsln")
+label_settings = ExtResource("3_6aw2s")
 horizontal_alignment = 1
 
 [node name="Names" type="VBoxContainer" parent="Credits/Assets"]
@@ -245,6 +248,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Wooden pixel art GUI - Narik"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer5" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
@@ -254,6 +258,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Xeno Grunt - Pixramen "
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer6" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
@@ -263,6 +268,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Sci-fi lab - Foozle"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer7" type="CenterContainer" parent="Credits/Assets/Names"]
 visible = false
@@ -273,6 +279,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Pirate bomb - Pixel frog"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer8" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
@@ -282,6 +289,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Kings and pigs - Pixel frog"
+label_settings = ExtResource("3_6aw2s")
 
 [node name="CenterContainer9" type="CenterContainer" parent="Credits/Assets/Names"]
 layout_mode = 2
@@ -291,6 +299,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_yqpi3")
 theme_override_font_sizes/font_size = 18
 text = "Miner Theme - SpaceCadetAstrodite"
+label_settings = ExtResource("3_6aw2s")
 
 [connection signal="mouse_entered" from="Credits/Back" to="Credits/Back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Credits/Back" to="Credits/Back" method="_on_mouse_exited"]

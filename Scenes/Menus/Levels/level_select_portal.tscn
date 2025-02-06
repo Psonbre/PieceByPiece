@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=4 uid="uid://b68uehlcqyv87"]
 
 [ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_wrs4d"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_6kkkk"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="2_6kkkk"]
 [ext_resource type="Gradient" uid="uid://b2twdclajye8e" path="res://Assets/Gradients/portal_gradient.tres" id="2_txa14"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_y27b6"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_lfhfd"]

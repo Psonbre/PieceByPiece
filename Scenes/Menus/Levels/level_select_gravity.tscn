@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=4 uid="uid://dhpcnh7715vqt"]
 
 [ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_hw3u3"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/default_label_settings.tres" id="2_7hix5"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="2_7hix5"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_33x7h"]
 [ext_resource type="PackedScene" uid="uid://g04py0wl4i5h" path="res://Scenes/Menus/Levels/level_button_template.tscn" id="4_d4odu"]
 [ext_resource type="PackedScene" uid="uid://dn5jdke6odae0" path="res://Scenes/Levels/Level61.tscn" id="5_sf2wd"]

@@ -3,11 +3,10 @@
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_pbsfd"]
 
 [resource]
-line_spacing = 171.25
 font = ExtResource("1_pbsfd")
-font_size = 200
-outline_size = 50
+font_size = 20
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 50
+shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(20, 20)
+shadow_offset = Vector2(2, 2)
