@@ -17,6 +17,7 @@ var vsyncModePossible: Dictionary = {
 		'ENABLED' : [DisplayServer.VSYNC_ENABLED,""],
 		'ADAPTIVE' : [DisplayServer.VSYNC_ADAPTIVE, "ADAPTIVE_TOOLTIP"]
 		}
+		
 var languagesPossible: Dictionary = {
 	'English' : ['en', flagsPath + "english.png"],
 	'Québecois' : ['fr_CA', flagsPath + "quebec.png"],
@@ -29,7 +30,8 @@ var languagesPossible: Dictionary = {
 	'한국어' : ['ko', flagsPath + "south_korea.png"],
 	'日本語' : ['ja', flagsPath + "japan.png"],
 	'हिन्दी' : ['hi', flagsPath + "india.png"],
-	'普通话' : ['cmn', flagsPath + "china.png"]
+	'普通话(Simplified)' : ['cmn_Hans', flagsPath + "china.png"],
+	'普通话(Traditional)' : ['cmn_Hant', flagsPath + "china.png"]
 }
 
 # Called when the node enters the scene tree for the first time.
