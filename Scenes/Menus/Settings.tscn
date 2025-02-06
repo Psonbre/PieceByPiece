@@ -1,17 +1,48 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbl6sigulrew8"]
+[gd_scene load_steps=12 format=3 uid="uid://dbl6sigulrew8"]
 
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_7isfi"]
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="1_gliny"]
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="3_uwmcr"]
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="4_fs3n1"]
-[ext_resource type="LabelSettings" uid="uid://m61ok162yvmy" path="res://Assets/Fonts/pixelFont.tres" id="5_e5vn6"]
 [ext_resource type="LabelSettings" uid="uid://bg3bjthyi6ao5" path="res://Assets/Fonts/settingsFont.tres" id="6_fiaql"]
 [ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_p0cnu"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="6_yel2d"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_56lap"]
+[sub_resource type="LabelSettings" id="LabelSettings_lwssg"]
 font = ExtResource("1_7isfi")
-font_size = 64
+font_size = 46
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e52ha"]
+font = ExtResource("1_7isfi")
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3tyqm"]
+font = ExtResource("1_7isfi")
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsq6o"]
+font = ExtResource("1_7isfi")
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="Settings" type="Node2D"]
 z_index = 15
@@ -38,9 +69,17 @@ offset_left = 309.0
 offset_top = -15.5
 offset_right = 830.0
 offset_bottom = 72.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("1_7isfi")
+theme_override_font_sizes/font_size = 56
 text = "SETTINGS"
-label_settings = SubResource("LabelSettings_56lap")
+label_settings = SubResource("LabelSettings_lwssg")
 horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("6_yel2d")
 
 [node name="Back" type="Button" parent="Settings"]
@@ -96,7 +135,7 @@ theme_override_constants/separation = 15
 [node name="SubTitle3" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General"]
 layout_mode = 2
 text = "GENERAL"
-label_settings = ExtResource("5_e5vn6")
+label_settings = SubResource("LabelSettings_e52ha")
 horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
@@ -133,7 +172,7 @@ theme_override_constants/separation = 15
 [node name="SubTitle" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
 text = "DISPLAY"
-label_settings = ExtResource("5_e5vn6")
+label_settings = SubResource("LabelSettings_3tyqm")
 horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0
@@ -192,7 +231,7 @@ theme_override_constants/separation = 15
 [node name="SubTitle2" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
 text = "AUDIO"
-label_settings = ExtResource("5_e5vn6")
+label_settings = SubResource("LabelSettings_wsq6o")
 horizontal_alignment = 1
 script = ExtResource("6_p0cnu")
 vertical_intensity = 5.0

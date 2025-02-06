@@ -4,3 +4,8 @@
 
 [resource]
 font = ExtResource("1_7ce0f")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
