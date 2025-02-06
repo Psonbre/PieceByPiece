@@ -141,22 +141,68 @@ func _ready() -> void:
 	disabled = settings.get_setting(\"SteamUploader/presets/File Name\").is_empty() || settings.get_setting(\"SteamUploader/presets/Build Preset\") == -1
 
 func _on_pressed() -> void:
-	var preset_path := build_path.strip_edges() + \"\\\\\" + build_preset.get_item_text(build_preset.selected) 
+	# Get the export preset name from the OptionButton.
+	var preset_name := build_preset.get_item_text(build_preset.selected)
+	# Build a folder for this preset under the builds directory.
+	var preset_path := build_path.strip_edges() + \"/\" + preset_name
 	_create_missing_directories(preset_path)
+	
+	# Get the Godot executable (used for headless export).
 	var godot_executable = OS.get_executable_path()
 	print(godot_executable)
+	
+	# Determine the file name based on the preset's configured platform.
+	var base_name := file_name.text.strip_edges()
+	var target_file_name := _get_export_file_name(base_name, preset_name)
+	
+	# Combine the preset folder and file name into a full export path.
+	var full_export_path := preset_path + \"/\" + target_file_name
 	
 	var args = [
 		\"--headless\",
 		\"--export-release\",
-		build_preset.get_item_text(build_preset.selected),
-		preset_path + \"\\\\\" + file_name.text.strip_edges(),
+		preset_name,
+		full_export_path,
 		\"--quit\"
 	]
-
+	
 	OS.execute(godot_executable, args, [])
 	confirmation_dialog.popup_centered()
 	file_name.text_changed.emit.call_deferred(file_name.text)
+
+# This function determines the proper file name (and extension) based on the platform.
+func _get_export_file_name(base_name: String, preset_name: String) -> String:
+	# Look up the platform from the preset configuration.
+	var platform := _get_preset_platform(preset_name)
+	var lower_platform = platform.to_lower()
+	print(lower_platform)
+	# Adjust file name according to the platform.
+	if lower_platform == \"windows desktop\" :
+		return base_name + \".exe\"
+	elif lower_platform == \"web\" :
+		return \"index.html\"
+	else:
+		return base_name
+
+# This helper function loads the export preset configuration and returns the platform.
+func _get_preset_platform(preset_name: String) -> String:
+	var config = ConfigFile.new()
+	# Load the export presets configuration file.
+	# (Make sure the path is correct for your project setup.)
+	var err = config.load(\"res://export_presets.cfg\")
+	if err != OK:
+		push_error(\"Failed to load export_presets.cfg: error %d\" % err)
+		return \"\"
+		
+	# The export_presets.cfg file is typically structured with sections
+	# (for example, [preset0], [preset1], etc.) containing properties like \"name\" and \"platform\".
+	for section in config.get_sections():
+		# Retrieve the preset's stored name.
+		var config_preset_name = str(config.get_value(section, \"name\", \"\"))
+		# If it matches the preset name from the OptionButton, return its platform.
+		if config_preset_name == preset_name:
+			return str(config.get_value(section, \"platform\", \"\"))
+	return \"\"
 
 func _create_missing_directories(path: String) -> void:
 	var absolute_path = ProjectSettings.globalize_path(path)
@@ -404,7 +450,7 @@ clip_text = true
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "The name of the file that will be executed by Steam. This needs to have the same name as the one you set up in Steamworks."
-placeholder_text = "game.exe"
+placeholder_text = "PieceByPiece"
 
 [node name="BuildPreset" type="HBoxContainer" parent="Build"]
 layout_mode = 2
