@@ -9,16 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://33mcraqrs0sn" path="res://Scenes/PuzzlePieces/Collectible.tscn" id="9_rq3tl"]
 [ext_resource type="PackedScene" uid="uid://b0c43sr0v666w" path="res://Scenes/PuzzlePieces/PuzzlePiece.tscn" id="10_knike"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2ehbr"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vngk2"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8us5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huy1u"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmct3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfypn"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ou38u"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jndip"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e135d"]
@@ -27,28 +27,28 @@ shader = ExtResource("7_nvuip")
 shader_parameter/speed = 0.0
 shader_parameter/color = Vector4(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cu6r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ujd"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xwmy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6wl4"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtuh0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jylou"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xqai"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rgmm"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2j352"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qicrf"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dr8ps"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ey8wk"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gqat"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bglo2"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pn5e8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g7h0"]
 size = Vector2(35, 70)
 
 [node name="Level 1" instance=ExtResource("1_i5yom")]
@@ -64,9 +64,9 @@ position = Vector2(135, 219)
 [node name="LevelName2" type="RichTextLabel" parent="Control" index="1"]
 z_index = 30
 layout_mode = 0
-offset_left = -254.4
+offset_left = -462.0
 offset_top = -204.0
-offset_right = 3764.6
+offset_right = 6846.0
 offset_bottom = 222.0
 scale = Vector2(0.126, 0.126)
 mouse_filter = 2
@@ -130,16 +130,16 @@ shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_2ehbr")
+shape = SubResource("CircleShape2D_vngk2")
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_g8us5")
+shape = SubResource("RectangleShape2D_huy1u")
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_mmct3")
+shape = SubResource("RectangleShape2D_nfypn")
 
 [node name="CollisionShape2D" parent="PuzzlePiece4/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_ou38u")
+shape = SubResource("RectangleShape2D_jndip")
 
 [node name="Shadow" parent="PuzzlePiece4" index="2"]
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128)
@@ -168,20 +168,20 @@ shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("RectangleShape2D_4cu6r")
+shape = SubResource("RectangleShape2D_q4ujd")
 
 [node name="LeftConnector" parent="PuzzlePiece5/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_3xwmy")
+shape = SubResource("RectangleShape2D_a6wl4")
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_xtuh0")
+shape = SubResource("RectangleShape2D_jylou")
 
 [node name="CollisionShape2D" parent="PuzzlePiece5/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_4xqai")
+shape = SubResource("RectangleShape2D_2rgmm")
 
 [node name="Shadow" parent="PuzzlePiece5" index="2"]
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 121.172, -34.3275, 114.606, -32.3358, 108.555, -29.1014, 103.251, -24.7487, 98.8986, -19.445, 95.6642, -13.3939, 93.6725, -6.82816, 93, -4.28612e-15, 93.6725, 6.82816, 95.6642, 13.3939, 98.8986, 19.445, 103.251, 24.7487, 108.555, 29.1014, 114.606, 32.3358, 121.172, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -121.172, 34.3275, -114.606, 32.3358, -108.555, 29.1014, -103.251, 24.7487, -98.8986, 19.445, -95.6642, 13.3939, -93.6725, 6.82816, -93, 0, -93.6725, -6.82816, -95.6642, -13.3939, -98.8986, -19.445, -103.251, -24.7487, -108.555, -29.1014, -114.606, -32.3358, -121.172, -34.3275, -128, -35)
@@ -220,20 +220,20 @@ shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece6/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_2j352")
+shape = SubResource("CircleShape2D_qicrf")
 
 [node name="LeftConnector" parent="PuzzlePiece6/Shape/Connectors" index="1"]
 shape = 1
 
 [node name="CollisionShape2D" parent="PuzzlePiece6/Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_dr8ps")
+shape = SubResource("CircleShape2D_ey8wk")
 
 [node name="CollisionShape2D" parent="PuzzlePiece6/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_5gqat")
+shape = SubResource("RectangleShape2D_bglo2")
 
 [node name="CollisionShape2D" parent="PuzzlePiece6/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_pn5e8")
+shape = SubResource("RectangleShape2D_2g7h0")
 
 [node name="Shadow" parent="PuzzlePiece6" index="2"]
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35)
