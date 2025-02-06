@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b6gcmgbc1qhm6"
+
+[deps]
+
+files=["res://Scripts/Manager/PieceByPieceTranslation - Sheet1.en.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.fr.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.fr_CA.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.es.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.cmn_Hans.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.cmn_Hant.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.de.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.it.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.ru.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.ko.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.hi.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.ja.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.pt.translation"]
+
+source_file="res://Scripts/Manager/PieceByPieceTranslation - Sheet1.csv"
+dest_files=["res://Scripts/Manager/PieceByPieceTranslation - Sheet1.en.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.fr.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.fr_CA.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.es.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.cmn_Hans.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.cmn_Hant.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.de.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.it.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.ru.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.ko.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.hi.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.ja.translation", "res://Scripts/Manager/PieceByPieceTranslation - Sheet1.pt.translation"]
+
+[params]
+
+compress=true
+delimiter=0
