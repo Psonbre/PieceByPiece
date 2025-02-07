@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Buttons/pause_menu.gd" id="1_87pjb"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_dm8fx"]
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_gauam"]
-[ext_resource type="Texture2D" uid="uid://b25umqcyc7lr4" path="res://Assets/Icons/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="3_60wth"]
-[ext_resource type="Texture2D" uid="uid://bmdpyw1lbygn0" path="res://Assets/Icons/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="4_x5f66"]
+[ext_resource type="Texture2D" uid="uid://b25umqcyc7lr4" path="res://Assets/Icons/menu.png" id="3_60wth"]
+[ext_resource type="Texture2D" uid="uid://bmdpyw1lbygn0" path="res://Assets/Icons/close.png" id="4_x5f66"]
 [ext_resource type="Script" path="res://Scripts/pause_menu_button.gd" id="5_1twl6"]
-[ext_resource type="Texture2D" uid="uid://whbh7aod6y0e" path="res://Assets/Icons/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="6_3c6h6"]
-[ext_resource type="Texture2D" uid="uid://b7awj8cuibmoa" path="res://Assets/Icons/refresh_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="7_6n21h"]
-[ext_resource type="Texture2D" uid="uid://dryd3defeh2y" path="res://Assets/Icons/settings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" id="8_hp646"]
+[ext_resource type="Texture2D" uid="uid://whbh7aod6y0e" path="res://Assets/Icons/home.png" id="6_3c6h6"]
+[ext_resource type="Texture2D" uid="uid://b7awj8cuibmoa" path="res://Assets/Icons/refresh.png" id="7_6n21h"]
+[ext_resource type="Texture2D" uid="uid://dryd3defeh2y" path="res://Assets/Icons/settings.png" id="8_hp646"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_02sbc"]
 
