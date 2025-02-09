@@ -139,7 +139,7 @@ grow_vertical = 1
 rotation = 1.57079
 scale = Vector2(0.657755, 0.657755)
 target_focus_node = NodePath("../../BasicWorldContainer/Basic World")
-required_completed_worlds = [NodePath("../Demo World")]
+required_completed_worlds = [NodePath("../../BasicWorldContainer/Basic World")]
 
 [node name="BasicWorldContainer" type="Control" parent="TreeContainer/Tree" groups=["WorldGroup"]]
 custom_minimum_size = Vector2(256, 256)

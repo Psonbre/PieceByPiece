@@ -1,7 +1,6 @@
-[gd_scene load_steps=29 format=4 uid="uid://bx8ht3bt5lbpu"]
+[gd_scene load_steps=22 format=4 uid="uid://bx8ht3bt5lbpu"]
 
 [ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="1_fwsvf"]
-[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_5d7h1"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="2_dcqmi"]
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_xppke"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="4_2tobx"]
@@ -17,16 +16,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_24x4k"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hxnsx"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ep266"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6hw1"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcdms"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnqse"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m023e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8e4o"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rowhg"]
@@ -53,23 +52,6 @@ width = 4.0
 texture = ExtResource("10_mtlgj")
 scrolling_speed = 1.4
 z_index = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwce8"]
-size = Vector2(256, 256)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2c0g"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cg250"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnm3l"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrsw8"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpvsi"]
-size = Vector2(40, 80)
 
 [node name="Template World" type="Button"]
 custom_minimum_size = Vector2(256, 256)
@@ -134,7 +116,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_24x4k")
+shape = SubResource("CircleShape2D_hxnsx")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
@@ -146,7 +128,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_ep266")
+shape = SubResource("CircleShape2D_c6hw1")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
@@ -158,7 +140,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_wcdms")
+shape = SubResource("RectangleShape2D_hnqse")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
@@ -170,7 +152,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_m023e")
+shape = SubResource("RectangleShape2D_n8e4o")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="."]
@@ -298,94 +280,6 @@ script = ExtResource("8_ymn1m")
 normal_outline = SubResource("Resource_gdms5")
 dragging_outline = SubResource("Resource_derie")
 highlight_outline = SubResource("Resource_derie")
-
-[node name="Collectible" type="Area2D" parent="."]
-position = Vector2(233, 24)
-scale = Vector2(0.107197, 0.107197)
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible"]
-visible = false
-shape = SubResource("RectangleShape2D_gwce8")
-metadata/_edit_lock_ = true
-
-[node name="Shape" type="Polygon2D" parent="Collectible"]
-clip_children = 2
-material = SubResource("ShaderMaterial_x2c0g")
-polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
-script = ExtResource("2_5d7h1")
-connector_radius = 40.0
-
-[node name="Connectors" type="Node2D" parent="Collectible/Shape"]
-visible = false
-z_index = 2
-metadata/_edit_lock_ = true
-
-[node name="RightConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
-position = Vector2(128, 0)
-collision_mask = 5
-script = ExtResource("5_ag18d")
-shape = 1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_cg250")
-metadata/_edit_lock_ = true
-
-[node name="LeftConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
-position = Vector2(-128, 0)
-rotation = 3.14159
-collision_mask = 5
-script = ExtResource("5_ag18d")
-shape = 1
-type = -1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/LeftConnector"]
-position = Vector2(-19, 0)
-shape = SubResource("RectangleShape2D_bnm3l")
-metadata/_edit_lock_ = true
-
-[node name="TopConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
-position = Vector2(0, -128)
-rotation = -1.57079
-collision_mask = 5
-script = ExtResource("5_ag18d")
-shape = 1
-type = -1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/TopConnector"]
-position = Vector2(-19, 0)
-shape = SubResource("RectangleShape2D_yrsw8")
-metadata/_edit_lock_ = true
-
-[node name="BottomConnector" type="Area2D" parent="Collectible/Shape/Connectors"]
-position = Vector2(0, 128)
-rotation = 1.57079
-collision_mask = 5
-script = ExtResource("5_ag18d")
-shape = 1
-type = -1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible/Shape/Connectors/BottomConnector"]
-position = Vector2(-19, 0)
-shape = SubResource("RectangleShape2D_xpvsi")
-metadata/_edit_lock_ = true
-
-[node name="Outline" type="Line2D" parent="Collectible"]
-texture_repeat = 2
-points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
-closed = true
-width = 13.0
-default_color = Color(0, 0, 0, 1)
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("8_ymn1m")
-metadata/_edit_lock_ = true
 
 [connection signal="focus_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_mouse_exited"]

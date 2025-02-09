@@ -59,7 +59,7 @@ func _on_mouse_exited():
 
 func _on_pressed() -> void:
 	if locked : return
-	if SubSystemManager.get_scene_manager().load_level_select(world, Vector2(1,0)) :
+	if SubSystemManager.get_scene_manager().load_level_select(world, Vector2(0,1)) :
 		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/button_click.ogg"), -8, 1)
 		for group in get_tree().get_nodes_in_group("WorldGroup"):
 			if !group.is_ancestor_of(self) :

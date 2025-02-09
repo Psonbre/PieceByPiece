@@ -1,25 +1,28 @@
-[gd_scene load_steps=16 format=4 uid="uid://c5vxwbnikmdly"]
+[gd_scene load_steps=19 format=4 uid="uid://c5vxwbnikmdly"]
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_tbae5"]
+[ext_resource type="Texture2D" uid="uid://d0j4o4udv7urm" path="res://Assets/Menus/demo_puzzle_box.png" id="2_muvrd"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_tpegy"]
 [ext_resource type="PackedScene" uid="uid://bma7yafpcsvkx" path="res://Scenes/PuzzlePieces/rift.tscn" id="2_we3y2"]
+[ext_resource type="Texture2D" uid="uid://dv645irpadr5w" path="res://Assets/Menus/progress_indicator_frame.png" id="3_h60um"]
 [ext_resource type="SpriteFrames" uid="uid://pfqe3y6qifpl" path="res://Scenes/PlayerSprites/alien_frames.tres" id="3_tmip6"]
 [ext_resource type="PackedScene" uid="uid://cqfgi7k08veo6" path="res://Scenes/Interactables/portal.tscn" id="3_wu544"]
+[ext_resource type="Texture2D" uid="uid://2thysoswfry" path="res://Assets/Menus/complete banner.png" id="4_yknrv"]
 [ext_resource type="SpriteFrames" uid="uid://orhbrvew8ol3" path="res://Scenes/PlayerSprites/miner_frames.tres" id="5_h72yf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4v12"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii4xh"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq6dr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udlio"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5lml"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1lbv"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5jtsx"]
-radius = 35.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wr2fb"]
+size = Vector2(35, 70)
 
 [sub_resource type="Animation" id="Animation_t6n88"]
 resource_name = "Preview"
@@ -271,9 +274,26 @@ size_flags_vertical = 3
 nb_of_levels = 13
 world = 12
 
-[node name="Shape" parent="." index="0"]
+[node name="DemoPuzzleBox" type="Sprite2D" parent="." index="0"]
+z_index = 1
+position = Vector2(128, 129)
+scale = Vector2(0.598783, 0.598783)
+texture = ExtResource("2_muvrd")
+
+[node name="ProgressIndicatorFrame" type="Sprite2D" parent="DemoPuzzleBox" index="0"]
+position = Vector2(153.645, -153.645)
+scale = Vector2(0.745313, 0.745313)
+texture = ExtResource("3_h60um")
+
+[node name="CompleteBanner" type="Sprite2D" parent="DemoPuzzleBox" index="1"]
+position = Vector2(161.995, -71.8124)
+scale = Vector2(0.889535, 0.889535)
+texture = ExtResource("4_yknrv")
+
+[node name="Shape" parent="." index="1"]
 material = SubResource("ShaderMaterial_g8q12")
-polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
+polygon = PackedVector2Array(-129, -93, -105, -128, 128, -128, 129, 106, 107, 131, -128, 128)
+script = null
 
 [node name="Background" parent="Shape" index="0"]
 tile_map_data = PackedByteArray("AAD+////AwABAAgAAAD+/wEACAABAAgAAAD//wEACAABAAgAAAD/////AwABAAgAAAAAAP//AwABAAgAAAAAAAEACAABAAgAAAABAAEAAgAAAAcAAAABAAAAAgAAAAYAAAABAP7/AgAAAAUAAAABAP//AgAAAAYAAAACAAEAAgACAAcAAAACAAAAAgACAAYAAAACAP//AgACAAYAAAACAP7/AgACAAUAAAD9/wEACAAAAAgAAAADAAEAAwACAAgAAAA=")
@@ -295,24 +315,20 @@ shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_c4v12")
+shape = SubResource("RectangleShape2D_ii4xh")
 
 [node name="LeftConnector" parent="Shape/Connectors" index="1"]
 shape = 0
 
 [node name="CollisionShape2D" parent="Shape/Connectors/LeftConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_fq6dr")
+shape = SubResource("RectangleShape2D_udlio")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_q5lml")
-
-[node name="BottomConnector" parent="Shape/Connectors" index="3"]
-shape = 1
+shape = SubResource("RectangleShape2D_q1lbv")
 
 [node name="CollisionShape2D" parent="Shape/Connectors/BottomConnector" index="0"]
-position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_5jtsx")
+shape = SubResource("RectangleShape2D_wr2fb")
 
 [node name="Rift" parent="Shape" index="4" instance=ExtResource("2_we3y2")]
 points = PackedVector2Array(26, -129, 26, 76, 129, 76)
@@ -349,50 +365,61 @@ sprite_frames = ExtResource("5_h72yf")
 animation = &"Jump"
 offset = Vector2(-1.98257e-35, -9.47059)
 
-[node name="Overlay" parent="." index="1"]
+[node name="Overlay" parent="." index="2"]
 clip_children = 0
 material = SubResource("ShaderMaterial_g8q12")
 polygon = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -128, -128)
 
 [node name="WorldName" parent="Overlay" index="0"]
-offset_left = -202.0
-offset_right = 198.0
-offset_bottom = 117.0
+visible = false
+offset_left = -193.0
+offset_top = 67.0
+offset_right = 207.0
+offset_bottom = 87.0
 scale = Vector2(0.94, 0.94)
 pivot_offset = Vector2(202.553, 8.93617)
 text = "WORLD_DEMO"
 
 [node name="Collectibles" parent="Overlay" index="1"]
-offset_left = 7.0
-offset_top = -116.0
-offset_right = 93.0
-offset_bottom = -89.0
+offset_left = 36.0
+offset_top = -108.0
+offset_right = 122.0
+offset_bottom = -81.0
 scale = Vector2(0.9, 0.9)
 
 [node name="Levels" parent="Overlay" index="2"]
-offset_left = -125.0
+offset_left = -84.0
 offset_top = -118.0
-offset_right = 35.0
+offset_right = 76.0
 offset_bottom = -86.0
 scale = Vector2(0.9, 0.9)
 
-[node name="BevelLeft" parent="." index="2"]
+[node name="PlayIcon" parent="Overlay" index="4"]
+position = Vector2(18, -24)
+
+[node name="BevelLeft" parent="." index="3"]
+visible = false
 polygon = PackedVector2Array(-128, 128, -128, -128, -124.3, -124.3, -124.3, 124.3)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="BevelTop" parent="." index="4"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_g1l7q")
 }
 
-[node name="BevelRight" parent="." index="5"]
+[node name="BevelRight" parent="." index="6"]
+visible = false
 polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
 
-[node name="BevelBottom" parent="." index="6"]
-polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
+[node name="BevelBottom" parent="." index="7"]
+visible = false
 
-[node name="Shadow" parent="." index="7"]
-points = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128)
+[node name="Shadow" parent="." index="8"]
+visible = false
+points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
 
-[node name="Outline" parent="." index="8"]
+[node name="Outline" parent="." index="9"]
 material = SubResource("ShaderMaterial_ib866")
-points = PackedVector2Array(-128, -128, 128, -128, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128)
+points = PackedVector2Array(-129, -93, -106, -128, 128, -128, 129, 105, 105, 131, -129, 130)
