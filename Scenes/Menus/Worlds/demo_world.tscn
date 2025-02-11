@@ -48,22 +48,9 @@ world = 12
 z_index = 0
 
 [node name="BoxTop" parent="DemoPuzzleBox" index="0"]
-visible = false
 z_index = 1
 position = Vector2(25.8858, -47.5965)
 scale = Vector2(1.01171, 1.01097)
-
-[node name="ProgressIndicatorFrame" parent="DemoPuzzleBox" index="1"]
-z_index = 1
-
-[node name="CompletedLevels" parent="DemoPuzzleBox/ProgressIndicatorFrame" index="0"]
-text = "0"
-
-[node name="NumberOfLevels" parent="DemoPuzzleBox/ProgressIndicatorFrame" index="1"]
-text = "10"
-
-[node name="CompleteBanner" parent="DemoPuzzleBox" index="2"]
-z_index = 1
 
 [node name="Shape" parent="." index="1"]
 material = SubResource("ShaderMaterial_g8q12")
@@ -111,7 +98,7 @@ offset = Vector2(-1.98257e-35, -9.47059)
 flip_h = true
 
 [node name="PlayerSprite3" type="Node2D" parent="Shape" index="8"]
-position = Vector2(58, -50)
+position = Vector2(75, -30)
 scale = Vector2(0.833, 0.833)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite3" index="0"]
@@ -121,11 +108,11 @@ sprite_frames = ExtResource("5_h72yf")
 animation = &"Dig_Down"
 offset = Vector2(-1.98257e-35, -9.47059)
 
-[node name="PlayerSprite" type="Node2D" parent="Shape" index="9" groups=["PlayerSprites"]]
+[node name="PlayerSprite" type="Node2D" parent="Shape" index="9"]
 position = Vector2(-53, -69)
 scale = Vector2(0.833, 0.833)
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite" index="0" groups=["AffectedByInternalLight"]]
+[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite" index="0"]
 position = Vector2(27.611, 15.6062)
 scale = Vector2(1.333, 1.333)
 sprite_frames = ExtResource("6_fhws3")

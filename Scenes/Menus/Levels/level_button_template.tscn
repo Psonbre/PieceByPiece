@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=4 uid="uid://g04py0wl4i5h"]
+[gd_scene load_steps=22 format=4 uid="uid://g04py0wl4i5h"]
 
 [ext_resource type="Script" path="res://Scripts/level_select_button.gd" id="1_6ru04"]
-[ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_12a0w"]
 [ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="3_nuvwt"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="3_q3am1"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_u3tsx"]
@@ -9,7 +8,8 @@
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="7_jmlqv"]
 [ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="8_1h0t4"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_k0jot"]
-[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="10_r224p"]
+[ext_resource type="Texture2D" uid="uid://gx3nrxtt7v6n" path="res://Assets/Sprites/moving_outline_texture_black_background.png" id="9_ve2n1"]
+[ext_resource type="Texture2D" uid="uid://bjqgycxpwg74q" path="res://Assets/Menus/gold_piece_icon.png" id="10_sf7g0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgvne"]
 
@@ -18,16 +18,16 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b3fsc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_buf6i"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgqqe"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kkfw"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpog0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mansm"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pn1kb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ffiw"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
@@ -48,29 +48,12 @@ z_index = -1
 script = ExtResource("8_1h0t4")
 color = Color(1, 1, 1, 1)
 visible = true
-width = 4.0
-texture = ExtResource("10_r224p")
+width = 12.0
+texture = ExtResource("9_ve2n1")
 scrolling_speed = 1.4
 z_index = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j0k0n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2rt7"]
-size = Vector2(256, 256)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vw1df"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5wvyj"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk0l2"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuvt0"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_67grv"]
-size = Vector2(40, 80)
 
 [node name="Control" type="Button" groups=["LevelSelectButton"]]
 z_index = 15
@@ -129,7 +112,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_b3fsc")
+shape = SubResource("CircleShape2D_buf6i")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -141,7 +124,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_rgqqe")
+shape = SubResource("RectangleShape2D_5kkfw")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -153,7 +136,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_xpog0")
+shape = SubResource("RectangleShape2D_mansm")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -165,7 +148,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_pn1kb")
+shape = SubResource("RectangleShape2D_7ffiw")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="Level Button"]
@@ -240,94 +223,11 @@ material = SubResource("ShaderMaterial_j0k0n")
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
-[node name="Collectible" type="Area2D" parent="Level Button"]
-position = Vector2(116, -119)
-scale = Vector2(0.312508, 0.312508)
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Collectible"]
-visible = false
-shape = SubResource("RectangleShape2D_g2rt7")
-metadata/_edit_lock_ = true
-
-[node name="Shape" type="Polygon2D" parent="Level Button/Collectible"]
-clip_children = 2
-material = SubResource("ShaderMaterial_vw1df")
-color = Color(0, 0, 0, 0.298039)
-polygon = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
-script = ExtResource("2_12a0w")
-connector_radius = 40.0
-
-[node name="Connectors" type="Node2D" parent="Level Button/Collectible/Shape"]
-visible = false
+[node name="Collectible" type="Sprite2D" parent="Level Button"]
 z_index = 2
-metadata/_edit_lock_ = true
-
-[node name="RightConnector" type="Area2D" parent="Level Button/Collectible/Shape/Connectors"]
-position = Vector2(128, 0)
-collision_mask = 5
-script = ExtResource("5_u3tsx")
-shape = 1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Collectible/Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_5wvyj")
-metadata/_edit_lock_ = true
-
-[node name="LeftConnector" type="Area2D" parent="Level Button/Collectible/Shape/Connectors"]
-position = Vector2(-128, 0)
-rotation = 3.14159
-collision_mask = 5
-script = ExtResource("5_u3tsx")
-shape = 1
-type = -1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Collectible/Shape/Connectors/LeftConnector"]
-position = Vector2(-19, 0)
-shape = SubResource("RectangleShape2D_hk0l2")
-metadata/_edit_lock_ = true
-
-[node name="TopConnector" type="Area2D" parent="Level Button/Collectible/Shape/Connectors"]
-position = Vector2(0, -128)
-rotation = -1.57079
-collision_mask = 5
-script = ExtResource("5_u3tsx")
-shape = 1
-type = -1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Collectible/Shape/Connectors/TopConnector"]
-position = Vector2(-19, 0)
-shape = SubResource("RectangleShape2D_tuvt0")
-metadata/_edit_lock_ = true
-
-[node name="BottomConnector" type="Area2D" parent="Level Button/Collectible/Shape/Connectors"]
-position = Vector2(0, 128)
-rotation = 1.57079
-collision_mask = 5
-script = ExtResource("5_u3tsx")
-shape = 1
-type = -1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Collectible/Shape/Connectors/BottomConnector"]
-position = Vector2(-19, 0)
-shape = SubResource("RectangleShape2D_67grv")
-metadata/_edit_lock_ = true
-
-[node name="Outline" type="Line2D" parent="Level Button/Collectible"]
-texture_repeat = 2
-points = PackedVector2Array(-128, -128, -40, -128, -39.2314, -120.196, -36.9552, -112.693, -33.2588, -105.777, -28.2843, -99.7157, -22.2228, -94.7412, -15.3073, -91.0448, -7.80361, -88.7686, 2.44921e-15, -88, 7.80361, -88.7686, 15.3073, -91.0448, 22.2228, -94.7412, 28.2843, -99.7157, 33.2588, -105.777, 36.9552, -112.693, 39.2314, -120.196, 40, -128, 128, -128, 128, -40, 135.804, -39.2314, 143.307, -36.9552, 150.223, -33.2588, 156.284, -28.2843, 161.259, -22.2228, 164.955, -15.3073, 167.231, -7.80361, 168, 0, 167.231, 7.80361, 164.955, 15.3073, 161.259, 22.2228, 156.284, 28.2843, 150.223, 33.2588, 143.307, 36.9552, 135.804, 39.2314, 128, 40, 128, 128, 40, 128, 39.2314, 120.196, 36.9552, 112.693, 33.2588, 105.777, 28.2843, 99.7157, 22.2228, 94.7412, 15.3073, 91.0448, 7.80361, 88.7686, 2.44921e-15, 88, -7.80361, 88.7686, -15.3073, 91.0448, -22.2228, 94.7412, -28.2843, 99.7157, -33.2588, 105.777, -36.9552, 112.693, -39.2314, 120.196, -40, 128, -128, 128, -128, 40, -120.196, 39.2314, -112.693, 36.9552, -105.777, 33.2588, -99.7157, 28.2843, -94.7412, 22.2228, -91.0448, 15.3073, -88.7686, 7.80361, -88, 0, -88.7686, -7.80361, -91.0448, -15.3073, -94.7412, -22.2228, -99.7157, -28.2843, -105.777, -33.2588, -112.693, -36.9552, -120.196, -39.2314, -128, -40, -128, -128)
-closed = true
-width = 13.0
-texture = ExtResource("10_r224p")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("8_k0jot")
-metadata/_edit_lock_ = true
+position = Vector2(116, -119)
+scale = Vector2(1.40085, 1.40085)
+texture = ExtResource("10_sf7g0")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

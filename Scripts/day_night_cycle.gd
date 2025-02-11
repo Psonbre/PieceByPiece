@@ -14,4 +14,5 @@ const day_lenght := 60 * 5
 		god_rays.color = god_rays_gradient.gradient.sample(pingpong(time, 1))
 
 func _process(delta: float) -> void:
-	time += delta / day_lenght
+	#time += delta / day_lenght
+	pass

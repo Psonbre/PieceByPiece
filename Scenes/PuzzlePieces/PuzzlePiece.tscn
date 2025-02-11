@@ -18,16 +18,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir7ex"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfu0t"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hypvl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsoix"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xa7r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vox6v"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqtxr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuwin"]
 size = Vector2(35, 70)
 
 [sub_resource type="Resource" id="Resource_08waj"]
@@ -128,7 +128,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_ir7ex")
+shape = SubResource("RectangleShape2D_rfu0t")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -142,7 +142,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_hypvl")
+shape = SubResource("RectangleShape2D_dsoix")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -156,7 +156,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_5xa7r")
+shape = SubResource("RectangleShape2D_vox6v")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
@@ -170,7 +170,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_iqtxr")
+shape = SubResource("RectangleShape2D_uuwin")
 metadata/_edit_lock_ = true
 
 [node name="Shadow" type="Line2D" parent="."]

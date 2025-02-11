@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bx8ht3bt5lbpu"]
+[gd_scene load_steps=21 format=4 uid="uid://bx8ht3bt5lbpu"]
 
 [ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="1_fwsvf"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="2_dcqmi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2thysoswfry" path="res://Assets/Menus/complete banner.png" id="4_315h6"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="5_8wvwy"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_hwcmm"]
+[ext_resource type="Texture2D" uid="uid://bjqgycxpwg74q" path="res://Assets/Menus/gold_piece_icon.png" id="5_s60py"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_ymn1m"]
 [ext_resource type="Texture2D" uid="uid://gx3nrxtt7v6n" path="res://Assets/Sprites/moving_outline_texture_black_background.png" id="10_7h1ts"]
 [ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="10_gxg2w"]
@@ -97,12 +98,28 @@ position = Vector2(25.0508, -48.834)
 scale = Vector2(1, 1.00269)
 texture = ExtResource("3_6kaup")
 
-[node name="ProgressIndicatorFrame" type="Sprite2D" parent="DemoPuzzleBox"]
-position = Vector2(155.508, -155.315)
+[node name="CompletedBanner" type="Sprite2D" parent="DemoPuzzleBox"]
+z_index = 2
+position = Vector2(148.635, -135.274)
+scale = Vector2(1.07935, 1.07935)
+texture = ExtResource("4_315h6")
+
+[node name="GoldPieceIcon" type="Sprite2D" parent="DemoPuzzleBox/CompletedBanner"]
+position = Vector2(2.32458e-05, -7.7364)
+scale = Vector2(1.04444, 1.04444)
+texture = ExtResource("5_s60py")
+
+[node name="IncompleteBanner" type="Node2D" parent="DemoPuzzleBox"]
+visible = false
+z_index = 2
+position = Vector2(155.315, -158.655)
+
+[node name="ProgressIndicatorFrame" type="Sprite2D" parent="DemoPuzzleBox/IncompleteBanner"]
+position = Vector2(-1.47682, 3.34007)
 scale = Vector2(0.745313, 0.745313)
 texture = ExtResource("3_lw5fl")
 
-[node name="CompletedLevels" type="Label" parent="DemoPuzzleBox/ProgressIndicatorFrame"]
+[node name="CompletedLevels" type="Label" parent="DemoPuzzleBox/IncompleteBanner/ProgressIndicatorFrame"]
 z_index = 1
 offset_left = -49.2962
 offset_top = -44.8148
@@ -115,7 +132,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="NumberOfLevels" type="Label" parent="DemoPuzzleBox/ProgressIndicatorFrame"]
+[node name="NumberOfLevels" type="Label" parent="DemoPuzzleBox/IncompleteBanner/ProgressIndicatorFrame"]
 z_index = 1
 offset_left = -6.72215
 offset_top = -2.24072
@@ -127,12 +144,17 @@ label_settings = SubResource("LabelSettings_yh44d")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CompleteBanner" type="Sprite2D" parent="DemoPuzzleBox"]
-position = Vector2(163.858, -73.4825)
+[node name="GoldPieceBanner" type="Sprite2D" parent="DemoPuzzleBox/IncompleteBanner"]
+position = Vector2(6.87302, 85.1726)
 scale = Vector2(0.889535, 0.889535)
 texture = ExtResource("4_315h6")
 
-[node name="CollectiblesPercentage" type="Label" parent="DemoPuzzleBox/CompleteBanner"]
+[node name="GoldPieceIcon" type="Sprite2D" parent="DemoPuzzleBox/IncompleteBanner/GoldPieceBanner"]
+position = Vector2(-0.216563, -15.0194)
+scale = Vector2(0.924128, 0.924128)
+texture = ExtResource("5_s60py")
+
+[node name="CollectiblesPercentage" type="Label" parent="DemoPuzzleBox/IncompleteBanner/GoldPieceBanner"]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
