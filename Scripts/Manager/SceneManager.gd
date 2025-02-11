@@ -67,13 +67,7 @@ func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 
 func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
 	var menu = load_scene(WORLD_SELECT, new_direction)
-	if menu:
-		var tree : WorldSelectTree = menu.get_node("TreeContainer/Tree")
-		if target_world_group == null : target_world_group = tree.target_group
-		tree.set_target_group.call_deferred(target_world_group)
-		tree.finish_transition_instantly.call_deferred()
-		tree.hide_other_groups.call_deferred(false)
-		updated_discord_presence("Selecting a world", "")
+	if menu: updated_discord_presence("Selecting a world", "")
 	return menu
 
 func load_credits_menu(new_direction := Vector2(1, 0)) -> Node2D:
@@ -165,6 +159,7 @@ func reset_scene(reset_direction := Vector2(0, -1)):
 		for puzzle_piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces") :
 			if puzzle_piece.is_dragging : puzzle_piece.stop_dragging()
 		return scene
+		
 func _process(_delta):
 	if discord_rpc : discord_rpc.run_callbacks()
 
