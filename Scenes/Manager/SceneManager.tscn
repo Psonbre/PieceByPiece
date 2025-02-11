@@ -67,7 +67,7 @@ z_index = 10
 material = SubResource("CanvasItemMaterial_wh5gs")
 position = Vector2(584, 349)
 color = Color(0.0347826, 0.0345149, 0.0134894, 1)
-polygon = PackedVector2Array(-856, -1542, -513, -1458, -716, 619, -1711, 564, 483, 684, 335, -1407, -72, -1449, -203, 687)
+polygon = PackedVector2Array(-856, -1542, -513, -1458, -716, 619, -1614, 531, 483, 684, 335, -1407, -72, -1449, -203, 687)
 polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)]
 
 [node name="DustParticles" type="GPUParticles2D" parent="GodRays"]

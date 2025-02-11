@@ -1,34 +1,47 @@
-[gd_scene load_steps=22 format=4 uid="uid://bx8ht3bt5lbpu"]
+[gd_scene load_steps=20 format=4 uid="uid://bx8ht3bt5lbpu"]
 
 [ext_resource type="Script" path="res://Scripts/world_select_button.gd" id="1_fwsvf"]
 [ext_resource type="TileSet" uid="uid://mgcmixwg7fq1" path="res://Assets/TileSets/MainTileSet.tres" id="2_dcqmi"]
-[ext_resource type="Script" path="res://Scripts/bevelled_puzzle_piece_shape.gd" id="2_xppke"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="4_2tobx"]
-[ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/king_frames.tres" id="4_iobep"]
-[ext_resource type="Script" path="res://Scripts/puzzle_piece_visual_connector.gd" id="5_ag18d"]
+[ext_resource type="Texture2D" uid="uid://d0j4o4udv7urm" path="res://Assets/Menus/demo_puzzle_box.png" id="2_v1uco"]
+[ext_resource type="Texture2D" uid="uid://c5if5624jbpff" path="res://Assets/Menus/demo_puzzle_box_top.png" id="3_6kaup"]
+[ext_resource type="Texture2D" uid="uid://dv645irpadr5w" path="res://Assets/Menus/progress_indicator_frame.png" id="3_lw5fl"]
+[ext_resource type="Texture2D" uid="uid://2thysoswfry" path="res://Assets/Menus/complete banner.png" id="4_315h6"]
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="5_8wvwy"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="5_hwcmm"]
-[ext_resource type="Texture2D" uid="uid://mwlqduyhjj8h" path="res://Assets/Sprites/lock.png" id="6_86jjf"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="8_ymn1m"]
+[ext_resource type="Texture2D" uid="uid://gx3nrxtt7v6n" path="res://Assets/Sprites/moving_outline_texture_black_background.png" id="10_7h1ts"]
 [ext_resource type="Script" path="res://Scripts/outline_type_resource.gd" id="10_gxg2w"]
-[ext_resource type="Texture2D" uid="uid://dbgo1qklyynha" path="res://Assets/Sprites/moving_outline_texture.png" id="10_mtlgj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2vi6"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_yh44d"]
+font = ExtResource("5_8wvwy")
+font_size = 20
+font_color = Color(0.290196, 0.360784, 0.529412, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n85hw"]
+font = ExtResource("5_8wvwy")
+font_size = 20
+font_color = Color(0.537255, 0.454902, 0.0235294, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hxnsx"]
-radius = 35.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_c6hw1"]
-radius = 35.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnqse"]
-size = Vector2(35, 70)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8e4o"]
-size = Vector2(35, 70)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rowhg"]
+[sub_resource type="LabelSettings" id="LabelSettings_gcycm"]
+font = ExtResource("5_8wvwy")
+font_size = 20
+font_color = Color(0.713726, 0.403922, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
 resource_local_to_scene = true
@@ -39,7 +52,7 @@ shader_parameter/color = Vector4(0, 0, 0, 1)
 [sub_resource type="Resource" id="Resource_gdms5"]
 script = ExtResource("10_gxg2w")
 color = Color(1, 1, 1, 1)
-visible = true
+visible = false
 width = 4.0
 scrolling_speed = 0.0
 z_index = -1
@@ -48,8 +61,8 @@ z_index = -1
 script = ExtResource("10_gxg2w")
 color = Color(1, 1, 1, 1)
 visible = true
-width = 4.0
-texture = ExtResource("10_mtlgj")
+width = 12.0
+texture = ExtResource("10_7h1ts")
 scrolling_speed = 1.4
 z_index = 1
 
@@ -73,15 +86,79 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_v2vi6")
 flat = true
 script = ExtResource("1_fwsvf")
 
+[node name="DemoPuzzleBox" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(128, 129)
+scale = Vector2(0.598783, 0.598783)
+texture = ExtResource("2_v1uco")
+
+[node name="BoxTop" type="Sprite2D" parent="DemoPuzzleBox"]
+position = Vector2(25.0508, -48.834)
+scale = Vector2(1, 1.00269)
+texture = ExtResource("3_6kaup")
+
+[node name="ProgressIndicatorFrame" type="Sprite2D" parent="DemoPuzzleBox"]
+position = Vector2(155.508, -155.315)
+scale = Vector2(0.745313, 0.745313)
+texture = ExtResource("3_lw5fl")
+
+[node name="CompletedLevels" type="Label" parent="DemoPuzzleBox/ProgressIndicatorFrame"]
+z_index = 1
+offset_left = -49.2962
+offset_top = -44.8148
+offset_right = -1.29624
+offset_bottom = -16.8148
+scale = Vector2(1.19747, 1.19747)
+text = "20"
+label_settings = SubResource("LabelSettings_yh44d")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NumberOfLevels" type="Label" parent="DemoPuzzleBox/ProgressIndicatorFrame"]
+z_index = 1
+offset_left = -6.72215
+offset_top = -2.24072
+offset_right = 41.2779
+offset_bottom = 25.7593
+scale = Vector2(1.19747, 1.19747)
+text = "20"
+label_settings = SubResource("LabelSettings_yh44d")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CompleteBanner" type="Sprite2D" parent="DemoPuzzleBox"]
+position = Vector2(163.858, -73.4825)
+scale = Vector2(0.889535, 0.889535)
+texture = ExtResource("4_315h6")
+
+[node name="CollectiblesPercentage" type="Label" parent="DemoPuzzleBox/CompleteBanner"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.1909
+offset_top = -43.6029
+offset_right = 42.8091
+offset_bottom = -3.60287
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.801452, 0.801452)
+text = "100%"
+label_settings = SubResource("LabelSettings_n85hw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Shape" type="Polygon2D" parent="."]
 clip_children = 2
 material = SubResource("ShaderMaterial_g8q12")
 position = Vector2(128, 128)
-polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
-script = ExtResource("2_xppke")
-bevel_width = 3.7
+polygon = PackedVector2Array(119, -117, 119, 62, -88, 62, -88, -117, 15.4323, -117)
 
 [node name="Background" type="TileMapLayer" parent="Shape"]
+visible = false
 position = Vector2(-25.6, -25.6)
 scale = Vector2(1.6, 1.6)
 tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAgAAAD+/wEAAwACAAgAAAD+/wIAAwACAAgAAAD//wIAAwACAAgAAAD//wEAAwACAAgAAAD//wAAAwACAAgAAAD/////AwACAAgAAAD///7/AwACAAgAAAAAAP7/AwACAAgAAAAAAP//AwACAAgAAAAAAAAAAwACAAgAAAAAAAEAAwACAAgAAAAAAAIAAwACAAgAAAABAAIAAwACAAgAAAABAAEAAwACAAgAAAABAAAAAwACAAgAAAABAP7/AwACAAgAAAABAP//AwACAAgAAAACAAIAAwACAAgAAAACAAEAAwACAAgAAAACAAAAAwACAAgAAAACAP//AwACAAgAAAACAP7/AwACAAgAAAACAP3/AwACAAgAAAABAP3/AwACAAgAAAAAAP3/AwACAAgAAAD///3/AwACAAgAAAD+//3/AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+/wMAAwACAAgAAAD//wMAAwACAAIAAAAAAAMAAwACAAIAAAABAAMAAwACAAIAAAACAAMAAwACAAgAAAADAAMAAwACAAgAAAADAAIAAwACAAgAAAADAAEAAwACAAgAAAADAAAAAwACAAgAAAADAP//AwACAAgAAAADAP7/AwACAAgAAAADAP3/AwACAAgAAAA=")
@@ -89,135 +166,37 @@ tile_set = ExtResource("2_dcqmi")
 collision_enabled = false
 
 [node name="Foreground" type="TileMapLayer" parent="Shape"]
+visible = false
 position = Vector2(-25.6, -25.6)
 scale = Vector2(1.6, 1.6)
 tile_map_data = PackedByteArray("AAD+//7/AwACAAMAAAD///7/AwACAAMAAAAAAP7/AwACAAMAAAABAP7/AwACAAMAAAACAP7/AwACAAMAAAD+/wIAAwACAAEAAAD//wIAAwACAAEAAAAAAAIAAwACAAEAAAABAAIAAwACAAEAAAACAAIAAwACAAEAAAD//wEAAAAFAAQAAAA=")
 tile_set = ExtResource("2_dcqmi")
 
-[node name="PlayerSprite" type="Node2D" parent="Shape"]
-position = Vector2(-28, 22)
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite"]
-position = Vector2(-28, 3)
-scale = Vector2(1.70725, 1.70725)
-sprite_frames = ExtResource("4_iobep")
-animation = &"Idle"
-offset = Vector2(0, -14.0577)
-
-[node name="Connectors" type="Node2D" parent="Shape"]
-z_index = 2
-metadata/_edit_lock_ = true
-
-[node name="RightConnector" type="Area2D" parent="Shape/Connectors"]
-position = Vector2(128, 0)
-collision_mask = 5
-script = ExtResource("5_ag18d")
-shape = 1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_hxnsx")
-metadata/_edit_lock_ = true
-
-[node name="LeftConnector" type="Area2D" parent="Shape/Connectors"]
-position = Vector2(-128, 0)
-rotation = 3.14159
-collision_mask = 5
-script = ExtResource("5_ag18d")
-shape = 1
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
-shape = SubResource("CircleShape2D_c6hw1")
-metadata/_edit_lock_ = true
-
-[node name="TopConnector" type="Area2D" parent="Shape/Connectors"]
-position = Vector2(0, -128)
-rotation = -1.57079
-collision_mask = 5
-script = ExtResource("5_ag18d")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
-position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_hnqse")
-metadata/_edit_lock_ = true
-
-[node name="BottomConnector" type="Area2D" parent="Shape/Connectors"]
-position = Vector2(0, 128)
-rotation = 1.57079
-collision_mask = 5
-script = ExtResource("5_ag18d")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
-position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_n8e4o")
-metadata/_edit_lock_ = true
-
-[node name="Overlay" type="Polygon2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-clip_children = 2
-material = SubResource("ShaderMaterial_g8q12")
-position = Vector2(128, 128)
-polygon = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128)
-
-[node name="WorldName" type="Label" parent="Overlay"]
+[node name="WorldName" type="Label" parent="Shape"]
 z_index = 1
-offset_left = -119.0
-offset_top = 97.0
-offset_right = 2281.0
-offset_bottom = 297.0
-scale = Vector2(0.1, 0.1)
-text = "KING'S QUEST"
-label_settings = ExtResource("4_2tobx")
-horizontal_alignment = 1
+offset_left = -88.0
+offset_top = 64.0
+offset_right = 238.0
+offset_bottom = 102.0
+scale = Vector2(0.634967, 0.634967)
+text = "DEMO BOX"
+label_settings = SubResource("LabelSettings_gcycm")
 vertical_alignment = 1
 
-[node name="Collectibles" type="Label" parent="Overlay"]
+[node name="PlayIcon" type="Polygon2D" parent="Shape"]
 z_index = 1
-offset_left = 17.0
-offset_top = -113.0
-offset_right = 667.0
-offset_bottom = 87.0
-scale = Vector2(0.1, 0.1)
-text = "10"
-label_settings = ExtResource("4_2tobx")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Levels" type="Label" parent="Overlay"]
-z_index = 1
-offset_left = -124.0
-offset_top = -112.0
-offset_right = 676.0
-offset_bottom = 88.0
-scale = Vector2(0.1, 0.1)
-text = "0/10"
-label_settings = ExtResource("4_2tobx")
-vertical_alignment = 1
-
-[node name="Lock" type="Sprite2D" parent="Overlay"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.607843)
-z_index = 1
-scale = Vector2(0.158067, 0.158067)
-texture = ExtResource("6_86jjf")
-
-[node name="PlayIcon" type="Polygon2D" parent="Overlay"]
-z_index = 1
-position = Vector2(7, 0)
+position = Vector2(19, -24)
 scale = Vector2(1.12274, 1.12274)
 polygon = PackedVector2Array(-25, 25, 25, 0, -25, -25)
 
-[node name="Shadow" type="Polygon2D" parent="Overlay/PlayIcon"]
+[node name="Shadow" type="Polygon2D" parent="Shape/PlayIcon"]
 show_behind_parent = true
 z_index = 1
 position = Vector2(2, 2)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-25, 25, 25, 0, 22.1771, -1.41147, -25, 22.1241)
 
-[node name="Line2D" type="Line2D" parent="Overlay/PlayIcon"]
+[node name="Line2D" type="Line2D" parent="Shape/PlayIcon"]
 points = PackedVector2Array(-25, 25, 25, 0, -25, -25)
 closed = true
 width = 1.27
@@ -226,59 +205,20 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="BevelLeft" type="Polygon2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.360784)
-material = SubResource("ShaderMaterial_rowhg")
-position = Vector2(128, 128)
-polygon = PackedVector2Array(-128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35, -128, -128, -124.3, -124.3, -124.3, -35, -131.128, -34.3275, -137.694, -32.3358, -143.745, -29.1014, -149.049, -24.7487, -153.401, -19.445, -156.636, -13.3939, -158.627, -6.82816, -159.3, 4.28612e-15, -158.627, 6.82816, -156.636, 13.3939, -153.401, 19.445, -149.049, 24.7487, -143.745, 29.1014, -137.694, 32.3358, -131.128, 34.3275, -124.3, 35, -124.3, 124.3)
-
-[node name="BevelTop" type="Polygon2D" parent="."]
-self_modulate = Color(0.745617, 0.745617, 0.745617, 0.360784)
-material = SubResource("ShaderMaterial_rowhg")
-position = Vector2(128, 128)
-polygon = PackedVector2Array(-128, -128, 128, -128, 124.3, -124.3, -124.3, -124.3)
-
-[node name="BevelRight" type="Polygon2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.501961)
-material = SubResource("ShaderMaterial_rowhg")
-position = Vector2(128, 128)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
-
-[node name="BevelBottom" type="Polygon2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.360784)
-material = SubResource("ShaderMaterial_rowhg")
-position = Vector2(128, 128)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
-
-[node name="Shadow" type="Line2D" parent="."]
-z_index = -2
-texture_repeat = 2
-position = Vector2(132, 132)
-points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35)
-width = 9.62
-default_color = Color(0, 0, 0, 1)
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
 [node name="Outline" type="Line2D" parent="."]
-z_index = -1
+z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_pb4r2")
 position = Vector2(128, 128)
-points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, -128, 128, -128, 35, -134.828, 34.3275, -141.394, 32.3358, -147.445, 29.1014, -152.749, 24.7487, -157.101, 19.445, -160.336, 13.3939, -162.327, 6.82816, -163, 4.28612e-15, -162.327, -6.82816, -160.336, -13.3939, -157.101, -19.445, -152.749, -24.7487, -147.445, -29.1014, -141.394, -32.3358, -134.828, -34.3275, -128, -35)
+points = PackedVector2Array(-128, -92, -104, -127, 126, -127, 127, 105, 104, 128, -128, 128)
 closed = true
-width = 4.0
+width = 7.115
 texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("8_ymn1m")
 normal_outline = SubResource("Resource_gdms5")
-dragging_outline = SubResource("Resource_derie")
 highlight_outline = SubResource("Resource_derie")
 
 [connection signal="focus_entered" from="." to="." method="_on_mouse_entered"]

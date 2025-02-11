@@ -1,19 +1,18 @@
 extends Button
 class_name WorldSelectButton
 
-@onready var overlay = $Overlay
-@onready var play_icon = $Overlay/PlayIcon
-@onready var lock: Sprite2D = $Overlay/Lock
+@onready var play_icon: Polygon2D = $Shape/PlayIcon
 @onready var animation_player = $AnimationPlayer
-@onready var levels_text = $Overlay/Levels
-@onready var collectibles_text = $Overlay/Collectibles
+@onready var completed_levels: Label = $DemoPuzzleBox/ProgressIndicatorFrame/CompletedLevels
+@onready var number_of_levels: Label = $DemoPuzzleBox/ProgressIndicatorFrame/NumberOfLevels
+@onready var collectibles_percentage: Label = $DemoPuzzleBox/CompleteBanner/CollectiblesPercentage
 @onready var shape: Polygon2D = $Shape
 @onready var outline: PuzzlePieceOutline = $Outline
+@onready var box_top: Sprite2D = $DemoPuzzleBox/BoxTop
 
 var locked := true :
 	set(value):
 		locked = value
-		lock.visible = locked
 		play_icon.visible = !locked
 		
 var default_scale : Vector2
@@ -34,27 +33,29 @@ var nb_of_collectibles : int :
 
 func _ready():
 	default_scale = scale
-	overlay.polygon = $Shape.polygon
 	play_icon.modulate = Color(1,1,1,0)
 	update_labels()
 	locked = !required_completed_worlds.all(func(w) : return w.world_completed)
 	
 func update_labels() :
-	if levels_text : levels_text.text = str(min(nb_of_completed_levels, nb_of_levels)) + "/" + str(nb_of_levels)
-	if collectibles_text : collectibles_text.text = str(min(nb_of_collectibles, nb_of_levels))
+	if completed_levels : completed_levels.text = str(min(nb_of_completed_levels, nb_of_levels))
+	if number_of_levels : number_of_levels.text = str(nb_of_levels)
+	if collectibles_percentage : collectibles_percentage.text = str(round((nb_of_collectibles / nb_of_levels) * 1000.0) / 10.0) + "%"
 
 func _on_mouse_entered():
 	animation_player.play("Preview")
 	mouse_hover = true
 	play_icon.create_tween().tween_property(play_icon, "modulate", Color(1,1,1,1), 0.2)
 	create_tween().tween_property(self, "scale", default_scale * 1.1, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-	outline.set_type(PuzzlePieceOutline.OutlineType.DRAGGING)
+	create_tween().tween_property(box_top, "modulate:a", 0, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	outline.set_type(PuzzlePieceOutline.OutlineType.HIGHLIGHT)
 	
 func _on_mouse_exited():
 	animation_player.stop()
 	mouse_hover = false
 	play_icon.create_tween().tween_property(play_icon, "modulate", Color(1,1,1,0), 0.2)
 	create_tween().tween_property(self, "scale", default_scale * 1.0, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(box_top, "modulate:a", 1, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 
 func _on_pressed() -> void:
