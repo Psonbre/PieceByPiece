@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c5vxwbnikmdly"]
+[gd_scene load_steps=13 format=4 uid="uid://c5vxwbnikmdly"]
 
 [ext_resource type="PackedScene" uid="uid://bx8ht3bt5lbpu" path="res://Scenes/Menus/Worlds/world_template.tscn" id="1_tbae5"]
 [ext_resource type="Shader" path="res://Assets/Shaders/PuzzleOutline.gdshader" id="2_tpegy"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://pfqe3y6qifpl" path="res://Scenes/PlayerSprites/alien_frames.tres" id="3_tmip6"]
 [ext_resource type="PackedScene" uid="uid://cqfgi7k08veo6" path="res://Scenes/Interactables/portal.tscn" id="3_wu544"]
 [ext_resource type="SpriteFrames" uid="uid://orhbrvew8ol3" path="res://Scenes/PlayerSprites/miner_frames.tres" id="5_h72yf"]
+[ext_resource type="SpriteFrames" uid="uid://cnfuri6e753ws" path="res://Scenes/PlayerSprites/king_frames.tres" id="6_fhws3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
@@ -47,6 +48,7 @@ world = 12
 z_index = 0
 
 [node name="BoxTop" parent="DemoPuzzleBox" index="0"]
+visible = false
 z_index = 1
 position = Vector2(25.8858, -47.5965)
 scale = Vector2(1.01171, 1.01097)
@@ -109,20 +111,29 @@ offset = Vector2(-1.98257e-35, -9.47059)
 flip_h = true
 
 [node name="PlayerSprite3" type="Node2D" parent="Shape" index="8"]
-position = Vector2(75, -65)
+position = Vector2(58, -50)
+scale = Vector2(0.833, 0.833)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite3" index="0"]
-position = Vector2(10, 4)
+position = Vector2(6.0024, 22.8091)
 scale = Vector2(1.33, 1.33)
 sprite_frames = ExtResource("5_h72yf")
-animation = &"Jump"
+animation = &"Dig_Down"
 offset = Vector2(-1.98257e-35, -9.47059)
 
+[node name="PlayerSprite" type="Node2D" parent="Shape" index="9" groups=["PlayerSprites"]]
+position = Vector2(-53, -69)
+scale = Vector2(0.833, 0.833)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Shape/PlayerSprite" index="0" groups=["AffectedByInternalLight"]]
+position = Vector2(27.611, 15.6062)
+scale = Vector2(1.333, 1.333)
+sprite_frames = ExtResource("6_fhws3")
+animation = &"Moving"
+offset = Vector2(-4.11396, -14.105)
+
 [node name="Outline" parent="." index="2"]
-visible = false
-z_index = -1
 material = SubResource("ShaderMaterial_ib866")
-width = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
