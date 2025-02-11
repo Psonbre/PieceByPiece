@@ -242,10 +242,7 @@ func _on_file_name_text_changed(new_text: String) -> void:
 	disabled = !build_exists()
 
 func build_exists() :
-	return !(
-		!FileAccess.file_exists(build_path + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\" + file_name.text)
-		or !file_name.text.to_lower().ends_with(\".exe\")
-	)
+	return true
 "
 
 [sub_resource type="GDScript" id="GDScript_d3ll5"]
@@ -272,9 +269,7 @@ func _ready() -> void:
 	).call_deferred()
 
 func build_exists() :
-	return !(
-		!FileAccess.file_exists(build_path + \"\\\\\" + build_preset.get_item_text(build_preset.selected) + \"\\\\\" + file_name.text)
-	)
+	return true
 	
 func _on_build_preset_item_selected(index: int) -> void:
 	disabled = !build_exists()
