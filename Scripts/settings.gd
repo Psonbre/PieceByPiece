@@ -20,18 +20,18 @@ var vsyncModePossible: Dictionary = {
 		
 var languagesPossible: Dictionary = {
 	'English' : ['en', flagsPath + "english.png"],
-	'Québecois' : ['fr_CA', flagsPath + "quebec.png"],
+	#'Québecois' : ['fr_CA', flagsPath + "quebec.png"],
 	'Français' : ['fr', flagsPath + "french.png"],
-	'Español' : ['es', flagsPath + "spain.png"],
-	'Italiano' : ['it', flagsPath + "italy.png"],
-	'Português' : ['pt', flagsPath + "portugal.png"],
-	'Deutsch' : ['de', flagsPath + "germany.png"],
-	'Русский' : ['ru', flagsPath + "russian.png"],
-	'한국어' : ['ko', flagsPath + "south_korea.png"],
-	'日本語' : ['ja', flagsPath + "japan.png"],
-	'हिन्दी' : ['hi', flagsPath + "india.png"],
-	'普通话(Simplified)' : ['cmn_Hans', flagsPath + "china.png"],
-	'普通话(Traditional)' : ['cmn_Hant', flagsPath + "china.png"]
+	#'Español' : ['es', flagsPath + "spain.png"],
+	#'Italiano' : ['it', flagsPath + "italy.png"],
+	#'Português' : ['pt', flagsPath + "portugal.png"],
+	#'Deutsch' : ['de', flagsPath + "germany.png"],
+	#'Русский' : ['ru', flagsPath + "russian.png"],
+	#'한국어' : ['ko', flagsPath + "south_korea.png"],
+	#'日本語' : ['ja', flagsPath + "japan.png"],
+	#'हिन्दी' : ['hi', flagsPath + "india.png"],
+	#'普通话(Simplified)' : ['cmn_Hans', flagsPath + "china.png"],
+	#'普通话(Traditional)' : ['cmn_Hant', flagsPath + "china.png"]
 }
 
 # Called when the node enters the scene tree for the first time.
