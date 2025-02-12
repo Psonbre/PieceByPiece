@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://4gg3xf80a2qe"]
+[gd_scene load_steps=8 format=3 uid="uid://4gg3xf80a2qe"]
 
 [ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_q5kbk"]
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_818xj"]
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_v0605"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="3_ci1o0"]
+[ext_resource type="Script" path="res://Scripts/Buttons/Back_world_select.gd" id="3_mx3kp"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="4_bny4r"]
 [ext_resource type="PackedScene" uid="uid://c5vxwbnikmdly" path="res://Scenes/Menus/Worlds/demo_world.tscn" id="5_hgd0u"]
 
@@ -95,3 +97,17 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
 focus_previous = NodePath(".")
+
+[node name="Back" type="Button" parent="TreeContainer"]
+offset_left = 1171.5
+offset_top = -178.0
+offset_right = 1288.5
+offset_bottom = -120.0
+pivot_offset = Vector2(56.9925, 30.0794)
+theme_override_fonts/font = ExtResource("2_v0605")
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+script = ExtResource("3_mx3kp")
+
+[connection signal="pressed" from="TreeContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="TreeContainer/Back" to="TreeContainer/Back" method="_on_pressed"]
