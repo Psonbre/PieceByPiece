@@ -56,10 +56,10 @@ offset_right = 600.5
 offset_bottom = 206.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.435, 2.435)
+scale = Vector2(1.81597, 1.81597)
 pivot_offset = Vector2(600, 8.45068)
 theme_override_font_sizes/font_size = 1
-text = "CHOOSE A PUZZLE BOX"
+text = "CHOOSE_WORLD"
 label_settings = ExtResource("3_ci1o0")
 horizontal_alignment = 1
 
@@ -99,10 +99,13 @@ focus_neighbor_right = NodePath(".")
 focus_previous = NodePath(".")
 
 [node name="Back" type="Button" parent="TreeContainer"]
-offset_left = 1171.5
-offset_top = -178.0
-offset_right = 1288.5
-offset_bottom = -120.0
+z_index = 15
+layout_mode = 0
+offset_left = 1199.0
+offset_top = -176.5
+offset_right = 1316.0
+offset_bottom = -118.5
+scale = Vector2(0.835013, 0.835013)
 pivot_offset = Vector2(56.9925, 30.0794)
 theme_override_fonts/font = ExtResource("2_v0605")
 theme_override_font_sizes/font_size = 24

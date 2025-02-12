@@ -22,7 +22,7 @@ var languagesPossible: Dictionary = {
 	'English' : ['en', flagsPath + "english.png"],
 	#'Québecois' : ['fr_CA', flagsPath + "quebec.png"],
 	'Français' : ['fr', flagsPath + "french.png"],
-	#'Español' : ['es', flagsPath + "spain.png"],
+	'Español' : ['es', flagsPath + "spain.png"],
 	#'Italiano' : ['it', flagsPath + "italy.png"],
 	#'Português' : ['pt', flagsPath + "portugal.png"],
 	#'Deutsch' : ['de', flagsPath + "germany.png"],
@@ -30,8 +30,8 @@ var languagesPossible: Dictionary = {
 	#'한국어' : ['ko', flagsPath + "south_korea.png"],
 	#'日本語' : ['ja', flagsPath + "japan.png"],
 	#'हिन्दी' : ['hi', flagsPath + "india.png"],
-	#'简体中文' : ['cmn_Hans', flagsPath + "china.png"],
-	#'繁體中文' : ['cmn_Hant', flagsPath + "china.png"]
+	'简体中文' : ['cmn_Hans', flagsPath + "china.png"],
+	'繁體中文' : ['cmn_Hant', flagsPath + "china.png"]
 }
 
 # Called when the node enters the scene tree for the first time.
