@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://4gg3xf80a2qe"]
+[gd_scene load_steps=6 format=3 uid="uid://4gg3xf80a2qe"]
 
 [ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_q5kbk"]
-[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_v0605"]
+[ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_818xj"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="3_ci1o0"]
-[ext_resource type="Script" path="res://Scripts/Buttons/Back_world_select.gd" id="3_mx3kp"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="4_bny4r"]
 [ext_resource type="PackedScene" uid="uid://c5vxwbnikmdly" path="res://Scenes/Menus/Worlds/demo_world.tscn" id="5_hgd0u"]
 
@@ -14,7 +13,7 @@ script = ExtResource("1_q5kbk")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.015, 1.015)
 
-[node name="TreeContainer" type="Control" parent="."]
+[node name="TreeContainer" type="Control" parent="." node_paths=PackedStringArray("FirstControl")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,17 +25,8 @@ offset_bottom = 2774.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-
-[node name="Back" type="Button" parent="TreeContainer"]
-offset_left = 1175.0
-offset_top = -174.0
-offset_right = 1279.0
-offset_bottom = -122.0
-pivot_offset = Vector2(56.9925, 30.0794)
-theme_override_fonts/font = ExtResource("2_v0605")
-theme_override_font_sizes/font_size = 24
-text = "BACK"
-script = ExtResource("3_mx3kp")
+script = ExtResource("2_818xj")
+FirstControl = NodePath("Tree/DemoWorldContainer/Demo World")
 
 [node name="Title" type="Control" parent="TreeContainer"]
 z_index = 2
@@ -105,6 +95,3 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
 focus_previous = NodePath(".")
-
-[connection signal="pressed" from="TreeContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="TreeContainer/Back" to="TreeContainer/Back" method="_on_pressed"]
