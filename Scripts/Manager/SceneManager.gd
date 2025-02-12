@@ -163,6 +163,9 @@ func reset_scene(reset_direction := Vector2(0, -1)):
 func _process(_delta):
 	if discord_rpc : discord_rpc.run_callbacks()
 
+func _init() -> void:
+	RenderingServer.set_default_clear_color(Color.BLACK)
+	
 func _ready() -> void:
 	if OS.has_feature("discord_rpc") || OS.has_feature("editor") :
 		discord_rpc = Engine.get_singleton("DiscordRPC")
