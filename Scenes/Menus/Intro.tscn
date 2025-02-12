@@ -1,24 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://5lbvsi7rf7ae"]
+[gd_scene load_steps=6 format=3 uid="uid://5lbvsi7rf7ae"]
 
 [ext_resource type="Script" path="res://Scripts/intro.gd" id="1_rh3ju"]
-[ext_resource type="VideoStream" path="res://Assets/Videos/Neon-Polygons-Intro.ogv" id="1_rvbq6"]
+[ext_resource type="Texture2D" uid="uid://dpnggfvmye3ty" path="res://Assets/Sprites/Background/vignette.png" id="2_hrp17"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_6rt42"]
+[ext_resource type="VideoStream" path="res://Assets/Videos/NP_Startup_cut.ogv" id="3_srhp0"]
+[ext_resource type="Texture2D" uid="uid://bptox3vipvje" path="res://Assets/Videos/original-outline-vertical-light.svg" id="3_y12qa"]
 
 [node name="Intro" type="Node2D"]
 z_index = 15
 script = ExtResource("1_rh3ju")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(616, 343)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hrp17")
+
+[node name="GodotIcon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(650, 350)
+texture = ExtResource("3_y12qa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2.015, 2.015)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_left = -2.0
-offset_top = -3.0
-offset_right = 1278.0
-offset_bottom = 717.0
-stream = ExtResource("1_rvbq6")
-autoplay = true
+modulate = Color(1, 1, 1, 0)
+offset_left = 3.0
+offset_right = 1923.0
+offset_bottom = 1088.0
+scale = Vector2(0.66, 0.66)
+stream = ExtResource("3_srhp0")
 bus = &"Music"
 
 [node name="Label" type="Label" parent="."]
@@ -27,9 +39,13 @@ offset_top = 658.0
 offset_right = 1337.0
 offset_bottom = 702.0
 scale = Vector2(0.795, 0.795)
-theme_override_colors/font_color = Color(1, 1, 1, 0.376471)
+theme_override_colors/font_color = Color(1, 1, 1, 0.470588)
 theme_override_fonts/font = ExtResource("3_6rt42")
 theme_override_font_sizes/font_size = 31
-text = "Space to skip"
+text = "SKIP_INTRO"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
