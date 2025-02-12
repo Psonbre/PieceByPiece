@@ -7,9 +7,8 @@ var can_exit := true
 var can_select_level := true
 
 func _input(_event):
-	var scene_manager := SubSystemManager.get_scene_manager()
-	if Input.is_action_just_pressed("ui_cancel") and can_exit and scene_manager.old_screen != self:
-		if scene_manager.load_world_select_menu(Vector2(0,-1), world_select_tree_target_group) : can_exit = false
+	if Input.is_action_just_pressed("ui_cancel"):
+		_quit()
 
 func _ready() -> void:
 	if get_tree().current_scene == self :
@@ -31,3 +30,11 @@ func _ready() -> void:
 	for button in buttons :
 		button.update_visuals()
 	
+func _quit():
+	var scene_manager = SubSystemManager.get_scene_manager()
+	if can_exit and scene_manager.old_screen != self:
+		if scene_manager.load_world_select_menu(Vector2(0,-1), world_select_tree_target_group) : can_exit = false
+
+
+func _on_back_pressed() -> void:
+	_quit()
