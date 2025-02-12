@@ -40,7 +40,7 @@ func update_labels() :
 	completed_banner.visible = nb_of_collectibles >= nb_of_levels
 	if completed_levels : completed_levels.text = str(min(nb_of_completed_levels, nb_of_levels))
 	if number_of_levels : number_of_levels.text = str(nb_of_levels)
-	if collectibles_percentage : collectibles_percentage.text = str(round((nb_of_collectibles / nb_of_levels) * 1000.0) / 10.0) + "%"
+	if collectibles_percentage : collectibles_percentage.text = str(round((float(nb_of_collectibles) / float(nb_of_levels)) * 100.0)) + "%"
 
 func _on_mouse_entered():
 	animation_player.play("Preview")
