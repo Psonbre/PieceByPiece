@@ -2,33 +2,33 @@ key,en,fr,fr_CA,es,cmn_Hans,cmn_Hant,de,it,ru,ko,hi,ja,pt
 LANGUAGES,English,Français,Québécois (Français canadien),Español,简体中文,繁體中文,Deutsch,Italiano,Русский,한국인,हिंदी,日本語,Português
 ,English,French,French canadian,Spanish,Simplified Chinese,Traditional Chinese,German,Italian ,Russian,Korean ,Hindi,Japanese,Protuguese
 #MENU,,,,,,,,,,,,,
-PLAY,Play,Jouer,,Jugar,开始游戏,開始遊戲,,,,,,,
-SETTINGS,Settings,Options,,Opciones,选项,設定,,,,,,,
-CREDITS,Credits,Crédits,,Créditos,制作人员,製作名單,,,,,,,
-BACK,Back,Retour,,Atrás,返回,返回,,,,,,,
-EXIT,Exit,Quitter,,Salir,退出游戏,退出,,,,,,,
+PLAY,Play,Jouer,,Jugar,开始游戏,開始遊戲,Spielen,Gioca,Play,Play,Play,Play,Play
+SETTINGS,Options,Options,,Opciones,选项,設定,Optionen,Opzioni,Options,Options,Options,Options,Options
+CREDITS,Credits,Crédits,,Créditos,制作人员,製作名單,Mitwirkende,Riconoscimenti,Credits,Credits,Credits,Credits,Credits
+BACK,Back,Retour,,Atrás,返回,返回,Zurück,Indietro,Back,Back,Back,Back,Back
+EXIT,Exit,Quitter,,Salir,退出游戏,退出,Ausfahrt,Esci,Exit,Exit,Exit,Exit,Exit
 #SETTINGS,,,,,,,,,,,,,
-GENERAL,General,Général,,General,一般,一般,,,,,,,
-LANGUAGES,Language,Langue,,Idioma,语言,語言,,,,,,,
-DISPLAY,Display,Affichage,,Pantalla,显示,顯示,,,,,,,
-WINDOWED,Windowed,Fenêtré,,En ventana,窗口模式,視窗模式,,,,,,,
-FULLSCREEN,Full Screen,Plein écran,,Pantalla completa,全屏,全螢幕,,,,,,,
-VSYNC,VSync,VSync,VSync,VSync,垂直同步,垂直同步,,,,,,,
-ENABLED,Enabled,Activé,,Activado,启用,啟用,,,,,,,
-DISABLED,Disabled,Désactivé,,Desactivado,禁用,禁用,,,,,,,
-ADAPTIVE,Adaptive,Adaptif,,Adaptativo,适应性,適應性,,,,,,,
-ADAPTIVE_TOOLTIP,Activate VSync only when the framerate is over the refresh rate of the display,Active VSync seulement quand le taux d'images par seconde (IPS) est au dessus du taux de rafraîchissement de l'écran,,Activar VSync solo cuando la tasa de fotogramas sea superior a la tasa de refresco de la pantalla,仅在帧率超过显示器刷新率时启用垂直同步,僅當幀率超過顯示器的刷新率時啟用垂直同步,,,,,,,
-AUDIO,Audio,Audio,,Sonido,音频,音頻,,,,,,,
-MASTER,Master,Principal,,Principal,主音量,主控,,,,,,,
-MUSIC,Music,Musique,,Música,音乐,主音量,,,,,,,
-SFX,SFX,Effets sonores,,Efectos,音效,音效,,,,,,,
+GENERAL,General,Général,,General,一般,一般,Allgemein,Generale,General,General,General,General,General
+LANGUAGES,Language,Langue,,Idioma,语言,語言,Sprache,Lingua,Language,Language,Language,Language,Language
+DISPLAY,Display,Affichage,,Pantalla,显示,顯示,Anzeige,Schermo,Display,Display,Display,Display,Display
+WINDOWED,Windowed,Fenêtré,,En ventana,窗口模式,視窗模式,Im fenster,In finestra,Windowed,Windowed,Windowed,Windowed,Windowed
+FULLSCREEN,Full Screen,Plein écran,,Pantalla completa,全屏,全螢幕,Vollbild,Schermo Intero,Full Screen,Full Screen,Full Screen,Full Screen,Full Screen
+VSYNC,VSync,VSync,VSync,VSync,垂直同步,垂直同步,VSync,VSync,VSync,VSync,VSync,VSync,VSync
+ENABLED,Enabled,Activé,,Activado,启用,啟用,Aktiviert,Abilitato,Enabled,Enabled,Enabled,Enabled,Enabled
+DISABLED,Disabled,Désactivé,,Desactivado,禁用,禁用,Deaktiviert,Disabilitato,Disabled,Disabled,Disabled,Disabled,Disabled
+ADAPTIVE,Adaptive,Adaptif,,Adaptativo,适应性,適應性,Adaptiv,Adattivo,Adaptive,Adaptive,Adaptive,Adaptive,Adaptive
+ADAPTIVE_TOOLTIP,Activate VSync only when the framerate is over the refresh rate of the display,Active VSync seulement quand le taux d'images par seconde (IPS) est au dessus du taux de rafraîchissement de l'écran,,Activar VSync solo cuando la tasa de fotogramas sea superior a la tasa de refresco de la pantalla,仅在帧率超过显示器刷新率时启用垂直同步,僅當幀率超過顯示器的刷新率時啟用垂直同步,"VSync nur aktivieren, wenn die Bildrate über der Bildwiederholrate des Displays liegt",Attiva VSync solo quando il frame rate supera la frequenza di aggiornamento del display,Activate VSync only when the framerate is over the refresh rate of the display,Activate VSync only when the framerate is over the refresh rate of the display,Activate VSync only when the framerate is over the refresh rate of the display,Activate VSync only when the framerate is over the refresh rate of the display,Activate VSync only when the framerate is over the refresh rate of the display
+AUDIO,Audio,Audio,,Sonido,音频,音頻,Audio,Audio,Audio,Audio,Audio,Audio,Audio
+MASTER,Master,Principal,,Principal,主音量,主控,Gesamtlautstärke,Generale,Master,Master,Master,Master,Master
+MUSIC,Music,Musique,,Música,音乐,主音量,Musiklautstärke,Musica,Music,Music,Music,Music,Music
+SFX,SFX,Effets sonores,,Efectos,音效,音效,Soundeffektlautstärke,Effetti sonori,SFX,SFX,SFX,SFX,SFX
 #CREDITS,,,,,,,,,,,,,
-GAME_BY,Game by,Un jeu par,,Un juego de,游戏制作,遊戲由,,,,,,,
-VISUAL,Visuals,Visuels,,Gráficos,视觉效果,視覺效果,,,,,,,
-SOUND,Sounds,Sons,,Sonidos,声音,聲音,,,,,,,
-GAME_ENGINE,Made in Godot,Créé avec Godot,,Hecho en Godot,由 Godot 制作,在Godot製作,,,,,,,
+GAME_BY,Game by,Un jeu par,,Un juego de,游戏制作,遊戲由,Spiel von,Gioco realizzato da,Game by,Game by,Game by,Game by,Game by
+VISUAL,Visuals,Visuels,,Gráficos,视觉效果,視覺效果,Grafiken,Visivi,Visuals,Visuals,Visuals,Visuals,Visuals
+SOUND,Sounds,Sons,,Sonidos,声音,聲音,Geräusche,Suoni,Sounds,Sounds,Sounds,Sounds,Sounds
+GAME_ENGINE,Made in Godot,Créé avec Godot,,Hecho en Godot,由 Godot 制作,在Godot製作,Hergestellt in Godot,Creato in Godot,Made in Godot,Made in Godot,Made in Godot,Made in Godot,Made in Godot
 #TUTORIAL,,,,,,,,,,,,,
-VISIT_STEAM,Visit on Steam,Visitez la page Steam,,Visitar en Steam,在Steam上访问,前往 Steam,,,,,,,
+VISIT_STEAM,Visit on Steam,Visitez la page Steam,,Visitar en Steam,在Steam上访问,前往 Steam,Auf Steam besuchen,Visita su Steam,Visit on Steam,Visit on Steam,Visit on Steam,Visit on Steam,Visit on Steam
 PLAY_STEAM,"Congrats on finishing the Piece by Piece demo and thank you for playing!
 
 Wishlist our game on Steam and be amongst the first to experience all 8 unique puzzle boxes with 100 levels!","Félicitations pour avoir terminé la démo de Piece by Piece et merci d'avoir joué !
@@ -38,18 +38,32 @@ Ajoutez notre jeu à votre liste de souhaits sur Steam et soyez parmi les premie
 ¡Agrega nuestro juego a tu lista de deseos en Steam y sé uno de los primeros en experimentar las 8 cajas de rompecabezas únicas con 100 niveles!","恭喜完成《Piece by Piece》演示版，感谢您的游玩！
 在Steam上添加我们的游戏愿望单，成为首批体验所有8个独特拼图盒和100个关卡的玩家！","恭喜您完成了《Piece by Piece》演示，感謝您的參與！
 
-在 Steam 上將我們的遊戲加入願望清單，成為首批體驗全部 8 個獨特謎題盒和 100 個關卡的玩家！",,,,,,,
-SKIP_INTRO,Press any key to skip,Appuyez sur une touche pour poursuivre,,Presiona cualquier tecla para omitir,按任意键跳过,按任意鍵跳過,,,,,,,
-MOVE_CONTROLLER_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] pour se déplacer[/center],,[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] mover[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] 移动 [/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] 移動 [/center],,,,,,,
-MOVE_KEYBOARD_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] pour se déplacer[/center],,[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] mover[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] 移动 [/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] 移動 [/center],,,,,,,
-MOVE_CONTROLLER_PIECES_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] and [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] et [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] pour déplacer une piece[/center],,[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] y [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] mover una pieza del rompecabezas[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] 和 [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] 移动拼图块[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] 和 [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] 移動拼圖塊[/center],,,,,,,
-MOVE_KEYBOARD_PIECES_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] pour déplacer une pièce de puzzle[/center],,[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] mover una pieza del rompecabezas[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] 移动拼图块[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] 移動拼圖塊[/center],,,,,,,
+在 Steam 上將我們的遊戲加入願望清單，成為首批體驗全部 8 個獨特謎題盒和 100 個關卡的玩家！","Glückwunsch zum Abschluss der Piece by Piece-Demo und vielen Dank fürs Spielen!
+
+Setze unser Spiel auf deine Wunschliste auf Steam und sei einer der Ersten, der alle 8 einzigartigen Puzzleboxen mit 100 Levels erlebt!","Congratulazioni per aver completato la demo di Piece by Piece e grazie per aver giocato!
+
+Aggiungi il nostro gioco alla tua lista dei desideri su Steam e sii tra i primi a provare tutte le 8 scatole puzzle uniche con 100 livelli!","Congrats on finishing the Piece by Piece demo and thank you for playing!
+
+Wishlist our game on Steam and be amongst the first to experience all 8 unique puzzle boxes with 100 levels!","Congrats on finishing the Piece by Piece demo and thank you for playing!
+
+Wishlist our game on Steam and be amongst the first to experience all 8 unique puzzle boxes with 100 levels!","Congrats on finishing the Piece by Piece demo and thank you for playing!
+
+Wishlist our game on Steam and be amongst the first to experience all 8 unique puzzle boxes with 100 levels!","Congrats on finishing the Piece by Piece demo and thank you for playing!
+
+Wishlist our game on Steam and be amongst the first to experience all 8 unique puzzle boxes with 100 levels!","Congrats on finishing the Piece by Piece demo and thank you for playing!
+
+Wishlist our game on Steam and be amongst the first to experience all 8 unique puzzle boxes with 100 levels!"
+SKIP_INTRO,Press any key to skip,Appuyez sur une touche pour poursuivre,,Presiona cualquier tecla para omitir,按任意键跳过,按任意鍵跳過,"Drücke eine Taste, um zu überspringen",Premi un tasto per continuare,Press any key to skip,Press any key to skip,Press any key to skip,Press any key to skip,Press any key to skip
+MOVE_CONTROLLER_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] pour se déplacer[/center],,[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] mover[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] 移动 [/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] 移動 [/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] bewegen[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img]per muoverti[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/LeftStick.tres[/img] to move[/center]
+MOVE_KEYBOARD_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] pour se déplacer[/center],,[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] mover[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] 移动 [/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] 移動 [/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] bewegen[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] per muoverti[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] to move[/center],[center][img=27]Assets/Sprites/Glyphs/W.tres[/img][img=27]Assets/Sprites/Glyphs/A.tres[/img][img=27]Assets/Sprites/Glyphs/S.tres[/img][img=27]Assets/Sprites/Glyphs/D.tres[/img] to move[/center]
+MOVE_CONTROLLER_PIECES_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] and [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] et [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] pour déplacer une piece[/center],,[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] y [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] mover una pieza del rompecabezas[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] 和 [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] 移动拼图块[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] 和 [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] 移動拼圖塊[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] und [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] ein Puzzleteil bewegen[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] e [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] per muovere un pezzo del puzzle[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] and [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] and [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] and [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] and [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/RT.tres[/img] and [img=27]Assets/Sprites/Glyphs/RightStick.tres[/img] to move a puzzle piece[/center]
+MOVE_KEYBOARD_PIECES_TUTORIAL,[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] pour déplacer une pièce de puzzle[/center],,[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] mover una pieza del rompecabezas[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] 移动拼图块[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] 移動拼圖塊[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] ein Puzzleteil bewegen[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img]per muovere un pezzo del puzzle[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] to move a puzzle piece[/center],[center][img=27]Assets/Sprites/Glyphs/Mouse.tres[/img] to move a puzzle piece[/center]
 #WORLDS,,,,,,,,,,,,,
-LEVEL %d,Level %d,Niveau %d,,Nivel %d,关卡 %d,關卡 %d,,,,,,,
-WORLDS,Worlds,Mondes,,Mundos,世界,世界,,,,,,,
+LEVEL %d,Level %d,Niveau %d,,Nivel %d,关卡 %d,關卡 %d,Level %d,Livello %d,Level %d,Level %d,Level %d,Level %d,Level %d
+WORLDS,Worlds,Mondes,,Mundos,世界,世界,Welten,Mondi,Worlds,Worlds,Worlds,Worlds,Worlds
 CHOOSE_WORLD,PICK A PUZZLE BOX,CHOISISSEZ UNE BOITE,CHOISISSEZ UNE BOITE,ELIGE UNA CAJA,选择一个盒子,選擇一個盒子,WÄHLE EINE BOX,SCEGLI UNA SCATOLA,ВЫБЕРИТЕ КОРОБКУ,상자를 선택하세요,एक डिब्बा चुनें,箱を選んでください,ESCOLHA UMA CAIXA
-WORLD_DEMO,DEMO WORLD,MONDE DÉMO,,MUNDO DEMO,演示世界,示範世界,,,,,,,
-WORLD_KING,KING'S QUEST,LA QUÊTE DU ROI,,LA BÚSQUEDA DEL REY,国王的冒险,王者之,,,,,,,
-WORLD_LUMBER,LUMBER PARTY,LE FESTIVAL DU TRONC,,FIESTA DE LOS LEÑADORES,木材派对,木材派對,,,,,,,
-WORLD_ALIEN,ALIEN EXCAVATION,MINE EXTRATERRESTRE,,EXCAVACIÓN ALIENÍGENA,外星挖掘,外星挖掘,,,,,,,
-WORLD_MINER,MINING SESSION,AVOIR BONNE MINE,,SESIÓN DE MINERÍA,矿山会话,礦採時光,,,,,,,
+WORLD_DEMO,DEMO WORLD,MONDE DÉMO,,MUNDO DEMO,演示世界,示範世界,DEMO-WELT,MONDO DEMO,DEMO WORLD,DEMO WORLD,DEMO WORLD,DEMO WORLD,DEMO WORLD
+WORLD_KING,KING'S QUEST,LA QUÊTE DU ROI,,LA BÚSQUEDA DEL REY,国王的冒险,王者之,KÖNIGSQUEST,LA RICERCA DEL RE,KING'S QUEST,KING'S QUEST,KING'S QUEST,KING'S QUEST,KING'S QUEST
+WORLD_LUMBER,LUMBER PARTY,LE FESTIVAL DU TRONC,,FIESTA DE LOS LEÑADORES,木材派对,木材派對,HOLZPARTY,FESTA DEL LEGNAME,LUMBER PARTY,LUMBER PARTY,LUMBER PARTY,LUMBER PARTY,LUMBER PARTY
+WORLD_ALIEN,ALIEN EXCAVATION,MINE EXTRATERRESTRE,,EXCAVACIÓN ALIENÍGENA,外星挖掘,外星挖掘,ALIEN-AUSGRABUNG,SCAVO ALIENO,ALIEN EXCAVATION,ALIEN EXCAVATION,ALIEN EXCAVATION,ALIEN EXCAVATION,ALIEN EXCAVATION
+WORLD_MINER,MINING SESSION,AVOIR BONNE MINE,,SESIÓN DE MINERÍA,矿山会话,礦採時光,BERGBAU-SITZUNG,SESSIONE MINERARIA,MINING SESSION,MINING SESSION,MINING SESSION,MINING SESSION,MINING SESSION
