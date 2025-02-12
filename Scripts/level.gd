@@ -125,8 +125,9 @@ func _on_level_menu_on_quit_clicked():
 
 func _on_level_menu_on_restart_clicked():
 	var scene_manager = SubSystemManager.get_scene_manager()
-	if can_reset and scene_manager.old_screen != self and reset_level_cooldown.is_stopped() and !Player.winning:
+	if can_reset and scene_manager.old_screen != self and reset_level_cooldown.is_stopped() and !Player.winning and (!pause_menu.current_tween or !pause_menu.current_tween.is_running()):
 		if scene_manager.reset_scene() : 
+			pause_menu.blur.visible = false
 			can_reset = false
 
 
