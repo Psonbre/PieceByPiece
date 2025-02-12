@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://bfadtqcsqou5f"]
+[gd_scene load_steps=73 format=4 uid="uid://bfadtqcsqou5f"]
 
 [ext_resource type="Script" path="res://Scripts/level_select_menu.gd" id="1_8ub4k"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="2_1sef1"]
@@ -20,16 +20,16 @@
 [ext_resource type="PackedScene" uid="uid://cilri2klcsvjr" path="res://Scenes/Levels/Demo/Level13-Demo.tscn" id="18_f7n8e"]
 [ext_resource type="PackedScene" uid="uid://coljvr4d1uegt" path="res://Scenes/Levels/Demo/Level9-Demo.tscn" id="18_knuy5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wxeut"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2pac"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xsow"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i168"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u5ir"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uotug"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j8vvk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yy21h"]
 radius = 35.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ienw4"]
@@ -38,305 +38,149 @@ shader = ExtResource("6_xvtsc")
 shader_parameter/speed = 0.0
 shader_parameter/color = Vector4(0, 0, 0, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mjt02"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sv0v5"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttakf"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_txlhm"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ofd1b"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_toj6h"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nsuq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeb5f"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_84u7o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rygyj"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tj207"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nlcjc"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2bbd0"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3a66"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jef76"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nppfw"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_004x5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7jeg"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_evc3v"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0igxi"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1fo6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y11wp"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q2pnv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_leuib"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o1nmt"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkokq"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i5sm"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o6qd"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0k2v2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5l6u"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmbrd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bun3j"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rddsa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bowr3"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yrjjx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7jf07"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6wfui"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nftwu"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vaigw"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys8tr"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvq0v"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmn8d"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_44ilp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvkcu"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_51fxx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd46y"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mkgwo"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebylg"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yctnk"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc7ro"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_me0ll"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhe7e"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0mjl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7pgg"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfjv7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v6bb"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbfmb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uhsu"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wl7gi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_naqxb"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_85n1j"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tyech"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o66cd"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml327"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yx1it"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_aynab"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwtuc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj0pr"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yghab"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yet3"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6jrox"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5k1c"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pb8ta"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lswc3"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m7rr"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1tru"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q7r0u"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8eb8"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2sbp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uqko"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm8jo"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bhy1"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nj1rc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_15dwk"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6wqo7"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p86v"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5vwr"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwcau"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1pbdo"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_swpba"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yedx4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_raxng"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk7pk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jugej"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5rrjs"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ny0kq"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x1fsd"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_myg0n"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4kdo"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_luxlj"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbjgi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aav6b"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_agegt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo46u"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpp8s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu02f"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3dnqe"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5ovx"]
 radius = 35.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t7ww6"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xn6f"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dh8c"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm837"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ct8w8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qsu7"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aclqh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f33ya"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wcdi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nv3fy"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o01wk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdnoh"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q1hd8"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sv44h"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccjr3"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_edkjj"]
-size = Vector2(40, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yos2c"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_t3emt"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3af2g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4by6"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb881"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akfkf"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8kil"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr0xa"]
 size = Vector2(35, 70)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ccasq"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph80t"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w20ut"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr06c"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_emaf1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvw6c"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_38wq4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0j3f"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6khkf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulopo"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dghul"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il0vn"]
 size = Vector2(35, 70)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ti1xt"]
-radius = 40.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stbo2"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjcyh"]
-size = Vector2(40, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6orx"]
-size = Vector2(40, 80)
 
 [node name="LevelSelect" type="Node2D" groups=["LevelSelectMenu"]]
 z_index = 15
@@ -415,20 +259,20 @@ tile_map_data = PackedByteArray("AAD//wEAAwAAAAcAAAD//wAAAwAAAAYAAAD/////AwAAAAU
 tile_map_data = PackedByteArray("AAD+//7/AwAFAAEAAAD///7/AwABAAIAAAAAAP7/AwABAAIAAAABAP7/AwABAAIAAAACAP7/AwAGAAEAAAD+/wIAAwAFAAIAAAD//wIAAwABAAAAAAAAAAIAAwABAAAAAAABAAIAAwABAAAAAAACAAIAAwAGAAIAAAACAAEAAwAAAAEAAAAAAAMAAwABAAEAAAADAAEAAwABAAEAAAD+/wEAAwACAAEAAAD+/wAAAwACAAEAAAD+////AwACAAEAAAACAAAAAwAAAAEAAAACAP//AwAAAAEAAAD+/wMAAwABAAIAAAD//wMAAwAGAAEAAAABAAMAAwAFAAEAAAACAAMAAwABAAIAAAADAAMAAwACAAIAAAADAAIAAwAFAAEAAAADAAAAAwABAAEAAAADAP//AwABAAEAAAADAP7/AwAFAAIAAAADAP3/AwACAAAAAAACAP3/AwABAAAAAAABAP3/AwABAAAAAAAAAP3/AwABAAAAAAD///3/AwABAAAAAAD+//3/AwABAAAAAAD9//3/AwAAAAAAAAD9//7/AwAAAAEAAAD9////AwAAAAEAAAD9/wAAAwAAAAEAAAD9/wEAAwAAAAEAAAD9/wIAAwAAAAEAAAD9/wMAAwAAAAIAAAD//wQAAwAAAAIAAAAAAAQAAwABAAIAAAABAAQAAwACAAIAAAAEAAIAAwACAAIAAAAEAAEAAwACAAEAAAAEAAAAAwACAAEAAAAEAP//AwACAAEAAAAEAP7/AwACAAAAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_wxeut")
+shape = SubResource("CircleShape2D_l2pac")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_7xsow")
+shape = SubResource("RectangleShape2D_5i168")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_5u5ir")
+shape = SubResource("RectangleShape2D_uotug")
 
 [node name="BottomConnector" parent="GridContainer/BasicLevels/Level 1/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_j8vvk")
+shape = SubResource("CircleShape2D_yy21h")
 
 [node name="Shadow" parent="GridContainer/BasicLevels/Level 1/Level Button" index="3"]
 points = PackedVector2Array(-128, -128, 128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128)
@@ -442,18 +286,6 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 
 [node name="BevelBottom" parent="GridContainer/BasicLevels/Level 1/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_mjt02")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_sv0v5")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_ttakf")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 1/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_txlhm")
 
 [node name="Level 2" parent="GridContainer/BasicLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
@@ -470,24 +302,24 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 tile_map_data = PackedByteArray("AAD+//7/AwAFAAEAAAD///7/AwABAAIAAAAAAP7/AwABAAIAAAABAP7/AwABAAIAAAACAP7/AwAGAAEAAAD+/wIAAwAFAAIAAAD//wIAAwABAAAAAAAAAAIAAwABAAAAAAABAAIAAwABAAAAAAACAAIAAwAGAAIAAAD+/wEAAwACAAEAAAACAAEAAwAAAAEAAAADAAEAAwABAAEAAAD+/wAAAwACAAEAAAD+////AwACAAEAAAACAAAAAwAAAAEAAAACAP//AwAAAAEAAAD+/wMAAwABAAIAAAD//wMAAwAGAAEAAAAAAAMAAwABAAEAAAABAAMAAwAFAAEAAAACAAMAAwABAAIAAAADAAMAAwACAAIAAAADAAIAAwAFAAEAAAADAAAAAwABAAEAAAADAP//AwABAAEAAAADAP7/AwAFAAIAAAADAP3/AwACAAAAAAACAP3/AwABAAAAAAABAP3/AwABAAAAAAAAAP3/AwABAAAAAAD///3/AwABAAAAAAD+//3/AwABAAAAAAD9//3/AwAAAAAAAAD9//7/AwAAAAEAAAD9////AwAAAAEAAAD9/wAAAwAAAAEAAAD9/wEAAwAAAAEAAAD9/wIAAwAAAAEAAAD9/wMAAwAAAAIAAAD//wQAAwAAAAIAAAAAAAQAAwABAAIAAAABAAQAAwACAAIAAAAEAP7/AwACAAAAAAAEAP//AwACAAEAAAAEAAAAAwACAAEAAAAEAAEAAwACAAEAAAAEAAIAAwACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_ofd1b")
+shape = SubResource("CircleShape2D_toj6h")
 
 [node name="LeftConnector" parent="GridContainer/BasicLevels/Level 2/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_2nsuq")
+shape = SubResource("RectangleShape2D_oeb5f")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_84u7o")
+shape = SubResource("RectangleShape2D_rygyj")
 
 [node name="BottomConnector" parent="GridContainer/BasicLevels/Level 2/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_tj207")
+shape = SubResource("CircleShape2D_nlcjc")
 
 [node name="LevelNumber" parent="GridContainer/BasicLevels/Level 2/Level Button/Overlay" index="0"]
 text = "2"
@@ -508,18 +340,6 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 [node name="BevelBottom" parent="GridContainer/BasicLevels/Level 2/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_2bbd0")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_t3a66")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_jef76")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 2/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_nppfw")
-
 [node name="Level 3" parent="GridContainer/BasicLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("9_rbk4w")
@@ -535,24 +355,24 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 tile_map_data = PackedByteArray("AAD+//7/AwAFAAEAAAD///7/AwABAAIAAAAAAP7/AwABAAIAAAABAP7/AwABAAIAAAACAP7/AwAGAAEAAAD+/wIAAwAFAAIAAAD//wIAAwABAAAAAAAAAAIAAwABAAAAAAABAAIAAwABAAAAAAACAAIAAwAGAAIAAAD+/wEAAwACAAEAAAACAAEAAwAAAAEAAAADAAEAAwABAAEAAAD//wMAAwAGAAEAAAAAAAMAAwABAAEAAAABAAMAAwAFAAEAAAD+/wAAAwACAAEAAAD+////AwACAAEAAAACAAAAAwAAAAEAAAACAP//AwAAAAEAAAD+/wMAAwABAAIAAAACAAMAAwABAAIAAAADAAMAAwACAAIAAAADAAIAAwAFAAEAAAADAAAAAwABAAEAAAADAP//AwABAAEAAAADAP7/AwAFAAIAAAADAP3/AwACAAAAAAACAP3/AwABAAAAAAABAP3/AwABAAAAAAAAAP3/AwABAAAAAAD///3/AwABAAAAAAD+//3/AwABAAAAAAD9//3/AwAAAAAAAAD9//7/AwAAAAEAAAD9////AwAAAAEAAAD9/wAAAwAAAAEAAAD9/wEAAwAAAAEAAAD9/wIAAwAAAAEAAAD9/wMAAwAAAAIAAAD//wQAAwAAAAIAAAAAAAQAAwABAAIAAAABAAQAAwACAAIAAAAEAP7/AwACAAAAAAAEAP//AwACAAEAAAAEAAAAAwACAAEAAAAEAAEAAwACAAEAAAAEAAIAAwACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_004x5")
+shape = SubResource("CircleShape2D_q7jeg")
 
 [node name="LeftConnector" parent="GridContainer/BasicLevels/Level 3/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_evc3v")
+shape = SubResource("RectangleShape2D_0igxi")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_h1fo6")
+shape = SubResource("RectangleShape2D_y11wp")
 
 [node name="BottomConnector" parent="GridContainer/BasicLevels/Level 3/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_q2pnv")
+shape = SubResource("CircleShape2D_leuib")
 
 [node name="LevelNumber" parent="GridContainer/BasicLevels/Level 3/Level Button/Overlay" index="0"]
 text = "3"
@@ -573,18 +393,6 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 [node name="BevelBottom" parent="GridContainer/BasicLevels/Level 3/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_o1nmt")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_vkokq")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_5i5sm")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 3/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_5o6qd")
-
 [node name="Level 4" parent="GridContainer/BasicLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("12_pxnra")
@@ -600,24 +408,24 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 tile_map_data = PackedByteArray("AAD+//7/AwAFAAEAAAD///7/AwABAAIAAAAAAP7/AwABAAIAAAABAP7/AwABAAIAAAACAP7/AwAGAAEAAAD+/wIAAwAFAAIAAAD//wIAAwABAAAAAAAAAAIAAwABAAAAAAABAAIAAwABAAAAAAACAAIAAwAGAAIAAAD+/wEAAwACAAEAAAACAAEAAwAAAAEAAAADAAEAAwABAAEAAAADAAIAAwAFAAEAAAAAAAMAAwABAAEAAAABAAMAAwAFAAEAAAD//wMAAwAGAAEAAAD+/wAAAwACAAEAAAD+////AwACAAEAAAACAAAAAwAAAAEAAAACAP//AwAAAAEAAAD+/wMAAwABAAIAAAACAAMAAwABAAIAAAADAAMAAwACAAIAAAADAAAAAwABAAEAAAADAP//AwABAAEAAAADAP7/AwAFAAIAAAADAP3/AwACAAAAAAACAP3/AwABAAAAAAABAP3/AwABAAAAAAAAAP3/AwABAAAAAAD///3/AwABAAAAAAD+//3/AwABAAAAAAD9//3/AwAAAAAAAAD9//7/AwAAAAEAAAD9////AwAAAAEAAAD9/wAAAwAAAAEAAAD9/wEAAwAAAAEAAAD9/wIAAwAAAAEAAAD9/wMAAwAAAAIAAAD//wQAAwAAAAIAAAAAAAQAAwABAAIAAAABAAQAAwACAAIAAAAEAP7/AwACAAAAAAAEAP//AwACAAEAAAAEAAAAAwACAAEAAAAEAAEAAwACAAEAAAAEAAIAAwACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_0k2v2")
+shape = SubResource("CircleShape2D_a5l6u")
 
 [node name="LeftConnector" parent="GridContainer/BasicLevels/Level 4/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_jmbrd")
+shape = SubResource("RectangleShape2D_bun3j")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_rddsa")
+shape = SubResource("RectangleShape2D_bowr3")
 
 [node name="BottomConnector" parent="GridContainer/BasicLevels/Level 4/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_yrjjx")
+shape = SubResource("CircleShape2D_7jf07")
 
 [node name="LevelNumber" parent="GridContainer/BasicLevels/Level 4/Level Button/Overlay" index="0"]
 text = "4"
@@ -638,18 +446,6 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 [node name="BevelBottom" parent="GridContainer/BasicLevels/Level 4/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_6wfui")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_nftwu")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_vaigw")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 4/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_ys8tr")
-
 [node name="Level 5" parent="GridContainer/BasicLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("14_j4cts")
@@ -669,24 +465,24 @@ shape = 0
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_pvq0v")
+shape = SubResource("RectangleShape2D_kmn8d")
 
 [node name="LeftConnector" parent="GridContainer/BasicLevels/Level 5/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_44ilp")
+shape = SubResource("RectangleShape2D_gvkcu")
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_51fxx")
+shape = SubResource("RectangleShape2D_dd46y")
 
 [node name="BottomConnector" parent="GridContainer/BasicLevels/Level 5/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_mkgwo")
+shape = SubResource("CircleShape2D_ebylg")
 
 [node name="LevelNumber" parent="GridContainer/BasicLevels/Level 5/Level Button/Overlay" index="0"]
 text = "5"
@@ -707,18 +503,6 @@ polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
 [node name="BevelBottom" parent="GridContainer/BasicLevels/Level 5/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_yctnk")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_fc7ro")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_me0ll")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 5/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_uhe7e")
-
 [node name="Level 6" parent="GridContainer/BasicLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("11_r7551")
@@ -736,27 +520,27 @@ type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_t0mjl")
+shape = SubResource("RectangleShape2D_l7pgg")
 
 [node name="LeftConnector" parent="GridContainer/BasicLevels/Level 6/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_tfjv7")
+shape = SubResource("RectangleShape2D_0v6bb")
 
 [node name="TopConnector" parent="GridContainer/BasicLevels/Level 6/Level Button/Shape/Connectors" index="2"]
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_hbfmb")
+shape = SubResource("RectangleShape2D_8uhsu")
 
 [node name="BottomConnector" parent="GridContainer/BasicLevels/Level 6/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_wl7gi")
+shape = SubResource("CircleShape2D_naqxb")
 
 [node name="LevelNumber" parent="GridContainer/BasicLevels/Level 6/Level Button/Overlay" index="0"]
 text = "6"
@@ -776,18 +560,6 @@ polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
 
 [node name="BevelBottom" parent="GridContainer/BasicLevels/Level 6/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_85n1j")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_tyech")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_o66cd")
-
-[node name="CollisionShape2D" parent="GridContainer/BasicLevels/Level 6/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_ml327")
 
 [node name="ThemeLevels" type="HBoxContainer" parent="GridContainer"]
 layout_mode = 2
@@ -811,24 +583,24 @@ tile_map_data = PackedByteArray("AAD//wEACAAAAAcAAAD//wAACAAAAAYAAAD/////CAAAAAU
 tile_map_data = PackedByteArray("AAD+//7/CAAFAAEAAAD///7/CAABAAIAAAAAAP7/CAABAAIAAAABAP7/CAABAAIAAAACAP7/CAAGAAEAAAD+/wIACAAFAAIAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAGAAIAAAD+////CAACAAEAAAACAP//CAAAAAEAAAD9////CAABAAEAAAD9//3/CAABAAEAAAD9//7/CAABAAEAAAD9/wAACAABAAEAAAD9/wEACAABAAEAAAD9/wIACAABAAEAAAD9/wMACAABAAEAAAD+//3/CAABAAEAAAD+/wAACAACAAEAAAD+/wEACAACAAEAAAD+/wMACAABAAEAAAD///3/CAABAAEAAAD//wMACAABAAEAAAAAAP3/CAABAAEAAAAAAAMACAABAAEAAAABAP3/CAABAAEAAAABAAMACAABAAEAAAACAP3/CAABAAEAAAACAAAACAAAAAEAAAACAAEACAAAAAEAAAACAAMACAABAAEAAAADAP3/CAABAAEAAAADAP7/CAABAAEAAAADAP//CAABAAEAAAADAAAACAABAAEAAAADAAEACAABAAEAAAADAAIACAABAAEAAAADAAMACAABAAEAAAADAAQACAABAAIAAAACAAQACAABAAIAAAABAAQACAABAAIAAAAAAAQACAABAAIAAAD//wQACAABAAIAAAD+/wQACAABAAIAAAD9/wQACAABAAIAAAAEAAQACAACAAIAAAAEAAMACAACAAEAAAAEAAIACAACAAEAAAAEAAEACAACAAEAAAAEAAAACAACAAEAAAAEAP//CAACAAEAAAAEAP7/CAACAAEAAAAEAP3/CAACAAEAAAD8//3/CAAAAAEAAAD8//z/CAAAAAAAAAD9//z/CAABAAAAAAD+//z/CAABAAAAAAD///z/CAABAAAAAAAAAPz/CAABAAAAAAABAPz/CAABAAAAAAACAPz/CAABAAAAAAADAPz/CAABAAAAAAAEAPz/CAACAAAAAAD8/wQACAAAAAIAAAD8/wMACAAAAAEAAAD8/wIACAAAAAEAAAD8/wEACAAAAAEAAAD8/wAACAAAAAEAAAD8////CAAAAAEAAAD8//7/CAAAAAEAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_yx1it")
+shape = SubResource("CircleShape2D_aynab")
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_rwtuc")
+shape = SubResource("RectangleShape2D_yj0pr")
 
 [node name="TopConnector" parent="GridContainer/ThemeLevels/Level 7/Level Button/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_yghab")
+shape = SubResource("RectangleShape2D_4yet3")
 
 [node name="BottomConnector" parent="GridContainer/ThemeLevels/Level 7/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_6jrox")
+shape = SubResource("CircleShape2D_f5k1c")
 
 [node name="LevelNumber" parent="GridContainer/ThemeLevels/Level 7/Level Button/Overlay" index="0"]
 text = "7"
@@ -849,18 +621,6 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 [node name="BevelBottom" parent="GridContainer/ThemeLevels/Level 7/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_pb8ta")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_lswc3")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_1m7rr")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 7/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_i1tru")
-
 [node name="Level 8" parent="GridContainer/ThemeLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("13_tl47n")
@@ -873,28 +633,28 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 tile_map_data = PackedByteArray("AAD+//7/CAAFAAEAAAD///7/CAABAAIAAAAAAP7/CAABAAIAAAABAP7/CAABAAIAAAACAP7/CAAGAAEAAAD+/wIACAAFAAIAAAD//wIACAABAAAAAAAAAAIACAABAAAAAAABAAIACAABAAAAAAACAAIACAAGAAIAAAD+////CAACAAEAAAACAP//CAAAAAEAAAD9////CAABAAEAAAD9//3/CAABAAEAAAD9//7/CAABAAEAAAD9/wAACAABAAEAAAD9/wEACAABAAEAAAD9/wIACAABAAEAAAD9/wMACAABAAEAAAD+//3/CAABAAEAAAD+/wAACAACAAEAAAD+/wEACAACAAEAAAD+/wMACAABAAEAAAD///3/CAABAAEAAAD//wMACAABAAEAAAAAAP3/CAABAAEAAAAAAAMACAABAAEAAAABAP3/CAABAAEAAAABAAMACAABAAEAAAACAP3/CAABAAEAAAACAAAACAAAAAEAAAACAAEACAAAAAEAAAACAAMACAABAAEAAAADAP3/CAABAAEAAAADAP7/CAABAAEAAAADAP//CAABAAEAAAADAAAACAABAAEAAAADAAEACAABAAEAAAADAAIACAABAAEAAAADAAMACAABAAEAAAD/////CAAAAAUAAAD//wAACAAAAAYAAAD//wEACAAAAAcAAAAAAP//CAABAAUAAAAAAAAACAABAAYAAAAAAAEACAABAAcAAAABAP//CAACAAUAAAABAAAACAACAAYAAAABAAEACAACAAcAAAD8//z/CAAAAAAAAAD8//3/CAAAAAEAAAD8//7/CAAAAAEAAAD8////CAAAAAEAAAD8/wAACAAAAAEAAAD8/wEACAAAAAEAAAD8/wIACAAAAAEAAAD8/wMACAAAAAEAAAD8/wQACAAAAAIAAAD9//z/CAABAAAAAAD9/wQACAABAAIAAAD+//z/CAABAAAAAAD+/wQACAABAAIAAAD///z/CAABAAAAAAD//wQACAABAAIAAAAAAPz/CAABAAAAAAAAAAQACAABAAIAAAABAPz/CAABAAAAAAABAAQACAABAAIAAAACAPz/CAABAAAAAAACAAQACAABAAIAAAADAPz/CAABAAAAAAADAAQACAABAAIAAAAEAPz/CAACAAAAAAAEAP3/CAACAAEAAAAEAP7/CAACAAEAAAAEAP//CAACAAEAAAAEAAAACAACAAEAAAAEAAEACAACAAEAAAAEAAIACAACAAEAAAAEAAMACAACAAEAAAAEAAQACAACAAIAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_q7r0u")
+shape = SubResource("CircleShape2D_a8eb8")
 
 [node name="LeftConnector" parent="GridContainer/ThemeLevels/Level 8/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_w2sbp")
+shape = SubResource("RectangleShape2D_5uqko")
 
 [node name="TopConnector" parent="GridContainer/ThemeLevels/Level 8/Level Button/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_lm8jo")
+shape = SubResource("RectangleShape2D_7bhy1")
 
 [node name="BottomConnector" parent="GridContainer/ThemeLevels/Level 8/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_nj1rc")
+shape = SubResource("CircleShape2D_15dwk")
 
 [node name="LevelNumber" parent="GridContainer/ThemeLevels/Level 8/Level Button/Overlay" index="0"]
 text = "8"
@@ -918,18 +678,6 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 [node name="BevelBottom" parent="GridContainer/ThemeLevels/Level 8/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_6wqo7")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_1p86v")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_c5vwr")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 8/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_wwcau")
-
 [node name="Level 9" parent="GridContainer/ThemeLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("18_knuy5")
@@ -942,28 +690,28 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 tile_map_data = PackedByteArray("AAD+//7/AgAFAAEAAAD///7/AgABAAIAAAAAAP7/AgABAAIAAAABAP7/AgABAAIAAAACAP7/AgAGAAEAAAD+/wIAAgAFAAIAAAD//wIAAgABAAAAAAAAAAIAAgABAAAAAAABAAIAAgABAAAAAAACAAIAAgAGAAIAAAD+////AgACAAEAAAACAP//AgAAAAEAAAD+/wAAAgACAAEAAAD+/wEAAgACAAEAAAACAAAAAgAAAAEAAAACAAEAAgAAAAEAAAADAP7/AgACAAEAAAD/////AgAAAAUAAAD//wAAAgAAAAYAAAD//wEAAgAAAAcAAAAAAP//AgABAAUAAAAAAAAAAgABAAYAAAAAAAEAAgABAAcAAAABAP//AgACAAUAAAABAAAAAgACAAYAAAABAAEAAgACAAcAAAD9//3/AgAAAAAAAAD9//7/AgAAAAEAAAD9////AgAAAAEAAAD9/wAAAgAAAAEAAAD9/wEAAgAAAAEAAAD9/wIAAgAAAAEAAAD9/wMAAgAAAAIAAAD+/wMAAgABAAIAAAD//wMAAgABAAIAAAAAAAMAAgABAAIAAAABAAMAAgABAAIAAAACAAMAAgABAAIAAAADAAMAAgACAAIAAAADAAIAAgACAAEAAAADAAEAAgACAAEAAAADAAAAAgACAAEAAAADAP//AgACAAEAAAADAP3/AgACAAAAAAACAP3/AgABAAAAAAABAP3/AgABAAAAAAAAAP3/AgABAAAAAAD///3/AgABAAAAAAD+//3/AgABAAAAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_1pbdo")
+shape = SubResource("CircleShape2D_swpba")
 
 [node name="LeftConnector" parent="GridContainer/ThemeLevels/Level 9/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_yedx4")
+shape = SubResource("RectangleShape2D_raxng")
 
 [node name="TopConnector" parent="GridContainer/ThemeLevels/Level 9/Level Button/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_tk7pk")
+shape = SubResource("RectangleShape2D_jugej")
 
 [node name="BottomConnector" parent="GridContainer/ThemeLevels/Level 9/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_5rrjs")
+shape = SubResource("CircleShape2D_ny0kq")
 
 [node name="LevelNumber" parent="GridContainer/ThemeLevels/Level 9/Level Button/Overlay" index="0"]
 text = "9"
@@ -987,18 +735,6 @@ polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -3
 [node name="BevelBottom" parent="GridContainer/ThemeLevels/Level 9/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_x1fsd")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_myg0n")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_a4kdo")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 9/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_luxlj")
-
 [node name="Level 10" parent="GridContainer/ThemeLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("15_wdskm")
@@ -1015,28 +751,28 @@ shape = 0
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_lbjgi")
+shape = SubResource("RectangleShape2D_aav6b")
 
 [node name="LeftConnector" parent="GridContainer/ThemeLevels/Level 10/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_agegt")
+shape = SubResource("RectangleShape2D_bo46u")
 
 [node name="TopConnector" parent="GridContainer/ThemeLevels/Level 10/Level Button/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_tpp8s")
+shape = SubResource("RectangleShape2D_lu02f")
 
 [node name="BottomConnector" parent="GridContainer/ThemeLevels/Level 10/Level Button/Shape/Connectors" index="3"]
 shape = 1
 
 [node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Shape/Connectors/BottomConnector" index="0"]
 position = Vector2(0, 0)
-shape = SubResource("CircleShape2D_3dnqe")
+shape = SubResource("CircleShape2D_c5ovx")
 
 [node name="LevelNumber" parent="GridContainer/ThemeLevels/Level 10/Level Button/Overlay" index="0"]
 text = "10"
@@ -1060,18 +796,6 @@ polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
 [node name="BevelBottom" parent="GridContainer/ThemeLevels/Level 10/Level Button" index="8"]
 polygon = PackedVector2Array(128, 128, 35, 128, 34.3275, 134.828, 32.3358, 141.394, 29.1014, 147.445, 24.7487, 152.749, 19.445, 157.101, 13.3939, 160.336, 6.82816, 162.327, 2.14306e-15, 163, -6.82816, 162.327, -13.3939, 160.336, -19.445, 157.101, -24.7487, 152.749, -29.1014, 147.445, -32.3358, 141.394, -34.3275, 134.828, -35, 128, -128, 128, -124.3, 124.3, -35, 124.3, -34.3275, 131.128, -32.3358, 137.694, -29.1014, 143.745, -24.7487, 149.049, -19.445, 153.401, -13.3939, 156.636, -6.82816, 158.627, 2.14306e-15, 159.3, 6.82816, 158.627, 13.3939, 156.636, 19.445, 153.401, 24.7487, 149.049, 29.1014, 143.745, 32.3358, 137.694, 34.3275, 131.128, 35, 124.3, 124.3, 124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_t7ww6")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_0xn6f")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_4dh8c")
-
-[node name="CollisionShape2D" parent="GridContainer/ThemeLevels/Level 10/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_vm837")
-
 [node name="MixedLevels" type="HBoxContainer" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1094,20 +818,20 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 tile_map_data = PackedByteArray("AAD+//7/CAAFAAEAAAD///7/CAABAAIAAAAAAP7/CAABAAIAAAABAP7/CAABAAIAAAACAP7/AgAAAAAAAAD+/wIACAACAAIAAAD//wIAAgAAAAAAAAAAAAIAAgABAAAAAAABAAIAAgABAAAAAAACAAIAAgAGAAIAAAD+/wEACAACAAEAAAD+/wAACAACAAEAAAD+////CAACAAEAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9////AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+//3/AwACAAgAAAD///3/AwACAAgAAAD//wMAAgAAAAIAAAAAAP3/AwACAAgAAAAAAAMAAgABAAIAAAABAP3/AwACAAgAAAABAAMAAgABAAIAAAACAP3/AwACAAgAAAACAAMAAgABAAIAAAADAP3/AwACAAgAAAADAP7/AgACAAAAAAADAAMAAgACAAIAAAD8//z/CAAAAAAAAAD8//3/CAAAAAEAAAD8//7/CAAAAAEAAAD8////CAAAAAEAAAD8/wAACAAAAAEAAAD8/wEACAAAAAEAAAD8/wIACAAAAAEAAAD8/wMACAAAAAEAAAD8/wQACAAAAAIAAAD9//z/CAABAAAAAAD9/wQACAABAAIAAAD+//z/CAABAAAAAAD+/wQACAABAAIAAAD///z/CAABAAAAAAD//wQACAABAAIAAAAAAPz/CAABAAAAAAAAAAQACAABAAIAAAABAPz/CAABAAAAAAABAAQACAABAAIAAAACAPz/CAABAAAAAAACAAQACAABAAIAAAADAPz/CAABAAAAAAADAAQACAABAAIAAAAEAPz/CAACAAAAAAAEAP3/CAACAAEAAAAEAP7/CAADAAEAAAAEAP//CAADAAEAAAAEAAAACAADAAEAAAAEAAEACAADAAEAAAAEAAIACAADAAEAAAAEAAMACAAHAAIAAAAEAAQACAACAAIAAAACAAEAAgAAAAEAAAACAAAAAgAAAAEAAAACAP//AgAAAAEAAAADAP//AgACAAEAAAADAAAAAgACAAEAAAADAAEAAgACAAEAAAADAAIAAgACAAEAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_ct8w8")
+shape = SubResource("CircleShape2D_3qsu7")
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_aclqh")
+shape = SubResource("RectangleShape2D_f33ya")
 
 [node name="TopConnector" parent="GridContainer/MixedLevels/Level 11/Level Button/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_8wcdi")
+shape = SubResource("RectangleShape2D_nv3fy")
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_o01wk")
+shape = SubResource("RectangleShape2D_tdnoh")
 
 [node name="LevelNumber" parent="GridContainer/MixedLevels/Level 11/Level Button/Overlay" index="0"]
 text = "11"
@@ -1125,18 +849,6 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 [node name="BevelRight" parent="GridContainer/MixedLevels/Level 11/Level Button" index="7"]
 polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
 
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_q1hd8")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_sv44h")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_ccjr3")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 11/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_edkjj")
-
 [node name="Level 12" parent="GridContainer/MixedLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
 level = ExtResource("17_kor12")
@@ -1152,24 +864,24 @@ tile_map_data = PackedByteArray("AAD+//7/AwACAAgAAAD+////AwACAAgAAAD+/wAAAwACAAg
 tile_map_data = PackedByteArray("AAD+//7/CAAFAAEAAAD///7/CAABAAIAAAAAAP7/CAABAAIAAAABAP7/CAABAAIAAAACAP7/AgAAAAAAAAD+/wIACAACAAIAAAD//wIAAgAAAAAAAAAAAAIAAgABAAAAAAABAAIAAgABAAAAAAACAAIAAgAGAAIAAAD+////CAACAAEAAAACAP//AgAAAAEAAAD9////AwACAAgAAAD9//3/AwACAAgAAAD9//7/AwACAAgAAAD9/wAAAwACAAgAAAD9/wEAAwACAAgAAAD9/wIAAwACAAgAAAD9/wMAAwACAAgAAAD+//3/AwACAAgAAAD+/wAACAACAAEAAAD+/wEACAACAAEAAAD+/wMAAwACAAgAAAD///3/AwACAAgAAAD//wMAAgAAAAIAAAAAAP3/AwACAAgAAAAAAAMAAgABAAIAAAABAP3/AwACAAgAAAABAAMAAgABAAIAAAACAP3/AwACAAgAAAACAAAAAgAAAAEAAAACAAEAAgAAAAEAAAACAAMAAgABAAIAAAADAP3/AwACAAgAAAADAP7/AgACAAAAAAADAP//AgACAAEAAAADAAAAAgACAAEAAAADAAEAAgACAAEAAAADAAIAAgACAAEAAAADAAMAAgACAAIAAAD/////CAAAAAUAAAD//wAACAAEAAYAAAAAAP//CAACAAUAAAAAAAAACAACAAcAAAD8//z/CAAAAAAAAAD8//3/CAAAAAEAAAD8//7/CAAAAAEAAAD8////CAAAAAEAAAD8/wAACAAAAAEAAAD8/wEACAAAAAEAAAD8/wIACAAAAAEAAAD8/wMACAAAAAEAAAD8/wQACAAAAAIAAAD9//z/CAABAAAAAAD9/wQACAABAAIAAAD+//z/CAABAAAAAAD+/wQACAABAAIAAAD///z/CAABAAAAAAD//wQACAABAAIAAAAAAPz/CAABAAAAAAAAAAQACAABAAIAAAABAPz/CAABAAAAAAABAAQACAABAAIAAAACAPz/CAABAAAAAAACAAQACAABAAIAAAADAPz/CAABAAAAAAADAAQACAABAAIAAAAEAPz/CAACAAAAAAAEAP3/CAACAAEAAAAEAP7/CAACAAEAAAAEAP//CAACAAEAAAAEAAAACAACAAEAAAAEAAEACAACAAEAAAAEAAIACAACAAEAAAAEAAMACAACAAEAAAAEAAQACAACAAIAAAD//wEACAADAAcAAAA=")
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_yos2c")
+shape = SubResource("CircleShape2D_t3emt")
 
 [node name="LeftConnector" parent="GridContainer/MixedLevels/Level 12/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_3af2g")
+shape = SubResource("RectangleShape2D_j4by6")
 
 [node name="TopConnector" parent="GridContainer/MixedLevels/Level 12/Level Button/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_qb881")
+shape = SubResource("RectangleShape2D_akfkf")
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_i8kil")
+shape = SubResource("RectangleShape2D_kr0xa")
 
 [node name="LevelNumber" parent="GridContainer/MixedLevels/Level 12/Level Button/Overlay" index="0"]
 text = "12"
@@ -1189,18 +901,6 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 
 [node name="BevelRight" parent="GridContainer/MixedLevels/Level 12/Level Button" index="7"]
 polygon = PackedVector2Array(128, -128, 128, -35, 134.828, -34.3275, 141.394, -32.3358, 147.445, -29.1014, 152.749, -24.7487, 157.101, -19.445, 160.336, -13.3939, 162.327, -6.82816, 163, 0, 162.327, 6.82816, 160.336, 13.3939, 157.101, 19.445, 152.749, 24.7487, 147.445, 29.1014, 141.394, 32.3358, 134.828, 34.3275, 128, 35, 128, 128, 124.3, 124.3, 124.3, 35, 131.128, 34.3275, 137.694, 32.3358, 143.745, 29.1014, 149.049, 24.7487, 153.401, 19.445, 156.636, 13.3939, 158.627, 6.82816, 159.3, 0, 158.627, -6.82816, 156.636, -13.3939, 153.401, -19.445, 149.049, -24.7487, 143.745, -29.1014, 137.694, -32.3358, 131.128, -34.3275, 124.3, -35, 124.3, -124.3)
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_ccasq")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_ph80t")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_w20ut")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 12/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_gr06c")
 
 [node name="Level 13" parent="GridContainer/MixedLevels" node_paths=PackedStringArray("requires") instance=ExtResource("4_taran")]
 layout_mode = 2
@@ -1222,24 +922,24 @@ type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Shape/Connectors/RightConnector" index="0"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_emaf1")
+shape = SubResource("RectangleShape2D_yvw6c")
 
 [node name="LeftConnector" parent="GridContainer/MixedLevels/Level 13/Level Button/Shape/Connectors" index="1"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_38wq4")
+shape = SubResource("RectangleShape2D_f0j3f")
 
 [node name="TopConnector" parent="GridContainer/MixedLevels/Level 13/Level Button/Shape/Connectors" index="2"]
 shape = 1
 type = -1
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_6khkf")
+shape = SubResource("RectangleShape2D_ulopo")
 
 [node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_dghul")
+shape = SubResource("RectangleShape2D_il0vn")
 
 [node name="LevelNumber" parent="GridContainer/MixedLevels/Level 13/Level Button/Overlay" index="0"]
 text = "13"
@@ -1259,18 +959,6 @@ polygon = PackedVector2Array(-128, -128, -35, -128, -34.3275, -121.172, -32.3358
 
 [node name="BevelRight" parent="GridContainer/MixedLevels/Level 13/Level Button" index="7"]
 polygon = PackedVector2Array(128, -128, 128, 128, 124.3, 124.3, 124.3, -124.3)
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Collectible/Shape/Connectors/RightConnector" index="0"]
-shape = SubResource("CircleShape2D_ti1xt")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Collectible/Shape/Connectors/LeftConnector" index="0"]
-shape = SubResource("RectangleShape2D_stbo2")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Collectible/Shape/Connectors/TopConnector" index="0"]
-shape = SubResource("RectangleShape2D_mjcyh")
-
-[node name="CollisionShape2D" parent="GridContainer/MixedLevels/Level 13/Level Button/Collectible/Shape/Connectors/BottomConnector" index="0"]
-shape = SubResource("RectangleShape2D_m6orx")
 
 [editable path="GridContainer/BasicLevels/Level 1"]
 [editable path="GridContainer/BasicLevels/Level 2"]

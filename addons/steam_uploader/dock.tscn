@@ -517,12 +517,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "You must input your Steam API key to select an App"
 disabled = true
-selected = 0
-item_count = 2
-popup/item_0/text = "Piece by Piece (3249380)"
-popup/item_0/id = 3249380
-popup/item_1/text = "Piece by Piece Demo (3429540)"
-popup/item_1/id = 3429540
 
 [node name="DepotIds" type="HBoxContainer" parent="UploadToSteam"]
 layout_mode = 2
@@ -595,7 +589,6 @@ confirmation_dialog = NodePath("../../../ConfirmationDialog")
 [node name="RunBuild" type="Button" parent="UploadToSteam/HBoxContainer" node_paths=PackedStringArray("build_preset", "file_name")]
 layout_mode = 2
 size_flags_horizontal = 3
-disabled = true
 text = "Run Build"
 script = SubResource("GDScript_hb1na")
 build_preset = NodePath("../../../Build/BuildPreset/Build Preset")
@@ -604,7 +597,6 @@ file_name = NodePath("../../../Build/FileName/File Name")
 [node name="Upload" type="Button" parent="UploadToSteam" node_paths=PackedStringArray("build_preset", "file_name", "steam_api_key", "steam_depot_i_ds", "branch", "description", "steam_app_id", "steam_upload", "upload_dialog", "steam_cmd_dialog")]
 layout_mode = 2
 tooltip_text = "You must have a Steam API key and a valid build to upload on Steam"
-disabled = true
 text = "Upload to Steam"
 script = SubResource("GDScript_d3ll5")
 build_preset = NodePath("../../Build/BuildPreset/Build Preset")
