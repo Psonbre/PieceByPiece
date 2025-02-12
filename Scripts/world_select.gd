@@ -1,5 +1,4 @@
 extends Node2D
-@onready var tree := $TreeContainer/Tree
 
 var can_exit := true
 
@@ -12,5 +11,4 @@ func _input(_event):
 	var scene_manager = SubSystemManager.get_scene_manager()
 	if Input.is_action_just_pressed("ui_cancel") and can_exit and scene_manager.old_screen != self:
 		if scene_manager.load_main_menu(Vector2(0,-1)) : 
-			tree.hide_other_groups()
 			can_exit = false

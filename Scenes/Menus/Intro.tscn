@@ -1,48 +1,67 @@
-[gd_scene load_steps=6 format=3 uid="uid://5lbvsi7rf7ae"]
+[gd_scene load_steps=8 format=3 uid="uid://5lbvsi7rf7ae"]
 
 [ext_resource type="Script" path="res://Scripts/intro.gd" id="1_rh3ju"]
-[ext_resource type="Texture2D" uid="uid://dpnggfvmye3ty" path="res://Assets/Sprites/Background/vignette.png" id="2_hrp17"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_6rt42"]
 [ext_resource type="VideoStream" path="res://Assets/Videos/NP_Startup_cut.ogv" id="3_srhp0"]
 [ext_resource type="Texture2D" uid="uid://bptox3vipvje" path="res://Assets/Videos/original-outline-vertical-light.svg" id="3_y12qa"]
 
+[sub_resource type="Gradient" id="Gradient_u8087"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8hwm7"]
+gradient = SubResource("Gradient_u8087")
+
+[sub_resource type="GDScript" id="GDScript_vqh1x"]
+script/source = "extends Label
+
+func _ready() -> void:
+	modulate.a = 0
+	await get_tree().create_timer(3).timeout
+	create_tween().tween_property(self, \"modulate:a\", 1.0, 5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+"
+
 [node name="Intro" type="Node2D"]
-z_index = 15
+z_index = 20
 script = ExtResource("1_rh3ju")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(616, 343)
-scale = Vector2(2, 2)
-texture = ExtResource("2_hrp17")
+z_index = 20
+position = Vector2(640, 358.25)
+scale = Vector2(5.11719, 743.5)
+texture = SubResource("GradientTexture1D_8hwm7")
 
 [node name="GodotIcon" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
+z_index = 20
 position = Vector2(650, 350)
 texture = ExtResource("3_y12qa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(2.015, 2.015)
+zoom = Vector2(2, 2)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 3.0
-offset_right = 1923.0
+z_index = 20
+offset_right = 1920.0
 offset_bottom = 1088.0
-scale = Vector2(0.66, 0.66)
+scale = Vector2(0.67, 0.67)
 stream = ExtResource("3_srhp0")
 bus = &"Music"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 923.0
-offset_top = 658.0
-offset_right = 1337.0
-offset_bottom = 702.0
-scale = Vector2(0.795, 0.795)
-theme_override_colors/font_color = Color(1, 1, 1, 0.470588)
+z_index = 20
+offset_left = 817.0
+offset_top = 678.0
+offset_right = 1668.0
+offset_bottom = 722.0
+scale = Vector2(0.520253, 0.520253)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_6rt42")
 theme_override_font_sizes/font_size = 31
 text = "SKIP_INTRO"
+horizontal_alignment = 2
+script = SubResource("GDScript_vqh1x")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

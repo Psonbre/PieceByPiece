@@ -18,16 +18,16 @@ size = Vector2(256, 256)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ybjcd"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lb42"]
 radius = 35.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty2vb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opgm8"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3rrr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhp0r"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2qhl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp2i2"]
 size = Vector2(35, 70)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4r2"]
@@ -112,7 +112,7 @@ shape = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/RightConnector"]
-shape = SubResource("CircleShape2D_ybjcd")
+shape = SubResource("CircleShape2D_2lb42")
 metadata/_edit_lock_ = true
 
 [node name="LeftConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -124,7 +124,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_ty2vb")
+shape = SubResource("RectangleShape2D_opgm8")
 metadata/_edit_lock_ = true
 
 [node name="TopConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -136,7 +136,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_j3rrr")
+shape = SubResource("RectangleShape2D_rhp0r")
 metadata/_edit_lock_ = true
 
 [node name="BottomConnector" type="Area2D" parent="Level Button/Shape/Connectors"]
@@ -148,7 +148,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Button/Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_v2qhl")
+shape = SubResource("RectangleShape2D_dp2i2")
 metadata/_edit_lock_ = true
 
 [node name="Overlay" type="Polygon2D" parent="Level Button"]
