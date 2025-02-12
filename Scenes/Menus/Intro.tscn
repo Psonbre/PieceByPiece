@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://5lbvsi7rf7ae"]
+[gd_scene load_steps=5 format=3 uid="uid://5lbvsi7rf7ae"]
 
 [ext_resource type="Script" path="res://Scripts/intro.gd" id="1_rh3ju"]
 [ext_resource type="VideoStream" path="res://Assets/Videos/Neon-Polygons-Intro.ogv" id="1_rvbq6"]
+[ext_resource type="Texture2D" uid="uid://dpnggfvmye3ty" path="res://Assets/Sprites/Background/vignette.png" id="2_hrp17"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_6rt42"]
 
 [node name="Intro" type="Node2D"]
 z_index = 15
 script = ExtResource("1_rh3ju")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(616, 343)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hrp17")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
