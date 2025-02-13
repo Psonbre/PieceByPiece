@@ -3,6 +3,7 @@ extends Area2D
 class_name PuzzlePiece
 
 enum THEME {MEDIEVAL, PIRATE, ALIEN, MINER}
+const PICKUP_SCALE_MULTIPLIER := 1.1
 const max_tilt := deg_to_rad(12)
 const controller_drag_speed := 100.0
 const THEME_RESOURCE_MAP = {
@@ -120,7 +121,7 @@ func _process(delta):
 			var tilt_by = deg_to_rad(velocity.x) / 45.0
 			tilt_angle += tilt_by
 			tilt_angle = clamp(tilt_angle, -max_tilt, max_tilt)
-		scale = scale.move_toward(default_scale * 1.1, 0.6 * delta)
+		scale = scale.move_toward(default_scale * PICKUP_SCALE_MULTIPLIER, 0.6 * delta)
 		
 		rotated_angle = move_toward(rotated_angle, deg_to_rad(target_rotated_angle), abs(deg_to_rad(target_rotated_angle) - rotated_angle) * delta * 10.0)
 		
@@ -491,6 +492,8 @@ func update_connection_group():
 				add_piece_connections_to_connection_group(connection_group, piece)
 				tested_pieces.append(piece)
 	connect_portals()
+	for piece in connection_group.members :
+		piece.connection_group = connection_group
 	
 func connect_portals():
 	var portals = connection_group.members.filter(

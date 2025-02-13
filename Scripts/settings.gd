@@ -20,7 +20,7 @@ var vsyncModePossible: Dictionary = {
 		
 var languagesPossible: Dictionary = {
 	'English' : ['en', flagsPath + "english.png"],
-	#'Québecois' : ['fr_CA', flagsPath + "quebec.png"],
+	'Québecois' : ['fr_CA', flagsPath + "quebec.png"],
 	'Français' : ['fr', flagsPath + "french.png"],
 	'Español' : ['es', flagsPath + "spain.png"],
 	'Italiano' : ['it', flagsPath + "italy.png"],

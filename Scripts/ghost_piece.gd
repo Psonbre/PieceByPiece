@@ -93,16 +93,6 @@ func update_connection_group():
 			if piece not in tested_pieces :
 				add_piece_connections_to_connection_group(connection_group, piece)
 				tested_pieces.append(piece)
-
-func add_piece_connections_to_connection_group(cg: ConnectionGroup, piece: PuzzlePiece):
-	if piece.left_connector.connected_to:
-		cg.add_member(piece.left_connector.connected_to.puzzle_piece)
-	if piece.right_connector.connected_to:
-		cg.add_member(piece.right_connector.connected_to.puzzle_piece)
-	if piece.top_connector.connected_to:
-		cg.add_member(piece.top_connector.connected_to.puzzle_piece)
-	if piece.bottom_connector.connected_to:
-		cg.add_member(piece.bottom_connector.connected_to.puzzle_piece)
 	
 func _process(_delta):
 	pass

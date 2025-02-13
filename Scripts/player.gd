@@ -108,7 +108,6 @@ func _physics_process(delta):
 			reparent(closest_piece.shape)
 			reset_proportions()
 
-
 func check_diggable(input : Vector2):
 	input = input.normalized()
 	if abs(input.x) > abs(input.y):
