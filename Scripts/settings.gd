@@ -29,7 +29,7 @@ var languagesPossible: Dictionary = {
 	'Русский' : ['ru', flagsPath + "russian.png"],
 	'한국어' : ['ko', flagsPath + "south_korea.png"],
 	'日本語' : ['ja', flagsPath + "japan.png"],
-	#'हिन्दी' : ['hi', flagsPath + "india.png"],
+	'हिन्दी' : ['hi', flagsPath + "india.png"],
 	'简体中文' : ['cmn_Hans', flagsPath + "china.png"],
 	'繁體中文' : ['cmn_Hant', flagsPath + "china.png"]
 }
