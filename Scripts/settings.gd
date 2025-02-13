@@ -24,11 +24,11 @@ var languagesPossible: Dictionary = {
 	'Français' : ['fr', flagsPath + "french.png"],
 	'Español' : ['es', flagsPath + "spain.png"],
 	'Italiano' : ['it', flagsPath + "italy.png"],
-	#'Português' : ['pt', flagsPath + "portugal.png"],
+	'Português' : ['pt', flagsPath + "portugal.png"],
 	'Deutsch' : ['de', flagsPath + "germany.png"],
 	'Русский' : ['ru', flagsPath + "russian.png"],
 	'한국어' : ['ko', flagsPath + "south_korea.png"],
-	#'日本語' : ['ja', flagsPath + "japan.png"],
+	'日本語' : ['ja', flagsPath + "japan.png"],
 	#'हिन्दी' : ['hi', flagsPath + "india.png"],
 	'简体中文' : ['cmn_Hans', flagsPath + "china.png"],
 	'繁體中文' : ['cmn_Hant', flagsPath + "china.png"]
