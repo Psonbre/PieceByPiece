@@ -54,6 +54,10 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_globa
 	update_placement_validity()
 	
 func update_placement_validity():
+	if get_first_compatible_overlapping_connector() == null :
+		hide_display()
+		return
+		
 	update_connection_group()
 	
 	outline.material.set_shader_parameter('color', Vector4(1,1,1,0.5))

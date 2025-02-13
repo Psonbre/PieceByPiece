@@ -44,6 +44,8 @@ func get_first_compatible_overlapping_connector(include_dragging_piece := false,
 		if connector is PuzzlePieceConnector and connector.puzzle_piece is not GhostPiece:
 			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging) || (connector.shape == ConnectorShape.FLAT && !allow_flat_sides):
 				continue
+			if connector.global_position.distance_to(global_position) > 50 : 
+				continue
 			if is_connector_compatible(connector, false) :
 				return connector
 	return null

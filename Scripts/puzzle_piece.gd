@@ -99,7 +99,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Click") and is_hovering and !global_dragging and !PauseManager.is_paused:
 		start_dragging()
 	elif Input.is_action_just_released("Click") and is_dragging and !PauseManager.is_paused:
-		stop_dragging()
+		await stop_dragging()
 		
 	if shape.has_node("Player") && !Player.winning && !Player.entering_portal && !Player.exiting_portal:
 		shape.get_node("Player").global_rotation = 0 + tilt_angle
@@ -219,26 +219,37 @@ func start_dragging():
 	is_dragging = true
 	global_dragging = true
 	dragging_piece = self
+	
+	var first_overlapping_connector := get_first_compatible_overlapping_connector()
+	if first_overlapping_connector : 
+		if first_overlapping_connector.connected_to :
+			first_overlapping_connector.connected_to.on_area_entered(first_overlapping_connector)
+		else :
+			cancel_drag()
+			return
+	
 	update_lighting_range()
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
 	
 func stop_dragging():
 	is_dragging = false
+	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
 	if ghost_piece.displayed :
+		snap_to_connector(ghost_piece.get_first_compatible_overlapping_connector())
 		var test = ghost_piece.get_all_incompatible_overlapping_pieces()
 		for area in test :
 			area.global_position = get_available_puzzle_piece_position(area.global_position)
 		ghost_piece.update_placement_validity()
+		ghost_piece.hide_display()
 	
-	if !can_be_dropped() or abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 || Player.winning || Player.entering_portal || Player.exiting_portal: 
+	elif !can_be_dropped() or abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 || Player.winning || Player.entering_portal || Player.exiting_portal: 
 		cancel_drag()
 		return
 		
-	ghost_piece.hide_display()
 	
 	set_player_sprites_visible(true)
 	z_index = 0
@@ -356,11 +367,13 @@ func cancel_drag():
 	scale = default_scale
 	set_player_sprites_visible(true)
 	update_lighting_range()
+	
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
 	set_colliders_in_drag_mode(false)
 	
 func snap_to_connector(connector : PuzzlePieceConnector):
+	if !connector : return
 	connector.puzzle_piece.global_rotation = deg_to_rad(round(connector.puzzle_piece.target_rotated_angle / 90.0) * 90)
 	global_position = connector.get_adjacent_piece_position(false)
 	global_rotation = deg_to_rad(round(target_rotated_angle / 90.0) * 90)
@@ -449,7 +462,7 @@ func can_be_dropped():
 	if ghost_piece.displayed:
 		return ghost_piece.valid_placement
 	else :
-		if !all_overlapping_pieces_have_compatible_overlapping_connectors() :
+		if !all_overlapping_pieces_have_compatible_overlapping_connectors():
 			return false
 		if !all_connectors_can_be_dropped() :
 			return false
