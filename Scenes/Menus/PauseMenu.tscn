@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Buttons/pause_menu.gd" id="1_87pjb"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="2_dm8fx"]
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="2_gauam"]
-[ext_resource type="Texture2D" uid="uid://b25umqcyc7lr4" path="res://Assets/Icons/menu.png" id="3_60wth"]
-[ext_resource type="Texture2D" uid="uid://bmdpyw1lbygn0" path="res://Assets/Icons/close.png" id="4_x5f66"]
+[ext_resource type="Texture2D" uid="uid://ctdmg0n2p42nd" path="res://Assets/Icons/menu.svg" id="3_60wth"]
+[ext_resource type="Texture2D" uid="uid://dhktegc0h20rg" path="res://Assets/Icons/close.svg" id="4_x5f66"]
 [ext_resource type="Script" path="res://Scripts/pause_menu_button.gd" id="5_1twl6"]
-[ext_resource type="Texture2D" uid="uid://whbh7aod6y0e" path="res://Assets/Icons/home.png" id="6_3c6h6"]
-[ext_resource type="Texture2D" uid="uid://b7awj8cuibmoa" path="res://Assets/Icons/refresh.png" id="7_6n21h"]
-[ext_resource type="Texture2D" uid="uid://dryd3defeh2y" path="res://Assets/Icons/settings.png" id="8_hp646"]
+[ext_resource type="Texture2D" uid="uid://dnpcfbs2utfjp" path="res://Assets/Icons/home.svg" id="6_3c6h6"]
+[ext_resource type="Texture2D" uid="uid://bjr6dxpi0x8o4" path="res://Assets/Icons/refresh.svg" id="7_6n21h"]
+[ext_resource type="Texture2D" uid="uid://dkeqs1v1awguo" path="res://Assets/Icons/settings.svg" id="8_hp646"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_02sbc"]
 
@@ -60,14 +60,17 @@ mouse_filter = 2
 
 [node name="Control" type="Control" parent="SuperContainer/Container"]
 anchors_preset = 0
+scale = Vector2(0.25, 0.25)
 script = ExtResource("2_dm8fx")
 vertical_intensity = 5.0
 horizontal_intensity = 3
 
 [node name="DropDownButton" type="TextureButton" parent="SuperContainer/Container/Control"]
 layout_mode = 2
-offset_right = 96.0
-offset_bottom = 96.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 380.0
+offset_bottom = 380.0
 pivot_offset = Vector2(47, 46)
 focus_neighbor_left = NodePath("../../DropdownSection/DropDownMenu/CenterContainer/QuitButton")
 focus_neighbor_top = NodePath(".")
@@ -88,8 +91,8 @@ anchors_preset = 0
 anchor_left = 0.208
 anchor_right = 1.021
 anchor_bottom = 1.034
-offset_left = 0.0559998
-offset_right = -260.778
+offset_left = 5.056
+offset_right = -256.778
 offset_bottom = -90.23
 scale = Vector2(4.29972, 12.2796)
 mouse_filter = 2
@@ -99,15 +102,15 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.082
 anchor_top = 0.062
-anchor_right = 1.0
-anchor_bottom = 0.896
+anchor_right = 2.057
+anchor_bottom = 2.042
 offset_left = 0.0219998
 offset_top = 0.00399998
-offset_right = 290.626
-offset_bottom = 94.332
-scale = Vector2(0.2, 0.066)
+offset_right = 207.123
+offset_bottom = 85.164
+scale = Vector2(0.05, 0.017)
 mouse_filter = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 150
 
 [node name="CenterContainer2" type="CenterContainer" parent="SuperContainer/Container/DropdownSection/DropDownMenu"]
 layout_mode = 2
