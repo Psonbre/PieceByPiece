@@ -41,7 +41,6 @@ func set_locked(should_lock : bool):
 	if locked :
 		set_physics_process(false)
 		return
-	await get_tree().physics_frame
 	if !locked : set_physics_process(true)
 	
 func _physics_process(delta):
@@ -157,9 +156,11 @@ func set_digging(should_dig : bool, direction := Vector2.ZERO):
 		digging_particles.emitting = false
 
 func add_overlapping_piece(piece : PuzzlePiece):
-	if piece not in overlapping_pieces:
+	if overlapping_pieces.size() <= 0 :
 		overlapping_pieces.push_back(piece)
-
+	elif piece.connection_group.equals(overlapping_pieces[0].connection_group) :
+		overlapping_pieces.push_back(piece)
+		
 func remove_overlapping_piece(piece_to_remove : PuzzlePiece):
 	if overlapping_pieces.size() > 0 :
 		var closest_piece : PuzzlePiece = null

@@ -370,6 +370,10 @@ func cancel_drag():
 	
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	set_colliders_in_drag_mode(false)
 	
 func snap_to_connector(connector : PuzzlePieceConnector):
