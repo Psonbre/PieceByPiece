@@ -43,7 +43,7 @@ texture = SubResource("GradientTexture1D_8hwm7")
 [node name="GodotIcon" type="Sprite2D" parent="."]
 z_index = 20
 position = Vector2(650, 350)
-scale = Vector2(0.0172352, 0.0172352)
+scale = Vector2(0.906803, 0.906803)
 texture = ExtResource("3_y12qa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
