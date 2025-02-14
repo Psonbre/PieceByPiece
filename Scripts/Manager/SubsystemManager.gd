@@ -8,13 +8,15 @@ static var music_manager: MusicManager
 static var sound_manager: SoundManager
 static var settings_manager: SettingsManager
 static var config_file_manager: ConfigFileManager
+static var hud_manager : HudManager
 
 func _initialize() -> void:
-	get_config_file_manager()._load_config()
 	get_scene_manager()
+	get_hud_manager()
 	if !root.has_node("Intro"):
 		get_music_manager()
 	SaveManager._load_from_file()
+	get_config_file_manager()._load_config()
 	
 static func get_scene_manager() -> SceneManager:
 	if scene_manager == null:
@@ -23,6 +25,14 @@ static func get_scene_manager() -> SceneManager:
 			scene_manager = preload("res://Scenes/Manager/SceneManager.tscn").instantiate()
 			instance.root.add_child(scene_manager)
 	return scene_manager
+	
+static func get_hud_manager() -> HudManager:
+	if hud_manager == null:
+		hud_manager = instance.get_first_node_in_group("HudManager")
+		if hud_manager == null :
+			hud_manager = preload("res://Scenes/Manager/HudManager.tscn").instantiate()
+			instance.root.add_child(hud_manager)
+	return hud_manager
 
 static func get_music_manager() -> MusicManager:
 	if music_manager == null:

@@ -5,6 +5,8 @@ var masterVolume: float = 1
 var musicVolume: float = 1
 var sfxVolume: float = 1
 var gamepad_sensitivity : float = 80
+var fpsEnabled : bool = false
+var speedrunEnabled : bool = false
 
 func _get_display_mode():
 	return DisplayServer.window_get_mode()
@@ -30,6 +32,16 @@ func _update_language(language : String):
 func _update_gamepad_sensitivity(sensitivity : float):
 	gamepad_sensitivity = sensitivity
 	SubSystemManager.get_config_file_manager()._save_gamepad_sensitivity(sensitivity)
+	
+func _update_fps_counter(enabled : bool):
+	fpsEnabled = enabled
+	SubSystemManager.get_hud_manager()._toggle_fps_counter(enabled)
+	SubSystemManager.get_config_file_manager()._save_fps_counter(enabled)
+	
+func _update_speedrun_counter(enabled : bool):
+	speedrunEnabled = enabled
+	SubSystemManager.get_hud_manager()._toggle_speedrun_counter(enabled)
+	SubSystemManager.get_config_file_manager()._save_speedrun_counter(enabled)
 	
 func _update_master_volume(_volume : float):
 	masterVolume = _volume

@@ -115,6 +115,7 @@ func _ready() -> void:
 	for piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces"):
 		piece.shape.update_shape()
 	find_child("Player").current_level = self
+	SubSystemManager.get_hud_manager()._start_speedrun_counter()
 
 
 func _on_level_menu_on_quit_clicked():

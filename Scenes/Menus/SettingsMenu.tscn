@@ -165,8 +165,55 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("2_clsxa")
 alignment = 1
 
+[node name="FpsCounter" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/FpsCounter"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="FPS" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/FpsCounter/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "FPS"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="FPSCheckbox" type="CheckButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/FpsCounter/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+button_pressed = true
+
+[node name="SpeedrunCounter" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/SpeedrunCounter"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Speedrun" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/SpeedrunCounter/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "SPEEDRUN"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="SpeedrunCheckbox" type="CheckButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/SpeedrunCounter/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+button_pressed = true
+
 [node name="Controls" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 15
 
@@ -353,6 +400,8 @@ step = 0.01
 [connection signal="mouse_exited" from="Settings/Back" to="Settings/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="Settings/Back" to="Settings/Back" method="_on_pressed"]
 [connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer/LanguagesSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_languages_slider_item_selected"]
+[connection signal="toggled" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/FpsCounter/HSplitContainer/FPSCheckbox" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_fps_checkbox_toggled"]
+[connection signal="toggled" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/SpeedrunCounter/HSplitContainer/SpeedrunCheckbox" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_speedrun_checkbox_toggled"]
 [connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Controls/GamepadSensitivity/HSplitContainer/GamepadSensSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_gamepad_sens_slider_value_changed"]
 [connection signal="toggled" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer/FullscreenCheckBox" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_fullscreen_check_box_toggled"]
 [connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync/HSplitContainer/VsyncSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_vsync_slider_item_selected"]

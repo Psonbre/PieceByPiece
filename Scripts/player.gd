@@ -182,6 +182,7 @@ func win(door):
 		SaveManager.save_level_as_completed(current_level.world, current_level.scene_file_path)
 		if has_collectible :
 			SaveManager.save_level_as_collectible_collected(current_level.world, current_level.scene_file_path)
+		SubSystemManager.get_hud_manager()._stop_speedrun_counter()
 
 func teleport(portal : Portal):
 	set_physics_process(false)

@@ -15,6 +15,8 @@ const SFX_VOLUME = "sfxVolume"
 
 const GENERAL = "general"
 const LANGUAGE = "language"
+const FPS_COUNTER = "fps"
+const SPEEDRUN_COUNTER = "speedrun"
 
 const CONTROLS = "controls"
 const GP_SENS = "gamepadSensitivity"
@@ -27,12 +29,16 @@ const DEFAULT_MUSIC_VOLUME = 1
 const DEFAULT_SFX_VOLUME = 1
 
 const DEFAULT_LANGUAGE = 'en'
+const DEFAULT_FPS = false
+const DEFAULT_SPEEDRUN = false
 
 const DEFAULT_GP_SENS = 80
 
 var config_template = {
 	GENERAL: {
-		LANGUAGE: DEFAULT_LANGUAGE
+		LANGUAGE: DEFAULT_LANGUAGE,
+		FPS_COUNTER: DEFAULT_FPS,
+		SPEEDRUN_COUNTER: DEFAULT_SPEEDRUN
 	},
 	CONTROLS: {
 		GP_SENS: DEFAULT_GP_SENS
@@ -61,6 +67,8 @@ func _apply_config():
 	var settings = SubSystemManager.get_settings_manager()
 
 	settings._update_language(configFile.get_value(GENERAL,LANGUAGE))
+	settings._update_fps_counter(configFile.get_value(GENERAL,FPS_COUNTER))
+	settings._update_speedrun_counter(configFile.get_value(GENERAL,SPEEDRUN_COUNTER))
 	
 	settings._update_gamepad_sensitivity(configFile.get_value(CONTROLS, GP_SENS))
 
@@ -96,6 +104,14 @@ func _verify_config():
 		
 func _save_language(language : String):
 	configFile.set_value(GENERAL,LANGUAGE, language)
+	configFile.save(SETTINGS_FILE_PATH)
+	
+func _save_fps_counter(enabled : bool):
+	configFile.set_value(GENERAL,FPS_COUNTER, enabled)
+	configFile.save(SETTINGS_FILE_PATH)
+	
+func _save_speedrun_counter(enabled : bool):
+	configFile.set_value(GENERAL,SPEEDRUN_COUNTER, enabled)
 	configFile.save(SETTINGS_FILE_PATH)
 	
 func _save_gamepad_sensitivity(sensitivity: float):

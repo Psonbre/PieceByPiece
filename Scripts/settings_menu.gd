@@ -7,6 +7,8 @@ extends Control
 @onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
 @onready var languagesSlider = $General/LanguagesMode/HSplitContainer/LanguagesSlider
 @onready var gamepadSens = $Controls/GamepadSensitivity/HSplitContainer/GamepadSensSlider
+@onready var fpsCheckbox = $General/FpsCounter/HSplitContainer/FPSCheckbox
+@onready var speedrunCheckbox = $General/SpeedrunCounter/HSplitContainer/SpeedrunCheckbox
 
 @export var popupItemFontSize = 32
 var can_exit := true
@@ -47,6 +49,7 @@ func _ready() -> void:
 	addLanguages()
 	update_volume_sliders()
 	update_sensitivities()
+	update_gameplay_checkboxes()
 	
 #Languages------------------------
 func addLanguages():
@@ -119,6 +122,10 @@ func update_volume_sliders():
 	
 func update_sensitivities():
 	gamepadSens.value = SubSystemManager.get_settings_manager().gamepad_sensitivity
+	
+func update_gameplay_checkboxes():
+	fpsCheckbox.button_pressed = SubSystemManager.get_settings_manager().fpsEnabled
+	speedrunCheckbox.button_pressed = SubSystemManager.get_settings_manager().speedrunEnabled
 
 func _on_vsync_slider_item_selected(index: int) -> void:
 	var itemText = vsyncSlider.get_item_text(index)
@@ -156,3 +163,10 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_gamepad_sens_slider_value_changed(value: float) -> void:
 	SubSystemManager.get_settings_manager()._update_gamepad_sensitivity(value)
+
+
+func _on_fps_checkbox_toggled(toggled_on: bool) -> void:
+	SubSystemManager.get_settings_manager()._update_fps_counter(toggled_on)
+
+func _on_speedrun_checkbox_toggled(toggled_on: bool) -> void:
+	SubSystemManager.get_settings_manager()._update_speedrun_counter(toggled_on)
