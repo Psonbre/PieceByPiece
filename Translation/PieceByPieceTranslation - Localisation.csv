@@ -3,14 +3,18 @@ LANGUAGES,English,Français,Québécois (Français canadien),Español,简体中�
 ,English,French,French canadian,Spanish,Simplified Chinese,Traditional Chinese,German,Italian ,Russian,Korean ,Hindi,Japanese,Brazilian portuguese
 #MENU,,,,,,,,,,,,,
 PLAY,Play,Jouer,Jouer,Jugar,开始游戏,開始遊戲,Spielen,Gioca,Играть,플레이하기,खेलें,プレイ,Jogar
-SETTINGS,Options,Options,Options,Opciones,选项,設定,Optionen,Opzioni,Параметры,옵션,विकल्प,設定,Opções
+SETTINGS,Settings,Options,Options,Opciones,选项,設定,Optionen,Opzioni,Параметры,옵션,विकल्प,設定,Opções
 CREDITS,Credits,Crédits,Crédits,Créditos,制作人员,製作名單,Mitwirkende,Riconoscimenti,Авторы,크레딧,श्रेय,クレジット,Créditos
 BACK,Back,Retour,Retour,Atrás,返回,返回,Zurück,Indietro,Назад,뒤로가기,वापस,戻る,Voltar
 EXIT,Exit,Quitter,Quitter,Salir,退出游戏,退出,Ausfahrt,Esci,Выйти,출구,बाहर निकलें,終了,Sair
 #SETTINGS,,,,,,,,,,,,,
 GENERAL,General,Général,Général,General,一般,一般,Allgemein,Generale,Общие,일반,सामान्य,全般,Geral
 LANGUAGES,Language,Langue,Langue,Idioma,语言,語言,Sprache,Lingua,Язык,언어,भाषा,言語,Idioma
-DISPLAY,Display,Affichage,Affichage,Pantalla,显示,顯示,Anzeige,Schermo,ЭКРАН,디스플레이,प्रदर्शन,ディスプレイ,Exibição
+FPS,Show framerate,Afficher le taux de rafraîchissement,Afficher le framerate,Mostrar la tasa de fotogramas,显示帧率,顯示幀率,Bildrate anzeigen,Mostra il framerate,Показать частоту кадров,프레임 속도 표시,फ्रेमरेट दिखाएं,フレームレートを表示,Mostrar taxa de quadros
+SPEEDRUN,Speedrun timer,Minuteur speedrun,Chronomètre de speedrun,Temporizador de speedrun,速通计时器,速通計時器,Speedrun-Timer,Timer speedrun,Таймер спидрана,스피드런 타이머,स्पीडरन टाइमर,スピードランタイマー,Timer de speedrun
+CONTROLS,Controls,Commandes,Commandes,Controles,控制,控制,Steuerung,Controlli,Управление,컨트롤,नियंत्रण,操作方法,Controles
+GAMEPAD_SENS,Gamepad sensitivity,Sensibilité de la manette,Sensibilité de la manette,Sensibilidad del mando,游戏手柄灵敏度,控制器靈敏度,Gamepad-Empfindlichkeit,Sensibilità del gamepad,Чувствительность геймпада,게임패드 감도,गेमपैड संवेदनशीलता,ゲームパッド感度,Sensibilidade do controlador
+VIDEO,Video,Affichage,Affichage,Pantalla,显示,顯示,Anzeige,Schermo,ЭКРАН,디스플레이,प्रदर्शन,ディスプレイ,Exibição
 WINDOWED,Windowed,Fenêtré,Fenêtré,En ventana,窗口模式,視窗模式,Im fenster,In finestra,В окне,창 모드,विंडो मोड,ウィンドウモード,Em janela
 FULLSCREEN,Full Screen,Plein écran,Plein écran,Pantalla completa,全屏,全螢幕,Vollbild,Schermo Intero,На весь экран,전체 화면,पूर्ण स्क्रीन,フルスクリーン,Tela cheia
 VSYNC,VSync,VSync,VSync,VSync,垂直同步,垂直同步,VSync,VSync,VSync,버티컬 싱크,वी-सिंक,V-Sync,VSync
