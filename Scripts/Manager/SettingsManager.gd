@@ -4,6 +4,7 @@ class_name SettingsManager
 var masterVolume: float = 1
 var musicVolume: float = 1
 var sfxVolume: float = 1
+var gamepad_sensitivity : float = 80
 
 func _get_display_mode():
 	return DisplayServer.window_get_mode()
