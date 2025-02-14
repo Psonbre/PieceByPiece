@@ -26,23 +26,27 @@ func _update_language(language : String):
 	TranslationServer.set_locale(language)
 	SubSystemManager.get_config_file_manager()._save_language(language)
 	
+func _update_gamepad_sensitivity(sensitivity : float):
+	gamepad_sensitivity = sensitivity
+	SubSystemManager.get_config_file_manager()._save_gamepad_sensitivity(sensitivity)
+	
 func _update_master_volume(_volume : float):
 	masterVolume = _volume
 	var index = AudioServer.get_bus_index("Master")
-	var volume = 20 * (log(masterVolume) / log(10))
+	var volume = 20 * (log(_volume) / log(10))
 	AudioServer.set_bus_volume_db(index,volume)
 	SubSystemManager.get_config_file_manager()._save_master_volume(_volume)
 	
 func _update_music_volume(_volume : float):
 	musicVolume = _volume
 	var index = AudioServer.get_bus_index("Music")
-	var volume = 20 * (log(musicVolume) / log(10))
+	var volume = 20 * (log(_volume) / log(10))
 	AudioServer.set_bus_volume_db(index,volume)
 	SubSystemManager.get_config_file_manager()._save_music_volume(_volume)
 	
 func _update_sfx_volume(_volume : float):
 	sfxVolume = _volume
 	var index = AudioServer.get_bus_index("SFX")
-	var volume = 20 * (log(sfxVolume) / log(10))
+	var volume = 20 * (log(_volume) / log(10))
 	AudioServer.set_bus_volume_db(index,volume)
 	SubSystemManager.get_config_file_manager()._save_sfx_volume(_volume)

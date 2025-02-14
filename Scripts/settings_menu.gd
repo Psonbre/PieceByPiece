@@ -6,6 +6,7 @@ extends Control
 @onready var musicSlider = $Sounds/HBoxContainer2/HSplitContainer/MusicSlider
 @onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
 @onready var languagesSlider = $General/LanguagesMode/HSplitContainer/LanguagesSlider
+@onready var gamepadSens = $Controls/GamepadSensitivity/HSplitContainer/GamepadSensSlider
 
 @export var popupItemFontSize = 32
 var can_exit := true
@@ -45,6 +46,7 @@ func _ready() -> void:
 	addVsyncs()
 	addLanguages()
 	update_volume_sliders()
+	update_sensitivities()
 	
 #Languages------------------------
 func addLanguages():
@@ -114,6 +116,9 @@ func update_volume_sliders():
 	masterSlider.value = SubSystemManager.get_settings_manager().masterVolume
 	musicSlider.value = SubSystemManager.get_settings_manager().musicVolume
 	sfxSlider.value = SubSystemManager.get_settings_manager().sfxVolume
+	
+func update_sensitivities():
+	gamepadSens.value = SubSystemManager.get_settings_manager().gamepad_sensitivity
 
 func _on_vsync_slider_item_selected(index: int) -> void:
 	var itemText = vsyncSlider.get_item_text(index)
@@ -147,3 +152,7 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+
+func _on_gamepad_sens_slider_value_changed(value: float) -> void:
+	SubSystemManager.get_settings_manager()._update_gamepad_sensitivity(value)

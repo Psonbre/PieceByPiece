@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://dbl6sigulrew8"]
 
-[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_7isfi"]
-[ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="1_gliny"]
-[ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="3_uwmcr"]
-[ext_resource type="Script" path="res://Scripts/settings.gd" id="4_fs3n1"]
-[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="6_fiaql"]
-[ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_p0cnu"]
-[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="6_yel2d"]
+[ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="1_f2mn3"]
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_clsxa"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_jponv"]
+[ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="4_5rwo8"]
+[ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="5_a5ffe"]
+[ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_oeq6h"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="7_snvv8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwssg"]
-font = ExtResource("1_7isfi")
+font = ExtResource("2_clsxa")
 font_size = 46
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -18,7 +18,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_e52ha"]
-font = ExtResource("1_7isfi")
+font = ExtResource("2_clsxa")
 font_size = 25
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
@@ -27,7 +27,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3tyqm"]
-font = ExtResource("1_7isfi")
+font = ExtResource("2_clsxa")
 font_size = 25
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
@@ -36,7 +36,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wsq6o"]
-font = ExtResource("1_7isfi")
+font = ExtResource("2_clsxa")
 font_size = 25
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
@@ -60,7 +60,7 @@ offset_bottom = -564.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-script = ExtResource("1_gliny")
+script = ExtResource("1_f2mn3")
 FirstControl = NodePath("ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer/LanguagesSlider")
 
 [node name="Title" type="Label" parent="Settings"]
@@ -74,13 +74,13 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("1_7isfi")
+theme_override_fonts/font = ExtResource("2_clsxa")
 theme_override_font_sizes/font_size = 56
 text = "SETTINGS"
 label_settings = SubResource("LabelSettings_lwssg")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("6_yel2d")
+script = ExtResource("3_jponv")
 
 [node name="Back" type="Button" parent="Settings"]
 layout_mode = 1
@@ -94,10 +94,10 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(66.5, 28.5)
-theme_override_fonts/font = ExtResource("1_7isfi")
+theme_override_fonts/font = ExtResource("2_clsxa")
 theme_override_font_sizes/font_size = 24
 text = "BACK"
-script = ExtResource("3_uwmcr")
+script = ExtResource("4_5rwo8")
 scroll_direction = Vector2(-1, 0)
 vertical_intensity = 15.0
 horizontal_intensity = 10
@@ -126,7 +126,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 50
 alignment = 1
-script = ExtResource("4_fs3n1")
+script = ExtResource("5_a5ffe")
 
 [node name="General" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
@@ -137,13 +137,13 @@ layout_mode = 2
 text = "GENERAL"
 label_settings = SubResource("LabelSettings_e52ha")
 horizontal_alignment = 1
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 5.0
 horizontal_intensity = 5
 
 [node name="LanguagesMode" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General"]
 layout_mode = 2
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
@@ -155,15 +155,54 @@ dragger_visibility = 1
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "LANGUAGES"
-label_settings = ExtResource("6_fiaql")
+label_settings = ExtResource("7_snvv8")
 horizontal_alignment = 2
 
 [node name="LanguagesSlider" type="OptionButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_7isfi")
+theme_override_fonts/font = ExtResource("2_clsxa")
 alignment = 1
+
+[node name="Controls" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SubTitle3" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Controls"]
+layout_mode = 2
+text = "CONTROLS"
+label_settings = SubResource("LabelSettings_e52ha")
+horizontal_alignment = 1
+script = ExtResource("6_oeq6h")
+vertical_intensity = 5.0
+horizontal_intensity = 5
+
+[node name="GamepadSensitivity" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Controls"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Controls/GamepadSensitivity"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Languages" type="Label" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Controls/GamepadSensitivity/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "GAMEPAD_SENS"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="GamepadSensSlider" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Controls/GamepadSensitivity/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 10.0
+max_value = 200.0
+step = 10.0
+value = 50.0
 
 [node name="Display" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
@@ -174,13 +213,13 @@ layout_mode = 2
 text = "DISPLAY"
 label_settings = SubResource("LabelSettings_3tyqm")
 horizontal_alignment = 1
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 5.0
 horizontal_intensity = 5
 
 [node name="DisplayMode" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
@@ -193,7 +232,7 @@ dragger_visibility = 1
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "FULLSCREEN"
-label_settings = ExtResource("6_fiaql")
+label_settings = ExtResource("7_snvv8")
 horizontal_alignment = 2
 
 [node name="FullscreenCheckBox" type="CheckButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer"]
@@ -204,7 +243,7 @@ button_pressed = true
 
 [node name="V-Sync" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display"]
 layout_mode = 2
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
@@ -216,14 +255,14 @@ dragger_visibility = 1
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "VSYNC"
-label_settings = ExtResource("6_fiaql")
+label_settings = ExtResource("7_snvv8")
 horizontal_alignment = 2
 
 [node name="VsyncSlider" type="OptionButton" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync/HSplitContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_7isfi")
+theme_override_fonts/font = ExtResource("2_clsxa")
 
 [node name="Sounds" type="VBoxContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2"]
 layout_mode = 2
@@ -234,13 +273,13 @@ layout_mode = 2
 text = "AUDIO"
 label_settings = SubResource("LabelSettings_wsq6o")
 horizontal_alignment = 1
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 5.0
 horizontal_intensity = 5
 
 [node name="Master" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
@@ -252,7 +291,7 @@ dragger_visibility = 1
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "MASTER"
-label_settings = ExtResource("6_fiaql")
+label_settings = ExtResource("7_snvv8")
 horizontal_alignment = 2
 
 [node name="MasterSlider" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/Master/HSplitContainer"]
@@ -264,7 +303,7 @@ step = 0.01
 
 [node name="HBoxContainer2" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
@@ -276,7 +315,7 @@ dragger_visibility = 1
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "MUSIC"
-label_settings = ExtResource("6_fiaql")
+label_settings = ExtResource("7_snvv8")
 horizontal_alignment = 2
 
 [node name="MusicSlider" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer2/HSplitContainer"]
@@ -288,7 +327,7 @@ step = 0.01
 
 [node name="HBoxContainer3" type="CenterContainer" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds"]
 layout_mode = 2
-script = ExtResource("6_p0cnu")
+script = ExtResource("6_oeq6h")
 vertical_intensity = 2.5
 horizontal_intensity = 4
 
@@ -300,7 +339,7 @@ dragger_visibility = 1
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "SFX"
-label_settings = ExtResource("6_fiaql")
+label_settings = ExtResource("7_snvv8")
 horizontal_alignment = 2
 
 [node name="SFXSlider" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/HBoxContainer3/HSplitContainer"]
@@ -314,6 +353,7 @@ step = 0.01
 [connection signal="mouse_exited" from="Settings/Back" to="Settings/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="Settings/Back" to="Settings/Back" method="_on_pressed"]
 [connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/General/LanguagesMode/HSplitContainer/LanguagesSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_languages_slider_item_selected"]
+[connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Controls/GamepadSensitivity/HSplitContainer/GamepadSensSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_gamepad_sens_slider_value_changed"]
 [connection signal="toggled" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/DisplayMode/HSplitContainer/FullscreenCheckBox" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_fullscreen_check_box_toggled"]
 [connection signal="item_selected" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Display/V-Sync/HSplitContainer/VsyncSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_vsync_slider_item_selected"]
 [connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/SettingsPanel2/Sounds/Master/HSplitContainer/MasterSlider" to="Settings/ScrollContainer/MarginContainer/SettingsPanel2" method="_on_master_slider_value_changed"]

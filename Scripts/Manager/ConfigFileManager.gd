@@ -4,19 +4,20 @@ class_name ConfigFileManager
 var configFile = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
 
-const VIDEO = "Video"
+const VIDEO = "video"
 const FULLSCREEN = "fullscreenMode"
 const VSYNC = "vsyncMode"
 
-const AUDIO = "Audio"
+const AUDIO = "audio"
 const MASTER_VOLUME = "masterVolume"
 const MUSIC_VOLUME = "musicVolume"
 const SFX_VOLUME = "sfxVolume"
 
-const GENERAL = "GENERAL"
-const LANGUAGE = "LANGUAGE"
+const GENERAL = "general"
+const LANGUAGE = "language"
 
-const DEFAULT_LANGUAGE = 'en'
+const CONTROLS = "controls"
+const GP_SENS = "gamepadSensitivity"
 
 const DEFAULT_FULLSCREEN = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 const DEFAULT_VSYNC = DisplayServer.VSYNC_ENABLED
@@ -25,9 +26,16 @@ const DEFAULT_MASTER_VOLUME = 1
 const DEFAULT_MUSIC_VOLUME = 1
 const DEFAULT_SFX_VOLUME = 1
 
+const DEFAULT_LANGUAGE = 'en'
+
+const DEFAULT_GP_SENS = 80
+
 var config_template = {
 	GENERAL: {
 		LANGUAGE: DEFAULT_LANGUAGE
+	},
+	CONTROLS: {
+		GP_SENS: DEFAULT_GP_SENS
 	},
 	VIDEO: {
 		FULLSCREEN: DEFAULT_FULLSCREEN,
@@ -53,6 +61,8 @@ func _apply_config():
 	var settings = SubSystemManager.get_settings_manager()
 
 	settings._update_language(configFile.get_value(GENERAL,LANGUAGE))
+	
+	settings._update_gamepad_sensitivity(configFile.get_value(CONTROLS, GP_SENS))
 
 	settings._update_display_mode(configFile.get_value(VIDEO,FULLSCREEN))
 	settings._update_Vsync_mode(configFile.get_value(VIDEO,VSYNC))
@@ -86,6 +96,10 @@ func _verify_config():
 		
 func _save_language(language : String):
 	configFile.set_value(GENERAL,LANGUAGE, language)
+	configFile.save(SETTINGS_FILE_PATH)
+	
+func _save_gamepad_sensitivity(sensitivity: float):
+	configFile.set_value(CONTROLS,GP_SENS, sensitivity)
 	configFile.save(SETTINGS_FILE_PATH)
 		
 func _save_fullscreen_mode(fullscreenMode : DisplayServer.WindowMode):

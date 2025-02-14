@@ -51,7 +51,7 @@ const CREDITS = preload("res://Scenes/Menus/Credits.tscn")
 const MAIN_MENU = preload("res://Scenes/Menus/MainMenu.tscn")
 #const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelect.tscn")
 const WORLD_SELECT = preload("res://Scenes/Menus/WorldSelectDemo.tscn")
-const SETTINGS = preload("res://Scenes/Menus/Settings.tscn")
+const SETTINGS = preload("res://Scenes/Menus/SettingsMenu.tscn")
 
 func load_level_select(world: WORLDS, new_direction := Vector2(-1, 0)) -> Node2D:
 	var scene = load_scene(WORLDS_LEVEL_SELECT_SCENES[world], new_direction)

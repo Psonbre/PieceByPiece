@@ -5,7 +5,6 @@ class_name PuzzlePiece
 enum THEME {MEDIEVAL, PIRATE, ALIEN, MINER}
 const PICKUP_SCALE_MULTIPLIER := 1.1
 const max_tilt := deg_to_rad(12)
-const controller_drag_speed := 100.0
 const THEME_RESOURCE_MAP = {
 	THEME.MEDIEVAL : preload("res://Assets/PuzzlePieceThemes/medieval_theme.tres"),
 	THEME.MINER : preload("res://Assets/PuzzlePieceThemes/miner_theme.tres"),
@@ -111,7 +110,7 @@ func _process(delta):
 		if level.is_mouse_controlled :
 			target_position = get_global_mouse_position()
 		else :
-			target_position = global_position + Input.get_vector("SelectPieceLeft", "SelectPieceRight", "SelectPieceUp", "SelectPieceDown") * controller_drag_speed
+			target_position = global_position + Input.get_vector("SelectPieceLeft", "SelectPieceRight", "SelectPieceUp", "SelectPieceDown") * SubSystemManager.get_settings_manager().gamepad_sensitivity
 			
 		var distance = target_position - global_position
 		velocity = distance * drag_speed * delta
