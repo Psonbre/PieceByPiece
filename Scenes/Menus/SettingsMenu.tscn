@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbl6sigulrew8"]
+[gd_scene load_steps=16 format=3 uid="uid://dbl6sigulrew8"]
 
 [ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="1_f2mn3"]
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_clsxa"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_oeq6h"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="7_snvv8"]
 [ext_resource type="Script" path="res://Scripts/SettingsTab.gd" id="8_uraa8"]
+[ext_resource type="Texture2D" uid="uid://c8xwe1haxe6yd" path="res://Assets/Sprites/Glyphs/GamepadLB.tres" id="9_rvsk0"]
+[ext_resource type="Script" path="res://Scripts/Menu_tabs_button.gd" id="9_w6sgq"]
+[ext_resource type="Texture2D" uid="uid://cyo8gub1wlnwm" path="res://Assets/Sprites/Glyphs/GamepadRB.tres" id="10_c1hai"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwssg"]
 font = ExtResource("2_clsxa")
@@ -443,6 +446,39 @@ layout_mode = 2
 focus_mode = 0
 max_value = 1.0
 step = 0.01
+
+[node name="GamepadButtons" type="Control" parent="Settings"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_w6sgq")
+
+[node name="LBButton" type="TextureRect" parent="Settings/GamepadButtons"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 115.0
+offset_right = 310.0
+offset_bottom = 155.0
+texture = ExtResource("9_rvsk0")
+script = ExtResource("3_jponv")
+vertical_speed = 0.1
+vertical_intensity = 5.0
+horizontal_speed = 0.5
+horizontal_intensity = 5
+
+[node name="RBButton" type="TextureRect" parent="Settings/GamepadButtons"]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 115.0
+offset_right = 870.0
+offset_bottom = 155.0
+texture = ExtResource("10_c1hai")
+script = ExtResource("3_jponv")
+vertical_speed = 0.1
+vertical_intensity = 5.0
+horizontal_speed = 0.5
+horizontal_intensity = 5
 
 [connection signal="mouse_entered" from="Settings/Back" to="Settings/Back" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Settings/Back" to="Settings/Back" method="_on_mouse_exited"]
