@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5ui348xrja2j"]
+[gd_scene load_steps=9 format=3 uid="uid://b5ui348xrja2j"]
 
 [ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="1_fll2r"]
 [ext_resource type="Script" path="res://Scripts/credits.gd" id="1_jgnww"]
@@ -6,6 +6,24 @@
 [ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_yqpi3"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="3_6aw2s"]
 [ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_xtxaf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_41kea"]
+font = ExtResource("2_yqpi3")
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2sc2g"]
+font = ExtResource("2_yqpi3")
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="Credits" type="Node2D"]
 script = ExtResource("1_jgnww")
@@ -70,7 +88,7 @@ horizontal_speed = 0.5
 layout_mode = 2
 text = "SOUND
 "
-label_settings = ExtResource("3_6aw2s")
+label_settings = SubResource("LabelSettings_41kea")
 horizontal_alignment = 1
 
 [node name="Names" type="VBoxContainer" parent="Credits/Sounds"]
@@ -134,7 +152,7 @@ horizontal_speed = 0.5
 [node name="SubTitle" type="Label" parent="Credits/Music"]
 layout_mode = 2
 text = "MUSIC"
-label_settings = ExtResource("3_6aw2s")
+label_settings = SubResource("LabelSettings_41kea")
 horizontal_alignment = 1
 
 [node name="Names" type="VBoxContainer" parent="Credits/Music"]
@@ -168,7 +186,7 @@ horizontal_speed = 0.5
 [node name="SubTitle2" type="Label" parent="Credits/Game"]
 layout_mode = 2
 text = "GAME_BY"
-label_settings = ExtResource("3_6aw2s")
+label_settings = SubResource("LabelSettings_2sc2g")
 horizontal_alignment = 1
 
 [node name="Names2" type="VBoxContainer" parent="Credits/Game"]
@@ -232,7 +250,7 @@ horizontal_speed = 0.5
 [node name="SubTitle" type="Label" parent="Credits/Assets"]
 layout_mode = 2
 text = "VISUAL"
-label_settings = ExtResource("3_6aw2s")
+label_settings = SubResource("LabelSettings_41kea")
 horizontal_alignment = 1
 
 [node name="Names" type="VBoxContainer" parent="Credits/Assets"]
