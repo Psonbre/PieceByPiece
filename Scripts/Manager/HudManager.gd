@@ -39,8 +39,8 @@ func update_fps_label():
 		
 func update_speedrun_label():
 	var total_seconds: int = int(timeElapsed)
-	var hours: int = total_seconds / 3600
-	var minutes: int = (total_seconds % 3600) / 60
+	var hours: int = round(total_seconds / 3600.0)
+	var minutes: int = round((total_seconds % 3600) / 60.0)
 	var seconds: int = total_seconds % 60
 	var milliseconds: int = int((timeElapsed - total_seconds) * 1000)
 	

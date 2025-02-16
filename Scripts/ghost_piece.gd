@@ -76,18 +76,10 @@ func hide_display():
 	update_transform()
 
 func update_connection_group():
-	var tested_pieces : Array[PuzzlePiece] = []
 	connection_group = ConnectionGroup.new()
-	
 	for connector in connectors :
 		var compatible_connector := connector.get_first_compatible_overlapping_connector()
-		if compatible_connector : connection_group.add_member(compatible_connector.puzzle_piece)
-
-	while tested_pieces != connection_group.members :
-		for piece in connection_group.members :
-			if piece not in tested_pieces :
-				add_piece_connections_to_connection_group(connection_group, piece)
-				tested_pieces.append(piece)
+		if compatible_connector : connection_group.members.append_array(compatible_connector.puzzle_piece.connection_group.members)
 	
 func _process(_delta):
 	pass

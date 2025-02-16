@@ -42,9 +42,6 @@ var background: TileMapLayer
 var dirt: TileMapLayer
 
 var portal : Portal
-var stop_dragging_next_physics_frame := false
-
-var has_attempted_connection_this_tick := false
 
 var rotated_angle := 0.0
 var target_rotated_angle := 0
@@ -130,7 +127,6 @@ func _process(delta):
 		rotated_angle = move_toward(rotated_angle, deg_to_rad(target_rotated_angle), abs(deg_to_rad(target_rotated_angle) - rotated_angle) * delta * 10.0)
 		rotation = rotated_angle + tilt_angle
 			
-	has_attempted_connection_this_tick = false
 
 func update_theme():
 	theme_resource = THEME_RESOURCE_MAP.get(theme)
@@ -201,6 +197,7 @@ func start_dragging():
 	else : 
 		player_sprite.visible = false
 	
+	
 	clamp_player()
 	set_colliders_in_drag_mode(true)
 	
@@ -213,7 +210,7 @@ func start_dragging():
 	is_dragging = true
 	global_dragging = true
 	dragging_piece = self
-	
+
 	update_lighting_range()
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
@@ -221,8 +218,11 @@ func start_dragging():
 func stop_dragging():
 	is_dragging = false
 	
+	var compatible_connector := get_first_owned_connector_with_compatible_connection()
+	if compatible_connector : compatible_connector.display_ghost_piece(get_first_compatible_overlapping_connector())
+
 	if ghost_piece.displayed :
-		snap_to_connector(ghost_piece.get_first_compatible_overlapping_connector())
+		snap_to_connector(ghost_piece.get_first_compatible_overlapping_connector(), true)
 		for area in ghost_piece.get_all_incompatible_overlapping_pieces() :
 			area.global_position = get_available_puzzle_piece_position(area.global_position)
 		ghost_piece.update_placement_validity()
@@ -237,55 +237,46 @@ func stop_dragging():
 	global_dragging = false
 	dragging_piece = null
 	scale = default_scale
-	var old_position = global_position
 	update_lighting_range()
-	attempt_connection()
+	attempt_connection(true)
+	
 	
 	if drop_particles_scene : 
 		var drop_particles = drop_particles_scene.instantiate()
 		drop_particles.global_position = global_position
 		get_tree().root.add_child(drop_particles)
-	if !global_position.is_equal_approx(old_position) :
-		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -13)
 	
 	set_colliders_in_drag_mode(false)
 	attempt_connection_on_all_other_pieces()
 	
+	update_all_connection_groups()
 	outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
 
 func get_available_puzzle_piece_position(starting_position: Vector2) -> Vector2:
-	var puzzle_piece_radius = 182.0  # Approx half-size if your pieces are 320x320
+	var puzzle_piece_radius = 182.0
 	var angle_step_degrees = 5
 	var max_search_radius = 2000.0
 
-	# 1) Compute the base angle from self to starting_position
 	var dir_vector = starting_position - self.global_position
 	var base_angle_deg = rad_to_deg(dir_vector.angle())  
-	# e.g. if starting_position is left of self, base_angle_deg ~ 180
 
-	# 2) Gather existing piece positions
 	var occupied_positions = []
 	for puzzle_piece in get_tree().get_nodes_in_group("PuzzlePieces"):
 		if puzzle_piece.global_position != starting_position : occupied_positions.append(puzzle_piece.global_position)
 
-	# 3) Quick check: if starting spot is free, return it
 	if not is_position_occupied(starting_position, occupied_positions, puzzle_piece_radius):
 		return starting_position
 
-	# 4) Spiral outward: radius from 1..max, angles from base_angle onward
 	for r in range(1, int(max_search_radius)):
 		for offset_deg in range(0, 360, angle_step_degrees):
-			# Shift angle by base_angle, wrap around 0..360
 			var current_deg = fposmod(base_angle_deg + offset_deg, 360)
 			var rad = deg_to_rad(current_deg)
 
-			# Compute the candidate position
 			var candidate_pos = starting_position + Vector2(r, 0).rotated(rad)
 
 			if not is_position_occupied(candidate_pos, occupied_positions, puzzle_piece_radius):
 				return candidate_pos
 
-	# If no free spot found within max_search_radius, return something default
 	return Vector2.ZERO
 
 func is_position_occupied(
@@ -301,16 +292,13 @@ func is_position_occupied(
 	return false
 
 	
-func attempt_connection():
-	if has_attempted_connection_this_tick: return
-	has_attempted_connection_this_tick = true
+func attempt_connection(click_sfx := false):
 	
 	var compatible_connector = get_first_compatible_overlapping_connector()
 	if compatible_connector != null :
-		snap_to_connector(compatible_connector)
+		snap_to_connector(compatible_connector, click_sfx)
 	
 	connect_all_sides()
-	update_connection_group()
 	
 func attempt_connection_on_all_other_pieces():
 	for piece : PuzzlePiece in get_tree().get_nodes_in_group("PuzzlePieces"):
@@ -344,8 +332,10 @@ func cancel_drag():
 	#
 	#stop_dragging()
 	
-func snap_to_connector(connector : PuzzlePieceConnector):
+func snap_to_connector(connector : PuzzlePieceConnector, click_sfx := false):
 	if !connector : return
+	if click_sfx : 
+		SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_click.ogg"), -13)
 	connector.puzzle_piece.global_rotation = deg_to_rad(round(connector.puzzle_piece.target_rotated_angle / 90.0) * 90)
 	global_position = connector.get_adjacent_piece_position(false)
 	global_rotation = deg_to_rad(round(target_rotated_angle / 90.0) * 90)
@@ -358,11 +348,22 @@ func connect_all_sides():
 	shape.update_shape()
 	
 func get_first_compatible_overlapping_connector() -> PuzzlePieceConnector:
-	var connection_result : PuzzlePieceConnector
+	var connection_result : PuzzlePieceConnector = null
 	for connector in connectors :
 		if not connection_result :
 			connection_result = connector.get_first_compatible_overlapping_connector(is_dragging)
-	return connection_result
+			if connection_result :
+				return connection_result
+	return null
+
+func get_first_owned_connector_with_compatible_connection() -> PuzzlePieceConnector:
+	var connection_result : PuzzlePieceConnector = null
+	for connector in connectors :
+		if not connection_result :
+			connection_result = connector.get_first_compatible_overlapping_connector(is_dragging)
+			if connection_result :
+				return connector
+	return null
 	
 func all_connectors_can_be_dropped():
 	return connectors.all(func (c) : return c.can_be_dropped())
@@ -381,7 +382,7 @@ func get_all_pieces_with_compatible_overlapping_connectors():
 	return valid_pieces_to_overlap
 
 func get_all_incompatible_overlapping_pieces():
-	return get_overlapping_puzzle_pieces().filter(func (a) : return a not in connection_group.members)
+	return get_overlapping_puzzle_pieces().filter(func (a) : return a not in connection_group.members and a != self)
 
 func set_colliders_in_drag_mode(drag_mode: bool):
 	_set_colliders_recursive(self, drag_mode)
@@ -412,11 +413,7 @@ func can_be_dropped():
 	if ghost_piece.displayed:
 		return ghost_piece.valid_placement
 	else :
-		if !all_overlapping_pieces_have_compatible_overlapping_connectors():
-			return false
-		if !all_connectors_can_be_dropped() :
-			return false
-		return true
+		return all_overlapping_pieces_have_compatible_overlapping_connectors() and all_connectors_can_be_dropped()
 
 func set_player_sprites_visible(shown : bool) :
 	for sprite in get_tree().get_nodes_in_group("PlayerSprites") : 
@@ -525,8 +522,8 @@ func _on_body_exited(player):
 	if(player is Player):
 		player.remove_overlapping_piece(self)
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	update_can_drop_indicator()
 
-func _on_area_exited(area: Area2D) -> void:
+func _on_area_exited(_area: Area2D) -> void:
 	update_can_drop_indicator()

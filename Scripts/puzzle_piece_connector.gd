@@ -41,7 +41,7 @@ func on_area_exited(other_area : Area2D):
 
 func display_ghost_piece(other_connector : PuzzlePieceConnector = null) :
 	if !other_connector : other_connector = get_first_compatible_overlapping_connector()
-	puzzle_piece.ghost_piece.display.call_deferred(
+	puzzle_piece.ghost_piece.display(
 		puzzle_piece,
 		other_connector.get_adjacent_piece_position(false),
 		deg_to_rad(round(puzzle_piece.target_rotated_angle / 90.0) * 90),
@@ -54,8 +54,6 @@ func get_first_compatible_overlapping_connector(include_dragging_piece := false,
 	for connector in get_overlapping_connectors():
 		if connector.puzzle_piece is not GhostPiece:
 			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging) || (connector.shape == ConnectorShape.FLAT && !allow_flat_sides):
-				continue
-			if connector.global_position.distance_to(global_position) > 50 : 
 				continue
 			if is_connector_compatible(connector, false) :
 				return connector

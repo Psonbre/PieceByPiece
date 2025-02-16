@@ -39,7 +39,7 @@ var languagesPossible: Dictionary = {
 
 signal update_first_input(input : Control)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("LeftTab"):
 		var newTab : int = current_tab - 1
 		if newTab >= 0 : 
@@ -68,7 +68,7 @@ func find_focusable(node: Node) -> Control:
 			return focusable_child
 	return null  # Return null if no focusable node is found
 	
-func _on_tab_changed(tab: int) -> void:
+func _on_tab_changed(_tab: int) -> void:
 	update_focus()
 	
 ##############################################################################

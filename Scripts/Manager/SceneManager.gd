@@ -65,7 +65,7 @@ func load_main_menu(new_direction := Vector2(1, 0)) -> Node2D:
 		updated_discord_presence("Staring at the main menu", "")
 	return main_menu
 
-func load_world_select_menu(new_direction := Vector2(1, 0), target_world_group = null) -> Node2D:
+func load_world_select_menu(new_direction := Vector2(1, 0), _target_world_group = null) -> Node2D:
 	var menu = load_scene(WORLD_SELECT, new_direction)
 	if menu: updated_discord_presence("Selecting a world", "")
 	return menu

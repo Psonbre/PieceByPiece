@@ -8,7 +8,6 @@ func _ready() -> void:
 		queue_free()
 
 func _input(_event):
-	var scene_manager = SubSystemManager.get_scene_manager()
 	if Input.is_action_just_pressed("ui_cancel"):
 		_quit()
 
