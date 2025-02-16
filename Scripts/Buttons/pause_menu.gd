@@ -66,6 +66,7 @@ func _on_quit_button_pressed() -> void:
 	if !is_opened : return
 	drop_down_button.button_pressed = false
 	SubSystemManager.get_scene_manager().load_level_select(level.world ,Vector2(-1,0))
+	SubSystemManager.get_hud_manager()._stop_speedrun_counter()
 
 func _on_restart_button_pressed() -> void:
 	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen: return

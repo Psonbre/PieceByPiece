@@ -70,8 +70,7 @@ func _find_focusable_children(node, focusable_nodes):
 		if child.has_method("get_focus_mode") and (child is BaseButton or child is Range):
 			focusable_nodes.append(child)
 		_find_focusable_children(child, focusable_nodes)
-	
 
 
-func _on_languages_slider_item_selected(index: int) -> void:
-	pass # Replace with function body.
+func _on_tab_container_update_first_input(input: Control) -> void:
+	FirstControl = input

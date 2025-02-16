@@ -1,11 +1,14 @@
-extends Control
+extends TabContainer
 
-@onready var vsyncSlider = $"Display/V-Sync/HSplitContainer/VsyncSlider"
-@onready var fullscreenCheckbox : CheckButton = $Display/DisplayMode/HSplitContainer/FullscreenCheckBox
-@onready var masterSlider = $Sounds/Master/HSplitContainer/MasterSlider
-@onready var musicSlider = $Sounds/HBoxContainer2/HSplitContainer/MusicSlider
-@onready var sfxSlider = $Sounds/HBoxContainer3/HSplitContainer/SFXSlider
-@onready var languagesSlider = $General/LanguagesMode/HSplitContainer/LanguagesSlider
+@onready var vsyncSlider = $"VIDEO/VIDEO/Items/V-Sync/HSplitContainer/VsyncSlider"
+@onready var fullscreenCheckbox : CheckButton = $VIDEO/VIDEO/Items/Fullscreen/HSplitContainer/FullscreenCheckBox
+@onready var masterSlider = $AUDIO/AUDIO/Items/Master/HSplitContainer/MasterSlider
+@onready var musicSlider = $AUDIO/AUDIO/Items/Music/HSplitContainer/MusicSlider
+@onready var sfxSlider = $AUDIO/AUDIO/Items/SFX/HSplitContainer/SFXSlider
+@onready var languagesSlider = $GENERAL/GENERAL/Items/LanguagesMode/HSplitContainer/LanguagesSlider
+@onready var gamepadSens = $CONTROLS/CONTROLS/Items/GamepadSensitivity/HSplitContainer/GamepadSensSlider
+@onready var fpsCheckbox = $GENERAL/GENERAL/Items/FpsCounter/HSplitContainer/FPSCheckbox
+@onready var speedrunCheckbox = $GENERAL/GENERAL/Items/SpeedrunCounter/HSplitContainer/SpeedrunCheckbox
 
 @export var popupItemFontSize = 32
 var can_exit := true
@@ -34,6 +37,42 @@ var languagesPossible: Dictionary = {
 	'繁體中文' : ['cmn_Hant', flagsPath + "china.png"]
 }
 
+signal update_first_input(input : Control)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("LeftTab"):
+		var newTab : int = current_tab - 1
+		if newTab >= 0 : 
+			current_tab = newTab
+	if Input.is_action_just_pressed("RightTab"):
+		var newTab : int = current_tab + 1
+		if newTab < get_tab_count() : 
+			current_tab = newTab
+
+############Set Focus for Gamepad when switching tabs#####################		
+func update_focus():
+	var current_container = get_child(current_tab)  # Get the active tab container
+	if not current_container:
+		return  # Safety check
+
+	var first_focusable : Control = find_focusable(current_container)
+	if first_focusable:
+		emit_signal("update_first_input", first_focusable)
+
+func find_focusable(node: Node) -> Control:
+	for child in node.get_children():
+		if child is BaseButton or child is Range:
+			return child  # Return the first found focusable node
+		var focusable_child = find_focusable(child)  # Recursively check deeper levels
+		if focusable_child:
+			return focusable_child
+	return null  # Return null if no focusable node is found
+	
+func _on_tab_changed(tab: int) -> void:
+	update_focus()
+	
+##############################################################################
+			
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if get_tree().current_scene == get_parent().get_parent() :
@@ -45,6 +84,8 @@ func _ready() -> void:
 	addVsyncs()
 	addLanguages()
 	update_volume_sliders()
+	update_sensitivities()
+	update_gameplay_checkboxes()
 	
 #Languages------------------------
 func addLanguages():
@@ -114,6 +155,13 @@ func update_volume_sliders():
 	masterSlider.value = SubSystemManager.get_settings_manager().masterVolume
 	musicSlider.value = SubSystemManager.get_settings_manager().musicVolume
 	sfxSlider.value = SubSystemManager.get_settings_manager().sfxVolume
+	
+func update_sensitivities():
+	gamepadSens.value = SubSystemManager.get_settings_manager().gamepad_sensitivity
+	
+func update_gameplay_checkboxes():
+	fpsCheckbox.button_pressed = SubSystemManager.get_settings_manager().fpsEnabled
+	speedrunCheckbox.button_pressed = SubSystemManager.get_settings_manager().speedrunEnabled
 
 func _on_vsync_slider_item_selected(index: int) -> void:
 	var itemText = vsyncSlider.get_item_text(index)
@@ -147,3 +195,14 @@ func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		SubSystemManager.get_settings_manager()._update_display_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+
+func _on_gamepad_sens_slider_value_changed(value: float) -> void:
+	SubSystemManager.get_settings_manager()._update_gamepad_sensitivity(value)
+
+
+func _on_fps_checkbox_toggled(toggled_on: bool) -> void:
+	SubSystemManager.get_settings_manager()._update_fps_counter(toggled_on)
+
+func _on_speedrun_checkbox_toggled(toggled_on: bool) -> void:
+	SubSystemManager.get_settings_manager()._update_speedrun_counter(toggled_on)

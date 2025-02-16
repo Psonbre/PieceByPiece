@@ -1,0 +1,501 @@
+[gd_scene load_steps=16 format=3 uid="uid://dbl6sigulrew8"]
+
+[ext_resource type="Script" path="res://Scripts/Buttons/GamepadUI.gd" id="1_f2mn3"]
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_clsxa"]
+[ext_resource type="Script" path="res://Scripts/floating_ui.gd" id="3_jponv"]
+[ext_resource type="Script" path="res://Scripts/Buttons/BackScript.gd" id="4_5rwo8"]
+[ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="5_a5ffe"]
+[ext_resource type="Script" path="res://Scripts/floating_section.gd" id="6_oeq6h"]
+[ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="7_snvv8"]
+[ext_resource type="Script" path="res://Scripts/SettingsTab.gd" id="8_uraa8"]
+[ext_resource type="Texture2D" uid="uid://c8xwe1haxe6yd" path="res://Assets/Sprites/Glyphs/GamepadLB.tres" id="9_rvsk0"]
+[ext_resource type="Script" path="res://Scripts/Menu_tabs_button.gd" id="9_w6sgq"]
+[ext_resource type="Texture2D" uid="uid://cyo8gub1wlnwm" path="res://Assets/Sprites/Glyphs/GamepadRB.tres" id="10_c1hai"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwssg"]
+font = ExtResource("2_clsxa")
+font_size = 46
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e52ha"]
+font = ExtResource("2_clsxa")
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3tyqm"]
+font = ExtResource("2_clsxa")
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsq6o"]
+font = ExtResource("2_clsxa")
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[node name="Settings" type="Node2D"]
+z_index = 15
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Settings" type="Control" parent="." node_paths=PackedStringArray("FirstControl")]
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1136.0
+offset_top = -564.0
+offset_right = -1136.0
+offset_bottom = -564.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_f2mn3")
+FirstControl = NodePath("TabContainer/GENERAL/GENERAL/Items/LanguagesMode/HSplitContainer/LanguagesSlider")
+
+[node name="Title" type="Label" parent="Settings"]
+layout_mode = 2
+offset_left = 309.0
+offset_top = -15.5
+offset_right = 830.0
+offset_bottom = 72.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_clsxa")
+theme_override_font_sizes/font_size = 56
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_lwssg")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_jponv")
+
+[node name="Back" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -40.0
+offset_right = 114.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(66.5, 28.5)
+theme_override_fonts/font = ExtResource("2_clsxa")
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+script = ExtResource("4_5rwo8")
+scroll_direction = Vector2(-1, 0)
+vertical_intensity = 15.0
+horizontal_intensity = 10
+
+[node name="TabContainer" type="TabContainer" parent="Settings"]
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 0
+offset_left = 248.0
+offset_top = 134.0
+offset_right = 897.0
+offset_bottom = 588.0
+theme_override_fonts/font = ExtResource("2_clsxa")
+tab_alignment = 1
+current_tab = 0
+tab_focus_mode = 0
+script = ExtResource("5_a5ffe")
+
+[node name="GENERAL" type="MarginContainer" parent="Settings/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = -100
+metadata/_tab_index = 0
+
+[node name="GENERAL" type="VBoxContainer" parent="Settings/TabContainer/GENERAL"]
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("8_uraa8")
+
+[node name="GeneralSubtitle" type="Label" parent="Settings/TabContainer/GENERAL/GENERAL"]
+layout_mode = 2
+text = "GENERAL"
+label_settings = SubResource("LabelSettings_e52ha")
+horizontal_alignment = 1
+script = ExtResource("6_oeq6h")
+vertical_intensity = 5.0
+horizontal_intensity = 5
+initialize_position_on_start = false
+
+[node name="Items" type="VBoxContainer" parent="Settings/TabContainer/GENERAL/GENERAL"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LanguagesMode" type="CenterContainer" parent="Settings/TabContainer/GENERAL/GENERAL/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/GENERAL/GENERAL/Items/LanguagesMode"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Languages" type="Label" parent="Settings/TabContainer/GENERAL/GENERAL/Items/LanguagesMode/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "LANGUAGES"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="LanguagesSlider" type="OptionButton" parent="Settings/TabContainer/GENERAL/GENERAL/Items/LanguagesMode/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_clsxa")
+alignment = 1
+
+[node name="FpsCounter" type="CenterContainer" parent="Settings/TabContainer/GENERAL/GENERAL/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/GENERAL/GENERAL/Items/FpsCounter"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="FPS" type="Label" parent="Settings/TabContainer/GENERAL/GENERAL/Items/FpsCounter/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "FPS"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="FPSCheckbox" type="CheckButton" parent="Settings/TabContainer/GENERAL/GENERAL/Items/FpsCounter/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+button_pressed = true
+
+[node name="SpeedrunCounter" type="CenterContainer" parent="Settings/TabContainer/GENERAL/GENERAL/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/GENERAL/GENERAL/Items/SpeedrunCounter"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Speedrun" type="Label" parent="Settings/TabContainer/GENERAL/GENERAL/Items/SpeedrunCounter/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "SPEEDRUN"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="SpeedrunCheckbox" type="CheckButton" parent="Settings/TabContainer/GENERAL/GENERAL/Items/SpeedrunCounter/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+button_pressed = true
+
+[node name="CONTROLS" type="MarginContainer" parent="Settings/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = -100
+metadata/_tab_index = 1
+
+[node name="CONTROLS" type="VBoxContainer" parent="Settings/TabContainer/CONTROLS"]
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("8_uraa8")
+
+[node name="ControlsSubtitle" type="Label" parent="Settings/TabContainer/CONTROLS/CONTROLS"]
+layout_mode = 2
+text = "CONTROLS"
+label_settings = SubResource("LabelSettings_e52ha")
+horizontal_alignment = 1
+script = ExtResource("6_oeq6h")
+vertical_intensity = 5.0
+horizontal_intensity = 5
+initialize_position_on_start = false
+
+[node name="Items" type="VBoxContainer" parent="Settings/TabContainer/CONTROLS/CONTROLS"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GamepadSensitivity" type="CenterContainer" parent="Settings/TabContainer/CONTROLS/CONTROLS/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/CONTROLS/CONTROLS/Items/GamepadSensitivity"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Languages" type="Label" parent="Settings/TabContainer/CONTROLS/CONTROLS/Items/GamepadSensitivity/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "GAMEPAD_SENS"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="GamepadSensSlider" type="HSlider" parent="Settings/TabContainer/CONTROLS/CONTROLS/Items/GamepadSensitivity/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 10.0
+max_value = 200.0
+step = 10.0
+value = 50.0
+
+[node name="VIDEO" type="MarginContainer" parent="Settings/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = -100
+metadata/_tab_index = 2
+
+[node name="VIDEO" type="VBoxContainer" parent="Settings/TabContainer/VIDEO"]
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("8_uraa8")
+
+[node name="VideoSubtitle" type="Label" parent="Settings/TabContainer/VIDEO/VIDEO"]
+layout_mode = 2
+text = "VIDEO"
+label_settings = SubResource("LabelSettings_3tyqm")
+horizontal_alignment = 1
+script = ExtResource("6_oeq6h")
+vertical_intensity = 5.0
+horizontal_intensity = 5
+initialize_position_on_start = false
+
+[node name="Items" type="VBoxContainer" parent="Settings/TabContainer/VIDEO/VIDEO"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Fullscreen" type="CenterContainer" parent="Settings/TabContainer/VIDEO/VIDEO/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/VIDEO/VIDEO/Items/Fullscreen"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Fullscreen" type="Label" parent="Settings/TabContainer/VIDEO/VIDEO/Items/Fullscreen/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "FULLSCREEN"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="FullscreenCheckBox" type="CheckButton" parent="Settings/TabContainer/VIDEO/VIDEO/Items/Fullscreen/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+button_pressed = true
+
+[node name="V-Sync" type="CenterContainer" parent="Settings/TabContainer/VIDEO/VIDEO/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/VIDEO/VIDEO/Items/V-Sync"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="Settings/TabContainer/VIDEO/VIDEO/Items/V-Sync/HSplitContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "VSYNC"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="VsyncSlider" type="OptionButton" parent="Settings/TabContainer/VIDEO/VIDEO/Items/V-Sync/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_clsxa")
+
+[node name="AUDIO" type="MarginContainer" parent="Settings/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = -100
+metadata/_tab_index = 3
+
+[node name="AUDIO" type="VBoxContainer" parent="Settings/TabContainer/AUDIO"]
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("8_uraa8")
+
+[node name="AudioSubtitle" type="Label" parent="Settings/TabContainer/AUDIO/AUDIO"]
+layout_mode = 2
+text = "AUDIO"
+label_settings = SubResource("LabelSettings_wsq6o")
+horizontal_alignment = 1
+script = ExtResource("6_oeq6h")
+vertical_intensity = 5.0
+horizontal_intensity = 5
+initialize_position_on_start = false
+
+[node name="Items" type="VBoxContainer" parent="Settings/TabContainer/AUDIO/AUDIO"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Master" type="CenterContainer" parent="Settings/TabContainer/AUDIO/AUDIO/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/AUDIO/AUDIO/Items/Master"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Resolution" type="Label" parent="Settings/TabContainer/AUDIO/AUDIO/Items/Master/HSplitContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "MASTER"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="Settings/TabContainer/AUDIO/AUDIO/Items/Master/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="Music" type="CenterContainer" parent="Settings/TabContainer/AUDIO/AUDIO/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/AUDIO/AUDIO/Items/Music"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Resolution" type="Label" parent="Settings/TabContainer/AUDIO/AUDIO/Items/Music/HSplitContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "MUSIC"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="Settings/TabContainer/AUDIO/AUDIO/Items/Music/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="SFX" type="CenterContainer" parent="Settings/TabContainer/AUDIO/AUDIO/Items"]
+layout_mode = 2
+script = ExtResource("6_oeq6h")
+vertical_intensity = 2.5
+horizontal_intensity = 4
+initialize_position_on_start = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/TabContainer/AUDIO/AUDIO/Items/SFX"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Resolution" type="Label" parent="Settings/TabContainer/AUDIO/AUDIO/Items/SFX/HSplitContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+text = "SFX"
+label_settings = ExtResource("7_snvv8")
+horizontal_alignment = 2
+
+[node name="SFXSlider" type="HSlider" parent="Settings/TabContainer/AUDIO/AUDIO/Items/SFX/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+
+[node name="GamepadButtons" type="Control" parent="Settings"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_w6sgq")
+
+[node name="LBButton" type="TextureRect" parent="Settings/GamepadButtons"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 115.0
+offset_right = 310.0
+offset_bottom = 155.0
+texture = ExtResource("9_rvsk0")
+script = ExtResource("3_jponv")
+vertical_speed = 0.1
+vertical_intensity = 5.0
+horizontal_speed = 0.5
+horizontal_intensity = 5
+
+[node name="RBButton" type="TextureRect" parent="Settings/GamepadButtons"]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 115.0
+offset_right = 870.0
+offset_bottom = 155.0
+texture = ExtResource("10_c1hai")
+script = ExtResource("3_jponv")
+vertical_speed = 0.1
+vertical_intensity = 5.0
+horizontal_speed = 0.5
+horizontal_intensity = 5
+
+[connection signal="mouse_entered" from="Settings/Back" to="Settings/Back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Settings/Back" to="Settings/Back" method="_on_mouse_exited"]
+[connection signal="pressed" from="Settings/Back" to="Settings/Back" method="_on_pressed"]
+[connection signal="tab_changed" from="Settings/TabContainer" to="Settings/TabContainer" method="_on_tab_changed"]
+[connection signal="update_first_input" from="Settings/TabContainer" to="Settings" method="_on_tab_container_update_first_input"]
+[connection signal="visibility_changed" from="Settings/TabContainer/GENERAL/GENERAL" to="Settings/TabContainer/GENERAL/GENERAL" method="_on_visibility_changed"]
+[connection signal="item_selected" from="Settings/TabContainer/GENERAL/GENERAL/Items/LanguagesMode/HSplitContainer/LanguagesSlider" to="Settings/TabContainer" method="_on_languages_slider_item_selected"]
+[connection signal="toggled" from="Settings/TabContainer/GENERAL/GENERAL/Items/FpsCounter/HSplitContainer/FPSCheckbox" to="Settings/TabContainer" method="_on_fps_checkbox_toggled"]
+[connection signal="toggled" from="Settings/TabContainer/GENERAL/GENERAL/Items/SpeedrunCounter/HSplitContainer/SpeedrunCheckbox" to="Settings/TabContainer" method="_on_speedrun_checkbox_toggled"]
+[connection signal="visibility_changed" from="Settings/TabContainer/CONTROLS/CONTROLS" to="Settings/TabContainer/CONTROLS/CONTROLS" method="_on_visibility_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/CONTROLS/CONTROLS/Items/GamepadSensitivity/HSplitContainer/GamepadSensSlider" to="Settings/TabContainer" method="_on_gamepad_sens_slider_value_changed"]
+[connection signal="visibility_changed" from="Settings/TabContainer/VIDEO/VIDEO" to="Settings/TabContainer/VIDEO/VIDEO" method="_on_visibility_changed"]
+[connection signal="toggled" from="Settings/TabContainer/VIDEO/VIDEO/Items/Fullscreen/HSplitContainer/FullscreenCheckBox" to="Settings/TabContainer" method="_on_fullscreen_check_box_toggled"]
+[connection signal="item_selected" from="Settings/TabContainer/VIDEO/VIDEO/Items/V-Sync/HSplitContainer/VsyncSlider" to="Settings/TabContainer" method="_on_vsync_slider_item_selected"]
+[connection signal="visibility_changed" from="Settings/TabContainer/AUDIO/AUDIO" to="Settings/TabContainer/AUDIO/AUDIO" method="_on_visibility_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/AUDIO/AUDIO/Items/Master/HSplitContainer/MasterSlider" to="Settings/TabContainer" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/AUDIO/AUDIO/Items/Music/HSplitContainer/MusicSlider" to="Settings/TabContainer" method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="Settings/TabContainer/AUDIO/AUDIO/Items/SFX/HSplitContainer/SFXSlider" to="Settings/TabContainer" method="_on_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="Settings/TabContainer/AUDIO/AUDIO/Items/SFX/HSplitContainer/SFXSlider" to="Settings/TabContainer" method="_on_sfx_slider_value_changed"]
