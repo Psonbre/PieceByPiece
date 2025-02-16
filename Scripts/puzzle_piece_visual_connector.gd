@@ -8,7 +8,6 @@ enum ConnectorType {BUMP = 1, HOLE = -1}
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 @onready var puzzle_piece_shape = $"../.."
 
-
 @export var shape := ConnectorShape.FLAT :
 	set(value) :
 		shape = value

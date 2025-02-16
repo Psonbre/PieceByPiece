@@ -16,6 +16,7 @@ func _ready():
 	hide_display()
 	start_drag_position = position
 	default_scale = scale
+	update_transform()
 	
 func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_global_rotation : float, visual_global_position : Vector2, visual_global_rotation : float):
 	if last_displayed_position == actual_global_position : return
@@ -48,12 +49,10 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_globa
 	outline.position = visual_shape.position
 	outline.rotation = visual_shape.rotation
 	
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	
 	update_placement_validity()
 	
 func update_placement_validity():
+	update_transform()
 	if get_first_compatible_overlapping_connector() == null :
 		hide_display()
 		return
@@ -74,19 +73,15 @@ func hide_display():
 	valid_placement = true
 	visual_shape.visible = false
 	outline.visible = false
+	update_transform()
 
 func update_connection_group():
 	var tested_pieces : Array[PuzzlePiece] = []
 	connection_group = ConnectionGroup.new()
 	
-	var left_compatible = left_connector.get_first_compatible_overlapping_connector()
-	var right_compatible = right_connector.get_first_compatible_overlapping_connector()
-	var top_compatible = top_connector.get_first_compatible_overlapping_connector()
-	var bottom_compatible = bottom_connector.get_first_compatible_overlapping_connector()
-	if left_compatible : connection_group.add_member(left_compatible.puzzle_piece)
-	if right_compatible : connection_group.add_member(right_compatible.puzzle_piece)
-	if top_compatible : connection_group.add_member(top_compatible.puzzle_piece)
-	if bottom_compatible : connection_group.add_member(bottom_compatible.puzzle_piece)
+	for connector in connectors :
+		var compatible_connector := connector.get_first_compatible_overlapping_connector()
+		if compatible_connector : connection_group.add_member(compatible_connector.puzzle_piece)
 
 	while tested_pieces != connection_group.members :
 		for piece in connection_group.members :

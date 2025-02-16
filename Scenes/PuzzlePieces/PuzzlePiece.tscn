@@ -18,16 +18,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_inhr6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs2dp"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1gn5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cq5c"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oiyd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_377ex"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_alfrx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7njb7"]
 size = Vector2(35, 70)
 
 [sub_resource type="Resource" id="Resource_08waj"]
@@ -73,6 +73,12 @@ b = Vector2(0, 128)
 [node name="PuzzlePiece" type="Area2D" groups=["PuzzlePieces"]]
 script = ExtResource("1_uhv7f")
 drop_particles_scene = ExtResource("2_db2ta")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_812v4")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -128,8 +134,14 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_inhr6")
+shape = SubResource("RectangleShape2D_hs2dp")
 metadata/_edit_lock_ = true
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/RightConnector/CollisionShape2D"]
+shape = SubResource("RectangleShape2D_hs2dp")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(-128, 0)
@@ -142,8 +154,14 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_r1gn5")
+shape = SubResource("RectangleShape2D_3cq5c")
 metadata/_edit_lock_ = true
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/LeftConnector/CollisionShape2D"]
+shape = SubResource("RectangleShape2D_hs2dp")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(0, -128)
@@ -156,8 +174,14 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_1oiyd")
+shape = SubResource("RectangleShape2D_377ex")
 metadata/_edit_lock_ = true
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/TopConnector/CollisionShape2D"]
+shape = SubResource("RectangleShape2D_hs2dp")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" node_paths=PackedStringArray("side_collider", "bevel_side")]
 position = Vector2(0, 128)
@@ -170,8 +194,14 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_alfrx")
+shape = SubResource("RectangleShape2D_7njb7")
 metadata/_edit_lock_ = true
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/BottomConnector/CollisionShape2D"]
+shape = SubResource("RectangleShape2D_hs2dp")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Shadow" type="Line2D" parent="."]
 z_index = -2
@@ -264,6 +294,8 @@ material = SubResource("ShaderMaterial_8wnkx")
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(128, 128, -128, 128, -124.3, 124.3, 124.3, 124.3)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b47cgkimuryss"]
+[gd_scene load_steps=15 format=3 uid="uid://b47cgkimuryss"]
 
 [ext_resource type="Script" path="res://Scripts/ghost_piece.gd" id="1_ns84n"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_shape.gd" id="2_20p4n"]
@@ -6,12 +6,18 @@
 [ext_resource type="Material" uid="uid://ds33yj24o01gh" path="res://Assets/Materials/PuzzlePieceOutlineMaterial.tres" id="5_kivp6"]
 [ext_resource type="Script" path="res://Scripts/puzzle_piece_outline.gd" id="6_ylgl7"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2pyd"]
+size = Vector2(256, 256)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(255, 255)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8q12"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fb703"]
+radius = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fv76p"]
 radius = 35.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2yvs"]
@@ -32,6 +38,12 @@ visible = false
 modulate = Color(1, 1, 1, 0.498039)
 z_index = -1
 script = ExtResource("1_ns84n")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_b2pyd")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_812v4")
@@ -54,6 +66,12 @@ script = ExtResource("4_hctjr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 shape = SubResource("CircleShape2D_fb703")
 
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/RightConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="LeftConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(-130, 0)
 rotation = 3.14159
@@ -61,6 +79,12 @@ script = ExtResource("4_hctjr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 shape = SubResource("CircleShape2D_m2yvs")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/LeftConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="TopConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(0, -130)
@@ -72,6 +96,12 @@ type = -1
 position = Vector2(-17.5, 0)
 shape = SubResource("RectangleShape2D_yl5am")
 
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/TopConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="BottomConnector" type="Area2D" parent="Shape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(0, 130)
 rotation = 1.57079
@@ -79,6 +109,12 @@ script = ExtResource("4_hctjr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/BottomConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="VisualShape" type="Polygon2D" parent="."]
 visible = false
@@ -99,6 +135,12 @@ script = ExtResource("4_hctjr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/RightConnector"]
 shape = SubResource("CircleShape2D_fb703")
 
+[node name="ShapeCast2D" type="ShapeCast2D" parent="VisualShape/Connectors/RightConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="LeftConnector" type="Area2D" parent="VisualShape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(-130, 0)
 rotation = 3.14159
@@ -107,6 +149,12 @@ script = ExtResource("4_hctjr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/LeftConnector"]
 shape = SubResource("CircleShape2D_m2yvs")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="VisualShape/Connectors/LeftConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="TopConnector" type="Area2D" parent="VisualShape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(0, -130)
@@ -119,6 +167,12 @@ type = -1
 position = Vector2(-17.5, 0)
 shape = SubResource("RectangleShape2D_yl5am")
 
+[node name="ShapeCast2D" type="ShapeCast2D" parent="VisualShape/Connectors/TopConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="BottomConnector" type="Area2D" parent="VisualShape/Connectors" groups=["CollisionAreas"]]
 position = Vector2(0, 130)
 rotation = 1.57079
@@ -127,6 +181,12 @@ script = ExtResource("4_hctjr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisualShape/Connectors/BottomConnector"]
 shape = SubResource("CircleShape2D_5ty2t")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="VisualShape/Connectors/BottomConnector/CollisionShape2D"]
+shape = SubResource("CircleShape2D_fv76p")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Outline" type="Line2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.498039)

@@ -4,4 +4,4 @@ class_name ConnectionLight
 
 func _ready() -> void:
 	create_tween().tween_property(light, "energy", 0, 0.5)
-	await create_tween().tween_property(self, "modulate:a", 0, 0.5).finished
+	create_tween().tween_property(self, "modulate:a", 0, 0.5)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://4q5iwenw551f"]
+
+[sub_resource type="GDScript" id="GDScript_b1nol"]
+script/source = "extends Area2D
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+@onready var area_2d_2: Area2D = $\"../Area2D2\"
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	print(shape_cast_2d.is_colliding())
+	area_2d_2.global_position = Vector2(1000000,1000000)
+	area_2d_2.force_update_transform()
+	shape_cast_2d.force_shapecast_update()
+	print(shape_cast_2d.is_colliding())
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c5y4"]
+size = Vector2(132, 122)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = SubResource("GDScript_b1nol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_5c5y4")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_5c5y4")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(111, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_5c5y4")
