@@ -18,16 +18,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812v4"]
 size = Vector2(256, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs2dp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqjrt"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cq5c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd5lt"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_377ex"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sesfu"]
 size = Vector2(35, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7njb7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0muv"]
 size = Vector2(35, 70)
 
 [sub_resource type="Resource" id="Resource_08waj"]
@@ -134,11 +134,11 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/RightConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_hs2dp")
+shape = SubResource("RectangleShape2D_xqjrt")
 metadata/_edit_lock_ = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/RightConnector/CollisionShape2D"]
-shape = SubResource("RectangleShape2D_hs2dp")
+shape = SubResource("RectangleShape2D_xqjrt")
 target_position = Vector2(0, 0)
 collide_with_areas = true
 collide_with_bodies = false
@@ -154,11 +154,11 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/LeftConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_3cq5c")
+shape = SubResource("RectangleShape2D_kd5lt")
 metadata/_edit_lock_ = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/LeftConnector/CollisionShape2D"]
-shape = SubResource("RectangleShape2D_hs2dp")
+shape = SubResource("RectangleShape2D_kd5lt")
 target_position = Vector2(0, 0)
 collide_with_areas = true
 collide_with_bodies = false
@@ -174,11 +174,11 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/TopConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_377ex")
+shape = SubResource("RectangleShape2D_sesfu")
 metadata/_edit_lock_ = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/TopConnector/CollisionShape2D"]
-shape = SubResource("RectangleShape2D_hs2dp")
+shape = SubResource("RectangleShape2D_sesfu")
 target_position = Vector2(0, 0)
 collide_with_areas = true
 collide_with_bodies = false
@@ -194,11 +194,11 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shape/Connectors/BottomConnector"]
 position = Vector2(-16.5, 0)
-shape = SubResource("RectangleShape2D_7njb7")
+shape = SubResource("RectangleShape2D_d0muv")
 metadata/_edit_lock_ = true
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Shape/Connectors/BottomConnector/CollisionShape2D"]
-shape = SubResource("RectangleShape2D_hs2dp")
+shape = SubResource("RectangleShape2D_d0muv")
 target_position = Vector2(0, 0)
 collide_with_areas = true
 collide_with_bodies = false
