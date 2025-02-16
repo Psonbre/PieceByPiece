@@ -72,3 +72,10 @@ speed_scale = 1.5
 visible = false
 shape = SubResource("RectangleShape2D_7y0no")
 target_position = Vector2(15, 0)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_m0ql6")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false

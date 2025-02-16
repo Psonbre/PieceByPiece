@@ -160,18 +160,9 @@ func add_overlapping_piece(piece : PuzzlePiece):
 	elif piece.connection_group.equals(overlapping_pieces[0].connection_group) :
 		overlapping_pieces.push_back(piece)
 		
-func remove_overlapping_piece(piece_to_remove : PuzzlePiece):
-	if overlapping_pieces.size() > 0 :
-		var closest_piece : PuzzlePiece = null
-		var min_distance = INF
-		for piece in overlapping_pieces:
-			var distance = global_position.distance_to(piece.global_position)
-			if distance < min_distance:
-				min_distance = distance
-				closest_piece = piece
-			
-		if piece_to_remove in overlapping_pieces && piece_to_remove != closest_piece:
-			overlapping_pieces.remove_at(overlapping_pieces.find(piece_to_remove))
+func remove_overlapping_piece(piece_to_remove : PuzzlePiece):		
+	if piece_to_remove in overlapping_pieces :
+		overlapping_pieces.remove_at(overlapping_pieces.find(piece_to_remove))
 		
 func win(door):
 	if !winning :

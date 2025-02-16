@@ -81,8 +81,7 @@ func _ready():
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
-	update_transform()
-	attempt_connection()
+	stop_dragging()
 	
 func _input(event):
 	if Engine.is_editor_hint() : return
@@ -214,6 +213,7 @@ func start_dragging():
 	update_lighting_range()
 	attempt_connection()
 	attempt_connection_on_all_other_pieces()
+	update_all_connection_groups()
 	
 func stop_dragging():
 	is_dragging = false
@@ -223,13 +223,17 @@ func stop_dragging():
 
 	if ghost_piece.displayed :
 		snap_to_connector(ghost_piece.get_first_compatible_overlapping_connector(), true)
-		for area in ghost_piece.get_all_incompatible_overlapping_pieces() :
+		var incompatible_pieces = ghost_piece.get_all_incompatible_overlapping_pieces()
+		for area in incompatible_pieces :
 			area.global_position = get_available_puzzle_piece_position(area.global_position)
 		ghost_piece.update_placement_validity()
 		ghost_piece.hide_display()
 	
-	elif !can_be_dropped() or abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 || Player.winning || Player.entering_portal || Player.exiting_portal: 
+	elif !can_be_dropped() : 
 		cancel_drag()
+		return
+	
+	elif abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 || Player.winning || Player.entering_portal || Player.exiting_portal:
 		return
 		
 	set_player_sprites_visible(true)
@@ -262,7 +266,8 @@ func get_available_puzzle_piece_position(starting_position: Vector2) -> Vector2:
 
 	var occupied_positions = []
 	for puzzle_piece in get_tree().get_nodes_in_group("PuzzlePieces"):
-		if puzzle_piece.global_position != starting_position : occupied_positions.append(puzzle_piece.global_position)
+		if puzzle_piece.global_position != starting_position : 
+			occupied_positions.append(puzzle_piece.global_position)
 
 	if not is_position_occupied(starting_position, occupied_positions, puzzle_piece_radius):
 		return starting_position
@@ -370,10 +375,7 @@ func all_connectors_can_be_dropped():
 
 func all_overlapping_pieces_have_compatible_overlapping_connectors():
 	var valid_pieces_to_overlap = get_all_pieces_with_compatible_overlapping_connectors()
-	for piece in get_overlapping_puzzle_pieces():
-		if piece not in valid_pieces_to_overlap and not (is_dragging and piece is GhostPiece):
-			return false
-	return true
+	return get_overlapping_puzzle_pieces().all(func (p) : return p in valid_pieces_to_overlap or p.is_dragging or p is GhostPiece)
 
 func get_all_pieces_with_compatible_overlapping_connectors():
 	var valid_pieces_to_overlap = []
@@ -490,7 +492,7 @@ func get_overlapping_puzzle_pieces() :
 		for piece in connector.get_overlapping_puzzle_pieces() :
 			if piece not in overlapping_puzzle_pieces : overlapping_puzzle_pieces.append(piece)
 			
-	return overlapping_puzzle_pieces
+	return overlapping_puzzle_pieces.filter(func(p) : return p != self)
 
 func update_can_drop_indicator():
 	if !is_dragging : return

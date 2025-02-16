@@ -26,13 +26,15 @@ func update_shape(hole_radius : float):
 
 func on_area_entered(other_area : Area2D):
 	if !puzzle_piece.is_dragging : return
+	if puzzle_piece is GhostPiece : return
 	puzzle_piece.update_can_drop_indicator()
 	
 	if other_area is PuzzlePieceConnector and is_connector_compatible(other_area) :
-		display_ghost_piece(other_area)
+		display_ghost_piece.call_deferred(other_area)
 
 func on_area_exited(other_area : Area2D):
 	if !puzzle_piece.is_dragging : return
+	if puzzle_piece is GhostPiece : return
 	puzzle_piece.update_can_drop_indicator()
 	
 	if other_area is PuzzlePieceConnector and is_connector_compatible(other_area) :
@@ -78,7 +80,6 @@ func can_be_dropped():
 
 func get_all_pieces_with_compatible_overlapping_connectors() :
 	var pieces_with_valid_overlapping_connectors = []
-	
 	for connector in get_overlapping_connectors():
 		if connector.puzzle_piece == puzzle_piece || connector.puzzle_piece is GhostPiece:
 			continue
@@ -165,9 +166,9 @@ func get_overlapping_puzzle_pieces():
 			return p
 		else :
 			return p.puzzle_piece)
-	return overlapping_puzzle_pieces
+	return overlapping_puzzle_pieces.filter(func(p) : return p != puzzle_piece)
 	
 func get_overlapping_connectors():
 	force_update_transform()
 	shape_cast_2d.force_shapecast_update()
-	return shape_cast_2d.collision_result.map(func(r) : return instance_from_id(r.collider_id)).filter(func(p) : return p is PuzzlePieceConnector)
+	return shape_cast_2d.collision_result.map(func(r) : return instance_from_id(r.collider_id)).filter(func(p) : return p is PuzzlePieceConnector and p != self)

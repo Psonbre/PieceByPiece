@@ -50,6 +50,7 @@ func display(piece : PuzzlePiece, actual_global_position : Vector2, actual_globa
 	outline.rotation = visual_shape.rotation
 	
 	update_placement_validity()
+	connection_group.add_member(piece)
 	
 func update_placement_validity():
 	update_transform()
