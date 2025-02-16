@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var diggable_raycast: RayCast2D = $DiggableRaycast
 @onready var wall_check: ShapeCast2D = $WallCheck
 @onready var digging_particles: GPUParticles2D = $DiggingParticles
+@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
 
 const DEFAULT_SPEED := 300.0
 const JUMP_VELOCITY := -400.0
@@ -154,16 +155,11 @@ func set_digging(should_dig : bool, direction := Vector2.ZERO):
 		gravity = 980
 		digging_particles.emitting = false
 
-func add_overlapping_piece(piece : PuzzlePiece):
-	if overlapping_pieces.size() <= 0 :
-		overlapping_pieces.push_back(piece)
-	elif piece.connection_group.equals(overlapping_pieces[0].connection_group) :
-		overlapping_pieces.push_back(piece)
-		
-func remove_overlapping_piece(piece_to_remove : PuzzlePiece):		
-	if piece_to_remove in overlapping_pieces :
-		overlapping_pieces.remove_at(overlapping_pieces.find(piece_to_remove))
-		
+func update_overlapping_pieces():
+	force_update_transform()
+	shape_cast_2d.force_shapecast_update()
+	overlapping_pieces = shape_cast_2d.collision_result.map(func(r) : return instance_from_id(r.collider_id)).filter(func(p) : return p is PuzzlePiece)
+			
 func win(door):
 	if !winning :
 		current_level.pause_menu.drop_down_button.button_pressed = false

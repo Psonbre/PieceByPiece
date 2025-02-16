@@ -515,14 +515,14 @@ func _on_mouse_exited():
 func _on_body_entered(player):
 	if Engine.is_editor_hint() : return
 	if PauseManager.is_paused : return
-	if player is Player && player.get_parent() != shape && !is_dragging:
-		player.add_overlapping_piece(self)
+	if player is Player && !is_dragging:
+		player.update_overlapping_pieces()
 
 func _on_body_exited(player):
 	if Engine.is_editor_hint() : return
 	if PauseManager.is_paused : return
-	if(player is Player):
-		player.remove_overlapping_piece(self)
+	if player is Player:
+		player.update_overlapping_pieces()
 
 func _on_area_entered(_area: Area2D) -> void:
 	update_can_drop_indicator()
