@@ -226,6 +226,7 @@ func stop_dragging():
 		var incompatible_pieces = ghost_piece.get_all_incompatible_overlapping_pieces()
 		for area in incompatible_pieces :
 			area.global_position = get_available_puzzle_piece_position(area.global_position)
+			area.update_transform()
 		ghost_piece.update_placement_validity()
 		ghost_piece.hide_display()
 	
