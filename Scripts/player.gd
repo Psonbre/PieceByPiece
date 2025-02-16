@@ -32,7 +32,8 @@ func _ready():
 	default_scale = global_scale
 	editor_sprite.visible = false
 	play_animation("Idle");
-
+	update_overlapping_pieces()
+	
 func reset_proportions():
 	global_scale = default_scale
 	rotation = 0
@@ -101,6 +102,7 @@ func _physics_process(delta):
 		var closest_piece : PuzzlePiece = null
 		var min_distance = INF
 		for piece in overlapping_pieces:
+			if !piece : continue
 			var distance = global_position.distance_to(piece.global_position)
 			if distance < min_distance:
 				min_distance = distance
@@ -156,6 +158,7 @@ func set_digging(should_dig : bool, direction := Vector2.ZERO):
 		digging_particles.emitting = false
 
 func update_overlapping_pieces():
+	if !shape_cast_2d.is_inside_tree() : return
 	force_update_transform()
 	shape_cast_2d.force_shapecast_update()
 	overlapping_pieces = shape_cast_2d.collision_result.map(func(r) : return instance_from_id(r.collider_id)).filter(func(p) : return p is PuzzlePiece)
