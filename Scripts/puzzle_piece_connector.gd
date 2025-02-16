@@ -53,13 +53,15 @@ func display_ghost_piece(other_connector : PuzzlePieceConnector = null) :
 	
 func get_first_compatible_overlapping_connector(include_dragging_piece := false, allow_flat_sides := false) -> PuzzlePieceConnector:
 	if !include_dragging_piece && puzzle_piece.is_dragging : return
+	var best_candidate : PuzzlePieceConnector = null
 	for connector in get_overlapping_connectors():
 		if connector.puzzle_piece is not GhostPiece:
 			if connector.puzzle_piece == puzzle_piece || (!include_dragging_piece && connector.puzzle_piece.is_dragging) || (connector.shape == ConnectorShape.FLAT && !allow_flat_sides):
 				continue
 			if is_connector_compatible(connector, false) :
-				return connector
-	return null
+				if !best_candidate or best_candidate.puzzle_piece.connection_group.members.size() < connector.puzzle_piece.connection_group.members.size() :
+					best_candidate = connector
+	return best_candidate
 
 func can_be_dropped():
 	var compatible_overlapping_pieces = get_all_pieces_with_compatible_overlapping_connectors()

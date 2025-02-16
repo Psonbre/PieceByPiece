@@ -356,20 +356,20 @@ func connect_all_sides():
 func get_first_compatible_overlapping_connector() -> PuzzlePieceConnector:
 	var connection_result : PuzzlePieceConnector = null
 	for connector in connectors :
-		if not connection_result :
-			connection_result = connector.get_first_compatible_overlapping_connector(is_dragging)
-			if connection_result :
-				return connection_result
-	return null
+		var new_connection_result = connector.get_first_compatible_overlapping_connector(is_dragging)
+		if new_connection_result and (!connection_result or connection_result.puzzle_piece.connection_group.members.size() < new_connection_result.puzzle_piece.connection_group.members.size()) :
+			connection_result = new_connection_result
+	return connection_result
 
 func get_first_owned_connector_with_compatible_connection() -> PuzzlePieceConnector:
 	var connection_result : PuzzlePieceConnector = null
+	var first_owned_connector : PuzzlePieceConnector = null
 	for connector in connectors :
-		if not connection_result :
-			connection_result = connector.get_first_compatible_overlapping_connector(is_dragging)
-			if connection_result :
-				return connector
-	return null
+		var new_connection_result = connector.get_first_compatible_overlapping_connector(is_dragging)
+		if new_connection_result and (!connection_result or connection_result.puzzle_piece.connection_group.members.size() < new_connection_result.puzzle_piece.connection_group.members.size()) :
+			connection_result = new_connection_result
+			first_owned_connector = connector
+	return first_owned_connector
 	
 func all_connectors_can_be_dropped():
 	return connectors.all(func (c) : return c.can_be_dropped())
