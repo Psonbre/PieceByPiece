@@ -22,7 +22,7 @@ const CONTROLS = "controls"
 const GP_SENS = "gamepadSensitivity"
 
 const DEFAULT_FULLSCREEN = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
-const DEFAULT_VSYNC = DisplayServer.VSYNC_ENABLED
+const DEFAULT_VSYNC = DisplayServer.VSYNC_DISABLED
 
 const DEFAULT_MASTER_VOLUME = 1
 const DEFAULT_MUSIC_VOLUME = 1
