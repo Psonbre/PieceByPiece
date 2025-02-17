@@ -15,6 +15,7 @@ func _on_pressed() -> void:
 			exitting = true
 	elif exit_mode == EXIT_MODE.RESTORE :
 		if !exitting :
+			SubSystemManager.get_hud_manager()._start_speedrun_counter()
 			SubSystemManager.get_scene_manager().load_previous_scene()
 			exitting = true
 

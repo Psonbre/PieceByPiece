@@ -79,6 +79,7 @@ func _on_settings_button_pressed() -> void:
 	if !is_opened : return
 	drop_down_button.button_pressed = false
 	SubSystemManager.get_scene_manager().load_settings_menu(Vector2(0, -1), false)
+	SubSystemManager.get_hud_manager()._stop_speedrun_counter()
 
 func _on_drop_down_button_toggled(toggled_on: bool) -> void:
 	if level != SubSystemManager.get_scene_manager().current_screen || SubSystemManager.get_scene_manager().old_screen || Player.winning: 
