@@ -20,7 +20,7 @@ var current_level : Level
 static var winning := false
 static var entering_portal := false
 static var exiting_portal := false
-static var target_portal : Portal
+var target_portal : Portal
 static var has_collectible = false
 var winning_door
 var digging := false
@@ -159,6 +159,9 @@ func update_overlapping_pieces():
 	
 func win(door):
 	if !winning :
+		target_portal = null
+		entering_portal = false
+		exiting_portal = false
 		current_level.pause_menu.drop_down_button.button_pressed = false
 		winning_door = door
 		Player.winning = true
@@ -192,7 +195,7 @@ func _process(delta):
 				SubSystemManager.get_scene_manager().load_level_select(current_level.world)
 				
 			
-	elif entering_portal :
+	elif entering_portal and target_portal:
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
 		rotate(12 * delta)
 		global_scale = global_scale.move_toward(Vector2.ZERO, 5.0 * delta)
@@ -209,7 +212,7 @@ func _process(delta):
 				non_tilted_velocity = Vector2.ZERO
 				set_physics_process(true)
 			
-	elif exiting_portal :
+	elif exiting_portal and target_portal:
 		global_position = global_position.move_toward(target_portal.global_position, 50 * delta)
 		rotate(12 * delta)
 		global_scale = global_scale.move_toward(default_scale, 5 * delta)
