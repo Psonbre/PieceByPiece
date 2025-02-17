@@ -188,6 +188,9 @@ func start_dragging():
 	if shape.has_node("Player") :
 		var player : Player = shape.get_node("Player")
 		if player.digging : return
+		
+	level.find_children("*", "Player", true, false)[0].update_overlapping_pieces()
+		
 	SubSystemManager.get_sound_manager().play_sound(preload("res://Assets/Sounds/piece_pickup.wav"), -7)
 	
 	if shape.has_node("Player") :
@@ -253,6 +256,9 @@ func stop_dragging():
 	
 	set_colliders_in_drag_mode(false)
 	attempt_connection_on_all_other_pieces()
+	
+	var player := shape.get_node_or_null("Player")
+	if player : player.update_overlapping_pieces()
 	
 	update_all_connection_groups()
 	outline.set_type(PuzzlePieceOutline.OutlineType.NORMAL)
@@ -512,18 +518,6 @@ func _on_mouse_exited():
 	if Engine.is_editor_hint() : return
 	if level.is_mouse_controlled :
 		unfocus()
-	
-func _on_body_entered(player):
-	if Engine.is_editor_hint() : return
-	if PauseManager.is_paused : return
-	if player is Player && !is_dragging:
-		player.update_overlapping_pieces()
-
-func _on_body_exited(player):
-	if Engine.is_editor_hint() : return
-	if PauseManager.is_paused : return
-	if player is Player:
-		player.update_overlapping_pieces()
 
 func _on_area_entered(_area: Area2D) -> void:
 	update_can_drop_indicator()

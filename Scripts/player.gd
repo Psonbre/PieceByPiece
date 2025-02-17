@@ -32,6 +32,10 @@ func _ready():
 	default_scale = global_scale
 	editor_sprite.visible = false
 	play_animation("Idle");
+	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	
 	update_overlapping_pieces()
 	
 func reset_proportions():
@@ -97,19 +101,6 @@ func _physics_process(delta):
 	if is_on_floor() and !was_on_floor:
 		land(non_tilted_velocity.y)
 		non_tilted_velocity.y = 0
-		
-	if overlapping_pieces.size() > 0:
-		var closest_piece : PuzzlePiece = null
-		var min_distance = INF
-		for piece in overlapping_pieces:
-			if !piece : continue
-			var distance = global_position.distance_to(piece.global_position)
-			if distance < min_distance:
-				min_distance = distance
-				closest_piece = piece
-		if closest_piece != null and (find_parent("Shape") == null or closest_piece.shape != get_parent()):
-			reparent(closest_piece.shape)
-			reset_proportions()
 
 func check_diggable(input : Vector2):
 	input = input.normalized()
@@ -162,7 +153,11 @@ func update_overlapping_pieces():
 	force_update_transform()
 	shape_cast_2d.force_shapecast_update()
 	overlapping_pieces = shape_cast_2d.collision_result.map(func(r) : return instance_from_id(r.collider_id)).filter(func(p) : return p is PuzzlePiece)
-			
+	overlapping_pieces.sort_custom(func(a, b) : return a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position))
+	if overlapping_pieces.size() > 0:
+		reparent(overlapping_pieces[0].shape)
+		reset_proportions()
+	
 func win(door):
 	if !winning :
 		current_level.pause_menu.drop_down_button.button_pressed = false
