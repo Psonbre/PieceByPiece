@@ -28,8 +28,12 @@ func _process(_delta):
 	position = start_position + Vector2(cos(Time.get_unix_time_from_system() * horizontal_speed + rand) * horizontal_intensity, sin(Time.get_unix_time_from_system() + rand * vertical_speed) * vertical_intensity)
 
 func _on_body_entered(body):
-	if body is Player and body.is_physics_processing() && !get_parent().get_parent().is_dragging && !Player.has_collectible && SubSystemManager.get_scene_manager().old_screen == null:
-		if get_parent().is_ancestor_of(body) :
-			Player.has_collectible = true
-			SubSystemManager.get_sound_manager().play_sound(COLLECT_JINGLE, -8)
-			visible = false
+	if body is Player :
+		if !get_parent().puzzle_piece.is_dragging :
+			if !Player.has_collectible :
+				if SubSystemManager.get_scene_manager().old_screen == null:
+					body.update_overlapping_pieces()
+					if get_parent().is_ancestor_of(body) :
+						Player.has_collectible = true
+						SubSystemManager.get_sound_manager().play_sound(COLLECT_JINGLE, -8)
+						visible = false

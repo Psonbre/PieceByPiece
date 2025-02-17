@@ -156,7 +156,6 @@ func update_overlapping_pieces():
 	overlapping_pieces.sort_custom(func(a, b) : return a.global_position.distance_squared_to(global_position) < b.global_position.distance_squared_to(global_position))
 	if overlapping_pieces.size() > 0:
 		reparent(overlapping_pieces[0].shape)
-		reset_proportions()
 	
 func win(door):
 	if !winning :

@@ -236,9 +236,6 @@ func stop_dragging():
 	elif !can_be_dropped() : 
 		cancel_drag()
 		return
-	
-	elif abs(rad_to_deg(rotated_angle) - target_rotated_angle) > 15 || Player.winning || Player.entering_portal || Player.exiting_portal:
-		return
 		
 	set_player_sprites_visible(true)
 	z_index = 0
@@ -247,7 +244,6 @@ func stop_dragging():
 	scale = default_scale
 	update_lighting_range()
 	attempt_connection(true)
-	
 	
 	if drop_particles_scene : 
 		var drop_particles = drop_particles_scene.instantiate()
