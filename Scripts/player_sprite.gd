@@ -7,14 +7,15 @@ class_name PlayerSprite
 var default_sprite_scale: Vector2
 var default_stretch_parent_scale: Vector2
 var puzzle_piece : PuzzlePiece
+var player : Player
 
 func _ready():
 	visible = true
 	default_sprite_scale = sprite.scale
 	default_stretch_parent_scale = stretch_parent.scale
+	player = puzzle_piece.level.find_children("*", "Player", true, false)[0]
 			
 func _process(_delta):
-	var player: Player = get_tree().get_nodes_in_group("Player").filter(func (p) : return puzzle_piece.level.is_ancestor_of(p))[0]
 	if player : global_transform = player.global_transform
 
 func squash(squash_strenght):

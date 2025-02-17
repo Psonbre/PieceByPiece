@@ -77,5 +77,6 @@ target_position = Vector2(15, 0)
 visible = false
 shape = SubResource("CircleShape2D_m0ql6")
 target_position = Vector2(0, 0)
+collision_mask = 5
 collide_with_areas = true
 collide_with_bodies = false

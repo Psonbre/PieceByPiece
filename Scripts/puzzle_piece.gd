@@ -508,6 +508,17 @@ func update_can_drop_indicator():
 	else :
 		outline.set_type(PuzzlePieceOutline.OutlineType.ERROR)
 		
+func _on_body_entered(player):
+	if Engine.is_editor_hint() : return
+	if PauseManager.is_paused : return
+	if player is Player && !is_dragging:
+		player.update_overlapping_pieces.call_deferred()
+
+func _on_body_exited(player):
+	if Engine.is_editor_hint() : return
+	if PauseManager.is_paused : return
+	if player is Player:
+		player.update_overlapping_pieces.call_deferred()
 
 func _on_mouse_entered():
 	if Engine.is_editor_hint() : return
