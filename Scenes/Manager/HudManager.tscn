@@ -4,6 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="2_mbdvd"]
 
 [node name="Hud" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_47kyg")
 
 [node name="FPSCounter" type="Label" parent="."]

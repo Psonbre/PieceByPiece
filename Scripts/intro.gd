@@ -16,14 +16,10 @@ func _ready() -> void:
 
 func _process(_delta):
 	if Input.is_action_just_pressed("skip_intro"):
-		SubSystemManager.get_music_manager().play_music(preload("res://Assets/Music/Music.mp3"))
-		SubSystemManager.get_scene_manager().load_main_menu(Vector2(0,1))
-		queue_free()
+		show_main_menu()
 
 func _on_video_stream_player_finished():
-		SubSystemManager.get_music_manager().play_music(preload("res://Assets/Music/Music.mp3"))
-		SubSystemManager.get_scene_manager().load_main_menu(Vector2(0,1))
-		queue_free()
+	show_main_menu()
 
 
 func _on_timer_timeout() -> void:
@@ -31,3 +27,9 @@ func _on_timer_timeout() -> void:
 	player.play()
 	tween.tween_property(godot, "modulate:a", 0, fadeInDuration).set_ease(Tween.EASE_OUT)
 	tween.tween_property(player, "modulate:a", 1, fadeInDuration).set_ease(Tween.EASE_OUT)
+
+func show_main_menu():
+	SubSystemManager.get_music_manager().play_music(preload("res://Assets/Music/Music.mp3"))
+	SubSystemManager.get_scene_manager().load_main_menu(Vector2(0,1))
+	SubSystemManager.get_hud_manager()._show_hud()
+	queue_free()

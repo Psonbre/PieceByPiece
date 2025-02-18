@@ -7,6 +7,9 @@ class_name HudManager
 var timeElapsed : float
 var speedrunCounterRunning : bool = false
 
+func _show_hud():
+	visible = true
+
 func _toggle_fps_counter(toggle : bool):
 	if (fpsLabel):
 		fpsLabel.visible = toggle

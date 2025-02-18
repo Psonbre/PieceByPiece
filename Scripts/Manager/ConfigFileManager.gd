@@ -66,18 +66,18 @@ func _load_config():
 func _apply_config():
 	var settings = SubSystemManager.get_settings_manager()
 
-	settings._update_language(configFile.get_value(GENERAL,LANGUAGE))
-	settings._update_fps_counter(configFile.get_value(GENERAL,FPS_COUNTER))
-	settings._update_speedrun_counter(configFile.get_value(GENERAL,SPEEDRUN_COUNTER))
+	settings._update_language(configFile.get_value(GENERAL,LANGUAGE),false)
+	settings._update_fps_counter(configFile.get_value(GENERAL,FPS_COUNTER),false)
+	settings._update_speedrun_counter(configFile.get_value(GENERAL,SPEEDRUN_COUNTER),false)
 	
-	settings._update_gamepad_sensitivity(configFile.get_value(CONTROLS, GP_SENS))
+	settings._update_gamepad_sensitivity(configFile.get_value(CONTROLS, GP_SENS),false)
 
-	settings._update_display_mode(configFile.get_value(VIDEO,FULLSCREEN))
-	settings._update_Vsync_mode(configFile.get_value(VIDEO,VSYNC))
+	settings._update_display_mode(configFile.get_value(VIDEO,FULLSCREEN),false)
+	settings._update_Vsync_mode(configFile.get_value(VIDEO,VSYNC),false)
 	
-	settings._update_master_volume(configFile.get_value(AUDIO,MASTER_VOLUME))
-	settings._update_music_volume(configFile.get_value(AUDIO,MUSIC_VOLUME))
-	settings._update_sfx_volume(configFile.get_value(AUDIO,SFX_VOLUME))
+	settings._update_master_volume(configFile.get_value(AUDIO,MASTER_VOLUME),false)
+	settings._update_music_volume(configFile.get_value(AUDIO,MUSIC_VOLUME),false)
+	settings._update_sfx_volume(configFile.get_value(AUDIO,SFX_VOLUME),false)
 		
 #Create the config file at first launch
 func _init_config():
