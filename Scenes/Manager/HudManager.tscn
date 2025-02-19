@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwhksm725kppf"]
+[gd_scene load_steps=6 format=3 uid="uid://bwhksm725kppf"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/HudManager.gd" id="1_47kyg"]
 [ext_resource type="LabelSettings" uid="uid://cw355ejs16c6d" path="res://Assets/Fonts/label_settings.tres" id="2_mbdvd"]
+[ext_resource type="Texture2D" uid="uid://dooxovvgyttr4" path="res://Assets/Icons/cursor.svg" id="3_gqrj7"]
+[ext_resource type="FontFile" uid="uid://b51e4e1htly8h" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="4_xnywv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xu8ky"]
+font = ExtResource("4_xnywv")
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="Hud" type="CanvasLayer"]
 visible = false
 script = ExtResource("1_47kyg")
+timeToReset = 1.0
 
 [node name="FPSCounter" type="Label" parent="."]
 visible = false
@@ -26,5 +38,28 @@ offset_right = 60.0
 offset_bottom = 38.0
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
+text = "00:00:00"
 label_settings = ExtResource("2_mbdvd")
 horizontal_alignment = 1
+
+[node name="ResetProgressBar" type="TextureProgressBar" parent="SpeedrunCounter"]
+visible = false
+offset_left = 3.33334
+offset_top = 26.6667
+offset_right = 303.333
+offset_bottom = 326.667
+scale = Vector2(0.3, 0.3)
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("3_gqrj7")
+texture_progress = ExtResource("3_gqrj7")
+tint_under = Color(0.233925, 0.233925, 0.233925, 1)
+
+[node name="ResetTimerLabel" type="Label" parent="SpeedrunCounter/ResetProgressBar"]
+layout_mode = 0
+offset_left = 124.444
+offset_top = 41.1111
+offset_right = 292.444
+offset_bottom = 64.1111
+text = "Resetting timer..."
+label_settings = SubResource("LabelSettings_xu8ky")

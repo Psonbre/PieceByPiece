@@ -37,7 +37,7 @@ func _input(event):
 		cam.pan(cam.target_position, cam.target_zoom)
 
 	# Handle restart
-	if Input.is_action_just_pressed("Reset"):
+	if Input.is_action_just_released("Reset"):
 		_on_level_menu_on_restart_clicked()
 
 	var select_input = Input.get_vector("SelectPieceLeft", "SelectPieceRight", "SelectPieceUp", "SelectPieceDown").normalized()
